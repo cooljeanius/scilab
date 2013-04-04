@@ -38,7 +38,7 @@ int ScilabGateway::objectExtract(char * fname, const int envId, void * pvApiCtx)
     ScilabAbstractEnvironment & env = ScilabEnvironments::getEnvironment(eId);
     OptionsHelper & helper = env.getOptionsHelper();
     ScilabGatewayOptions & options = env.getGatewayOptions();
-    OptionsHelper::setCopyOccurred(false);
+    OptionsHelper::setCopyOccured(false);
     ScilabObjects::initialization(env, pvApiCtx);
     options.setIsNew(false);
     const int inc = helper.getUseScilabIndex() ? -1 : 0;

@@ -6,7 +6,7 @@
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
 
-// <-- XCOS TEST -->
+// <-- TEST WITH XCOS -->
 //
 // <-- Non-regression test for bug 7639 -->
 //
@@ -31,6 +31,7 @@ function num=message(strings ,buttons, modal)
 endfunction
 funcprot(prot);
 
+loadXcosLibs();
 
 status = importXcosDiagram(SCI + "/modules/xcos/tests/nonreg_tests/bug_7639.xcos");
 if ~status then pause, end

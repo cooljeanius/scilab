@@ -5,7 +5,7 @@
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
 //
-// <-- XCOS TEST -->
+// <-- TEST WITH XCOS -->
 
 // <-- Non-regression test for bug 7224 -->
 //
@@ -16,6 +16,7 @@
 // HDF5 functions don't unlock file wih empty matrix.
 //
 
+loadXcosLibs();
 importScicosDiagram("SCI/modules/hdf5/tests/nonreg_tests/bug_7224.cos");
 
 emp=[];         // or list([]), scicos_diagram(), etc.

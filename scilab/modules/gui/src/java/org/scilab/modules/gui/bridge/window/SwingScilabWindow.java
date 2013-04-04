@@ -24,7 +24,6 @@ import org.flexdock.docking.defaults.DefaultDockingPort;
 import org.flexdock.docking.defaults.DefaultDockingStrategy;
 import org.flexdock.docking.drag.effects.EffectsManager;
 import org.flexdock.docking.drag.preview.GhostPreview;
-import org.flexdock.docking.event.hierarchy.DockingPortTracker;
 import org.scilab.modules.action_binding.InterpreterManagement;
 import org.scilab.modules.commons.gui.ScilabKeyStroke;
 import org.scilab.modules.gui.bridge.menubar.SwingScilabMenuBar;
@@ -52,11 +51,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import java.awt.Dimension;
 import java.awt.Frame;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.lang.reflect.InvocationTargetException;
@@ -100,8 +96,6 @@ public class SwingScilabWindow extends JFrame implements SimpleWindow {
     private int elementId; // the id of the Window which contains this SimpleWindow
     private String windowUID;
     private final boolean MAC_OS_X = (System.getProperty("os.name").toLowerCase().startsWith("mac os x"));
-    private Dimension lastDimension;
-    private Point lastPosition;
 
     /**
      * Constructor
@@ -114,11 +108,11 @@ public class SwingScilabWindow extends JFrame implements SimpleWindow {
 
         // By default ctrl+w close the window
         ActionListener listener = new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    processWindowEvent(new WindowEvent(SwingScilabWindow.this, WindowEvent.WINDOW_CLOSING));
-                }
-            };
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                processWindowEvent(new WindowEvent(SwingScilabWindow.this, WindowEvent.WINDOW_CLOSING));
+            }
+        };
         getRootPane().registerKeyboardAction(listener, ScilabKeyStroke.getKeyStroke("OSSCKEY W"), JComponent.WHEN_IN_FOCUSED_WINDOW);
 
         // TODO : Only for testing : Must be removed
@@ -155,27 +149,11 @@ public class SwingScilabWindow extends JFrame implements SimpleWindow {
         setLocationByPlatform(true);
 
         addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    ClosingOperationsManager.startClosingOperation(SwingScilabWindow.this);
-                }
-            });
-
-        addComponentListener(new ComponentAdapter() {
-                @Override
-                public void componentResized(ComponentEvent e) {
-                    if (getExtendedState() == NORMAL) {
-                        lastDimension = getSize();
-                    }
-                }
-
-                @Override
-                public void componentMoved(ComponentEvent e) {
-                    if (getExtendedState() == NORMAL) {
-                        lastPosition = getLocation();
-                    }
-                }
-            });
+            @Override
+            public void windowClosing(WindowEvent e) {
+                ClosingOperationsManager.startClosingOperation(SwingScilabWindow.this);
+            }
+        });
 
         if (MAC_OS_X) {
             registerForMacOSXEvents();
@@ -186,30 +164,6 @@ public class SwingScilabWindow extends JFrame implements SimpleWindow {
         sciDockingListener.setAssociatedWindowId(windowUID);
 
         allScilabWindows.put(windowUID, this);
-    }
-
-    /**
-     * Get the last dimension of the window before MAXIMIZED or MINIMIZED
-     * @return the last dimension
-     */
-    public Dimension getLastDimension() {
-        if (lastDimension == null) {
-            return getSize();
-        }
-
-        return lastDimension;
-    }
-
-    /**
-     * Get the last position of the window before MAXIMIZED or MINIMIZED
-     * @return the last position
-     */
-    public Point getLastPosition() {
-        if (lastPosition == null) {
-            return getLocation();
-        }
-
-        return lastPosition;
     }
 
     /**
@@ -313,11 +267,11 @@ public class SwingScilabWindow extends JFrame implements SimpleWindow {
             /* javasci bug: See bug 9544 why we are doing this check */
             try {
                 SwingUtilities.invokeAndWait(new Runnable() {
-                        @Override
-                        public void run() {
-                            raiseToFront();
-                        }
-                    });
+                    @Override
+                    public void run() {
+                        raiseToFront();
+                    }
+                });
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
@@ -445,8 +399,7 @@ public class SwingScilabWindow extends JFrame implements SimpleWindow {
             tab.close();
             DockingManager.close(tab);
         }
-
-        if (getDockingPort() == null || getDockingPort().getDockables().isEmpty()) {
+        if (getDockingPort().getDockables().isEmpty()) {
             // remove xxxBars
             if (toolBar != null) {
                 ((SwingScilabToolBar) toolBar).close();
@@ -458,6 +411,12 @@ public class SwingScilabWindow extends JFrame implements SimpleWindow {
             // clean all
             this.removeAll();
             close();
+
+            // disable docking port
+            ActiveDockableTracker.getTracker(this).setActive(null);
+            sciDockingPort.removeDockingListener(sciDockingListener);
+            sciDockingPort = null;
+            sciDockingListener = null;
         } else {
             /* Make sur a Tab is active */
             Set<SwingScilabTab> docks = sciDockingPort.getDockables();
@@ -579,14 +538,6 @@ public class SwingScilabWindow extends JFrame implements SimpleWindow {
     public void close() {
         try {
             dispose();
-            // disable docking port
-            ActiveDockableTracker.getTracker(this).setActive(null);
-            if (sciDockingPort != null) {
-                sciDockingPort.removeDockingListener(sciDockingListener);
-                sciDockingPort = null;
-                sciDockingListener = null;
-            }
-            DockingPortTracker.remove(this);
         } catch (IllegalStateException e) {
             enableInputMethods(false);
         }

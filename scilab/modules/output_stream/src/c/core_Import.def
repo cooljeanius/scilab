@@ -28,6 +28,3 @@ vartype_
 checklhs_
 checkrhs_
 intersci_
-MyHeapAlloc
-MyHeapFree
-MyHeapRealloc

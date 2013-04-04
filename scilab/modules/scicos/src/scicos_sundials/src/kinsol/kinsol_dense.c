@@ -1,7 +1,7 @@
 /*
  * -----------------------------------------------------------------
- * $Revision: 1.11 $
- * $Date: 2010/12/01 22:43:33 $
+ * $Revision: 1.2 $
+ * $Date: 2006/10/11 16:34:19 $
  * ----------------------------------------------------------------- 
  * Programmer(s): Radu Serban @ LLNL
  * -----------------------------------------------------------------
@@ -17,40 +17,46 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <kinsol/kinsol_dense.h>
-#include "kinsol_direct_impl.h"
+#include "kinsol_dense_impl.h"
 #include "kinsol_impl.h"
 
 #include <sundials/sundials_math.h>
 
-/* Constants */
+/* Other Constants */
 
+#define MIN_INC_MULT RCONST(1000.0)
 #define ZERO         RCONST(0.0)
 #define ONE          RCONST(1.0)
 #define TWO          RCONST(2.0)
 
-/* 
- * =================================================================
- * PROTOTYPES FOR PRIVATE FUNCTIONS
- * =================================================================
- */
+/* KINDENSE linit, lsetup, lsolve, and lfree routines */
+ 
+static int KINDenseInit(KINMem kin_mem);
 
-/* KINDENSE linit, lsetup, lsolve, and lfree routines */ 
-static int kinDenseInit(KINMem kin_mem);
-static int kinDenseSetup(KINMem kin_mem);
-static int kinDenseSolve(KINMem kin_mem, N_Vector x, N_Vector b,
+static int KINDenseSetup(KINMem kin_mem);
+
+static int KINDenseSolve(KINMem kin_mem, N_Vector x, N_Vector b,
                          realtype *res_norm);
-static void kinDenseFree(KINMem kin_mem);
 
-/*
- * =================================================================
- * READIBILITY REPLACEMENTS
- * =================================================================
- */
+static void KINDenseFree(KINMem kin_mem);
+
+/* KINDENSE DQJac routine */
+
+static int KINDenseDQJac(long int n, DenseMat J,
+                         N_Vector u, N_Vector fu, void *jac_data,
+                         N_Vector tmp1, N_Vector tmp2);
+
+/* Readability Replacements */
+
 
 #define lrw1           (kin_mem->kin_lrw1)
 #define liw1           (kin_mem->kin_liw1)
+#define uround         (kin_mem->kin_uround)
+#define nfe            (kin_mem->kin_nfe)
+#define nni            (kin_mem->kin_nni)
+#define nnilset        (kin_mem->kin_nnilset)
 #define func           (kin_mem->kin_func)
+#define f_data         (kin_mem->kin_f_data)
 #define printfl        (kin_mem->kin_printfl)
 #define linit          (kin_mem->kin_linit)
 #define lsetup         (kin_mem->kin_lsetup)
@@ -72,26 +78,15 @@ static void kinDenseFree(KINMem kin_mem);
 #define vec_tmpl       (kin_mem->kin_vtemp1)
 #define vtemp2         (kin_mem->kin_vtemp2)
 
-#define mtype          (kindls_mem->d_type)
-#define n              (kindls_mem->d_n)
-#define ml             (kindls_mem->d_ml)
-#define mu             (kindls_mem->d_mu)
-#define smu            (kindls_mem->d_smu)
-#define jacDQ          (kindls_mem->d_jacDQ)
-#define djac           (kindls_mem->d_djac)
-#define J              (kindls_mem->d_J)
-#define lpivots        (kindls_mem->d_lpivots)
-#define nje            (kindls_mem->d_nje)
-#define nfeDQ          (kindls_mem->d_nfeDQ)
-#define J_data         (kindls_mem->d_J_data)
-#define last_flag      (kindls_mem->d_last_flag)
-
-/* 
- * =================================================================
- * EXPORTED FUNCTIONS
- * =================================================================
- */
-             
+#define n         (kindense_mem->d_n)
+#define jac       (kindense_mem->d_jac)
+#define J         (kindense_mem->d_J)
+#define pivots    (kindense_mem->d_pivots)
+#define nje       (kindense_mem->d_nje)
+#define nfeD      (kindense_mem->d_nfeD)
+#define J_data    (kindense_mem->d_J_data)
+#define last_flag (kindense_mem->d_last_flag)
+                  
 /*
  * -----------------------------------------------------------------
  * KINDense
@@ -99,13 +94,14 @@ static void kinDenseFree(KINMem kin_mem);
  * This routine initializes the memory record and sets various function
  * fields specific to the dense linear solver module. 
  * KINDense sets the kin_linit, kin_lsetup, kin_lsolve, kin_lfree fields 
- * in *kinmem to be kinDenseInit, kinDenseSetup, kinDenseSolve, and 
- * kinDenseFree, respectively.  
- * It allocates memory for a structure of type KINDlsMemRec and sets 
+ * in *kinmem to be KINDenseInit, KINDenseSetup, KINDenseSolve, and 
+ * KINDenseFree, respectively.  
+ * It allocates memory for a structure of type KINDenseMemRec and sets 
  * the kin_lmem field in *kinmem to the address of this structure.  
- * It sets setupNonNull in *kinmem to TRUE, and the djac field to the 
- * default kinDlsDenseDQJac.
- * Finally, it allocates memory for J and lpivots.
+ * It sets setupNonNull in *kinmem to TRUE, and the d_jac field to the 
+ * default KINDenseDQJac.
+ * Finally, it allocates memory for J and pivots.
+ * The return value is SUCCESS = 0, or LMEM_FAIL = -1.
  *
  * NOTE: The dense linear solver assumes a serial implementation
  *       of the NVECTOR package. Therefore, KINDense will first 
@@ -118,46 +114,42 @@ static void kinDenseFree(KINMem kin_mem);
 int KINDense(void *kinmem, long int N)
 {
   KINMem kin_mem;
-  KINDlsMem kindls_mem;
+  KINDenseMem kindense_mem;
 
   /* Return immediately if kinmem is NULL */
   if (kinmem == NULL) {
-    KINProcessError(NULL, KINDLS_MEM_NULL, "KINDENSE", "KINDense", MSGD_KINMEM_NULL);
-    return(KINDLS_MEM_NULL);
+    KINProcessError(NULL, KINDENSE_MEM_NULL, "KINDENSE", "KINDense", MSGDS_KINMEM_NULL);
+    return(KINDENSE_MEM_NULL);
   }
   kin_mem = (KINMem) kinmem;
 
   /* Test if the NVECTOR package is compatible with the DENSE solver */
   if (vec_tmpl->ops->nvgetarraypointer == NULL ||
       vec_tmpl->ops->nvsetarraypointer == NULL) {
-    KINProcessError(kin_mem, KINDLS_ILL_INPUT, "KINDENSE", "KINDense", MSGD_BAD_NVECTOR);
-    return(KINDLS_ILL_INPUT);
+    KINProcessError(kin_mem, KINDENSE_ILL_INPUT, "KINDENSE", "KINDense", MSGDS_BAD_NVECTOR);
+    return(KINDENSE_ILL_INPUT);
   }
 
   if (lfree !=NULL) lfree(kin_mem);
 
   /* Set four main function fields in kin_mem */
-  linit  = kinDenseInit;
-  lsetup = kinDenseSetup;
-  lsolve = kinDenseSolve;
-  lfree  = kinDenseFree;
+  linit  = KINDenseInit;
+  lsetup = KINDenseSetup;
+  lsolve = KINDenseSolve;
+  lfree  = KINDenseFree;
 
-  /* Get memory for KINDlsMemRec */
-  kindls_mem = NULL;
-  kindls_mem = (KINDlsMem) malloc(sizeof(struct KINDlsMemRec));
-  if (kindls_mem == NULL) {
-    KINProcessError(kin_mem, KINDLS_MEM_FAIL, "KINDENSE", "KINDense", MSGD_MEM_FAIL);
-    return(KINDLS_MEM_FAIL);
+  /* Get memory for KINDenseMemRec */
+  kindense_mem = NULL;
+  kindense_mem = (KINDenseMem) malloc(sizeof(KINDenseMemRec));
+  if (kindense_mem == NULL) {
+    KINProcessError(kin_mem, KINDENSE_MEM_FAIL, "KINDENSE", "KINDense", MSGDS_MEM_FAIL);
+    return(KINDENSE_MEM_FAIL);
   }
 
-  /* Set matrix type */
-  mtype = SUNDIALS_DENSE;  
-
   /* Set default Jacobian routine and Jacobian data */
-  jacDQ  = TRUE;
-  djac   = NULL;
-  J_data = NULL;
-  last_flag = KINDLS_SUCCESS;
+  jac = KINDenseDQJac;
+  J_data = kin_mem;
+  last_flag = KINDENSE_SUCCESS;
 
   setupNonNull = TRUE;
 
@@ -167,93 +159,267 @@ int KINDense(void *kinmem, long int N)
   /* Allocate memory for J and pivot array */
   
   J = NULL;
-  J = NewDenseMat(N, N);
+  J = DenseAllocMat(N, N);
   if (J == NULL) {
-    KINProcessError(kin_mem, KINDLS_MEM_FAIL, "KINDENSE", "KINDense", MSGD_MEM_FAIL);
-    free(kindls_mem); kindls_mem = NULL;
-    return(KINDLS_MEM_FAIL);
+    KINProcessError(kin_mem, KINDENSE_MEM_FAIL, "KINDENSE", "KINDense", MSGDS_MEM_FAIL);
+    free(kindense_mem); kindense_mem = NULL;
+    return(KINDENSE_MEM_FAIL);
   }
 
-  lpivots = NULL;
-  lpivots = NewLintArray(N);
-  if (lpivots == NULL) {
-    KINProcessError(kin_mem, KINDLS_MEM_FAIL, "KINDENSE", "KINDense", MSGD_MEM_FAIL);
-    DestroyMat(J);
-    free(kindls_mem); kindls_mem = NULL;
-    return(KINDLS_MEM_FAIL);
+  pivots = NULL;
+  pivots = DenseAllocPiv(N);
+  if (pivots == NULL) {
+    KINProcessError(kin_mem, KINDENSE_MEM_FAIL, "KINDENSE", "KINDense", MSGDS_MEM_FAIL);
+    DenseFreeMat(J);
+    free(kindense_mem); kindense_mem = NULL;
+    return(KINDENSE_MEM_FAIL);
   }
 
   /* This is a direct linear solver */
   inexact_ls = FALSE;
 
   /* Attach linear solver memory to integrator memory */
-  lmem = kindls_mem;
+  lmem = kindense_mem;
 
-  return(KINDLS_SUCCESS);
+  return(KINDENSE_SUCCESS);
 }
-
-/* 
- * =================================================================
- *  PRIVATE FUNCTIONS
- * =================================================================
- */
 
 /*
  * -----------------------------------------------------------------
- * kinDenseInit
+ * KINDenseSetJacFn
+ * -----------------------------------------------------------------
+ */
+
+int KINDenseSetJacFn(void *kinmem, KINDenseJacFn djac, void *jac_data)
+{
+  KINMem kin_mem;
+  KINDenseMem kindense_mem;
+
+  /* Return immediately if kinmem is NULL */
+  if (kinmem == NULL) {
+    KINProcessError(NULL, KINDENSE_MEM_NULL, "KINDENSE", "KINDenseSetJacFn", MSGDS_KINMEM_NULL);
+    return(KINDENSE_MEM_NULL);
+  }
+  kin_mem = (KINMem) kinmem;
+
+  if (lmem == NULL) {
+    KINProcessError(kin_mem, KINDENSE_LMEM_NULL, "KINDENSE", "KINDenseSetJacFn", MSGDS_LMEM_NULL);
+    return(KINDENSE_LMEM_NULL);
+  }
+  kindense_mem = (KINDenseMem) lmem;
+
+  jac = djac;
+  if (djac != NULL) J_data = jac_data;
+
+  return(KINDENSE_SUCCESS);
+}
+
+/*
+ * -----------------------------------------------------------------
+ * KINDenseGetWorkSpace
+ * -----------------------------------------------------------------
+ */
+
+int KINDenseGetWorkSpace(void *kinmem, long int *lenrwD, long int *leniwD)
+{
+  KINMem kin_mem;
+  KINDenseMem kindense_mem;
+
+  /* Return immediately if kinmem is NULL */
+  if (kinmem == NULL) {
+    KINProcessError(NULL, KINDENSE_MEM_NULL, "KINDENSE", "KINDenseGetWorkSpace", MSGDS_KINMEM_NULL);
+    return(KINDENSE_MEM_NULL);
+  }
+  kin_mem = (KINMem) kinmem;
+
+  if (lmem == NULL) {
+    KINProcessError(kin_mem, KINDENSE_LMEM_NULL, "KINDENSE", "KINDenseGetWorkSpace", MSGDS_LMEM_NULL);
+    return(KINDENSE_LMEM_NULL);
+  }
+  kindense_mem = (KINDenseMem) lmem;
+
+  *lenrwD = 2*n*n;
+  *leniwD = n;
+
+  return(KINDENSE_SUCCESS);
+}
+
+/*
+ * -----------------------------------------------------------------
+ * KINDenseGetNumJacEvals
+ * -----------------------------------------------------------------
+ */
+
+int KINDenseGetNumJacEvals(void *kinmem, long int *njevalsD)
+{
+  KINMem kin_mem;
+  KINDenseMem kindense_mem;
+
+  /* Return immediately if kinmem is NULL */
+  if (kinmem == NULL) {
+    KINProcessError(NULL, KINDENSE_MEM_NULL, "KINDENSE", "KINDenseGetNumJacEvals", MSGDS_KINMEM_NULL);
+    return(KINDENSE_MEM_NULL);
+  }
+  kin_mem = (KINMem) kinmem;
+
+  if (lmem == NULL) {
+    KINProcessError(kin_mem, KINDENSE_LMEM_NULL, "KINDENSE", "KINDenseGetNumJacEvals", MSGDS_LMEM_NULL);
+    return(KINDENSE_LMEM_NULL);
+  }
+  kindense_mem = (KINDenseMem) lmem;
+
+  *njevalsD = nje;
+
+  return(KINDENSE_SUCCESS);
+}
+
+/*
+ * -----------------------------------------------------------------
+ * KINDenseGetNumFuncEvals
+ * -----------------------------------------------------------------
+ */
+
+int KINDenseGetNumFuncEvals(void *kinmem, long int *nfevalsD)
+{
+  KINMem kin_mem;
+  KINDenseMem kindense_mem;
+
+  /* Return immediately if kinmem is NULL */
+  if (kinmem == NULL) {
+    KINProcessError(NULL, KINDENSE_MEM_NULL, "KINDENSE", "KINDenseGetNumFuncEvals", MSGDS_KINMEM_NULL);
+    return(KINDENSE_MEM_NULL);
+  }
+  kin_mem = (KINMem) kinmem;
+
+  if (lmem == NULL) {
+    KINProcessError(kin_mem, KINDENSE_LMEM_NULL, "KINDENSE", "KINDenseGetNumFuncEvals", MSGDS_LMEM_NULL);
+    return(KINDENSE_LMEM_NULL);
+  }
+  kindense_mem = (KINDenseMem) lmem;
+
+  *nfevalsD = nfeD;
+
+  return(KINDENSE_SUCCESS);
+}
+
+/*
+ * -----------------------------------------------------------------
+ * KINDenseGetLastFlag
+ * -----------------------------------------------------------------
+ */
+
+int KINDenseGetLastFlag(void *kinmem, int *flag)
+{
+   KINMem kin_mem;
+  KINDenseMem kindense_mem;
+
+  /* Return immediately if kinmem is NULL */
+  if (kinmem == NULL) {
+    KINProcessError(NULL, KINDENSE_MEM_NULL, "KINDENSE", "KINDenseGetLastFlag", MSGDS_KINMEM_NULL);
+    return(KINDENSE_MEM_NULL);
+  }
+  kin_mem = (KINMem) kinmem;
+
+  if (lmem == NULL) {
+    KINProcessError(kin_mem, KINDENSE_LMEM_NULL, "KINDENSE", "KINDenseGetLastFlag", MSGDS_LMEM_NULL);
+    return(KINDENSE_LMEM_NULL);
+  }
+  kindense_mem = (KINDenseMem) lmem;
+
+  *flag = last_flag;
+
+  return(KINDENSE_SUCCESS);
+}
+
+/*
+ * -----------------------------------------------------------------
+ * KINDenseGetReturnFlagName
+ * -----------------------------------------------------------------
+ */
+
+char *KINDenseGetReturnFlagName(int flag)
+{
+  char *name;
+
+  name = (char *)malloc(30*sizeof(char));
+
+  switch(flag) {
+  case KINDENSE_SUCCESS:
+    sprintf(name, "KINDENSE_SUCCESS");
+    break;
+  case KINDENSE_MEM_NULL:
+    sprintf(name, "KINDENSE_MEM_NULL");
+    break;
+  case KINDENSE_LMEM_NULL:
+    sprintf(name, "KINDENSE_LMEM_NULL");
+    break;
+  case KINDENSE_ILL_INPUT:
+    sprintf(name, "KINDENSE_ILL_INPUT");
+    break;
+  case KINDENSE_MEM_FAIL:
+    sprintf(name, "KINDENSE_MEM_FAIL");
+    break;
+  default:
+    sprintf(name, "NONE");
+  }
+
+  return(name);
+}
+
+/*
+ * -----------------------------------------------------------------
+ * KINDenseInit
  * -----------------------------------------------------------------
  * This routine does remaining initializations specific to the dense
  * linear solver.
  * -----------------------------------------------------------------
  */
 
-static int kinDenseInit(KINMem kin_mem)
+static int KINDenseInit(KINMem kin_mem)
 {
-  KINDlsMem kindls_mem;
+  KINDenseMem kindense_mem;
 
-  kindls_mem = (KINDlsMem) lmem;
+  kindense_mem = (KINDenseMem) lmem;
   
   nje   = 0;
-  nfeDQ = 0;
+  nfeD  = 0;
   
-  if (jacDQ) {
-    djac = kinDlsDenseDQJac;
+  if (jac == NULL) {
+    jac = KINDenseDQJac;
     J_data = kin_mem;
-  } else {
-    J_data = kin_mem->kin_user_data;
   }
 
-  last_flag = KINDLS_SUCCESS;
+  last_flag = KINDENSE_SUCCESS;
   return(0);
 }
 
 /*
  * -----------------------------------------------------------------
- * kinDenseSetup
+ * KINDenseSetup
  * -----------------------------------------------------------------
  * This routine does the setup operations for the dense linear solver.
  * It calls the dense LU factorization routine.
  * -----------------------------------------------------------------
  */
 
-static int kinDenseSetup(KINMem kin_mem)
+static int KINDenseSetup(KINMem kin_mem)
 {
-  KINDlsMem kindls_mem;
-  int retval;
+  KINDenseMem kindense_mem;
   long int ier;
+  int retval;
 
-  kindls_mem = (KINDlsMem) lmem;
+  kindense_mem = (KINDenseMem) lmem;
  
   nje++;
-  SetToZero(J); 
-  retval = djac(n, uu, fval, J, J_data, vtemp1, vtemp2);
+  DenseZero(J); 
+  retval = jac(n, J, uu, fval, J_data, vtemp1, vtemp2);
   if (retval != 0) {
     last_flag = -1;
     return(-1);
   }
 
   /* Do LU factorization of J */
-  ier = DenseGETRF(J, lpivots); 
+  ier = DenseGETRF(J, pivots); 
 
   /* Return 0 if the LU was complete; otherwise return -1 */
   last_flag = ier;
@@ -264,19 +430,19 @@ static int kinDenseSetup(KINMem kin_mem)
 
 /*
  * -----------------------------------------------------------------
- * kinDenseSolve
+ * KINDenseSolve
  * -----------------------------------------------------------------
  * This routine handles the solve operation for the dense linear solver
  * by calling the dense backsolve routine.  The returned value is 0.
  * -----------------------------------------------------------------
  */
 
-static int kinDenseSolve(KINMem kin_mem, N_Vector x, N_Vector b, realtype *res_norm)
+static int KINDenseSolve(KINMem kin_mem, N_Vector x, N_Vector b, realtype *res_norm)
 {
-  KINDlsMem kindls_mem;
+  KINDenseMem kindense_mem;
   realtype *xd;
 
-  kindls_mem = (KINDlsMem) lmem;
+  kindense_mem = (KINDenseMem) lmem;
 
   /* Copy the right-hand side into x */
 
@@ -286,7 +452,7 @@ static int kinDenseSolve(KINMem kin_mem, N_Vector x, N_Vector b, realtype *res_n
 
   /* Back-solve and get solution in x */
   
-  DenseGETRS(J, lpivots, xd);
+  DenseGETRS(J, pivots, xd);
 
   /* Compute the terms Jpnorm and sfdotJp for use in the global strategy
      routines and in KINForcingTerm. Both of these terms are subsequently
@@ -303,27 +469,116 @@ static int kinDenseSolve(KINMem kin_mem, N_Vector x, N_Vector b, realtype *res_n
   N_VProd(b, fscale, b);
   sfdotJp = N_VDotProd(fval, b);
 
-  last_flag = KINDLS_SUCCESS;
+  last_flag = KINDENSE_SUCCESS;
 
   return(0);
 }
 
 /*
  * -----------------------------------------------------------------
- * kinDenseFree
+ * KINDenseFree
  * -----------------------------------------------------------------
  * This routine frees memory specific to the dense linear solver.
  * -----------------------------------------------------------------
  */
 
-static void kinDenseFree(KINMem kin_mem)
+static void KINDenseFree(KINMem kin_mem)
 {
-  KINDlsMem  kindls_mem;
+  KINDenseMem  kindense_mem;
 
-  kindls_mem = (KINDlsMem) lmem;
+  kindense_mem = (KINDenseMem) lmem;
   
-  DestroyMat(J);
-  DestroyArray(lpivots);
-  free(kindls_mem); kindls_mem = NULL;
+  DenseFreeMat(J);
+  DenseFreePiv(pivots);
+  free(kindense_mem); kindense_mem = NULL;
 }
 
+/*
+ * -----------------------------------------------------------------
+ * KINDenseDQJac 
+ * -----------------------------------------------------------------
+ * This routine generates a dense difference quotient approximation to
+ * the Jacobian of F(u). It assumes that a dense matrix of type
+ * DenseMat is stored column-wise, and that elements within each column
+ * are contiguous. The address of the jth column of J is obtained via
+ * the macro DENSE_COL and this pointer is associated with an N_Vector
+ * using the N_VGetArrayPointer/N_VSetArrayPointer functions. 
+ * Finally, the actual computation of the jth column of the Jacobian is 
+ * done with a call to N_VLinearSum.
+ *
+ * The increment used in the finitie-difference approximation
+ *   J_ij = ( F_i(u+sigma_j * e_j) - F_i(u)  ) / sigma_j
+ * is
+ *  sigma_j = max{|u_j|, |1/uscale_j|} * sqrt(uround)
+ *
+ * Note: uscale_j = 1/typ(u_j)
+ *
+ * NOTE: Any type of failure of the system function her leads to an
+ *       unrecoverable failure of the Jacobian function and thus
+ *       of the linear solver setup function, stopping KINSOL.
+ * -----------------------------------------------------------------
+ */
+
+#undef n
+#undef J
+ 
+static int KINDenseDQJac(long int n, DenseMat J,
+                         N_Vector u, N_Vector fu, void *jac_data,
+                         N_Vector tmp1, N_Vector tmp2)
+{
+  realtype inc, inc_inv, ujsaved, ujscale, sign;
+  realtype *tmp2_data, *u_data, *uscale_data;
+  N_Vector ftemp, jthCol;
+  long int j;
+  int retval;
+
+  KINMem kin_mem;
+  KINDenseMem  kindense_mem;
+
+  /* jac_data points to kin_mem */
+  kin_mem = (KINMem) jac_data;
+  kindense_mem = (KINDenseMem) lmem;
+
+  /* Save pointer to the array in tmp2 */
+  tmp2_data = N_VGetArrayPointer(tmp2);
+
+  /* Rename work vectors for readibility */
+  ftemp = tmp1; 
+  jthCol = tmp2;
+
+  /* Obtain pointers to the data for u and uscale */
+  u_data   = N_VGetArrayPointer(u);
+  uscale_data = N_VGetArrayPointer(uscale);
+
+  /* This is the only for loop for 0..N-1 in KINSOL */
+
+  for (j = 0; j < n; j++) {
+
+    /* Generate the jth col of J(u) */
+
+    N_VSetArrayPointer(DENSE_COL(J,j), jthCol);
+
+    ujsaved = u_data[j];
+    ujscale = ONE/uscale_data[j];
+    sign = (ujsaved >= ZERO) ? ONE : -ONE;
+    inc = sqrt_relfunc*MAX(ABS(ujsaved), ujscale)*sign;
+    u_data[j] += inc;
+
+    retval = func(u, ftemp, f_data);
+    if (retval != 0) return(-1); 
+
+    u_data[j] = ujsaved;
+
+    inc_inv = ONE/inc;
+    N_VLinearSum(inc_inv, ftemp, -inc_inv, fu, jthCol);
+
+  }
+
+  /* Restore original array pointer in tmp2 */
+  N_VSetArrayPointer(tmp2_data, tmp2);
+
+  /* Increment counter nfeD */
+  nfeD += n;
+
+  return(0);
+}

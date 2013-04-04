@@ -33,6 +33,3 @@ GetCommand
 ismenu
 xscion_
 createlistvarfromptr_
-MyHeapAlloc
-MyHeapFree
-MyHeapRealloc

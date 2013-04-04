@@ -2,7 +2,7 @@
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="fr" xml:id="type">
     <refnamediv>
         <refname>type</refname>
-        <refpurpose>Retourne le type d'une variable  </refpurpose>
+        <refpurpose> Retourne le type d'une variable  </refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Séquence d'appel</title>
@@ -208,38 +208,6 @@
             tlist (16) ou mlist (17). C'est le cas de <emphasis role="italic">rational</emphasis>, <emphasis role="italic">state-space</emphasis>, <emphasis role="italic">hypermat</emphasis> et <emphasis role="italic">struct</emphasis>. Merci de considérer l'utilisation
             de <link linkend="typeof">typeof</link> à la place.
         </para>
-    </refsection>
-    <refsection>
-        <title>Exemples</title>
-        <programlisting role="example"><![CDATA[
-a=42;
-type(a)
-
-b=%t;
-type(b)
-
-c="foo"
-type(c)
-
-d=sparse([1,2;4,5;3,10],[1,2,3]);
-type(d)
-
-e = tlist(["listtype","field1","field2"], [], []);
-type(e)
-
-f=poly(0,"s");
-type(f)
-
-g=int8([1 -120 127 312]);
-type(g)
-
-h=mlist(['V','name','value'],['a','b';'c' 'd'],[1 2; 3 4]);
-type(h)
-
-l = list(1,["a" "b"]);
-type(l)
-
-]]></programlisting>
     </refsection>
     <refsection role="see also">
         <title>Voir aussi</title>

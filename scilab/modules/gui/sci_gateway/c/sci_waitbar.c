@@ -12,7 +12,7 @@
  */
 
 #include "gw_gui.h"
-#include "api_scilab.h"
+#include "stack-c.h"
 #include "localization.h"
 #include "Scierror.h"
 #include "getPropertyAssignedValue.h"
@@ -25,72 +25,37 @@
 /*--------------------------------------------------------------------------*/
 int sci_waitbar(char *fname, unsigned long fname_len)
 {
-    SciErr sciErr;
-
-    int* piAddrfractionAdr = NULL;
-    double* fractionAdr = NULL;
-    int* piAddrmessageAdr = NULL;
-    int* piAddrhandleAdr = NULL;
-    long long* handleAdr = NULL;
-    long long* stkAdr = NULL;
-
     char *pWaitbarUID = NULL;
 
-    int nbRow = 0;
-    int nbCol = 0;
-    int nbRowMessage = 0;
-    int nbColMessage = 0;
+    int nbRow = 0, nbCol = 0;
+    int nbRowMessage = 0, nbColMessage = 0;
 
+    int fractionAdr = 0;
     char **messageAdr = NULL;
+    int handleAdr = 0;
+    int stkAdr = 0;
+
     int iValue = 0;
 
     unsigned long GraphicHandle = 0;
 
-    CheckInputArgument(pvApiCtx, 1, 3);
-    CheckOutputArgument(pvApiCtx, 1, 1);
+    CheckRhs(1, 3);
+    CheckLhs(1, 1);
 
-    if (nbInputArgument(pvApiCtx) == 1)
+    if (Rhs == 1)
     {
-        if (checkInputArgumentType(pvApiCtx, 1, sci_matrix))   /* Fraction to display */
+        if (VarType(1) == sci_matrix)   /* Fraction to display */
         {
-            sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrfractionAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                return 1;
-            }
-
-            // Retrieve a matrix of double at position 1.
-            sciErr = getMatrixOfDouble(pvApiCtx, piAddrfractionAdr, &nbRow, &nbCol, &fractionAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                Scierror(202, _("%s: Wrong type for argument %d: A real expected.\n"), fname, 1);
-                return 1;
-            }
-
+            GetRhsVar(1, MATRIX_OF_DOUBLE_DATATYPE, &nbRow, &nbCol, &fractionAdr);
             if (nbRow * nbCol != 1)
             {
                 Scierror(999, _("%s: Wrong size for input argument #%d: A real expected.\n"), fname, 1);
                 return FALSE;
             }
         }
-        else if (checkInputArgumentType(pvApiCtx, 1, sci_strings)) /* Message to display */
+        else if (VarType(1) == sci_strings) /* Message to display */
         {
-            sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrmessageAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                return 1;
-            }
-
-            // Retrieve a matrix of string at position 1.
-            if (getAllocatedMatrixOfString(pvApiCtx, piAddrmessageAdr, &nbRowMessage, &nbColMessage, &messageAdr))
-            {
-                Scierror(202, _("%s: Wrong type for argument #%d: String matrix expected.\n"), fname, 1);
-                return 1;
-            }
-
+            GetRhsVar(1, MATRIX_OF_STRING_DATATYPE, &nbRowMessage, &nbColMessage, &messageAdr);
         }
         else
         {
@@ -100,115 +65,60 @@ int sci_waitbar(char *fname, unsigned long fname_len)
 
         /* Create a new waitbar */
         pWaitbarUID = createGraphicObject(__GO_WAITBAR__);
+
         GraphicHandle = getHandle(pWaitbarUID);
 
-        if (fractionAdr != NULL)
+        if (fractionAdr != 0)
         {
-            iValue = (int)(fractionAdr[0] * 100);
+            iValue = (int)(*(stk(fractionAdr)) * 100);
             setGraphicObjectProperty(pWaitbarUID, __GO_UI_VALUE__, &iValue, jni_int, 1);
         }
         else if (messageAdr != NULL)
         {
-            setGraphicObjectProperty(pWaitbarUID, __GO_UI_MESSAGE__, messageAdr, jni_string_vector, nbColMessage * nbRowMessage);
-            freeAllocatedMatrixOfString(nbRowMessage, nbColMessage, messageAdr);
+            setGraphicObjectProperty(pWaitbarUID, __GO_UI_MESSAGE__, getStringMatrixFromStack((size_t) messageAdr), jni_string_vector,
+                                     nbColMessage * nbRowMessage);
+            freeArrayOfString(messageAdr, nbColMessage * nbRowMessage);
         }
     }
-    else if (nbInputArgument(pvApiCtx) == 2)
+    else if (Rhs == 2)
     {
-        if ((checkInputArgumentType(pvApiCtx, 1, sci_matrix)) && (checkInputArgumentType(pvApiCtx, 2, sci_strings))) /* waitbar(x,mes) */
+        if (VarType(1) == sci_matrix && VarType(2) == sci_strings)  /* waitbar(x,mes) */
         {
-            sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrfractionAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                return 1;
-            }
-
-            // Retrieve a matrix of double at position 1.
-            sciErr = getMatrixOfDouble(pvApiCtx, piAddrfractionAdr, &nbRow, &nbCol, &fractionAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                Scierror(202, _("%s: Wrong type for argument %d: A real expected.\n"), fname, 1);
-                return 1;
-            }
-
+            GetRhsVar(1, MATRIX_OF_DOUBLE_DATATYPE, &nbRow, &nbCol, &fractionAdr);
             if (nbRow * nbCol != 1)
             {
                 Scierror(999, _("%s: Wrong size for input argument #%d: A real expected.\n"), fname, 1);
                 return FALSE;
             }
-            sciErr = getVarAddressFromPosition(pvApiCtx, 2, &piAddrmessageAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                return 1;
-            }
-
-            // Retrieve a matrix of string at position 2.
-            if (getAllocatedMatrixOfString(pvApiCtx, piAddrmessageAdr, &nbRowMessage, &nbColMessage, &messageAdr))
-            {
-                Scierror(202, _("%s: Wrong type for argument #%d: String matrix expected.\n"), fname, 2);
-                return 1;
-            }
-
+            GetRhsVar(2, MATRIX_OF_STRING_DATATYPE, &nbRowMessage, &nbColMessage, &messageAdr);
 
             pWaitbarUID = createGraphicObject(__GO_WAITBAR__);
 
             GraphicHandle = getHandle(pWaitbarUID);
 
-            iValue = (int)(fractionAdr[0] * 100);
+            iValue = (int)(*(stk(fractionAdr)) * 100);
             setGraphicObjectProperty(pWaitbarUID, __GO_UI_VALUE__, &iValue, jni_int, 1);
-            setGraphicObjectProperty(pWaitbarUID, __GO_UI_MESSAGE__, messageAdr, jni_string_vector, nbColMessage * nbRowMessage);
-            freeAllocatedMatrixOfString(nbRowMessage, nbColMessage, messageAdr);
+            setGraphicObjectProperty(pWaitbarUID, __GO_UI_MESSAGE__, getStringMatrixFromStack((size_t) messageAdr), jni_string_vector,
+                                     nbColMessage * nbRowMessage);
+            freeArrayOfString(messageAdr, nbColMessage * nbRowMessage);
         }
-        else if ((checkInputArgumentType(pvApiCtx, 1, sci_matrix)) && (checkInputArgumentType(pvApiCtx, 2, sci_handles))) /* waitbar(x,winId) */
+        else if (VarType(1) == sci_matrix && VarType(2) == sci_handles) /* waitbar(x,winId) */
         {
-            sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrfractionAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                return 1;
-            }
-
-            // Retrieve a matrix of double at position 1.
-            sciErr = getMatrixOfDouble(pvApiCtx, piAddrfractionAdr, &nbRow, &nbCol, &fractionAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                Scierror(202, _("%s: Wrong type for argument %d: A real expected.\n"), fname, 1);
-                return 1;
-            }
-
+            GetRhsVar(1, MATRIX_OF_DOUBLE_DATATYPE, &nbRow, &nbCol, &fractionAdr);
             if (nbRow * nbCol != 1)
             {
                 Scierror(999, _("%s: Wrong size for input argument #%d: A real expected.\n"), fname, 1);
                 return FALSE;
             }
 
-            sciErr = getVarAddressFromPosition(pvApiCtx, 2, &piAddrhandleAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                return 1;
-            }
-
-            // Retrieve a matrix of handle at position 2.
-            sciErr = getMatrixOfHandle(pvApiCtx, piAddrhandleAdr, &nbRow, &nbCol, &handleAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                Scierror(202, _("%s: Wrong type for argument %d: Handle matrix expected.\n"), fname, 2);
-                return 1;
-            }
-
+            GetRhsVar(2, GRAPHICAL_HANDLE_DATATYPE, &nbRow, &nbCol, &handleAdr);
             if (nbRow * nbCol != 1)
             {
                 Scierror(999, _("%s: Wrong size for input argument #%d: A '%s' handle expected.\n"), fname, 2, "Waitbar");
                 return FALSE;
             }
 
-            GraphicHandle = (unsigned long) * handleAdr;
+            GraphicHandle = (unsigned long) * hstk(handleAdr);
             pWaitbarUID = (char*)getObjectFromHandle(GraphicHandle);
             if (pWaitbarUID == NULL)
             {
@@ -216,48 +126,21 @@ int sci_waitbar(char *fname, unsigned long fname_len)
                 return FALSE;
             }
 
-            iValue = (int)(fractionAdr[0] * 100);
+            iValue = (int)(*(stk(fractionAdr)) * 100);
             setGraphicObjectProperty(pWaitbarUID, __GO_UI_VALUE__, &iValue, jni_int, 1);
         }
-        else if ((checkInputArgumentType(pvApiCtx, 1, sci_strings)) && (checkInputArgumentType(pvApiCtx, 2, sci_handles)))   /* waitbar(mes,winId) */
+        else if (VarType(1) == sci_strings && VarType(2) == sci_handles)    /* waitbar(mes,winId) */
         {
-            sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrmessageAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                return 1;
-            }
+            GetRhsVar(1, MATRIX_OF_STRING_DATATYPE, &nbRowMessage, &nbColMessage, &messageAdr);
 
-            // Retrieve a matrix of string at position 1.
-            if (getAllocatedMatrixOfString(pvApiCtx, piAddrmessageAdr, &nbRowMessage, &nbColMessage, &messageAdr))
-            {
-                Scierror(202, _("%s: Wrong type for argument #%d: String matrix expected.\n"), fname, 1);
-                return 1;
-            }
-
-            sciErr = getVarAddressFromPosition(pvApiCtx, 2, &piAddrhandleAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                return 1;
-            }
-
-            // Retrieve a matrix of handle at position 2.
-            sciErr = getMatrixOfHandle(pvApiCtx, piAddrhandleAdr, &nbRow, &nbCol, &handleAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                Scierror(202, _("%s: Wrong type for argument %d: Handle matrix expected.\n"), fname, 2);
-                return 1;
-            }
-
+            GetRhsVar(2, GRAPHICAL_HANDLE_DATATYPE, &nbRow, &nbCol, &handleAdr);
             if (nbRow * nbCol != 1)
             {
                 Scierror(999, _("%s: Wrong size for input argument #%d: A '%s' handle expected.\n"), fname, 2, "Waitbar");
                 return FALSE;
             }
 
-            GraphicHandle = (unsigned long) * handleAdr;
+            GraphicHandle = (unsigned long) * hstk(handleAdr);
             pWaitbarUID = (char*)getObjectFromHandle(GraphicHandle);
             if (pWaitbarUID == NULL)
             {
@@ -265,8 +148,9 @@ int sci_waitbar(char *fname, unsigned long fname_len)
                 return FALSE;
             }
 
-            setGraphicObjectProperty(pWaitbarUID, __GO_UI_MESSAGE__, messageAdr, jni_string_vector, nbColMessage * nbRowMessage);
-            freeAllocatedMatrixOfString(nbRowMessage, nbColMessage, messageAdr);
+            setGraphicObjectProperty(pWaitbarUID, __GO_UI_MESSAGE__, getStringMatrixFromStack((size_t) messageAdr), jni_string_vector,
+                                     nbColMessage * nbRowMessage);
+            freeArrayOfString(messageAdr, nbColMessage * nbRowMessage);
         }
         else
         {
@@ -276,24 +160,9 @@ int sci_waitbar(char *fname, unsigned long fname_len)
     }
     else
     {
-        if (checkInputArgumentType(pvApiCtx, 1, sci_matrix))  /* Fraction */
+        if (VarType(1) == sci_matrix)   /* Fraction */
         {
-            sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrfractionAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                return 1;
-            }
-
-            // Retrieve a matrix of double at position 1.
-            sciErr = getMatrixOfDouble(pvApiCtx, piAddrfractionAdr, &nbRow, &nbCol, &fractionAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                Scierror(202, _("%s: Wrong type for argument %d: A real expected.\n"), fname, 1);
-                return 1;
-            }
-
+            GetRhsVar(1, MATRIX_OF_DOUBLE_DATATYPE, &nbRow, &nbCol, &fractionAdr);
             if (nbRow * nbCol != 1)
             {
                 Scierror(999, _("%s: Wrong size for input argument #%d: A real expected.\n"), fname, 1);
@@ -306,21 +175,9 @@ int sci_waitbar(char *fname, unsigned long fname_len)
             return FALSE;
         }
 
-        if ((checkInputArgumentType(pvApiCtx, 2, sci_strings)))  /* Message */
+        if (VarType(2) == sci_strings)  /* Message */
         {
-            sciErr = getVarAddressFromPosition(pvApiCtx, 2, &piAddrmessageAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                return 1;
-            }
-
-            // Retrieve a matrix of string at position 2.
-            if (getAllocatedMatrixOfString(pvApiCtx, piAddrmessageAdr, &nbRowMessage, &nbColMessage, &messageAdr))
-            {
-                Scierror(202, _("%s: Wrong type for argument #%d: String matrix expected.\n"), fname, 2);
-                return 1;
-            }
+            GetRhsVar(2, MATRIX_OF_STRING_DATATYPE, &nbRowMessage, &nbColMessage, &messageAdr);
         }
         else
         {
@@ -328,78 +185,58 @@ int sci_waitbar(char *fname, unsigned long fname_len)
             return FALSE;
         }
 
-        if ((checkInputArgumentType(pvApiCtx, 3, sci_handles)))  /* Handle */
+        if (VarType(3) == sci_handles)  /* Handle */
         {
-            sciErr = getVarAddressFromPosition(pvApiCtx, 3, &piAddrhandleAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                return 1;
-            }
-
-            // Retrieve a matrix of handle at position 3.
-            sciErr = getMatrixOfHandle(pvApiCtx, piAddrhandleAdr, &nbRow, &nbCol, &handleAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                Scierror(202, _("%s: Wrong type for argument %d: Handle matrix expected.\n"), fname, 3);
-                return 1;
-            }
-
+            GetRhsVar(3, GRAPHICAL_HANDLE_DATATYPE, &nbRow, &nbCol, &handleAdr);
             if (nbRow * nbCol != 1)
             {
-                freeAllocatedMatrixOfString(nbRowMessage, nbColMessage, messageAdr);
+                freeArrayOfString(messageAdr, nbColMessage * nbRowMessage);
                 Scierror(999, _("%s: Wrong size for input argument #%d: A '%s' handle expected.\n"), fname, 3, "Waitbar");
                 return FALSE;
             }
         }
         else
         {
-            freeAllocatedMatrixOfString(nbRowMessage, nbColMessage, messageAdr);
+            freeArrayOfString(messageAdr, nbColMessage * nbRowMessage);
             Scierror(999, _("%s: Wrong type for input argument #%d: A '%s' handle expected.\n"), fname, 3, "Waitbar");
             return FALSE;
         }
 
-        GraphicHandle = (unsigned long) * handleAdr;
+        GraphicHandle = (unsigned long) * hstk(handleAdr);
         pWaitbarUID = (char*)getObjectFromHandle(GraphicHandle);
         if (pWaitbarUID != NULL)
         {
-            iValue = (int)(fractionAdr[0] * 100);
+            iValue = (int)(*(stk(fractionAdr)) * 100);
             setGraphicObjectProperty(pWaitbarUID, __GO_UI_VALUE__, &iValue, jni_int, 1);
-            setGraphicObjectProperty(pWaitbarUID, __GO_UI_MESSAGE__, messageAdr, jni_string_vector, nbColMessage * nbRowMessage);
-            freeAllocatedMatrixOfString(nbRowMessage, nbColMessage, messageAdr);
+            setGraphicObjectProperty(pWaitbarUID, __GO_UI_MESSAGE__, getStringMatrixFromStack((size_t) messageAdr), jni_string_vector,
+                                     nbColMessage * nbRowMessage);
+            freeArrayOfString(messageAdr, nbColMessage * nbRowMessage);
         }
         else
         {
-            freeAllocatedMatrixOfString(nbRowMessage, nbColMessage, messageAdr);
+            freeArrayOfString(messageAdr, nbColMessage * nbRowMessage);
             Scierror(999, _("%s: Wrong value for input argument #%d: A valid '%s' handle expected.\n"), fname, 3, "Waitbar");
             return 0;
         }
     }
 
-    if (nbOutputArgument(pvApiCtx) == 1)
+    if (Lhs == 1)
     {
         nbRow = 1;
         nbCol = 1;
-
-        sciErr = allocMatrixOfHandle(pvApiCtx, nbInputArgument(pvApiCtx) + 1, nbRow, nbCol, &stkAdr);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            Scierror(999, _("%s: Memory allocation error.\n"), fname);
-            return 1;
-        }
-
-        *stkAdr = GraphicHandle;
-        AssignOutputVariable(pvApiCtx, 1) = nbInputArgument(pvApiCtx) + 1;
+        CreateVar(Rhs + 1, GRAPHICAL_HANDLE_DATATYPE, &nbRow, &nbCol, &stkAdr);
+        *hstk(stkAdr) = GraphicHandle;
+        LhsVar(1) = Rhs + 1;
     }
     else
     {
-        AssignOutputVariable(pvApiCtx, 1) = 0;
+        LhsVar(1) = 0;
     }
 
-    ReturnArguments(pvApiCtx);
+    PutLhsVar();
+
     return TRUE;
+
 }
 
 /*--------------------------------------------------------------------------*/

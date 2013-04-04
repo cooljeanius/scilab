@@ -106,14 +106,11 @@ function status = generateBlockImage(block, path, filename, imageType, withPort)
     end
 
     // export
-    try
-        xend();
-        status = %t;
-    catch
-        status = %f;
-    end
+    xend();
     
     // post operations
     driver(previous_driver);
+
+    status = %t;
 endfunction
 

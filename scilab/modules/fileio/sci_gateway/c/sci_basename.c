@@ -21,6 +21,7 @@
 int sci_basename(char *fname,unsigned long fname_len)
 {
 	SciErr sciErr;
+	BOOL flag = TRUE; /* default */
 	BOOL flagexpand = TRUE; /* default */
 
 	int *piAddressVarOne = NULL;
@@ -140,6 +141,7 @@ int sci_basename(char *fname,unsigned long fname_len)
 			return 0;
 		}
 
+		flag = piData[0];
 	}
 
 	sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddressVarOne);

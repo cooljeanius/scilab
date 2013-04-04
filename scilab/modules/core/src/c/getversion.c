@@ -15,13 +15,11 @@
 #include "version.h"
 #include "scilabmode.h"
 #include "scilabDefaults.h"
-#include "getenvc.h"
 #ifdef _MSC_VER
 #include "strdup_windows.h"
 #endif
 #include "with_module.h"
 #include "loadversion.h"
-#include "freeArrayOfString.h"
 #include "MALLOC.h"
 #include "../../../io/includes/getenvc.h"
 /*--------------------------------------------------------------------------*/
@@ -55,26 +53,6 @@ int *getScilabVersion(int *sizeArrayReturned)
         *sizeArrayReturned = DEFAULT_VERSION_ARRAY_SIZE;
     }
     return returnedArray;
-}
-/*--------------------------------------------------------------------------*/
-int getScilabVersionMajor()
-{
-    return (int)SCI_VERSION_MAJOR;
-}
-/*--------------------------------------------------------------------------*/
-int getScilabVersionMinor()
-{
-    return (int)SCI_VERSION_MINOR;
-}
-/*--------------------------------------------------------------------------*/
-int getScilabVersionMaintenance()
-{
-    return (int)SCI_VERSION_MAINTENANCE;
-}
-/*--------------------------------------------------------------------------*/
-int getScilabVersionTimestamp()
-{
-    return (int)SCI_VERSION_TIMESTAMP;
 }
 /*--------------------------------------------------------------------------*/
 char *getScilabVersionAsString(void)
@@ -183,7 +161,7 @@ char **getScilabVersionOptions(int *sizeArrayReturned)
             }
             else
             {
-                freeArrayOfString(options, nbOptions);
+                FREE(options);
                 return NULL;
             }
         }
@@ -198,7 +176,7 @@ char **getScilabVersionOptions(int *sizeArrayReturned)
             }
             else
             {
-                freeArrayOfString(options, nbOptions);
+                FREE(options);
                 return NULL;
             }
         }
@@ -211,7 +189,7 @@ char **getScilabVersionOptions(int *sizeArrayReturned)
         }
         else
         {
-            freeArrayOfString(options, nbOptions);
+            FREE(options);
             return NULL;
         }
 
@@ -223,7 +201,7 @@ char **getScilabVersionOptions(int *sizeArrayReturned)
         }
         else
         {
-            freeArrayOfString(options, nbOptions);
+            FREE(options);
             return NULL;
         }
 
@@ -235,7 +213,7 @@ char **getScilabVersionOptions(int *sizeArrayReturned)
         }
         else
         {
-            freeArrayOfString(options, nbOptions);
+            FREE(options);
             return NULL;
         }
 
@@ -310,7 +288,7 @@ BOOL with_modelica_compiler(void)
     char *fullpathModelicac = searchEnv(ModelicacName, "PATH");
     if (fullpathModelicac)
     {
-        //FREE(fullpathModelicac);
+        FREE(fullpathModelicac);
         fullpathModelicac = NULL;
         return TRUE;
     }

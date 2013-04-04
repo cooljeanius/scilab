@@ -6,7 +6,7 @@
 // =============================================================================
 
 // <-- INTERACTIVE TEST -->
-// <-- XCOS TEST -->
+// <-- TEST WITH XCOS -->
 // <-- MACOSX ONLY -->
 //
 // <-- Non-regression test for bug 4707 -->

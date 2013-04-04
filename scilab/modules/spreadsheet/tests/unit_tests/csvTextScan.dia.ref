@@ -84,18 +84,10 @@ assert_checkequal (b,Kstr);
 //
 r = mgetl(fullfile(path,"K_3.csv"));
 b = csvTextScan(r, " ", ",", "string");
-assert_checkequal (b,Kstr);
-//
-r = mgetl(fullfile(path,"K_3.csv"));
-b = csvTextScan(r, " ", [], "string");
 assert_checkequal (b,Kstr2);
 //
 r = mgetl(fullfile(path,"K_4.csv"));
 b = csvTextScan(r, ";", ",", "string");
-assert_checkequal (b,Kstr);
-//
-r = mgetl(fullfile(path,"K_4.csv"));
-b = csvTextScan(r, ";", [], "string");
 assert_checkequal (b,Kstr2);
 // =============================================================================
 S = [

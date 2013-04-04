@@ -13,7 +13,7 @@
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="en" xml:id="ric_desc">
     <refnamediv>
         <refname>ric_desc</refname>
-        <refpurpose>Riccati equation</refpurpose>
+        <refpurpose> Riccati equation</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Calling Sequence</title>
@@ -102,15 +102,6 @@ E=[eye(n,n),G;               H=[A, 0*ones(n,n);
             The solution <literal>X</literal> is also given by <literal>X=riccati(A,G,C,'d')</literal>  
             with <literal>G=B/R*B'</literal>
         </para>
-    </refsection>
-    
-    <refsection>
-        <title>Examples</title>
-        <programlisting role="example"><![CDATA[ 
-h=[0.5,4;
-0,-0.5]
-x=ric_desc(h)
- ]]></programlisting>
     </refsection>
     <refsection role="see also">
         <title>See Also</title>

@@ -3,7 +3,7 @@
 //
 // This file is distributed under the same license as the Scilab package.
 
-// <-- XCOS TEST -->
+// <-- TEST WITH XCOS -->
 //
 // <-- Short Description -->
 // Check that all computational function are available.
@@ -396,6 +396,7 @@ BLOCKS_CPP = [
 //
 // load the scicos libs
 //
+loadXcosLibs(); haltscicos();
 
 //
 // Link them

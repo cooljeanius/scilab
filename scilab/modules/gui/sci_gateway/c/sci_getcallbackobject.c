@@ -17,38 +17,23 @@
 #include "localization.h"
 #include "Scierror.h"
 #include "HandleManagement.h"
-#include "api_scilab.h"
+#include "stack-c.h"
 #include "gw_gui.h"
 /*--------------------------------------------------------------------------*/
 int sci_getcallbackobject(char *fname, unsigned long fname_len)
 {
-    SciErr sciErr;
+    int nbRow = 0, nbCol = 0, stkAdr = 0;
 
-    int* piAddrpObjUID = NULL;
-    int nbRow = 0;
-    int nbCol = 0;
-    char** pObjUID = NULL;
+    char **pObjUID = NULL;
+
     unsigned long graphicHandle = 0;
 
-    CheckInputArgument(pvApiCtx, 1, 1);
-    CheckOutputArgument(pvApiCtx, 0, 1);
+    CheckRhs(1, 1);
+    CheckLhs(0, 1);
 
-    if ((checkInputArgumentType(pvApiCtx, 1, sci_strings)))
+    if (VarType(1) == sci_strings)
     {
-        sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrpObjUID);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            return 1;
-        }
-
-        // Retrieve a matrix of string at position 1.
-        if (getAllocatedMatrixOfString(pvApiCtx, piAddrpObjUID, &nbRow, &nbCol, &pObjUID))
-        {
-            Scierror(202, _("%s: Wrong type for argument #%d: String matrix expected.\n"), fname, 1);
-            return 1;
-        }
-
+        GetRhsVar(1, MATRIX_OF_STRING_DATATYPE, &nbRow, &nbCol, &pObjUID);
         if (nbCol != 1 || nbRow == 0)
         {
             Scierror(999, _("%s: Wrong size for input argument #%d: A string expected.\n"), fname, 1);
@@ -62,42 +47,25 @@ int sci_getcallbackobject(char *fname, unsigned long fname_len)
     }
 
     graphicHandle = getHandle(pObjUID[0]);
-    freeAllocatedMatrixOfString(nbRow, nbCol, pObjUID);
 
     /* Create return variable */
     if (graphicHandle == 0)     /* Non-existing object --> return [] */
     {
-        double* stkAdr = NULL;
         nbRow = 0;
         nbCol = 0;
-
-        sciErr = allocMatrixOfDouble(pvApiCtx, nbInputArgument(pvApiCtx) + 1, nbRow, nbCol, &stkAdr);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            Scierror(999, _("%s: Memory allocation error.\n"), fname);
-            return 1;
-        }
+        CreateVar(Rhs + 1, MATRIX_OF_DOUBLE_DATATYPE, &nbRow, &nbCol, &stkAdr);
     }
     else                        /* Return the handle */
     {
-        long long* stkAdr = NULL;
         nbRow = 1;
         nbCol = 1;
-
-        sciErr = allocMatrixOfHandle(pvApiCtx, nbInputArgument(pvApiCtx) + 1, nbRow, nbCol, &stkAdr);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            Scierror(999, _("%s: Memory allocation error.\n"), fname);
-            return 1;
-        }
-
-        *stkAdr = (long long)graphicHandle;
+        CreateVar(Rhs + 1, GRAPHICAL_HANDLE_DATATYPE, &nbRow, &nbCol, &stkAdr);
+        *hstk(stkAdr) = graphicHandle;
     }
 
-    AssignOutputVariable(pvApiCtx, 1) = nbInputArgument(pvApiCtx) + 1;
-    ReturnArguments(pvApiCtx);
+    LhsVar(1) = Rhs + 1;
+
+    PutLhsVar();
     return TRUE;
 }
 

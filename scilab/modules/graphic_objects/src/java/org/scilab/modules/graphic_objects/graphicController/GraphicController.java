@@ -191,7 +191,7 @@ public class GraphicController {
      * @return the created object's id
      */
     public String askObject(Type type) {
-
+        
         try {
             UID id = createUID();
             GraphicModel.getModel().createObject(id.toString(), type);
@@ -253,8 +253,8 @@ public class GraphicController {
      * @param id the created object's id
      */
     public void objectCreated(final String id) {
-        //INFO("### Create object : "+id);
-        //INFO("### type is : " + getProperty(id, GraphicObjectProperties.__GO_TYPE__));
+        INFO("### Create object : "+id);
+        INFO("### type is : " + getProperty(id, GraphicObjectProperties.__GO_TYPE__));
         Vector<Runnable> broadCastVector= new Vector<Runnable>();
 
         try {
@@ -279,9 +279,9 @@ public class GraphicController {
      * @param prop the property that has been updated
      */
     public void objectUpdate(final String id, final int prop) {
-        //INFO("### Update object : "+id);
-        //INFO("### type is : " + getProperty(id, GraphicObjectProperties.__GO_TYPE__));
-        //INFO("### prop is : " + prop);
+        INFO("### Update object : "+id);
+        INFO("### type is : " + getProperty(id, GraphicObjectProperties.__GO_TYPE__));
+        INFO("### prop is : " + prop);
 
         Vector<Runnable> broadCastVector= new Vector<Runnable>();
         try {
@@ -305,8 +305,8 @@ public class GraphicController {
      * @param id the deleted object's id
      */
     public void objectDeleted(final String id) {
-        //INFO("### Delete object : "+id);
-        //INFO("### type is : " + getProperty(id, GraphicObjectProperties.__GO_TYPE__));
+        INFO("### Delete object : "+id);
+        INFO("### type is : " + getProperty(id, GraphicObjectProperties.__GO_TYPE__));
         Vector<Runnable> broadCastVector= new Vector<Runnable>();
 
         try {
@@ -365,8 +365,7 @@ public class GraphicController {
             objectUpdate(parentId, GraphicObjectProperties.__GO_CHILDREN__);
         }
 
-        // Useless (already done in setProperty(childId, GraphicObjectProperties.__GO_PARENT__, parentId);)
-        //objectUpdate(childId, GraphicObjectProperties.__GO_PARENT__);
+        objectUpdate(childId, GraphicObjectProperties.__GO_PARENT__);
     }
 
     /**
@@ -389,7 +388,6 @@ public class GraphicController {
             //objectUpdate(id, GraphicObjectProperties.__GO_PARENT__);
         }
 
-        killMe.setValid(false);
         recursiveDeleteChildren(killMe);
 
         deleteObject(id);
@@ -399,9 +397,7 @@ public class GraphicController {
         String children[] = killMe.getChildren();
 
         for (int i = 0 ; i < children.length ; ++i) {
-            GraphicObject killMeThisChild = getObjectFromId(children[i]);
-            killMeThisChild.setValid(false);
-            recursiveDeleteChildren(killMeThisChild);
+            recursiveDeleteChildren(getObjectFromId(children[i]));
             deleteObject(children[i]);
         }
     }

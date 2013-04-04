@@ -17,7 +17,7 @@ else
   expected = [expected; "eol" "linux"];
 end
 expected = [expected; "encoding" "utf-8"];
-expected = [expected; "blank" "on"];
+expected = [expected; "blank" "off"];
 
 assert_checkequal ( allvalues , expected );
 // Get the value of the "precision" field

@@ -1,11 +1,11 @@
 /*
 * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
 * Copyright (C) 2010 - DIGITEO - Allan CORNET
-*
+* 
 * This file must be used under the terms of the CeCILL.
 * This source file is licensed as described in the file COPYING, which
 * you should have received as part of this distribution.  The terms
-* are also available at
+* are also available at    
 * http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
 *
 */
@@ -15,8 +15,7 @@
 
 #include "BOOL.h"
 
-typedef enum
-{
+typedef enum { 
     FSCANFMAT_NO_ERROR = 0,
     FSCANFMAT_MOPEN_ERROR = 1,
     FSCANFMAT_FORMAT_ERROR = 2,
@@ -26,8 +25,7 @@ typedef enum
 } fscanfMatError;
 
 
-typedef struct
-{
+typedef struct {
     char **text;
     int sizeText;
     double *values;
@@ -43,7 +41,7 @@ typedef struct
 /**
 *
 */
-fscanfMatResult *fscanfMat(char *filename, char *format, char *separator);
+fscanfMatResult *fscanfMat(char *filename, char *format, char *separator, BOOL asDouble);
 
 void freeFscanfMatResult(fscanfMatResult *resultStruct);
 

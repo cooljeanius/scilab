@@ -1,11 +1,11 @@
 /*
  * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) 2008 - INRIA - Allan CORNET
- *
+ * 
  * This file must be used under the terms of the CeCILL.
  * This source file is licensed as described in the file COPYING, which
  * you should have received as part of this distribution.  The terms
- * are also available at
+ * are also available at    
  * http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
  *
  */
@@ -16,118 +16,105 @@
 extern "C"
 {
 #include "gw_gui.h"
-#include "api_scilab.h"
+#include "stack-c.h"
 #include "getScilabJavaVM.h"
 #include "Scierror.h"
 #include "localization.h"
 #include "BOOL.h"
 #include "MALLOC.h"
-    /*--------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------*/
     int sci_setlookandfeel(char *fname, unsigned long fname_len)
     {
-        SciErr sciErr;
-        CheckInputArgument(pvApiCtx, 0, 1);
-        CheckOutputArgument(pvApiCtx, 0, 1);
+        CheckRhs(0, 1);
+        CheckLhs(0, 1);
 
         org_scilab_modules_gui_utils::LookAndFeelManager * lnf = 0;
 
-        if (nbInputArgument(pvApiCtx) == 0)
+        if (Rhs == 0)
         {
             try
             {
                 lnf = new org_scilab_modules_gui_utils::LookAndFeelManager(getScilabJavaVM());
             }
-            catch (const GiwsException::JniException & e)
+            catch(const GiwsException::JniException & e)
             {
                 Scierror(999, _("%s: A Java exception arisen:\n%s"), fname, e.whatStr().c_str());
-                return 1;
+                return FALSE;
             }
 
             if (lnf)
             {
-                int paramoutINT = 0;
+                int n1 = 1;
+                int *paramoutINT = (int *)MALLOC(sizeof(int));
 
-                paramoutINT = (int)booltoBOOL(lnf->setSystemLookAndFeel());
+                *paramoutINT = (int)booltoBOOL(lnf->setSystemLookAndFeel());
                 delete lnf;
 
-                if (createScalarBoolean(pvApiCtx, nbInputArgument(pvApiCtx) + 1, paramoutINT))
-                {
-                    Scierror(999, _("%s: Memory allocation error.\n"), fname);
-                    return 1;
-                }
+                n1 = 1;
+                CreateVarFromPtr(Rhs + 1, MATRIX_OF_BOOLEAN_DATATYPE, &n1, &n1, &paramoutINT);
+                LhsVar(1) = Rhs + 1;
 
-                AssignOutputVariable(pvApiCtx, 1) = nbInputArgument(pvApiCtx) + 1;
-                returnArguments(pvApiCtx);
-                return 0;
+                if (paramoutINT)
+                {
+                    FREE(paramoutINT);
+                    paramoutINT = NULL;
+                }
+                PutLhsVar();
             }
             else
             {
                 Scierror(999, _("%s: No more memory.\n"), fname);
-                return 1;
             }
         }
-        else if (checkInputArgumentType(pvApiCtx, 1, sci_strings))
+        else if (GetType(1) == sci_strings)
         {
+            int m1, n1 = 0, l1 = 0;
+
             char *looknfeel = NULL;
-            int* piAddrStr = NULL;
 
-            sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrStr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                return 1;
-            }
-
-            if (getAllocatedSingleString(pvApiCtx, piAddrStr, &looknfeel))
-            {
-                printError(&sciErr, 0);
-                return 1;
-            }
+            GetRhsVar(1, STRING_DATATYPE, &m1, &n1, &l1);
+            looknfeel = cstk(l1);
 
             try
             {
                 lnf = new org_scilab_modules_gui_utils::LookAndFeelManager(getScilabJavaVM());
             }
-            catch (const GiwsException::JniException & e)
+            catch(const GiwsException::JniException & e)
             {
-                freeAllocatedSingleString(looknfeel);
                 Scierror(999, _("%s: A Java exception arisen:\n%s"), fname, e.whatStr().c_str());
-                return 1;
+                return FALSE;
             }
 
             if (lnf)
             {
-                int paramoutINT = 0;
+                int *paramoutINT = (int *)MALLOC(sizeof(int));
 
-                paramoutINT = (int)booltoBOOL(lnf->setLookAndFeel(looknfeel));
-                freeAllocatedSingleString(looknfeel);
+                *paramoutINT = (int)booltoBOOL(lnf->setLookAndFeel(looknfeel));
                 delete lnf;
 
-                if (createScalarBoolean(pvApiCtx, nbInputArgument(pvApiCtx) + 1, paramoutINT))
-                {
-                    Scierror(999, _("%s: Memory allocation error.\n"), fname);
-                    return 1;
-                }
+                n1 = 1;
+                CreateVarFromPtr(Rhs + 1, MATRIX_OF_BOOLEAN_DATATYPE, &n1, &n1, &paramoutINT);
+                LhsVar(1) = Rhs + 1;
 
-                AssignOutputVariable(pvApiCtx, 1) = nbInputArgument(pvApiCtx) + 1;
-                returnArguments(pvApiCtx);
-                return 0;
+                if (paramoutINT)
+                {
+                    FREE(paramoutINT);
+                    paramoutINT = NULL;
+                }
+                PutLhsVar();
             }
             else
             {
                 Scierror(999, _("%s: No more memory.\n"), fname);
-                return 1;
             }
         }
         else
         {
             Scierror(999, _("%s: Wrong type for input argument #%d: A string expected.\n"), fname, 1);
-            return 1;
         }
-
         return 0;
     }
-    /*--------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------*/
 
 }
 

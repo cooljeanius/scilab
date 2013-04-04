@@ -9,7 +9,7 @@ function [xdot]=car(t,x)
 //
 //
 xdot=zeros(1,4) ;
-// car length for the control computation
+// car lenght for the control computation
 LCpct = bigL * 1.;
 // calcul de u1 et u2
 //

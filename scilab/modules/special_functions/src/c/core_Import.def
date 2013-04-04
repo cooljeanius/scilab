@@ -1,8 +1,10 @@
-LIBRARY    core.dll
+	LIBRARY    core.dll
 
 
 EXPORTS
+;
 ;core
+;
 callFunctionFromGateway
 com_
 vstk_
@@ -22,5 +24,3 @@ check_same_dims
 getWarningMode
 returnanan_
 overload_
-MyHeapAlloc
-MyHeapFree

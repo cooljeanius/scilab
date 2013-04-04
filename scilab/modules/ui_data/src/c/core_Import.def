@@ -15,5 +15,3 @@ getvariablesinfo_
 freeArrayOfString
 gettype_
 vstk_
-MyHeapAlloc
-MyHeapFree

@@ -16,9 +16,6 @@ function bOK = detectmsifort64tools()
    ifortcomp = findmsifortcompiler();
    if ifortcomp <> "unknown" then
      select ifortcomp,
-       case  "ifort13" then
-         IFORTPATH = getenv("IFORT_COMPILER13","");
-
        case  "ifort12" then
          IFORTPATH = getenv("IFORT_COMPILER12","");
 
@@ -45,8 +42,6 @@ function bOK = detectmsifort64tools()
    end
 
    select ifortcomp,
-     case  "ifort13" then
-       IFORTSPATHEMT64 = IFORTPATH + "compiler\lib\intel64";
      case  "ifort12" then
        IFORTSPATHEMT64 = IFORTPATH + "compiler\lib\intel64";
      case  "ifort11" then

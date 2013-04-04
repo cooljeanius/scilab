@@ -6,7 +6,7 @@
     </refnamediv>
     <refsynopsisdiv>
         <title>Последовательность вызова</title>
-        <synopsis>p = poly(a, vname, ["flag"])</synopsis>
+        <synopsis>p=poly(a,vname, ["flag"])</synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Аргументы</title>
@@ -14,30 +14,23 @@
             <varlistentry>
                 <term>a</term>
                 <listitem>
-                    <para>матрица или вещественное число</para>
+                    <para>матрица или вещественной число</para>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term>vname</term>
                 <listitem>
                     <para>
-                        Строка, имя символьной переменной. Если строка больше 4 символов, то из них
+                        Строка, имя символьной переменной. Если строка больше 4 символов, то из них 
                         учитываются только 4 первых.
                     </para>
                 </listitem>
             </varlistentry>
             <varlistentry>
-                <term>"flag"</term>
+                <term>"flag"  </term>
                 <listitem>
                     <para>
-                        символьная строка ( <literal>"roots"</literal>,
-                        <literal>"coeff"</literal>), значение по
-                        умолчанию <literal>"roots"</literal>.
-                    </para>
-                    <para>
-                        Также могут быть использованы сокращения:
-                        <literal>"r"</literal> для <literal>"roots"</literal>
-                        и <literal>"c"</literal>  для <literal>"coeff"</literal>.
+                        строка ("roots", "coeff"), значение по умолчанию <literal>"roots"</literal>.
                     </para>
                 </listitem>
             </varlistentry>
@@ -48,38 +41,37 @@
         <variablelist>
             <varlistentry>
                 <term>
-                    Если <literal>a</literal> - матрица, то
+                    Если <literal>a</literal> -- матрица, то
                 </term>
                 <listitem>
                     <para>
-                        <varname>p</varname> является характеристическим полиномом, то есть
-                        <code>determinant(x*eye()-a)</code>, где <literal>x</literal> является
+                        <literal>p</literal> является характеристическим полиномом, то есть 
+                        <literal>determinant(x*eye()-a)</literal>, где <literal>x</literal> является 
                         символьной переменной.
                     </para>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term>
-                    Если <literal>v</literal> - вектор, то
+                    Если <literal>v</literal> -- вектор, то
                 </term>
                 <listitem>
                     <itemizedlist>
                         <listitem>
                             <para>
-                                <code>poly(v,"x",["roots"])</code> является полиномом с корнями, хранящимися в элементах <varname>v</varname> и
+                                <literal>poly(v,"x",["roots"])</literal> является полиномом с корнями 
+                                <literal>roots</literal>, элементами <literal>v</literal> и
                                 <literal>"x"</literal> в качестве формальной переменной. (В этом случае
-                                <function>roots</function> и <function>poly</function> являются обратными функциями).
-                                <note>
-                                    Заметьте, что бесконечные корни дают нулевые коэффициенты наивысшей степени.
-                                </note>
+                                <literal>roots</literal> и <literal>poly</literal> являются обратными функциями). 
+                                Заметьте, что бесконечные корни дают нулевые коэффициенты наивысшей степени.
                             </para>
                         </listitem>
                         <listitem>
                             <para>
-                                <code>poly(v,"x","coeff")</code> создаёт полином с символом
-                                <literal>"x"</literal> и с коэффициентами, хранящимися в элементах
-                                <varname>v</varname> (<code>v(1)</code> - постоянный член полинома). Здесь
-                                <function>poly</function> и <function>coeff</function> являются обратными функциями.
+                                <literal>poly(v,"x","coeff")</literal> создаёт полином с символом  
+                                <literal>"x"</literal> и с коэффициентами, хранящимися в элементах 
+                                <literal>v</literal> (<literal>v(1)</literal> -- постоянный член полинома). Здесь
+                                <literal>poly</literal> и <literal>coeff</literal> являются обратными функциями.
                             </para>
                         </listitem>
                     </itemizedlist>
@@ -87,15 +79,15 @@
             </varlistentry>
         </variablelist>
         <para>
-            <code>s=poly(0,"s")</code> является семенем для определения полиномов с символом
+            <literal>s=poly(0,"s")</literal> является семенем для определения полиномов с символом 
             <literal>"s"</literal>.
         </para>
     </refsection>
     <refsection>
         <title>Примеры</title>
-        <programlisting role="example"><![CDATA[
+        <programlisting role="example"><![CDATA[ 
 s=poly(0,"s");
-p=1+s+2*s^2
+p=1+s+2*s^2;
 A=rand(2,2);
 poly(A,"x")
 //рациональные дроби

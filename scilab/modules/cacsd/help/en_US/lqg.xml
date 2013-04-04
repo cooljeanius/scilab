@@ -13,7 +13,7 @@
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="en" xml:id="lqg">
     <refnamediv>
         <refname>lqg</refname>
-        <refpurpose>LQG compensator</refpurpose>
+        <refpurpose> LQG compensator</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Calling Sequence</title>
@@ -65,46 +65,6 @@
             is the controller gain and <literal>Kf=lqe(P21)</literal> is the filter gain.
             See example in <literal>lqg2stan</literal>.
         </para>
-    </refsection>
-    
-    <refsection>
-        <title>Examples</title>
-        <programlisting role="example"><![CDATA[ 
-  s=poly(0,'s');
-  Plant=syslin('c',[1/(s+1)*s/(s-1)^2]);     //Nominal Plant
-  P22=tf2ss(Plant);    //...in state-space form
-  [ny,nu,nx]=size(P22);
-  rand('seed',0);rand('normal');
-  bigQ=rand(nx+nu,nx+nu);
-  bigQ=bigQ*bigQ';
-  bigR=rand(nx+ny,nx+ny);
-  bigR=bigR*bigR';  //random weighting matrices
-  [Plqg,r]=lqg2stan(P22,bigQ,bigR);     //LQG pb as a standard problem
-  Klqg=lqg(Plqg,r);          //Controller
-  spec(h_cl(Plqg,r,Klqg))    //Check internal stability
-  [Slqg,Rlqg,Tlqg]=sensi(P22,Klqg);  //Sensitivity functions
-  frq=logspace(-3,3);     //10^-3  to 10^3
-  y=svplot(Slqg);       //Computes singular values;
-  gainplot(frq,y)   //Plot sing. values
- ]]></programlisting>
-        <scilab:image>
-            s=poly(0,'s');
-            Plant=syslin('c',[1/(s+1)*s/(s-1)^2]);     //Nominal Plant
-            P22=tf2ss(Plant);    //...in state-space form
-            [ny,nu,nx]=size(P22);
-            rand('seed',0);rand('normal');
-            bigQ=rand(nx+nu,nx+nu);
-            bigQ=bigQ*bigQ';
-            bigR=rand(nx+ny,nx+ny);
-            bigR=bigR*bigR';  //random weighting matrices
-            [Plqg,r]=lqg2stan(P22,bigQ,bigR);     //LQG pb as a standard problem
-            Klqg=lqg(Plqg,r);          //Controller
-            spec(h_cl(Plqg,r,Klqg))    //Check internal stability
-            [Slqg,Rlqg,Tlqg]=sensi(P22,Klqg);  //Sensitivity functions
-            frq=logspace(-3,3);     //10^-3  to 10^3
-            y=svplot(Slqg);       //Computes singular values;
-            gainplot(frq,y)   //Plot sing. values
-        </scilab:image>
     </refsection>
     <refsection role="see also">
         <title>See Also</title>

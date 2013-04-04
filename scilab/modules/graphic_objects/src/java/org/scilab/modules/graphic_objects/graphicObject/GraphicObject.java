@@ -280,51 +280,45 @@ public abstract class GraphicObject implements Cloneable {
      * @return the property value
      */
     public Object getProperty(Object property) {
-        if (!(property instanceof GraphicObjectPropertyType)) {
-            return null;
-        }
-
-        GraphicObjectPropertyType p = (GraphicObjectPropertyType) property;
-        switch (p) {
-        case PARENT:
+        if (property == GraphicObjectPropertyType.PARENT) {
             return getParent();
-        case CHILDREN:
+        } else if (property == GraphicObjectPropertyType.CHILDREN) {
             return getChildren();
-        case CHILDREN_COUNT:
-            return children.size();
-        case VALID:
+        } else if (property == GraphicObjectPropertyType.CHILDREN_COUNT) {
+            return getChildren().length;
+        } else if (property == GraphicObjectPropertyType.VALID) {
             return isValid();
-        case HIDDEN:
+        } else if (property == GraphicObjectPropertyType.HIDDEN) {
             return isHidden();
-        case VISIBLE:
+        } else if (property == GraphicObjectPropertyType.VISIBLE) {
             return getVisible();
-        case USERDATA:
+        } else if (property == GraphicObjectPropertyType.USERDATA) {
             return getUserData();
-        case USERDATASIZE:
+        } else if (property == GraphicObjectPropertyType.USERDATASIZE) {
             return getUserDataSize();
-        case PARENT_FIGURE:
+        } else if (property == GraphicObjectPropertyType.PARENT_FIGURE) {
             return getParentFigure();
-        case PARENT_AXES:
+        } else if (property == GraphicObjectPropertyType.PARENT_AXES) {
             return getParentAxes();
-        case HASLEGENDCHILD:
+        } else if (property == GraphicObjectPropertyType.HASLEGENDCHILD) {
             return getHasLegendChild();
-        case LEGENDCHILD:
+        } else if (property == GraphicObjectPropertyType.LEGENDCHILD) {
             return getLegendChild();
-        case SELECTEDCHILD:
+        } else if (property == GraphicObjectPropertyType.SELECTEDCHILD) {
             return getSelectedChild();
-        case TYPE:
+        } else if (property == GraphicObjectPropertyType.TYPE) {
             return getType();
-        case DATA:
+        }  else if (property == GraphicObjectPropertyType.DATA) {
             return getIdentifier();
-        case TAG:
+        }  else if (property == GraphicObjectPropertyType.TAG) {
             return getTag();
-        case CALLBACK:
+        }  else if (property == GraphicObjectPropertyType.CALLBACK) {
             return getCallbackString();
-        case CALLBACKTYPE:
+        }  else if (property == GraphicObjectPropertyType.CALLBACKTYPE) {
             return getCallbackType();
-        case UNKNOWNPROPERTY:
+        }  else if (property == GraphicObjectPropertyType.UNKNOWNPROPERTY) {
             return null;
-        default:
+        } else {
             return null;
         }
     }
@@ -336,50 +330,32 @@ public abstract class GraphicObject implements Cloneable {
      * @return true if the property has been set, false otherwise
      */
     public UpdateStatus setProperty(Object property, Object value) {
-        if (!(property instanceof GraphicObjectPropertyType)) {
-            return UpdateStatus.Success;
-        }
-
-        GraphicObjectPropertyType p = (GraphicObjectPropertyType) property;
-        switch (p) {
-        case PARENT:
+        if (property == GraphicObjectPropertyType.PARENT) {
             setParent((String) value);
-            break;
-        case CHILDREN:
+        } else if (property == GraphicObjectPropertyType.CHILDREN) {
             setChildren((String[]) value);
-            break;
-        case VALID:
+        } else if (property == GraphicObjectPropertyType.VALID) {
             setValid((Boolean) value);
-            break;
-        case HIDDEN:
+        } else if (property == GraphicObjectPropertyType.HIDDEN) {
             setHidden((Boolean) value);
-            break;
-        case VISIBLE:
+        } else if (property == GraphicObjectPropertyType.VISIBLE) {
             setVisible((Boolean) value);
-            break;
-        case USERDATA:
+        } else if (property == GraphicObjectPropertyType.USERDATA) {
             setUserData((Integer[]) value);
-            break;
-        case USERDATASIZE:
+        } else if (property == GraphicObjectPropertyType.USERDATASIZE) {
             return UpdateStatus.Fail;
-        case SELECTEDCHILD:
+        } else if (property == GraphicObjectPropertyType.SELECTEDCHILD) {
             setSelectedChild((String) value);
-            break;
-        case DATA:
+        } else if (property == GraphicObjectPropertyType.DATA) {
             return UpdateStatus.Success;
-        case TAG:
+        } else if (property == GraphicObjectPropertyType.TAG) {
             setTag((String) value);
-            break;
-        case CALLBACK:
+        } else if (property == GraphicObjectPropertyType.CALLBACK) {
             setCallbackString((String) value);
-            break;
-        case CALLBACKTYPE:
+        } else if (property == GraphicObjectPropertyType.CALLBACKTYPE) {
             setCallbackType((Integer) value);
-            break;
-        case UNKNOWNPROPERTY:
+        } else if (property == GraphicObjectPropertyType.UNKNOWNPROPERTY) {
             return UpdateStatus.Fail;
-        default:
-            return UpdateStatus.Success;
         }
 
         return UpdateStatus.Success;
@@ -425,7 +401,9 @@ public abstract class GraphicObject implements Cloneable {
      * @param child the identifier of the added child.
      */
     public void addChild(String child) {
-	children.add(0, child);
+        if (!children.contains(child)) {
+            children.add(0, child);
+        }
     }
 
     /**

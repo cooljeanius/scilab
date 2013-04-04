@@ -18,9 +18,7 @@
 /*------------------------------------------------------------------------*/
 
 #include "gw_graphics.h"
-#include "api_scilab.h"
-#include "Scierror.h"
-#include "localization.h"
+#include "stack-c.h"
 
 #include "BuildObjects.h"
 #include "CurrentFigure.h"
@@ -31,29 +29,14 @@
 /*--------------------------------------------------------------------------*/
 int sci_xname(char *fname, unsigned long fname_len)
 {
-    SciErr sciErr;
-
-    int* piAddrl1 = NULL;
-    char* l1 = NULL;
+    int m1 = 0, n1 = 0, l1 = 0;
 
     char *pstCurrentFigure = NULL;
 
-    CheckInputArgument(pvApiCtx, 1, 1);
-    CheckOutputArgument(pvApiCtx, 1, 1);
+    CheckRhs(1, 1);
+    CheckLhs(1, 1);
 
-    sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrl1);
-    if (sciErr.iErr)
-    {
-        printError(&sciErr, 0);
-        return 1;
-    }
-
-    // Retrieve a matrix of double at position 1.
-    if (getAllocatedSingleString(pvApiCtx, piAddrl1, &l1))
-    {
-        Scierror(202, _("%s: Wrong type for argument #%d: A string expected.\n"), fname, 1);
-        return 1;
-    }
+    GetRhsVar(1, STRING_DATATYPE, &m1, &n1, &l1);
 
     pstCurrentFigure = (char*)getCurrentFigure();
 
@@ -62,12 +45,10 @@ int sci_xname(char *fname, unsigned long fname_len)
         pstCurrentFigure = createNewFigureWithAxes();
     }
 
-    setGraphicObjectProperty(pstCurrentFigure, __GO_NAME__, l1, jni_string, 1);
+    setGraphicObjectProperty(pstCurrentFigure, __GO_NAME__, cstk(l1), jni_string, 1);
 
-    AssignOutputVariable(pvApiCtx, 1) = 0;
-    ReturnArguments(pvApiCtx);
-
-    freeAllocatedSingleString(l1);
+    LhsVar(1) = 0;
+    PutLhsVar();
 
     return 0;
 }

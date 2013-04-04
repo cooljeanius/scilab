@@ -12,8 +12,6 @@
 
 package org.scilab.modules.scinotes.actions;
 
-import java.io.IOException;
-
 import javax.swing.KeyStroke;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Element;
@@ -62,7 +60,7 @@ public final class DoubleQuoteStringAction extends DefaultAction {
      */
     public static void doubleQuoteString(ScilabDocument doc) {
         StringBuffer buffer = new StringBuffer(128);
-        ScilabLexer lexer = doc.createLexer(false);
+        ScilabLexer lexer = doc.createLexer();
         Element elem = doc.getDefaultRootElement();
         Element line;
         int lastLine = elem.getElementIndex(doc.getLength());
@@ -98,17 +96,6 @@ public final class DoubleQuoteStringAction extends DefaultAction {
         } catch (Exception e) {
             System.err.println(e);
         }
-    }
-
-    /**
-     * @return an action to replace single quoted strings by double quoted ones in a document
-     */
-    public static SciNotes.ActionOnDocument getActionOnDocument() {
-        return new SciNotes.ActionOnDocument() {
-            public void actionOn(ScilabDocument doc) throws IOException {
-                doubleQuoteString(doc);
-            }
-        };
     }
 
     /**

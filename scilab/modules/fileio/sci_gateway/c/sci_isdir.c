@@ -105,7 +105,6 @@ int sci_isdir(char *fname, unsigned long fname_len)
     if (pStVarOne == NULL)
     {
         FREE(lenStVarOne);
-        FREE(results);
         lenStVarOne = NULL;
         Scierror(999, _("%s: Memory allocation error.\n"), fname);
         return 0;
@@ -116,20 +115,12 @@ int sci_isdir(char *fname, unsigned long fname_len)
         pStVarOne[i] = (wchar_t*)MALLOC(sizeof(wchar_t) * (lenStVarOne[i] + 1));
         if (pStVarOne[i] == NULL)
         {
-            if (i == 0)
-            {
-                FREE(pStVarOne);
-            }
-            else
-            {
-                freeArrayOfWideString(pStVarOne, i - 1);
-            }
+            freeArrayOfWideString(pStVarOne, m1 * n1);
             if (lenStVarOne)
             {
                 FREE(lenStVarOne);
                 lenStVarOne = NULL;
             }
-            FREE(results);
             Scierror(999, _("%s: Memory allocation error.\n"), fname);
             return 0;
         }

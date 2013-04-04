@@ -90,11 +90,8 @@ public class testAxes {
 
         axesID = controller.askObject(Type.AXES);
         GraphicObject axes = (GraphicObject) controller.getObjectFromId(axesID);
-        assert axes != null;
 
-        /* Allocate an empty figure and link the axes and figure */
-        final String figureID = controller.askObject(Type.FIGURE);
-        axes.setParent(figureID);
+        assert axes != null;
     }
 
     /**
@@ -136,9 +133,6 @@ public class testAxes {
         initAxes = new Axes();
         assert initAxes != null;
 
-        /* Allocate an empty figure and link the axes and figure */
-        final String figureInitID = controller.askObject(Type.FIGURE);
-        initAxes.setParent(figureInitID);
 
         /* GraphicObjects properties */
         initAxes.setVisible(randomGen.nextBoolean());

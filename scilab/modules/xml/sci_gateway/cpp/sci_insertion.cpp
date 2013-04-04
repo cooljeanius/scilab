@@ -10,8 +10,8 @@
  *
  */
 
-#include "insertion.hxx"
-#include "XMLList_insertion.hxx"
+#include "insertion.hpp"
+#include "XMLList_insertion.hpp"
 
 int sci_percent_c_i_XMLDoc(char *fname, unsigned long fname_len)
 {

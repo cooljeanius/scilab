@@ -4,12 +4,11 @@
 //
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
-// <-- XCOS TEST -->
 //
-// <-- Non-regression test for bug 8798 -->
+// <-- Non-regression test for bug 8789 -->
 //
 // <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8798
+// http://bugzilla.scilab.org/show_bug.cgi?id=8789
 //
 // <-- Short Description -->
 // The context parameter of scicos_simulate is not taken into account

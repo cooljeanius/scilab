@@ -13,9 +13,8 @@ function r=intc(a,b,f)
 //line a-b of the complex plane.
 
 //First compile f if necessary:
-if type(f)==11 then
-	comp(f);
-end
+// Copyright INRIA
+if type(f)==11 then comp(f),end;
 //Define two functions which define the real part and
 //imaginary part of f(g(t))*g'(t) where g(t) is a 
 //parametrization of the line a-b.

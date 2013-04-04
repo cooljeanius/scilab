@@ -11,9 +11,6 @@ function [rep] = getsymbol(Title)
 if rhs<1 then
   Title = "",
 end;
-
-warnobsolete('ged', '5.5.0');
-
 marksIds = ["dot"
 	    "plus"
 	    "cross"

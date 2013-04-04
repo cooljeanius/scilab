@@ -118,7 +118,7 @@ public abstract class CommonCallBack extends AbstractAction {
      * @param e The event that launch the callback.
      */
     public void actionPerformed(ActionEvent e) {
-        if (!GlobalEventWatcher.isCatchingCallback()) {
+        if (!GlobalEventWatcher.isActivated()) {
             callBack();
         } else {
             if (this.callback.getCommand() != null) {

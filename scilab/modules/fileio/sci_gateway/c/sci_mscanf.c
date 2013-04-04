@@ -88,6 +88,7 @@ int sci_scanf(char *fname, unsigned long fname_len)
         {
             FREE(String);
             String = strdup(" ");
+            lline = (int)strlen(String);
         }
 
         /** use the scaned line as input **/

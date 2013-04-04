@@ -35,168 +35,165 @@
 #include "localization.h"
 #include "stricmp.h"
 #include "api_scilab.h"
-/*--------------------------------------------------------------------------
+/*--------------------------------------------------------------------------*/
+static int sciSet(void* _pvCtx, char *pobjUID, char *marker, size_t * value, int valueType, int *numrow, int *numcol);
+
+/*--------------------------------------------------------------------------*/
+/**
+ * Sets the value to the object
+ */
+static int sciSet(void* _pvCtx, char *pobjUID, char *marker, size_t * value, int valueType, int *numrow, int *numcol)
+{
+    return callSetProperty(_pvCtx, pobjUID, *value, valueType, *numrow, *numcol, marker);
+}
+
+/*--------------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------
  * sciset(choice-name,x1,x2,x3,x4,x5)
  * or   xset()
  *-----------------------------------------------------------*/
 int sci_set(char *fname, unsigned long fname_len)
 {
-    SciErr sciErr;
-
-    int* piAddr1 = NULL;
-    int* piAddr2 = NULL;
-    int* piAddr3 = NULL;
     int lw = 0;
     int isMatrixOfString = 0;
 
-    char* pstProperty = NULL;
-    sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddr1);
-    if (sciErr.iErr)
+    if ((VarType(1) == sci_mlist) || (VarType(1) == sci_tlist))
     {
-        //error
-        return 1;
-    }
-
-    if (isMListType(pvApiCtx, piAddr1) || isTListType(pvApiCtx, piAddr1))
-    {
-        OverLoad(1);
+        lw = 1 + Top - Rhs;
+        C2F(overload) (&lw, "set", 3);
         return 0;
     }
 
     CheckRhs(2, 3);
     CheckLhs(0, 1);
 
-    if (isDoubleType(pvApiCtx, piAddr1))   /* tclsci handle */
+    if (VarType(1) == sci_matrix)   /* tclsci handle */
     {
+        lw = 1 + Top - Rhs;
         /* call "set" for tcl/tk see tclsci/sci_gateway/c/sci_set.c */
-        OverLoad(1);
+        C2F(overload) (&lw, "set", 3);
         return 0;
     }
     else                        /* others types */
     {
-        int iRows1 = 0, iCols1 = 0;
-        int iRows2 = 0, iCols2 = 0;
-        int iRows3 = 0, iCols3 = 0;
-        void* _pvData = NULL;
+        int m1 = 0, n1 = 0, l1 = 0, m2 = 0, n2 = 0, l2 = 0;
+        int numrow3 = 0;
+        int numcol3 = 0;
+        size_t l3 = 0;
         unsigned long hdl;
         char *pobjUID = NULL;
 
-        int iType1 = 0;
-
         int valueType = 0;      /* type of the rhs */
 
+        int numrow[4], i = 0;
+        int numcol[4], lxyzcol[4];
+        int ptrindex[2];
         int setStatus = 0;
 
         /* after the call to sciSet get the status : 0 <=> OK,          */
         /*                                          -1 <=> Error,       */
         /*                                           1 <=> nothing done */
 
-        /*  set or create a graphic window */
-        sciErr = getVarType(pvApiCtx, piAddr1, &iType1);
-        if (sciErr.iErr)
+        /* F.Leray Init. to 0 */
+        for (i = 0; i < 4; i++)
         {
-            //error
-            return 1;
+            numrow[i] = 0;
+            numcol[i] = 0;
+            lxyzcol[i] = 0;
         }
-        switch (iType1)
+        ptrindex[0] = 0;
+        ptrindex[1] = 0;
+
+        /*  set or create a graphic window */
+        switch (VarType(1))
         {
             case sci_handles:
                 /* first is a scalar argument so it's a gset(hdl,"command",[param]) */
                 /* F.Leray; INFO: case 9 is considered for a matrix of graphic handles */
                 CheckRhs(3, 3);
-
-                if (isScalar(pvApiCtx, piAddr1) == FALSE)
+                GetRhsVar(1, GRAPHICAL_HANDLE_DATATYPE, &m1, &n1, &l1); /* Gets the Handle passed as argument */
+                if (m1 != 1 || n1 != 1)
                 {
-                    OverLoad(1);
+                    lw = 1 + Top - Rhs;
+                    C2F(overload) (&lw, "set", 3);
                     return 0;
                 }
 
-                getScalarHandle(pvApiCtx, piAddr1, (long long*)&hdl);
+                hdl = (long) * hstk(l1);
                 pobjUID = (char*)getObjectFromHandle(hdl);
 
-                getVarAddressFromPosition(pvApiCtx, 2, &piAddr2);
-                getAllocatedSingleString(pvApiCtx, piAddr2, &pstProperty);
-                valueType = getInputArgumentType(pvApiCtx, 3);
+                GetRhsVar(2, STRING_DATATYPE, &m2, &n2, &l2);   /* Gets the command name */
 
-                getVarAddressFromPosition(pvApiCtx, 3, &piAddr3);
-                if ((strcmp(pstProperty, "user_data") == 0) || (stricmp(pstProperty, "userdata") == 0))
+                valueType = VarType(3);
+                if ((strcmp(cstk(l2), "user_data") == 0) || (stricmp(cstk(l2), "userdata") == 0))
                 {
                     /* in this case set_user_data_property
                      * directly uses the  third position in the stack
                      * to get the variable which is to be set in
                      * the user_data property (any data type is allowed) S. Steer */
-                    _pvData = (void*)piAddr3;         /*position in the stack */
-                    iRows3 = -1;   /*unused */
-                    iCols3 = -1;   /*unused */
-                    valueType = -1;
+                    l3 = 3;         /*position in the stack */
+                    numrow3 = -1;   /*unused */
+                    numcol3 = -1;   /*unused */
                 }
                 else if (valueType == sci_matrix)
                 {
-                    getMatrixOfDouble(pvApiCtx, piAddr3, &iRows3, &iCols3, (double**)&_pvData);
+                    GetRhsVar(3, MATRIX_OF_DOUBLE_DATATYPE, &numrow3, &numcol3, &l3);
                 }
                 else if (valueType == sci_boolean)
                 {
-                    getMatrixOfBoolean(pvApiCtx, piAddr3, &iRows3, &iCols3, (int**)&_pvData);
+                    GetRhsVar(3, MATRIX_OF_BOOLEAN_DATATYPE, &numrow3, &numcol3, &l3);
                 }
                 else if (valueType == sci_handles)
                 {
-                    getMatrixOfHandle(pvApiCtx, piAddr3, &iRows3, &iCols3, (long long**)&_pvData);
+                    GetRhsVar(3, GRAPHICAL_HANDLE_DATATYPE, &numrow3, &numcol3, &l3);
                 }
                 else if (valueType == sci_strings)
                 {
-                    if (   strcmp(pstProperty, "tics_labels") != 0 && strcmp(pstProperty, "auto_ticks") != 0 &&
-                            strcmp(pstProperty, "axes_visible") != 0 && strcmp(pstProperty, "axes_reverse") != 0 &&
-                            strcmp(pstProperty, "text") != 0 && stricmp(pstProperty, "string") != 0 &&
-                            stricmp(pstProperty, "tooltipstring") != 0) /* Added for uicontrols */
+                    if (strcmp(cstk(l2), "tics_labels") != 0 && strcmp(cstk(l2), "auto_ticks") != 0 && strcmp(cstk(l2), "axes_visible") != 0 && strcmp(cstk(l2), "axes_reverse") != 0 && strcmp(cstk(l2), "text") != 0 && stricmp(cstk(l2), "string") != 0 && stricmp(cstk(l2), "tooltipstring") != 0) /* Added for uicontrols */
                     {
-                        getAllocatedSingleString(pvApiCtx, piAddr3, (char**)&_pvData);
-                        iRows3 = (int)strlen((char*)_pvData);
-                        iCols3 = 1;
+                        GetRhsVar(3, STRING_DATATYPE, &numrow3, &numcol3, &l3);
                     }
                     else
                     {
                         isMatrixOfString = 1;
-                        getAllocatedMatrixOfString(pvApiCtx, piAddr3, &iRows3, &iCols3, (char***)&_pvData);
+                        GetRhsVar(3, MATRIX_OF_STRING_DATATYPE, &numrow3, &numcol3, &l3);
                     }
                 }
                 else if (valueType == sci_list) /* Added for callbacks */
                 {
-                    iCols3 = 1;
-                    getListItemNumber(pvApiCtx, piAddr3, &iRows3);
-                    _pvData = (void*)piAddr3;         /* In this case l3 is the list position in stack */
+                    GetRhsVar(3, LIST_DATATYPE, &numrow3, &numcol3, &l3);
+                    l3 = 3;         /* In this case l3 is the list position in stack */
                 }
                 break;
 
             case sci_strings:      /* first is a string argument so it's a set("command",[param]) */
                 CheckRhs(2, 2);
-                getAllocatedSingleString(pvApiCtx, piAddr1, &pstProperty);
+                GetRhsVar(1, STRING_DATATYPE, &m2, &n2, &l2);
                 hdl = 0;
                 pobjUID = NULL;
-                valueType = getInputArgumentType(pvApiCtx, 2);
-                getVarAddressFromPosition(pvApiCtx, 2, &piAddr2);
+                valueType = VarType(2);
 
                 if (valueType == sci_matrix)
                 {
-                    getMatrixOfDouble(pvApiCtx, piAddr2, &iRows3, &iCols3, (double**)&_pvData);
+                    GetRhsVar(2, MATRIX_OF_DOUBLE_DATATYPE, &numrow3, &numcol3, &l3);
                 }
                 else if (valueType == sci_handles)
                 {
-                    getMatrixOfHandle(pvApiCtx, piAddr2, &iRows3, &iCols3, (long long**)&_pvData);
+                    GetRhsVar(2, GRAPHICAL_HANDLE_DATATYPE, &numrow3, &numcol3, &l3);
                 }
                 else if (valueType == sci_strings)
                 {
-                    if (strcmp(pstProperty, "tics_labels") == 0 || strcmp(pstProperty, "auto_ticks") == 0 ||
-                            strcmp(pstProperty, "axes_visible") == 0 || strcmp(pstProperty, "axes_reverse") == 0 ||
-                            strcmp(pstProperty, "text") == 0)
+                    if (strcmp(cstk(l2), "tics_labels") == 0
+                            || strcmp(cstk(l2), "auto_ticks") == 0
+                            || strcmp(cstk(l2), "axes_visible") == 0 || strcmp(cstk(l2), "axes_reverse") == 0 || strcmp(cstk(l2), "text") == 0)
                     {
                         isMatrixOfString = 1;
-                        getAllocatedMatrixOfString(pvApiCtx, piAddr2, &iRows3, &iCols3, (char***)&_pvData);
+                        GetRhsVar(2, MATRIX_OF_STRING_DATATYPE, &numrow3, &numcol3, &l3);
                     }
                     else
                     {
-                        getAllocatedSingleString(pvApiCtx, piAddr2, (char**)&_pvData);
-                        iRows3 = (int)strlen((char*)_pvData);
-                        iCols3 = 1;
+                        GetRhsVar(2, STRING_DATATYPE, &numrow3, &numcol3, &l3);
                     }
                 }
                 break;
@@ -218,20 +215,7 @@ int sci_set(char *fname, unsigned long fname_len)
             }
 
             // Only set the property whitout doing anythig else.
-            //static int sciSet(void* _pvCtx, char *pobjUID, char *marker, void* value, int valueType, int *numrow, int *numcol)
-            setStatus = callSetProperty(pvApiCtx, pobjUID, _pvData, valueType, iRows3, iCols3, pstProperty);
-            if (valueType == sci_strings)
-            {
-                //free allacted data
-                if (isMatrixOfString == 1)
-                {
-                    freeAllocatedMatrixOfString(iRows3, iCols3, (char**)_pvData);
-                }
-                else
-                {
-                    freeAllocatedSingleString((char*)_pvData);
-                }
-            }
+            setStatus = sciSet(pvApiCtx, pobjUID, cstk(l2), &l3, valueType, &numrow3, &numcol3);
         }
         else
         {
@@ -245,6 +229,8 @@ int sci_set(char *fname, unsigned long fname_len)
             /* 'default_values' */
             /* 'figure_style' for compatibility but do nothing */
             /* others values must return a error */
+            char *propertyField = cstk(l2);
+
             char *propertiesSupported[NB_PROPERTIES_SUPPORTED] = { "current_entity",
                     "hdl",
                     "current_figure",
@@ -253,39 +239,26 @@ int sci_set(char *fname, unsigned long fname_len)
                     "default_values",
                     "auto_clear"
                                                                  };
-
             int i = 0;
-            int iPropertyFound = 0;
+            int iPropertyFounded = 0;
 
             for (i = 0; i < NB_PROPERTIES_SUPPORTED; i++)
             {
 
-                if (strcmp(propertiesSupported[i], pstProperty) == 0)
+                if (strcmp(propertiesSupported[i], propertyField) == 0)
                 {
-                    iPropertyFound = 1;
+                    iPropertyFounded = 1;
                 }
             }
 
-            if (iPropertyFound)
+            if (iPropertyFounded)
             {
                 // we do nothing with "figure_style" "new" (to remove in 5.4)
-                int bDoSet = ((isMatrixOfString) && (strcmp(pstProperty, "figure_style") == 0) && (strcmp(((char**)_pvData)[0], "new") == 0)) != 1;
+                int bDoSet = ((isMatrixOfString) && (strcmp(propertyField, "figure_style") == 0) && (strcmp(cstk(l3), "new") == 0)) != 1;
 
                 if (bDoSet)
                 {
-                    setStatus = callSetProperty(pvApiCtx, NULL, _pvData, valueType, iRows3, iCols3, pstProperty);
-                    if (valueType == sci_strings)
-                    {
-                        //free allocated data
-                        if (isMatrixOfString == 1)
-                        {
-                            freeAllocatedMatrixOfString(iRows3, iCols3, (char**)_pvData);
-                        }
-                        else
-                        {
-                            freeAllocatedSingleString((char*)_pvData);
-                        }
-                    }
+                    sciSet(pvApiCtx, NULL, cstk(l2), &l3, valueType, &numrow3, &numcol3);
                 }
             }
             else
@@ -293,14 +266,13 @@ int sci_set(char *fname, unsigned long fname_len)
                 Scierror(999, _("%s: Wrong value for input argument #%d: a valid property expected.\n"), fname, 1);
                 if (isMatrixOfString)
                 {
-                    freeArrayOfString((char **)_pvData, iRows3 * iCols3);
+                    freeArrayOfString((char **)l3, numrow3 * numcol3);
                 }
                 return 0;
             }
         }
-
-        AssignOutputVariable(pvApiCtx, 1) = 0;
-        ReturnArguments(pvApiCtx);
+        LhsVar(1) = 0;
+        PutLhsVar();
     }
 
     return 0;

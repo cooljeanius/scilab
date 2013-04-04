@@ -13,7 +13,6 @@ function varargout = fscanf(fil, frmt)
 
 // fscanf - Emulator of C language fscanf
 //!
-  warnobsolete("mfscanf","5.5.0");
 
   [lhs, rhs] = argn(0);
 

@@ -49,37 +49,37 @@ public class Axes extends GraphicObject {
     /** Axes properties names */
     private enum AxesProperty {
         XAXISVISIBLE, XAXISREVERSE, XAXISGRIDCOLOR, XAXISLABEL, XAXISLOCATION, XAXISLOGFLAG,
-            XAXISTICKS, XAXISAUTOTICKS, XAXISNUMBERTICKS, XAXISTICKSLOCATIONS, XAXISTICKSLABELS, XAXISSUBTICKS,
-            YAXISVISIBLE, YAXISREVERSE, YAXISGRIDCOLOR, YAXISLABEL, YAXISLOCATION, YAXISLOGFLAG,
-            YAXISTICKS, YAXISAUTOTICKS, YAXISNUMBERTICKS, YAXISTICKSLOCATIONS, YAXISTICKSLABELS, YAXISSUBTICKS,
-            ZAXISVISIBLE, ZAXISREVERSE, ZAXISGRIDCOLOR, ZAXISLABEL, ZAXISLOCATION, ZAXISLOGFLAG,
-            ZAXISTICKS, ZAXISAUTOTICKS, ZAXISNUMBERTICKS, ZAXISTICKSLOCATIONS, ZAXISTICKSLABELS, ZAXISSUBTICKS,
-            AUTOSUBTICKS,
-            FONT_STYLE, FONT_SIZE, FONT_COLOR, FONT_FRACTIONAL,
-            GRIDPOSITION, TITLE, AUTOCLEAR, FILLED, BACKGROUND,
-            MARGINS, AXESBOUNDS,
-            HIDDENCOLOR
-            };
+        XAXISTICKS, XAXISAUTOTICKS, XAXISNUMBERTICKS, XAXISTICKSLOCATIONS, XAXISTICKSLABELS, XAXISSUBTICKS,
+        YAXISVISIBLE, YAXISREVERSE, YAXISGRIDCOLOR, YAXISLABEL, YAXISLOCATION, YAXISLOGFLAG,
+        YAXISTICKS, YAXISAUTOTICKS, YAXISNUMBERTICKS, YAXISTICKSLOCATIONS, YAXISTICKSLABELS, YAXISSUBTICKS,
+        ZAXISVISIBLE, ZAXISREVERSE, ZAXISGRIDCOLOR, ZAXISLABEL, ZAXISLOCATION, ZAXISLOGFLAG,
+        ZAXISTICKS, ZAXISAUTOTICKS, ZAXISNUMBERTICKS, ZAXISTICKSLOCATIONS, ZAXISTICKSLABELS, ZAXISSUBTICKS,
+        AUTOSUBTICKS,
+        FONT_STYLE, FONT_SIZE, FONT_COLOR, FONT_FRACTIONAL,
+        GRIDPOSITION, TITLE, AUTOCLEAR, FILLED, BACKGROUND,
+        MARGINS, AXESBOUNDS,
+        HIDDENCOLOR
+    };
 
     /** Specifies the grid position relative to the graphics entities */
     public static enum GridPosition { BACKGROUND, FOREGROUND;
 
-        /**
-         * Converts an integer to the corresponding enum
-         * @param intValue the integer value
-         * @return the grid position enum
-         */
-        public static GridPosition intToEnum(Integer intValue) {
-            switch (intValue) {
+                                      /**
+                                       * Converts an integer to the corresponding enum
+                                       * @param intValue the integer value
+                                       * @return the grid position enum
+                                       */
+    public static GridPosition intToEnum(Integer intValue) {
+        switch (intValue) {
             case 0:
                 return GridPosition.BACKGROUND;
             case 1:
                 return GridPosition.FOREGROUND;
             default:
                 return null;
-            }
         }
-    };
+    }
+                                    };
 
 
     /** 3-element array (properties of the X, Y and Z axes) */
@@ -1823,38 +1823,14 @@ public class Axes extends GraphicObject {
             bounds[1] = Math.log10(bounds[1]);
         }
 
-        if (getXAxisLocationAsEnum() == AxisProperty.AxisLocation.ORIGIN) {
-            if (0 < bounds[0]) {
-                bounds[0] = 0.;
-            } else if (bounds[1] < 0) {
-                bounds[1] = 0.;
-            }
-        }
-
         if (getYAxisLogFlag()) {
             bounds[2] = Math.log10(bounds[2]);
             bounds[3] = Math.log10(bounds[3]);
         }
 
-        if (getYAxisLocationAsEnum() == AxisProperty.AxisLocation.ORIGIN) {
-            if (0 < bounds[2]) {
-                bounds[2] = 0.;
-            } else if (bounds[3] < 0) {
-                bounds[3] = 0.;
-            }
-        }
-
         if (getZAxisLogFlag()) {
             bounds[4] = Math.log10(bounds[4]);
             bounds[5] = Math.log10(bounds[5]);
-        }
-
-        if (getZAxisLocationAsEnum() == AxisProperty.AxisLocation.ORIGIN) {
-            if (0 < bounds[4]) {
-                bounds[4] = 0.;
-            } else if (bounds[5] < 0) {
-                bounds[5] = 0.;
-            }
         }
 
         if (!getTightLimits()) {
@@ -2048,6 +2024,7 @@ public class Axes extends GraphicObject {
                     }
                 }
             } catch (ClassCastException ignored) {
+            } catch (NullPointerException ignored) {
             }
             return UpdateStatus.Success;
         } else {

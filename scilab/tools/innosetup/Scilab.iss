@@ -71,7 +71,6 @@
 #include BinariesSourcePath + "\tools\innosetup\code_unzip.iss"
 #include BinariesSourcePath + "\tools\innosetup\code_download.iss"
 #include BinariesSourcePath + "\tools\innosetup\code_modules.iss"
-#include BinariesSourcePath + "\tools\innosetup\code_offline_installation.iss"
 #include BinariesSourcePath + "\tools\innosetup\code.iss"
 [Run]
 ;-------------------------------------------------------------------------------

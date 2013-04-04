@@ -25,6 +25,7 @@ import javax.media.opengl.GLException;
 import javax.media.opengl.GLProfile;
 import javax.media.opengl.awt.GLCanvas;
 import javax.media.opengl.awt.GLJPanel;
+import javax.swing.SwingUtilities;
 
 import org.scilab.modules.action_binding.InterpreterManagement;
 import org.scilab.modules.commons.OS;
@@ -68,11 +69,11 @@ public class SwingScilabCanvasImpl {
                 if (noGLJPanel) {
                     /** Inform the users */
                     InterpreterManagement.requestScilabExec(
-                            String.format("disp(\"%s\"), disp(\"%s\")",
-                                    String.format(Messages.gettext("WARNING: Due to your configuration limitations, Scilab switched in a mode where mixing uicontrols and graphics is not available. Type %s for more information."), "\"\"help usecanvas\"\""),
-                                    String.format(Messages.gettext("In some cases, %s fixes the issue"), "\"\"system_setproperty(''jogl.gljpanel.nohw'','''');\"\"")
-                                    )
-                            );
+                        String.format("disp(\"%s\"), disp(\"%s\")",
+                                      String.format(Messages.gettext("WARNING: Due to your configuration limitations, Scilab switched in a mode where mixing uicontrols and graphics is not available. Type %s for more information."), "\"\"help usecanvas\"\""),
+                                      String.format(Messages.gettext("In some cases, %s fixes the issue"), "\"\"system_setproperty(''jogl.gljpanel.nohw'','''');\"\"")
+                                     )
+                    );
                 }
             }
 
@@ -135,8 +136,8 @@ public class SwingScilabCanvasImpl {
                             // available through ATI 8.8 installer
                             // and driver newer than 8.52.3
                             Debug.DEBUG("SwingScilabCanvasImpl", "majorVersion = "
-                                    + majorVersion + " minorVersion = " + minorVersion
-                                    + " releaseVersion = " + releaseVersion);
+                                        + majorVersion + " minorVersion = " + minorVersion
+                                        + " releaseVersion = " + releaseVersion);
                             if (majorVersion > 2
                                     || majorVersion == 2 && minorVersion > 1
                                     || majorVersion == 2 && minorVersion == 1 && releaseVersion >= 7873) {
@@ -148,21 +149,21 @@ public class SwingScilabCanvasImpl {
                     if (noGLJPanel) {
                         /** Inform the users */
                         InterpreterManagement.requestScilabExec(
-                                String.format("disp(\"%s\"), disp(\"%s\")",
-                                        String.format(Messages.gettext("WARNING: Due to your configuration limitations, Scilab switched in a mode where mixing uicontrols and graphics is not available. Type %s for more information."), "\"\"help usecanvas\"\""),
-                                        String.format(Messages.gettext("In some cases, %s fixes the issue"), "\"\"system_setproperty(''jogl.gljpanel.nohw'','''');\"\"")
-                                        )
-                                );
+                            String.format("disp(\"%s\"), disp(\"%s\")",
+                                          String.format(Messages.gettext("WARNING: Due to your configuration limitations, Scilab switched in a mode where mixing uicontrols and graphics is not available. Type %s for more information."), "\"\"help usecanvas\"\""),
+                                          String.format(Messages.gettext("In some cases, %s fixes the issue"), "\"\"system_setproperty(''jogl.gljpanel.nohw'','''');\"\"")
+                                         )
+                        );
                     }
                 } catch (GLException e) {
                     noGLJPanel = true;
                     /** Inform the users */
                     InterpreterManagement.requestScilabExec(
-                            String.format("disp(\"%s\"), disp(\"%s\")",
-                                    Messages.gettext("Due to your video card drivers limitations, that are not able to manage OpenGL, Scilab will not be able to draw any graphics. Please update your driver."),
-                                    String.format(Messages.gettext("In some cases, %s fixes the issue"), "\"\"system_setproperty(''jogl.gljpanel.nohw'','''');\"\"")
-                                    )
-                            );
+                        String.format("disp(\"%s\"), disp(\"%s\")",
+                                      Messages.gettext("Due to your video card drivers limitations, that are not able to manage OpenGL, Scilab will not be able to draw any graphics. Please update your driver."),
+                                      String.format(Messages.gettext("In some cases, %s fixes the issue"), "\"\"system_setproperty(''jogl.gljpanel.nohw'','''');\"\"")
+                                     )
+                    );
                 } catch (HeadlessException e) {
                     // do not print anything on a CLI only environment
                     noGLJPanel = true;
@@ -197,42 +198,26 @@ public class SwingScilabCanvasImpl {
     }
 
     /*
-     * Using SafeGLJPanel for all platform to catch some EDT deletion/creation.
-     * Some buffer can be lost causing JoGL to crash
-     * http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6503420
+     * Using GLJPanel for MacOSX may lead to a deadlock on deletion.
+     * Wrap call to removeNotify to ensure we are not outside Swing Thread
+     * and PBuffer is not locked.
      */
-    private final class SafeGLJPanel extends GLJPanel {
+    private final class MacOSXGLJPanel extends GLJPanel {
         private static final long serialVersionUID = -6166986369022555750L;
 
-        public void display() {
-            try {
-                super.display();
-            } catch (Exception e) {
-                // Catch JoGL Exceptions and hide it ...
-                // Make another try
-                //System.err.println("[SafeGLJPanel.display] catching "+e.toString());
-                super.reshape(getX(),getY(),getWidth(),getHeight());
-                super.display();
-            }
+        private void superRemoveNotify() {
+            super.removeNotify();
         }
 
-        // protected void paintComponent(final Graphics g) {
-        //     try {
-        //         super.paintComponent(g);
-        //     } catch (Exception e) {
-        //         // Catch JoGL Exceptions and hide it ...
-        //         // Make another try
-        //         System.err.println("[SafeGLJPanel.paintComponent] catching "+e.toString());
-        //     }
-        // }
-    }
-    
-    /*
-    * Empty class to allow xlick/xgetmouse
-    * catch same cannonical name
-    */
-    private final class SafeGLCanvas extends GLCanvas {
-        private static final long serialVersionUID = -3315164314205693678L;
+        @Override
+        public void removeNotify() {
+            final MacOSXGLJPanel panel = this;
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    panel.superRemoveNotify();
+                }
+            });
+        }
     }
 
     private static SwingScilabCanvasImpl me = null;
@@ -247,9 +232,19 @@ public class SwingScilabCanvasImpl {
 
     public Component createOpenGLComponent() {
         if (enableGLCanvas) {
-            return new SafeGLCanvas();
+            return new GLCanvas();
         } else {
-            return new SafeGLJPanel();
+            /*
+             * Even with the good Java 1.6 version
+             * MacOSX does not manage mixing ligthweight and heavyweight components
+             * Use MacOSXGLJPanel as OpenGL component for now since GLJPanel will
+             * lead to deadlock on deletion.
+             */
+            if (OS.get() == OS.MAC) {
+                return new MacOSXGLJPanel();
+            } else {
+                return new GLJPanel();
+            }
         }
     }
 

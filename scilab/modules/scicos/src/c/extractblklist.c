@@ -72,9 +72,8 @@ int extractblklist(int *il, scicos_block *Block, int *ierr)
 	ilh           = (int *) (listentry(il,n));
 	mh            = ilh[1];
 	nh            = ilh[2];
-	// pointer value is stored on double values, restoring as a copy will take
-	// care of alignement issues and pointer size issues.
-	memcpy(&Block->funpt, &ilh[4], sizeof(voidg));
+	i             = (int) *((double *)(&ilh[4]));
+	Block->funpt  = (voidg) i;
 
 	/* 4 - type */
 	n            = MlistGetFieldNumber(il, "type");

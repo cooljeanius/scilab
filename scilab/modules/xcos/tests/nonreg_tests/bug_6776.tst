@@ -6,7 +6,7 @@
 // =============================================================================
 
 // <-- NO CHECK REF -->
-// <-- XCOS TEST -->
+// <-- TEST WITH XCOS -->
 //
 // <-- Non-regression test for bug 6776 -->
 //
@@ -17,6 +17,7 @@
 // the non-empty block.doc field was not cleared on loading.
 //
 
+loadXcosLibs();
 
 // Check that importScicosDiagram perform block.doc clearing
 scs_m = importScicosDiagram(SCI + "/modules/xcos/tests/nonreg_tests/Antrieb3.cos");

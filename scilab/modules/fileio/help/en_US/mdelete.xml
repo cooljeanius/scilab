@@ -48,15 +48,6 @@
             </caution>
         </para>
     </refsection>
-    <refsection>
-        <title>Examples</title>
-        <programlisting role="example"><![CDATA[
-cd TMPDIR;
-r = mputl('I am a dummy String', 'dummyFile.dummy');
-mdelete("dummyFile.dummy");
- ]]></programlisting>
-    </refsection>
-    
     <refsection role="see also">
         <title>See Also</title>
         <simplelist type="inline">

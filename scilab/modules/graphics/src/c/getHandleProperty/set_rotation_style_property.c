@@ -19,7 +19,6 @@
 /*        a handle                                                        */
 /*------------------------------------------------------------------------*/
 
-#include "stricmp.h"
 #include "setHandleProperty.h"
 #include "SetProperty.h"
 #include "getPropertyAssignedValue.h"
@@ -29,24 +28,26 @@
 
 #include "setGraphicObjectProperty.h"
 #include "graphicObjectProperties.h"
-#include "MALLOC.h"
+
 /*------------------------------------------------------------------------*/
-int set_rotation_style_property(void* _pvCtx, char* pobjUID, void* _pvData, int valueType, int nbRow, int nbCol)
+int set_rotation_style_property(void* _pvCtx, char* pobjUID, size_t stackPointer, int valueType, int nbRow, int nbCol)
 {
     int rotationStyle = 0;
     BOOL status = FALSE;
 
-    if (valueType != sci_strings)
+    getStringFromStack(stackPointer);
+
+    if (!( valueType == sci_strings ))
     {
         Scierror(999, _("Wrong type for '%s' property: String expected.\n"), "rotation_style");
         return SET_PROPERTY_ERROR;
     }
 
-    if (stricmp((char*)_pvData, "unary") == 0)
+    if (isStringParamEqual(stackPointer, "unary"))
     {
         rotationStyle = 0;
     }
-    else if (stricmp((char*)_pvData, "multiple") == 0)
+    else if (isStringParamEqual(stackPointer, "multiple"))
     {
         rotationStyle = 1;
     }

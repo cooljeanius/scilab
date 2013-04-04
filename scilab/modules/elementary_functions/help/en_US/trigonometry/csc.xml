@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
- * Copyright (C) 2008 - INRIA
- *
- * This file must be used under the terms of the CeCILL.
- * This source file is licensed as described in the file COPYING, which
- * you should have received as part of this distribution.  The terms
- * are also available at
- * http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
- *
- -->
+ * Ajouter ici d'éventuels commentaires sur le fichier XML
+-->
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"  xml:id="csc" xml:lang="en">
     <refnamediv>
         <refname>csc</refname>
-        <refpurpose>сomputes the element-wise cosecant of the
-            argument
+        <refpurpose>Computes the element-wise cosecant of the
+            argument.
         </refpurpose>
     </refnamediv>
     <refsynopsisdiv>
@@ -27,14 +19,14 @@
             <varlistentry>
                 <term>x</term>
                 <listitem>
-                    <para>a real or complex array.</para>
+                    <para>Real or complex array.</para>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term>y</term>
                 <listitem>
-                    <para>a real or complex array with same dimensions as
-                        <varname>x</varname>.
+                    <para>Real or complex array with same dimensions as
+                        <literal>x</literal>.
                     </para>
                 </listitem>
             </varlistentry>
@@ -43,8 +35,8 @@
     <refsection>
         <title>Description</title>
         <para>Computes the element-wise cosecant of the argument. The cosecant is
-            a periodic function defined as <latex>1/\sin(x)</latex>. For real data the results are real
-            and in <latex>]-\infty -1] \cup [1 \infty[</latex>.
+            a periodic function defined as 1/sin. For real data the results are real
+            and in <literal>]-%inf -1] U [1 %inf[</literal>.
         </para>
     </refsection>
     <refsection>

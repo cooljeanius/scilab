@@ -17,7 +17,7 @@
 #include "gw_gui.h"
 #include "gw_gui.h"
 #include "localization.h"
-#include "api_scilab.h"
+#include "stack-c.h"
 #include "GetProperty.h"
 #include "sciprint.h"
 #include "localization.h"
@@ -28,14 +28,12 @@
 /*--------------------------------------------------------------------------*/
 int sci_uicontextmenu(char *fname, unsigned long fname_len)
 {
-    SciErr sciErr;
+    int nbRow = 0, nbCol = 0, stkAdr = 0;
 
-    long long* stkAdr = NULL;
-    int nbRow = 0, nbCol = 0;
     unsigned long GraphicHandle = 0;
 
-    CheckInputArgument(pvApiCtx, 0, 0);
-    CheckOutputArgument(pvApiCtx, 0, 1);
+    CheckRhs(0, 0);
+    CheckLhs(0, 1);
 
     /* Create a new context menu */
     GraphicHandle = getHandle(createGraphicObject(__GO_UICONTEXTMENU__));
@@ -43,19 +41,13 @@ int sci_uicontextmenu(char *fname, unsigned long fname_len)
     /* Create return variable */
     nbRow = 1;
     nbCol = 1;
+    CreateVar(Rhs + 1, GRAPHICAL_HANDLE_DATATYPE, &nbRow, &nbCol, &stkAdr);
+    *hstk(stkAdr) = GraphicHandle;
 
-    sciErr = allocMatrixOfHandle(pvApiCtx, nbInputArgument(pvApiCtx) + 1, nbRow, nbCol, &stkAdr);
-    if (sciErr.iErr)
-    {
-        printError(&sciErr, 0);
-        Scierror(999, _("%s: Memory allocation error.\n"), fname);
-        return 1;
-    }
+    LhsVar(1) = Rhs + 1;
 
-    *stkAdr = GraphicHandle;
+    PutLhsVar();
 
-    AssignOutputVariable(pvApiCtx, 1) = nbInputArgument(pvApiCtx) + 1;
-    ReturnArguments(pvApiCtx);
     return TRUE;
 }
 

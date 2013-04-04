@@ -13,12 +13,10 @@ function varargout = sscanf(buf, frmt)
 
   // sscanf - Emulator of C language sscanf
 
-  warnobsolete("msscanf","5.5.0");
-
   [lhs,rhs]  = argn(0);
   MAXLHS = 50;
   if lhs > MAXLHS then
-    error(999, msprintf(gettext("%s: Wrong number of output argument(s).\n"),"sscanf"));x
+    error(999, msprintf(gettext("%s: Wrong number of output argument(s).\n"),"sscanf"));
   end
 
   hexdigits  = [string(0:9),'a','b','c','d','e','f','A','B','C','D','E','F']

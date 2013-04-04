@@ -17,8 +17,7 @@
 /*--------------------------------------------------------------------------*/
 /*  interface function */
 /*--------------------------------------------------------------------------*/
-static gw_generic_table Tab[] =
-{
+static gw_generic_table Tab[] = {
     {sci_xmlRead, "xmlRead"},
     {sci_xmlDelete, "xmlDelete"},
     {sci_xmlDump, "xmlDump"},
@@ -96,9 +95,7 @@ static gw_generic_table Tab[] =
     {sci_xmlAsNumber, "xmlAsNumber"},
     {sci_xmlAsText, "xmlAsText"},
     {sci_xmlRemove, "xmlRemove"},
-    {sci_xmlSetAttributes, "xmlSetAttributes"},
-    {sci_xmlName, "xmlName"},
-    {sci_xmlAppend, "xmlAppend"}
+    {sci_xmlSetAttributes, "xmlSetAttributes"}
 };
 
 /*--------------------------------------------------------------------------*/

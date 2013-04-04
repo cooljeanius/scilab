@@ -2,7 +2,9 @@
 
 
 EXPORTS
+;
 ;core
+;
 callFunctionFromGateway 
 com_
 createvarfromptr_
@@ -15,5 +17,4 @@ vstk_
 checklhs_
 checkrhs_ 
 intersci_
-MyHeapAlloc
-MyHeapFree
+

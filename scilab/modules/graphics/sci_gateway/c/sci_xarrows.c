@@ -18,160 +18,70 @@
 
 #include "gw_graphics.h"
 #include "sciCall.h"
-#include "api_scilab.h"
+#include "stack-c.h"
 #include "localization.h"
 #include "Scierror.h"
 #include "HandleManagement.h"
 #include "BuildObjects.h"
 /*--------------------------------------------------------------------------*/
-int sci_xarrows(char *fname, unsigned long fname_len)
+int sci_xarrows(char *fname,unsigned long fname_len)
 {
-    SciErr sciErr;
-
-    int* piAddrl1 = NULL;
-    double* l1 = NULL;
-    int* piAddrl2 = NULL;
-    double* l2 = NULL;
-    int* piAddrl3 = NULL;
-    double* l3 = NULL;
-    int* piAddr4 = NULL;
-    int* l4 = NULL;
-
-    int dstyle = -1, m1 = 0, n1 = 0, m2 = 0, n2 = 0, m3 = 1, n3 = 1;
+    int dstyle = -1,m1 = 0,n1 = 0,l1 = 0,m2 = 0,n2 = 0,l2 = 0, m3 = 1, n3 = 1, l3 = 0;
     int *style = NULL, flag = 0;
-    int m4 = 0, n4 = 0, mn2 = 0;
+    int m4 = 0, n4 = 0, l4 = 0, mn2 = 0;
     double arsize = -1.0;
 
-    CheckInputArgument(pvApiCtx, 2, 4);
+    CheckRhs(2,4);
 
-    sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrl1);
-    if (sciErr.iErr)
-    {
-        printError(&sciErr, 0);
-        return 1;
-    }
-
-    // Retrieve a matrix of double at position 1.
-    sciErr = getMatrixOfDouble(pvApiCtx, piAddrl1, &m1, &n1, &l1);
-    if (sciErr.iErr)
-    {
-        printError(&sciErr, 0);
-        Scierror(202, _("%s: Wrong type for argument %d: A real expected.\n"), fname, 1);
-        return 1;
-    }
-
-    sciErr = getVarAddressFromPosition(pvApiCtx, 2, &piAddrl2);
-    if (sciErr.iErr)
-    {
-        printError(&sciErr, 0);
-        return 1;
-    }
-
-    // Retrieve a matrix of double at position 2.
-    sciErr = getMatrixOfDouble(pvApiCtx, piAddrl2, &m2, &n2, &l2);
-    if (sciErr.iErr)
-    {
-        printError(&sciErr, 0);
-        Scierror(202, _("%s: Wrong type for argument %d: A real expected.\n"), fname, 2);
-        return 1;
-    }
-
+    GetRhsVar(1,MATRIX_OF_DOUBLE_DATATYPE,&m1,&n1,&l1);
+    GetRhsVar(2,MATRIX_OF_DOUBLE_DATATYPE,&m2,&n2,&l2);
     mn2 = m2 * n2;
-    //CheckSameDims
-    if (m1 != m2 || n1 != n2)
-    {
-        Scierror(999, _("%s: Wrong size for input argument #%d: %d-by-%d matrix expected.\n"), fname, 1, m1, n1);
-        return 1;
-    }
-
+    CheckSameDims(1,2,m1,n1,m2,n2);
     if (mn2 == 0)
     {
-        AssignOutputVariable(pvApiCtx, 1) = 0;
-        ReturnArguments(pvApiCtx);
-        return 0;
+        LhsVar(1)=0;
+        PutLhsVar();
+       return 0;
     }
 
-    if (nbInputArgument(pvApiCtx) >= 3)
+    if (Rhs >= 3)
     {
-        sciErr = getVarAddressFromPosition(pvApiCtx, 3, &piAddrl3);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            return 1;
-        }
-
-        // Retrieve a matrix of double at position 3.
-        sciErr = getMatrixOfDouble(pvApiCtx, piAddrl3, &m3, &n3, &l3);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            Scierror(202, _("%s: Wrong type for argument %d: A real expected.\n"), fname, 3);
-            return 1;
-        }
-
-        //CheckScalar
-        if (m3 != 1 || n3 != 1)
-        {
-            Scierror(999, _("%s: Wrong size for input argument #%d: A real scalar expected.\n"), fname, 3);
-            return 1;
-        }
-
-        arsize = *l3;
+        GetRhsVar(3,MATRIX_OF_DOUBLE_DATATYPE,&m3,&n3,&l3);
+        CheckScalar(3,m3,n3);
+        arsize = *stk(l3);
     }
 
-    if (nbInputArgument(pvApiCtx) >= 4)
+    if (Rhs >= 4)
     {
-        sciErr = getVarAddressFromPosition(pvApiCtx, 4, &piAddr4);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            return 1;
-        }
-
-        // Retrieve a matrix of double at position 4.
-        sciErr = getMatrixOfDoubleAsInteger(pvApiCtx, piAddr4, &m4, &n4, &l4);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            Scierror(202, _("%s: Wrong type for argument %d: A real expected.\n"), fname, 4);
-            return 1;
-        }
-
-        //CheckVector
-        if (m4 != 1 && n4 != 1)
-        {
-            Scierror(999, _("%s: Wrong size for input argument #%d: Vector expected.\n"), fname, 4);
-            return 1;
-        }
-
+        GetRhsVar(4,MATRIX_OF_INTEGER_DATATYPE,&m4,&n4,&l4); CheckVector(4,m4,n4);
         if (m4 * n4 == 1)
         {
-            dstyle = *(int*)(l4);
+            dstyle = *istk(l4);
         }
         if (m4 * n4 != 1 && m2 * n2 / 2 != m4 * n4)
         {
-            Scierror(999, _("%s: Wrong size for input argument #%d: %d expected.\n"), fname, 4, m2 * n2 / 2);
+            Scierror(999,_("%s: Wrong size for input argument #%d: %d expected.\n"),fname, 4, m2 * n2 / 2 );
             return 0;
         }
     }
     /* NG beg */
-    if (nbInputArgument(pvApiCtx) == 4 && m4 * n4 != 1)
+    if (Rhs == 4 && m4 * n4 != 1)
     {
-        style = (int*)(l4);
-        flag = 1;
+        style=istk(l4) ;
+        flag = 1 ;
     }
     else
     {
-        style = &dstyle;
+        style = &dstyle ;
         flag = 0;
     }
 
     getOrCreateDefaultSubwin();
 
-    Objsegs(style, flag, mn2, (l1), (l2), NULL, arsize);
+    Objsegs(style,flag,mn2,stk(l1),stk(l2),NULL,arsize);
 
-    AssignOutputVariable(pvApiCtx, 1) = 0;
-    ReturnArguments(pvApiCtx);
+    LhsVar(1)=0;
+    PutLhsVar();
     return 0;
 }
 /*--------------------------------------------------------------------------*/

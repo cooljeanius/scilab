@@ -19,7 +19,7 @@
 /*------------------------------------------------------------------------*/
 
 #include "gw_graphics.h"
-#include "api_scilab.h"
+#include "stack-c.h"
 #include "BuildObjects.h"
 #include "sciCall.h"
 #include "DrawObjects.h"
@@ -34,16 +34,9 @@
 #include "graphicObjectProperties.h"
 #include "CurrentObject.h"
 /*--------------------------------------------------------------------------*/
-int sci_xrects(char *fname, unsigned long fname_len)
+int sci_xrects( char *fname, unsigned long fname_len )
 {
-    SciErr sciErr;
-
-    int* piAddrl1 = NULL;
-    double* l1 = NULL;
-    int* piAddr2 = NULL;
-    int* l2 = NULL;
-
-    int m1 = 0, n1 = 0, m2 = 0, n2 = 0;
+    int m1 = 0, n1 = 0, l1 = 0, m2 = 0, n2 = 0, l2 = 0;
     long  hdl = 0;
     int i = 0;
     char* psubwinUID = NULL;
@@ -52,23 +45,9 @@ int sci_xrects(char *fname, unsigned long fname_len)
     int *piForeground = &foreground;
     char *pstCompoundUID = NULL;
 
-    CheckInputArgument(pvApiCtx, 1, 2);
+    CheckRhs(1, 2);
 
-    sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrl1);
-    if (sciErr.iErr)
-    {
-        printError(&sciErr, 0);
-        return 1;
-    }
-
-    // Retrieve a matrix of double at position 1.
-    sciErr = getMatrixOfDouble(pvApiCtx, piAddrl1, &m1, &n1, &l1);
-    if (sciErr.iErr)
-    {
-        printError(&sciErr, 0);
-        Scierror(202, _("%s: Wrong type for argument %d: A real expected.\n"), fname, 1);
-        return 1;
-    }
+    GetRhsVar(1, MATRIX_OF_DOUBLE_DATATYPE, &m1, &n1, &l1);
 
     if (m1 != 4)
     {
@@ -77,31 +56,10 @@ int sci_xrects(char *fname, unsigned long fname_len)
     }
 
 
-    if (nbInputArgument(pvApiCtx) == 2)
+    if (Rhs == 2)
     {
-        sciErr = getVarAddressFromPosition(pvApiCtx, 2, &piAddr2);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            return 1;
-        }
-
-        // Retrieve a matrix of double at position 2.
-        sciErr = getMatrixOfDoubleAsInteger(pvApiCtx, piAddr2, &m2, &n2, &l2);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            Scierror(202, _("%s: Wrong type for argument %d: A real expected.\n"), fname, 2);
-            return 1;
-        }
-
-        //CheckVector
-        if (m2 != 1 && n2 != 1)
-        {
-            Scierror(999, _("%s: Wrong size for input argument #%d: Vector expected.\n"), fname, 2);
-            return 1;
-        }
-
+        GetRhsVar(2, MATRIX_OF_INTEGER_DATATYPE, &m2, &n2, &l2);
+        CheckVector(2, m2, n2);
         if (m2 * n2 != n1)
         {
             Scierror(999, _("%s: Incompatible length for input arguments #%d and #%d.\n"), fname, 1, 2);
@@ -110,20 +68,11 @@ int sci_xrects(char *fname, unsigned long fname_len)
     }
     else
     {
-        m2 = 1;
-        n2 = n1;
-
-        sciErr = allocMatrixOfDoubleAsInteger(pvApiCtx, 2, m2, n2, &l2);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            Scierror(999, _("%s: Memory allocation error.\n"), fname);
-            return 1;
-        }
-
+        m2 = 1, n2 = n1;
+        CreateVar(2, MATRIX_OF_INTEGER_DATATYPE, &m2, &n2, &l2);
         for (i = 0; i < n2; ++i)
         {
-            l2[i] = 0;
+            *istk(l2 + i) = 0;
         }
     }
 
@@ -140,28 +89,28 @@ int sci_xrects(char *fname, unsigned long fname_len)
     for (i = 0; i < n1; ++i)
     {
         /*       j = (i==0) ? 0 : 1; */
-        if (l2[i] == 0)
+        if (*istk(l2 + i) == 0)
         {
             /** fil(i) = 0 rectangle i is drawn using the current line style (or color).**/
             /* color setting is done now */
 
-            Objrect((l1 + (4 * i)), (l1 + (4 * i) + 1), (l1 + (4 * i) + 2), (l1 + (4 * i) + 3),
+            Objrect(stk(l1 + (4 * i)), stk(l1 + (4 * i) + 1), stk(l1 + (4 * i) + 2), stk(l1 + (4 * i) + 3),
                     &foreground, NULL, FALSE, TRUE, &hdl);
         }
         else
         {
-            if (l2[i] < 0)
+            if (*istk(l2 + i) < 0)
             {
                 /** fil(i) < 0 rectangle i is drawn using the line style (or color) **/
-                int tmp = - (*(int*)(l2 + i));
-                Objrect((l1 + (4 * i)), (l1 + (4 * i) + 1), (l1 + (4 * i) + 2), (l1 + (4 * i) + 3),
+                int tmp = - (*istk(l2 + i));
+                Objrect(stk(l1 + (4 * i)), stk(l1 + (4 * i) + 1), stk(l1 + (4 * i) + 2), stk(l1 + (4 * i) + 3),
                         &tmp, NULL, FALSE, TRUE, &hdl);
             }
             else
             {
                 /** fil(i) > 0   rectangle i is filled using the pattern (or color) **/
-                Objrect((l1 + (4 * i)), (l1 + (4 * i) + 1), (l1 + (4 * i) + 2), (l1 + (4 * i) + 3),
-                        NULL, l2 + i, TRUE, FALSE, &hdl);
+                Objrect(stk(l1 + (4 * i)), stk(l1 + (4 * i) + 1), stk(l1 + (4 * i) + 2), stk(l1 + (4 * i) + 3),
+                        NULL, istk(l2 + i), TRUE, FALSE, &hdl);
             }
         }
         // Add newly created object to Compound
@@ -171,11 +120,8 @@ int sci_xrects(char *fname, unsigned long fname_len)
     /** make Compound current object **/
     setCurrentObject(pstCompoundUID);
 
-    releaseGraphicObjectProperty(-1, pstCompoundUID, jni_string, 0);
-
-    AssignOutputVariable(pvApiCtx, 1) = 0;
-    ReturnArguments(pvApiCtx);
-
+    LhsVar(1) = 0;
+    PutLhsVar();
     return 0;
 }
 /*--------------------------------------------------------------------------*/

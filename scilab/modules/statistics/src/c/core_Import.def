@@ -2,7 +2,8 @@ LIBRARY    core.dll
 
 
 EXPORTS
-;core
+;
+
 checkrhs_
 checklhs_
 getrhsvar_
@@ -11,6 +12,4 @@ stack_
 intersci_
 putlhsvar_
 createvar_
-callFunctionFromGateway
-MyHeapAlloc
-MyHeapFree
+callFunctionFromGateway 

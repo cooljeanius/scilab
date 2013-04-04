@@ -15,7 +15,7 @@
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="en" xml:id="editvar">
     <refnamediv>
         <refname>editvar</refname>
-        <refpurpose>Scilab variable editor</refpurpose>
+        <refpurpose> Scilab variable editor</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Calling Sequence</title>
@@ -220,13 +220,5 @@ editvar b;
 sp=sparse([1,2;4,5;3,10],[1,2,3])
 editvar("sp");
  ]]></programlisting>
-    </refsection>
-    <refsection role="see also">
-        <title>See Also</title>
-        <simplelist type="inline">
-            <member>
-                <link linkend="closeEditvar">closeEditvar</link>
-            </member>
-        </simplelist>
     </refsection>
 </refentry>

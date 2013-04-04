@@ -12,19 +12,8 @@
             <literal>ans</literal> содержит результат последнего вычисленного неприсвоенного выражения.
         </para>
         <para>
-            Переменная <literal>ans</literal> не защищается с помощью <function>predef</function>.
+            Переменная <literal>ans</literal> не защищается с помощью <literal>predef</literal>.
         </para>
-    </refsection>
-    <refsection>
-        <title>Примеры</title>
-        <programlisting role="example"><![CDATA[
-2+2
-ans // 4
-ans=10 // 10
-clear ans
-a=2+2;
-isdef("ans") // F
- ]]></programlisting>
     </refsection>
     <refsection role="see also">
         <title>Смотрите также</title>

@@ -35,9 +35,6 @@
                 </para>
             </listitem>
         </itemizedlist>
-    </refsection>
-    <refsection>
-        <title>Examples</title>
         <programlisting role="example"><![CDATA[ 
 t=scicos_time()
  ]]></programlisting>

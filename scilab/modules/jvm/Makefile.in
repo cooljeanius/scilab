@@ -91,8 +91,7 @@ DIST_COMMON = $(libscijvm_la_include_HEADERS) $(srcdir)/Makefile.am \
 subdir = modules/jvm
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/backtrace.m4 \
-	$(top_srcdir)/m4/compiler.m4 $(top_srcdir)/m4/curl.m4 \
-	$(top_srcdir)/m4/docbook.m4 $(top_srcdir)/m4/doxygen.m4 \
+	$(top_srcdir)/m4/compiler.m4 $(top_srcdir)/m4/docbook.m4 \
 	$(top_srcdir)/m4/fftw.m4 $(top_srcdir)/m4/fortran.m4 \
 	$(top_srcdir)/m4/giws.m4 $(top_srcdir)/m4/hdf5.m4 \
 	$(top_srcdir)/m4/intel_compiler.m4 \
@@ -238,10 +237,6 @@ COMMONS_IO = @COMMONS_IO@
 COMMONS_LOGGING = @COMMONS_LOGGING@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
-CURL_CFLAGS = @CURL_CFLAGS@
-CURL_CONFIG = @CURL_CONFIG@
-CURL_LIBS = @CURL_LIBS@
-CURL_VERSION = @CURL_VERSION@
 CXX = @CXX@
 CXXCPP = @CXXCPP@
 CXXDEPMODE = @CXXDEPMODE@
@@ -251,7 +246,6 @@ DEFS = @DEFS@
 DEMOTOOLS_ENABLE = @DEMOTOOLS_ENABLE@
 DEPDIR = @DEPDIR@
 DOCBOOK_ROOT = @DOCBOOK_ROOT@
-DOXYGEN_BIN = @DOXYGEN_BIN@
 DSYMUTIL = @DSYMUTIL@
 DUMPBIN = @DUMPBIN@
 ECHO_C = @ECHO_C@
@@ -480,7 +474,8 @@ libscijvm_la_root_DATA = license.txt
 libscijvm_la_etcdir = $(mydatadir)/etc
 libscijvm_la_etc_DATA = etc/jvm.quit etc/jvm.start
 libscijvm_la_CPPFLAGS = $(JAVA_JNI_INCLUDE) \
-			-I$(top_srcdir)/modules/dynamic_link/includes/ \
+			-I$(top_srcdir)/libs/MALLOC/includes/ \
+			-I$(top_srcdir)/libs/dynamiclibrary/includes/ \
 			-I$(srcdir)/includes/ \
 			-I$(srcdir)/src/c \
 			$(XML_FLAGS) \
@@ -544,6 +539,7 @@ src/c/getJvmOptions.c
 
 libscijvm_disable_la_SOURCES = src/nojvm/nojvm.c
 libscijvm_disable_la_CPPFLAGS = -I$(srcdir)/includes/ \
+			-I$(top_srcdir)/libs/MALLOC/includes/ \
 			-I$(top_srcdir)/modules/call_scilab/includes/ \
 			-I$(srcdir)/src/c \
 			-I$(top_srcdir)/modules/localization/includes/ \

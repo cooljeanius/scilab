@@ -124,19 +124,6 @@ public class AxesDrawer {
         reversedBoundsIntervals = new double[3];
     }
 
-    public Transformation getCurrentProjection(Axes axes) throws DegenerateMatrixException {
-        DrawingTools drawingTools = visitor.getDrawingTools();
-        Canvas canvas = visitor.getCanvas();
-        Transformation zoneProjection = computeZoneProjection(axes);
-        Transformation transformation = computeBoxTransformation(axes, canvas, false);
-        Transformation dataTransformation = computeDataTransformation(axes);
-        Transformation windowTrans = drawingTools.getTransformationManager().getWindowTransformation().getInverseTransformation();
-        Transformation current = zoneProjection.rightTimes(transformation);
-        current = current.rightTimes(dataTransformation);
-
-        return windowTrans.rightTimes(current);
-    }
-
     /**
      * Draw the given {@see Axes}.
      * @param axes {@see Axes} to draw.
@@ -252,12 +239,11 @@ public class AxesDrawer {
             /**
              * Draw hidden part of box.
              */
-            if (!visitor.is2DView()) {
-                appearance.setLineColor(ColorFactory.createColor(colorMap, axes.getHiddenAxisColor()));
-                appearance.setLineWidth(axes.getLineThickness().floatValue());
-                appearance.setLinePattern(HIDDEN_BORDER_PATTERN.asPattern());
-                drawingTools.draw(geometries.getHiddenBoxBorderGeometry(), appearance);
-            }
+            appearance.setLineColor(ColorFactory.createColor(colorMap, axes.getHiddenAxisColor()));
+            appearance.setLineWidth(axes.getLineThickness().floatValue());
+            appearance.setLinePattern(HIDDEN_BORDER_PATTERN.asPattern());
+            drawingTools.draw(geometries.getHiddenBoxBorderGeometry(), appearance);
+
 
             if (boxed != Box.BoxType.HIDDEN_AXES) {
 
@@ -311,20 +297,18 @@ public class AxesDrawer {
         Double[] margins = axes.getMargins();
 
         // TODO :  zoom box.
-        double x = (axesBounds[0] + axesBounds[2] * margins[0]) * 2 - 1;
+        double x = (axesBounds[0] + axesBounds[2] * margins[0]) * 2 - 1;  
         double y = (1.0 - axesBounds[1] - axesBounds[3] * (1.0 - margins[3])) * 2 - 1;
         double w = (1 - margins[0] - margins[1]) * axesBounds[2];
         double h = (1 - margins[2] - margins[3]) * axesBounds[3];
 
-        // Don't know what's the goal of this code (finally w=h=minSize, so why a square ???)
-        // Comment it: that fixes bug 11801.
-        /*if (axes.getIsoview()) {
-          double minSize = Math.min(w, h);
-          y += (h - minSize);
-          h = minSize;
-          x += (w - minSize);
-          w = minSize;
-          }*/
+        if (axes.getIsoview()) {
+            double minSize = Math.min(w, h);
+            y += (h - minSize);
+            h = minSize;
+            x += (w - minSize);
+            w = minSize;
+        }
 
         return new Rectangle2D.Double(x, y, w, h);
     }
@@ -1057,8 +1041,6 @@ public class AxesDrawer {
     public void disposeAll() {
         this.rulerDrawer.disposeAll();
         this.projectionMap.clear();
-        this.projection2dViewMap.clear();
-        this.sceneProjectionMap.clear();
     }
 
     public void update(String id, int property) {
@@ -1067,8 +1049,5 @@ public class AxesDrawer {
 
     public void dispose(String id) {
         this.rulerDrawer.dispose(id);
-        projectionMap.remove(id);
-        projection2dViewMap.remove(id);
-        sceneProjectionMap.remove(id);
     }
 }

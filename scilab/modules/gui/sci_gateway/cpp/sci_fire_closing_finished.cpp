@@ -27,20 +27,22 @@ using namespace org_scilab_modules_gui_bridge;
 /*--------------------------------------------------------------------------*/
 int sci_fire_closing_finished(char *fname, unsigned long fname_len)
 {
-    CheckInputArgument(pvApiCtx, 0, 0);
-
+    CheckRhs(0, 0);
+	
     char const* pstCurrentFigure = NULL;
 
     /* Set current figure as parent */
     pstCurrentFigure = getCurrentFigure();
     if (pstCurrentFigure != NULL)
     {
-        CallScilabBridge::fireClosingFinished(getScilabJavaVM(), pstCurrentFigure);
+	CallScilabBridge::fireClosingFinished(getScilabJavaVM(), pstCurrentFigure);
     }
 
-    AssignOutputVariable(pvApiCtx, 1) = 0;
-    returnArguments(pvApiCtx);
-    return 0;
+    LhsVar(1) = 0;
+
+    PutLhsVar();
+
+    return 1;
 }
 
 /*--------------------------------------------------------------------------*/

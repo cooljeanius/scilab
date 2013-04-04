@@ -17,7 +17,7 @@
 namespace org_modules_external_objects
 {
 
-bool OptionsHelper::copyOccurred = false;
+bool OptionsHelper::copyOccured = false;
 int OptionsHelper::envId = -1;
 
 }

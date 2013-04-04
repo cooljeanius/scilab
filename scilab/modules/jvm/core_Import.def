@@ -20,6 +20,4 @@ com_
 callFunctionFromGateway
 GetXmlFileEncoding
 getScilabMode
-MyHeapAlloc
-MyHeapFree
-MyHeapRealloc
+;

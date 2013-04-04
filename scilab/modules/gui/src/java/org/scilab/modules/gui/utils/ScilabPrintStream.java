@@ -39,7 +39,7 @@ public final class ScilabPrintStream extends PrintStream {
      * @return true if a stream is available
      */
     public static boolean isAvailable() {
-        return false;//ScilabConsole.isExistingConsole();
+        return ScilabConsole.isExistingConsole();
     }
 
     /**

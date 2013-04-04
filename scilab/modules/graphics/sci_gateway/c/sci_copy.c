@@ -21,7 +21,7 @@
 #include <stdlib.h>
 
 #include "gw_graphics.h"
-#include "api_scilab.h"
+#include "stack-c.h"
 #include "GetProperty.h"
 #include "CloneObjects.h"
 #include "localization.h"
@@ -34,50 +34,27 @@
 /*--------------------------------------------------------------------------*/
 int sci_copy(char *fname, unsigned long fname_len)
 {
-    SciErr sciErr;
-
-    int* piAddrl1 = NULL;
-    long long* l1 = NULL;
-    int* piAddrl2 = NULL;
-    long long* l2 = NULL;
-    long long* outindex = NULL;
-
     unsigned long hdl = 0, hdlparent = 0;
     char *pobjUID = NULL, *psubwinparenttargetUID = NULL, *pcopyobjUID = NULL;
+    int m1 = 0, n1 = 0, l1 = 0, l2 = 0;
+    int numrow = 0, numcol = 0, outindex = 0, lw = 0;
     int iType = -1;
     int *piType = &iType;
-    int m1 = 0, n1 = 0;
-    int numrow = 0, numcol = 0, lw = 0;
     int isPolyline = 0;
 
-    CheckInputArgument(pvApiCtx, 1, 2);
-    CheckOutputArgument(pvApiCtx, 0, 1);
+    CheckRhs(1, 2);
+    CheckLhs(0, 1);
 
     /*  set or create a graphic window*/
-    lw = 1 + nbArgumentOnStack(pvApiCtx) - nbInputArgument(pvApiCtx);
-    sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrl1);
-    if (sciErr.iErr)
-    {
-        printError(&sciErr, 0);
-        return 1;
-    }
-
-    // Retrieve a matrix of handle at position 1.
-    sciErr = getMatrixOfHandle(pvApiCtx, piAddrl1, &m1, &n1, &l1); /* Gets the Handle passed as argument*/
-    if (sciErr.iErr)
-    {
-        printError(&sciErr, 0);
-        Scierror(202, _("%s: Wrong type for argument %d: Handle matrix expected.\n"), fname, 1);
-        return 1;
-    }
-
+    lw = 1 + Top - Rhs;
+    GetRhsVar(1, GRAPHICAL_HANDLE_DATATYPE, &m1, &n1, &l1); /* Gets the Handle passed as argument*/
     if (m1 != 1 || n1 != 1)
     {
         C2F(overload)(&lw, "copy", 4);
         return 0;
     }
 
-    hdl = (unsigned long) * l1; /* on recupere le pointeur d'objet par le handle*/
+    hdl = (unsigned long) * hstk(l1); /* on recupere le pointeur d'objet par le handle*/
     pobjUID = (char*)getObjectFromHandle(hdl);
     if (pobjUID == NULL)
     {
@@ -87,16 +64,16 @@ int sci_copy(char *fname, unsigned long fname_len)
 
     getGraphicObjectProperty(pobjUID, __GO_TYPE__, jni_int, (void **)&piType);
 
-    if (iType != __GO_TEXT__ &&
-            iType != __GO_ARC__ &&
-            iType != __GO_POLYLINE__ &&
-            iType != __GO_RECTANGLE__)
+    if (piType != __GO_TEXT__ &&
+        piType != __GO_ARC__ &&
+        piType != __GO_POLYLINE__ &&
+        piType != __GO_RECTANGLE__)
     {
         C2F(overload)(&lw, "copy", 4);
         return 0;
     }
 
-    if (iType == __GO_POLYLINE__)
+    if (piType == __GO_POLYLINE__)
     {
         isPolyline = 1;
     }
@@ -105,27 +82,12 @@ int sci_copy(char *fname, unsigned long fname_len)
         isPolyline = 0;
     }
 
-    if (nbInputArgument(pvApiCtx) > 1)
+    if (Rhs > 1)
     {
-        sciErr = getVarAddressFromPosition(pvApiCtx, 2, &piAddrl2);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            return 1;
-        }
-
-        // Retrieve a matrix of handle at position 2.
-        sciErr = getMatrixOfHandle(pvApiCtx, piAddrl2, &m1, &n1, &l2); /* Gets the command name */
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            Scierror(202, _("%s: Wrong type for argument %d: Handle matrix expected.\n"), fname, 2);
-            return 1;
-        }
-
-        hdlparent = (unsigned long) * l2; /* on recupere le pointeur d'objet par le handle*/
+        GetRhsVar(2, GRAPHICAL_HANDLE_DATATYPE, &m1, &n1, &l2); /* Gets the command name */
+        hdlparent = (unsigned long) * hstk(l2); /* on recupere le pointeur d'objet par le handle*/
         psubwinparenttargetUID = (char*)getObjectFromHandle(hdlparent);
-        if (psubwinparenttargetUID == NULL)
+        if ( psubwinparenttargetUID == NULL)
         {
             Scierror(999, _("%s: The handle is not or no more valid.\n"), fname);
             return 0;
@@ -148,14 +110,7 @@ int sci_copy(char *fname, unsigned long fname_len)
 
     numrow   = 1;
     numcol   = 1;
-    sciErr = allocMatrixOfHandle(pvApiCtx, nbInputArgument(pvApiCtx) + 1, numrow, numcol, &outindex);
-    if (sciErr.iErr)
-    {
-        printError(&sciErr, 0);
-        Scierror(999, _("%s: Memory allocation error.\n"), fname);
-        return 1;
-    }
-
+    CreateVar(Rhs + 1, GRAPHICAL_HANDLE_DATATYPE, &numrow, &numcol, &outindex);
 
     if (isPolyline)
     {
@@ -166,13 +121,13 @@ int sci_copy(char *fname, unsigned long fname_len)
         pcopyobjUID = cloneGraphicObject(pobjUID);
     }
 
-    *(outindex) = getHandle(pcopyobjUID);
+    *hstk(outindex) = getHandle(pcopyobjUID);
 
     setGraphicObjectRelationship(psubwinparenttargetUID, pcopyobjUID);
     releaseGraphicObjectProperty(__GO_PARENT__, pcopyobjUID, jni_string, 1);
 
-    AssignOutputVariable(pvApiCtx, 1) = nbInputArgument(pvApiCtx) + 1;
-    ReturnArguments(pvApiCtx);
+    LhsVar(1) = Rhs + 1;
+    PutLhsVar();
 
     return 0;
 }

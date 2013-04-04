@@ -13,7 +13,7 @@
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"  xml:lang="en" xml:id="xgrid">
     <refnamediv>
         <refname>xgrid</refname>
-        <refpurpose>add a grid on a 2D plot</refpurpose>
+        <refpurpose> add a grid on a 2D plot</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Calling Sequence</title>
@@ -25,7 +25,7 @@
             <varlistentry>
                 <term>style</term>
                 <listitem>
-                    <para>an integer.</para>
+                    <para>integer</para>
                 </listitem>
             </varlistentry>
         </variablelist>
@@ -33,9 +33,9 @@
     <refsection>
         <title>Description</title>
         <para>
-            <function>xgrid</function> adds a grid on a 2D plot.
-            <varname>style</varname> is the dash id or the color id to use for
-            the grid plotting. Use <code>xset()</code> for the meaning of id.
+            <literal>xgrid</literal> adds a grid on a 2D plot. <literal>style</literal> is the dash id
+            or the color id to use for the grid plotting. Use <literal>xset()</literal> for the
+            meaning of id.
         </para>
     </refsection>
     <refsection>
@@ -43,7 +43,7 @@
         <programlisting role="example"><![CDATA[ 
 x=[0:0.1:2*%pi]';
 plot2d(sin(x))
-xgrid(5)
+xgrid(2)
  ]]></programlisting>
         <scilab:image>
             x=[0:0.1:2*%pi]';

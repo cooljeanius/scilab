@@ -33,7 +33,7 @@ public class IndentManager {
      * Constructor.
      * @param doc the doc to indent
      */
-    public IndentManager(ScilabDocument doc) {
+    IndentManager(ScilabDocument doc) {
         this.doc = doc;
         this.elem = doc.getDefaultRootElement();
         scanner = new IndentScanner(doc);

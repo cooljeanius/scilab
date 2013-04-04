@@ -14,11 +14,10 @@
 
 #include <math.h>
 
-#include "GetUicontrolStyle.hxx"
 #include "SetUicontrolValue.hxx"
 #include "stack-c.h"
 
-int SetUicontrolValue(void* _pvCtx, char* sciObjUID, void* _pvData, int valueType, int nbRow, int nbCol)
+int SetUicontrolValue(void* _pvCtx, char* sciObjUID, size_t stackPointer, int valueType, int nbRow, int nbCol)
 {
     double *value = NULL;
     double* truncatedValue = NULL;
@@ -53,7 +52,7 @@ int SetUicontrolValue(void* _pvCtx, char* sciObjUID, void* _pvData, int valueTyp
             return SET_PROPERTY_ERROR;
         }
 
-        value = (double*)_pvData;
+        value = stk(stackPointer);
         valueSize = nbCol * nbRow;
     }
     else if (valueType == sci_strings) // Ascendant compatibility
@@ -67,7 +66,7 @@ int SetUicontrolValue(void* _pvCtx, char* sciObjUID, void* _pvData, int valueTyp
 
         value = new double[1];
         valueSize = 1;
-        nbValues = sscanf((char*)_pvData, "%lf", &value[0]);
+        nbValues = sscanf(getStringFromStack(stackPointer), "%lf", &value[0]);
 
         if (nbValues != 1)
         {
@@ -100,7 +99,7 @@ int SetUicontrolValue(void* _pvCtx, char* sciObjUID, void* _pvData, int valueTyp
      */
     if ((objectStyle == __GO_UI_POPUPMENU__ || objectStyle == __GO_UI_LISTBOX__) && truncated)
     {
-        sciprint(const_cast<char*>(_("Warning: '%s' 'Value' property should be an integer, the value will be truncated.\n")), IntToStyle(objectStyle));
+        sciprint(const_cast<char*>(_("Warning: '%s' 'Value' property should be an integer, the value will be truncated.\n")), objectStyle);
     }
 
     /*
@@ -113,7 +112,7 @@ int SetUicontrolValue(void* _pvCtx, char* sciObjUID, void* _pvData, int valueTyp
 
         if ((value[0] != minValue) && (value[0] != maxValue))
         {
-            sciprint(const_cast<char*>(_("Warning: '%s' 'Value' property should be equal to either '%s' or '%s' property value.\n")), IntToStyle(objectStyle), "Min", "Max");
+            sciprint(const_cast<char*>(_("Warning: '%s' 'Value' property should be equal to either '%s' or '%s' property value.\n")), objectStyle, "Min", "Max");
         }
 
     }

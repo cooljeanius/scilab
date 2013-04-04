@@ -20,7 +20,6 @@
 /*        a handle                                                        */
 /*------------------------------------------------------------------------*/
 
-#include "stricmp.h"
 #include "setHandleProperty.h"
 #include "SetProperty.h"
 #include "getPropertyAssignedValue.h"
@@ -32,52 +31,53 @@
 #include "graphicObjectProperties.h"
 
 /*------------------------------------------------------------------------*/
-int set_anti_aliasing_property(void* _pvCtx, char* pobjUID, void* _pvData, int valueType, int nbRow, int nbCol)
+int set_anti_aliasing_property(void* _pvCtx, char* pobjUID, size_t stackPointer, int valueType, int nbRow, int nbCol )
 {
 
     int quality = 0;
     BOOL status = FALSE;
 
-    if (valueType != sci_strings)
+    if ( !( valueType == sci_strings ) )
     {
         Scierror(999, _("Wrong type for '%s' property: String expected.\n"), "anti_aliasing");
-        return SET_PROPERTY_ERROR;
+        return SET_PROPERTY_ERROR ;
     }
 
-    if (stricmp((char*)_pvData, "off") == 0)
+    if ( isStringParamEqual( stackPointer, "off" ) )
     {
         quality = 0;
     }
-    else if (stricmp((char*)_pvData, "2x") == 0)
+    else if ( isStringParamEqual( stackPointer, "2x" ) )
     {
         quality = 1;
     }
-    else if (stricmp((char*)_pvData, "4x") == 0)
+    else if ( isStringParamEqual( stackPointer, "4x" ) )
     {
         quality = 2;
     }
-    else if (stricmp((char*)_pvData, "8x") == 0)
+    else if ( isStringParamEqual( stackPointer, "8x" ) )
     {
         quality = 3;
     }
-    else if (stricmp((char*)_pvData, "16x") == 0)
+    else if ( isStringParamEqual( stackPointer, "16x" ) )
     {
         quality = 4;
     }
     else
     {
         Scierror(999, _("Wrong value for '%s' property: Must be in the set {%s}.\n"), "anti_aliasing", "off, 2x, 4x, 8x, 16x");
-        return SET_PROPERTY_ERROR;
+        return SET_PROPERTY_ERROR ;
     }
 
     status = setGraphicObjectProperty(pobjUID, __GO_ANTIALIASING__, &quality, jni_int, 1);
+
     if (status == TRUE)
     {
         return SET_PROPERTY_SUCCEED;
     }
     else
     {
-        Scierror(999, _("'%s' property does not exist for this handle.\n"), "anti_aliasing");
+        Scierror(999, _("'%s' property does not exist for this handle.\n"), "anti_aliasing") ;
         return SET_PROPERTY_ERROR;
     }
 

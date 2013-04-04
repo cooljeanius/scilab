@@ -5,11 +5,12 @@
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
 
-// <-- XCOS TEST -->
+// <-- TEST WITH XCOS -->
 // <-- TEST WITH GRAPHIC -->
 
 // test scope values 
 
+loadXcosLibs();
 
 assert_checktrue(importXcosDiagram(SCI + "/modules/xcos/tests/unit_tests/canimxy3d.xcos"));
 xcos_simulate(scs_m, 4);

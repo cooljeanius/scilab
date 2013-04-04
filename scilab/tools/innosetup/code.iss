@@ -21,8 +21,6 @@ external 'GetModuleHandleA@kernel32.dll stdcall';
 
 var
     AboutModulesButton: TButton;
-    OriginalOnTypesComboChange: TNotifyEvent;
-
 //------------------------------------------------------------------------------
 function isCLIType(): Boolean;
   begin
@@ -307,33 +305,12 @@ function InitializeSetup: Boolean;
 #endif
   end;
 //------------------------------------------------------------------------------
-procedure OnTypesComboChange(Sender: TObject);
-var
-  ItemIndex: Integer;
-  Res: Boolean;
-begin
-  OriginalOnTypesComboChange(Sender);
-
-  // Prevent CHM to be checked by switching to Full installation in Offline mode
-  if OfflineInstallCheckBox.Checked then
-  begin
-    ItemIndex := (Sender as TNewComboBox).ItemIndex;
-    if ItemIndex = 0 then
-    begin
-      Res := SetComponentState('DescriptionCHM', False, False);
-      if not Res then
-      begin
-        Log('OnTypesComboChange: ' +
-          'Error while changing components intallation.');
-      end;
-    end;
-  end;
-end;
-//------------------------------------------------------------------------------
 procedure CreateTheWizardPages;
 var
   CancelButton: TButton;
+
 begin
+
   CancelButton := WizardForm.CancelButton;
 
   AboutModulesButton := TButton.Create(WizardForm);
@@ -348,14 +325,10 @@ begin
   AboutModulesButton.OnClick := @ButtonAboutModulesOnClick;
   AboutModulesButton.Parent := CancelButton.Parent;
   AboutModulesButton.Visible := false;
-
-  CreateOfflineInstallationCheckBox;
-
-  OriginalOnTypesComboChange := WizardForm.TypesCombo.OnChange;
-  WizardForm.TypesCombo.OnChange := @OnTypesComboChange;
 end;
 //------------------------------------------------------------------------------
 procedure InitializeWizard();
+
 begin
   CreateTheWizardPages;
 end;

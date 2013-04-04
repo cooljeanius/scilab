@@ -10,6 +10,3 @@ freeArrayOfWideString
 getVariablesName
 getcommandkeywords
 GetFunctionsList
-MyHeapAlloc
-MyHeapFree
-MyHeapRealloc

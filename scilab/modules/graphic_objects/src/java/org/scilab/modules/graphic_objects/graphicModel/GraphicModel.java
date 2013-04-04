@@ -12,7 +12,6 @@
 
 package org.scilab.modules.graphic_objects.graphicModel;
 
-import java.rmi.server.UID;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,8 +59,6 @@ import org.scilab.modules.graphic_objects.vectfield.Segs;
 public final class GraphicModel {
 
     private static GraphicModel me;
-    private static GraphicObject figureModel;
-    private static GraphicObject axesModel;
 
     private Map<String, GraphicObject> allObjects = new HashMap<String, GraphicObject>();
 
@@ -80,14 +77,6 @@ public final class GraphicModel {
         }
 
         return me;
-    }
-
-    public static Figure getFigureModel() {
-        return (Figure) figureModel;
-    }
-
-    public static Axes getAxesModel() {
-        return (Axes) axesModel;
     }
 
     /**
@@ -195,7 +184,6 @@ public final class GraphicModel {
             case AXESMODEL:
                 createdObject = new Axes();
                 createdObject.setValid(false);
-                axesModel = createdObject;
                 break;
             case AXIS:
                 createdObject = new Axis();
@@ -218,7 +206,6 @@ public final class GraphicModel {
             case FIGUREMODEL:
                 createdObject = new Figure();
                 createdObject.setValid(false);
-                figureModel = createdObject;
                 break;
             case GRAYPLOT:
                 createdObject = new Grayplot();

@@ -12,7 +12,7 @@
  */
 
 #include "gw_gui.h"
-#include "api_scilab.h"
+#include "stack-c.h"
 #include "localization.h"
 #include "Scierror.h"
 #include "getPropertyAssignedValue.h"
@@ -25,66 +25,36 @@
 /*--------------------------------------------------------------------------*/
 int sci_progressionbar(char *fname, unsigned long fname_len)
 {
-    SciErr sciErr;
-
-    int* piAddrhandleAdr = NULL;
-    long long* handleAdr = NULL;
-    int* piAddrmessageAdr = NULL;
-    long long* stkAdr = NULL;
-
     char *pProgressionbarUID = NULL;
 
     int nbRow = 0, nbCol = 0;
     int nbRowMessage = 0, nbColMessage = 0;
 
     char **messageAdr = NULL;
+    int handleAdr = 0;
+    int stkAdr = 0;
+
     int iValue = 0;
+
     unsigned long GraphicHandle = 0;
 
-    CheckInputArgument(pvApiCtx, 1, 2);
-    CheckOutputArgument(pvApiCtx, 1, 1);
+    CheckRhs(1, 2);
+    CheckLhs(1, 1);
 
-    sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrhandleAdr);
-    if (sciErr.iErr)
+    if (Rhs == 1)
     {
-        printError(&sciErr, 0);
-        return 1;
-    }
-
-    if (nbInputArgument(pvApiCtx) == 1)
-    {
-        if ((checkInputArgumentType(pvApiCtx, 1, sci_handles)))  /* ProgressionBar to update */
+        if (VarType(1) == sci_handles)  /* ProgressionBar to update */
         {
-            // Retrieve a matrix of handle at position 1.
-            sciErr = getMatrixOfHandle(pvApiCtx, piAddrhandleAdr, &nbRow, &nbCol, &handleAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                Scierror(202, _("%s: Wrong type for argument %d: Handle matrix expected.\n"), fname, 1);
-                return 1;
-            }
-
+            GetRhsVar(1, GRAPHICAL_HANDLE_DATATYPE, &nbRow, &nbCol, &handleAdr);
             if (nbRow * nbCol != 1)
             {
                 Scierror(999, _("%s: Wrong size for input argument #%d: A graphic handle expected.\n"), fname, 1);
                 return FALSE;
             }
         }
-        else if ((checkInputArgumentType(pvApiCtx, 1, sci_strings))) /* Message to display */
+        else if (VarType(1) == sci_strings) /* Message to display */
         {
-            sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrmessageAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                return 1;
-            }
-
-            // Retrieve a matrix of string at position 1.
-            if (getAllocatedMatrixOfString(pvApiCtx, piAddrmessageAdr, &nbRowMessage, &nbColMessage, &messageAdr))
-            {
-                Scierror(202, _("%s: Wrong type for argument #%d: String matrix expected.\n"), fname, 1);
-                return 1;
-            }
+            GetRhsVar(1, MATRIX_OF_STRING_DATATYPE, &nbRowMessage, &nbColMessage, &messageAdr);
         }
         else
         {
@@ -96,55 +66,40 @@ int sci_progressionbar(char *fname, unsigned long fname_len)
         {
             /* Create a new ProgressionBar */
             pProgressionbarUID = createGraphicObject(__GO_PROGRESSIONBAR__);
+
             GraphicHandle = getHandle(pProgressionbarUID);
-            setGraphicObjectProperty(pProgressionbarUID, __GO_UI_MESSAGE__, messageAdr, jni_string_vector, nbColMessage * nbRowMessage);
-            freeAllocatedMatrixOfString(nbRowMessage, nbColMessage, messageAdr);
+
+            setGraphicObjectProperty(pProgressionbarUID, __GO_UI_MESSAGE__, getStringMatrixFromStack((size_t) messageAdr), jni_string_vector,
+                                     nbColMessage * nbRowMessage);
+            freeArrayOfString(messageAdr, nbColMessage * nbRowMessage);
         }
         else
         {
-            GraphicHandle = (unsigned long) * (handleAdr);
+            GraphicHandle = (unsigned long)*hstk(handleAdr);
             pProgressionbarUID = (char*)getObjectFromHandle(GraphicHandle);
+
             setGraphicObjectProperty(pProgressionbarUID, __GO_UI_VALUE__, &iValue, jni_int, 1);
         }
     }
-    else if (nbInputArgument(pvApiCtx) == 2)
+    else if (Rhs == 2)
     {
-        if ((checkInputArgumentType(pvApiCtx, 1, sci_handles)) && (checkInputArgumentType(pvApiCtx, 2, sci_strings))) /* progressionbar(id,mes) */
+        if (VarType(1) == sci_handles && VarType(2) == sci_strings) /* progressionbar(id,mes) */
         {
-            // Retrieve a matrix of handle at position 1.
-            sciErr = getMatrixOfHandle(pvApiCtx, piAddrhandleAdr, &nbRow, &nbCol, &handleAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                Scierror(202, _("%s: Wrong type for argument %d: Handle matrix expected.\n"), fname, 1);
-                return 1;
-            }
-
+            GetRhsVar(1, GRAPHICAL_HANDLE_DATATYPE, &nbRow, &nbCol, &handleAdr);
             if (nbRow * nbCol != 1)
             {
                 Scierror(999, _("%s: Wrong size for input argument #%d: A graphic handle expected.\n"), fname, 1);
                 return FALSE;
             }
-            sciErr = getVarAddressFromPosition(pvApiCtx, 2, &piAddrmessageAdr);
-            if (sciErr.iErr)
-            {
-                printError(&sciErr, 0);
-                return 1;
-            }
+            GetRhsVar(2, MATRIX_OF_STRING_DATATYPE, &nbRowMessage, &nbColMessage, &messageAdr);
 
-            // Retrieve a matrix of string at position 2.
-            if (getAllocatedMatrixOfString(pvApiCtx, piAddrmessageAdr, &nbRowMessage, &nbColMessage, &messageAdr))
-            {
-                Scierror(202, _("%s: Wrong type for argument #%d: String matrix expected.\n"), fname, 2);
-                return 1;
-            }
-
-            GraphicHandle = (unsigned long) * handleAdr;
+            GraphicHandle = (unsigned long)*hstk(handleAdr);
             pProgressionbarUID = (char*)getObjectFromHandle(GraphicHandle);
 
             setGraphicObjectProperty(pProgressionbarUID, __GO_UI_VALUE__, &iValue, jni_int, 1);
-            setGraphicObjectProperty(pProgressionbarUID, __GO_UI_MESSAGE__, messageAdr, jni_string_vector, nbColMessage * nbRowMessage);
-            freeAllocatedMatrixOfString(nbRowMessage, nbColMessage, messageAdr);
+            setGraphicObjectProperty(pProgressionbarUID, __GO_UI_MESSAGE__, getStringMatrixFromStack((size_t) messageAdr), jni_string_vector,
+                                     nbColMessage * nbRowMessage);
+            freeArrayOfString(messageAdr, nbColMessage * nbRowMessage);
         }
         else
         {
@@ -153,28 +108,23 @@ int sci_progressionbar(char *fname, unsigned long fname_len)
         }
     }
 
-    if (nbOutputArgument(pvApiCtx) == 1)
+    if (Lhs == 1)
     {
         nbRow = 1;
         nbCol = 1;
-
-        sciErr = allocMatrixOfHandle(pvApiCtx, nbInputArgument(pvApiCtx) + 1, nbRow, nbCol, &stkAdr);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            Scierror(999, _("%s: Memory allocation error.\n"), fname);
-            return 1;
-        }
-
-        *stkAdr = (long long)GraphicHandle;
-        AssignOutputVariable(pvApiCtx, 1) = nbInputArgument(pvApiCtx) + 1;
+        CreateVar(Rhs + 1, GRAPHICAL_HANDLE_DATATYPE, &nbRow, &nbCol, &stkAdr);
+        *hstk(stkAdr) = GraphicHandle;
+        LhsVar(1) = Rhs + 1;
     }
     else
     {
-        AssignOutputVariable(pvApiCtx, 1) = 0;
+        LhsVar(1) = 0;
     }
 
-    ReturnArguments(pvApiCtx);
+    PutLhsVar();
+
     return TRUE;
+
 }
+
 /*--------------------------------------------------------------------------*/

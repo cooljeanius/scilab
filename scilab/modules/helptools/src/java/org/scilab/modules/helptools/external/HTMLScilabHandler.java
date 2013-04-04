@@ -20,7 +20,6 @@ import java.util.Map;
 
 import org.xml.sax.Attributes;
 
-import org.scilab.modules.helptools.HTMLDocbookTagConverter;
 import org.scilab.modules.helptools.image.ImageConverter;
 import org.scilab.modules.helptools.image.ScilabImageConverter;
 
@@ -106,26 +105,16 @@ public class HTMLScilabHandler extends ExternalXMLHandler {
             if (dotpos != -1) {
                 baseName = baseName.substring(0, dotpos);
             }
-            String fileName;
-            if (isLocalized) {
-                fileName = baseName + BASENAME + ((HTMLDocbookTagConverter) getConverter()).getLanguage() + BASENAME + (compt++) + ".png";
-            } else {
-                fileName = baseName + BASENAME + (compt++) + ".png";
-            }
-
+            String fileName = baseName + BASENAME + (compt++) + ".png";
             File f = new File(outputDir, fileName);
             Map<String, String> attributes = new HashMap<String, String>();
 
             String ret;
             File existing;
-            String baseImagePath = "";
-            if (getConverter() instanceof HTMLDocbookTagConverter) {
-                baseImagePath = ((HTMLDocbookTagConverter) getConverter()).getBaseImagePath();
-            }
             if (isLocalized || (existing = getExistingFile(outputDir, fileName)) == null) {
-                ret = ImageConverter.getImageByCode(currentFileName, buffer.toString(), attributes, "image/scilab", f, baseDir + f.getName(), baseImagePath);
+                ret = ImageConverter.getImageByCode(currentFileName, buffer.toString(), attributes, "image/scilab", f, baseDir + f.getName());
             } else {
-                ret = ImageConverter.getImageByFile(attributes, null, existing.getAbsolutePath(), outputDir, ".", baseImagePath);
+                ret = ImageConverter.getImageByFile(attributes, null, existing.getAbsolutePath(), outputDir, ".");
                 ret = ScilabImageConverter.getInstance().getHTMLCodeToReturn(buffer.toString(), ret);
             }
 

@@ -18,7 +18,6 @@
 /*        a handle                                                        */
 /*------------------------------------------------------------------------*/
 
-#include "stricmp.h"
 #include "setHandleProperty.h"
 #include "SetProperty.h"
 #include "getPropertyAssignedValue.h"
@@ -31,33 +30,33 @@
 #include "graphicObjectProperties.h"
 
 /*------------------------------------------------------------------------*/
-int set_alignment_property(void* _pvCtx, char* pobjUID, void* _pvData, int valueType, int nbRow, int nbCol)
+int set_alignment_property(void* _pvCtx, char* pobjUID, size_t stackPointer, int valueType, int nbRow, int nbCol )
 {
     BOOL status = FALSE;
     int alignment = 0;
 
-    if (valueType != sci_strings)
+    if ( !( valueType == sci_strings ) )
     {
         Scierror(999, _("Wrong type for '%s' property: String expected.\n"), "alignment");
         return SET_PROPERTY_ERROR;
     }
 
-    if (stricmp((char*)_pvData, "left") == 0)
+    if ( isStringParamEqual( stackPointer, "left" ) )
     {
         alignment = 0;
     }
-    else if (stricmp((char*)_pvData, "center") == 0)
+    else if ( isStringParamEqual( stackPointer, "center" ) )
     {
         alignment = 1;
     }
-    else if (stricmp((char*)_pvData, "right") == 0)
+    else if ( isStringParamEqual( stackPointer, "right" ) )
     {
         alignment = 2;
     }
     else
     {
         Scierror(999, _("Wrong value for '%s' property: Must be in the set {%s}.\n"), "alignment", "left, center, right");
-        return SET_PROPERTY_ERROR;
+        return SET_PROPERTY_ERROR ;
     }
 
     status = setGraphicObjectProperty(pobjUID, __GO_ALIGNMENT__, &alignment, jni_int, 1);

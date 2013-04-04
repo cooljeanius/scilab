@@ -16,10 +16,7 @@ SUBDIRS = images/icons/
 desktopdir = $(datadir)/applications
 desktop_DATA = scilab-adv-cli.desktop \
 scilab-cli.desktop \
-scilab.desktop \
-xcos.desktop \
-scinotes.desktop
-
+scilab.desktop
 
 # Mimetype file
 # Note that here, it is datadir and NOT pkgdatadir

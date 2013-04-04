@@ -1,7 +1,7 @@
 /*
  * -----------------------------------------------------------------
- * $Revision: 1.8 $
- * $Date: 2010/12/01 22:43:33 $
+ * $Revision: 1.1 $
+ * $Date: 2006/07/05 15:32:37 $
  * -----------------------------------------------------------------
  * Programmer(s): Allan Taylor, Alan Hindmarsh, Radu Serban, and
  *                Aaron Collier @ LLNL
@@ -164,21 +164,21 @@ int KINSetInfoFile(void *kinmem, FILE *infofp)
 
 /*
  * -----------------------------------------------------------------
- * Function : KINSetUserData
+ * Function : KINSetFdata
  * -----------------------------------------------------------------
  */
 
-int KINSetUserData(void *kinmem, void *user_data)
+int KINSetFdata(void *kinmem, void *f_data)
 {
   KINMem kin_mem;
 
   if (kinmem == NULL) {
-    KINProcessError(NULL, KIN_MEM_NULL, "KINSOL", "KINSetUserData", MSG_NO_MEM);
+    KINProcessError(NULL, KIN_MEM_NULL, "KINSOL", "KINSetFdata", MSG_NO_MEM);
     return(KIN_MEM_NULL);
   }
 
   kin_mem = (KINMem) kinmem;
-  kin_mem->kin_user_data = user_data;
+  kin_mem->kin_f_data = f_data;
 
   return(KIN_SUCCESS);
 }
@@ -721,6 +721,7 @@ int KINSetConstraints(void *kinmem, N_Vector constraints)
   }
 
   if (!kin_mem->kin_constraintsSet) {
+    kin_mem->kin_constraints = NULL;
     kin_mem->kin_constraints = N_VClone(constraints);
     lrw += lrw1;
     liw += liw1;
@@ -937,7 +938,7 @@ int KINGetStepLength(void *kinmem, realtype *steplength)
  * -----------------------------------------------------------------
  */
 
-char *KINGetReturnFlagName(long int flag)
+char *KINGetReturnFlagName(int flag)
 {
   char *name;
 

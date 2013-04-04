@@ -17,7 +17,6 @@
 // =============================================================================
 
 // REAL SYMMETRIC PROBLEM
-clear opts;
 n = 10;
 k = 6;
 A            = diag(5*ones(n,1));
@@ -104,10 +103,8 @@ d0 = spec(B);
 assert_checkalmostequal(abs(d1), gsort(abs(d0($-5:$)),'g','i'), [], %eps);
 
 clear fn
-//B collides with B inside of feigs, so we rename it ( global variables are evil!)
-globalB = B;
 function y = fn(x)
-    y = globalB * x;
+    y = B * x;
 endfunction
 
 d1 = eigs(fn, n, [], k, 'LM', opts );

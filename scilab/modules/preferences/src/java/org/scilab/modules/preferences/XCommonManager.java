@@ -199,10 +199,8 @@ public abstract class XCommonManager {
         //    TODO top layout changes
         visitor = new XUpdateVisitor(correspondance);
         visitor.visit(topSwing, topDOM);
-        boolean changed = setDimension(dialog, topDOM);
-	if (changed) {
-	    dialog.pack();
-	}
+        setDimension(dialog, topDOM);
+        dialog.pack();
 
         return true;
     }
@@ -820,18 +818,12 @@ public abstract class XCommonManager {
      * @param component : the resized component.
      * @param peer : the node having the dimension information.
      */
-    public static boolean setDimension(final Component component, final Node peer) {
+    public static void setDimension(final Component component, final Node peer) {
         int height = XConfigManager.getInt(peer, "height", 0);
         int width = XConfigManager.getInt(peer, "width",  0);
         if (height > 0 && width > 0) {
-	    Dimension old = component.getPreferredSize();
-	    if (old.width != width || old.height != height) {
-		component.setPreferredSize(new Dimension(width, height));
-		return true;
-	    }
-	}
-	
-	return false;
+            component.setPreferredSize(new Dimension(width, height));
+        }
     }
 
     /**

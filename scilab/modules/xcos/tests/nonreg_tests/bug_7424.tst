@@ -5,7 +5,7 @@
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
 
-// <-- XCOS TEST -->
+// <-- TEST WITH XCOS -->
 //
 // <-- Non-regression test for bug 7424 -->
 //

@@ -19,7 +19,6 @@
 /*        a handle                                                        */
 /*------------------------------------------------------------------------*/
 
-#include "stricmp.h"
 #include "setHandleProperty.h"
 #include "SetProperty.h"
 #include "getPropertyAssignedValue.h"
@@ -29,26 +28,25 @@
 
 #include "setGraphicObjectProperty.h"
 #include "graphicObjectProperties.h"
-#include "MALLOC.h"
 
 /*------------------------------------------------------------------------*/
-int set_mark_size_unit_property(void* _pvCtx, char* pobjUID, void* _pvData, int valueType, int nbRow, int nbCol)
+int set_mark_size_unit_property(void* _pvCtx, char* pobjUID, size_t stackPointer, int valueType, int nbRow, int nbCol )
 {
     BOOL status = FALSE;
     int markSizeUnit = 0;
 
-    if (valueType != sci_strings)
+    if ( !( valueType == sci_strings ) )
     {
         Scierror(999, _("Wrong type for '%s' property: String expected.\n"), "mark_size_unit");
-        return SET_PROPERTY_ERROR;
+        return SET_PROPERTY_ERROR ;
     }
 
     /* 0 : point, 1 : tabulated */
-    if (stricmp((char*)_pvData, "point") == 0)
+    if ( isStringParamEqual( stackPointer, "point") )
     {
         markSizeUnit = 0;
     }
-    else if (stricmp((char*)_pvData, "tabulated") == 0)
+    else if ( isStringParamEqual( stackPointer, "tabulated" ) )
     {
         markSizeUnit = 1;
     }

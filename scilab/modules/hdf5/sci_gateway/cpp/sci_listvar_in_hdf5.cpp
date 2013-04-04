@@ -10,9 +10,9 @@
 *
 */
 
-#include <hdf5.h>
 extern "C"
 {
+#include <hdf5.h>
 #include <string.h>
 #include "gw_hdf5.h"
 #include "MALLOC.h"
@@ -96,19 +96,16 @@ int sci_listvar_in_hdf5(char *fname, unsigned long fname_len)
 
     //manage version information
     int iVersion = getSODFormatAttribute(iFile);
-    if (iVersion != SOD_FILE_VERSION)
+    if(iVersion != SOD_FILE_VERSION)
     {
         if (iVersion > SOD_FILE_VERSION)
-        {
-            //can't read file with version newer that me !
-            closeHDF5File(iFile);
+        {//can't read file with version newer that me !
             Scierror(999, _("%s: Wrong SOD file format version. Max Expected: %d Found: %d\n"), fname, SOD_FILE_VERSION, iVersion);
             return 1;
         }
         else
-        {
-            //call older import functions and exit or ... EXIT !
-            if (iVersion == 1 || iVersion == -1)
+        {//call older import functions and exit or ... EXIT !
+            if(iVersion == 1 || iVersion == -1)
             {
                 //sciprint("old sci_listvar_in_hdf5_v1\n");
                 return sci_listvar_in_hdf5_v1(fname, fname_len);
@@ -121,7 +118,6 @@ int sci_listvar_in_hdf5(char *fname, unsigned long fname_len)
     {
         char** pstVarNameList = (char**)MALLOC(sizeof(char*) * iNbItem);
         pInfo = (VarInfo*)MALLOC(iNbItem * sizeof(VarInfo));
-        int b;
 
         if (Lhs == 1)
         {
@@ -140,8 +136,7 @@ int sci_listvar_in_hdf5(char *fname, unsigned long fname_len)
 
             strcpy(pInfo[i].varName, pstVarNameList[i]);
             FREE(pstVarNameList[i]);
-            b = read_data(iDataSetId, 0, NULL, &pInfo[i]) == false;
-            if (b)
+            if (read_data(iDataSetId, 0, NULL, &pInfo[i]) == false)
             {
                 break;
             }
@@ -164,8 +159,6 @@ int sci_listvar_in_hdf5(char *fname, unsigned long fname_len)
         PutLhsVar();
         return 0;
     }
-
-    closeHDF5File(iFile);
 
     //1st Lhs
     char** pstVarName = (char**)MALLOC(sizeof(char*) * iNbItem);
@@ -318,7 +311,6 @@ static bool read_double(int _iDatasetId, int _iItemPos, int *_piAddress, VarInfo
     _pInfo->iSize = (2 + (iSize * (iComplex + 1))) * 8;
 
     generateInfo(_pInfo, "constant");
-    closeDataSet(_iDatasetId);
     return true;
 }
 
@@ -359,7 +351,6 @@ static bool read_boolean(int _iDatasetId, int _iItemPos, int *_piAddress, VarInf
     _pInfo->iSize = (3 + iSize) * 4;
 
     generateInfo(_pInfo, "boolean");
-    closeDataSet(_iDatasetId);
     return true;
 }
 
@@ -376,7 +367,6 @@ static bool read_integer(int _iDatasetId, int _iItemPos, int *_piAddress, VarInf
     _pInfo->iSize = 16 + iSize * (iPrec % 10);
 
     generateInfo(_pInfo, "integer");
-    closeDataSet(_iDatasetId);
     return true;
 }
 
@@ -402,7 +392,6 @@ static bool read_sparse(int _iDatasetId, int _iItemPos, int *_piAddress, VarInfo
     _pInfo->iSize = 20 + iRows * 4 + iNbItem * 4 + (iNbItem * (iComplex + 1) * 8);
 
     generateInfo(_pInfo, "sparse");
-    closeDataSet(_iDatasetId);
     return true;
 }
 
@@ -426,7 +415,6 @@ static bool read_boolean_sparse(int _iDatasetId, int _iItemPos, int *_piAddress,
     _pInfo->iSize = 20 + iRows * 4 + iNbItem * 4;
 
     generateInfo(_pInfo, "boolean sparse");
-    closeDataSet(_iDatasetId);
     return true;
 }
 
@@ -540,27 +528,18 @@ static bool read_list(int _iDatasetId, int _iVarType, int _iItemPos, int *_piAdd
         generateInfo(_pInfo, "mlist");
     }
 
-    iRet = deleteListItemReferences(_iDatasetId, piItemRef);
-    if (iRet)
-    {
-        return false;
-    }
-
-
     return true;
 }
 
 static bool read_void(int _iDatasetId, int _iItemPos, int *_piAddress, VarInfo* _pInfo)
 {
     _pInfo->iSize = 1;
-    closeDataSet(_iDatasetId);
     return true;
 }
 
 static bool read_undefined(int _iDatasetId, int _iItemPos, int *_piAddress, VarInfo* _pInfo)
 {
     _pInfo->iSize = 1;
-    closeDataSet(_iDatasetId);
     return true;
 }
 

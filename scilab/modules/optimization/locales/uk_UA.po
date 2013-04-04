@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: scilab\n"
 "Report-Msgid-Bugs-To: <localization@lists.scilab.org>\n"
-"POT-Creation-Date: 2013-01-24 17:04+0100\n"
-"PO-Revision-Date: 2013-01-26 04:09+0000\n"
+"POT-Creation-Date: 2011-10-03 10:34+0100\n"
+"PO-Revision-Date: 2012-08-24 14:24+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Launchpad (build 16506)\n"
+"X-Generator: Launchpad (build 16043)\n"
 "Language: uk\n"
 
 #, c-format
@@ -185,7 +185,7 @@ msgstr "neldermead — змінна Розенброка"
 msgid "neldermead - Output Command"
 msgstr "neldermead — команда виводу"
 
-msgid "neldermead - Dimensionality"
+msgid "neldermead - Dimensionnality"
 msgstr "neldermead — розмірність"
 
 msgid "nmplot - Han #1"
@@ -490,7 +490,7 @@ msgstr ""
 
 #, c-format
 msgid ""
-"%s: Wrong type for input argument #%d: N-dimensional array expected.\n"
+"%s: Wrong type for input argument #%d: N-dimensionnal array expected.\n"
 msgstr ""
 "%s: помилковий тип вхідного параметра №%d: слід використовувати N-вимірний "
 "масив.\n"
@@ -1183,7 +1183,7 @@ msgstr ""
 "4."
 
 #, c-format
-msgid "%s: Wrong type for argument #%d: %s expected.\n"
+msgid "%s: Wrong type for argument %d: %s expected.\n"
 msgstr "%s: помилковий тип параметра %d: мало бути використано %s.\n"
 
 #, c-format
@@ -1249,7 +1249,7 @@ msgid "%s: The exclusion index vector has %d rows instead of 1."
 msgstr "%s: у векторі індексів виключення %d рядків замість 1."
 
 #, c-format
-msgid "%s: Wrong type for argument #%d: Real matrix expected.\n"
+msgid "%s: Wrong type for argument %d: Real matrix expected.\n"
 msgstr ""
 "%s: помилковий тип параметра %d: слід використовувати матрицю дійсних "
 "значень.\n"

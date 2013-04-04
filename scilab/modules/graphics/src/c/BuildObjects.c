@@ -93,7 +93,7 @@ GRAPHICS_IMPEXP char * createNewFigureWithAxes()
     cloneAxesModel(pFigureUID);
     setCurrentFigure(pFigureUID);
     /*
-     * Force axes size after window creation (Java)
+     * Force axes size after window creation ( Java )
      */
     getGraphicObjectProperty(getFigureModel(), __GO_AXES_SIZE__, jni_int_vector, (void **)&axesSize);
     setGraphicObjectProperty(pFigureUID, __GO_AXES_SIZE__, axesSize, jni_int_vector, 2);
@@ -159,6 +159,7 @@ GRAPHICS_IMPEXP void cloneMenus(char * pModelUID, char * pCloneUID)
         }
     }
     releaseGraphicObjectProperty(__GO_CHILDREN__, pChildren, jni_string_vector, iNbChildren);
+    releaseGraphicObjectProperty(__GO_CHILDREN_COUNT__, piNbChildren, jni_int, 1);
 }
 
 /**
@@ -258,6 +259,7 @@ char * allocateText(char * pparentsubwinUID,
 
     getGraphicObjectProperty(pparentsubwinUID, __GO_VISIBLE__, jni_bool, (void **)&piVisible);
     setGraphicObjectProperty(pobjUID, __GO_VISIBLE__, piVisible, jni_bool, 1);
+    releaseGraphicObjectProperty(__GO_VISIBLE__, piVisible, jni_bool, 1);
 
     /* Clipping: to be checked for consistency */
     getGraphicObjectProperty(pparentsubwinUID, __GO_CLIP_BOX__, jni_double_vector, (void **)&clipRegion);
@@ -266,9 +268,11 @@ char * allocateText(char * pparentsubwinUID,
 
     getGraphicObjectProperty(pparentsubwinUID, __GO_CLIP_BOX_SET__, jni_bool, (void **)&piClipRegionSet);
     setGraphicObjectProperty(pobjUID, __GO_CLIP_BOX_SET__, piClipRegionSet, jni_bool, 1);
+    releaseGraphicObjectProperty(__GO_CLIP_BOX_SET__, piClipRegionSet, jni_bool, 1);
 
     getGraphicObjectProperty(pparentsubwinUID, __GO_CLIP_STATE__, jni_int, (void **)&piClipState);
     setGraphicObjectProperty(pobjUID, __GO_CLIP_STATE__, piClipState, jni_int, 1);
+    releaseGraphicObjectProperty(__GO_CLIP_STATE__, piClipState, jni_int, 1);
 
     /* Check if we should load LaTex / MathML Java libraries */
     loadTextRenderingAPI(text, nbRow, nbCol);
@@ -424,6 +428,7 @@ char * ConstructLegend(char * pparentsubwinUID, char **text, long long tabofhand
     if (parentType != __GO_AXES__)
     {
         Scierror(999, _("The parent has to be a SUBWIN\n"));
+        releaseGraphicObjectProperty(__GO_PARENT__, parentType, jni_string, 1);
         return (char *)NULL;
     }
 
@@ -592,7 +597,6 @@ char * allocatePolyline(char * pparentsubwinUID, double *pvecx, double *pvecy, d
         {
             deleteGraphicObject(pobjUID);
             deleteDataObject(pobjUID);
-	    releaseGraphicObjectProperty(__GO_PARENT__, pobjUID, jni_string, 1);
             return NULL;
         }
 
@@ -602,7 +606,6 @@ char * allocatePolyline(char * pparentsubwinUID, double *pvecx, double *pvecy, d
         {
             deleteGraphicObject(pobjUID);
             deleteDataObject(pobjUID);
-	    releaseGraphicObjectProperty(__GO_PARENT__, pobjUID, jni_string, 1);
             return NULL;
         }
 
@@ -663,7 +666,6 @@ char * allocatePolyline(char * pparentsubwinUID, double *pvecx, double *pvecy, d
         {
             deleteGraphicObject(pobjUID);
             deleteDataObject(pobjUID);
-	    releaseGraphicObjectProperty(__GO_PARENT__, pobjUID, jni_string, 1);
             return NULL;
         }
     }
@@ -955,7 +957,7 @@ char *ConstructSurface(char *pparentsubwinUID, sciTypeOf3D typeof3d,
     char *pobjUID = NULL;
     int parentType = -1;
     int *piParentType = &parentType;
-    int const surfaceTypes[2] = { __GO_PLOT3D__, __GO_FAC3D__ };
+    char const* surfaceTypes[2] = { __GO_PLOT3D__, __GO_FAC3D__ };
 
     double *clipRegion = NULL;
 
@@ -1146,7 +1148,7 @@ char *ConstructGrayplot(char *pparentsubwinUID, double *pvecx, double *pvecy, do
 {
     char *pobjUID = NULL;
 
-    int const objectTypes[3] = { __GO_GRAYPLOT__, __GO_MATPLOT__, __GO_MATPLOT__ };
+    char const* objectTypes[3] = { __GO_GRAYPLOT__, __GO_MATPLOT__, __GO_MATPLOT__ };
 
     int typeParent = -1;
     int *piTypeParent = &typeParent;
@@ -1399,7 +1401,6 @@ char *ConstructAxis(char *pparentsubwinUID, char dir, char tics, double *vx,
         if (tics_labels == NULL)
         {
             deleteGraphicObject(pobjUID);
-	    releaseGraphicObjectProperty(__GO_PARENT__, pobjUID, jni_string, 1);
             return (char *)NULL;
         }
 
@@ -1664,7 +1665,6 @@ char *ConstructSegs(char *pparentsubwinUID, int type,
     if (arrowCoords == NULL)
     {
         deleteGraphicObject(pobjUID);
-	releaseGraphicObjectProperty(__GO_SEGS__, pobjUID, jni_string, 1);
         return (char *)NULL;
     }
 
@@ -1872,10 +1872,10 @@ char *ConstructCompoundSeq(int number)
  */
 void ConstructLabel(char * pparentsubwinUID, char const* text, int type)
 {
-    int const labelProperties[] = { __GO_X_AXIS_LABEL__, __GO_Y_AXIS_LABEL__, __GO_Z_AXIS_LABEL__, __GO_TITLE__ };
+    char const* labelProperties[] = { __GO_X_AXIS_LABEL__, __GO_Y_AXIS_LABEL__, __GO_Z_AXIS_LABEL__, __GO_TITLE__ };
     int parentType = -1;
     int *piParentType = &parentType;
-    int labelType = 0;
+    char *labelType = NULL;
     char *modelLabelUID = NULL;
     char *pobjUID = NULL;
     int autoPosition = 0;
@@ -1895,7 +1895,7 @@ void ConstructLabel(char * pparentsubwinUID, char const* text, int type)
         return;
     }
 
-    labelType = labelProperties[type - 1];
+    labelType = (char*)labelProperties[type - 1];
 
     getGraphicObjectProperty(getAxesModel(), labelType, jni_string, (void **)&modelLabelUID);
 

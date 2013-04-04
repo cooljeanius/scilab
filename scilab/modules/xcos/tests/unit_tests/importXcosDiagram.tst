@@ -3,11 +3,12 @@
 //
 // This file is distributed under the same license as the Scilab package.
 
-// <-- XCOS TEST -->
+// <-- TEST WITH XCOS -->
 //
 // <-- Short Description -->
 // Check importXcosDiagram on some diagrams
 
+loadXcosLibs(), loadScicos(),
 
 error_count = 0;
 try

@@ -23,8 +23,6 @@ function ifpath = getIFpath(ifversion)
        ifpath = getenv("IFORT_COMPILER11", "");
     case "ifort12" then
        ifpath = getenv("IFORT_COMPILER12", "");
-    case "ifort13" then
-       ifpath = getenv("IFORT_COMPILER13", "");
     else
       ifpath = "";
     end
@@ -174,8 +172,6 @@ endfunction
         machinepath = "ia32";
       else
         select ifortcompiler,
-          case "ifort13" then
-             machinepath = "intel64";
           case "ifort12" then
              machinepath = "intel64";
           case "ifort11" then
@@ -186,8 +182,6 @@ endfunction
       end
 
       select ifortcompiler,
-        case "ifort13" then
-          bOK = set_commons_ifort12(if_path, machinepath);
         case "ifort12" then
           bOK = set_commons_ifort12(if_path, machinepath);
         case "ifort11" then

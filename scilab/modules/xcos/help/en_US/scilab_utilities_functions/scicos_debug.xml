@@ -50,9 +50,8 @@
         <para>
             One can used it in the "Calc" mode of the Scicos editor or as an instruction in a Scilab block or in an interfacing function.  
         </para>
-    </refsection>
-    <refsection>
-        <title>Examples</title>
+        <para>
+        </para>
         <programlisting role="example"><![CDATA[ 
 scicos_debug(level)
 level=scicos_debug()

@@ -25,7 +25,6 @@ import java.util.UUID;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JCheckBox;
-import javax.swing.SwingUtilities;
 
 import org.flexdock.docking.DockingConstants;
 import org.scilab.modules.gui.bridge.tab.SwingScilabTab;
@@ -843,7 +842,12 @@ public class ClosingOperationsManager {
      * @return the corresponding window
      */
     private static final SwingScilabWindow getWindow(SwingScilabTab tab) {
-	return (SwingScilabWindow) SwingUtilities.getAncestorOfClass(SwingScilabWindow.class, tab);
+        SwingScilabWindow win = SwingScilabWindow.allScilabWindows.get(tab.getParentWindowId());
+        if (win == null) {
+            return null;
+        }
+
+        return win;
     }
 
     /**

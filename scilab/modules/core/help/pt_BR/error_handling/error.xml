@@ -92,9 +92,6 @@ lasterror()]]></programlisting>
             <member>
                 <link linkend="lasterror">lasterror</link>
             </member>
-            <member>
-                <link linkend="messagebox">messagebox</link>
-            </member>
         </simplelist>
     </refsection>
 </refentry>

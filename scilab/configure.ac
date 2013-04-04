@@ -16,15 +16,15 @@ dnl Process this file with autoconf to produce a configure script.
 
 AC_REVISION($Revision$)dnl
 AC_INIT([Scilab],[5],[http://bugzilla.scilab.org/])
-AC_PREREQ(2.68)
-AC_CONFIG_MACRO_DIR([m4/])
+AC_PREREQ([2.62])
+AC_CONFIG_MACRO_DIR([m4])
 
 SCI_BUILDDIR="`pwd`"
 SCI_SRCDIR="$srcdir"
 SCI_SRCDIR_FULL="`cd $SCI_SRCDIR && pwd`"
 
 SCILAB_VERSION_MAJOR=5
-SCILAB_VERSION_MINOR=5
+SCILAB_VERSION_MINOR=4
 SCILAB_VERSION_MAINTENANCE=0
 AC_SUBST(SCILAB_VERSION_MAJOR)
 AC_SUBST(SCILAB_VERSION_MINOR)
@@ -60,7 +60,7 @@ if test "$SPACE_IN_PATH" = "0"; then
    sleep 180
 fi
 
-AC_CONFIG_AUX_DIR(config)
+AC_CONFIG_AUX_DIR([config])
 AC_CONFIG_HEADERS([modules/core/includes/machine.h])
 
 # strip executable
@@ -145,15 +145,21 @@ AC_ARG_ENABLE(build-giws,
 ########## compilator & misc programs detection
 ################################################
 
+AM_PROG_AR
+AC_PROG_AWK
 AC_PROG_CPP
 AC_PROG_GREP
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+AC_PROG_MKDIR_P
+AC_PROG_RANLIB
 
 ######
-#### Mac OS X set of fink path with provided
+#### Mac OS X set of macports path with provided
 ######
 
-AC_ARG_WITH(fink_prefix,
-AC_HELP_STRING([--with-fink-prefix],[Provide a fink prefix. Default: /sw/ ]))
+AC_ARG_WITH([macports_prefix],
+AC_HELP_STRING([--with-macports-prefix],[Provide a macports prefix. Default: /opt/local ]))
 # Need MacosX Version to specify some path.                                  
 case "$host_os" in
      *Darwin* | *darwin*)
@@ -163,26 +169,20 @@ esac
 
 case "$host" in
     *darwin*)
-        if test -n "$with_fink_prefix"; then
-            # If with-fink-prefix is provided, use the provided path to make sure that we will
+        if test -n "$with_macports_prefix"; then
+            # If with-macports-prefix is provided, use the provided path to make sure that we will
             # use it to detect dependencies (for example, gfortran is not provided in xcode.
-            # Therefor, we use the one in fink)
-            FINK_PREFIX="$with_fink_prefix/"
+            # Therefor, we use the one in macports)
+            MACPORTS_PREFIX="$with_macports_prefix"
 
-            # Exec the init script of fink to make sure that the env is set
-            if test -f $with_fink_prefix/bin/init.sh; then
-                echo "source $with_fink_prefix/bin/init.sh executed to set the env"
-                source $with_fink_prefix/bin/init.sh
-            else
-                AC_MSG_WARN([Could not find the fink init.sh script: $with_fink_prefix/bin/init.sh])
-            fi
+            # Macports doesn't have an init.sh so removing that part
         else
-            FINK_PREFIX="/sw/"
+            MACPORTS_PREFIX="/opt/local"
         fi
 
         #Append to the default flags on Apple machines
-        CPPFLAGS="$CPPFLAGS -I$FINK_PREFIX/include/"
-        LDFLAGS="$LDFLAGS -L$FINK_PREFIX/lib/"
+        CPPFLAGS="$CPPFLAGS -I$MACPORTS_PREFIX/include/"
+        LDFLAGS="$LDFLAGS -L$MACPORTS_PREFIX/lib/"
         ;;
 esac
 
@@ -399,7 +399,7 @@ if test -n "$F77"; then
      gfortran*)
         ## With GNU Compiler enable the code coverage
         if test "$enable_code_coverage" = yes; then
-            CODECOVERAGE_FFLAGS="-fprofile-arcs -ftest-coverage"
+            CODE_COVERAGE_FFLAGS="-fprofile-arcs -ftest-coverage"
         fi
      ;;
      g77*)
@@ -519,7 +519,7 @@ case "$CXX" in
 
         # enable the code coverage
         if test "$enable_code_coverage" = yes; then
-            CODECOVERAGE_CXXFLAGS="-fprofile-arcs -ftest-coverage"
+            CODE_COVERAGE_CXXFLAGS="-fprofile-arcs -ftest-coverage"
         fi
 
         if test "$enable_debug_CXX" = yes; then
@@ -560,7 +560,7 @@ case "$CC" in
 
    # enable the code coverage
    if test "$enable_code_coverage" = yes; then
-    CODECOVERAGE_CFLAGS="-fprofile-arcs -ftest-coverage"
+    CODE_COVERAGE_CFLAGS="-fprofile-arcs -ftest-coverage"
    fi
 
    if test "$enable_debug_C" = yes; then
@@ -696,7 +696,7 @@ if test "$enable_code_coverage" = yes; then
    if test -z "$GENHTML" ; then
         AC_MSG_ERROR([Cannot find genhtml. Please install it (package lcov under Debian) or remove the option --enable-code-coverage])
    fi
-   CODECOVERAGE_LDFLAGS="-coverage -lgcov"
+   CODE_COVERAGE_LDFLAGS="-coverage"
 fi
 AM_CONDITIONAL(CODE_COVERAGE, test "$enable_code_coverage" = yes)
 
@@ -813,7 +813,7 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
    if test "$ac_java_jvm_name" = "jdk"; then
         JAVA_HOME=$ac_java_jvm_dir
         JAVA_VERSION=$ac_java_jvm_version
-#     AC_JAVA_TOOLS
+        AC_JAVA_TOOLS
         AC_JAVA_JNI_INCLUDE
         JAVA_JNI_INCLUDE=$ac_java_jvm_jni_include_flags
 
@@ -859,14 +859,14 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
                 SCIRENDERER=$PACKAGE_JAR_FILE
                 AC_SUBST(SCIRENDERER)
 
-                AC_JAVA_CHECK_VERSION_PACKAGE([scirenderer],[import org.scilab.forge.scirenderer.PackageInfo;],$SCIRENDERER,[1.0.6],[PackageInfo.VERSION])
+                AC_JAVA_CHECK_VERSION_PACKAGE([scirenderer],[import org.scilab.forge.scirenderer.PackageInfo;],$SCIRENDERER,[1.0.2],[PackageInfo.VERSION])
 
                # Docking system
                 AC_JAVA_CHECK_PACKAGE([flexdock],[org.flexdock.docking.DockingManager],[Scilab Gui])
                 FLEXDOCK=$PACKAGE_JAR_FILE
                 AC_SUBST(FLEXDOCK)
 
-                AC_JAVA_CHECK_VERSION_PACKAGE([flexdock],[import org.flexdock.util.Utilities;],$FLEXDOCK,[1.2.3],[Utilities.VERSION])
+                AC_JAVA_CHECK_VERSION_PACKAGE([flexdock],[import org.flexdock.util.Utilities;],$FLEXDOCK,[1.2.0],[Utilities.VERSION])
 
                 # Swing look&feel implementations
                 AC_JAVA_CHECK_PACKAGE([looks],[com.jgoodies.looks.common.MenuItemRenderer],[Scilab Gui - Look and feel],"yes")
@@ -896,9 +896,9 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
                    # Provide known paths where distribs/OS can store JNI libs
                    LDFLAGS="$LDFLAGS -L/usr/lib/jni -L/usr/lib64/jni"                   # Debian
                    LDFLAGS="$LDFLAGS -L/usr/lib/java -L/usr/lib64/java"                 # jpackage.org
-                   LDFLAGS="$LDFLAGS -L/usr/lib/jogl2 -L/usr/lib64/jogl2"               # RedHat
+                   LDFLAGS="$LDFLAGS -L/usr/lib/jogl -L/usr/lib64/jogl"                 # RedHat
                    LDFLAGS="$LDFLAGS -L$SCI_SRCDIR/thirdparty -L$SCI_SRCDIR/bin"        # Scilab thirdparties
-                   AC_CHECK_LIB([jogl_desktop], [glTexParameterf], [JOGL2_LIBS="-ljogl_desktop"],[AC_MSG_WARN([Could not link against -ljogl_desktop. Will try against -ljogl_desktop -lGL])])
+                   AC_CHECK_LIB([jogl_desktop], [glTexParameterf], [JOGL2_LIBS="-ljogl"],[AC_MSG_WARN([Could not link against -ljogl_desktop. Will try against -ljogl2 -lGL])])
                    if test -z "$JOGL2_LIBS"; then # The previous test failed add more options to the LDFLAGS
                        # the space after "jogl" in the following line is on
                        # purpose to disable the cache
@@ -925,10 +925,10 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                    # Provide known paths where distribs/OS can store JNI libs
                    LDFLAGS="$LDFLAGS -L/usr/lib/jni -L/usr/lib64/jni"                   # Debian
                    LDFLAGS="$LDFLAGS -L/usr/lib/java -L/usr/lib64/java"                 # jpackage.org
-                   LDFLAGS="$LDFLAGS -L/usr/lib/gluegen2 -L/usr/lib64/gluegen2"         # RedHat
+                   LDFLAGS="$LDFLAGS -L/usr/lib/gluegen -L/usr/lib64/gluegen"           # RedHat
                    LDFLAGS="$LDFLAGS -L$SCI_SRCDIR/thirdparty -L$SCI_SRCDIR/bin"        # Scilab thirdparties
                    symbol="Java_jogamp_common_jvm_JVMUtil_initialize"
-                   AC_CHECK_LIB([gluegen2-rt], [$symbol], [GLUEGEN2_RT_LIBS="-lgluegen2-rt"],
+                   AC_CHECK_LIB([gluegen2-rt], [$symbol], [GLUEGEN_RT_LIBS="-lgluegen-rt"],
                    [AC_MSG_ERROR([libgluegen2-rt: Library missing (Cannot find symbol $symbol). Check if libgluegen-rt - C/Java (JNI) interface for GLUEGEN2 - is installed and if the version is correct. Note that you might have to update etc/librarypath.xml to provide the actual path the the JNI libraries.])],
                    [-ldl])
                    LDFLAGS=$LDFLAGS_save
@@ -1025,7 +1025,7 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 JLATEXMATH=$PACKAGE_JAR_FILE
                 AC_SUBST(JLATEXMATH)
 
-                AC_JAVA_CHECK_VERSION_PACKAGE([jlatexmath],[import org.scilab.forge.jlatexmath.TeXFormula;],$JLATEXMATH,[1.0.1],[TeXFormula.VERSION])
+                AC_JAVA_CHECK_VERSION_PACKAGE([jlatexmath],[import org.scilab.forge.jlatexmath.TeXFormula;],$JLATEXMATH,[1.0.0],[TeXFormula.VERSION])
 
                 AC_DEFINE([WITH_GUI],[],[With the JAVA stuff (GUI, Console, JOGL...)])
 
@@ -1183,11 +1183,10 @@ LT_LIB_M()
 # Provided by math.h
 
 LDFLAGS="$LDFLAGS $LIBM"
-AC_CHECK_FUNCS([pow] [sqrt] [finite] [floor] [exp10] [erf] [erfc] [isnan])
+AC_CHECK_FUNCS([pow] [sqrt] [finite] [floor] [exp10])
 
 ### If isinf exists or not (used to not be the case under Solaris)
 ### See bug #4164
-AC_DEFINE([HAVE_ISINF],[1],[Have isinf function or macro equivalent])
 AC_CHECK_FUNC([isinf],,[
         AC_DEFINE([isinf(x)],[(!finite(x) && x==x)],[Provide a macro to do isinf])
 ])
@@ -1215,13 +1214,24 @@ AC_FUNC_STAT
 # function strtod used in modules/core/src/c/getval.c
 AC_FUNC_STRTOD
 
+# other funcs
+AC_FUNC_ALLOCA
+AC_FUNC_ERROR_AT_LINE
+AC_FUNC_FORK
+AC_FUNC_MALLOC
+AC_FUNC_MMAP
+AC_FUNC_REALLOC
+AC_CHECK_FUNCS([realpath strcspn strspn strtoul wcwidth])
+
 ########################
 ## test for header files
 ########################
 
+AC_HEADER_STDC
+
 AC_CHECK_HEADERS([limits.h values.h])
 
-AC_CHECK_HEADERS([fcntl.h float.h libintl.h locale.h malloc.h netdb.h netinet/in.h nlist.h sgtty.h stddef.h sys/file.h sys/ioctl.h sys/param.h sys/socket.h sys/time.h sys/timeb.h sys/utsname.h syslog.h term.h termcap.h termio.h termios.h wchar.h wctype.h time.h])
+AC_CHECK_HEADERS([fcntl.h float.h libintl.h locale.h malloc.h netdb.h netinet/in.h nlist.h sgtty.h stddef.h stdio.h string.h strings.h sys/file.h sys/ioctl.h sys/param.h sys/socket.h sys/time.h sys/timeb.h sys/utsname.h syslog.h term.h termcap.h termio.h termios.h wchar.h wctype.h time.h utime.h])
 
 # check header dirent
 AC_HEADER_DIRENT
@@ -1232,6 +1242,13 @@ AC_HEADER_TIME
 # check if the specific header is available or not | used in modules/core/src/c/link_SYSV.c
 AC_HEADER_SYS_WAIT
 
+# Checks for typedefs, structures, and compiler characteristics.
+AC_CHECK_HEADER_STDBOOL
+AC_TYPE_INT32_T
+AC_TYPE_PID_T
+AC_TYPE_SIZE_T
+AC_TYPE_UINT32_T
+AC_CHECK_TYPES([ptrdiff_t])
 
 #######################
 ## Test for structures ##
@@ -1246,7 +1263,7 @@ AC_CHECK_MEMBERS([struct stat.st_rdev])
 
 # gettext.  See http://www.gnu.org/software/hello/manual/gettext/AM_005fGNU_005fGETTEXT.html
 AM_GNU_GETTEXT([external])
-AM_GNU_GETTEXT_VERSION([0.16])
+AM_GNU_GETTEXT_VERSION([0.18.2])
 
 # function closedir used in modules/metanet/src/c/files.c
 AC_FUNC_CLOSEDIR_VOID
@@ -1307,7 +1324,9 @@ fi
 ## other libraries
 ##################
 
-AC_CHECK_LIB(dl, dlopen)
+AC_CHECK_LIB([dl], [dlopen])
+# FIXME: Replace `main' with a function in `-lintl':
+AC_CHECK_LIB([intl], [main])
 
 AC_SEARCH_LIBS([pthread_join],[pthread])
 
@@ -1315,7 +1334,7 @@ AC_SEARCH_LIBS([pthread_join],[pthread])
 ## FFTW
 #################
 
-AC_ARG_WITH(fftw,
+AC_ARG_WITH([fftw],
     AC_HELP_STRING([--without-fftw],[Disable the interface to the FFTW 3 library]))
 
 FFTW_ENABLE=no
@@ -1327,31 +1346,16 @@ fi
 AC_SUBST(FFTW_ENABLE)
 AM_CONDITIONAL(FFTW, test "$with_fftw" != no)
 
-
-#################
-## MPI
-#################
-
-# Not in Scilab 5.0
-#AC_ARG_WITH(mpi,
-#    [  --with-mpi               compile with MPI library])
-#
-#if test "$with_mpi" = yes; then
-#   AC_OPENMPI()
-#   # We will have to detect other implementation of OpenMPI
-#fi
-#AM_CONDITIONAL(MPI, test "$with_mpi" = yes)
-
 #################
 ## OpenMP
 #################
 
-AC_ARG_WITH(openmp,
+AC_ARG_WITH([openmp],
     AC_HELP_STRING([--without-openmp],[Disable the usage of OpenMP (parallelization of some algoritms)]))
 
 OPENMP_ENABLE=no
 if test "$with_openmp" != no; then
-#   AC_OPENMP
+    AC_OPENMP
     OPENMP_CFLAGS="-fopenmp"
     OPENMP_CXXFLAGS="-fopenmp"
     OPENMP_LIBS="-lgomp"
@@ -1420,6 +1424,8 @@ ACX_BLAS(
 
 AC_MSG_CHECKING([if LAPACK is available])
 echo ""
+# FIXME: Replace `main' with a function in `-llapack':
+AC_CHECK_LIB([lapack], [main])
 ACX_LAPACK(
         [AC_MSG_RESULT([$LAPACK_TYPE found])],
         AC_MSG_ERROR([Impossible to find the LAPACK library.])
@@ -1471,12 +1477,6 @@ AM_CONDITIONAL(UMFPACK, test "$with_umfpack" != no)
 #######################
 
 AC_PCRE()
-
-#######################
-## Test for CURL
-#######################
-
-AC_CURL()
 
 #################
 ## Tcl/Tk library
@@ -1625,18 +1625,6 @@ if test "$with_install_help_xml" != no -a "$with_install_help_xml" != ""; then
 fi
 AM_CONDITIONAL(INSTALL_HELP_XML, test "$HELP_INSTALL_ENABLE" != "")
 
-## Doxygen help generation
-AC_ARG_ENABLE(build-doxygen,
-    AC_HELP_STRING([--enable-build-doxygen],[Generate doxygen C/C++ documentation]))
-
-DOXYGEN_ENABLE=yes
-if test "$enable_build_doxygen" != no -a "$enable_build_doxygen" != ""; then
-    AC_DOXYGEN()
-else
-    DOXYGEN_ENABLE=no
-fi
-AM_CONDITIONAL(DOXYGEN, test $DOXYGEN_ENABLE = yes)
-
 ##############################################################
 ## Javasci module
 ##############################################################
@@ -1698,7 +1686,6 @@ AM_DISABLE_STATIC
 LT_PREREQ([2.2.7])
 AC_PROG_LIBTOOL([shared dlopen])
 AM_PROG_LIBTOOL
-
 
 # Avoid to link all the dep from others libraries (*.la included by LIBADD)
 link_all_deplibs=no
@@ -1792,6 +1779,11 @@ AC_SUBST(SCI_FFLAGS)
 AC_SUBST(SCI_LDFLAGS)
 
 AC_CONFIG_FILES([
+libs/MALLOC/Makefile
+libs/dynamiclibrary/Makefile
+libs/doublylinkedlist/Makefile
+libs/hashtable/Makefile
+libs/libst/Makefile
 contrib/Makefile
 desktop/images/icons/Makefile
 desktop/Makefile
@@ -1871,6 +1863,7 @@ modules/preferences/Makefile
 modules/xml/Makefile
 modules/external_objects/Makefile
 modules/Makefile
+libs/Makefile
 Makefile
 scilab.pc
 etc/modules.xml
@@ -2190,12 +2183,6 @@ echo "PCRE configuration:"
 echo "  PCRE_CFLAGS ........ = $PCRE_CFLAGS"
 echo "  PCRE_LIBS .......... = $PCRE_LIBS"
 echo "  PCRE_VERSION ....... = $PCRE_VERSION"
-
-echo ""
-echo "CURL configuration:"
-echo "  CURL_CFLAGS ........ = $CURL_CFLAGS"
-echo "  CURL_LIBS .......... = $CURL_LIBS"
-echo "  CURL_VERSION ....... = $CURL_VERSION"
 
 
 echo ""

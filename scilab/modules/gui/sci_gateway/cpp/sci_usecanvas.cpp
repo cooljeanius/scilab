@@ -15,7 +15,7 @@
 
 extern "C"
 {
-#include "api_scilab.h"
+#include "stack-c.h"
 #include "getScilabJavaVM.h"
 #include "localization.h"
 #include "Scierror.h"
@@ -29,67 +29,67 @@ using namespace org_scilab_modules_gui_bridge;
 /*--------------------------------------------------------------------------*/
 int sci_usecanvas(char *fname, unsigned long fname_len)
 {
-    SciErr sciErr;
-
     int m1 = 0, n1 = 0, l1 = 0;
-    int status = 0;
-    int* piAddr1 = NULL;
+    int *status = NULL;
 
-    CheckInputArgument(pvApiCtx, 0, 1);
-    CheckOutputArgument(pvApiCtx, 0, 1);
+    CheckLhs(0, 1);
+    CheckRhs(0, 1);
 
-    if (nbInputArgument(pvApiCtx) == 1) /* Sets the status of usecanvas */
+    if (Rhs == 1)               /* Sets the status of usecanvas */
     {
-        if (checkInputArgumentType(pvApiCtx, 1, sci_boolean) == FALSE)
+        if (VarType(1) != sci_boolean)
         {
             Scierror(999, _("%s: Wrong type for input argument #%d: A boolean expected.\n"), fname, 1);
-            return 1;
+            return FALSE;
         }
 
-        sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddr1);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            return 1;
-        }
+        GetRhsVar(1, MATRIX_OF_BOOLEAN_DATATYPE, &m1, &n1, &l1);
 
-        if (getScalarBoolean(pvApiCtx, piAddr1, &l1))
+        if (m1 * n1 != 1)
         {
-            printError(&sciErr, 0);
-            return 1;
+            Scierror(999, _("%s: Wrong size for input argument #%d: A boolean expected.\n"), fname, 1);
+            return FALSE;
         }
 
         try
         {
-            CallScilabBridge::useCanvasForDisplay(getScilabJavaVM(), BOOLtobool(l1));
+            CallScilabBridge::useCanvasForDisplay(getScilabJavaVM(), BOOLtobool(*istk(l1)));
         }
-        catch (const GiwsException::JniException & e)
+        catch(const GiwsException::JniException & e)
         {
             Scierror(999, _("%s: A Java exception arisen:\n%s"), fname, e.whatStr().c_str());
-            return 1;
+            return FALSE;
         }
     }
 
     /* Returns current status */
+    if ((status = (int *)MALLOC(sizeof(int))) == NULL)
+    {
+        Scierror(999, _("%s: No more memory.\n"), fname, 0);
+        return FALSE;
+    }
+
     try
     {
-        status = booltoBOOL(CallScilabBridge::useCanvasForDisplay(getScilabJavaVM()));
+        status[0] = booltoBOOL(CallScilabBridge::useCanvasForDisplay(getScilabJavaVM()));
     }
-    catch (const GiwsException::JniException & e)
+    catch(const GiwsException::JniException & e)
     {
         Scierror(999, _("%s: A Java exception arisen:\n%s"), fname, e.whatStr().c_str());
-        return 1;
+        return FALSE;
     }
 
-    if (createScalarDouble(pvApiCtx, 1, status))
-    {
-        printError(&sciErr, 0);
-        return 1;
-    }
+    m1 = 1;
+    n1 = 1;
+    CreateVarFromPtr(1, MATRIX_OF_BOOLEAN_DATATYPE, &m1, &n1, &status);
 
-    AssignOutputVariable(pvApiCtx, 1) = 1;
-    returnArguments(pvApiCtx);
-    return 0;
+    FREE(status);
+
+    LhsVar(1) = 1;
+    PutLhsVar();
+
+    return TRUE;
+
 }
 
 /*--------------------------------------------------------------------------*/

@@ -52,11 +52,6 @@ public:
         return size;
     }
 
-    void incrementSize()
-    {
-        size++;
-    }
-
     /**
      * Get the content of each node of the list
      * @return an array of strings
@@ -93,17 +88,11 @@ protected:
             {
                 if (index < *prev)
                 {
-                    for (int i = *prev; i > index; i--, *prevElem = (*prevElem)->prev)
-                    {
-                        ;
-                    }
+                    for (int i = *prev; i > index; i--, *prevElem = (*prevElem)->prev) ;
                 }
                 else
                 {
-                    for (int i = *prev; i < index; i++, *prevElem = (*prevElem)->next)
-                    {
-                        ;
-                    }
+                    for (int i = *prev; i < index; i++, *prevElem = (*prevElem)->next) ;
                 }
                 *prev = index;
             }

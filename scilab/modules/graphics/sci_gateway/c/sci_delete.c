@@ -20,7 +20,7 @@
 
 #include "MALLOC.h"
 #include "gw_graphics.h"
-#include "api_scilab.h"
+#include "stack-c.h"
 #include "DestroyObjects.h"
 #include "SetProperty.h"
 #include "GetProperty.h"
@@ -50,14 +50,7 @@
 /*--------------------------------------------------------------------------*/
 int sci_delete(char *fname, unsigned long fname_len)
 {
-    SciErr sciErr;
-
-    int* piAddrl1 = NULL;
-    long long* l1 = NULL;
-    int* piAddrl2 = NULL;
-    char* l2 = NULL;
-
-    int m1 = 0, n1 = 0, lw = 0;
+    int m1 = 0, n1 = 0, l1 = 0, m2 = 0, n2 = 0, l2 = 0, lw = 0;
     unsigned long hdl = 0;
     int nb_handles = 0, i = 0, dont_overload = 0;
     char *pobjUID = NULL;
@@ -74,17 +67,17 @@ int sci_delete(char *fname, unsigned long fname_len)
     int iObjType = -1;
     int *piObjType = &iObjType;
 
-    CheckInputArgument(pvApiCtx, 0, 1);
-    CheckOutputArgument(pvApiCtx, 0, 1);
+    CheckRhs(0, 1);
+    CheckLhs(0, 1);
 
-    if (nbInputArgument(pvApiCtx) == 0)               /* Delete current object */
+    if (Rhs == 0)               /* Delete current object */
     {
         pobjUID = (char*)getCurrentObject();
         if (pobjUID == NULL)
         {
             //No current object, we can leave
-            AssignOutputVariable(pvApiCtx, 1) = 0;
-            ReturnArguments(pvApiCtx);
+            LhsVar(1) = 0;
+            PutLhsVar();
             return 0;
         }
 
@@ -94,63 +87,22 @@ int sci_delete(char *fname, unsigned long fname_len)
     }
     else
     {
-        sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrl1);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            return 1;
-        }
-
-        switch (getInputArgumentType(pvApiCtx, 1))
+        switch (VarType(1))
         {
             case sci_handles:      /* delete Entity given by a handle */
-
-                // Retrieve a matrix of handle at position 1.
-                sciErr = getMatrixOfHandle(pvApiCtx, piAddrl1, &m1, &n1, &l1); /* Gets the Handle passed as argument */
-                if (sciErr.iErr)
-                {
-                    printError(&sciErr, 0);
-                    Scierror(202, _("%s: Wrong type for argument %d: Handle matrix expected.\n"), fname, 1);
-                    return 1;
-                }
-
+                GetRhsVar(1, GRAPHICAL_HANDLE_DATATYPE, &m1, &n1, &l1); /* Gets the Handle passed as argument */
                 nb_handles = m1 * n1;
 
-                if (nbInputArgument(pvApiCtx) == 2)
+                if (Rhs == 2)
                 {
-                    sciErr = getVarAddressFromPosition(pvApiCtx, 2, &piAddrl2);
-                    if (sciErr.iErr)
-                    {
-                        printError(&sciErr, 0);
-                        return 1;
-                    }
-
-                    // Retrieve a matrix of double at position 2.
-                    if (getAllocatedSingleString(pvApiCtx, piAddrl2, &l2))   /* Gets the command name */
-                    {
-                        Scierror(202, _("%s: Wrong type for argument #%d: A string expected.\n"), fname, 2);
-                        return 1;
-                    }
+                    GetRhsVar(2, STRING_DATATYPE, &m2, &n2, &l2);   /* Gets the command name */
                 }
-                hdl = (unsigned long) * (l1); /* Puts the value of the Handle to hdl */
+                hdl = (unsigned long) * hstk(l1); /* Puts the value of the Handle to hdl */
                 break;
             case sci_strings:      /* delete("all") */
-                CheckInputArgument(pvApiCtx, 1, 1);
-                sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrl2);
-                if (sciErr.iErr)
-                {
-                    printError(&sciErr, 0);
-                    return 1;
-                }
-
-                // Retrieve a matrix of double at position 1.
-                if (getAllocatedSingleString(pvApiCtx, piAddrl2, &l2))
-                {
-                    Scierror(202, _("%s: Wrong type for argument #%d: A string expected.\n"), fname, 1);
-                    return 1;
-                }
-
-                if (strcmp((l2), "all") == 0)
+                CheckRhs(1, 1);
+                GetRhsVar(1, STRING_DATATYPE, &m2, &n2, &l2);
+                if (strcmp(cstk(l2), "all") == 0)
                 {
                     int i = 0;
                     int iFigureNumber = sciGetNbFigure();
@@ -158,8 +110,8 @@ int sci_delete(char *fname, unsigned long fname_len)
                     if (iFigureNumber == 0)
                     {
                         //no graphic windows, we can leave
-                        AssignOutputVariable(pvApiCtx, 1) = 0;
-                        ReturnArguments(pvApiCtx);
+                        LhsVar(1) = 0;
+                        PutLhsVar();
                         return 0;
                     }
 
@@ -177,14 +129,9 @@ int sci_delete(char *fname, unsigned long fname_len)
                             deleteGraphicObject(childrenUID[i]);
                         }
                     }
-                    /*
-                     * Clone a new Axes object using the Axes model which is then
-                     * attached to the 'cleaned' Figure.
-                     */
-                    cloneAxesModel(pFigureUID);
 
-                    AssignOutputVariable(pvApiCtx, 1) = 0;
-                    ReturnArguments(pvApiCtx);
+                    LhsVar(1) = 0;
+                    PutLhsVar();
 
                     return 0;
                 }
@@ -196,18 +143,17 @@ int sci_delete(char *fname, unsigned long fname_len)
                 break;
             default:
                 // Overload
-                lw = 1 + nbArgumentOnStack(pvApiCtx) - nbInputArgument(pvApiCtx);
+                lw = 1 + Top - Rhs;
                 C2F(overload) (&lw, "delete", 6);
                 return 0;
         }
     }
-
     for (i = 0; i < nb_handles; i++)
     {
         char* pstTemp = NULL;
-        if (nbInputArgument(pvApiCtx) != 0)
+        if (Rhs != 0)
         {
-            hdl = (unsigned long) * (l1 + i); /* Puts the value of the Handle to hdl */
+            hdl = (unsigned long) * hstk(l1 + i); /* Puts the value of the Handle to hdl */
         }
 
         pobjUID = (char*)getObjectFromHandle(hdl);
@@ -289,18 +235,13 @@ int sci_delete(char *fname, unsigned long fname_len)
     if (!dont_overload)
     {
         // Overload
-        lw = 1 + nbArgumentOnStack(pvApiCtx) - nbInputArgument(pvApiCtx);
+        lw = 1 + Top - Rhs;
         C2F(overload) (&lw, "delete", 6);
     }
     else
     {
-        AssignOutputVariable(pvApiCtx, 1) = 0;
-        ReturnArguments(pvApiCtx);
-    }
-
-    if (l2)
-    {
-        freeAllocatedSingleString(l2);
+        LhsVar(1) = 0;
+        PutLhsVar();
     }
 
     return 0;

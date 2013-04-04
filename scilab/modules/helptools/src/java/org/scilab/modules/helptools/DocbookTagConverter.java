@@ -44,12 +44,12 @@ public class DocbookTagConverter extends DefaultHandler {
     private static final String DOCBOOKURI = "http://docbook.org/ns/docbook";
     private static final Class[] argsType = new Class[] {Map.class, String.class};
 
-    private Map<String, Method> mapMeth = new HashMap<String, Method>();
-    private Map<String, ExternalXMLHandler> externalHandlers = new HashMap<String, ExternalXMLHandler>();
+    private Map<String, Method> mapMeth = new HashMap();
+    private Map<String, ExternalXMLHandler> externalHandlers = new HashMap();
     private List<DocbookTagConverter> converters;
     private final File in;
     private DocbookElement baseElement = new DocbookElement(null, null, null);
-    private Stack<DocbookElement> stack = new Stack<DocbookElement>();
+    private Stack<DocbookElement> stack = new Stack();
     private String errors = "";
 
     /**
@@ -131,7 +131,7 @@ public class DocbookTagConverter extends DefaultHandler {
      */
     public void registerConverter(DocbookTagConverter c) {
         if (converters == null) {
-            converters = new ArrayList<DocbookTagConverter>();
+            converters = new ArrayList();
         }
 
         converters.add(c);
@@ -212,11 +212,9 @@ public class DocbookTagConverter extends DefaultHandler {
         try {
             factory.setFeature("http://xml.org/sax/features/namespace-prefixes", true);
             SAXParser parser = factory.newSAXParser();
-            // Must be uncommented to be able to read comments
-            //parser.setProperty("http://xml.org/sax/properties/lexical-handler", this);
             parser.parse(in, this);
         } catch (ParserConfigurationException e) {
-            exceptionOccurred(e);
+            exceptionOccured(e);
         } catch (SAXException e) {
             System.err.println(e);
         } catch (IOException e) {
@@ -274,7 +272,7 @@ public class DocbookTagConverter extends DefaultHandler {
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         if (uri.equals(DOCBOOKURI)) {
             int len = attributes.getLength();
-            Map<String, String> map = new HashMap<String, String>(len);
+            Map<String, String> map = new HashMap(len);
             for (int i = 0; i < len; i++) {
                 map.put(attributes.getLocalName(i), attributes.getValue(i));
             }
@@ -282,7 +280,7 @@ public class DocbookTagConverter extends DefaultHandler {
         } else {
             ExternalXMLHandler h = externalHandlers.get(uri);
             if (h == null) {
-                exceptionOccurred(new SAXException("uri " + uri + " not handled"));
+                exceptionOccured(new SAXException("uri " + uri + " not handled"));
                 return;
             }
             StringBuilder buf = h.startExternalXML(localName, attributes);
@@ -307,7 +305,7 @@ public class DocbookTagConverter extends DefaultHandler {
         if (uri.equals(DOCBOOKURI)) {
             DocbookElement elem = stack.pop();
             if (!elem.getName().equals(localName)) {
-                exceptionOccurred(new SAXException("tag " + elem.getName() + " is closed with tag " + localName));
+                exceptionOccured(new SAXException("tag " + elem.getName() + " is closed with tag " + localName));
                 return;
             }
             try {
@@ -322,13 +320,13 @@ public class DocbookTagConverter extends DefaultHandler {
                     elemp.getStringBuilder().append(str);
                 }
             } catch (SAXException e) {
-                exceptionOccurred(e);
+                exceptionOccured(e);
                 return;
             }
         } else {
             ExternalXMLHandler h = externalHandlers.get(uri);
             if (h == null) {
-                exceptionOccurred(new SAXException("uri " + uri + " not handled"));
+                exceptionOccured(new SAXException("uri " + uri + " not handled"));
                 return;
             }
             String str = h.endExternalXML(localName);
@@ -344,10 +342,6 @@ public class DocbookTagConverter extends DefaultHandler {
             }
         }
     }
-
-    /*public void comment(char[] ch, int start, int length) throws SAXException {
-
-      }*/
 
     /**
      * {@inheritDoc}
@@ -430,7 +424,7 @@ public class DocbookTagConverter extends DefaultHandler {
      * @param e the exception to handle
      * @throws SAXException if problem
      */
-    protected void fatalExceptionOccurred(Exception e) throws SAXException {
+    protected void fatalExceptionOccured(Exception e) throws SAXException {
         throw new SAXException(errors + "\nFATAL error:\n" + e.getMessage());
     }
 
@@ -439,7 +433,7 @@ public class DocbookTagConverter extends DefaultHandler {
      * @param e the exception to handle
      * @throws SAXException if problem
      */
-    protected void exceptionOccurred(Exception e) {
+    protected void exceptionOccured(Exception e) {
         if (!hasError) {
             hasError = true;
         }

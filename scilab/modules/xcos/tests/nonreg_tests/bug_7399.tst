@@ -6,7 +6,7 @@
 // =============================================================================
 
 // <-- INTERACTIVE TEST -->
-// <-- XCOS TEST -->
+// <-- TEST WITH XCOS -->
 // <-- Non-regression test for bug 7214 -->
 //
 // <-- Bugzilla URL -->
@@ -17,7 +17,7 @@ xcos();
 // open it
 // close the main diagram
 // close the super block diagram
-// -> check that a saving popup appears without cancel button
+// -> check that a saving popup appears wihtout cancel button
 // click No
 // close Scilab
 // -> check that no popup appears

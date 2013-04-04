@@ -9,5 +9,3 @@ callFunctionFromGateway
 com_
 stack_
 vstk_
-MyHeapAlloc
-MyHeapFree

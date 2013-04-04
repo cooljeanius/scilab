@@ -13,7 +13,7 @@
  */
 
 #include "gw_gui.h"
-#include "api_scilab.h"
+#include "stack-c.h"
 #include "localization.h"
 #include "Scierror.h"
 #include "InitUIMenu.h"
@@ -23,29 +23,16 @@
 /*--------------------------------------------------------------------------*/
 int sci_delmenu(char *fname, unsigned long fname_len)
 {
-    SciErr sciErr;
-
-    int* piAddr1    = NULL;
-    int* piAddr2    = NULL;
-    char* strAdr    = NULL;
-    double* pdblAdr = NULL;
-
-    int nbRow = 0;
-    int nbCol = 0;
+    int nbRow = 0, nbCol = 0, stkAdr = 0;
+    int nbRow1 = 0, nbCol1 = 0, stkAdr1 = 0;
 
     // Check parameter number
-    CheckInputArgument(pvApiCtx, 1, 2);
-    CheckOutputArgument(pvApiCtx, 1, 1);
+    CheckRhs(1, 2);
+    CheckLhs(1, 1);
 
-    sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddr1);
-    if (sciErr.iErr)
+    if (Rhs == 1)
     {
-        printError(&sciErr, 0);
-        return 1;
-    }
 
-    if (nbInputArgument(pvApiCtx) == 1)
-    {
         // Error message in not in standard mode (we need figure index)
         if (getScilabMode() != SCILAB_STD)
         {
@@ -54,40 +41,31 @@ int sci_delmenu(char *fname, unsigned long fname_len)
         }
 
         // Unset a Menu of Scilab Main Window
-        if ((!checkInputArgumentType(pvApiCtx, 1, sci_strings)))
+        if (VarType(1) != sci_strings)
         {
             Scierror(999, _("%s: Wrong type for input argument #%d: A string expected.\n"), fname, 1);
             return FALSE;
         }
 
-        // Retrieve a matrix of double at position 1.
-        if (getAllocatedSingleString(pvApiCtx, piAddr1, &strAdr))
+        GetRhsVar(1, STRING_DATATYPE, &nbRow, &nbCol, &stkAdr);
+
+        if (nbCol != 1)
         {
-            Scierror(202, _("%s: Wrong type for argument #%d: A string expected.\n"), fname, 1);
-            return 1;
+            Scierror(999, _("%s: Wrong size for input argument #%d: A string expected.\n"), fname, 1);
+            return FALSE;
         }
 
-        DeleteMenuWithName(getConsoleIdentifier(), strAdr);
-        freeAllocatedSingleString(strAdr);
+        DeleteMenuWithName(getConsoleIdentifier(), cstk(stkAdr));
     }
     else
     {
         // Unset a Menu a Scilab Graphic Window
-        if ((!checkInputArgumentType(pvApiCtx, 1, sci_matrix)))
+        if (VarType(1) != sci_matrix)
         {
             Scierror(999, _("%s: Wrong type for input argument #%d: A real expected.\n"), fname, 1);
             return FALSE;
         }
-
-        // Retrieve a matrix of double at position 1.
-        sciErr = getMatrixOfDouble(pvApiCtx, piAddr1, &nbRow, &nbCol, &pdblAdr);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            Scierror(202, _("%s: Wrong type for argument %d: A real expected.\n"), fname, 1);
-            return 1;
-        }
-
+        GetRhsVar(1, MATRIX_OF_DOUBLE_DATATYPE, &nbRow, &nbCol, &stkAdr);
 
         if (nbRow * nbCol != 1)
         {
@@ -95,31 +73,18 @@ int sci_delmenu(char *fname, unsigned long fname_len)
             return FALSE;
         }
 
-        if ((!checkInputArgumentType(pvApiCtx, 2, sci_strings)))
+        if (VarType(2) != sci_strings)
         {
             Scierror(999, _("%s: Wrong type for input argument #%d: A string expected.\n"), fname, 2);
             return FALSE;
         }
-        sciErr = getVarAddressFromPosition(pvApiCtx, 2, &piAddr2);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            return 1;
-        }
+        GetRhsVar(2, STRING_DATATYPE, &nbRow1, &nbCol1, &stkAdr1);
 
-        // Retrieve a matrix of double at position 2.
-        if (getAllocatedSingleString(pvApiCtx, piAddr2, &strAdr))
-        {
-            Scierror(202, _("%s: Wrong type for argument #%d: A string expected.\n"), fname, 2);
-            return 1;
-        }
-
-        DeleteMenuWithName((char*)getFigureFromIndex((int)(*pdblAdr)), strAdr);
-        freeAllocatedSingleString(strAdr);
+        DeleteMenuWithName((char*)getFigureFromIndex((int)*stk(stkAdr)), cstk(stkAdr1));
     }
 
-    AssignOutputVariable(pvApiCtx, 1) = 0;
-    ReturnArguments(pvApiCtx);
+    LhsVar(1) = 0;
+    PutLhsVar();
     return 0;
 }
 

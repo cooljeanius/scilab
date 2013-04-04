@@ -5,7 +5,7 @@
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
 
-// <-- XCOS TEST -->
+// <-- TEST WITH XCOS -->
 //
 // <-- Unitary test for the xcosBlockEval macro -->
 //
@@ -16,6 +16,7 @@
 // The xcosBlockEval macro is used on Xcos to update SuperBlocks I/O blocks 
 // from the context data.
 
+loadXcosLibs();
 funcprot(0); // avoid function assignation message
 
 ioBlocks = ["IN_f", "OUT_f", "INIMPL_f", "OUTIMPL_f", "CLKIN_f", "CLKOUT_f", ..

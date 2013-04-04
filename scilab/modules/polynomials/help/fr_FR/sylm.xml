@@ -2,7 +2,7 @@
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="fr" xml:id="sylm">
     <refnamediv>
         <refname>sylm</refname>
-        <refpurpose>matrice de Sylvester  </refpurpose>
+        <refpurpose> matrice de Sylvester  </refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Séquence d'appel</title>
@@ -45,7 +45,7 @@
         <para>
             <literal>rank(sylm(a,b))=degree(a)+degree(b))</literal> et les instructions
         </para>
-        <programlisting role="no-scilab-exec"><![CDATA[ 
+        <programlisting role=""><![CDATA[ 
 u = sylm(a,b) \ eye(na+nb,1)
 x = poly(u(1:nb),'z','coeff')
 y = poly(u(nb+1:na+nb),'z','coeff')
@@ -54,15 +54,11 @@ y = poly(u(nb+1:na+nb),'z','coeff')
             calculent les facteurs de Bezout <literal>x</literal> ainsi que <literal>y</literal> de degré minimum tels que 
             <literal>a*x+b*y = 1</literal>
         </para>
-        
-        <refsection>
-            <title>Exemples</title>
-            <programlisting role="example"><![CDATA[
-x = poly(0,"x")
-y = poly ([1, 2, 3], "x","coeff");
-sylm(x,y)
-
- ]]></programlisting>
-        </refsection>
+        <para>
+        </para>
+        <para>
+        </para>
+        <para>
+        </para>
     </refsection>
 </refentry>

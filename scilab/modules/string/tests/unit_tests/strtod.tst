@@ -11,54 +11,34 @@
 // strtod
 //===============================
 N = 666.666;
-STREND = " is a double";
+STREND = ' is a double';
 STR = string(N)+STREND;
 d = strtod(STR);
-assert_checkequal(d, N);
+if d <> N then pause,end
 [d,s] = strtod(STR);
-assert_checkequal(d, N);
-assert_checkequal(s, STREND);
+if d <> N pause,end
+if s <> STREND then pause,end
 //===============================
-STR = "1";
+STR ='1';
 [d,s] = strtod(STR);
-assert_checkequal(s, "");
-assert_checkequal(d, 1);
+if s<>'' then pause,end
+if d<>1 then pause,end
 //===============================
-STR = "string";
+STR = 'string';
 [d,s] = strtod(STR);
-assert_checkequal(s, STR);
-assert_checkequal(d, %nan);
+if s<>STR then pause,end
+if d<>0 then pause,end
 //===============================
-STR1 = "1A";
-STR2 = "2B";
-STR3 = "3C";
-STR4 = "4d";
+STR1 = '1A';
+STR2 = '2B';
+STR3 = '3C';
+STR4 = '4d';
 STR = [STR1,STR2;STR3,STR4];
 [d,s] = strtod(STR);
-assert_checkequal(s, ["A","B";"C","d"]);
-assert_checkequal(d, [1,2;3,4]);
+if s<>['A','B';'C','d'] then pause,end
+if d<>[1,2;3,4] then pause,end
 //===============================
-[d,s] = strtod("");
-assert_checkequal(s, "");
-assert_checkequal(d, %nan);
-//===============================
-[d,s] = strtod("  ");
-assert_checkequal(s, "  ");
-assert_checkequal(d, %nan);
-//===============================
-[d,s] = strtod("  123");
-assert_checkequal(s, "");
-assert_checkequal(d, 123);
-//===============================
-[d,s] = strtod("  123  ");
-assert_checkequal(s, "  ");
-assert_checkequal(d, 123);
-//===============================
-[d,s] = strtod("  sdf  ");
-assert_checkequal(s, "  sdf  ");
-assert_checkequal(d, %nan);
-//===============================
-[d,s] = strtod([]);
-assert_checkequal(s, "");
-assert_checkequal(d, %nan);
+[d,s] = strtod('');
+if s<>'' then pause,end
+if d<>0 then pause,end
 //===============================

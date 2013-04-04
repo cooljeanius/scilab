@@ -14,6 +14,7 @@ function sciGUI_init()
     TCL_EvalFile(sciGUI_tclpath+'sciGUI.tcl');
     TCL_EvalFile(sciGUI_tclpath+'sciBrowseVar.tcl');
     TCL_EvalFile(sciGUI_tclpath+'sciEditVar.tcl');
+    TCL_EvalFile(sciGUI_tclpath+'sciConfig.tcl');
     TCL_EvalStr('sciGUIDoInit ""'+SCI+'/modules/tclsci'+'"";sciGUIBrowseVarINI;');
   end
 endfunction

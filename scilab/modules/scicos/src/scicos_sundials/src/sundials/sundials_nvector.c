@@ -1,7 +1,7 @@
 /*
  * -----------------------------------------------------------------
- * $Revision: 1.3 $
- * $Date: 2007/04/06 20:33:30 $
+ * $Revision: 1.2 $
+ * $Date: 2006/10/11 16:34:20 $
  * ----------------------------------------------------------------- 
  * Programmer(s): Radu Serban and Aaron Collier @ LLNL                               
  * -----------------------------------------------------------------
@@ -18,7 +18,7 @@
 
 #include <stdlib.h>
 
-#include <sundials/sundials_nvector.h>
+#include "sundials_nvector.h"
 
 /*
  * -----------------------------------------------------------------
@@ -28,21 +28,16 @@
 
 N_Vector N_VClone(N_Vector w)
 {
-  N_Vector v = NULL;
-  v = w->ops->nvclone(w);
-  return(v);
+  return(w->ops->nvclone(w));
 }
 
 N_Vector N_VCloneEmpty(N_Vector w)
 {
-  N_Vector v = NULL;
-  v = w->ops->nvcloneempty(w);
-  return(v);
+  return(w->ops->nvcloneempty(w));
 }
 
 void N_VDestroy(N_Vector v)
 {
-  if (v==NULL) return;
   v->ops->nvdestroy(v);
   return;
 }
@@ -179,15 +174,17 @@ realtype N_VMinQuotient(N_Vector num, N_Vector denom)
 
 N_Vector *N_VCloneEmptyVectorArray(int count, N_Vector w)
 {
-  N_Vector *vs = NULL;
+  N_Vector *vs;
   int j;
 
   if (count <= 0) return(NULL);
 
+  vs = NULL;
   vs = (N_Vector *) malloc(count * sizeof(N_Vector));
   if(vs == NULL) return(NULL);
 
   for (j = 0; j < count; j++) {
+    vs[j] = NULL;
     vs[j] = N_VCloneEmpty(w);
     if (vs[j] == NULL) {
       N_VDestroyVectorArray(vs, j-1);
@@ -200,15 +197,17 @@ N_Vector *N_VCloneEmptyVectorArray(int count, N_Vector w)
 
 N_Vector *N_VCloneVectorArray(int count, N_Vector w)
 {
-  N_Vector *vs = NULL;
+  N_Vector *vs;
   int j;
 
   if (count <= 0) return(NULL);
 
+  vs = NULL;
   vs = (N_Vector *) malloc(count * sizeof(N_Vector));
   if(vs == NULL) return(NULL);
 
   for (j = 0; j < count; j++) {
+    vs[j] = NULL;
     vs[j] = N_VClone(w);
     if (vs[j] == NULL) {
       N_VDestroyVectorArray(vs, j-1);
@@ -222,8 +221,6 @@ N_Vector *N_VCloneVectorArray(int count, N_Vector w)
 void N_VDestroyVectorArray(N_Vector *vs, int count)
 {
   int j;
-
-  if (vs==NULL) return;
 
   for (j = 0; j < count; j++) N_VDestroy(vs[j]);
 

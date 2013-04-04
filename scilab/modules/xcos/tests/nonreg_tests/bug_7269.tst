@@ -6,7 +6,7 @@
 // =============================================================================
 
 // <-- INTERACTIVE TEST -->
-// <-- XCOS TEST -->
+// <-- TEST WITH XCOS -->
 //
 // <-- Non-regression test for bug 7269 -->
 //
@@ -18,6 +18,7 @@
 // thrown.
 //
 
+loadScicosLibs;
 
 // Adding a user custom block
 pal = xcosPal("My pal");

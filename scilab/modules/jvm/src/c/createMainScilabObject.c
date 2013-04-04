@@ -160,6 +160,8 @@ void forceCloseMainScilabObject(void)
             }
             catchIfJavaException(_("Error with Scilab.forceClose():\n"));
         }
+
+        (*currentJVM)->DetachCurrentThread(currentJVM);
     }
 }
 /*--------------------------------------------------------------------------*/

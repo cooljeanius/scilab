@@ -43,16 +43,15 @@ int SetSci(void)
 	{
 		C2F(getenvc)(&ierr,"SCI",buf,&lbuf,&iflag);
 
-		if (ierr != 0)
+		if ( ierr== 1) 
 		{
-#ifdef  _MSC_VER
-		    MessageBox(NULL,gettext("SCI environment variable not defined.\n"),gettext("Warning"),MB_ICONWARNING);
-#else
-		    fprintf(stderr, "%s", _("SCI environment variable not defined.\n"));
-#endif
-	        exit(1);
+		#ifdef  _MSC_VER
+		MessageBox(NULL,gettext("SCI environment variable not defined.\n"),gettext("Warning"),MB_ICONWARNING);
+		#else
+		fprintf(stderr, "%s", _("SCI environment variable not defined.\n"));
+		#endif
+		exit(1);
 		}
-
 		setSCIpath(buf);
 		FREE(buf);
 		buf = NULL;
@@ -130,7 +129,7 @@ int C2F(gettmpdir)(char *buf,int *nbuf,long int lbuf)
 {
 	int ierr,iflag=0,l1buf=lbuf;
 	C2F(getenvc)(&ierr,"TMPDIR",buf,&l1buf,&iflag);
-	if (ierr != 0) 
+	if ( ierr== 1) 
 	{
 #ifdef  _MSC_VER
 		MessageBox(NULL,gettext("TMPDIR not defined.\n"),gettext("Warning"),MB_ICONWARNING);
@@ -139,7 +138,6 @@ int C2F(gettmpdir)(char *buf,int *nbuf,long int lbuf)
 #endif
 		exit(1);
 	}
-
 	*nbuf = (int)strlen(buf);
 	return 0;
 }

@@ -1,5 +1,0 @@
-#
-#generated .def files (windows)
-#
-src/c/signal_processing.def
-src/fortran/signal_processing_f.def

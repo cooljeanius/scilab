@@ -13,5 +13,3 @@ getrhsvar_
 checklhs_
 checkrhs_
 isanan_
-MyHeapAlloc
-MyHeapFree

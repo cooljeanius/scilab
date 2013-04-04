@@ -5,7 +5,7 @@
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
 
-// <-- XCOS TEST -->
+// <-- TEST WITH XCOS -->
 // <-- NO CHECK ERROR OUTPUT -->
 //
 // <-- Non-regression test for bug 9478 -->
@@ -16,6 +16,7 @@
 // <-- Short Description -->
 // depends en u/t field works as a row or a column
 
+loadXcosLibs();
 
 scs_m=scicos_diagram(..
       version="scicos4.2",..

@@ -32,7 +32,6 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import org.scilab.modules.commons.xml.ScilabXMLUtilities;
 import org.scilab.modules.gui.utils.ScilabSwingUtilities;
 import org.scilab.modules.scinotes.utils.SciNotesMessages;
 import org.w3c.dom.Element;
@@ -138,9 +137,8 @@ public class SearchManager {
         String word = exp;
         if (word != null && !word.equals("")) {
             if (!useRegexp) {
-                word = word.replace("\\E", "\\E\\\\E\\Q");
                 word = "\\Q" + word + "\\E";
-                if (wholeWord && exp.matches("\\b.*\\b")) {
+                if (wholeWord) {
                     word = "\\b" + word + "\\b";
                 }
             }
@@ -173,8 +171,8 @@ public class SearchManager {
      * @return infos with the matching positions
      */
     public static MatchingPositions searchInFiles(final BackgroundSearch bgs, String base, final boolean recursive, final boolean ignoreCR,
-                                                  String filePattern, boolean fileCaseSensitive,
-                                                  String wordPattern, boolean wordCaseSensitive, boolean wholeWord, boolean regexp) {
+            String filePattern, boolean fileCaseSensitive,
+            String wordPattern, boolean wordCaseSensitive, boolean wholeWord, boolean regexp) {
         final File dir = new File(base);
         Pattern word = null;
         if (wordPattern != null && wordPattern.length() != 0) {
@@ -227,12 +225,12 @@ public class SearchManager {
             pos = new MatchingPositions(base.getAbsolutePath(), list);
             int occurences = 0;
             File[] files = base.listFiles(new FilenameFilter() {
-                    @Override
-                    public boolean accept(File dir, String name) {
-                        File f = new File(dir, name);
-                        return f.isFile() && f.canRead() && file.matcher(name).matches();
-                    }
-                });
+                @Override
+                public boolean accept(File dir, String name) {
+                    File f = new File(dir, name);
+                    return f.isFile() && f.canRead() && file.matcher(name).matches();
+                }
+            });
             Arrays.sort(files);
 
             if (word != null) {
@@ -257,12 +255,12 @@ public class SearchManager {
 
             if (recursive) {
                 files = base.listFiles(new FilenameFilter() {
-                        @Override
-                        public boolean accept(File dir, String name) {
-                            File d = new File(dir, name);
-                            return d.isDirectory() && d.canRead();
-                        }
-                    });
+                    @Override
+                    public boolean accept(File dir, String name) {
+                        File d = new File(dir, name);
+                        return d.isDirectory() && d.canRead();
+                    }
+                });
                 Arrays.sort(files);
 
                 for (int i = 0; i < files.length && !killed[0]; i++) {
@@ -366,17 +364,17 @@ public class SearchManager {
      */
     private static void countFiles(File base, final Pattern pat, final int[] count) {
         File[] files = base.listFiles(new FilenameFilter() {
-                @Override
-                public boolean accept(File dir, String name) {
-                    File f = new File(dir, name);
-                    if (f.isFile() && f.canRead() && pat.matcher(name).matches()) {
-                        count[0]++;
-                    } else if (f.isDirectory() && f.canRead()) {
-                        countFiles(f, pat, count);
-                    }
-                    return false;
+            @Override
+            public boolean accept(File dir, String name) {
+                File f = new File(dir, name);
+                if (f.isFile() && f.canRead() && pat.matcher(name).matches()) {
+                    count[0]++;
+                } else if (f.isDirectory() && f.canRead()) {
+                    countFiles(f, pat, count);
                 }
-            });
+                return false;
+            }
+        });
     }
 
     /**
@@ -391,9 +389,7 @@ public class SearchManager {
             reader.close();
             int i = 0;
             if (len != -1) {
-                for (; i < len && buffer[i] != '\0'; i++) {
-                    ;
-                }
+                for (; i < len && buffer[i] != '\0'; i++);
             }
 
             return len != -1 && i != len;
@@ -573,7 +569,7 @@ public class SearchManager {
          */
         public void toXML(BufferedWriter buffer, int level) throws IOException {
             indent(buffer, level);
-            buffer.append("<Position file=\"" + ScilabXMLUtilities.getXMLString(file) + "\" isRoot=\"" + isRoot + "\" occurences=\"" + occurences + "\"");
+            buffer.append("<Position file=\"" + file + "\" isRoot=\"" + isRoot + "\" occurences=\"" + occurences + "\"");
             if (children != null && !children.isEmpty()) {
                 buffer.append(">\n");
                 for (int i = 0; i < children.size(); i++) {
@@ -693,7 +689,7 @@ public class SearchManager {
          */
         public void toXML(BufferedWriter buffer, int level) throws IOException {
             indent(buffer, level);
-            buffer.append("<Line content=\"" + ScilabXMLUtilities.getXMLString(content) + "\" number=\"" + number + "\"/>\n");
+            buffer.append("<Line content=\"" + content.replaceAll("\"", "&quot;") + "\" number=\"" + number + "\"/>\n");
         }
 
         /**

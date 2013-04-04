@@ -20,8 +20,6 @@ import java.util.Iterator;
 
 import org.xml.sax.SAXException;
 
-import org.scilab.modules.commons.ScilabConstants;
-
 /**
  * Class to convert DocBook to JavaHelp
  * @author Calixte DENIZET
@@ -46,12 +44,9 @@ public class JavaHelpDocbookTagConverter extends HTMLDocbookTagConverter {
      */
     public JavaHelpDocbookTagConverter(String inName, String outName, String[] primConf, String[] macroConf, String template, String version, String imageDir, boolean isToolbox, String urlBase, String language) throws IOException, SAXException {
         super(inName, outName, primConf, macroConf, template, version, imageDir, isToolbox, urlBase, language, HTMLDocbookTagConverter.GenerationType.JAVAHELP);
-        if (!isToolbox) {
-            this.outImages = ScilabConstants.SCI.getPath() + "/modules/helptools/images";
-        }
         prependToProgramListing = "<table border=\"0\" width=\"100%\"><tr><td width=\"98%\">";
-        appendToProgramListing = "</td><td valign=\"top\"><a href=\"scilab://scilab.execexample/\"><img src=\"" + getBaseImagePath() + "ScilabExecute.png\" border=\"0\"/></a></td><td valign=\"top\"><a href=\"scilab://scilab.editexample/\"><img src=\"" + getBaseImagePath() + "ScilabEdit.png\" border=\"0\"/></a></td><td></td></tr></table>";
-        appendForExecToProgramListing = "</td><td valign=\"top\"><a href=\"scilab://scilab.execexample/\"><img src=\"" + getBaseImagePath() + "ScilabExecute.png\" border=\"0\"/></a></td><td></td></tr></table>";
+        appendToProgramListing = "</td><td valign=\"top\"><a href=\"scilab://scilab.execexample/\"><img src=\"ScilabExecute.png\" border=\"0\"/></a></td><td valign=\"top\"><a href=\"scilab://scilab.editexample/\"><img src=\"ScilabEdit.png\" border=\"0\"/></a></td><td></td></tr></table>";
+        appendForExecToProgramListing = "</td><td valign=\"top\"><a href=\"scilab://scilab.execexample/\"><img src=\"ScilabExecute.png\" border=\"0\"/></a></td><td></td></tr></table>";
     }
 
     /**
@@ -98,7 +93,7 @@ public class JavaHelpDocbookTagConverter extends HTMLDocbookTagConverter {
             outIndex.flush();
             outIndex.close();
         } catch (IOException e) {
-            fatalExceptionOccurred(e);
+            fatalExceptionOccured(e);
         }
     }
 
@@ -107,14 +102,6 @@ public class JavaHelpDocbookTagConverter extends HTMLDocbookTagConverter {
      */
     protected String makeRemoteLink(String link) {
         return "file://SCI/modules/" + link;
-    }
-
-    public String getBaseImagePath() {
-        if (isToolbox) {
-            return super.getBaseImagePath();
-        }
-
-        return "jarsci:";
     }
 
     private String convertMapId() {
@@ -143,7 +130,7 @@ public class JavaHelpDocbookTagConverter extends HTMLDocbookTagConverter {
                 buffer.append("<tocitem target=\"");
                 buffer.append(c.id);
                 buffer.append("\" text=\"");
-                buffer.append(replaceEntity(tocitem.get(c.id)));
+                buffer.append(tocitem.get(c.id));
                 if (c.children == null) {
                     buffer.append("\"/>\n");
                 } else {

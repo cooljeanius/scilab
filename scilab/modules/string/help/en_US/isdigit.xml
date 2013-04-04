@@ -13,9 +13,7 @@
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="en" xml:id="isdigit">
     <refnamediv>
         <refname>isdigit</refname>
-        <refpurpose>
-            check that characters of a string are digits between 0 and 9
-        </refpurpose>
+        <refpurpose> check that characters of a string are digits between 0 and 9</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Calling Sequence</title>
@@ -27,13 +25,13 @@
             <varlistentry>
                 <term>str</term>
                 <listitem>
-                    <para>a character string.</para>
+                    <para>A character string.</para>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term>res</term>
                 <listitem>
-                    <para>a boolean matrix.</para>
+                    <para>A boolean matrix.</para>
                 </listitem>
             </varlistentry>
         </variablelist>
@@ -41,10 +39,9 @@
     <refsection>
         <title>Description</title>
         <para>
-            <code>res = isdigit(str)</code> returns an array the same size as
-            <varname>str</varname> containing logical <constant>%t</constant>
-            (TRUE) where the elements of <varname>str</varname> are digits and
-            logical <constant>%f</constant> (FALSE) where they are not.
+            <literal>res = isdigit(str)</literal> returns an array the same size as str
+            containing logical %T (TRUE) where the elements of str are digits and
+            logical %F (FALSE) where they are not.
         </para>
     </refsection>
     <refsection>
@@ -62,9 +59,6 @@ isdigit(s)
             </member>
             <member>
                 <link linkend="isletter">isletter</link>
-            </member>
-             <member>
-                <link linkend="isnum">isnum</link>
             </member>
         </simplelist>
     </refsection>

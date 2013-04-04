@@ -222,17 +222,16 @@
         </para>
         <para/>
         <para>
-            <link type="scilab" linkend="scilab.xcos/xcos/examples/lookuptables_pal/en_US/INTRPLBLK_f_en_US.xcos">
-                <inlinemediaobject>
-                    <imageobject>
-                        <imagedata fileref="../../../../examples/lookuptables_pal/en_US/INTRPLBLK_f_en_US.xcos" align="center" valign="middle"/>
-                    </imageobject>
-                </inlinemediaobject>
-            </link>
-            <scilab:image><![CDATA[
-importXcosDiagram(SCI + "/modules/xcos/examples/lookuptables_pal/en_US/INTRPLBLK_f_en_US.xcos");
-xcos_simulate(scs_m, 4);
-]]></scilab:image>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="../../../examples/lookuptables_pal/en_US/INTRPLBLK_f_diagram_en_US.png" align="center"/>
+                </imageobject>
+            </mediaobject>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="../../../examples/lookuptables_pal/en_US/INTRPLBLK_f_scope_en_US.png" align="center"/>
+                </imageobject>
+            </mediaobject>
         </para>
     </refsection>
     <refsection id="Interfacingfunction_INTRPLBLK_f">

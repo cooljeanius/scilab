@@ -12,7 +12,7 @@
  -->
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"  xml:id="legend_properties" xml:lang="en">
     <refnamediv>
-        <refname>Legend entity properties</refname>
+        <refname>legend_properties</refname>
         <refpurpose>description of the Legend entity properties.</refpurpose>
     </refnamediv>
     <refsection>
@@ -231,7 +231,7 @@ position=[(x1-as(1)*bnds(1))/(as(1)*bnds(3)),...
             <varlistentry>
                 <term>line_mode</term>
                 <listitem>
-                    <para>This field specifies if a rectangle is drawn around the legend
+                    <para>This field specifies if a rectangle is drawn around the legeng
                         or not. It should be <literal>"on"</literal> or
                         <literal>"off"</literal>. If <literal>"on"</literal> the rectangle
                         is drawn using the following properties.
@@ -259,7 +259,7 @@ position=[(x1-as(1)*bnds(1))/(as(1)*bnds(3)),...
             <varlistentry>
                 <term>fill_mode</term>
                 <listitem>
-                    <para>This field specifies if the legend background is painted or
+                    <para>This field specifies if the legeng background is painted or
                         not. It should be <literal>"on"</literal> or
                         <literal>"off"</literal>. If <literal>"on"</literal> the background
                         is painted using the color index set in the

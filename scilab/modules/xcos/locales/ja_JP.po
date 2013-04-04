@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: scilab\n"
 "Report-Msgid-Bugs-To: <localization@lists.scilab.org>\n"
-"POT-Creation-Date: 2013-01-24 17:04+0100\n"
-"PO-Revision-Date: 2013-01-26 04:11+0000\n"
-"Last-Translator: Scilab.team <Unknown>\n"
+"POT-Creation-Date: 2011-10-03 10:34+0100\n"
+"PO-Revision-Date: 2012-09-04 13:51+0000\n"
+"Last-Translator: Rui Hirokawa <Unknown>\n"
 "Language-Team: Japanese <zz-saito@guitar.ocn.ne.jp>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Launchpad (build 16506)\n"
+"X-Generator: Launchpad (build 16043)\n"
 "X-Poedit-Country: Japan\n"
 "Language: ja\n"
 "X-Poedit-Language: Japanese\n"
@@ -118,6 +118,9 @@ msgstr "%s: 入力引数 #%d の型が間違っています: 論理値を指定�
 #, c-format
 msgid "%s: Wrong type for input argument #%d: A string vector expected.\n"
 msgstr "%s: 入力引数 #%d の型が間違っています: 文字列のベクトルを指定してください.\n"
+
+msgid "a graphical environment is needed."
+msgstr "グラフィック環境が必要です."
 
 #, c-format
 msgid ""
@@ -1019,7 +1022,7 @@ msgid "%s: Found '%s' instead of a block.\n"
 msgstr "%s: ブロックの代わりに '%s' が見つかりました.\n"
 
 #, c-format
-msgid "%s: Wrong type for argument #%d: diagram structure expected"
+msgid "%s: Wrong type for argument %d: diagram structure expected"
 msgstr "%s: 引数 %d で不正な型: 図形構造体が予想されます"
 
 #, c-format
@@ -1037,7 +1040,7 @@ msgid ""
 msgstr "%s: ディレクトリー %s を作成できません. このディレクトリーへの書き込みアクセス権の有無を確認ください.\n"
 
 #, c-format
-msgid "%s: Wrong type for argument #%d: String or diagram structure expected"
+msgid "%s: Wrong type for argument %d: String or diagram structure expected"
 msgstr "%s: 引数 %d で不正な型: 文字、または図形構造体が予想されます。"
 
 #, c-format
@@ -1145,7 +1148,7 @@ msgid "%s: Unable to export the palette to hdf5.\n"
 msgstr "%s: パレットを hdf5にエクスポートできません.\n"
 
 #, c-format
-msgid "%s: Wrong type for argument #%d: A String expected."
+msgid "%s: Wrong type for argument %d: A String expected."
 msgstr "%s: 引数 %dの型が間違っています: 文字列を指定してください."
 
 msgid "Interface function does not exist or can not be called."

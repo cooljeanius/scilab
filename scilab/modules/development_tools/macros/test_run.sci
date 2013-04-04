@@ -161,12 +161,10 @@ function test_run_result = test_run(varargin)
       if params.reference <> "list" then
         status.detailled_failures   = [status.detailled_failures; result.detailled_failures];
         status.testsuites(size(status.testsuites,"*")+1) = result.testsuite
-        status.test_skipped_count   = status.test_skipped_count + result.test_skipped_count;
-
-        // Do not take in account skipped tests
-        status.test_count           = status.test_count + result.test_count - status.test_skipped_count;
+        status.test_count           = status.test_count + result.test_count;
         status.test_passed_count    = status.test_passed_count + result.test_passed_count;
         status.test_failed_count    = status.test_failed_count + result.test_failed_count;
+        status.test_skipped_count   = status.test_skipped_count + result.test_skipped_count;
         status.totalTime            = status.totalTime + result.totalTime;
         printf("\n");
       else
@@ -203,20 +201,16 @@ function test_run_result = test_run(varargin)
       if params.reference <> "list" then
         status.detailled_failures       = [status.detailled_failures; result.detailled_failures];
         status.testsuites(size(status.testsuites,"*")+1) = result.testsuite
-
-        status.test_skipped_count   = status.test_skipped_count + result.test_skipped_count;
         status.test_passed_count    = status.test_passed_count + result.test_passed_count;
         status.test_failed_count    = status.test_failed_count + result.test_failed_count;
+        status.test_skipped_count   = status.test_skipped_count + result.test_skipped_count;
         status.totalTime            = status.totalTime + result.totalTime;
-
         printf("\n");
       else
         status.test_count           = status.test_count + result.test_count;
         status.list                 = [status.list; result.list];
       end
     end
-    // Do not take in account skipped tests
-    status.test_count = status.test_count - status.test_skipped_count;
   elseif or(rhs==[2 3 4]) then
 // Two input arguments
 // test_run(<module_name>,<test_name>)
@@ -241,12 +235,10 @@ function test_run_result = test_run(varargin)
       status.totalTime            = result.totalTime;
       status.detailled_failures   = [status.detailled_failures; result.detailled_failures];
       status.testsuites(size(status.testsuites,"*")+1) = result.testsuite
-      status.test_skipped_count   = status.test_skipped_count + result.test_skipped_count;
-
-      // Do not take in account skipped tests
-      status.test_count           = status.test_count + result.test_count - status.test_skipped_count;
+      status.test_count           = status.test_count + result.test_count;
       status.test_passed_count    = status.test_passed_count + result.test_passed_count;
       status.test_failed_count    = status.test_failed_count + result.test_failed_count;
+      status.test_skipped_count   = status.test_skipped_count + result.test_skipped_count;
     else
       status.test_count           = status.test_count + result.test_count;
       status.list                 = [status.list; result.list];
@@ -263,12 +255,14 @@ function test_run_result = test_run(varargin)
     return;
   end
 
-  // percent computation
+  //pourcent computation
   if status.test_count <> 0 then
     test_passed_percent  = status.test_passed_count  / status.test_count * 100;
+    test_skipped_percent = status.test_skipped_count / status.test_count * 100;
     test_failed_percent  = status.test_failed_count  / status.test_count * 100;
   else
     test_passed_percent  = 0;
+    test_skipped_percent = 0;
     test_failed_percent  = 0;
   end
 
@@ -280,15 +274,15 @@ function test_run_result = test_run(varargin)
     printf("\n");
     printf("   --------------------------------------------------------------------------\n");
     printf("   Summary\n\n");
-    printf("   tests           %4d - 100 %%\n", status.test_count);
-    printf("   passed          %4d - %3d %%\n", status.test_passed_count, test_passed_percent);
-    printf("   failed          %4d - %3d %%\n", status.test_failed_count, test_failed_percent);
-    printf("   skipped         %4d\n", status.test_skipped_count);
-    printf("   length             %4.2f sec\n", status.totalTime);
+    printf("   tests           %4d - 100 %% \n", status.test_count);
+    printf("   passed          %4d - %3d %% \n", status.test_passed_count , test_passed_percent);
+    printf("   failed          %4d - %3d %% \n", status.test_failed_count , test_failed_percent);
+    printf("   skipped         %4d - %3d %% \n", status.test_skipped_count, test_skipped_percent);
+    printf("   length             %4.2f sec \n", status.totalTime);
     printf("   --------------------------------------------------------------------------\n");
 
     if isfield(params, "exportFile") then
-      printf("   Export to          %s\n", params.exportFile);
+      printf("   Export to          %s \n", params.exportFile);
       printf("   --------------------------------------------------------------------------\n");
     end
 
@@ -614,11 +608,6 @@ function status = test_single(_module, _testPath, _testName)
   end
 
   if ~isempty(grep(sciFile, "<-- XCOS TEST -->")) then
-    if _module.wanted_mode == "NWNI" then
-      status.id = 10;
-      status.message = "skipped: Test with xcos";
-      return;
-    end
     xcosNeeded = %T;
     jvm = %T;
   end
@@ -676,12 +665,7 @@ head = [
     ];
 
 if xcosNeeded then
-  head = [
-    head;
-    "prot=funcprot(); funcprot(0);";
-    "loadXcosLibs(); loadScicos();";
-    "funcprot(prot);";
-         ];
+  head = [ head ; "loadXcosLibs();"];
 end
 
 if try_catch then

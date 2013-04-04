@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: scilab\n"
 "Report-Msgid-Bugs-To: <localization@lists.scilab.org>\n"
-"POT-Creation-Date: 2013-01-24 17:04+0100\n"
-"PO-Revision-Date: 2012-12-23 05:47+0000\n"
-"Last-Translator: Wesh <Unknown>\n"
+"POT-Creation-Date: 2011-10-03 10:34+0100\n"
+"PO-Revision-Date: 2012-07-16 15:46+0000\n"
+"Last-Translator: Scilab.team <Unknown>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Launchpad (build 16506)\n"
+"X-Generator: Launchpad (build 16043)\n"
 "Language: \n"
 
 #, c-format
@@ -118,7 +118,7 @@ msgid "Close All But This"
 msgstr "关闭其他文档"
 
 msgid "Exit Scinotes"
-msgstr "退出Scinotes"
+msgstr ""
 
 msgid "Edit"
 msgstr "编辑"
@@ -244,25 +244,25 @@ msgid "Line Endings"
 msgstr "行结束符"
 
 msgid "Preferences"
-msgstr "首选项"
+msgstr ""
 
 msgid "Set font"
-msgstr "设置字体"
+msgstr ""
 
 msgid "Set colors"
-msgstr "设置颜色"
+msgstr ""
 
 msgid "Scinotes General settings"
-msgstr "Scinotes一般设置"
+msgstr ""
 
 msgid "Auto-completion on"
-msgstr "自动补全开"
+msgstr ""
 
 msgid "(, [, ..."
-msgstr "(, [, ..."
+msgstr ""
 
 msgid "if, function, ..."
-msgstr "if, function, ..."
+msgstr ""
 
 msgid "Line numbering;Off;Normal;Whereami compatible"
 msgstr "行号；关；普通；Whereami兼容"
@@ -313,7 +313,7 @@ msgid "?"
 msgstr "？"
 
 msgid "Scinotes help"
-msgstr "Scinotes帮助"
+msgstr ""
 
 msgid "Help on ;Help on selection"
 msgstr "帮助关于；所选内容帮助"
@@ -328,64 +328,64 @@ msgid "Complete"
 msgstr "补全"
 
 msgid "Display"
-msgstr "显示"
+msgstr ""
 
 msgid "Header"
-msgstr "头部"
+msgstr ""
 
 msgid "Autosave"
-msgstr "自动保存"
+msgstr ""
 
 msgid "Editor"
-msgstr "编辑器"
+msgstr ""
 
 msgid "Use Scinotes"
-msgstr "使用Scinotes"
+msgstr ""
 
 msgid "External editor: "
-msgstr "外部编辑器: "
+msgstr ""
 
 msgid "(Don't forget to quote path containing white spaces)"
-msgstr "(不要忘记含空格的路径要加双引号)"
+msgstr ""
 
 msgid "Scilab command: "
-msgstr "Scilab命令: "
+msgstr ""
 
 msgid "Restore previous session on start-up"
-msgstr "启动时恢复前一次会话"
+msgstr ""
 
 msgid "Add carriage return at the end of the file."
-msgstr "文件末尾添加回车."
+msgstr ""
 
 msgid "Number of recently opened files to display: "
-msgstr "显示最近打开文件数目: "
+msgstr ""
 
 msgid "Default file encoding: "
-msgstr "默认文件编码: "
+msgstr ""
 
 msgid "Default End-Of-Line: "
 msgstr ""
 
 msgid "General display options"
-msgstr "一般显示选项"
+msgstr ""
 
 msgid "Highlight current line: "
-msgstr "高亮当前行: "
+msgstr ""
 
 msgid "Show line numbers: "
-msgstr "显示行号: "
+msgstr ""
 
 msgid "Whereami compatible"
-msgstr "兼容Whereami"
+msgstr ""
 
 msgid "Normal"
 msgstr ""
 
 msgid "Wrap lines"
-msgstr "自动换行"
+msgstr ""
 
 msgid "Keywords"
-msgstr "关键词"
+msgstr ""
 
 msgid "Enable keywords colorization"
 msgstr ""
@@ -397,13 +397,13 @@ msgid "Highlight corresponding brackets"
 msgstr ""
 
 msgid "Color: "
-msgstr "颜色: "
+msgstr ""
 
 msgid "Highlight on mouse over"
 msgstr ""
 
 msgid "Style: "
-msgstr "样式: "
+msgstr ""
 
 msgid "Filled"
 msgstr ""
@@ -412,19 +412,19 @@ msgid "Framed"
 msgstr ""
 
 msgid "Underlined"
-msgstr "下划线"
+msgstr ""
 
 msgid "Highlight corresponding keywords (e.g. if ... end)"
 msgstr ""
 
 msgid "Tabulation and Indentation"
-msgstr "制表与缩进"
+msgstr ""
 
 msgid "Tabulation size: "
-msgstr "制表符大小: "
+msgstr ""
 
 msgid "Use space"
-msgstr "使用空格Use space"
+msgstr ""
 
 msgid "Representation: "
 msgstr ""
@@ -439,31 +439,31 @@ msgid "Vertical rule"
 msgstr "垂直线"
 
 msgid "Enable auto indentation"
-msgstr "启用自动缩进"
+msgstr ""
 
 msgid "Indent size: "
-msgstr "缩进大小: "
+msgstr ""
 
 msgid "Enable autosave in Scinotes"
-msgstr "Scinotes启用自动保存"
+msgstr ""
 
 msgid "Save options"
-msgstr "保存选项"
+msgstr ""
 
 msgid "Save every "
-msgstr "保存每个 "
+msgstr ""
 
 msgid " minutes "
 msgstr ""
 
 msgid "Close options"
-msgstr "关闭选项"
+msgstr ""
 
 msgid "Delete automatically saved files"
-msgstr "删除自动保存的文件"
+msgstr ""
 
 msgid "Filename"
-msgstr "文件名"
+msgstr ""
 
 msgid "Append filename with: "
 msgstr ""
@@ -472,16 +472,16 @@ msgid "Replace extension with: "
 msgstr ""
 
 msgid "Location"
-msgstr "位置"
+msgstr ""
 
 msgid "Source file directory"
-msgstr "源文件目录"
+msgstr ""
 
 msgid "Single directory"
 msgstr ""
 
 msgid "Choose an autosave directory"
-msgstr "选择自动保存目录"
+msgstr ""
 
 msgid "Default header"
 msgstr ""
@@ -637,7 +637,7 @@ msgid "Help on selected text or keyword"
 msgstr "所选文本或关键字帮助"
 
 msgid "Help about '"
-msgstr "帮助'"
+msgstr "帮助之‘"
 
 msgid "Find:"
 msgstr "查找:"
@@ -875,10 +875,10 @@ msgstr "不能猜出文件编码"
 
 #, c-format
 msgid "Cannot save the file %s... stop the backup process"
-msgstr "不能保存文件%s... 停止备份"
+msgstr ""
 
 msgid "Backup finished..."
-msgstr "备份结束..."
+msgstr ""
 
 #, c-format
 msgid "%s occurences found."

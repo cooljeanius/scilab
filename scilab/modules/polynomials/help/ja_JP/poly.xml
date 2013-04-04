@@ -2,7 +2,7 @@
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="ja" xml:id="poly">
     <refnamediv>
         <refname>poly</refname>
-        <refpurpose>多項式を定義する</refpurpose>
+        <refpurpose> 多項式を定義する</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>呼び出し手順</title>
@@ -82,7 +82,7 @@
         <title>例</title>
         <programlisting role="example"><![CDATA[ 
 s=poly(0,"s");
-p=1+s+2*s^2
+p=1+s+2*s^2;
 A=rand(2,2);
 poly(A,"x")
 //rational fractions

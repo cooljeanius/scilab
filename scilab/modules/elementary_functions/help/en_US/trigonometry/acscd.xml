@@ -19,13 +19,13 @@
             <varlistentry>
                 <term>x</term>
                 <listitem>
-                    <para>a real array.</para>
+                    <para>Real array.</para>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term>y</term>
                 <listitem>
-                    <para>a real or complex array.</para>
+                    <para>Real or complex array.</para>
                 </listitem>
             </varlistentry>
         </variablelist>

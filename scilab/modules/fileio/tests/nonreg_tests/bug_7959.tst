@@ -16,9 +16,6 @@
 // fscanf did not manage file descriptor as input argument
 //
 
-wMode = warning("query");
-warning("off");
-
 text =["blablabla"];
 mputl(text, TMPDIR + "/test1.txt");
 s1 = fscanf(TMPDIR + "/test1.txt", "%s");
@@ -30,5 +27,3 @@ mclose(fd);
 if text <> s2 then pause, end
 
 if s1 <> s2 then pause, end
-
-warning(wMode);

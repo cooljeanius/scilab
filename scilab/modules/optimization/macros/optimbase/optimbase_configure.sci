@@ -117,6 +117,12 @@ function this = optimbase_configure (this,key,value)
         //
         // Obsolete options.
         //
+    case "-costfargument" then
+        warnobsolete("-function", "5.4.1")
+        this.costfargument = value;
+    case "-outputcommandarg" then
+        warnobsolete("-outputcommand", "5.4.1")
+        this.outputcommandarg = value;
     else
         errmsg = msprintf(gettext("%s: Unknown key %s"),"optimbase_configure",key)
         error(errmsg)

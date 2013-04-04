@@ -38,11 +38,4 @@
             <literal>s=beep()</literal> returns the current beep mode (on or off).
         </para>
     </refsection>
-    <refsection>
-        <title>Examples</title>
-        <programlisting role="example"><![CDATA[
-beep() // Make a sound
-beep("off") // disable the sound
-]]></programlisting>
-    </refsection>
 </refentry>

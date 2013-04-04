@@ -13,8 +13,6 @@
 
 package org.scilab.modules.xcos.io;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -57,9 +55,7 @@ public enum XcosFileType {
      */
     ZCOS("zcos", XcosMessages.FILE_ZCOS) {
         @Override
-        public void load(String file, XcosDiagram into)
-        throws TransformerException, IOException, SAXException,
-            ParserConfigurationException {
+        public void load(String file, XcosDiagram into) throws TransformerException, IOException, SAXException, ParserConfigurationException {
             LOG.entering("XcosFileType.ZCOS", "load");
 
             XcosPackage p = new XcosPackage(new File(file));
@@ -85,17 +81,14 @@ public enum XcosFileType {
      */
     XCOS("xcos", XcosMessages.FILE_XCOS) {
         @Override
-        public void load(String file, XcosDiagram into)
-        throws TransformerException {
+        public void load(String file, XcosDiagram into) throws TransformerException {
             final XcosCodec codec = new XcosCodec();
-            final TransformerFactory tranFactory = ScilabTransformerFactory
-                                                   .newInstance();
+            final TransformerFactory tranFactory = ScilabTransformerFactory.newInstance();
             final Transformer aTransformer = tranFactory.newTransformer();
 
             StreamSource src;
             try {
-                src = new StreamSource(new File(file).toURI().toURL()
-                                       .toString());
+                src = new StreamSource(new File(file).toURI().toURL().toString());
                 final DOMResult result = new DOMResult();
 
                 LOG.entering("Transformer", "transform");
@@ -113,8 +106,7 @@ public enum XcosFileType {
         @Override
         public void save(String file, XcosDiagram from) throws Exception {
             final XcosCodec codec = new XcosCodec();
-            final TransformerFactory tranFactory = ScilabTransformerFactory
-                                                   .newInstance();
+            final TransformerFactory tranFactory = ScilabTransformerFactory.newInstance();
             final Transformer aTransformer = tranFactory.newTransformer();
 
             LOG.entering("XcosCodec", "encode");
@@ -161,8 +153,7 @@ public enum XcosFileType {
 
     private static final String BEFORE_EXT = " (*.";
     private static final String AFTER_EXT = ")";
-    private static final Logger LOG = Logger.getLogger(XcosFileType.class
-                                      .getName());
+    private static final Logger LOG = Logger.getLogger(XcosFileType.class.getName());
 
     private String extension;
     private String description;
@@ -264,9 +255,8 @@ public enum XcosFileType {
 
         int index = 0;
         for (FileFilter fileFilter : filters) {
-            if (fileFilter == filter) {
+            if (fileFilter == filter)
                 break;
-            }
 
             index++;
         }
@@ -309,8 +299,7 @@ public enum XcosFileType {
                 try {
                     stream.close();
                 } catch (IOException e) {
-                    Logger.getLogger(XcosFileType.class.getName()).severe(
-                        e.toString());
+                    Logger.getLogger(XcosFileType.class.getName()).severe(e.toString());
                 }
             }
         }
@@ -341,8 +330,7 @@ public enum XcosFileType {
      * @throws Exception
      *             in case of problem
      */
-    public abstract void load(final String file, final XcosDiagram into)
-    throws Exception;
+    public abstract void load(final String file, final XcosDiagram into) throws Exception;
 
     /**
      * Save to a file the XcosDiagram instance
@@ -354,8 +342,7 @@ public enum XcosFileType {
      * @throws Exception
      *             in case of problem
      */
-    public abstract void save(final String file, final XcosDiagram from)
-    throws Exception;
+    public abstract void save(final String file, final XcosDiagram from) throws Exception;
 
     /**
      * @return the file filters which can be used to load a file
@@ -378,15 +365,13 @@ public enum XcosFileType {
         /*
          * One file filter for all valid extensions
          */
-        filters[0] = new FileNameExtensionFilter(
-            XcosMessages.ALL_SUPPORTED_FORMATS, extensions);
+        filters[0] = new FileNameExtensionFilter(XcosMessages.ALL_SUPPORTED_FORMATS, extensions);
 
         /*
          * Then one file filter per enum value.
          */
         for (int i = 0; i < descriptions.length; i++) {
-            filters[i + 1] = new FileNameExtensionFilter(descriptions[i],
-                    extensions[i]);
+            filters[i + 1] = new FileNameExtensionFilter(descriptions[i], extensions[i]);
         }
 
         return filters;
@@ -413,15 +398,13 @@ public enum XcosFileType {
         /*
          * One file filter for all valid extensions
          */
-        filters[0] = new FileNameExtensionFilter(
-            XcosMessages.ALL_SUPPORTED_FORMATS, extensions);
+        filters[0] = new FileNameExtensionFilter(XcosMessages.ALL_SUPPORTED_FORMATS, extensions);
 
         /*
          * Then one file filter per enum value.
          */
         for (int i = 0; i < descriptions.length; i++) {
-            filters[i + 1] = new FileNameExtensionFilter(descriptions[i],
-                    extensions[i]);
+            filters[i + 1] = new FileNameExtensionFilter(descriptions[i], extensions[i]);
         }
 
         return filters;
@@ -440,8 +423,7 @@ public enum XcosFileType {
     /**
      * Load a Scicos diagram file int a diagram
      */
-    private static void loadScicosDiagram(final String filename,
-                                          final XcosDiagram into) {
+    private static void loadScicosDiagram(final String filename, final XcosDiagram into) {
         final StringBuilder cmd = new StringBuilder();
         cmd.append(ScilabDirectHandler.SCS_M);
         cmd.append(" = importScicosDiagram(\"");
@@ -453,22 +435,13 @@ public enum XcosFileType {
             return;
         }
 
-        ActionListener callback = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    handler.readDiagram(into);
-                } finally {
-                    handler.release();
-                }
-            }
-        };
-
         try {
-            ScilabInterpreterManagement.asynchronousScilabExec(callback,
-                    cmd.toString());
+            ScilabInterpreterManagement.synchronousScilabExec(cmd.toString());
+
+            handler.readDiagram(into);
         } catch (InterpreterException e) {
             e.printStackTrace();
+        } finally {
             handler.release();
         }
     }

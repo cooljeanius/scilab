@@ -47,6 +47,9 @@
     <ClCompile Include="..\..\sci_gateway\c\sci_beta.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\sci_gateway\c\sci_calerf.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\sci_gateway\c\sci_dlgamma.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -62,12 +65,6 @@
     <ClCompile Include="zbeshv.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\sci_gateway\cpp\sci_faddeeva.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\cpp\faddeeva.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\includes\dynlib_special_functions.h">
@@ -77,12 +74,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="zbeshv.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\sci_gateway\cpp\sci_faddeeva.hxx">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\cpp\faddeeva.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

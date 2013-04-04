@@ -35,10 +35,10 @@ import org.scilab.modules.helptools.HTMLDocbookTagConverter;
 public class LaTeXImageConverter implements ExternalImageConverter {
 
     private static LaTeXImageConverter instance;
-    private final HTMLDocbookTagConverter conv;
+    private final HTMLDocbookTagConverter.GenerationType type;
 
-    private LaTeXImageConverter(HTMLDocbookTagConverter conv) {
-        this.conv = conv;
+    private LaTeXImageConverter(HTMLDocbookTagConverter.GenerationType type) {
+        this.type = type;
     }
 
     /**
@@ -59,9 +59,9 @@ public class LaTeXImageConverter implements ExternalImageConverter {
      * Since it is a singleton class...
      * @return this
      */
-    public static ExternalImageConverter getInstance(HTMLDocbookTagConverter conv) {
+    public static ExternalImageConverter getInstance(HTMLDocbookTagConverter.GenerationType type) {
         if (instance == null) {
-            instance = new LaTeXImageConverter(conv);
+            instance = new LaTeXImageConverter(type);
         }
         return instance;
     }
@@ -90,7 +90,7 @@ public class LaTeXImageConverter implements ExternalImageConverter {
 
             Image img = new Image(icon, icon.getIconWidth(), icon.getIconHeight(), icon.getIconHeight() - icon.getIconDepth(), icon.getIconDepth());
             if (img != null && ImageConverter.convertIconToPNG(img.icon, imageFile)) {
-                return ImageConverter.generateCode(img, conv.getBaseImagePath() + imageName, attributes);
+                return ImageConverter.generateCode(img, imageName, attributes);
             }
 
             return null;

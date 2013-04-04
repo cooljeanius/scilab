@@ -27,7 +27,7 @@ int ScilabGateway::getRepresentation(char * fname, const int envId, void * pvApi
 
     ScilabAbstractEnvironment & env = ScilabEnvironments::getEnvironment(envId);
     ScilabGatewayOptions & options = env.getGatewayOptions();
-    OptionsHelper::setCopyOccurred(false);
+    OptionsHelper::setCopyOccured(false);
     ScilabObjects::initialization(env, pvApiCtx);
     options.setIsNew(false);
 

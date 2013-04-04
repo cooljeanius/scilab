@@ -17,7 +17,6 @@ package org.scilab.modules.graph.actions;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.lang.ref.WeakReference;
 
 import org.scilab.modules.graph.ScilabGraph;
 import org.scilab.modules.graph.actions.base.ActionConstraint;
@@ -48,14 +47,14 @@ public class UndoAction extends DefaultAction {
      * Manage enable modification
      */
     private final class UndoConstraint extends ActionConstraint {
-        private final WeakReference<ScilabGraph> scilabGraph;
+        private final ScilabGraph scilabGraph;
 
         /**
          * Default constructor
          * @param scilabGraph the associated scilab graph
          */
         public UndoConstraint(ScilabGraph scilabGraph) {
-            this.scilabGraph = new WeakReference<ScilabGraph>(scilabGraph);
+            this.scilabGraph = scilabGraph;
         }
 
         /**
@@ -90,12 +89,7 @@ public class UndoAction extends DefaultAction {
          */
         @Override
         public void invoke(Object sender, mxEventObject evt) {
-            final ScilabGraph graph = scilabGraph.get();
-            if (graph == null) {
-                return;
-            }
-
-            boolean canUndo = graph.getUndoManager().canUndo();
+            boolean canUndo = scilabGraph.getUndoManager().canUndo();
             super.setEnabled(canUndo);
         }
     }

@@ -19,5 +19,3 @@ checklhs_
 checkrhs_
 com_
 freeArrayOfString
-MyHeapAlloc
-MyHeapFree

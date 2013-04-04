@@ -74,6 +74,9 @@
     <ClCompile Include="strdup_windows.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="stristr.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="TextToPrint.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -158,6 +161,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\includes\strdup_windows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stristr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TextToPrint.h">

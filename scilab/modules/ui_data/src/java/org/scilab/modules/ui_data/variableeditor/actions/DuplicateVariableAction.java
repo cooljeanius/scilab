@@ -43,7 +43,7 @@ import org.scilab.modules.ui_data.utils.UiDataMessages;
 import org.scilab.modules.ui_data.variableeditor.SwingScilabVariableEditor;
 
 /**
- * DuplicateVariableAction class
+ * RefreshAction class
  * @author Calixte DENIZET
  */
 @SuppressWarnings(value = { "serial" })

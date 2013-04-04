@@ -1,9 +1,11 @@
-LIBRARY    core.dll
+	LIBRARY    core.dll
 
 
 EXPORTS
+;
 LaunchScilab
 pLaunchScilabLock
+;
 callFunctionFromGateway
 com_
 stack_
@@ -20,6 +22,3 @@ ismenu
 getWarningMode
 iop_
 freeArrayOfString
-MyHeapAlloc
-MyHeapFree
-MyHeapRealloc

@@ -4,9 +4,6 @@
 //
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
-
-// <-- XCOS TEST -->
-//
 // <-- Non-regression test for bug 9732 -->
 //
 // <-- Bugzilla URL -->
@@ -15,6 +12,7 @@
 // <-- Short Description -->
 // try to compile and link a superblock
 
+loadXcosLibs();
 assert_checktrue(importXcosDiagram(SCI+'/modules/xcos/demos/Controller.xcos'));
 
 // getting the SUPER_f (System) block

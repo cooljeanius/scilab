@@ -17,15 +17,15 @@
     </refnamediv>
     <refsynopsisdiv>
         <title>Последовательность вызова</title>
-        <synopsis>t = sinm(x)</synopsis>
+        <synopsis>t=sinm(x)</synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Аргументы</title>
         <variablelist>
             <varlistentry>
-                <term>x, t</term>
+                <term>x</term>
                 <listitem>
-                    <para>вещественные или комплексные квадратные матрицы.</para>
+                    <para>вещественная или комплексная квадратная матрица</para>
                 </listitem>
             </varlistentry>
         </variablelist>
@@ -33,7 +33,7 @@
     <refsection>
         <title>Описание</title>
         <para>
-            <code>sinm(x)</code> является матричным синусом матрицы <varname>x</varname>.
+            <literal>sinm(x)</literal> является матричным синусом матрицы <literal>x</literal>.
         </para>
     </refsection>
     <refsection>

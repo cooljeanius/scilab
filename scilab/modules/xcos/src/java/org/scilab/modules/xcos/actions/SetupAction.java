@@ -75,7 +75,7 @@ public final class SetupAction extends SimulationNotRunningAction {
         }
         
         final SetupDialog dialog = new SetupDialog(comp,
-                graph, graph.getScicosParameters());
+                graph.getScicosParameters());
 
         dialog.pack();
         dialog.setVisible(true);

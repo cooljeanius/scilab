@@ -15,7 +15,7 @@
 #include "SetUicontrolSliderStep.hxx"
 #include "stack-c.h"
 
-int SetUicontrolSliderStep(void* _pvCtx, char* sciObjUID, void* _pvData, int valueType, int nbRow, int nbCol)
+int SetUicontrolSliderStep(void* _pvCtx, char* sciObjUID, size_t stackPointer, int valueType, int nbRow, int nbCol)
 {
     BOOL status = FALSE;
 
@@ -29,7 +29,7 @@ int SetUicontrolSliderStep(void* _pvCtx, char* sciObjUID, void* _pvData, int val
     if ( nbRow == 1 && nbCol == 1)
     {
         double pdblStep[2];
-        double* pdblStackVal = (double*)_pvData;
+        double* pdblStackVal = stk(stackPointer);
         double maxValue = 0;
         double* pdblMaxValue = &maxValue;
         double minValue = 0;
@@ -45,7 +45,7 @@ int SetUicontrolSliderStep(void* _pvCtx, char* sciObjUID, void* _pvData, int val
     }
     else if (nbRow == 1 && nbCol == 2)
     {
-        status = setGraphicObjectProperty(sciObjUID, __GO_UI_SLIDERSTEP__, _pvData, jni_double_vector, 2);
+        status = setGraphicObjectProperty(sciObjUID, __GO_UI_SLIDERSTEP__, stk(stackPointer), jni_double_vector, 2);
     }
     else
     {

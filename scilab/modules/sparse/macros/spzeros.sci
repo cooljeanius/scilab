@@ -10,12 +10,7 @@
 function [sp]=spzeros(m,n)
 
 [lhs,rhs]=argn(0)
-if ( rhs < 1 ) then
-   error(msprintf(gettext("%s: Wrong number of input arguments: %d or %d expected.\n"), "spzeros" , 1 , 2 ));
-end
-
-if rhs==1 then
-   [m,n]=size(m)
-end
+if rhs==1 then [m,n]=size(m),end
+mn=min(m,n)
 sp=sparse([],[],[m,n])
 endfunction

@@ -6,4 +6,3 @@ EXPORTS
 callFunctionFromGateway
 com_
 getScilabMode
-MyHeapAlloc

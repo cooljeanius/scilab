@@ -13,7 +13,7 @@
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="en" xml:id="chsolve">
     <refnamediv>
         <refname>chsolve</refname>
-        <refpurpose>sparse Cholesky solver</refpurpose>
+        <refpurpose> sparse Cholesky solver</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Calling Sequence</title>
@@ -52,8 +52,7 @@
 A=sprand(20,20,0.1);
 A=A*A'+eye();  
 spcho=chfact(A);
-sol=(1:20)';
-rhs=A*sol;
+sol=(1:20)';rhs=A*sol;
 spcho=chfact(A);
 chsolve(spcho,rhs)
  ]]></programlisting>

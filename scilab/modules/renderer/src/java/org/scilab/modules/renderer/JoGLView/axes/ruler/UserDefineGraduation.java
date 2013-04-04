@@ -16,7 +16,6 @@ import org.scilab.modules.graphic_objects.axes.AxisProperty;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -71,7 +70,7 @@ class UserDefineGraduation implements Graduations {
     @Override
     public List<Double> getAllValues() {
         if (allValues == null) {
-            allValues = new LinkedList<Double>(Arrays.asList(axisProperty.getTicksLocations()));
+            allValues = Arrays.asList(axisProperty.getTicksLocations());
         }
         return allValues;
     }

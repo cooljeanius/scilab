@@ -17,7 +17,7 @@
     </refnamediv>
     <refsynopsisdiv>
         <title>Calling Sequence</title>
-        <synopsis>[t] = tanm(x)</synopsis>
+        <synopsis>[t]=tanm(x)</synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Arguments</title>
@@ -25,13 +25,13 @@
             <varlistentry>
                 <term>x</term>
                 <listitem>
-                    <para>a square real or complex matrix.</para>
+                    <para>square real or complex matrix</para>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term>t</term>
                 <listitem>
-                    <para>a square real or complex matrix.</para>
+                    <para>square matrix</para>
                 </listitem>
             </varlistentry>
         </variablelist>
@@ -39,8 +39,8 @@
     <refsection>
         <title>Description</title>
         <para>
-            <code>tanm(x)</code> is the matrix tangent of the square
-            matrix <varname>x</varname>.
+            <literal>tanm(x)</literal> is the matrix tangent of the square
+            matrix x.
         </para>
     </refsection>
     <refsection>

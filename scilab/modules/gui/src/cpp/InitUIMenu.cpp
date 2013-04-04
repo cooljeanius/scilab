@@ -37,7 +37,7 @@ extern "C"
 
 using namespace org_scilab_modules_gui_bridge;
 
-int setMenuParent(char *pobjUID, void* pvData, int valueType, int nbRow, int nbCol)
+int setMenuParent(char *pobjUID, size_t stackPointer, int valueType, int nbRow, int nbCol)
 {
     char const* pstCurrentFigure = NULL;
     int parentType = -1;
@@ -47,7 +47,7 @@ int setMenuParent(char *pobjUID, void* pvData, int valueType, int nbRow, int nbC
     double *value = NULL;
 
     /* Special case to set current figure for parent */
-    if (pvData == NULL)
+    if (stackPointer == -1)
     {
         // Set the parent property
         pstCurrentFigure = getCurrentFigure();
@@ -93,12 +93,12 @@ int setMenuParent(char *pobjUID, void* pvData, int valueType, int nbRow, int nbC
 
     if (valueType == sci_handles)
     {
-        pParentUID = getObjectFromHandle((long)((long long*)pvData)[0]);
+        pParentUID = getObjectFromHandle(getHandleFromStack(stackPointer));
         if (pParentUID != NULL)
         {
             getGraphicObjectProperty(pParentUID, __GO_TYPE__, jni_int, (void **)&piParentType);
             if (parentType == __GO_FIGURE__ || parentType == __GO_UIMENU__
-                    || parentType == __GO_UICONTEXTMENU__)
+                || parentType == __GO_UICONTEXTMENU__)
             {
                 setGraphicObjectRelationship(pParentUID, pobjUID);
             }
@@ -119,7 +119,7 @@ int setMenuParent(char *pobjUID, void* pvData, int valueType, int nbRow, int nbC
     if (valueType == sci_matrix)
     {
         // The parent is Scilab Main window (Console Tab)
-        value = (double*)pvData;
+        value = stk(stackPointer);
         if (value[0] != 0)
         {
             Scierror(999, const_cast < char *>(_("%s: Wrong value for parent: 0 expected.\n")), "SetMenuParent");

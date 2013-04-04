@@ -8,5 +8,3 @@ callFunctionFromGateway
 getScilabMode
 com_
 getSCIpath
-MyHeapAlloc
-MyHeapFree

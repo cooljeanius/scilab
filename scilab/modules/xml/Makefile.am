@@ -79,13 +79,12 @@ GATEWAY_CXX_SOURCES = sci_gateway/cpp/sci_xmlRead.cpp \
 		      sci_gateway/cpp/sci_xmlAsNumber.cpp \
 		      sci_gateway/cpp/sci_xmlAsText.cpp \
 		      sci_gateway/cpp/sci_xmlRemove.cpp \
-		      sci_gateway/cpp/sci_xmlSetAttributes.cpp \
-		      sci_gateway/cpp/sci_xmlName.cpp \
-		      sci_gateway/cpp/sci_xmlAppend.cpp
+		      sci_gateway/cpp/sci_xmlSetAttributes.cpp
 
 libscixml_la_CPPFLAGS = -I$(srcdir)/includes/ \
     -I$(srcdir)/src/cpp/ \
     -I$(srcdir)/src/c/ \
+    -I$(top_srcdir)/libs/MALLOC/includes/ \
     -I$(top_srcdir)/modules/core/includes/ \
     -I$(top_srcdir)/modules/api_scilab/includes/ \
 	-I$(top_srcdir)/modules/localization/includes/ \

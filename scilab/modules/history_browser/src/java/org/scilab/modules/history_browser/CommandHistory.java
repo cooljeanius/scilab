@@ -18,10 +18,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Collections;
 
 import javax.swing.BoundedRangeModel;
 import javax.swing.JPanel;
@@ -29,7 +25,6 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.SwingUtilities;
-import javax.swing.Timer;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
@@ -91,19 +86,8 @@ public final class CommandHistory extends SwingScilabTab implements SimpleTab {
     private static boolean modelLoaded;
     private static boolean initialized;
 
-    private static java.util.List<String> linesToAppend;
-    private static javax.swing.Timer linesToAppendTimer;
-
     static {
         ScilabTabFactory.getInstance().addTabFactory(CommandHistoryTabFactory.getInstance());
-
-        linesToAppend = Collections.synchronizedList(new ArrayList<String>());
-        linesToAppendTimer = new Timer(0, new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                appendLinesOnEDT();
-            }
-        });
-        linesToAppendTimer.setRepeats(false);
     }
 
     /**
@@ -206,19 +190,13 @@ public final class CommandHistory extends SwingScilabTab implements SimpleTab {
      * Update the browser once an history file has been loaded
      */
     public static void loadFromFile() {
-        final String historyLines[] = HistoryManagement.getAllLinesOfScilabHistory();
-
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                reset();
-                int nbEntries = historyLines.length;
-                for (int entryIndex = 0; entryIndex < nbEntries; entryIndex++) {
-                    /* Do not expand at each insertion for performances reasons */
-                    appendLineAndExpand(historyLines[entryIndex], false);
-                }
-            }
-        });
+        reset();
+        String historyLines[] = HistoryManagement.getAllLinesOfScilabHistory();
+        int nbEntries = historyLines.length;
+        for (int entryIndex = 0; entryIndex < nbEntries; entryIndex++) {
+            /* Do not expand at each insertion for performances reasons */
+            appendLineAndExpand(historyLines[entryIndex], false);
+        }
 
         /* Expand all sessions tree */
         expandAll();
@@ -260,19 +238,7 @@ public final class CommandHistory extends SwingScilabTab implements SimpleTab {
      * @param lineToAppend the line to append
      */
     public static void appendLine(String lineToAppend) {
-        synchronized (linesToAppend) {
-            linesToAppend.add(lineToAppend);
-            linesToAppendTimer.start();
-        }
-    }
-
-    public static void appendLinesOnEDT() {
-        synchronized (linesToAppend) {
-            for (String lineToAppend : linesToAppend) {
-                appendLineAndExpand(lineToAppend, true);
-            }
-            linesToAppend.clear();
-        }
+        appendLineAndExpand(lineToAppend, true);
     }
 
     /**

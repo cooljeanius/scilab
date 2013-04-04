@@ -20,7 +20,8 @@
     <refsynopsisdiv>
         <title>Calling Sequence</title>
         <synopsis>
-            z = bitand(x, y)            
+            z = bitand(x,y)
+            
         </synopsis>
     </refsynopsisdiv>
     <refsection>
@@ -30,9 +31,9 @@
                 <term>x :</term>
                 <listitem>
                     <para>
-                        a <literal>m</literal>-by-<literal>n</literal> matrix of doubles
-                        or a <literal>m1</literal>-by-<literal>m2</literal>-by-...-by-<literal>mm</literal> hypermatrix of doubles
-                        or a <literal>m</literal>-by-<literal>n</literal> matrix of unsigned integers (<literal>uint8</literal>, <literal>uint16</literal> or <literal>uint32</literal>).
+                        a m-by-n matrix of doubles
+                        or a m1-by-m2-by-...-by-mm hypermatrix of doubles
+                        or a m-by-n matrix of unsigned integers (uint8, uint16 or uint32).
                         Must contain positive integer values.
                     </para>
                 </listitem>
@@ -41,9 +42,9 @@
                 <term>y :</term>
                 <listitem>
                     <para>
-                        a <literal>m</literal>-by-<literal>n</literal> matrix of doubles
-                        or a <literal>m1</literal>-by-<literal>m2</literal>-by-...-by-<literal>mm</literal> hypermatrix of doubles
-                        or a <literal>m</literal>-by-<literal>n</literal> matrix of unsigned integers (<literal>uint8</literal>, <literal>uint16</literal> or <literal>uint32</literal>).
+                        a m-by-n matrix of doubles
+                        or a m1-by-m2-by-...-by-mm hypermatrix of doubles
+                        or a m-by-n matrix of unsigned integers (uint8, uint16 or uint32).
                     </para>
                 </listitem>
             </varlistentry>
@@ -51,9 +52,9 @@
                 <term>z :</term>
                 <listitem>
                     <para>
-                        a <literal>m</literal>-by-<literal>n</literal> matrix of doubles
-                        or a <literal>m1</literal>-by-<literal>m2</literal>-by-...-by-<literal>mm</literal> hypermatrix of doubles
-                        or a <literal>m</literal>-by-<literal>n</literal> matrix of unsigned integers.
+                        a m-by-n matrix of doubles
+                        or a m1-by-m2-by-...-by-mm hypermatrix of doubles 
+                        or a m-by-n matrix of unsigned integers.
                     </para>
                 </listitem>
             </varlistentry>
@@ -62,12 +63,12 @@
     <refsection>
         <title>Description</title>
         <para>
-            Given <varname>x</varname> and <varname>y</varname> two positive integers, this function returns the decimal
-            number <varname>z</varname> whose the binary form is the AND of the binary representations
-            of <varname>x</varname> and <varname>y</varname>.
+            Given x, y two positive integers, this function returns the decimal 
+            number whose the binary form is the AND of the binary representations
+            of x and y.
         </para>
         <para>
-            <varname>x</varname>, <varname>y</varname>, <varname>z</varname> have the same size.
+            <literal>x</literal>, <literal>y</literal>, <literal>z</literal> have the same size.
         </para>
     </refsection>
     <refsection>

@@ -45,9 +45,8 @@
         <para>
             This function finds the steady state for a given system described by a xcos diagram or <link linkend="SUPER_f">sub-diagram</link>. The diagram should have <link linkend="IN_f">inputs</link> and <link linkend="OUT_f">outputs</link>.The steady state concern only the continuous-time dynamics.  
         </para>
-    </refsection>
-    <refsection>
-        <title>Examples</title>
+        <para>
+        </para>
         <programlisting role="example"><![CDATA[
 // loading data
 exec("SCI/modules/xcos/tests/unit_tests/PENDULUM_ANIM.sci");
@@ -59,8 +58,6 @@ M  = 10;
 m  = 3;
 l  = 3;
 ph = 0.1;
-z0 = -4;
-th0 = .02;
 
 // look for the specific sub-diagram to work on
 for i=1:length(scs_m.objs)

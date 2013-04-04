@@ -12,14 +12,14 @@
 
 package org.scilab.modules.xcos.palette;
 
+import static org.scilab.modules.action_binding.highlevel.ScilabInterpreterManagement.buildCall;
+import static org.scilab.modules.action_binding.highlevel.ScilabInterpreterManagement.synchronousScilabExec;
+
 import java.awt.GraphicsEnvironment;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +27,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.SwingUtilities;
 
+import org.scilab.modules.action_binding.highlevel.ScilabInterpreterManagement.InterpreterException;
 import org.scilab.modules.graph.utils.ScilabExported;
 import org.scilab.modules.javasci.JavasciException;
 import org.scilab.modules.javasci.Scilab;
@@ -412,32 +413,37 @@ public final class Palette {
     }
 
     /**
-     * Generate a palette block image from a block instance stored into scilab
-     * (need a valid style).
+     * Generate a palette block image from a block saved instance (need a valid
+     * style).
      *
+     * @param blockName
+     *            the block name
      * @param iconPath
      *            the output file path use to save the palette block.
-     * @throws Exception
-     *             on error
+     * @throws IOException
+     *             in case of write errors
      */
     @ScilabExported(module = XCOS, filename = PALETTE_GIWS_XML)
-    public static void generatePaletteIcon(final String iconPath) throws Exception {
-        /*
-         * If the env. is headless does nothing
-         */
-        if (GraphicsEnvironment.isHeadless()) {
-            LOG.warning("Headless environment detected, do not generate icons");
+    public static void generatePaletteIcon(final String blockName, final String iconPath) throws IOException {
+        BasicBlock block;
+
+        final ScilabDirectHandler handler = ScilabDirectHandler.acquire();
+        if (handler == null) {
             return;
         }
 
-        final ScilabDirectHandler handler = ScilabDirectHandler.acquire();
         try {
-            final BasicBlock block = handler.readBlock();
-
-            generateIcon(block, iconPath);
+            synchronousScilabExec(ScilabDirectHandler.BLK + " = " + buildCall(blockName, "define"));
+            block = handler.readBlock();
+        } catch (ScicosFormatException e) {
+            throw new IOException(e);
+        } catch (InterpreterException e) {
+            throw new IOException(e);
         } finally {
             handler.release();
         }
+
+        generateIcon(block, iconPath);
 
         if (LOG.isLoggable(Level.FINEST)) {
             LOG.finest(iconPath + " updated.");
@@ -484,66 +490,53 @@ public final class Palette {
     }
 
     /**
-     * Helper function used to regenerate palette block images from the block
+     * Helper function used to regenerate palette block images from block
      * instance.
      *
-     * @param path
-     *            the path to emit the images for.
+     * This method is not export to scilab but is needed for internal purpose
+     * (palette block image generation)
      */
-    public static void generateAllImages(final String[] path) {
-        PaletteManager.getInstance();
-
+    public static void generateAllPaletteImages() {
         SwingUtilities.invokeLater(new Runnable() {
-
             @Override
             public void run() {
-                final PaletteNode src = getPathNode(path, false);
-                if (src == null) {
-                    System.err.print(String.format(WRONG_INPUT_ARGUMENT_S_INVALID_TREE_PATH, "path"));
-                    return;
-                }
+                final PaletteManager current = PaletteManager.getInstance();
+                iterate(current.getRoot().getNode());
+                current.saveConfig();
+            }
 
-                iterate(Collections.singletonList(src));
+            private void iterate(final List<PaletteNode> children) {
+                for (final PaletteNode next : children) {
+                    if (next instanceof Category) {
+                        iterate(((Category) next).getNode());
+                    } else if (next instanceof PreLoaded) {
+                        generatePreLoadedIcon((PreLoaded) next);
+                    }
+                }
+            }
+
+            /**
+             * Generate PreLoaded icon file.
+             *
+             * @param current
+             *            the current node
+             */
+            private void generatePreLoadedIcon(final PreLoaded current) {
+                final List<PaletteBlock> blocks = current.getBlock();
+                for (final PaletteBlock paletteBlock : blocks) {
+
+                    try {
+                        final BasicBlock block = new PaletteBlockCtrl(paletteBlock).loadBlock();
+                        generateIcon(block, paletteBlock.getIcon().getEvaluatedPath());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (ScicosFormatException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         });
 
         LOG.finest("All images has been generated.");
-    }
-
-    private static void iterate(final List<PaletteNode> children) {
-        for (final PaletteNode next : children) {
-            if (next instanceof Category) {
-                iterate(((Category) next).getNode());
-            } else if (next instanceof PreLoaded) {
-                generatePreLoadedIcon((PreLoaded) next);
-            }
-        }
-    }
-
-    /**
-     * Generate PreLoaded icon file.
-     *
-     * @param current
-     *            the current node
-     */
-    private static void generatePreLoadedIcon(final PreLoaded current) {
-        final List<PaletteBlock> blocks = current.getBlock();
-        for (final PaletteBlock paletteBlock : blocks) {
-
-            new PaletteBlockCtrl(paletteBlock).loadBlock(new ActionListener() {
-
-                @Override
-                public void actionPerformed(ActionEvent event) {
-                    try {
-                        generateIcon((BasicBlock) event.getSource(), paletteBlock.getIcon().getEvaluatedPath());
-                        if (LOG.isLoggable(Level.FINEST)) {
-                            LOG.finest(String.format("%s has been generated", paletteBlock.getIcon()));
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-        }
     }
 }

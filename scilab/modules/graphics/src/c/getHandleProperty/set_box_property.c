@@ -22,7 +22,6 @@
 
 #include <string.h>
 
-#include "stricmp.h"
 #include "setHandleProperty.h"
 #include "SetProperty.h"
 #include "getPropertyAssignedValue.h"
@@ -36,16 +35,16 @@
 #include "graphicObjectProperties.h"
 
 /*------------------------------------------------------------------------*/
-int set_box_property(void* _pvCtx, char* pobjUID, void* _pvData, int valueType, int nbRow, int nbCol)
+int set_box_property(void* _pvCtx, char* pobjUID, size_t stackPointer, int valueType, int nbRow, int nbCol )
 {
     BOOL status = FALSE;
     int type = -1;
     int *piType = &type;
 
-    if (valueType != sci_strings)
+    if ( !( valueType == sci_strings ) )
     {
         Scierror(999, _("Wrong type for '%s' property: String expected.\n"), "box");
-        return SET_PROPERTY_ERROR;
+        return SET_PROPERTY_ERROR ;
     }
 
     getGraphicObjectProperty(pobjUID, __GO_TYPE__, jni_int, (void **)&piType);
@@ -59,23 +58,23 @@ int set_box_property(void* _pvCtx, char* pobjUID, void* _pvData, int valueType, 
     {
         int boxType;
 
-        if (stricmp((char*)_pvData, "off") == 0)
+        if ( isStringParamEqual( stackPointer, "off" ) )
         {
             boxType = 0;
         }
-        else if (stricmp((char*)_pvData, "on") == 0)
+        else if ( isStringParamEqual( stackPointer, "on" ) )
         {
             boxType = 1;
         }
-        else if (stricmp((char*)_pvData, "hidden_axes") == 0)
+        else if ( isStringParamEqual( stackPointer, "hidden_axes" ) )
         {
             boxType = 2;
         }
-        else if (stricmp((char*)_pvData, "back_half") == 0)
+        else if ( isStringParamEqual( stackPointer, "back_half" ) )
         {
             boxType = 3;
         }
-        else if (stricmp((char*)_pvData, "hidden_axis") == 0)
+        else if ( isStringParamEqual( stackPointer, "hidden_axis" ) )
         {
             sciprint(_("WARNING !!!\nIn '%s' property: '%s' is deprecated use '%s' instead.\n"), "box", "hidden_axis", "hidden_axes");
             boxType = 2;
@@ -103,11 +102,11 @@ int set_box_property(void* _pvCtx, char* pobjUID, void* _pvData, int valueType, 
     {
         int box;
 
-        if (stricmp((char*)_pvData, "on") == 0)
+        if ( isStringParamEqual( stackPointer, "on" ) )
         {
             box = 1;
         }
-        else if (stricmp((char*)_pvData, "off") == 0)
+        else if ( isStringParamEqual( stackPointer, "off" ) )
         {
             box = 0;
         }

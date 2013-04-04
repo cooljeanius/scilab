@@ -13,7 +13,7 @@
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="en" xml:id="isascii">
     <refnamediv>
         <refname>isascii</refname>
-        <refpurpose>tests if character is a 7-bit US-ASCII character</refpurpose>
+        <refpurpose> tests if character is a 7-bit US-ASCII character</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Calling Sequence</title>
@@ -25,13 +25,13 @@
             <varlistentry>
                 <term>str</term>
                 <listitem>
-                    <para>a character string or an array of integers.</para>
+                    <para>A character string.</para>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term>res</term>
                 <listitem>
-                    <para>a boolean matrix.</para>
+                    <para>A Boolean matrix.</para>
                 </listitem>
             </varlistentry>
         </variablelist>
@@ -39,11 +39,9 @@
     <refsection>
         <title>Description</title>
         <para>
-            <code>res = isascii(str)</code> returns <constant>%t</constant>
-            (TRUE) if entries of <varname>str</varname> are a 7-bit
-            US-ASCII character code between 0 and octal 0177 inclusive (or
-            entries of <varname>str</varname> are 7-bit US-ASCII characters).
-            Otherwise returns <constant>%f</constant> (FALSE).
+            <literal>res = isascii(str)</literal> returns TRUE (%T) if c is a 7-bit
+            US-ASCII character code between 0 and octal 0177 inclusive.
+            otherwise returns FALSE (%F)
         </para>
     </refsection>
     <refsection>

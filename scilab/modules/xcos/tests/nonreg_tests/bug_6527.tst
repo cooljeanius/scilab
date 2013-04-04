@@ -6,6 +6,7 @@
 // =============================================================================
 
 // <-- XCOS TEST -->
+// <-- NOT FIXED -->
 
 // <-- Non-regression test for bug 6527 -->
 //
@@ -15,6 +16,7 @@
 // <-- Short Description -->
 // multiple instance of the same variable when exporting via "to workspace"
 
+loadScicosLibs();
 
 importXcosDiagram(SCI+"/modules/xcos/tests/nonreg_tests/bug_6527.xcos");
 

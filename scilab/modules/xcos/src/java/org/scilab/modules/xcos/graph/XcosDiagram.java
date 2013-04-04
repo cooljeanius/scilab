@@ -13,7 +13,6 @@
 
 package org.scilab.modules.xcos.graph;
 
-import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -2214,11 +2213,6 @@ public class XcosDiagram extends ScilabGraph {
     public void warnCellByUID(final String uid, final String message) {
         final Object cell = ((mxGraphModel) getModel()).getCell(uid);
         if (cell == null) {
-            return;
-        }
-
-        if (GraphicsEnvironment.isHeadless()) {
-            System.err.printf("%s at %s\n    %s: %s\n", "warnCell", getRootDiagram().getTitle(), uid, message);
             return;
         }
 

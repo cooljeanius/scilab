@@ -51,10 +51,9 @@ end
 Pop = list();
 Pop = init_func(pop_size,param);
 
-if (nargout>=3) then
+if (nargout==4) then
   pop_init = Pop;
 end
-
 // Code the individuals
 Pop = codage_func(Pop,'code',param);
 

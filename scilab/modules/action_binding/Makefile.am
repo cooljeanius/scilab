@@ -40,6 +40,7 @@ endif
 
 libsciaction_binding_disable_la_SOURCES = src/noaction_binding/noaction_binding.c
 libsciaction_binding_disable_la_CPPFLAGS = 	-I$(srcdir)/includes/ \
+											-I$(top_srcdir)/libs/MALLOC/includes/ \
 											-I$(top_srcdir)/modules/localization/includes/ \
 											-I$(top_srcdir)/modules/output_stream/includes \
 											$(AM_CPPFLAGS)
@@ -49,6 +50,7 @@ libsciaction_binding_la_CPPFLAGS= 	$(JAVA_JNI_INCLUDE) \
 -I$(srcdir)/includes/ \
 -I$(srcdir)/src/c/ \
 -I$(srcdir)/src/jni/ \
+-I$(top_srcdir)/libs/MALLOC/includes/ \
 -I$(top_srcdir)/modules/jvm/includes/ \
 -I$(top_srcdir)/modules/api_scilab/includes/ \
 -I$(top_srcdir)/modules/commons/src/jni/ \

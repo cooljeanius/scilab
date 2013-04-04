@@ -1,11 +1,10 @@
 /*
- *   Copyright Bruno Pinçon, ESIAL-IECN, Inria CORIDA project
+ *   Copyright Bruno Pinçon, ESIAL-IECN, Inria CORIDA project 
  *   <bruno.pincon@iecn.u-nancy.fr>
- *   contributor:  Antonio Manoel Ferreria Frasson, Universidade Federal do
+ *   contributor:  Antonio Manoel Ferreria Frasson, Universidade Federal do 
  *                 Espírito Santo, Brazil. <frasson@ele.ufes.br>.
  *
  *  Copyright (C) 2012 - DIGITEO - Allan CORNET
- *  Copyright (C) 2012 - Scilab Enterprises - Cedric Delamarre
  *
  * PURPOSE: Scilab interfaces routines onto the UMFPACK sparse solver
  * (Tim Davis) and onto the TAUCS snmf choleski solver (Sivan Teledo)
@@ -38,19 +37,19 @@
  *
  */
 
-/*------------------------------------------------------------+
-|   9) Interface code to free the memory                      |
-|      used by the Cholesky factors (C + permutation)         |
-|                                                             |
-|   Scilab call                                               |
-|   -----------                                               |
-|   taucs_chdel(LU_ptr)  or taucs_chdel() for freed all fact. |
-|                                                             |
-+------------------------------------------------------------*/
-#include "api_scilab.h"
+ /*------------------------------------------------------------+
+ |   9) Interface code to free the memory                      |
+ |      used by the Cholesky factors (C + permutation)         |
+ |                                                             |
+ |   Scilab call                                               |
+ |   -----------                                               |
+ |   taucs_chdel(LU_ptr)  or taucs_chdel() for freed all fact. |
+ |                                                             |
+ +------------------------------------------------------------*/
 #include "sciumfpack.h"
 #include "taucs_scilab.h"
 #include "gw_umfpack.h"
+#include "stack-c.h"
 #include "common_umfpack.h"
 #include "Scierror.h"
 #include "MALLOC.h"
@@ -60,21 +59,21 @@ extern CellAdr *ListCholFactors;
 /*--------------------------------------------------------------------------*/
 int sci_taucs_chdel(char* fname, unsigned long l)
 {
-    SciErr sciErr;
-    int it_flag = 0;
+
+    int mC_ptr = 0, nC_ptr = 0, lC_ptr = 0, it_flag = 0;
     taucs_handle_factors * pC = NULL;
     CellAdr * Cell = NULL;
+    int NbRhsVar;
 
-    int* piAddr1 = NULL;
-    void* pvPtr  = NULL;
-
-    nbInputArgument(pvApiCtx) = Max(nbInputArgument(pvApiCtx), 0);
+    Rhs = Max(Rhs, 0);
 
     /* Check numbers of input/output arguments */
-    CheckInputArgument(pvApiCtx, 0, 1);
-    CheckOutputArgument(pvApiCtx, 1, 1);
+    CheckRhs(0, 1);
+    CheckLhs(1, 1);
 
-    if (nbInputArgument(pvApiCtx) == 0)      /* destroy all */
+    NbRhsVar = Rhs;
+
+    if (NbRhsVar == 0)      /* destroy all */
     {
         while ( ListCholFactors )
         {
@@ -84,29 +83,17 @@ int sci_taucs_chdel(char* fname, unsigned long l)
             taucs_supernodal_factor_free(pC->C);  /* free the super nodal struct */
             FREE(pC->p);                          /* free the permutation vector */
             FREE(pC);                             /* free the handle             */
-            FREE(Cell);
+            FREE(Cell);                           
         }
     }
     else
     {
         /* get the pointer to the Cholesky factors */
-        sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddr1);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            return 1;
-        }
+        GetRhsVar(1, SCILAB_POINTER_DATATYPE, &mC_ptr, &nC_ptr, &lC_ptr);
+        pC = (taucs_handle_factors *) ((unsigned long int) *stk(lC_ptr));
 
-        sciErr = getPointer(pvApiCtx, piAddr1, &pvPtr);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            return 1;
-        }
-
-        pC = (taucs_handle_factors *)pvPtr;
         /* Check if the pointer is a valid ref to ... */
-        if (RetrieveAdrFromList(pC , &ListCholFactors, &it_flag))
+        if (RetrieveAdrFromList(pC, &ListCholFactors, &it_flag)) 
             /* free the memory of the objects */
         {
             taucs_supernodal_factor_free(pC->C);
@@ -115,12 +102,12 @@ int sci_taucs_chdel(char* fname, unsigned long l)
         }
         else
         {
-            Scierror(999, _("%s: Wrong value for input argument #%d: not a valid reference to Cholesky factors.\n"), fname, 1);
-            return 1;
+            Scierror(999,_("%s: Wrong value for input argument #%d: not a valid reference to Cholesky factors.\n"), fname, 1);
+            return 0;
         }
     }
 
-    ReturnArguments(pvApiCtx);
+    PutLhsVar();
     return 0;
 }
 /*--------------------------------------------------------------------------*/

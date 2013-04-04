@@ -22,7 +22,6 @@
 
 #include <string.h>
 
-#include "stricmp.h"
 #include "setHandleProperty.h"
 #include "SetProperty.h"
 #include "getPropertyAssignedValue.h"
@@ -33,25 +32,24 @@
 
 #include "setGraphicObjectProperty.h"
 #include "graphicObjectProperties.h"
-#include "MALLOC.h"
 
 /*------------------------------------------------------------------------*/
-int set_data_mapping_property(void* _pvCtx, char* pobjUID, void* _pvData, int valueType, int nbRow, int nbCol)
+int set_data_mapping_property(void* _pvCtx, char* pobjUID, size_t stackPointer, int valueType, int nbRow, int nbCol )
 {
     BOOL status = FALSE;
     int dataMapping = 0;
 
-    if (valueType != sci_strings)
+    if ( !( valueType == sci_strings ) )
     {
         Scierror(999, _("Wrong type for '%s' property: String expected.\n"), "data_mapping");
         return SET_PROPERTY_ERROR;
     }
 
-    if (stricmp((char*)_pvData, "scaled") == 0)
+    if (isStringParamEqual(stackPointer, "scaled"))
     {
         dataMapping = 0;
     }
-    else if (stricmp((char*)_pvData, "direct") == 0)
+    else if (isStringParamEqual(stackPointer, "direct"))
     {
         dataMapping = 1;
     }

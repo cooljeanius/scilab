@@ -7,19 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: scilab\n"
 "Report-Msgid-Bugs-To: <localization@lists.scilab.org>\n"
-"POT-Creation-Date: 2013-01-24 17:04+0100\n"
-"PO-Revision-Date: 2012-10-25 20:47+0000\n"
-"Last-Translator: Grzegorz Szostek <Unknown>\n"
+"POT-Creation-Date: 2011-10-03 10:34+0100\n"
+"PO-Revision-Date: 2012-06-22 00:10+0000\n"
+"Last-Translator: Jarosław Ogrodnik <nobodythere@gmail.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Launchpad (build 16506)\n"
+"X-Generator: Launchpad (build 16043)\n"
 "Language: pl\n"
 
 #, c-format
 msgid "%s: Can not read input argument #%d.\n"
-msgstr "%s: Nie można wczytać argumentu wejściowego #%d.\n"
+msgstr ""
 
 #, c-format
 msgid "%s: No more memory.\n"
@@ -27,11 +27,11 @@ msgstr "%s: Brak pamięci.\n"
 
 #, c-format
 msgid "%s: Can not create a mlist with input argument #%d.\n"
-msgstr "%s: Nie można utworzyć mlisty z argumentem wejściowym #%d.\n"
+msgstr ""
 
 #, c-format
 msgid "%s: Can not create a tlist with input argument #%d.\n"
-msgstr "%s: Nie można utworzyć tlisty z argumentem wejściowym #%d.\n"
+msgstr ""
 
 msgid " An hypermatrix extraction must have at least 2 arguments. "
 msgstr " Wyjmowanie hipermacierzy wymaga przynajmniej 2 parametrów. "

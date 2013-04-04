@@ -2,7 +2,7 @@
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="en" xml:id="intdec">
     <refnamediv>
         <refname>intdec</refname>
-        <refpurpose>Changes  sampling rate of a signal</refpurpose>
+        <refpurpose> Changes  sampling rate of a signal</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Calling Sequence</title>
@@ -38,28 +38,5 @@
         <para>
             Changes the sampling rate of a 1D or 2D signal by the rates in lom
         </para>
-    </refsection>
-    <refsection>
-        <title>Examples</title>
-        <programlisting role="example"><![CDATA[
-Fs1 = 10000;
-Fs2 = 14000;
-t1 = 0:1/Fs1:10;
-t2 = 0:1/Fs2:10;
-F0 = 500;
-u1 = sin(2*%pi*F0*t1);
-u2 = sin(2*%pi*F0*t2);
-u2b = intdec(u1, Fs2/Fs1)
-plot(u2b, u2);
- ]]></programlisting>
-        <scilab:image>
-            
-            Fs1 = 10000; Fs2 = 14000;
-            t1 = 0:1/Fs1:10; t2 = 0:1/Fs2:10;
-            F0 = 500;
-            u1 = sin(2*%pi*F0*t1); u2 = sin(2*%pi*F0*t2);
-            u2b = intdec(u1, Fs2/Fs1);
-            plot(u2b, u2);
-        </scilab:image>
     </refsection>
 </refentry>

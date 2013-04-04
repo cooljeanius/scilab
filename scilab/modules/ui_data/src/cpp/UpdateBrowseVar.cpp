@@ -65,7 +65,7 @@ void UpdateBrowseVar(BOOL update)
     int *piAllVariableBytes = (int *)MALLOC((iLocalVariablesUsed + iGlobalVariablesUsed) * sizeof(int));
     char **pstAllVariableSizes = (char **)MALLOC((iLocalVariablesUsed + iGlobalVariablesUsed) * sizeof(char *));
     int *piAllVariableTypes = (int *)MALLOC((iLocalVariablesUsed + iGlobalVariablesUsed) * sizeof(int));
-    bool *piAllVariableFromUser = (bool *) MALLOC((iLocalVariablesUsed + iGlobalVariablesUsed) * sizeof(bool));
+    bool *piAllVariableFromUser = (bool *) MALLOC((iLocalVariablesUsed + iGlobalVariablesUsed) * sizeof(BOOL));
     int nbRows, nbCols;
     char *sizeStr = NULL;
 
@@ -162,13 +162,6 @@ void UpdateBrowseVar(BOOL update)
 
     freeArrayOfString(pstAllVariableNames, iLocalVariablesUsed + iGlobalVariablesUsed);
     freeArrayOfString(pstAllVariableVisibility, iLocalVariablesUsed + iGlobalVariablesUsed);
-
-    if (piAllVariableFromUser)
-    {
-        FREE(piAllVariableFromUser);
-        piAllVariableFromUser = NULL;
-    }
-
     if (piAllVariableBytes)
     {
         FREE(piAllVariableBytes);

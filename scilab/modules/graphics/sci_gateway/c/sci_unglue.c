@@ -20,7 +20,7 @@
 #include <stdlib.h>
 
 #include "gw_graphics.h"
-#include "api_scilab.h"
+#include "stack-c.h"
 #include "GetProperty.h"
 #include "DestroyObjects.h"
 #include "localization.h"
@@ -32,18 +32,13 @@
 #include "graphicObjectProperties.h"
 #include "deleteGraphicObject.h"
 /*--------------------------------------------------------------------------*/
-int sci_unglue(char *fname, unsigned long fname_len)
+int sci_unglue(char *fname,unsigned long fname_len)
 {
-    SciErr sciErr;
-
-    int* piAddrl1 = NULL;
-    long long* l1 = NULL;
-
-    int m1 = 0, n1 = 0;
+    int m1 = 0,n1 = 0,l1 = 0;
     unsigned long hdl = 0;
-    int i = 0;
-    long long* outindex = NULL;
+    int outindex = 0, i = 0;
 
+    int iOne = 1;
     char *pobjUID = NULL;
     int iObjectType = -1;
     int *piObjectType = &iObjectType;
@@ -52,38 +47,23 @@ int sci_unglue(char *fname, unsigned long fname_len)
     int iChildrenCount = 0;
     int *piChildrenCount = &iChildrenCount;
 
-    CheckInputArgument(pvApiCtx, 1, 1);
-    CheckOutputArgument(pvApiCtx, 0, 1);
+    CheckRhs(1, 1);
+    CheckLhs(0, 1);
     /*  set or create a graphic window */
-    sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrl1);
-    if (sciErr.iErr)
-    {
-        printError(&sciErr, 0);
-        return 1;
-    }
-
-    // Retrieve a matrix of handle at position 1.
-    sciErr = getMatrixOfHandle(pvApiCtx, piAddrl1, &m1, &n1, &l1);
-    if (sciErr.iErr)
-    {
-        printError(&sciErr, 0);
-        Scierror(202, _("%s: Wrong type for argument %d: Handle matrix expected.\n"), fname, 1);
-        return 1;
-    }
-
-    hdl = (unsigned long) * (l1);
+    GetRhsVar(1, GRAPHICAL_HANDLE_DATATYPE, &m1, &n1, &l1);
+    hdl = (unsigned long)*hstk(l1);
 
     pobjUID = (char*)getObjectFromHandle(hdl);
 
     if (pobjUID == NULL)
     {
-        Scierror(999, _("%s: The handle is not or no more valid.\n"), fname);
+        Scierror(999,_("%s: The handle is not or no more valid.\n"),fname);
         return 0;
     }
 
     getGraphicObjectProperty(pobjUID, __GO_TYPE__, jni_int, (void **)&piObjectType);
 
-    if (iObjectType != -1 && iObjectType == __GO_COMPOUND__)
+    if (piObjectType != -1 && iObjectType == __GO_COMPOUND__)
     {
         // Retrieve number of children.
         getGraphicObjectProperty(pobjUID, __GO_CHILDREN_COUNT__, jni_int, (void **) &piChildrenCount);
@@ -94,32 +74,26 @@ int sci_unglue(char *fname, unsigned long fname_len)
         // Retrieve Compound Parent.
         getGraphicObjectProperty(pobjUID, __GO_PARENT__, jni_string, (void **)&pstParentUID);
 
-        sciErr = allocMatrixOfHandle(pvApiCtx, nbInputArgument(pvApiCtx) + 1, *piChildrenCount, 1, &outindex); /* We get the scalar value if it is ones */
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            Scierror(202, _("%s: Wrong type for argument %d: Handle matrix expected.\n"), fname, 1);
-            return 1;
-        }
+        CreateVar(Rhs+1, GRAPHICAL_HANDLE_DATATYPE, piChildrenCount, &iOne, &outindex);
 
         for (i = 0 ; i < iChildrenCount ; ++i)
         {
-            outindex[i] = getHandle(pstChildrenUID[i]);
+            hstk(outindex)[i] = getHandle(pstChildrenUID[i]);
             /*
              * Register Child to its new parent.
              * Children are added from the last to the first to obtain the same ordering
              * as the previous one (insertion is done at the head of the list).
              */
-            setGraphicObjectRelationship(pstParentUID, pstChildrenUID[iChildrenCount - i - 1]);
+            setGraphicObjectRelationship(pstParentUID, pstChildrenUID[iChildrenCount-i-1]);
         }
 
         deleteGraphicObject(pobjUID);
-        AssignOutputVariable(pvApiCtx, 1) = nbInputArgument(pvApiCtx) + 1;
-        ReturnArguments(pvApiCtx);
+        LhsVar(1) = Rhs + 1;
+        PutLhsVar();
     }
     else
     {
-        Scierror(999, _("%s: Object must be a Compound.\n"), fname);
+        Scierror(999,_("%s: Object must be a Compound.\n"),fname);
     }
     return 0;
 }

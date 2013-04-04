@@ -14,7 +14,7 @@
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="en" xml:id="coding_ga_identity">
     <refnamediv>
         <refname>coding_ga_identity</refname>
-        <refpurpose>
+        <refpurpose> 
             A "no-operation" conversion function 
         </refpurpose>
     </refnamediv>
@@ -69,19 +69,6 @@
             This function is a do-nothing function. It is essentially useful to implement an evolutionnary algorithm. In an evolutionnary algorithm, we work directly on the variable and not on a binary code.
         </para>
     </refsection>
-
-    <refsection>
-      <title>Examples</title>
-      <programlisting role="example"><![CDATA[
-pop_in = list();
-pop_in(1) = 2;
-
-pop_out = coding_ga_identity(pop_in,'code',[])
-
-pop_in_2 = coding_ga_identity(pop_out,'decode',[])
-]]></programlisting>
-    </refsection>
-
     <refsection role="see also">
         <title>See Also</title>
         <simplelist type="inline">

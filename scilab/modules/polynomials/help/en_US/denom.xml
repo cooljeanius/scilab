@@ -13,7 +13,7 @@
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="en" xml:id="denom">
     <refnamediv>
         <refname>denom</refname>
-        <refpurpose>denominator</refpurpose>
+        <refpurpose> denominator</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Calling Sequence</title>
@@ -48,20 +48,6 @@
             <literal>r('den')</literal> or <literal>r.den</literal>
         </para>
     </refsection>
-    <refsection>
-        <title>Examples</title>
-        <programlisting role="example"><![CDATA[
-h=(1+2*%s)/poly(1:4,'s','c');
-denom(h)
-numer(h)
-
-s=poly(0,"s");
-p=1+s+2*s^2;
-denom(p) // Should return 1
-numer(p)
- ]]></programlisting>
-    </refsection>
-    
     <refsection role="see also">
         <title>See Also</title>
         <simplelist type="inline">

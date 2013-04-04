@@ -215,7 +215,7 @@ L12:
             /* Manage space between two prompts */
             if (!returnFromCallbackExec)
             {
-                /* Space added only if Scilab does not return from a callback execution */
+                /* Space added only if Scilab does not return form a callback execution */
                 C2F(prompt)(&i__2, &iesc);
             }
             else
@@ -957,10 +957,7 @@ L71:
         }
         if (C2F(errgst).err1 > 0)
         {
-            if (C2F(errgst).err1 != 13 || Rstk[Pt] != 502)
-            {
-                --Pt;
-            }
+            if (C2F(errgst).err1 != 13 || Rstk[Pt] != 502) --Pt;
             --Lhs;
             goto L98;
         }
@@ -1095,14 +1092,8 @@ L77:
     Fin = 0;
     p = 0;
     r = 0;
-    if (Pt > 0)
-    {
-        p = Pstk[Pt];
-    }
-    if (Pt > 0)
-    {
-        r = Rstk[Pt];
-    }
+    if (Pt > 0) p = Pstk[Pt];
+    if (Pt > 0) r = Rstk[Pt];
     if (C2F(iop).ddt == 4)
     {
         sprintf(tmp, " finish  pt:%d rstk(pt):%d  pstk(pt):%d lpt(1): %d niv: %d macr:%d, paus:%d",
@@ -1147,10 +1138,7 @@ L77:
         {
             /* running under errcatch(num,....) */
             C2F(errgst).err1 = 0;
-            if (Pt < C2F(errgst).errpt)
-            {
-                C2F(errgst).errcatch = 0;
-            }
+            if (Pt < C2F(errgst).errpt) C2F(errgst).errcatch = 0;
         }
 
         imode = (i__2 = C2F(errgst).errct / 100000, abs(i__2));
@@ -1169,9 +1157,7 @@ L77:
             C2F(parsecomment)();
         }
         else
-        {
             goto L15;
-        }
     }
 
     /*     gestion des points d'arrets dynamiques */
@@ -1934,14 +1920,8 @@ void handle_onprompt(int *where_)
         /* on prompt implicit execution */
         C2F(com).fun = 0;
         C2F(funs)(onprompt);
-        if (Err > 0)
-        {
-            return;
-        }
-        if (C2F(com).fun <= 0 && Fin == 0)
-        {
-            return;
-        }
+        if (Err > 0) return;
+        if (C2F(com).fun <= 0 && Fin == 0) return;
         /* %onprompt function exists */
         Rhs = 0;
         Lhs = 1;
@@ -1977,16 +1957,10 @@ void C2F(parsecomment)(void)
     static int l, ll, lkp, l0, c1 = 1;
     /* look for eol */
     l0 = Lpt[4] - 1;
-    if ( (Lin[l0] == slash) && (Lin[l0 - 1] == slash) & (Lin[l0 + 1] == eol))
-    {
-        l0 = l0 + 1;
-    }
+    if ( (Lin[l0] == slash) && (Lin[l0 - 1] == slash) & (Lin[l0 + 1] == eol)) l0 = l0 + 1;
 
     l = l0;
-    while (Lin[l] != eol)
-    {
-        l++;
-    }
+    while (Lin[l] != eol) l++;
     ll = l - l0;
     if (Comp[1] == 0)
     {

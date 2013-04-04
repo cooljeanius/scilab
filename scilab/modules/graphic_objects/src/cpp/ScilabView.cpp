@@ -13,7 +13,6 @@
 #include <iostream>
 #include <map>
 #include <cstring>
-#include <limits.h>
 
 #include "ScilabView.hxx"
 #include "CallGraphicController.hxx"
@@ -47,50 +46,9 @@ void ScilabNativeView__updateObject(char const* pstId, int iProperty)
     ScilabView::updateObject(pstId, iProperty);
 }
 
-void ScilabNativeView__setCurrentFigure(char const* pstId)
-{
-    ScilabView::setCurrentFigure(pstId);
-}
-
-void ScilabNativeView__setCurrentSubWin(char const* pstId)
-{
-    ScilabView::setCurrentSubWin(pstId);
-}
-
-void ScilabNativeView__setCurrentObject(char const* pstId)
-{
-    ScilabView::setCurrentObject(pstId);
-}
-
-int ScilabNativeView__getValidDefaultFigureId()
-{
-    return ScilabView::getValidDefaultFigureId();
-}
-
 /**
  * \}
  */
-
-int ScilabView::getValidDefaultFigureId()
-{
-    if (m_figureList.empty())
-    {
-        return 0;
-    }
-    else
-    {
-        int max = INT_MIN;
-        for (__figureList_iterator it = m_figureList.begin(); it != m_figureList.end(); ++it)
-        {
-            if (it->second > max)
-            {
-                max = it->second;
-            }
-        }
-
-        return max + 1;
-    }
-}
 
 bool ScilabView::isEmptyFigureList()
 {
@@ -140,6 +98,7 @@ void ScilabView::getFiguresId(int ids[])
 int ScilabView::getNbFigure(void)
 {
     return (int)m_figureList.size();
+
 }
 
 void ScilabView::createObject(char const* pstId)
@@ -166,10 +125,15 @@ void ScilabView::deleteObject(char const* pstId)
     int *piType = &iType;
     char *pstParentUID = NULL;
 
+    getGraphicObjectProperty(pstId, __GO_TYPE__, jni_int, (void **)&piType);
+
     /*
     ** If deleting a figure, remove from figure list.
     */
-    m_figureList.erase(pstId);
+    if (iType != -1 && iType == __GO_FIGURE__)
+    {
+        m_figureList.erase(pstId);
+    }
 
     /*
     ** If deleting current figure find another current one,
@@ -202,10 +166,9 @@ void ScilabView::deleteObject(char const* pstId)
     }
 
     // Remove the corresponding handle.
-    __handleList_iterator it = m_handleList.find(pstId);
-    m_uidList.erase(it->second);
-    m_handleList.erase(it);
-    
+    m_uidList.erase(m_handleList.find(pstId)->second);
+    m_handleList.erase(pstId);
+
     deleteDataObject(pstId);
 }
 

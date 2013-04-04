@@ -292,9 +292,7 @@ char **getDictionaryGetProperties(int *sizearray)
             char *propertyname = (char *)MALLOC(sizeof(char) * (strlen(propertyTable[i].key) + 1));
 
             if (propertyname)
-            {
                 strcpy(propertyname, propertyTable[i].key);
-            }
             dictionary[i] = propertyname;
         }
     }

@@ -5,6 +5,8 @@
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
 
+// <-- TEST WITH XCOS -->
+//
 // <-- Non-regression test for bug 6541 -->
 //
 // <-- Bugzilla URL -->

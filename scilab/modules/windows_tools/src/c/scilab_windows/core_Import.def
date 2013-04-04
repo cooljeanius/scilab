@@ -16,6 +16,3 @@ sciquit
 getTMPDIR
 getTMPDIRW
 StoreCommand
-MyHeapAlloc
-MyHeapFree
-MyHeapRealloc

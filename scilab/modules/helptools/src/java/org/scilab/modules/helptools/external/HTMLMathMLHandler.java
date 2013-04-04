@@ -18,7 +18,6 @@ import java.util.Map;
 
 import org.xml.sax.Attributes;
 
-import org.scilab.modules.helptools.HTMLDocbookTagConverter;
 import org.scilab.modules.helptools.image.ImageConverter;
 
 /**
@@ -36,7 +35,6 @@ public class HTMLMathMLHandler extends ExternalXMLHandler {
     private StringBuilder buffer = new StringBuilder(8192);
     private String baseDir;
     private String outputDir;
-    private boolean isLocalized;
 
     /**
      * Constructor
@@ -70,11 +68,6 @@ public class HTMLMathMLHandler extends ExternalXMLHandler {
      * {@inheritDoc}
      */
     public StringBuilder startExternalXML(String localName, Attributes attributes) {
-	if (MATH.equals(localName)) {
-	    String v = attributes.getValue(getScilabURI(), "localized");
-	    isLocalized = "true".equalsIgnoreCase(v);
-	}
-
         recreateTag(buffer, localName, attributes);
         if (MATH.equals(localName)) {
             return buffer;
@@ -89,27 +82,11 @@ public class HTMLMathMLHandler extends ExternalXMLHandler {
     public String endExternalXML(String localName) {
         if (MATH.equals(localName)) {
             recreateTag(buffer, localName, null);
-            File f;
-	    String language = ((HTMLDocbookTagConverter) getConverter()).getLanguage();
-	    if (isLocalized) {
-		f = new File(outputDir, BASENAME + language + "_" + (compt++) + ".png");
-	    } else {
-		if ("ru_RU".equals(language) && HTMLDocbookTagConverter.containsCyrillic(buffer)) {
-		    System.err.println("Warning: MathML code in " + getConverter().getCurrentFileName() + " contains cyrillic character. The tag <math> should contain the attribute scilab:localized=\"true\"");
-		} else if ("ja_JP".equals(language) && HTMLDocbookTagConverter.containsCJK(buffer)) {
-		    System.err.println("Warning: MathML code in " + getConverter().getCurrentFileName() + " contains CJK character. The tag <math> should contain the attribute scilab:localized=\"true\"");
-		}
-		f = new File(outputDir, BASENAME + (compt++) + ".png");
-	    }
-
-            Map<String, String> attributes = new HashMap<String, String>();
+            File f = new File(outputDir, BASENAME + (compt++) + ".png");
+            Map<String, String> attributes = new HashMap();
             attributes.put("fontsize", "16");
-            String baseImagePath = "";
-            if (getConverter() instanceof HTMLDocbookTagConverter) {
-                baseImagePath = ((HTMLDocbookTagConverter) getConverter()).getBaseImagePath();
-            }
-	    
-            String ret = ImageConverter.getImageByCode(getConverter().getCurrentFileName(), buffer.toString(), attributes, "image/mathml", f, baseDir + f.getName(), baseImagePath);
+
+            String ret = ImageConverter.getImageByCode(getConverter().getCurrentFileName(), buffer.toString(), attributes, "image/mathml", f, baseDir + f.getName());
             buffer.setLength(0);
 
             return ret;
@@ -119,6 +96,4 @@ public class HTMLMathMLHandler extends ExternalXMLHandler {
 
         return null;
     }
-
-
 }

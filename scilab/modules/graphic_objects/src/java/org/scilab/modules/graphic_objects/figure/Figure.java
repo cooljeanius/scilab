@@ -533,7 +533,7 @@ public class Figure extends GraphicObject {
         } else if (property == RenderingModeProperty.ANTIALIASING) {
             setAntialiasing((Integer) value);
         } else if (property == RenderingModeProperty.IMMEDIATEDRAWING) {
-            return setImmediateDrawing((Boolean) value);
+            setImmediateDrawing((Boolean) value);
         } else if (property == FigureProperty.BACKGROUND) {
             setBackground((Integer) value);
         } else if (property == EventHandlerProperty.EVENTHANDLER) {
@@ -876,13 +876,8 @@ public class Figure extends GraphicObject {
     /**
      * @param immediateDrawing the immediateDrawing to set
      */
-    public UpdateStatus setImmediateDrawing(Boolean immediateDrawing) {
-	if (renderingMode.immediateDrawing != immediateDrawing) {
-	    renderingMode.immediateDrawing = immediateDrawing;
-	    return UpdateStatus.Success;
-	}
-
-	return UpdateStatus.NoChange;
+    public void setImmediateDrawing(Boolean immediateDrawing) {
+        renderingMode.immediateDrawing = immediateDrawing;
     }
 
     /**

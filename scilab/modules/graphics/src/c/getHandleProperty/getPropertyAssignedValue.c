@@ -17,268 +17,317 @@
 /*------------------------------------------------------------------------*/
 
 #include "getPropertyAssignedValue.h"
-#include "api_scilab.h"
+#include "stack-c.h"
 #include "localization.h"
 #include "MALLOC.h"
 #include "BasicAlgos.h"
 #include "freeArrayOfString.h"
 #include "Scierror.h"
 #include "stricmp.h"
-#ifdef _MSC_VER
-#include "strdup_windows.h"
-#endif
 /*--------------------------------------------------------------------------*/
-void copyDoubleVectorToIntFromStack(void* _pvData, int* _piDest, int _iNbItem)
+double getDoubleFromStack( size_t stackPointer )
+{
+    return *(stk( stackPointer ));
+}
+/*--------------------------------------------------------------------------*/
+double * getDoubleMatrixFromStack( size_t stackPointer )
+{
+    return stk( stackPointer ) ;
+}
+/*--------------------------------------------------------------------------*/
+void copyDoubleVectorFromStack( size_t stackPointer, double dest[], int nbElement )
+{
+    doubleArrayCopy( dest, getDoubleMatrixFromStack( stackPointer ), nbElement ) ;
+}
+/*--------------------------------------------------------------------------*/
+void copyDoubleVectorToIntFromStack( size_t stackPointer, int dest[], int nbElement )
 {
     int i = 0;
-    double* values = (double*)_pvData;
-    for (i = 0 ; i < _iNbItem ; i++)
+    double * values = getDoubleMatrixFromStack( stackPointer ) ;
+    for ( i = 0 ; i < nbElement ; i++ )
     {
-        _piDest[i] = (int) values[i];
+        dest[i] = (int) values[i] ;
     }
 }
 /*--------------------------------------------------------------------------*/
-char ** createCopyStringMatrixFromStack(void* _pvData, int _iNbItem)
+double * createCopyDoubleVectorFromStack( size_t stackPointer, int nbElement )
+{
+    double * res = MALLOC( nbElement * sizeof(double) ) ;
+    if ( res == NULL )
+    {
+        return NULL ;
+    }
+    copyDoubleVectorFromStack( stackPointer, res, nbElement ) ;
+    return res ;
+}
+/*--------------------------------------------------------------------------*/
+char * getStringFromStack( size_t stackPointer )
+{
+    return cstk( stackPointer ) ;
+}
+/*--------------------------------------------------------------------------*/
+char ** getStringMatrixFromStack( size_t stackPointer )
+{
+    /* strange but it was taken from sci_set */
+    return (char **) stackPointer ;
+}
+/*--------------------------------------------------------------------------*/
+char ** createCopyStringMatrixFromStack( size_t stackPointer, int nbElement )
 {
     int i = 0;
-    char ** res    = (char**)MALLOC(_iNbItem * sizeof(char *));
-    char ** values = (char**)_pvData;
+    char ** res    = MALLOC( nbElement * sizeof(char *) ) ;
+    char ** values = getStringMatrixFromStack( stackPointer ) ;
 
-    if (res == NULL)
+    if ( res == NULL )
     {
-        return NULL;
+        return NULL ;
     }
 
-    for (i = 0 ; i < _iNbItem ; i++)
+    for ( i = 0 ; i < nbElement ; i++ )
     {
-        res[i] = strdup(values[i]);
+        int size =  (int)strlen( values[i] ) + 1 ;
+        res[i] = MALLOC( size * sizeof(char) ) ;
+
+        if ( res[i] == NULL )
+        {
+            /* deallocate what have been allocated */
+            freeArrayOfString(res, i);
+            return NULL ;
+        }
+
+        strcpy( res[i], values[i] ) ;
     }
 
-    return res;
+    return res ;
 
 }
 /*--------------------------------------------------------------------------*/
-int tryGetBooleanValueFromStack(void* _pvData, int _iType, int _iRows, int _iCols, char* _pstPropertyName)
+unsigned long getHandleFromStack( size_t stackPointer )
 {
-    if (_iType == sci_strings)
+    return (unsigned long) * (hstk( stackPointer )) ;
+}
+/*--------------------------------------------------------------------------*/
+BOOL isStringParamEqual( size_t stackPointer, const char * str )
+{
+    if ( stricmp( getStringFromStack( stackPointer ), str ) == 0 )
     {
-        if (stricmp((char*)_pvData, "on") == 0)
-        {
-            return TRUE;
-        }
-        if (stricmp((char*)_pvData, "off") == 0)
-        {
-            return FALSE;
-        }
-        if (stricmp((char*)_pvData, "1") == 0)
-        {
-            return TRUE;
-        }
-        if (stricmp((char*)_pvData, "0") == 0)
-        {
-            return FALSE;
-        }
-        if (stricmp((char*)_pvData, "T") == 0)
-        {
-            return TRUE;
-        }
-        if (stricmp((char*)_pvData, "F") == 0)
-        {
-            return FALSE;
-        }
+        return TRUE ;
+    }
+    else
+    {
+        return FALSE ;
+    }
+}
+/*--------------------------------------------------------------------------*/
+int tryGetBooleanValueFromStack(size_t stackPointer, int valueType, int nbRow, int nbCol, char* propertyName)
+{
+    if (valueType == sci_strings)
+    {
+        if (isStringParamEqual(stackPointer, "on"))  return TRUE;
+        if (isStringParamEqual(stackPointer, "off")) return FALSE;
+        if (isStringParamEqual(stackPointer, "1"))   return TRUE;
+        if (isStringParamEqual(stackPointer, "0"))   return FALSE;
+        if (isStringParamEqual(stackPointer, "T"))   return TRUE;
+        if (isStringParamEqual(stackPointer, "F"))   return FALSE;
 
-        Scierror(999, _("Wrong value for '%s' property: '%s' or '%s' expected.\n"), _pstPropertyName, "on", "off");
+        Scierror(999, _("Wrong value for '%s' property: '%s' or '%s' expected.\n"), propertyName, "on", "off");
         return NOT_A_BOOLEAN_VALUE;
     }
 
-    if (_iType == sci_boolean)
+    if (valueType == sci_boolean)
     {
-        return ((int*)_pvData)[0];
+        return (int) * istk(stackPointer);
     }
 
-    if (_iType == sci_matrix)
+    if (valueType == sci_matrix)
     {
-        if (((double*)_pvData)[0] == 0)
-        {
-            return FALSE;
-        }
+        if (getDoubleFromStack(stackPointer) == 0) return FALSE;
         return TRUE;
     }
 
-    Scierror(999, _("Wrong type for '%s' property: String expected.\n"), _pstPropertyName);
+    Scierror(999, _("Wrong type for '%s' property: String expected.\n"), propertyName);
     return NOT_A_BOOLEAN_VALUE;
 }
-/*--------------------------------------------------------------------------*/
-int getStackListNbElement(void* _pvCtx, int _iRhs)
-{
-    int* piAddr = 0;
-    int iItem = 0;
 
-    getVarAddressFromPosition(_pvCtx, _iRhs, &piAddr);
-    getListItemNumber(_pvCtx, piAddr, &iItem);
-    return iItem - 1; //why -1 ? Oo
+/*--------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------*/
+int getStackListNbElement( int paramNum )
+{
+    int nbRow        = 0 ;
+    int nbCol        = 0 ;
+    size_t stackPointer = 0 ;
+
+    GetRhsVar( paramNum, TYPED_LIST_DATATYPE, &nbRow, &nbCol, &stackPointer );
+
+    return nbRow - 1 ;
 
 }
 /*--------------------------------------------------------------------------*/
-AssignedList * createAssignedList(void* _pvCtx, int _iRhs, int _iNbItem)
+AssignedList * createAssignedList( int paramNum, int nbElement )
 {
-    AssignedList * newList = NULL;
-    int iItem = 0;
+    AssignedList * newList = NULL ;
+    int nbRow = 0 ;
+    int nbCol = 0 ;
 
-    newList = (AssignedList*)MALLOC(sizeof(AssignedList));
+    newList = MALLOC( sizeof(AssignedList) ) ;
 
-    if (newList == NULL)
+    if ( newList == NULL )
     {
-        return NULL;
+        return NULL ;
     }
 
-    newList->iNbItem = _iNbItem + 1;
-    newList->iCurItem = 2 ; /* begin with 1 and 1 are the names */
-    newList->iRhs = _iRhs;
+    newList->nbElement   = nbElement + 1 ;
+    newList->curElement  = 2 ; /* begin with 1 and 1 are the names */
+    newList->paramNumber = paramNum ;
 
     /* get the stack pointer */
-    getVarAddressFromPosition(_pvCtx, _iRhs, &newList->piList);
-    getListItemNumber(_pvCtx, newList->piList, &iItem);
+    GetRhsVar( paramNum, TYPED_LIST_DATATYPE, &nbRow, &nbCol, &(newList->stackPointer) );
 
     /* check the size */
-    if (iItem != newList->iNbItem)
+    if ( nbRow != newList->nbElement || nbCol != 1 )
     {
-        return NULL;
+        return NULL ;
     }
+    return newList ;
+}
+/*--------------------------------------------------------------------------*/
+void destroyAssignedList( AssignedList * list )
+{
+    FREE( list ) ;
+}
+/*--------------------------------------------------------------------------*/
+int getAssignedListNbElement( AssignedList * list )
+{
+    return list->nbElement - 1 ;
+}
+/*--------------------------------------------------------------------------*/
+void rewindAssignedList( AssignedList * list )
+{
+    list->curElement = 2 ;
+}
+/*--------------------------------------------------------------------------*/
+BOOL isListCurrentElementDoubleMatrix( AssignedList * list )
+{
+    return ( ElementType( list->paramNumber, list->curElement ) == 1 ) ;
+}
+/*--------------------------------------------------------------------------*/
+BOOL isListCurrentElementStringMatrix( AssignedList * list )
+{
+    return ( ElementType( list->paramNumber, list->curElement ) == 10 ) ;
+}
+/*--------------------------------------------------------------------------*/
+BOOL isListCurrentElementEmptyMatrix( AssignedList * list )
+{
+    int nbRow = 0 ;
+    int nbCol = 0 ;
 
-    return newList;
-}
-/*--------------------------------------------------------------------------*/
-void destroyAssignedList(AssignedList* _pList)
-{
-    FREE(_pList);
-}
-/*--------------------------------------------------------------------------*/
-int getAssignedListNbElement(AssignedList* _pList)
-{
-    return _pList->iNbItem - 1;
-}
-/*--------------------------------------------------------------------------*/
-void rewindAssignedList(AssignedList* _pList)
-{
-    _pList->iCurItem = 2; //why -2 ? Oo
-}
-/*--------------------------------------------------------------------------*/
-BOOL isListCurrentElementDoubleMatrix(void* _pvCtx, AssignedList* _pList)
-{
-    int* piAddrItem = NULL;
-    int iType = 0;
-    getListItemAddress(_pvCtx, _pList->piList, _pList->iCurItem, &piAddrItem);
-    getVarType(_pvCtx, piAddrItem, &iType);
-    return iType == sci_matrix;
-}
-/*--------------------------------------------------------------------------*/
-BOOL isListCurrentElementStringMatrix(void* _pvCtx, AssignedList* _pList)
-{
-    int* piAddrItem = NULL;
-    int iType = 0;
-    getListItemAddress(_pvCtx, _pList->piList, _pList->iCurItem, &piAddrItem);
-    getVarType(_pvCtx, piAddrItem, &iType);
-    return iType == sci_strings;
-}
-/*--------------------------------------------------------------------------*/
-BOOL isListCurrentElementEmptyMatrix(void* _pvCtx, AssignedList* _pList)
-{
-    int* piItem = NULL;
-    int iRows = 0, iCols = 0;
-
-    if (!isListCurrentElementDoubleMatrix(_pvCtx, _pList))
+    if ( !isListCurrentElementDoubleMatrix( list ) )
     {
         /* empty matrix is a double matrix */
-        return FALSE;
+        return FALSE ;
     }
 
-    getListItemAddress(_pvCtx, _pList->piList, _pList->iCurItem, &piItem);
-    getVarDimension(_pvCtx, piItem, &iRows, &iCols);
-    if (iRows * iCols == 0)
+    getDoubleMatrixFromList( list, list->curElement, &nbRow, &nbCol ) ;
+
+    if ( nbRow * nbCol == 0 )
     {
-        return TRUE;
+        return TRUE ;
     }
 
-    return FALSE;
+    return FALSE ;
 
 }
 /*--------------------------------------------------------------------------*/
-double* getDoubleMatrixFromList(void* _pvCtx, AssignedList* _pList, int _iItem, int* _piRows, int* _piCols)
+double * getDoubleMatrixFromList( AssignedList * list, int rank, int * nbRow, int * nbCol )
 {
-    double* pdbl = NULL;
+    int valueStackPointer = 0 ;
+    GetListRhsVar( list->paramNumber, rank, MATRIX_OF_DOUBLE_DATATYPE, nbRow, nbCol, &valueStackPointer );
 
-    getMatrixOfDoubleInList(_pvCtx, _pList->piList, _iItem, _piRows, _piCols, &pdbl);
-    return pdbl;
+    return getDoubleMatrixFromStack( valueStackPointer ) ;
 }
 /*--------------------------------------------------------------------------*/
-char ** getStringMatrixFromList(void* _pvCtx, AssignedList* _pList, int _iItem, int* _piRows, int* _piCols)
+char ** getStringMatrixFromList( AssignedList * list, int rank, int * nbRow, int * nbCol )
 {
-    int* piItem = NULL;
-    char** pstData = NULL;
-    getListItemAddress(_pvCtx, _pList->piList, _iItem, &piItem);
-    getAllocatedMatrixOfString(_pvCtx, piItem, _piRows, _piCols, &pstData);
-    return pstData;
+    size_t valueStackPointer = 0 ;
+    GetListRhsVar( list->paramNumber, rank, MATRIX_OF_STRING_DATATYPE, nbRow, nbCol, &valueStackPointer );
+
+    return getStringMatrixFromStack( valueStackPointer ) ;
 }
 /*--------------------------------------------------------------------------*/
-double* getCurrentDoubleMatrixFromList(void* _pvCtx, AssignedList* _pList, int* _piRows, int* _piCols)
+double * getCurrentDoubleMatrixFromList( AssignedList * list, int * nbRow, int * nbCol )
 {
-    double* res = NULL;
-    if (_pList->iCurItem > _pList->iNbItem)
+    double * res = NULL ;
+    if ( list->curElement > list->nbElement )
     {
-        *_piRows = 0;
-        *_piCols = 0;
-        return NULL;
+        *nbRow = 0 ;
+        *nbCol = 0 ;
+        return NULL ;
     }
 
-    res = getDoubleMatrixFromList(_pvCtx, _pList, _pList->iCurItem, _piRows, _piCols);
-    _pList->iCurItem++;
-    return res;
+    res = getDoubleMatrixFromList( list, list->curElement, nbRow, nbCol ) ;
+    list->curElement++ ;
+    return res ;
 }
 /*--------------------------------------------------------------------------*/
-char** getCurrentStringMatrixFromList(void* _pvCtx, AssignedList* _pList, int* _piRows, int* _piCols)
+char ** getCurrentStringMatrixFromList( AssignedList * list, int * nbRow, int * nbCol )
 {
-    char** res = NULL;
-    if (_pList->iCurItem > _pList->iNbItem)
+    char ** res = NULL ;
+    if ( list->curElement > list->nbElement )
     {
-        *_piRows = 0;
-        *_piCols = 0;
-        return NULL;
+        *nbRow = 0 ;
+        *nbCol = 0 ;
+        return NULL ;
     }
 
-    res = getStringMatrixFromList(_pvCtx, _pList, _pList->iCurItem, _piRows, _piCols);
-    _pList->iCurItem++;
-    return res;
+    res = getStringMatrixFromList( list, list->curElement, nbRow, nbCol ) ;
+    list->curElement++ ;
+    return res ;
 
 }
 /*--------------------------------------------------------------------------*/
-double* createCopyDoubleMatrixFromList(void* _pvCtx, AssignedList* _pList, int* _piRows, int* _piCols)
+double * createCopyDoubleMatrixFromList( AssignedList * list, int * nbRow, int * nbCol )
 {
     /* get the matrix */
-    double* stackValues = getCurrentDoubleMatrixFromList(_pvCtx, _pList, _piRows, _piCols);
-    int nbElement = *_piRows * *_piCols;
+    double * stackValues = getCurrentDoubleMatrixFromList( list, nbRow, nbCol ) ;
+    int nbElement = (*nbRow) * (*nbCol) ;
 
-    double* copyMatrix = NULL;
+    double * copyMatrix = NULL ;
 
-    if (nbElement == 0)
+    if ( nbElement == 0 )
     {
-        return NULL;
+        return NULL ;
     }
 
     /* copy */
 
-    copyMatrix = (double*)MALLOC((*_piRows) * (*_piCols) * sizeof(double));
+    copyMatrix = MALLOC( (*nbRow) * (*nbCol) * sizeof( double ) ) ;
 
-    if (copyMatrix == NULL)
+    if ( copyMatrix == NULL )
     {
-        *_piRows = -1;
-        *_piCols = -1;
-        return NULL;
+        *nbRow = -1 ;
+        *nbCol = -1 ;
+        return NULL ;
     }
 
-    doubleArrayCopy(copyMatrix, stackValues, nbElement);
+    doubleArrayCopy( copyMatrix, stackValues, nbElement ) ;
 
-    return copyMatrix;
+    return copyMatrix ;
 
+}
+/*--------------------------------------------------------------------------*/
+char ** createCopyStringMatrixFromList( AssignedList * list, int * nbRow, int * nbCol )
+{
+    char ** stackValues = NULL;
+    int nbElement = (*nbRow) * (*nbCol) ;
+
+    if ( nbElement == 0 )
+    {
+        return NULL ;
+    }
+
+    /* get the matrix */
+    stackValues = getCurrentStringMatrixFromList( list, nbRow, nbCol ) ;
+
+    return createStringArrayCopy( stackValues, nbElement ) ;
 }
 /*--------------------------------------------------------------------------*/

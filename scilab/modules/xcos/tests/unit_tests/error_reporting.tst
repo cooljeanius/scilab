@@ -6,7 +6,7 @@
 // ============================================================================
 //
 // <-- INTERACTIVE TEST -->
-// <-- XCOS TEST -->
+// <-- TEST WITH XCOS -->
 //
 // <-- Short Description -->
 // Check all the possible errors which should be reported on the diagram.

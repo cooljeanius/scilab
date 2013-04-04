@@ -28,6 +28,7 @@ void C2F(getfileinfo)(int *fd, FILE *fa, int *swap2, int *type, int *mode, char 
 		*ierr=2;
 		return;
 	}
+	fa = GetFileOpenedInScilab(*fd);
 
 	*swap2 = GetSwapStatus(*fd);
 	*type = GetFileTypeOpenedInScilab(*fd);

@@ -18,7 +18,7 @@
 /*------------------------------------------------------------------------*/
 
 #include "gw_graphics.h"
-#include "api_scilab.h"
+#include "stack-c.h"
 #include "GetProperty.h"
 #include "MALLOC.h"
 #include "axesScale.h"
@@ -32,84 +32,68 @@
 #include "getGraphicObjectProperty.h"
 
 /*--------------------------------------------------------------------------*/
-int sci_unzoom(char *fname, unsigned long fname_len)
+int sci_unzoom(char *fname,unsigned long fname_len)
 {
-    SciErr sciErr;
+  /* number of object to unzoom */
+  int nbObjects = 0;
 
-    int* piAddrstackPointer = NULL;
-    long long* stackPointer = NULL;
+  /* ids of object to unzoom */
+  char** objectsId = NULL;
 
-    /* number of object to unzoom */
-    int nbObjects = 0;
+  char* objectUID = NULL;
 
-    /* object type */
-    int iType = -1;
-    int *piType = &iType;
+  /* object type */
+  int iType = -1;
+  int *piType = &iType;
 
-    /* ids of object to unzoom */
-    char** objectsId = NULL;
-    char* objectUID = NULL;
-
-    CheckInputArgument(pvApiCtx, 0, 1);
-    CheckOutputArgument(pvApiCtx, 0, 1);
-    if (nbInputArgument(pvApiCtx) == 0)
+  CheckRhs(0,1) ;
+  CheckLhs(0,1) ;
+  if ( Rhs == 0 )
+  {
+    objectUID = (char*)getCurrentFigure();
+    if (objectUID != NULL)
     {
-        objectUID = (char*)getCurrentFigure();
-        if (objectUID != NULL)
-        {
-            sciUnzoomFigure(objectUID);
-        }
+      sciUnzoomFigure(objectUID);
     }
-    else
+  }
+  else
+  {
+    int m = 0,n = 0,i = 0;
+    size_t stackPointer = 0;
+    GetRhsVar(1, GRAPHICAL_HANDLE_DATATYPE, &m, &n, &stackPointer);
+
+    nbObjects = m * n;
+    objectsId = MALLOC(nbObjects * sizeof(char*));
+    if (objectsId == NULL)
     {
-        int m = 0, n = 0, i = 0;
-        sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddrstackPointer);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            return 1;
-        }
+      Scierror(999, _("%s: No more memory.\n"),fname);
+      return -1;
+    }
 
-        // Retrieve a matrix of handle at position 1.
-        sciErr = getMatrixOfHandle(pvApiCtx, piAddrstackPointer, &m, &n, &stackPointer);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            Scierror(202, _("%s: Wrong type for argument %d: Handle matrix expected.\n"), fname, 1);
-            return 1;
-        }
-
-        nbObjects = m * n;
-        objectsId = MALLOC(nbObjects * sizeof(char*));
-        if (objectsId == NULL)
-        {
-            Scierror(999, _("%s: No more memory.\n"), fname);
-            return -1;
-        }
-
-        /* first pass, check that all the handles are subwindows or figures */
-        /* and copy them into an array of objects */
-        for (i = 0; i < nbObjects; i++)
-        {
-            objectUID = (char*)getObjectFromHandle((long int)stackPointer[i]);
-            getGraphicObjectProperty(objectUID, __GO_TYPE__, jni_string, (void **) &piType);
-            if (iType != __GO_FIGURE__ && iType != __GO_AXES__)
-            {
-                FREE(objectsId);
-                Scierror(999, _("%s: Wrong type for input argument: Vector of Axes and Figure handles expected.\n"), fname);
-                return -1;
-            }
-            objectsId[i] = objectUID;
-        }
-
-        /* second pass un zoom the objects */
-        sciUnzoomArray(objectsId, nbObjects);
+    /* first pass, check that all the handles are subwindows or figures */
+    /* and copy them into an array of objects */
+    for (i = 0; i < nbObjects; i++ )
+    {
+      objectUID = (char*)getObjectFromHandle(getHandleFromStack(stackPointer + i));
+      getGraphicObjectProperty(objectUID, __GO_TYPE__, jni_int, (void **) &piType);
+      if (iType != __GO_FIGURE__ && iType != __GO_AXES__)
+      {
         FREE(objectsId);
+        Scierror(999, _("%s: Wrong type for input argument: Vector of Axes and Figure handles expected.\n"),fname);
+        return -1;
+      }
+      objectsId[i] = objectUID;
     }
 
+    /* second pass un zoom the objects */
+    sciUnzoomArray(objectsId, nbObjects);
 
-    AssignOutputVariable(pvApiCtx, 1) = 0;
-    ReturnArguments(pvApiCtx);
-    return 0;
+    FREE(objectsId);
+  }
+
+
+  LhsVar(1)=0;
+  PutLhsVar();
+  return 0;
 }
 /*--------------------------------------------------------------------------*/

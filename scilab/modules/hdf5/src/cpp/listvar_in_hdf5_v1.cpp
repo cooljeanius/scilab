@@ -10,9 +10,9 @@
 *
 */
 
-#include <hdf5.h>
 extern "C"
 {
+#include <hdf5.h>
 #include <string.h>
 #include "gw_hdf5.h"
 #include "MALLOC.h"
@@ -95,7 +95,6 @@ int sci_listvar_in_hdf5_v1(char *fname, unsigned long fname_len)
     if (iNbItem != 0)
     {
         char** pstVarNameList = (char**)MALLOC(sizeof(char*) * iNbItem);
-        bool b;
         pInfo = (VarInfo_v1*)MALLOC(iNbItem * sizeof(VarInfo_v1));
 
         if (Lhs == 1)
@@ -115,10 +114,7 @@ int sci_listvar_in_hdf5_v1(char *fname, unsigned long fname_len)
 
             strcpy(pInfo[i].varName, pstVarNameList[i]);
             FREE(pstVarNameList[i]);
-            b = read_data_v1(iDataSetId, 0, NULL, &pInfo[i]) == false;
-            closeDataSet_v1(iDataSetId);
-
-            if (b)
+            if (read_data_v1(iDataSetId, 0, NULL, &pInfo[i]) == false)
             {
                 break;
             }
@@ -141,8 +137,6 @@ int sci_listvar_in_hdf5_v1(char *fname, unsigned long fname_len)
         PutLhsVar();
         return 0;
     }
-
-    closeHDF5File(iFile);
 
     //1st Lhs
     char** pstVarName = (char**)MALLOC(sizeof(char*) * iNbItem);

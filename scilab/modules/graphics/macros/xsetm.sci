@@ -6,9 +6,7 @@
 // are also available at    
 // http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
 
-function xsetm()
-  warnobsolete('ged', '5.5.0');
+function xsetm() 
 //obsolete function formely used for old_graphic style
   ged(1);
-
 endfunction

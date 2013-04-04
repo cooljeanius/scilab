@@ -14,8 +14,6 @@ package org.scilab.modules.helptools;
 
 import java.io.File;
 
-import org.xml.sax.SAXException;
-
 import org.scilab.modules.commons.ScilabCommonsUtils;
 import org.scilab.modules.commons.ScilabConstants;
 import org.scilab.modules.gui.utils.ScilabSwingUtilities;
@@ -56,7 +54,7 @@ public final class SciDocMain {
                 return false;
             }
         }
-        this.outputDirectory = new File(outputDirectory).getAbsolutePath();
+        this.outputDirectory = outputDirectory;
         return true;
     }
 
@@ -94,7 +92,6 @@ public final class SciDocMain {
         scimacro = conf.getMacros();
         version = conf.getVersion();
         imagedir = ".";//the path must be relative to outputDirectory
-        String imageOut = outputDirectory;
         String fileToExec = null;
 
         if (!new File(sourceDoc).isFile()) {
@@ -113,9 +110,6 @@ public final class SciDocMain {
 
             if (format.equalsIgnoreCase("javahelp")) {
                 converter = new JavaHelpDocbookTagConverter(sourceDoc, outputDirectory, sciprim, scimacro, template, version, imagedir, isToolbox, "scilab://", language);
-                if (!isToolbox) {
-                    imageOut = ((JavaHelpDocbookTagConverter) converter).outImages;
-                }
             } else {
                 if (isToolbox) {
                     urlBase = conf.getWebSiteURL() + language + "/";
@@ -129,9 +123,9 @@ public final class SciDocMain {
                 }
             }
 
-            converter.registerExternalXMLHandler(HTMLMathMLHandler.getInstance(imageOut, imagedir));
-            converter.registerExternalXMLHandler(HTMLSVGHandler.getInstance(imageOut, imagedir));
-            converter.registerExternalXMLHandler(HTMLScilabHandler.getInstance(imageOut, imagedir));
+            converter.registerExternalXMLHandler(HTMLMathMLHandler.getInstance(outputDirectory, imagedir));
+            converter.registerExternalXMLHandler(HTMLSVGHandler.getInstance(outputDirectory, imagedir));
+            converter.registerExternalXMLHandler(HTMLScilabHandler.getInstance(outputDirectory, imagedir));
             converter.convert();
 
             HTMLMathMLHandler.clean();
@@ -144,13 +138,13 @@ public final class SciDocMain {
             ScilabCommonsUtils.copyFile(new File(SCI + "/modules/helptools/data/css/xml_code.css"), new File(outputDirectory + "/xml_code.css"));
             ScilabCommonsUtils.copyFile(new File(SCI + "/modules/helptools/data/css/c_code.css"), new File(outputDirectory + "/c_code.css"));
             ScilabCommonsUtils.copyFile(new File(SCI + "/modules/helptools/data/css/style.css"), new File(outputDirectory + "/style.css"));
-            ScilabCommonsUtils.copyFile(new File(ScilabSwingUtilities.findIcon("media-playback-start")), new File(imageOut + "/ScilabExecute.png"));
-            ScilabCommonsUtils.copyFile(new File(ScilabSwingUtilities.findIcon("accessories-text-editor")), new File(imageOut + "/ScilabEdit.png"));
-            ScilabCommonsUtils.copyFile(new File(ScilabSwingUtilities.findIcon("dialog-information")), new File(imageOut + "/ScilabNote.png"));
-            ScilabCommonsUtils.copyFile(new File(ScilabSwingUtilities.findIcon("dialog-warning")), new File(imageOut + "/ScilabWarning.png"));
-            ScilabCommonsUtils.copyFile(new File(ScilabSwingUtilities.findIcon("dialog-warning")), new File(imageOut + "/ScilabCaution.png"));
-            ScilabCommonsUtils.copyFile(new File(ScilabSwingUtilities.findIcon("dialog-information")), new File(imageOut + "/ScilabTip.png"));
-            ScilabCommonsUtils.copyFile(new File(ScilabSwingUtilities.findIcon("emblem-important")), new File(imageOut + "/ScilabImportant.png"));
+            ScilabCommonsUtils.copyFile(new File(ScilabSwingUtilities.findIcon("media-playback-start")), new File(outputDirectory + "/ScilabExecute.png"));
+            ScilabCommonsUtils.copyFile(new File(ScilabSwingUtilities.findIcon("accessories-text-editor")), new File(outputDirectory + "/ScilabEdit.png"));
+            ScilabCommonsUtils.copyFile(new File(ScilabSwingUtilities.findIcon("dialog-information")), new File(outputDirectory + "/ScilabNote.png"));
+            ScilabCommonsUtils.copyFile(new File(ScilabSwingUtilities.findIcon("dialog-warning")), new File(outputDirectory + "/ScilabWarning.png"));
+            ScilabCommonsUtils.copyFile(new File(ScilabSwingUtilities.findIcon("dialog-warning")), new File(outputDirectory + "/ScilabCaution.png"));
+            ScilabCommonsUtils.copyFile(new File(ScilabSwingUtilities.findIcon("dialog-information")), new File(outputDirectory + "/ScilabTip.png"));
+            ScilabCommonsUtils.copyFile(new File(ScilabSwingUtilities.findIcon("emblem-important")), new File(outputDirectory + "/ScilabImportant.png"));
             if (format.equalsIgnoreCase("javahelp")) {
                 if (!isToolbox) {
                     ScilabCommonsUtils.copyFile(new File(SCI + "/modules/helptools/data/pages/error.html"), new File(outputDirectory + "/ScilabErrorPage.html"));
@@ -165,17 +159,13 @@ public final class SciDocMain {
                     if (!homepageImage.isFile()) {
                         homepageImage = new File(SCI + "/modules/helptools/data/pages/ban-en_US.png");
                     }
-                    ScilabCommonsUtils.copyFile(homepageImage, new File(imageOut + "/ban_en_US.png"));
+                    ScilabCommonsUtils.copyFile(homepageImage, new File(outputDirectory + "/ban_en_US.png"));
                 }
-
                 if (fileToExec == null) {
-                    generateJavahelp(outputDirectory, language, isToolbox);
+                    generateJavahelp(outputDirectory, language);
                 }
             }
 
-        } catch (SAXException e) {
-            System.err.println("An error occurred during the conversion:");
-            System.err.println(e.toString());
         } catch (Exception e) {
             System.err.println("An error occurred during the conversion:\n");
             e.printStackTrace();
@@ -184,10 +174,7 @@ public final class SciDocMain {
         return fileToExec;
     }
 
-    public static void generateJavahelp(String outputDirectory, String language, boolean isToolbox) {
+    public static void generateJavahelp(String outputDirectory, String language) {
         BuildJavaHelp.buildJavaHelp(outputDirectory, language);
-        if (!isToolbox) {
-            BuildJavaHelp.buildJarImages(SCI + "/modules/helptools/images", SCI + "/modules/helptools/jar");
-        }
     }
 }

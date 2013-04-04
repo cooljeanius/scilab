@@ -3,11 +3,14 @@
 //
 // This file is distributed under the same license as the Scilab package.
 
-// <-- XCOS TEST -->
+// <-- NOT FIXED -->
+
+// <-- TEST WITH XCOS -->
 //
 // <-- Short Description -->
 // Check the API of all xcos palette management methods, see SEP_45_xcos_palette.odt
 
+loadXcosLibs;
 
 exportedFile = TMPDIR + "/palette.sod";
 palettePath = ["My special palettes" "My sum palettes" "My sum palette"];
@@ -42,13 +45,7 @@ myIcon = SCI + "/modules/xcos/images/palettes/VVsourceAC.png";
 style= struct();
 style.labelPosition = "middle";
 style.verticalLabelPosition = "bottom";
-sci_url = "file:";
-// escape the c: as /c:
-if getos() == "Windows" then
-    sci_url = sci_url + "/";
-end
-sci_url = sci_url + SCI;
-style.image = sci_url + "/modules/xcos/images/blocks/SUM.svg";
+style.image = "file:" + SCI + "/modules/xcos/images/blocks/SUM.svg";
 style.noLabel = "0";
 style.displayedLabel = "My custom block";
 

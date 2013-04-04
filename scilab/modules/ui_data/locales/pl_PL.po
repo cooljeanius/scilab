@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: scilab\n"
 "Report-Msgid-Bugs-To: <localization@lists.scilab.org>\n"
-"POT-Creation-Date: 2013-01-24 17:03+0100\n"
-"PO-Revision-Date: 2012-10-26 15:24+0000\n"
-"Last-Translator: Grzegorz Szostek <Unknown>\n"
+"POT-Creation-Date: 2011-03-09 11:38+0100\n"
+"PO-Revision-Date: 2012-03-09 22:43+0000\n"
+"Last-Translator: I.Rokach <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Launchpad (build 16506)\n"
+"X-Generator: Launchpad (build 16043)\n"
 "Language: pl\n"
 
 #, c-format
@@ -24,11 +24,10 @@ msgstr "Moduł '%s' Scilab jest wyłączony w trybie -nogui lub -nwni.\n"
 #, c-format
 msgid "%s: Wrong number of input argument(s): %d, %d or %d expected.\n"
 msgstr ""
-"%s: Nieprawidłowa liczba argumentów wejściowych: oczekiwano %d, %d lub %d.\n"
 
 #, c-format
 msgid "%s: Can not read input argument #%d.\n"
-msgstr "%s: Nie można odczytać argumentu wejściowego #%d.\n"
+msgstr ""
 
 #, c-format
 msgid "%s: Wrong type for input argument #%d: A String expected.\n"
@@ -47,7 +46,7 @@ msgstr "%s: nie można edytować ans.\n"
 
 #, c-format
 msgid "%s: Undefined variable: %s.\n"
-msgstr "%s: Niezdefiniowana zmienna: %s.\n"
+msgstr ""
 
 #, c-format
 msgid "%s: Wrong type for input argument #%d: Double expected.\n"
@@ -182,10 +181,10 @@ msgid "Edition"
 msgstr "Edycja"
 
 msgid "Refresh the variable "
-msgstr "Odśwież zmienną "
+msgstr ""
 
 msgid "Scilab Help"
-msgstr "Pomoc Scilaba"
+msgstr ""
 
 msgid "Copy"
 msgstr "Kopiuj"
@@ -206,7 +205,7 @@ msgid "Redo"
 msgstr "Ponów"
 
 msgid "Size columns to fit"
-msgstr "Dopasuj rozmiary kolumn"
+msgstr ""
 
 msgid "Copy as Scilab command"
 msgstr "Kopiuj jako polecenie Scilab"
@@ -245,10 +244,10 @@ msgid "Remove columns"
 msgstr "Usuń kolumny"
 
 msgid "Plot the selection"
-msgstr "Rysuj wykres z zaznaczenia"
+msgstr ""
 
 msgid "Plot the matrix"
-msgstr "Rysuj wykres macierzy"
+msgstr ""
 
 msgid "Cancel"
 msgstr "Anuluj"
@@ -272,7 +271,7 @@ msgid "Columns number"
 msgstr "Numer kolumny"
 
 msgid "Fill with"
-msgstr "Wypełnij z"
+msgstr ""
 
 msgid "File Browser"
 msgstr "Przeglądarka plików"
@@ -338,10 +337,10 @@ msgid "Open with default application"
 msgstr "Otwórz w aplikacji domyślnej"
 
 msgid "Previous directory"
-msgstr "Poprzedni folder"
+msgstr ""
 
 msgid "Next directory"
-msgstr "Następny folder"
+msgstr ""
 
 msgid "Scilab type:"
 msgstr "Typ Scilab:"

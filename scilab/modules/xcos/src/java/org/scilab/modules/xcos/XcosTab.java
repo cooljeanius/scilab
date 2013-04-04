@@ -14,7 +14,6 @@ package org.scilab.modules.xcos;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -157,41 +156,26 @@ public class XcosTab extends SwingScilabTab implements SimpleTab {
     private PushButton xcosDocumentationAction;
 
     private static class ClosingOperation implements org.scilab.modules.gui.utils.ClosingOperationsManager.ClosingOperation {
-        private final WeakReference<XcosDiagram> graph;
+        private final XcosDiagram graph;
 
         public ClosingOperation(XcosDiagram graph) {
-            this.graph = new WeakReference<XcosDiagram>(graph);
+            this.graph = graph;
         }
 
         @Override
         public int canClose() {
-            final XcosDiagram diag = graph.get();
-            if (diag == null) {
-                return 1;
-            }
-
-            return Xcos.getInstance().canClose(diag) ? 1 : 0;
+            return Xcos.getInstance().canClose(graph) ? 1 : 0;
         }
 
         @Override
         public void destroy() {
-            final XcosDiagram diag = graph.get();
-            if (diag == null) {
-                return;
-            }
-
-            Xcos.getInstance().destroy(diag);
-            diag.setOpened(false);
+            Xcos.getInstance().destroy(graph);
+            graph.setOpened(false);
         }
 
         @Override
         public String askForClosing(final List<SwingScilabTab> list) {
-            final XcosDiagram diag = graph.get();
-            if (diag == null) {
-                return null;
-            }
-
-            return Xcos.getInstance().askForClosing(diag, list);
+            return Xcos.getInstance().askForClosing(graph, list);
         }
 
         @Override
@@ -225,22 +209,17 @@ public class XcosTab extends SwingScilabTab implements SimpleTab {
     }
 
     private static class EndedRestoration implements WindowsConfigurationManager.EndedRestoration {
-        private final WeakReference<XcosDiagram> graph;
+        private final XcosDiagram graph;
 
         public EndedRestoration(XcosDiagram graph) {
-            this.graph = new WeakReference<XcosDiagram>(graph);
+            this.graph = graph;
         }
 
         @Override
         public void finish() {
-            final XcosDiagram diag = graph.get();
-            if (diag == null) {
-                return;
-            }
+            graph.updateTabTitle();
 
-            diag.updateTabTitle();
-
-            ConfigurationManager.getInstance().removeFromRecentTabs(diag.getGraphTab());
+            ConfigurationManager.getInstance().removeFromRecentTabs(graph.getGraphTab());
         }
     }
 

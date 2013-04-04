@@ -22,7 +22,7 @@ int ScilabGateway::remove(char * fname, const int envId, void * pvApiCtx)
 
     ScilabAbstractEnvironment & env = ScilabEnvironments::getEnvironment(envId);
     ScilabGatewayOptions & options = env.getGatewayOptions();
-    OptionsHelper::setCopyOccurred(false);
+    OptionsHelper::setCopyOccured(false);
     ScilabObjects::initialization(env, pvApiCtx);
     options.setIsNew(false);
 

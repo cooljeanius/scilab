@@ -82,6 +82,7 @@ int sci_isfile(char *fname, unsigned long fname_len)
             FREE(lenStVarOne);
             lenStVarOne = NULL;
         }
+        freeArrayOfWideString(pStVarOne, m1 * n1);
         Scierror(999, _("%s: Memory allocation error.\n"), fname);
         return 0;
     }
@@ -103,7 +104,6 @@ int sci_isfile(char *fname, unsigned long fname_len)
             FREE(lenStVarOne);
             lenStVarOne = NULL;
         }
-        FREE(results);
         Scierror(999, _("%s: Memory allocation error.\n"), fname);
         return 0;
     }
@@ -113,20 +113,12 @@ int sci_isfile(char *fname, unsigned long fname_len)
         pStVarOne[i] = (wchar_t*)MALLOC(sizeof(wchar_t) * (lenStVarOne[i] + 1));
         if (pStVarOne[i] == NULL)
         {
-            if (i == 0)
-            {
-                FREE(pStVarOne);
-            }
-            else
-            {
-                freeArrayOfWideString(pStVarOne, i - 1);
-            }
+            freeArrayOfWideString(pStVarOne, m1 * n1);
             if (lenStVarOne)
             {
                 FREE(lenStVarOne);
                 lenStVarOne = NULL;
             }
-            FREE(results);
             Scierror(999, _("%s: Memory allocation error.\n"), fname);
             return 0;
         }
@@ -137,8 +129,6 @@ int sci_isfile(char *fname, unsigned long fname_len)
     {
         printError(&sciErr, 0);
         Scierror(999, _("%s: Can not read input argument #%d.\n"), fname, 1);
-        freeArrayOfWideString(pStVarOne, m1*n1);
-        FREE(results);
         return 0;
     }
 
@@ -169,7 +159,6 @@ int sci_isfile(char *fname, unsigned long fname_len)
     {
         printError(&sciErr, 0);
         Scierror(999, _("%s: Memory allocation error.\n"), fname);
-        free(results);
         return 0;
     }
 

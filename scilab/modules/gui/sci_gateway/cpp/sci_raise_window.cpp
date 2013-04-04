@@ -17,7 +17,7 @@
 
 extern "C"
 {
-#include "api_scilab.h"
+#include "stack-c.h"
 #include "getScilabJavaVM.h"
 #include "gw_gui.h"
 #include "localization.h"
@@ -29,41 +29,26 @@ using namespace org_scilab_modules_gui_bridge;
 /*--------------------------------------------------------------------------*/
 int sci_raise_window(char *fname, unsigned long fname_len)
 {
-    SciErr sciErr;
-    int m1 = 0, n1 = 0;
+    int m1 = 0, n1 = 0, l1 = 0;
 
-    int * piAddr1   = NULL;
-    double* l1      = NULL;
+    CheckLhs(1, 1);
 
-    CheckInputArgument(pvApiCtx, 1, 1);
-
-    sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddr1);
-    if (sciErr.iErr)
-    {
-        printError(&sciErr, 0);
-        return 1;
-    }
-    sciErr = getMatrixOfDouble(pvApiCtx, piAddr1, &m1, &n1, &l1);
-    if (sciErr.iErr)
-    {
-        Scierror(202, _("%s: Wrong type for argument %d: A real expected.\n"), fname, 1);
-        printError(&sciErr, 0);
-        return 1;
-    }
+    GetRhsVar(1, MATRIX_OF_DOUBLE_DATATYPE, &m1, &n1, &l1);
 
     try
     {
-        CallScilabBridge::raiseWindow(getScilabJavaVM(), (int)*l1);
+        CallScilabBridge::raiseWindow(getScilabJavaVM(), (int)(*stk(l1)));
     }
-    catch (const GiwsException::JniException & e)
+    catch(const GiwsException::JniException & e)
     {
         Scierror(999, _("%s: A Java exception arisen:\n%s"), fname, e.whatStr().c_str());
-        return 1;
+        return FALSE;
     }
 
-    AssignOutputVariable(pvApiCtx, 1) = 0;
-    returnArguments(pvApiCtx);
-    return 0;
+    LhsVar(1) = 0;
+    PutLhsVar();
+
+    return TRUE;
 }
 
 /*--------------------------------------------------------------------------*/

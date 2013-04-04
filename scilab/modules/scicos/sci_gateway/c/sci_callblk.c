@@ -157,6 +157,7 @@ int sci_callblk(char *fname, unsigned long fname_len)
         FREE(Block.jroot);
         if (strlen(Block.label) != 0) FREE(Block.label);
         FREE(Block.mode);
+        FREE(Block.xprop);
         return 0;
     }
 

@@ -25,7 +25,7 @@ public class ScilabLexerConstants {
     /**
      * Number of known tokens
      */
-    public static final int NUMBEROFTOKENS = 36;
+    public static final int NUMBEROFTOKENS = 35;
 
     /**
      * DEFAULT : tokens which are not recognized
@@ -200,12 +200,7 @@ public class ScilabLexerConstants {
     /**
      * EOF : End Of File
      */
-    public static final int TODO = 34;
-
-    /**
-     * EOF : End Of File
-     */
-    public static final int EOF = 35;
+    public static final int EOF = 34;
 
     /**
      * TOKENS : A Map which contains the names of keywords (useful in scinotesConfiguration.xml)
@@ -243,7 +238,6 @@ public class ScilabLexerConstants {
         TOKENS.put("LaTeXInString", LATEXINSTRING);
         TOKENS.put("TabulationInString", TAB_STRING);
         TOKENS.put("OpenClose", OPENCLOSE);
-        TOKENS.put("Todo", TODO);
     }
 
     /**
@@ -295,7 +289,7 @@ public class ScilabLexerConstants {
      * @return true if the keyword is a LaTeX string
      */
     public static final boolean isComment(final int type) {
-        return type == COMMENT || type == AUTHORS || type == URL || type == MAIL || type == LATEX || type == WHITE_COMMENT || type == TAB_COMMENT || type == TODO;
+        return type == COMMENT || type == AUTHORS || type == URL || type == MAIL || type == LATEX || type == WHITE_COMMENT || type == TAB_COMMENT;
     }
 
     /**

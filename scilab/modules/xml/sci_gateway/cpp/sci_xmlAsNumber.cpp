@@ -59,25 +59,18 @@ int sci_xmlAsNumber(char *fname, unsigned long fname_len)
         return 0;
     }
 
-    if (list->getSize())
+    err = allocMatrixOfDouble(pvApiCtx, Rhs + 1, 1, list->getSize(), &pdblReal);
+    const char **contents = list->getContentFromList();
+
+    for (int i = 0; i < list->getSize(); i++)
     {
-        err = allocMatrixOfDouble(pvApiCtx, Rhs + 1, 1, list->getSize(), &pdblReal);
-        const char **contents = list->getContentFromList();
+        stringToDoubleError convErr = STRINGTODOUBLE_NO_ERROR;
 
-        for (int i = 0; i < list->getSize(); i++)
-        {
-            stringToDoubleError convErr = STRINGTODOUBLE_NO_ERROR;
-
-            pdblReal[i] = stringToDouble(contents[i], TRUE, &convErr);
-            xmlFree(const_cast < char *>(contents[i]));
-        }
-
-        delete[]contents;
+        pdblReal[i] = stringToDouble(contents[i], TRUE, &convErr);
+        xmlFree(const_cast < char *>(contents[i]));
     }
-    else
-    {
-        createEmptyMatrix(pvApiCtx, Rhs + 1);
-    }
+
+    delete[]contents;
 
     LhsVar(1) = Rhs + 1;
     PutLhsVar();

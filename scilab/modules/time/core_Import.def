@@ -16,5 +16,3 @@ checklhs_
 checkrhs_
 check_scalar
 createvar_
-MyHeapAlloc
-MyHeapFree

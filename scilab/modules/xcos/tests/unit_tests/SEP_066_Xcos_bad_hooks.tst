@@ -4,11 +4,12 @@
 // This file is distributed under the same license as the Scilab package.
 
 // <-- ENGLISH IMPOSED -->
-// <-- XCOS TEST -->
+// <-- TEST WITH XCOS -->
 //
 // <-- Short Description -->
 // Check the API of the Xcos hooks, see SEP_066_Xcos_hooks.odt
 
+loadXcosLibs();
 global status;
 status = [];
 

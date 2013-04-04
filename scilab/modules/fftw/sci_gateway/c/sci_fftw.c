@@ -4,7 +4,6 @@
 * Copyright (C) 2007 - INRIA - Allan CORNET
 * Copyright (C) 2012 - DIGITEO - Allan CORNET
 * Copyright (C) 2012 - INRIA - Serge STEER
-* Copyright (C) 2012 - Scilab Enterprises - Cedric Delamarre
 *
 * This file must be used under the terms of the CeCILL.
 * This source file is licensed as described in the file COPYING, which
@@ -87,15 +86,15 @@ int sci_fftw(char *fname, unsigned long fname_len)
     ****************************************/
 
     /* check min/max lhs/rhs arguments of scilab function */
-    CheckInputArgument(pvApiCtx, 1, 5);
-    CheckOutputArgument(pvApiCtx, 1, 1);
+    CheckRhs(1, 5);
+    CheckLhs(1, 1);
 
     sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddr);
     if (sciErr.iErr)
     {
         printError(&sciErr, 0);
         Scierror(999, _("%s: Can not read input argument #%d.\n"), fname, 1);
-        return 1;
+        return 0;
     }
 
     sciErr = getVarType(pvApiCtx, piAddr, &iTypeOne);
@@ -103,13 +102,13 @@ int sci_fftw(char *fname, unsigned long fname_len)
     {
         printError(&sciErr, 0);
         Scierror(999, _("%s: Can not read input argument #%d.\n"), fname, 1);
-        return 1;
+        return 0;
     }
 
     if ((iTypeOne == sci_list) || (iTypeOne == sci_tlist))
     {
         OverLoad(1);
-        return 1;
+        return 0;
     }
 
     if (iTypeOne == sci_mlist)
@@ -118,7 +117,7 @@ int sci_fftw(char *fname, unsigned long fname_len)
         if (!isHyperMatrixMlist(pvApiCtx, piAddr))
         {
             OverLoad(1);
-            return 1;
+            return 0;
         }
     }
 
@@ -128,7 +127,7 @@ int sci_fftw(char *fname, unsigned long fname_len)
     {
         printError(&sciErr, 0);
         Scierror(999, _("%s: Can not read input argument #%d.\n"), fname, Rhs);
-        return 1;
+        return 0;
     }
 
     if (isStringType(pvApiCtx, piAddr))   /*  fftw(...,option); */
@@ -144,7 +143,7 @@ int sci_fftw(char *fname, unsigned long fname_len)
                     Scierror(999, _("%s: Wrong value for input argument #%d: '%s' or '%s' expected.\n"), fname, Rhs, "\"symmetric\"", "\"nonsymmetric\"");
                     freeAllocatedSingleString(option);
                     option = NULL;
-                    return 1;
+                    return 0;
                 }
                 freeAllocatedSingleString(option);
                 option = NULL;
@@ -153,7 +152,7 @@ int sci_fftw(char *fname, unsigned long fname_len)
             else
             {
                  Scierror(999, _("%s: Wrong value for input argument #%d: '%s' or '%s' expected.\n"), fname, Rhs, "\"symmetric\"", "\"nonsymmetric\"");
-                return 1;
+                return 0;
             }
         }
     }
@@ -170,13 +169,13 @@ int sci_fftw(char *fname, unsigned long fname_len)
         if (sciErr.iErr)
         {
             Scierror(sciErr.iErr, getErrorMessage(sciErr));
-            return 1;
+            return 0;
         }
         /* check value of second rhs argument */
         if ((isn !=  FFTW_FORWARD) && (isn !=  FFTW_BACKWARD))
         {
             Scierror(53, _("%s: Wrong value for input argument #%d: %d or %d expected.\n"), fname, 2, FFTW_FORWARD, FFTW_BACKWARD);
-            return 1;
+            return 0;
         }
     }
 
@@ -184,8 +183,9 @@ int sci_fftw(char *fname, unsigned long fname_len)
     getVarAddressFromPosition(pvApiCtx, 1, &piAddr);
     if (!getArrayOfDouble(pvApiCtx, piAddr, &ndimsA, &dimsA, &Ar, &Ai))
     {
-        Scierror(999, _("%s: Wrong type for argument #%d: Array of floating point numbers expected.\n"), fname, 1);
-        return 1;
+        Scierror(999, _("%s: Wrong type for argument #%d: Array of floating point numbers expected.\n"),
+                 fname, 1);
+        return 0;
     }
 
 
@@ -868,15 +868,14 @@ int sci_fft_4args(void* _pvCtx, char *fname, int ndimsA, int *dimsA, double *Ar,
     * Return results in lhs argument *
     ***********************************/
 
+    ReturnArguments(_pvCtx);
+
     FREE(Dim1);
     FREE(Incr);
     FREE(Dim);
     FREE(Sel);
     FREE(gdim.dims);
     FREE(gdim.howmany_dims);
-
-    ReturnArguments(_pvCtx);
-
     return 0;
 }
 /*--------------------------------------------------------------------------*/

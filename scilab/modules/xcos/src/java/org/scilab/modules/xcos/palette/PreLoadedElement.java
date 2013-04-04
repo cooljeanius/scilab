@@ -15,9 +15,9 @@ package org.scilab.modules.xcos.palette;
 import static java.util.Arrays.asList;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
-import org.scilab.modules.action_binding.highlevel.ScilabInterpreterManagement;
 import org.scilab.modules.types.ScilabString;
 import org.scilab.modules.types.ScilabTList;
 import org.scilab.modules.types.ScilabType;
@@ -26,7 +26,6 @@ import org.scilab.modules.xcos.io.scicos.ScicosFormatException;
 import org.scilab.modules.xcos.io.scicos.ScicosFormatException.WrongElementException;
 import org.scilab.modules.xcos.io.scicos.ScicosFormatException.WrongStructureException;
 import org.scilab.modules.xcos.io.scicos.ScicosFormatException.WrongTypeException;
-import org.scilab.modules.xcos.io.scicos.ScilabDirectHandler;
 import org.scilab.modules.xcos.palette.model.PaletteBlock;
 import org.scilab.modules.xcos.palette.model.PreLoaded;
 import org.scilab.modules.xcos.palette.model.VariablePath;
@@ -118,14 +117,11 @@ public class PreLoadedElement extends AbstractElement<PreLoaded> {
                 iconPath.setVariable(null);
                 File icon = new File(icons[i][j]);
                 if (!icon.exists()) {
-                    /*
-                     * Invoke scilab to create a new palette icon later (eg. not
-                     * on this thread)
-                     */
-                    final StringBuilder str = new StringBuilder();
-                    str.append(ScilabInterpreterManagement.buildCall(ScilabDirectHandler.BLK + "=" + blockNames[i][j], "define"));
-                    str.append(ScilabInterpreterManagement.buildCall("xcosPalGenerateIcon", icons[i][j]));
-                    ScilabInterpreterManagement.putCommandInScilabQueue(str.toString());
+                    try {
+                        Palette.generatePaletteIcon(blockNames[i][j], icons[i][j]);
+                    } catch (IOException e) {
+                        throw new WrongTypeException(e);
+                    }
                 }
                 iconPath.setPath(icons[i][j]);
                 current.setIcon(iconPath);

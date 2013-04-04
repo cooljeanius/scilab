@@ -23,7 +23,6 @@ import java.awt.event.ComponentEvent;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.Semaphore;
@@ -39,7 +38,6 @@ import javax.swing.JViewport;
 import javax.swing.SwingUtilities;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
-import javax.swing.text.JTextComponent;
 import javax.swing.KeyStroke;
 import javax.xml.parsers.ParserConfigurationException;
 import org.scilab.modules.localization.Messages;
@@ -122,8 +120,6 @@ public abstract class SciConsole extends JPanel {
 
     private boolean isToHome;
 
-    private Object searchField;
-
     /**
      * Constructor
      * @param configFilePath the configuration file to use
@@ -145,13 +141,6 @@ public abstract class SciConsole extends JPanel {
         }
 
         sciConsole = ConsoleBuilder.buildConsole(config, this);
-
-        try {
-            Class hsf = Class.forName("org.scilab.modules.gui.utils.HelpSearchField");
-            Constructor constructor = hsf.getConstructor(JPanel.class, JTextComponent.class);
-            searchField = constructor.newInstance(this, (SciOutputView) config.getOutputView());
-        } catch (Exception e) { }
-
         XConfiguration.addXConfigurationListener(new org.scilab.modules.console.ConsoleConfiguration(this));
         sciConsole.setForeground(ConsoleOptions.getConsoleColor().foreground);
         sciConsole.setBackground(ConsoleOptions.getConsoleColor().background);
@@ -163,30 +152,30 @@ public abstract class SciConsole extends JPanel {
 
         BoundedRangeModel model = jSP.getVerticalScrollBar().getModel();
         jSP.getVerticalScrollBar().setModel(new DefaultBoundedRangeModel(model.getValue(), model.getExtent(), model.getMinimum(), model.getMaximum()) {
-                public void setRangeProperties(int newValue, int newExtent, int newMin, int newMax, boolean adjusting) {
-                    // This method is overriden to keep the knob at the bottom during viewport resize
-                    // and to keep the knob at an other place if the user decided it.
-                    if (newMax != getMaximum()) {
-                        if (!adjusting) {
-                            if (atBottom) {
-                                super.setRangeProperties(newMax - newExtent, newExtent, newMin, newMax, false);
-                            } else {
-                                super.setRangeProperties(newValue, newExtent, newMin, newMax, false);
-                            }
+            public void setRangeProperties(int newValue, int newExtent, int newMin, int newMax, boolean adjusting) {
+                // This method is overriden to keep the knob at the bottom during viewport resize
+                // and to keep the knob at an other place if the user decided it.
+                if (newMax != getMaximum()) {
+                    if (!adjusting) {
+                        if (atBottom) {
+                            super.setRangeProperties(newMax - newExtent, newExtent, newMin, newMax, false);
                         } else {
-                            double percent = (double) Math.abs(newMax - newValue - newExtent) / (double) newMax;
-                            if (atBottom && percent <= 0.03) {
-                                super.setRangeProperties(newMax - newExtent, newExtent, newMin, newMax, true);
-                            } else {
-                                super.setRangeProperties(newValue, newExtent, newMin, newMax, true);
-                                atBottom = percent <= 0.01;
-                            }
+                            super.setRangeProperties(newValue, newExtent, newMin, newMax, false);
                         }
                     } else {
-                        super.setRangeProperties(newValue, newExtent, newMin, newMax, adjusting);
+                        double percent = (double) Math.abs(newMax - newValue - newExtent) / (double) newMax;
+                        if (atBottom && percent <= 0.03) {
+                            super.setRangeProperties(newMax - newExtent, newExtent, newMin, newMax, true);
+                        } else {
+                            super.setRangeProperties(newValue, newExtent, newMin, newMax, true);
+                            atBottom = percent <= 0.01;
+                        }
                     }
+                } else {
+                    super.setRangeProperties(newValue, newExtent, newMin, newMax, adjusting);
                 }
-            });
+            }
+        });
 
         this.add(jSP, BorderLayout.CENTER);
 
@@ -209,16 +198,16 @@ public abstract class SciConsole extends JPanel {
 
         // Bug 8055 : update the lines/columns only when the console is resized
         addComponentListener(new ComponentAdapter() {
-                public void componentResized(ComponentEvent evt) {
-                    SwingUtilities.invokeLater(new Runnable() {
-                            public void run() {
-                                scilabLinesUpdate();
-                                jSP.getVerticalScrollBar().setBlockIncrement(jSP.getViewport().getExtentSize().height);
-                                jSP.getHorizontalScrollBar().setBlockIncrement(jSP.getViewport().getExtentSize().width);
-                            }
-                        });
-                }
-            });
+            public void componentResized(ComponentEvent evt) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        scilabLinesUpdate();
+                        jSP.getVerticalScrollBar().setBlockIncrement(jSP.getViewport().getExtentSize().height);
+                        jSP.getHorizontalScrollBar().setBlockIncrement(jSP.getViewport().getExtentSize().width);
+                    }
+                });
+            }
+        });
 
         sciConsole.invalidate();
         sciConsole.doLayout();
@@ -273,12 +262,6 @@ public abstract class SciConsole extends JPanel {
         while (iter.hasNext()) {
             KeyStroke key = iter.next();
             String actionName = map.get(key);
-            if (actionName.equals("console-search-field") && searchField != null) {
-                try {
-                    Method sks = searchField.getClass().getMethod("setKeyStroke", KeyStroke.class);
-                    sks.invoke(searchField, key);
-                } catch (Exception e) { }
-            }
             String action = actionToName.get(actionName);
             if (action != null) {
                 try {
@@ -385,10 +368,10 @@ public abstract class SciConsole extends JPanel {
         jSP.getVerticalScrollBar().setBlockIncrement(jSP.getViewport().getExtentSize().height);
         jSP.getHorizontalScrollBar().setBlockIncrement(jSP.getViewport().getExtentSize().width);
         SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    jSP.getVerticalScrollBar().getModel().setValue(jSP.getVerticalScrollBar().getModel().getMaximum() - jSP.getVerticalScrollBar().getModel().getExtent());
-                }
-            });
+            public void run() {
+                jSP.getVerticalScrollBar().getModel().setValue(jSP.getVerticalScrollBar().getModel().getMaximum() - jSP.getVerticalScrollBar().getModel().getExtent());
+            }
+        });
     }
 
     /**
@@ -476,15 +459,15 @@ public abstract class SciConsole extends JPanel {
             sciConsole.invalidate();
             sciConsole.doLayout();
             ((SciOutputView) config.getOutputView()).addComponentListener(new ComponentAdapter() {
-                    public void componentResized(ComponentEvent evt) {
-                        if (evt.getComponent().getSize().height >= sciConsole.getSize().height) {
-                            evt.getComponent().removeComponentListener(this);
-                            sciConsole.setPreferredSize(null);
-                            sciConsole.invalidate();
-                            sciConsole.doLayout();
-                        }
+                public void componentResized(ComponentEvent evt) {
+                    if (evt.getComponent().getSize().height >= sciConsole.getSize().height) {
+                        evt.getComponent().removeComponentListener(this);
+                        sciConsole.setPreferredSize(null);
+                        sciConsole.invalidate();
+                        sciConsole.doLayout();
                     }
-                });
+                }
+            });
 
             isToHome = false;
             jSP.getVerticalScrollBar().getModel().setValue(jSP.getVerticalScrollBar().getModel().getMaximum() - jSP.getVerticalScrollBar().getModel().getExtent());
@@ -564,7 +547,7 @@ public abstract class SciConsole extends JPanel {
             }
 
             ((SciInputCommandView) config.getInputCommandView())
-                .setCmdBuffer(linesToExec[nbStatements].replace(BACKSLASH_R, ""), displayCmdInOutput);
+            .setCmdBuffer(linesToExec[nbStatements].replace(BACKSLASH_R, ""), displayCmdInOutput);
             if (storeInHistory) {
                 ((SciHistoryManager) config.getHistoryManager()).addEntry(linesToExec[nbStatements].replace(BACKSLASH_R, ""));
             }

@@ -16,15 +16,14 @@ src/cpp/api_poly.cpp \
 src/cpp/api_sparse.cpp \
 src/cpp/api_string.cpp \
 src/cpp/api_pointer.cpp \
-src/cpp/api_handle.cpp \
-src/cpp/api_error.cpp \
-src/cpp/api_optional.cpp
+src/cpp/api_error.cpp
 
 
 libsciapi_scilab_la_CPPFLAGS=-I$(srcdir)/includes/ \
 -I$(srcdir)/src/cpp/ \
 -I$(top_srcdir)/modules/core/includes/ \
 -I$(top_srcdir)/modules/call_scilab/includes/ \
+-I$(top_srcdir)/libs/MALLOC/includes/ \
 -I$(top_srcdir)/modules/localization/includes/ \
 -I$(top_srcdir)/modules/output_stream/includes/ \
 -I$(top_srcdir)/modules/string/includes/ \
@@ -43,9 +42,9 @@ libsciapi_scilab_la_SOURCES = $(API_SCILAB_C_SOURCES) $(API_SCILAB_CXX_SOURCES)
 
 # For the code check (splint)
 CHECK_SRC= $(libsciapi_scilab_la_SOURCES)
-INCLUDE_FLAGS = $(libsciapi_scilab_la_CPPFLAGS)
+INCLUDE_FLAGS = $(libsciapi_scilab_la_CPPFLAGS) 
 
-libsciapi_scilab_la_LIBADD =
+libsciapi_scilab_la_LIBADD =  
 #
 
 
@@ -55,7 +54,7 @@ modulename=api_scilab
 
 #### api_scilab : Conf files ####
 libsciapi_scilab_la_rootdir = $(mydatadir)
-libsciapi_scilab_la_root_DATA =  license.txt
+libsciapi_scilab_la_root_DATA =  license.txt 
 
 
 #### api_scilab : init scripts ####
@@ -76,8 +75,6 @@ includes/api_pointer.h \
 includes/api_poly.h \
 includes/api_sparse.h \
 includes/api_string.h \
-includes/api_handle.h \
-includes/api_optional.h \
 includes/api_scilab.h
 
 include $(top_srcdir)/Makefile.incl.am

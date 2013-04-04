@@ -1,11 +1,10 @@
 /*
- *   Copyright Bruno Pinçon, ESIAL-IECN, Inria CORIDA project
+ *   Copyright Bruno Pinçon, ESIAL-IECN, Inria CORIDA project 
  *   <bruno.pincon@iecn.u-nancy.fr>
- *   contributor:  Antonio Manoel Ferreria Frasson, Universidade Federal do
+ *   contributor:  Antonio Manoel Ferreria Frasson, Universidade Federal do 
  *                 Espírito Santo, Brazil. <frasson@ele.ufes.br>.
  *
  *  Copyright (C) 2012 - DIGITEO - Allan CORNET
- *  Copyright (C) 2012 - Scilab Enterprises - Cedric Delamarre
  *
  * PURPOSE: Scilab interfaces routines onto the UMFPACK sparse solver
  * (Tim Davis) and onto the TAUCS snmf choleski solver (Sivan Teledo)
@@ -38,19 +37,19 @@
  *
  */
 
-/*------------------------------------------------------------+
-|   4) Interface code to free the memory                      |
-|      used by the LU factors                                 |
-|                                                             |
-|   Scilab call                                               |
-|   -----------                                               |
-|   umf_ludel(LU_ptr)  or umf_ludel() for freed all fact.     |
-|                                                             |
-+------------------------------------------------------------*/
-#include "api_scilab.h"
+ /*------------------------------------------------------------+
+ |   4) Interface code to free the memory                      |
+ |      used by the LU factors                                 |
+ |                                                             |
+ |   Scilab call                                               |
+ |   -----------                                               |
+ |   umf_ludel(LU_ptr)  or umf_ludel() for freed all fact.     |
+ |                                                             |
+ +------------------------------------------------------------*/
 #include "MALLOC.h"
 #include "sciumfpack.h"
 #include "gw_umfpack.h"
+#include "stack-c.h"
 #include "Scierror.h"
 #include "taucs_scilab.h"
 #include "common_umfpack.h"
@@ -60,25 +59,23 @@ extern CellAdr *ListNumeric;
 /*--------------------------------------------------------------------------*/
 int sci_umf_ludel(char* fname, unsigned long l)
 {
-    SciErr sciErr;
-    int it_flag     = 0;
-    void * Numeric  = NULL;
-    int* piAddr1    = NULL;
-    CellAdr *Cell   = NULL;
+    int mLU_ptr = 0, nLU_ptr = 0, lLU_ptr = 0, it_flag = 0;
+    void * Numeric = NULL;
+    CellAdr *Cell = NULL;
 
-    nbInputArgument(pvApiCtx) = Max(nbInputArgument(pvApiCtx), 0);
+    Rhs = Max(Rhs, 0);
 
     /* Check numbers of input/output arguments */
-    CheckInputArgument(pvApiCtx, 0, 1);
-    CheckOutputArgument(pvApiCtx, 1, 1);
+    CheckRhs(0, 1);
+    CheckLhs(1, 1);
 
-    if (nbInputArgument(pvApiCtx) == 0)      /* destroy all */
+    if (Rhs == 0)      /* destroy all */ 
     {
         while ( ListNumeric )
         {
             Cell = ListNumeric;
             ListNumeric = ListNumeric->next;
-            if (Cell->it == 0)
+            if (Cell->it == 0) 
             {
                 umfpack_di_free_numeric(&(Cell->adr));
             }
@@ -92,22 +89,11 @@ int sci_umf_ludel(char* fname, unsigned long l)
     else
     {
         /* get the pointer to the LU factors */
-        sciErr = getVarAddressFromPosition(pvApiCtx, 1, &piAddr1);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            return 1;
-        }
-
-        sciErr = getPointer(pvApiCtx, piAddr1, &Numeric);
-        if (sciErr.iErr)
-        {
-            printError(&sciErr, 0);
-            return 1;
-        }
+        GetRhsVar(1,SCILAB_POINTER_DATATYPE, &mLU_ptr, &nLU_ptr, &lLU_ptr);
+        Numeric = (void *) ((unsigned long int) *stk(lLU_ptr));
 
         /* Check if the pointer is a valid ref to ... */
-        if (RetrieveAdrFromList(Numeric, &ListNumeric, &it_flag))
+        if (RetrieveAdrFromList(Numeric, &ListNumeric, &it_flag)) 
         {
             /* free the memory of the numeric object */
             if ( it_flag == 0 )
@@ -121,12 +107,12 @@ int sci_umf_ludel(char* fname, unsigned long l)
         }
         else
         {
-            Scierror(999, _("%s: Wrong value for input argument #%d: Must be a valid reference to (umf) LU factors.\n"), fname, 1);
-            return 1;
+            Scierror(999,_("%s: Wrong value for input argument #%d: Must be a valid reference to (umf) LU factors.\n"),fname,1);
+            return 0;
         }
     }
 
-    ReturnArguments(pvApiCtx);
+    PutLhsVar();
     return 0;
 }
 /*--------------------------------------------------------------------------*/

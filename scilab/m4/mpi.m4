@@ -1,20 +1,20 @@
-dnl
-dnl Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
-dnl Copyright (C) INRIA - 2007 - Sylvestre Ledru
-dnl 
-dnl This file must be used under the terms of the CeCILL.
-dnl This source file is licensed as described in the file COPYING, which
-dnl you should have received as part of this distribution.  The terms
-dnl are also available at    
-dnl http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
-dnl
-dnl Detection of openmpi
-dnl When we check :
-dnl * if the path is provided or that we have to find it ourself
-dnl * if it is available
-dnl * what are the compilation flags 
-dnl * what are linking flags
-AC_DEFUN([AC_OPENMPI], [
+dnl#
+dnl# Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+dnl# Copyright (C) INRIA - 2007 - Sylvestre Ledru
+dnl# 
+dnl# This file must be used under the terms of the CeCILL.
+dnl# This source file is licensed as described in the file COPYING, which
+dnl# you should have received as part of this distribution.  The terms
+dnl# are also available at    
+dnl# http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
+dnl#
+dnl# Detection of openmpi
+dnl# When we check :
+dnl# * if the path is provided or that we have to find it ourself
+dnl# * if it is available
+dnl# * what are the compilation flags 
+dnl# * what are linking flags
+AC_DEFUN([AC_OPENMPI],[
 
 if test "$with_openmpi" != 'yes' -a "$with_openmpi" != 'no'; then
    # Look if mpicc (which provides cflags and ldflags) is available
@@ -40,7 +40,7 @@ if test "$with_openmpi" != 'yes' -a "$with_openmpi" != 'no'; then
 			unset OPENMPI_FOUND
 		fi
 else
-		AC_CHECK_PROGS(OPENMPI_CC,mpicc,no)
+		AC_CHECK_PROGS([OPENMPI_CC],[mpicc],[no])
 		if test "x$MPICC" = "xno"; then
 				AC_MSG_ERROR([Unable to find mpicc in the path. Please check your installation of openmpi (example : openmpi & openmpi-dev with Debian)])
 		fi
@@ -51,28 +51,34 @@ AC_CHECK_HEADER([mpi.h],
 	[],
 	[AC_MSG_ERROR([Cannot find headers of the library OpenMPI. Please install the dev package (Debian : openmpi-dev)])])
 
-AC_CHECK_LIB([mpi], [MPI_Init],
+AC_CHECK_LIB([mpi],[MPI_Init],
                [OPENMPI_LIBS="-lmpi"],
-               [AC_MSG_ERROR([openmpi : library missing. (Cannot find symbol MPI_Init in -lmpi). Check if OpenMPI is installed])]
-               )
+               [AC_MSG_ERROR([openmpi : library missing. (Cannot find symbol MPI_Init in -lmpi). Check if OpenMPI is installed])])
 
-#OPENMPI_CPPFLAGS="-I$openmpi_dir/include"
-#OPENMPI_LDFLAGS="-L$openmpi_dir/lib/"
+if test "x$OPENMPI_CPPFLAGS" = "x"; then
+	OPENMPI_CPPFLAGS="-I$openmpi_dir/include"
+fi
+if test "x$OPENMPI_LDFLAGS" = "x"; then
+	OPENMPI_LDFLAGS="-L$openmpi_dir/lib/"
+fi
 
-#OPENMPI_HEADER="$openmpi_dir/include/mpi.h"
-#OPENMPI_DIR="$openmpi_dir"
+if test "x$OPENMPI_HEADER" = "x"; then
+	OPENMPI_HEADER="$openmpi_dir/include/mpi.h"
+fi
+if test "x$OPENMPI_DIR" = "x"; then
+	OPENMPI_DIR="$openmpi_dir"
+fi
 
 LIBS="$saved_LIBS"
 CFLAGS=$saved_cflags
 
-AC_SUBST(OPENMPI_FLAGS)
-AC_SUBST(OPENMPI_LIBS)
+AC_SUBST([OPENMPI_FLAGS])
+AC_SUBST([OPENMPI_LIBS])
 
-#CFLAGS="$CFLAGS $OPENMPI_FLAGS"
-#AC_CHECK_LIB(xml2,xmlInitParserCtxt,,[AC_MSG_ERROR([pcre : library missing])])
+CFLAGS="$CFLAGS $OPENMPI_FLAGS"
+AC_CHECK_LIB([xml2],[xmlInitParserCtxt],[],[AC_MSG_ERROR([libxml2 : library missing])])
 
-
-#AC_CHECK_HEADERS([pcre/tree.h],,[AC_MSG_ERROR([pcre : library missing missing])])	
+AC_CHECK_HEADERS([pcre/tree.h],[],[AC_MSG_ERROR([pcre : library missing missing])])	
 
 # Gets compilation and library flags
 ])

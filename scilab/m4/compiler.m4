@@ -1,5 +1,6 @@
 
-dnl CHECK_COMPILER_ARG(LANG, ARG, ACTION-IF-NOT_FOUND)
+dnl# CHECK_COMPILER_ARG([LANG],[ARG],[ACTION-IF-NOT_FOUND])
+
 AC_DEFUN([CHECK_COMPILER_ARG],[
     AC_LANG_PUSH([$1])
     AC_MSG_CHECKING([if the $1 compiler accepts $2])
@@ -10,9 +11,7 @@ AC_DEFUN([CHECK_COMPILER_ARG],[
        [AC_MSG_RESULT([yes])
        $4="$2"
        ],
-       [AC_MSG_RESULT([no])]
-    )
+       [AC_MSG_RESULT([no])])
     $3="$ac_save_$3";
     AC_LANG_POP([$1])
-
 ])

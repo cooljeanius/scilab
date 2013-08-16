@@ -1,10 +1,12 @@
 #
-# Return MacOSX version using system_profile tool.
+# Return MacOSX version using the system_profile tool.
+# (or whichever tool works)
 #
+
 AC_DEFUN([AC_GET_MACOSX_VERSION],[
-    AC_PATH_PROG([DEFAULTS], [defaults])
-    AC_PATH_PROG([SW_VERS], [sw_vers])
-    AC_PATH_PROG([UNAME], [uname])
+    AC_PATH_PROG([DEFAULTS],[defaults])
+    AC_PATH_PROG([SW_VERS],[sw_vers])
+    AC_PATH_PROG([UNAME],[uname])
     AC_MSG_CHECKING([how to determine Mac OS X Version])
     if test -e $HOME/Library/Preferences/com.apple.loginwindow.plist -a "x$DEFAULTS" != "x"; then
         AC_MSG_RESULT([using "defaults"])

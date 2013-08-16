@@ -12,12 +12,14 @@
 
 ## Process this file with automake to produce Makefile.in (which will be changed by the ./configure)
 
-AUTOMAKE_OPTIONS = 1.11 dist-zip dist-bzip2
+AUTOMAKE_OPTIONS = 1.11 dejagnu dist-zip dist-bzip2 foreign subdir-objects -Wall
 
-SUBDIRS= libs \
+SUBDIRS = \
+	libs \
 	modules \
 	contrib \
-	desktop
+	desktop \
+	po
 
 ACLOCAL_AMFLAGS = -I m4
 

@@ -1,23 +1,24 @@
-dnl
-dnl Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
-dnl Copyright (C) INRIA - 2006 - Sylvestre Ledru
-dnl 
-dnl This file must be used under the terms of the CeCILL.
-dnl This source file is licensed as described in the file COPYING, which
-dnl you should have received as part of this distribution.  The terms
-dnl are also available at    
-dnl http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
-dnl
+dnl#
+dnl# Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+dnl# Copyright (C) INRIA - 2006 - Sylvestre Ledru
+dnl# 
+dnl# This file must be used under the terms of the CeCILL.
+dnl# This source file is licensed as described in the file COPYING, which
+dnl# you should have received as part of this distribution.  The terms
+dnl# are also available at    
+dnl# http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
+dnl#
 
-dnl Fortran Macros
+dnl# Fortran Macros
 
-dnl ------------------------------------------------------
-dnl AC_CHECK_UNDERSCORE_FORTRAN
-dnl Look for trailing or leading underscores
-dnl 
+dnl#------------------------------------------------------
+dnl# AC_CHECK_UNDERSCORE_FORTRAN
+dnl# Look for trailing or leading underscores
+dnl# 
 AC_DEFUN([AC_CHECK_UNDERSCORE_FORTRAN],[
 
-AC_CHECK_PROGS(NM,nm,no)
+AC_REQUIRE([AC_PROG_CPP])
+AC_CHECK_PROGS([NM],[nm],[no])
 if test "x$NM" = "xno"; then
 	AC_MSG_ERROR([Unable to find nm in the path. nm is used to list all the symbol from a lib])
 fi
@@ -28,7 +29,7 @@ cat << EOF > pipof.f
        end
 EOF
 
-dnl expand possible $SCIDIR in $FC (wizard command...)
+dnl# expand possible $SCIDIR in $FC (wizard command...)
 eval "$F77 -c pipof.f > /dev/null 2>&1"
 
 FC_LEADING_UNDERSCORE=no
@@ -53,10 +54,10 @@ if test ! -z "$output"; then
 fi
 
 if test "$FC_LEADING_UNDERSCORE" = yes; then
-  AC_DEFINE([WLU],,[If leading underscores])
+  AC_DEFINE([WLU],[],[If leading underscores])
 fi
 if test "$FC_TRAILING_UNDERSCORE" = yes; then
-  AC_DEFINE([WTU],,[If trailing underscores])
+  AC_DEFINE([WTU],[],[If trailing underscores])
 fi
 
 rm -f pipof.f pipof.o
@@ -71,38 +72,32 @@ AC_MSG_RESULT([$FC_TRAILING_UNDERSCORE])
 
 AC_MSG_CHECKING([use of the sharpsign in CPP])
 
-AC_COMPILE_IFELSE(
-	[ 
-		AC_LANG_PROGRAM(
-			[[#define C2F(name) name##_]], 
-			[[C2F(toto)()]]
-		)
-	],
-	[AC_MSG_RESULT(yes)
-	AC_DEFINE([CNAME(name1,name2)], [name1##name2],[Cname])
-	USE_SHARP_SIGN=yes]
-	,
-	[AC_MSG_RESULT(no)
-	AC_DEFINE([CNAME(name1,name2)], [name1/**/name2],[Cname])
-	USE_SHARP_SIGN=no]
-)
+AC_COMPILE_IFELSE([ 
+		AC_LANG_PROGRAM([[#define C2F(name) name##_]], 
+			[[C2F(toto)()]])],
+	[AC_MSG_RESULT([yes])
+	AC_DEFINE([CNAME(name1,name2)],[name1##name2],[Cname])
+	USE_SHARP_SIGN=yes],
+	[AC_MSG_RESULT([no])
+	AC_DEFINE([CNAME(name1,name2)],[name1/**/name2],[Cname])
+	USE_SHARP_SIGN=no])
 
 ## Define  C2F and F2C entry point conversion ##
 if test "$FC_TRAILING_UNDERSCORE" = yes; then
 	if test "$USE_SHARP_SIGN" = yes; then
 	AC_MSG_RESULT([Define C2F with Trailing Underscore and Sharp Sign])
-		AC_DEFINE([C2F(name)], [name##_],[Define C2F with Trailing Underscore and Sharp Sign])
-		AC_DEFINE([F2C(name)], [name##_],[Define F2C with Trailing Underscore and Sharp Sign])
+		AC_DEFINE([C2F(name)],[name##_],[Define C2F with Trailing Underscore and Sharp Sign])
+		AC_DEFINE([F2C(name)],[name##_],[Define F2C with Trailing Underscore and Sharp Sign])
 	else
 	AC_MSG_RESULT([Define C2F with Trailing Underscore and without Sharp Sign])
-		AC_DEFINE([C2F(name)], [name/**/_],[Define C2F with Trailing Underscore and without Sharp Sign])
-		AC_DEFINE([F2C(name)], [name/**/_],[Define F2C with Trailing Underscore and without Sharp Sign])
+		AC_DEFINE([C2F(name)],[name/**/_],[Define C2F with Trailing Underscore and without Sharp Sign])
+		AC_DEFINE([F2C(name)],[name/**/_],[Define F2C with Trailing Underscore and without Sharp Sign])
 	fi
 else
 		AC_MSG_RESULT([Define C2F without Trailing Underscore])
-	AC_DEFINE([C2F(name)], [name],[Define C2F without Trailing Underscore])
-	AC_DEFINE([F2C(name)], [name],[Define C2F without Trailing Underscore])
+	AC_DEFINE([C2F(name)],[name],[Define C2F without Trailing Underscore])
+	AC_DEFINE([F2C(name)],[name],[Define C2F without Trailing Underscore])
 fi
 
-])dnl AC_CHECK_UNDERSCORE_FORTRAN
+])dnl# AC_CHECK_UNDERSCORE_FORTRAN
 

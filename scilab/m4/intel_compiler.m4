@@ -1,7 +1,7 @@
-dnl SCI_INTEL_COMPILER
-dnl ------------------------------------------------------
-dnl Set compilation options for intel C/Fortran compilers
-dnl
+dnl# SCI_INTEL_COMPILER
+dnl# ------------------------------------------------------
+dnl# Set compilation options for intel C/Fortran compilers
+dnl#
 
 AC_DEFUN([SCI_INTEL_COMPILER],
 [
@@ -10,7 +10,6 @@ AC_DEFUN([SCI_INTEL_COMPILER],
 		# -cm remove comments displays, -w90  -w95 remove warnings abort f90 f95 non standard
 
 		FFLAGS=" $FFLAGS -cm  -w90 -w95 -mp"
-
 
 		case "$host" in
 		  i*86-*-linux-gnu | *-pc-linux-gnu )
@@ -32,5 +31,8 @@ AC_DEFUN([SCI_INTEL_COMPILER],
 		fi		
 	
 		# TODO : voir si obligatoire vu que c'est en partie le boulot de AC_PROG_C
+		# TODO : translate the above "TODO" into English
+		# Google Translate says:
+		# "whether mandatory as it is in part the work of AC_PROG_C"
 
-])dnl SCI_INTEL_COMPILER
+])dnl# SCI_INTEL_COMPILER

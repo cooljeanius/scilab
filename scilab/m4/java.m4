@@ -13,9 +13,9 @@
 #    2. Optional boolean, if true then write to config.log only
 #------------------------------------------------------------------------
 
-AC_DEFUN([AC_MSG_LOG], [
+AC_DEFUN([AC_MSG_LOG],[
     echo $1 >&AS_MESSAGE_LOG_FD
-    m4_ifval([$2],,[echo $1])
+    m4_ifval([$2],[],[echo $1])
 ])
 
 #------------------------------------------------------------------------
@@ -32,14 +32,14 @@ AC_DEFUN([AC_MSG_LOG], [
 #    4. The script to execute if PATTERN is not found in FILE (optional)
 #------------------------------------------------------------------------
 
-AC_DEFUN([AC_GREP_FILE], [
-    AC_MSG_LOG([grep in $2 for pattern '"$1"'], 1)
+AC_DEFUN([AC_GREP_FILE],[
+    AC_MSG_LOG([grep in $2 for pattern '"$1"'],[1])
     if (grep "$1" $2 > /dev/null 2>&1) ; then
-        AC_MSG_LOG([grep result : yes], 1)
+        AC_MSG_LOG([grep result : yes],[1])
         $3
     else
-        AC_MSG_LOG([grep result : no], 1)
-        m4_ifval([$4], [
+        AC_MSG_LOG([grep result : no],[1])
+        m4_ifval([$4],[
             $4
         ])dnl
     fi
@@ -62,7 +62,7 @@ AC_DEFUN([AC_GREP_FILE], [
 #    ac_java_jvm_dir can be set to the jvm's root directory
 #------------------------------------------------------------------------
 
-AC_DEFUN([AC_PROG_JAVAC], [
+AC_DEFUN([AC_PROG_JAVAC],[
 # Mac OS X
     if test "x$JAVAC" = "x" ; then
     case "$host_os" in
@@ -76,9 +76,9 @@ AC_DEFUN([AC_PROG_JAVAC], [
     esac
     fi
     if test "x$JAVAC" = "x" ; then
-        AC_PATH_PROG(JAVAC, javac)
+        AC_PATH_PROG([JAVAC],[javac])
         if test "x$JAVAC" = "x" ; then
-            AC_MSG_ERROR([javac not found on PATH ... did you try with --with-jdk=DIR])
+            AC_MSG_ERROR([javac not found on PATH ... did you try with --with-jdk=DIR at all?])
         fi
     fi
     if test ! -f "$JAVAC" ; then
@@ -88,7 +88,7 @@ AC_DEFUN([AC_PROG_JAVAC], [
 
     # Check for installs which uses a symlink. If it is the case, try to resolve JAVA_HOME from it
     if test -h "$JAVAC" -a "x$DONT_FOLLOW_SYMLINK" != "xyes"; then
-        FOLLOW_SYMLINKS($JAVAC,"javac")
+        FOLLOW_SYMLINKS([$JAVAC],["javac"])
         JAVAC=$SYMLINK_FOLLOWED_TO
         TMP=`dirname $SYMLINK_FOLLOWED_TO`
         TMP=`dirname $TMP`
@@ -115,9 +115,9 @@ AC_DEFUN([AC_PROG_JAVAC], [
 
     dnl Test out the Java compiler with an empty class
     AC_MSG_CHECKING([to see if the java compiler works])
-    AC_JAVA_TRY_COMPILE(,,"no",works=yes)
+    AC_JAVA_TRY_COMPILE([],[],["no"],[works=yes])
     if test "$works" = "yes" ; then
-        AC_MSG_RESULT($works)
+        AC_MSG_RESULT([$works])
     else
         AC_MSG_ERROR([Could not compile simple Java program with '$JAVAC'. Try with the Sun JDK (1.5 or 6).])
     fi
@@ -140,7 +140,7 @@ AC_DEFUN([AC_PROG_JAVAC], [
 #    action-if-failed should contain the code to run if the compile failed (optional)
 #------------------------------------------------------------------------
 
-AC_DEFUN([AC_JAVA_TRY_COMPILE], [
+AC_DEFUN([AC_JAVA_TRY_COMPILE],[
     cat << \EOF > conftest.java
 // [#]line __oline__ "configure"
 import java.util.regex.Pattern;
@@ -232,7 +232,7 @@ EOF
 #    AC_PROG_JAVAC
 #------------------------------------------------------------------------
 
-AC_DEFUN([AC_JAVA_DETECT_JVM], [
+AC_DEFUN([AC_JAVA_DETECT_JVM],[
     AC_MSG_CHECKING([JAVA_HOME variable])
     # check if JAVA_HOME is set. If it is the case, try to use if first
     if test ! -z "$JAVA_HOME" && test "x$ac_java_jvm_dir" = "x"; then
@@ -276,7 +276,7 @@ Maybe JAVA_HOME is pointing to a JRE (Java Runtime Environment) instead of a JDK
     AC_MSG_CHECKING([type of jvm])
 
     if test "x$ac_java_jvm_name" = "x" ; then
-        AC_JAVA_TRY_COMPILE([import gnu.java.io.EncodingManager;],,"no",ac_java_jvm_name=gcj)
+        AC_JAVA_TRY_COMPILE([import gnu.java.io.EncodingManager;],[],["no"],[ac_java_jvm_name=gcj])
     fi
 
     if test "x$ac_java_jvm_name" = "x" ; then
@@ -296,23 +296,22 @@ Maybe JAVA_HOME is pointing to a JRE (Java Runtime Environment) instead of a JDK
     AC_MSG_CHECKING([java API version])
 
     # The class java.nio.charset.Charset is new to 1.4
-    AC_JAVA_TRY_COMPILE([import java.nio.charset.Charset;], , "no", ac_java_jvm_version=1.4)
+    AC_JAVA_TRY_COMPILE([import java.nio.charset.Charset;],[],["no"],[ac_java_jvm_version=1.4])
 
     # The class java.lang.StringBuilder is new to 1.5
-    AC_JAVA_TRY_COMPILE([import java.lang.StringBuilder;], , "no", ac_java_jvm_version=1.5)
+    AC_JAVA_TRY_COMPILE([import java.lang.StringBuilder;],[],["no"],[ac_java_jvm_version=1.5])
 
     # The class java.util.ArrayDeque is new to 1.6
-    AC_JAVA_TRY_COMPILE([import java.util.ArrayDeque;], , "no", ac_java_jvm_version=1.6)
+    AC_JAVA_TRY_COMPILE([import java.util.ArrayDeque;],[],["no"],[ac_java_jvm_version=1.6])
 
     # The class java.nio.file.Path is new to 1.7
-    AC_JAVA_TRY_COMPILE([import java.nio.file.Path;], , "no", ac_java_jvm_version=1.7)
+    AC_JAVA_TRY_COMPILE([import java.nio.file.Path;],[],["no"], [ac_java_jvm_version=1.7])
 
     if test "x$ac_java_jvm_version" = "x" ; then
         AC_MSG_ERROR([Could not detect Java version, 1.4 or newer is required])
     fi
 
     AC_MSG_RESULT([$ac_java_jvm_version])
-
 ])
 
 
@@ -333,7 +332,7 @@ Maybe JAVA_HOME is pointing to a JRE (Java Runtime Environment) instead of a JDK
 #    It depends on the ac_java_jvm_dir variable.
 #------------------------------------------------------------------------
 
-AC_DEFUN([AC_JAVA_CLASSPATH], [
+AC_DEFUN([AC_JAVA_CLASSPATH],[
     AC_MSG_CHECKING([for zip or jar files to include on CLASSPATH])
 
     if test "x$ac_java_jvm_dir" = "x" ; then
@@ -353,8 +352,8 @@ AC_DEFUN([AC_JAVA_CLASSPATH], [
         ac_java_classpath="${ac_java_classpath}:${CLASSPATH}"
     fi
 
-    AC_MSG_LOG([Using CLASSPATH=$ac_java_classpath],1)
-    AC_MSG_RESULT($ac_java_classpath)
+    AC_MSG_LOG([Using CLASSPATH=$ac_java_classpath],[1])
+    AC_MSG_RESULT([$ac_java_classpath])
 ])
 
 
@@ -375,7 +374,7 @@ AC_DEFUN([AC_JAVA_CLASSPATH], [
 #    it depends on the ac_java_jvm_dir variable.
 #------------------------------------------------------------------------
 
-AC_DEFUN([AC_JAVA_JNI_INCLUDE], [
+AC_DEFUN([AC_JAVA_JNI_INCLUDE],[
 
     # JAVA_HOME specificed, check if we can find jni.h in this path
     if test !  -z "$JAVA_HOME"; then
@@ -417,17 +416,17 @@ AC_DEFUN([AC_JAVA_JNI_INCLUDE], [
 
     AC_REQUIRE([AC_PROG_CC])
 
-    AC_CACHE_CHECK(if jni.h can be included,
-        ac_cv_java_jvm_jni_working,[
-        AC_LANG_PUSH(C)
+    AC_CACHE_CHECK([if jni.h can be included],
+        [ac_cv_java_jvm_jni_working],[
+        AC_LANG_PUSH([C])
         ac_saved_cflags=$CFLAGS
         CFLAGS="$CFLAGS $ac_java_jvm_jni_include_flags"
-        AC_TRY_COMPILE([
+        AC_COMPILE_IFELSE([AC_LANG_SOURCE([[
             #include <jni.h>
-        ],[return 0;],
-        ac_cv_java_jvm_jni_working=yes,
-        AC_MSG_ERROR([could not compile file that includes jni.h. If you run Mac OS X please make sure you have 'Java developer package'. This is available on http://connect.apple.com/ ]))
-        AC_LANG_POP()
+        ]],[[return 0;]])],
+        [ac_cv_java_jvm_jni_working=yes],
+        [AC_MSG_ERROR([could not compile file that includes jni.h. If you run Mac OS X please make sure you have 'Java developer package'. This is available on http://connect.apple.com/ ])])
+        AC_LANG_POP([])
         CFLAGS=$ac_saved_cflags
     ])
 
@@ -457,7 +456,7 @@ AC_DEFUN([AC_JAVA_JNI_INCLUDE], [
 #    it depends on the ac_java_jvm_dir variable.
 #------------------------------------------------------------------------
 
-AC_DEFUN([AC_JAVA_JNI_LIBS], [
+AC_DEFUN([AC_JAVA_JNI_LIBS],[
     machine=`uname -m`
     case "$machine" in
         i?86)
@@ -511,7 +510,7 @@ AC_DEFUN([AC_JAVA_JNI_LIBS], [
             if test ! -f $D/libjvm.so; then
                 AC_MSG_ERROR([Could not find libjvm.so in
                 jre/lib/$machine/client/ or in jre/lib/$machine/server/.
-                Please report to http://bugzilla.scilab.org/])
+                Please report to http://bugzilla.scilab.org/ ])
             fi
         fi
                 ac_java_jvm_jni_lib_runtime_path="${ac_java_jvm_jni_lib_runtime_path}:$D"
@@ -638,46 +637,46 @@ AC_DEFUN([AC_JAVA_JNI_LIBS], [
     AC_MSG_LOG([Using the following JNI library flags $ac_java_jvm_jni_lib_flags])
     AC_MSG_LOG([Using the following runtime library path $ac_java_jvm_jni_lib_runtime_path])
 
-    AC_MSG_LOG([Using LD_PRELOAD=$ac_java_jvm_ld_preload],1)
-    AC_MSG_LOG([Using LD_BIND_NOW=$ac_java_jvm_ld_bind_now],1)
+    AC_MSG_LOG([Using LD_PRELOAD=$ac_java_jvm_ld_preload],[1])
+    AC_MSG_LOG([Using LD_BIND_NOW=$ac_java_jvm_ld_bind_now],[1])
 
     # Make sure we can compile and link a trivial JNI program
 
     AC_REQUIRE([AC_PROG_CC])
 
-    AC_CACHE_CHECK(to see if we can link a JNI application,
-        ac_cv_java_jvm_working_jni_link,[
-        AC_LANG_PUSH(C)
+    AC_CACHE_CHECK([to see if we can link a JNI application],
+        [ac_cv_java_jvm_working_jni_link],[
+        AC_LANG_PUSH([C])
         ac_saved_cflags=$CFLAGS
         ac_saved_libs=$LIBS
         CFLAGS="$CFLAGS $ac_java_jvm_jni_include_flags"
         LIBS="$LIBS $ac_java_jvm_jni_lib_flags"
-        AC_TRY_LINK([
+        AC_LINK_IFELSE([AC_LANG_SOURCE([[
             #include <jni.h>
-        ],[$libSymbolToTest(NULL,0,NULL);],
-            ac_cv_java_jvm_working_jni_link=yes,
-            ac_cv_java_jvm_working_jni_link=no)
-        AC_LANG_POP()
+        ]],[[$libSymbolToTest(NULL,0,NULL);]])],
+            [ac_cv_java_jvm_working_jni_link=yes],
+            [ac_cv_java_jvm_working_jni_link=no])
+        AC_LANG_POP([])
         CFLAGS=$ac_saved_cflags
         LIBS=$ac_saved_libs
     ])
 
-    # gcc can't link with some JDK .lib files under Win32.
+    # gcc cannot link with some JDK .lib files under Win32.
     # Work around this problem by linking with win/libjvm.dll.a
 
     if test "$ac_cv_java_jvm_working_jni_link" != "yes" &&
       test "$ac_cv_tcl_win32" = "yes"; then
-        AC_LANG_PUSH(C)
+        AC_LANG_PUSH([C])
         ac_saved_cflags=$CFLAGS
         ac_saved_libs=$LIBS
         CFLAGS="$CFLAGS $ac_java_jvm_jni_include_flags"
         LIBS="$LIBS -L$srcdir/win -ljvm"
-        AC_TRY_LINK([
+        AC_LINK_IFELSE([AC_LANG_SOURCE([[
             #include <jni.h>
-        ],[$libSymbolToTest(NULL,0,NULL);],
-            ac_cv_java_jvm_working_jni_link=yes,
-            ac_cv_java_jvm_working_jni_link=no)
-        AC_LANG_POP()
+        ]],[[$libSymbolToTest(NULL,0,NULL);]])],
+            [ac_cv_java_jvm_working_jni_link=yes],
+            [ac_cv_java_jvm_working_jni_link=no])
+        AC_LANG_POP([])
         CFLAGS=$ac_saved_cflags
         LIBS=$ac_saved_libs
 
@@ -709,10 +708,9 @@ AC_DEFUN([AC_JAVA_JNI_LIBS], [
 #    ac_java_jvm_name can be set to "jdk"
 #------------------------------------------------------------------------
 
-AC_DEFUN([AC_JAVA_WITH_JDK], [
-    AC_ARG_WITH(jdk,
-    AC_HELP_STRING([--with-jdk=DIR],[use JDK from DIR]),
-    ok=$withval, ok=no)
+AC_DEFUN([AC_JAVA_WITH_JDK],[AC_ARG_WITH([jdk],
+    [AS_HELP_STRING([--with-jdk=DIR],[use JDK from DIR])],
+    [ok=$withval],[ok=no])
     if test "$ok" = "no" ; then
         NO=op
     elif test "$ok" = "yes" || test ! -d "$ok"; then
@@ -747,8 +745,7 @@ AC_DEFUN([AC_JAVA_WITH_JDK], [
 #    ac_java_jvm_dir variables
 #------------------------------------------------------------------------
 
-AC_DEFUN([AC_JAVA_TOOLS], [
-
+AC_DEFUN([AC_JAVA_TOOLS],[
 
     case "$host_os" in
           *darwin*)
@@ -758,24 +755,24 @@ AC_DEFUN([AC_JAVA_TOOLS], [
               ac_java_jvm_bin_dir=$ac_java_jvm_dir/bin;;
     esac
 
-    AC_JAVA_TOOLS_CHECK(JAVA, java, $ac_java_jvm_bin_dir)
+    AC_JAVA_TOOLS_CHECK([JAVA],[java],[$ac_java_jvm_bin_dir])
 
     # Don't error if java_g can not be found
-    AC_JAVA_TOOLS_CHECK(JAVA_G, java_g, $ac_java_jvm_bin_dir, 1)
+    AC_JAVA_TOOLS_CHECK([JAVA_G],[java_g],[$ac_java_jvm_bin_dir],[1])
 
     if test "x$JAVA_G" = "x" ; then
         JAVA_G=$JAVA
     fi
 
     TOOL=javah
-    AC_JAVA_TOOLS_CHECK(JAVAH, $TOOL, $ac_java_jvm_bin_dir)
+    AC_JAVA_TOOLS_CHECK([JAVAH],[$TOOL],[$ac_java_jvm_bin_dir])
 
-    AC_JAVA_TOOLS_CHECK(JAR, jar, $ac_java_jvm_bin_dir)
+    AC_JAVA_TOOLS_CHECK([JAR],[jar],[$ac_java_jvm_bin_dir])
 
-    AC_JAVA_TOOLS_CHECK(JAVADOC, javadoc, $ac_java_jvm_bin_dir)
+    AC_JAVA_TOOLS_CHECK([JAVADOC],[javadoc],[$ac_java_jvm_bin_dir])
 
-    # Don't error if jdb can not be found
-    AC_JAVA_TOOLS_CHECK(JDB, jdb, $ac_java_jvm_bin_dir, 1)
+    # Do not error if jdb can not be found
+    AC_JAVA_TOOLS_CHECK([JDB],[jdb],[$ac_java_jvm_bin_dir],[1])
 
     case "$ac_java_jvm_version" in
         *)
@@ -807,16 +804,15 @@ AC_DEFUN([AC_JAVA_TOOLS], [
 #
 #------------------------------------------------------------------------
 
-AC_DEFUN([AC_JAVA_ANT], [
-    AC_ARG_WITH(ant,
-    AC_HELP_STRING([--with-ant=DIR],[Use ant from DIR]),
-    ANTPATH=$withval, ANTPATH=no)
+AC_DEFUN([AC_JAVA_ANT],[AC_ARG_WITH([ant],
+    [AS_HELP_STRING([--with-ant=DIR],[Use ant from DIR])],
+    [ANTPATH=$withval],[ANTPATH=no])
     if test "$ANTPATH" = "no" ; then
-        AC_JAVA_TOOLS_CHECK(ANT, ant)
+        AC_JAVA_TOOLS_CHECK([ANT],[ant])
     elif test ! -d "$ANTPATH"; then
         AC_MSG_ERROR([--with-ant=DIR option, must pass a valid DIR])
     else
-        AC_JAVA_TOOLS_CHECK(ANT, ant, $ANTPATH/bin $ANTPATH)
+        AC_JAVA_TOOLS_CHECK([ANT],[ant],[$ANTPATH/bin $ANTPATH])
     fi
 ])
 
@@ -836,8 +832,8 @@ AC_DEFUN([AC_JAVA_ANT], [
 #
 #------------------------------------------------------------------------
 
-AC_DEFUN([AC_JAVA_CHECK_PACKAGE], [
-    AC_MSG_CHECKING($1)
+AC_DEFUN([AC_JAVA_CHECK_PACKAGE],[
+    AC_MSG_CHECKING([$1])
     PACKAGE_JAR_FILE=
     found_jar=no
     saved_ac_java_classpath=$ac_java_classpath
@@ -850,12 +846,12 @@ AC_DEFUN([AC_JAVA_CHECK_PACKAGE], [
         for jar_resolved in $jars_resolved; do # If several jars matches
           if test -e "$jar_resolved"; then
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
-            AC_JAVA_TRY_COMPILE([import $2;], , "no", [
+            AC_JAVA_TRY_COMPILE([import $2;],[],["no"],[
               AC_MSG_RESULT([$jar_resolved])
               found_jar=yes
               PACKAGE_JAR_FILE=$jar_resolved
               break 3
-            ], [
+            ],[
             ac_java_classpath=$saved_ac_java_classpath
 
             ])
@@ -874,7 +870,7 @@ AC_DEFUN([AC_JAVA_CHECK_PACKAGE], [
 ])
 
 #------------------------------------------------------------------------
-# AC_JAVA_TOOLS_CHECK(VARIABLE, TOOL, PATH, NOERR)
+# AC_JAVA_TOOLS_CHECK([VARIABLE],[TOOL],[PATH],[NOERR])
 #
 #    Helper function that will look for the given tool on the
 #    given PATH. If cross compiling and the tool can not
@@ -889,16 +885,16 @@ AC_DEFUN([AC_JAVA_CHECK_PACKAGE], [
 #    4. Pass 1 if you do not want any error generated
 #------------------------------------------------------------------------
 
-AC_DEFUN([AC_JAVA_TOOLS_CHECK], [
+AC_DEFUN([AC_JAVA_TOOLS_CHECK],[
     if test "$cross_compiling" = "yes" ; then
-        AC_PATH_PROG($1, $2)
+        AC_PATH_PROG([$1],[$2])
     else
-        AC_PATH_PROG($1, $2, , $3)
+        AC_PATH_PROG([$1],[$2],[],[$3])
     fi
 
     # Check to see if $1 could not be found
 
-    m4_ifval([$4],,[
+    m4_ifval([$4],[],[
     if test "x[$]$1" = "x" ; then
         AC_MSG_ERROR([Cannot find $2])
     fi

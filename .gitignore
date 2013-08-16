@@ -1,7 +1,8 @@
 workspace/
-.DS_Store
+*DS_Store*
 *~
 *.cache
 *.log
 *.o
 *.lo
+*.status

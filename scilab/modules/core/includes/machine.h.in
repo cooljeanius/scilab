@@ -8,6 +8,12 @@
 /* Define if building universal (internal helper macro) */
 #undef AC_APPLE_UNIVERSAL_BUILD
 
+/* The normal alignment of `int', in bytes. */
+#undef ALIGNOF_INT
+
+/* The normal alignment of `long', in bytes. */
+#undef ALIGNOF_LONG
+
 /* Define C2F without Trailing Underscore */
 #undef C2F
 
@@ -21,6 +27,9 @@
    systems. This function is required for `alloca.c' support on those systems.
    */
 #undef CRAY_STACKSEG_END
+
+/* Define to 1 if your C++ compiler doesn't accept -c and -o together. */
+#undef CXX_NO_MINUS_C_MINUS_O
 
 /* Define to 1 if using `alloca.c'. */
 #undef C_ALLOCA
@@ -44,6 +53,9 @@
 
 /* Define if F77 and FC dummy `main' functions are identical. */
 #undef FC_DUMMY_MAIN_EQ_F77
+
+/* Define to 1 if your Fortran compiler doesn't accept -c and -o together. */
+#undef FC_NO_MINUS_C_MINUS_O
 
 /* uses G95 fortran */
 #undef G95_FORTRAN
@@ -97,6 +109,9 @@
 
 /* Define to 1 if you have the <dlfcn.h> header file. */
 #undef HAVE_DLFCN_H
+
+/* Define to 1 if you have the <dl.h> header file. */
+#undef HAVE_DL_H
 
 /* Define to 1 if you have the `dup2' function. */
 #undef HAVE_DUP2
@@ -167,6 +182,9 @@
 /* Define to 1 if you have the <langinfo.h> header file. */
 #undef HAVE_LANGINFO_H
 
+/* Define to 1 if you have the `c' library (-lc). */
+#undef HAVE_LIBC
+
 /* Define to 1 if you have the `curses' library (-lcurses). */
 #undef HAVE_LIBCURSES
 
@@ -176,6 +194,9 @@
 /* Define to 1 if you have the `hdf5' library (-lhdf5). */
 #undef HAVE_LIBHDF5
 
+/* Define to 1 if you have the `iconv' library (-liconv). */
+#undef HAVE_LIBICONV
+
 /* Define to 1 if you have the `intl' library (-lintl). */
 #undef HAVE_LIBINTL
 
@@ -184,6 +205,9 @@
 
 /* Define to 1 if you have the `lapack' library (-llapack). */
 #undef HAVE_LIBLAPACK
+
+/* Define to 1 if you have the `m' library (-lm). */
+#undef HAVE_LIBM
 
 /* Define to 1 if you have the `matio' library (-lmatio). */
 #undef HAVE_LIBMATIO
@@ -199,6 +223,9 @@
 
 /* Define to 1 if you have the `pthread' library (-lpthread). */
 #undef HAVE_LIBPTHREAD
+
+/* Define to 1 if you have the `stdc++' library (-lstdc++). */
+#undef HAVE_LIBSTDC__
 
 /* Define to 1 if you have the `xml2' library (-lxml2). */
 #undef HAVE_LIBXML2

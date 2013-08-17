@@ -3,7 +3,7 @@
 
 AC_PREREQ([2.69])
 AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
-AC_CONFIG_SRCDIR([contrib/toolbox_skeleton/sci_gateway/c/sci_csub.c])
+AC_CONFIG_SRCDIR([gettext.h])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
@@ -42,6 +42,7 @@ AC_CHECK_TYPES([ptrdiff_t])
 
 # Checks for library functions.
 AC_FUNC_ALLOCA
+AM_GNU_GETTEXT
 AC_FUNC_ERROR_AT_LINE
 AC_FUNC_FORK
 AC_FUNC_MALLOC

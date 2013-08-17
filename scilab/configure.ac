@@ -16,7 +16,8 @@ dnl# Process this file with autoconf to produce a configure script.
 
 AC_REVISION($Revision$)dnl
 AC_INIT([Scilab],[5],[http://bugzilla.scilab.org/])
-AC_PREREQ([2.62])
+AC_PREREQ([2.69])
+AC_CONFIG_SRCDIR([contrib/toolbox_skeleton/sci_gateway/c/sci_csub.c])
 AC_CONFIG_MACRO_DIR([m4])
 
 SCI_BUILDDIR="`pwd`"
@@ -61,6 +62,7 @@ if test "$SPACE_IN_PATH" = "0"; then
 fi
 
 AC_CONFIG_AUX_DIR([config])
+AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_HEADERS([modules/core/includes/machine.h])
 
 AC_CANONICAL_TARGET
@@ -85,6 +87,7 @@ AC_LIB_RPATH
 # if the version is different
 AM_MAINTAINER_MODE
 
+AB_INIT
 AM_INIT_AUTOMAKE([1.11 dejagnu dist-zip dist-bzip2 -Wall foreign subdir-objects]) # Not using -Werror because we override {C,F}FLAGS in order to disable optimisation
 
 #################################
@@ -147,6 +150,7 @@ AC_ARG_ENABLE([build-giws],
 ################################################
 
 AM_PROG_AR
+AM_PROG_AS
 if test "x$AWK" = "x"; then
 	test -z "$AWK"
 	AC_PROG_AWK
@@ -155,7 +159,12 @@ else
 	export AWK
 	AC_SUBST([AWK])
 fi
-AC_PROG_CPP
+if test "x$CPP" = "x"; then
+	test -z "$CPP"
+	AC_PROG_CPP
+else
+	XORG_PROG_RAWCPP([])
+fi
 if test "x$GREP" = "x"; then
 	test -z "$GREP"
 	AC_PROG_GREP
@@ -176,12 +185,17 @@ if test "x$MAKE" = "x"; then
 	test -z "$MAKE"
 	AC_PATH_PROG([MAKE],[make gmake gnumake])
 	AC_PROG_MAKE_SET
+	AM_SILENT_RULES
 else
 	test ! -z "$MAKE"
 	export MAKE
 	AC_SUBST([MAKE])
 fi
+AC_BAKEFILE_GNUMAKE
+AX_CHECK_GNU_MAKE([])
 AC_PROG_MKDIR_P
+AC_PROG_OBJC
+AC_PROG_OBJCPP
 AC_PROG_YACC
 
 ######
@@ -313,8 +327,7 @@ AC_COMPILE_IFELSE([AC_LANG_SOURCE([[
      AC_DEFINE([G95_FORTRAN],[],[uses G95 fortran])
      f90compatible=true
     ],
-    [AC_MSG_RESULT([no])]
-)
+    [AC_MSG_RESULT([no])])
 AC_LANG_POP([Fortran 77])
 
 
@@ -344,10 +357,22 @@ if test -z "$CC"; then
 fi
 
 AC_CHECK_SIZEOF([int])
+AC_CHECK_ALIGNOF([int])
 AC_CHECK_SIZEOF([long])
+AC_CHECK_ALIGNOF([long])
 
 ### C++ ###
 AC_PROG_CXX
+if test "x$CXXCPP" = "x"; then
+	test -z "$CXXCPP"
+	AC_PROG_CXXCPP
+else
+	test ! -z "$CXXCPP"
+	export CXXCPP
+	AC_SUBST([CXXCPP])
+fi
+AC_PROG_OBJCXX
+AC_PROG_OBJCXXCPP
 # we cannot just do something like
 # AC_CHECK_PROG([cxx_present], [$CXX], ["yes"], ["no"])
 # because if the user has specified the full path of the desired C++ compiler then AC_CHECK_PROG
@@ -362,10 +387,19 @@ case $CXX in
         ;;
 esac
 
-# for "subdir-objects"
+# testing for support for both "-c" and "-o" is for the "subdir-objects" automake option
 
-AM_PROG_CC_C_O
+if test "x$CC_C_O" = "x"; then
+	test -z "$CC_C_O"
+	AM_PROG_CC_C_O
+else
+	test ! -z "$CC_C_O"
+	export CC_C_O
+	AC_SUBST([CC_C_O])
+fi
+AC_PROG_CXX_C_O
 AC_PROG_F77_C_O
+AC_PROG_FC_C_O
 
 # If this option is provided, enable the debug on C & C++
 if test "$enable_stop_on_warning" = yes; then
@@ -535,11 +569,11 @@ case "$host" in
     ;;
 esac
 
-AM_CONDITIONAL([IS_MACOSX], [test -n "$MACOSX"])
-AM_CONDITIONAL([IS_HPUX], [test -n "$HPUX"])
-AM_CONDITIONAL([IS_SPARC], [test -n "$SPARC"])
-AM_CONDITIONAL([IS_SOLARIS], [test -n "$SOLARIS"])
-AM_CONDITIONAL([IS_MIPS_SGI_IRIX], [test -n "$MIPS_SGI_IRIX"])
+AM_CONDITIONAL([IS_MACOSX],[test -n "$MACOSX"])
+AM_CONDITIONAL([IS_HPUX],[test -n "$HPUX"])
+AM_CONDITIONAL([IS_SPARC],[test -n "$SPARC"])
+AM_CONDITIONAL([IS_SOLARIS],[test -n "$SOLARIS"])
+AM_CONDITIONAL([IS_MIPS_SGI_IRIX],[test -n "$MIPS_SGI_IRIX"])
 
 
 ############
@@ -803,6 +837,7 @@ if test "$with_xcos" != no -a "$with_gui" != no; then
 
    save_LIBS="$LIBS"
 
+   AC_SEARCH_LIBS([clock_gettime],[rt])
    AC_CHECK_LIB([rt],[clock_gettime],
               [RT_LIB="-lrt";
               AC_DEFINE([HAVE_CLOCK_GETTIME],[1],[Whether clock_gettime is available])],
@@ -1233,7 +1268,8 @@ AC_CHECK_FUNCS([socket])
 # Provided by utsname.h
 AC_CHECK_FUNCS([uname])
 
-# Provided by wtloop.c (really? ".c" instead of ".h"? just going with it for now...)
+# Provided by wtloop.c
+# (really? ".c" instead of ".h"? just going with it for now...)
 AC_CHECK_FUNCS([setlocale])
 
 # Function memcmp used in modules/fileio/src/c/xls.c
@@ -1253,9 +1289,9 @@ AC_FUNC_MBRTOWC
 AC_FUNC_MALLOC
 AC_FUNC_MMAP
 AC_FUNC_REALLOC
-AC_CHECK_FUNCS([__argz_count __argz_next __argz_stringify localeconv \
-mblen mbrlen memchr mempcpy nl_langinfo realpath stpcpy strcspn strspn \
-strtoul wcwidth])
+AC_CHECK_FUNCS([__argz_count __argz_next __argz_stringify dlopen \
+dyld_stub_binding_helper localeconv lt_dlopen mblen mbrlen memchr \
+mempcpy nl_langinfo realpath stpcpy strcspn strspn strtoul wcwidth])
 
 ########################
 ## test for header files
@@ -1263,12 +1299,14 @@ strtoul wcwidth])
 
 AC_CHECK_HEADERS([limits.h values.h])
 
-AC_CHECK_HEADERS([argz.h ctype.h fcntl.h float.h langinfo.h libintl.h \
-locale.h malloc.h math.h mman.h netdb.h netinet/in.h nlist.h param.h pwd.h \
-regex.h select.h sgtty.h signal.h socket.h stddef.h stdio.h stdio_ext.h \
-sys/file.h sys/ioctl.h sys/param.h sys/socket.h sys/time.h sys/timeb.h \
-sys/utsname.h syslog.h term.h termcap.h termio.h termios.h time.h types.h \
-utime.h utsname.h wchar.h wctype.h wtloop.c])
+AC_CHECK_HEADERS([argz.h ctype.h dl.h dlfcn.h fcntl.h float.h \
+iconv.h jni.h langinfo.h libintl.h locale.h ltdl.h mach-o/dyld.h \
+mach-o/getsect.h machine.h malloc.h math.h mman.h netdb.h \
+netinet/in.h nlist.h param.h pwd.h regex.h select.h sgtty.h \
+signal.h socket.h stddef.h stdio.h stdio_ext.h sys/file.h \
+sys/ioctl.h sys/param.h sys/socket.h sys/time.h sys/timeb.h \
+sys/utsname.h syslog.h term.h termcap.h termio.h termios.h \
+time.h types.h utime.h utsname.h wchar.h wctype.h wtloop.c])
 
 # check header dirent
 AC_HEADER_DIRENT
@@ -1291,6 +1329,7 @@ AC_TYPE_UINT16_T
 AC_TYPE_UINT32_T
 AC_TYPE_UINT64_T
 AC_CHECK_TYPES([ptrdiff_t])
+AC_CHECK_TYPES([lt_dlsymlist])
 
 #########################
 ## Test for structures ##
@@ -1304,13 +1343,23 @@ AC_CHECK_MEMBERS([struct stat.st_rdev])
 
 # gettext.  See http://www.gnu.org/software/hello/manual/gettext/AM_005fGNU_005fGETTEXT.html
 AM_GNU_GETTEXT([external])
-AM_GNU_GETTEXT_VERSION([0.18.2])
+AM_GNU_GETTEXT_VERSION([0.18.3])
 
 # function closedir used in modules/metanet/src/c/files.c
 AC_FUNC_CLOSEDIR_VOID
 
 # Signals used in modules/core/src/c/realmain.c
-AC_TYPE_SIGNAL
+AC_DIAGNOSE([obsolete],[your code may safely assume C89 semantics that RETSIGTYPE is void.
+Remove this warning and the `AC_CACHE_CHECK' when you adjust the code.])dnl
+AC_CACHE_CHECK([return type of signal handlers],[ac_cv_type_signal],[AC_COMPILE_IFELSE(
+[AC_LANG_PROGRAM([#include <sys/types.h>
+#include <signal.h>
+],
+		 [return *(signal (0, 0)) (0) == 1;])],
+		   [ac_cv_type_signal=int],
+		   [ac_cv_type_signal=void])])
+AC_DEFINE_UNQUOTED([RETSIGTYPE],[$ac_cv_type_signal],[Define as the return type of signal handlers
+		    (`int' or `void').])
 
 # struct tm used in modules/core/src/c/history.c
 AC_STRUCT_TM
@@ -1364,12 +1413,19 @@ fi
 ## other libraries
 ##################
 
-AC_CHECK_LIB([dl],[dlopen])
-# FIXME: Replace `main' with a function in `-lintl':
-AC_CHECK_LIB([intl],[main])
-# FIXME: Replace `main' with a function in `-lpthread':
-AC_CHECK_LIB([pthread],[main])
+AC_CHECK_LIB([c],[printf])
+AC_SEARCH_LIBS([dlopen],[dl])
+AC_CHECK_LIB([dl],[dlsym])
+AC_CHECK_LIB([iconv],[iconv])
+AC_CHECK_LIB([intl],[gettext])
+AC_CHECK_LIB([ltdl],[lt_dlopen])
+AC_SEARCH_LIBS([sqrt],[m])
+AC_CHECK_LIB([m],[cos])
+AC_CHECK_LIB([pthread],[pthread_create])
 AC_SEARCH_LIBS([pthread_join],[pthread])
+# FIXME: Replace `main' with a function in `-lstdc++':
+AC_CHECK_LIB([stdc++],[main])
+AC_CHECK_LIB([z],[gzread])
 
 #################
 ## FFTW
@@ -1384,7 +1440,7 @@ if test "$with_fftw" != no; then
    FFTW_ENABLE=yes
 fi
 
-AC_SUBST(FFTW_ENABLE)
+AC_SUBST([FFTW_ENABLE])
 AM_CONDITIONAL([FFTW],[test "$with_fftw" != no])
 
 #################
@@ -1434,22 +1490,26 @@ BUILD_LOCALIZATION_ENABLE=no
 
 if test "$enable_build_localization" != no; then
 
+   test ! -z "$LANG"
+   test ! -z "$LC_ALL"
    AC_SUBST([ALL_LINGUAS])
    AC_SUBST([ALL_LINGUAS_DOC])
    AC_CHECK_FUNCS([bind_textdomain_codeset])
 
-   AC_PATH_PROG([MSGCAT], [msgcat], [no])
-   # the main gettext macro already checks for msgfmt and xgettext, so we can remove the checks for them here
+   AC_PATH_PROG([MSGCAT],[msgcat],[no])
+   # the main gettext macro used farther above already checks for msgfmt and xgettext,
+   # so we can remove the checks for them here
 
    if test x$MSGFMT = xno; then
-      AC_ERROR([The msgfmt command is required to build Scilab.  If it is installed on your system, ensure that it is in your path.  If it is not, install GNU gettext to continue or use the option --disable-build-localization ])
+      AC_MSG_ERROR([The msgfmt command is required to build Scilab. If it is installed on your system, ensure that it is in your path. If it is not, install GNU gettext to continue or use the option --disable-build-localization])
       fi
     if test x$MSGCAT = xno; then
-      AC_ERROR([The msgcat command is required to build Scilab.  If it is installed on your system, ensure that it is in your path.  If it is not, install GNU gettext to continue or use the option --disable-build-localization ])
+      AC_MSG_ERROR([The msgcat command is required to build Scilab. If it is installed on your system, ensure that it is in your path. If it is not, install GNU gettext to continue or use the option --disable-build-localization])
     fi
     BUILD_LOCALIZATION_ENABLE=yes
 fi
 AM_CONDITIONAL([GENERATE_LOCALIZATION_FILES],[test "$BUILD_LOCALIZATION_ENABLE" = yes])
+AM_CONDITIONAL([BUILD_MACROS],[test "$BUILD_LOCALIZATION_ENABLE" = yes])
 
 #######################
 ## Test for blas/Atlas and lapack
@@ -1563,7 +1623,7 @@ if test "$with_tk" != no; then
 
     # set variables
     if test "$WITH_TKSCI" = yes; then
-        AC_DEFINE([WITH_TK], [], [With TK])
+        AC_DEFINE([WITH_TK],[],[With TK])
     else
         AC_MSG_ERROR([TCL/TK not found. Use --without-tk or specify the librairies and include paths manually])
     fi
@@ -1714,10 +1774,15 @@ AC_SUBST([GRAPHICS_ENABLE])
 ## libtool
 #########################
 
-AM_DISABLE_STATIC
+AC_DISABLE_STATIC([])
 LT_PREREQ([2.2.7])
-AC_PROG_LIBTOOL([shared dlopen])
-AM_PROG_LIBTOOL
+LT_INIT([shared dlopen win32-dll])
+LT_LANG([C])
+LT_LANG([C++])
+LT_LANG([Java])
+LT_LANG([Fortran 77])
+LT_LANG([Fortran])
+LT_LANG([Windows Resource])
 
 # Avoid to link all the dep from others libraries (*.la included by LIBADD)
 link_all_deplibs=no
@@ -1737,6 +1802,8 @@ fi
 # AM_CONDITIONAL([ENABLE_STATIC],[test "$libtool_build_static_libs" = yes])
 # Fake to disable the static build
 AM_CONDITIONAL([ENABLE_STATIC],[test "$libtool_build_static_libs" = xxxx])
+
+XORG_LD_WRAP
 
 if test "x$RANLIB" = "x"; then
 	test -z "$RANLIB"
@@ -1767,7 +1834,7 @@ AC_PATH_PROG([SPLINT],[splint],[no])
 AC_ARG_ENABLE([ccache],
         [AS_HELP_STRING([--disable-ccache],[Disable the use of ccache])
         ])
-AC_PATH_PROG([CCACHE], [ccache])
+AC_PATH_PROG([CCACHE],[ccache])
 if test x"$CCACHE" != x -a "$enable_ccache" != no; then
   CC="$CCACHE $CC"
   CXX="$CCACHE $CXX"
@@ -1909,6 +1976,8 @@ modules/external_objects/Makefile
 modules/Makefile
 po/Makefile.in
 po/Makefile
+po/Makevars
+po/POTFILES
 libs/Makefile
 Makefile
 scilab.pc
@@ -1923,10 +1992,17 @@ modules/helptools/etc/SciDocConf.xml
 modules/core/includes/version.h
 ])
 
+#TODO: add a way to set the $enable_libscilabcli variable
+if test "$enable_libscilabcli" = "yes"; then
+   AC_CONFIG_FILES([
+   modules/libscilab-cli/Makefile
+  ])
+fi
+
 # Detection of the module for the future version of Scilab 6
 # ie we detect module which ends with _yasp
 
-if test "$enable_yasp" = yes; then
+if test "$enable_yasp" = "yes"; then
    AC_CONFIG_FILES([
    modules/development_tools/src/fake/Makefile
   ])
@@ -1965,6 +2041,7 @@ AC_CONFIG_COMMANDS([modules/core/includes/stack.h],
   ])
 
 AC_OUTPUT
+# No more autoconf macros may be used after this point
 
 # To distribution packager, you can uncomment this stuff is you want to
 # disable the rpath issue
@@ -2106,24 +2183,24 @@ echo "  LAPACK TYPE ........... = $LAPACK_TYPE"
 echo "  ARPACK LIBS ........... = $ARPACK_LIBS"
 echo ""
 
-#if test "$with_mpi" = yes; then
-#   echo "MPI Configuration:"
-#   echo "  MPI LIBS ........... = $MPILIBS"
-#   echo "  MPI C Compiler ..... = $MPICC"
-#   echo "  MPI C++ Compiler ... = $MPICXX"
-#   echo "  MPI F77 Compiler ... = $MPIF77"
-#else
-#   echo "Not using MPI"
-#fi
+if test "$with_mpi" = yes; then
+   echo "MPI Configuration:"
+   echo "  MPI LIBS ........... = $MPILIBS"
+   echo "  MPI C Compiler ..... = $MPICC"
+   echo "  MPI C++ Compiler ... = $MPICXX"
+   echo "  MPI F77 Compiler ... = $MPIF77"
+else
+   echo "Not using MPI"
+fi
 
-#if test "$with_openmpi" != "no"; then
-#   echo "OpenMPI Configuration:"
-#   echo "  OpenMPI LIBS ........... = $OPENMPI_LIBS"
-#   echo "  OpenMPI C Compiler ..... = $OPENMPI_CC"
-#   echo "  OpenMPI F77 Compiler ... = $MPIF77"
-#else
-#   echo "Not using MPI"
-#fi
+if test "$with_openmpi" != "no"; then
+   echo "OpenMPI Configuration:"
+   echo "  OpenMPI LIBS ........... = $OPENMPI_LIBS"
+   echo "  OpenMPI C Compiler ..... = $OPENMPI_CC"
+   echo "  OpenMPI F77 Compiler ... = $MPIF77"
+else
+   echo "Not using MPI"
+fi
 
 echo ""
 if test $BUILD_LOCALIZATION_ENABLE != no; then
@@ -2149,50 +2226,52 @@ fi
 echo ""
 echo "Java Configuration:"
 if test ! -z "$JAVAC"; then
-echo "  JAVA_HOME ........... = $JAVA_HOME"
-echo "  JAVAC ............... = $JAVAC"
-echo "  JAVA_CLASSPATH ...... = $JAVA_CLASSPATH"
-echo "  JAVA_VERSION ........ = $JAVA_VERSION"
-echo "  JAVAC_FLAGS ......... = $JAVAC_FLAGS"
-echo "  JAVA_JNI_INCLUDE .... = $JAVA_JNI_INCLUDE"
-echo "  JAVA_JNI_LIBS ....... = $JAVA_JNI_LIBS"
-echo "  JAVA_JNI_LIBS_PRELOAD = $JAVA_JNI_LIBS_PRELOAD"
-echo "  JAVA ................ = $JAVA"
-echo "  JAVADOC ............. = $JAVADOC"
-echo "  JAR ................. = $JAR"
-echo "  ANT ................. = $ANT"
+	echo "  JAVA_HOME ........... = $JAVA_HOME"
+	echo "  JAVAC ............... = $JAVAC"
+	echo "  JAVA_CLASSPATH ...... = $JAVA_CLASSPATH"
+	echo "  JAVA_VERSION ........ = $JAVA_VERSION"
+	echo "  JAVAC_FLAGS ......... = $JAVAC_FLAGS"
+	echo "  JAVA_JNI_INCLUDE .... = $JAVA_JNI_INCLUDE"
+	echo "  JAVA_JNI_LIBS ....... = $JAVA_JNI_LIBS"
+	echo "  JAVA_JNI_LIBS_PRELOAD = $JAVA_JNI_LIBS_PRELOAD"
+	echo "  JAVA ................ = $JAVA"
+	echo "  JAVADOC ............. = $JAVADOC"
+	echo "  JAR ................. = $JAR"
+	echo "  ANT ................. = $ANT"
 else
-echo "  JAVA disabled"
+	echo "  JAVA disabled"
 fi
 
 
 echo ""
 echo "Java dependencies:"
 if test ! -z "$JAVAC"; then
-echo "  Flexdock ............ = $FLEXDOCK"
-echo "  JOGL 2............... = $JOGL2"
-echo "  JOGL 2 LIBS (JNI) ... = $JOGL2_LIBS"
-echo "  Gluegen 2 ........... = $GLUEGEN2_RT"
-echo "  Gluegen 2 LIBS (JNI)  = $GLUEGEN2_RT_LIBS"
-echo "  Jeuclid (MathML) .... = $JEUCLID_CORE"
-echo "  Jhall  .............. = $JHALL"
-echo "  Jrosetta (API) ...... = $JROSETTA_API"
-echo "  Jrosetta (Engine) ... = $JROSETTA_ENGINE"
-echo "  Commons Logging ..... = $COMMONS_LOGGING"
-echo "  JGraph X ............ = $JGRAPHX"
-echo "  SciRenderer ......... = $SCIRENDERER"
-echo "  JLaTeXMath .......... = $JLATEXMATH"
+	echo "  Flexdock ............ = $FLEXDOCK"
+	echo "  JOGL 2............... = $JOGL2"
+	echo "  JOGL 2 LIBS (JNI) ... = $JOGL2_LIBS"
+	echo "  Gluegen 2 ........... = $GLUEGEN2_RT"
+	echo "  Gluegen 2 LIBS (JNI)  = $GLUEGEN2_RT_LIBS"
+	echo "  Jeuclid (MathML) .... = $JEUCLID_CORE"
+	echo "  Jhall  .............. = $JHALL"
+	echo "  Jrosetta (API) ...... = $JROSETTA_API"
+	echo "  Jrosetta (Engine) ... = $JROSETTA_ENGINE"
+	echo "  Commons Logging ..... = $COMMONS_LOGGING"
+	echo "  JGraph X ............ = $JGRAPHX"
+	echo "  SciRenderer ......... = $SCIRENDERER"
+	echo "  JLaTeXMath .......... = $JLATEXMATH"
+else
+	echo "  JAVA disabled"
 fi
 
 echo ""
 if test ! -z "$JAVAC"; then
-echo "Documentation, graphic export:"
-echo "  FOP (XML => PDF) .... = $FOP"
-echo "  JLaTeXMath Fop ...... = $JLATEXMATH_FOP"
-echo "  Batik (SVG) ......... = $BATIK"
-echo "  Avalon Framework .... = $AVALON_FRAMEWORK"
-echo "  Commons I/O ......... = $COMMONS_IO"
-echo "  XML graphics commons  = $XMLGRAPHICS_COMMONS"
+	echo "Documentation, graphic export:"
+	echo "  FOP (XML => PDF) .... = $FOP"
+	echo "  JLaTeXMath Fop ...... = $JLATEXMATH_FOP"
+	echo "  Batik (SVG) ......... = $BATIK"
+	echo "  Avalon Framework .... = $AVALON_FRAMEWORK"
+	echo "  Commons I/O ......... = $COMMONS_IO"
+	echo "  XML graphics commons  = $XMLGRAPHICS_COMMONS"
 fi
 
 
@@ -2234,10 +2313,10 @@ echo "  PCRE_VERSION ....... = $PCRE_VERSION"
 echo ""
 echo "SWIG Configuration:"
 if test ! -z "$SWIG_BIN"; then
-echo "  SWIG_BIN ........... = $SWIG_BIN"
-echo "  SWIG_JAVA .......... = $SWIG_JAVA"
+	echo "  SWIG_BIN ........... = $SWIG_BIN"
+	echo "  SWIG_JAVA .......... = $SWIG_JAVA"
 else
-echo "  SWIG generation disabled"
+	echo "  SWIG generation disabled"
 fi
 
 echo ""
@@ -2262,7 +2341,7 @@ echo "  srcdir .............. = $SCI_SRCDIR"
 echo "  srcdir_full ......... = $SCI_SRCDIR_FULL"
 echo "  builddir ............ = $SCI_BUILDDIR"
 if test "$SCI_SRCDIR_FULL" != "$SCI_BUILDDIR"; then
-echo "  VPATH build ......... = Activated"
+	echo "  VPATH build ......... = Activated"
 fi
 
 echo ""
@@ -2274,8 +2353,8 @@ echo "  host_os ... .... = $host_os"
 echo "  hostname ....... = $ac_hostname"
 echo "  CPU 64 bits .... = $IS_64_BITS_CPU"
 if test -n "$MAC_DETECTED_ARCH"; then
-echo "  Mac OS X arch .. = $MAC_DETECTED_ARCH"
-echo "  Mac OS X version = $macosx_version"
+	echo "  Mac OS X arch .. = $MAC_DETECTED_ARCH"
+	echo "  Mac OS X version = $macosx_version"
 fi
 
 echo ""

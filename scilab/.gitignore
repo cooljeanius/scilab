@@ -6,6 +6,7 @@
 *.lo
 *.la
 *.o
+*.dirstamp
 
 #
 # autotools files
@@ -16,6 +17,8 @@
 Makefile
 tmpwrk*/*
 *stamp-h*
+confdefs.h
+conftest.*
 
 #
 # Java compilation output dir
@@ -160,6 +163,7 @@ scilab-lib-doc.properties
 scilab.pc
 *.class
 *.dia
+modules/intersci/intersci
 
 #
 # Subversion directories

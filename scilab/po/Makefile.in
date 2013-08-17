@@ -8,13 +8,14 @@
 # Please note that the actual code of GNU gettext is covered by the GNU
 # General Public License and is *not* in the public domain.
 #
-# Origin: gettext-0.18.2
+# Origin: gettext-0.18.3
 GETTEXT_MACRO_VERSION = 0.18
 
 PACKAGE = scilab
 VERSION = 5
 PACKAGE_BUGREPORT = http://bugzilla.scilab.org/
 
+SED = /opt/local/bin/gsed
 SHELL = /bin/sh
 
 
@@ -22,7 +23,7 @@ srcdir = .
 top_srcdir = ..
 
 
-prefix = /usr/local
+prefix = /usr/local/Cellar/scilab/5.4.0
 exec_prefix = ${prefix}
 datarootdir = ${prefix}/share
 datadir = ${datarootdir}

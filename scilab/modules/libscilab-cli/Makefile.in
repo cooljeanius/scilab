@@ -373,10 +373,10 @@ libscilab_la_rootdir = $(mydatadir)
 # libscilab is the full library with the GUI
 # libscilab-cli is for scilab-cli (without GUI)
 pkglib_LTLIBRARIES = libscilab-cli.la
-#libscilab_la_SOURCES =
+libscilab_la_SOURCES =
 libscilab_cli_la_SOURCES = 
 
-#libscilab_la_LDFLAGS = $(LAPACK_LIBS) $(BLAS_LIBS)
+libscilab_la_LDFLAGS = $(LAPACK_LIBS) $(BLAS_LIBS)
 libscilab_cli_la_LDFLAGS = $(LAPACK_LIBS) $(BLAS_LIBS) -lstdc++
 EXTERNAL_LIBS = $(top_builddir)/libs/hashtable/libscihashtable.la \
 $(top_builddir)/libs/MALLOC/libscimalloc.la  \

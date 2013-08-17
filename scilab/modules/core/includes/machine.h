@@ -9,6 +9,12 @@
 /* Define if building universal (internal helper macro) */
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
 
+/* The normal alignment of `int', in bytes. */
+#define ALIGNOF_INT 4
+
+/* The normal alignment of `long', in bytes. */
+#define ALIGNOF_LONG 8
+
 /* Define C2F without Trailing Underscore */
 #define C2F(name) name##_
 
@@ -22,6 +28,9 @@
    systems. This function is required for `alloca.c' support on those systems.
    */
 /* #undef CRAY_STACKSEG_END */
+
+/* Define to 1 if your C++ compiler doesn't accept -c and -o together. */
+/* #undef CXX_NO_MINUS_C_MINUS_O */
 
 /* Define to 1 if using `alloca.c'. */
 /* #undef C_ALLOCA */
@@ -46,6 +55,9 @@
 /* Define if F77 and FC dummy `main' functions are identical. */
 /* #undef FC_DUMMY_MAIN_EQ_F77 */
 
+/* Define to 1 if your Fortran compiler doesn't accept -c and -o together. */
+/* #undef FC_NO_MINUS_C_MINUS_O */
+
 /* uses G95 fortran */
 #define G95_FORTRAN /**/
 
@@ -63,7 +75,7 @@
 #define HAVE_ATEXIT 1
 
 /* Define to 1 if you have the `bind_textdomain_codeset' function. */
-#define HAVE_BIND_TEXTDOMAIN_CODESET 1
+/* #undef HAVE_BIND_TEXTDOMAIN_CODESET */
 
 /* Define to 1 if you have the `bzero' function. */
 #define HAVE_BZERO 1
@@ -98,6 +110,9 @@
 
 /* Define to 1 if you have the <dlfcn.h> header file. */
 #define HAVE_DLFCN_H 1
+
+/* Define to 1 if you have the <dl.h> header file. */
+/* #undef HAVE_DL_H */
 
 /* Define to 1 if you have the `dup2' function. */
 #define HAVE_DUP2 1
@@ -168,6 +183,9 @@
 /* Define to 1 if you have the <langinfo.h> header file. */
 #define HAVE_LANGINFO_H 1
 
+/* Define to 1 if you have the `c' library (-lc). */
+#define HAVE_LIBC 1
+
 /* Define to 1 if you have the `curses' library (-lcurses). */
 #define HAVE_LIBCURSES 1
 
@@ -177,6 +195,9 @@
 /* Define to 1 if you have the `hdf5' library (-lhdf5). */
 #define HAVE_LIBHDF5 1
 
+/* Define to 1 if you have the `iconv' library (-liconv). */
+/* #undef HAVE_LIBICONV */
+
 /* Define to 1 if you have the `intl' library (-lintl). */
 #define HAVE_LIBINTL 1
 
@@ -185,6 +206,9 @@
 
 /* Define to 1 if you have the `lapack' library (-llapack). */
 #define HAVE_LIBLAPACK 1
+
+/* Define to 1 if you have the `m' library (-lm). */
+#define HAVE_LIBM 1
 
 /* Define to 1 if you have the `matio' library (-lmatio). */
 /* #undef HAVE_LIBMATIO */
@@ -200,6 +224,9 @@
 
 /* Define to 1 if you have the `pthread' library (-lpthread). */
 #define HAVE_LIBPTHREAD 1
+
+/* Define to 1 if you have the `stdc++' library (-lstdc++). */
+#define HAVE_LIBSTDC__ 1
 
 /* Define to 1 if you have the `xml2' library (-lxml2). */
 #define HAVE_LIBXML2 1
@@ -229,7 +256,7 @@
 #define HAVE_LOCALE_H 1
 
 /* Define to 1 if you have the <mach-o/dyld.h> header file. */
-/* #undef HAVE_MACH_O_DYLD_H */
+#define HAVE_MACH_O_DYLD_H 1
 
 /* Define to 1 if your system has a GNU libc compatible `malloc' function, and
    to 0 otherwise. */
@@ -571,7 +598,7 @@
 /* #undef HAVE___ARGZ_STRINGIFY */
 
 /* Define to the value of ${prefix}, as a string. */
-#define INSTALLPREFIX "/usr/local"
+#define INSTALLPREFIX "/usr/local/Cellar/scilab/5.4.0"
 
 /* libXML2 flags */
 #define LIBXML_FLAGS "-I/opt/local/include/libxml2"

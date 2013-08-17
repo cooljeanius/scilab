@@ -19,6 +19,7 @@ tmpwrk*/*
 *stamp-h*
 confdefs.h
 conftest.*
+config.h
 
 #
 # Java compilation output dir

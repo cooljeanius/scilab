@@ -1,0 +1,4 @@
+2013-08-17  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* po.m4: Upgrade to gettext-0.18.3.
+

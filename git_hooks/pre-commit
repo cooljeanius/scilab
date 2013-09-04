@@ -81,7 +81,7 @@ then
     
     ASTYLE_IGNORED=""
 else
-    ASTYLE_IGNORED="$(find $(git config --get-all astyle.ignored))"
+    ASTYLE_IGNORED="$(find $(git config --get-all astyle.ignored) 2>/dev/null)"
 fi
 
 # indent / format file by type
@@ -158,7 +158,7 @@ __pre_indent() {
     # ignored globs
     if test -n "$ASTYLE_IGNORED"
     then
-        echo $ASTYLE_IGNORED |grep -q "$file"
+        echo $ASTYLE_IGNORED | grep -q "$file"
         if test $? -eq 0
         then
             echo "Indenting" $file    ": ignored"

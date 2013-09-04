@@ -154,6 +154,7 @@ add_ChangeId() {
 		}
 	}' "$MSG" > $T && mv $T "$MSG" || rm -f $T
 }
+
 _gen_ChangeIdInput() {
 	echo "tree `git write-tree`"
 	if parent=`git rev-parse "HEAD^0" 2>/dev/null`
@@ -165,6 +166,7 @@ _gen_ChangeIdInput() {
 	echo
 	printf '%s' "$clean_message"
 }
+
 _gen_ChangeId() {
 	_gen_ChangeIdInput |
 	git hash-object -t commit --stdin

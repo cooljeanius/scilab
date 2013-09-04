@@ -29,12 +29,12 @@ if test "$with_libxml2" != 'yes' -a "$with_libxml2" != 'no'; then
                 AC_MSG_RESULT([$XML_CONFIG])
         else
                 AC_MSG_ERROR([Unable to find $XML_CONFIG. Please check the path you provided])
-		fi
+	fi
 else
-		AC_CHECK_PROGS([XML_CONFIG],[xml2-config],[no])
-		if test "x$XML_CONFIG" = "xno"; then
-				AC_MSG_ERROR([Unable to find xml2-config in the path. Please check your installation of libxml2])
-		fi
+	AC_CHECK_PROGS([XML_CONFIG],[xml2-config],[no])
+	if test "x$XML_CONFIG" = "xno"; then
+		AC_MSG_ERROR([Unable to find xml2-config in the path. Please check your installation of libxml2])
+	fi
 fi
 saved_cflags=$CFLAGS
 saved_LIBS="$LIBS"
@@ -67,7 +67,6 @@ AC_DEFINE_UNQUOTED([LIBXML_LIBS],["$XML_LIBS"],[libXML2 library])
 
 CFLAGS="$CFLAGS $XML_FLAGS"
 AC_CHECK_LIB([xml2],[xmlInitParserCtxt],[],[AC_MSG_ERROR([libxml2 : library missing])])
-
 
 AC_CHECK_HEADERS([libxml/tree.h],[],[AC_MSG_ERROR([libxml2 : library missing missing])])	
 

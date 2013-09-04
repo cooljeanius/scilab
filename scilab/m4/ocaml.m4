@@ -30,10 +30,12 @@ AC_DEFUN([AC_CHECK_PROG_OCAML],[
 	if test "$OCAMLDEP" = no; then
 		AC_MSG_WARN([ocamldep not found. Mandatory to build the Scicos modelica compiler.])
 	fi
+	AC_REQUIRE([AC_PROG_YACC])
 	AC_CHECK_PROG([OCAMLYACC],[ocamlyacc],[ocamlyacc],[no])
 	if test "$OCAMLYACC" = no; then
 		AC_MSG_WARN([ocamlyacc not found. Mandatory to build the Scicos modelica compiler.])
 	fi
+	AC_REQUIRE([AM_PROG_LEX])
 	AC_CHECK_PROG([OCAMLLEX],[ocamllex],[ocamllex],[no])
 	if test "$OCAMLLEX" = no; then
 		AC_MSG_WARN([ocamllex not found. Mandatory to build the Scicos modelica compiler.])

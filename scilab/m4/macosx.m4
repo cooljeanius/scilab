@@ -19,7 +19,7 @@ AC_DEFUN([AC_GET_MACOSX_VERSION],[
         [darwin_version="`uname -r | cut -d. -f1`"]
         [macosx_version=10.$(($darwin_version - 4))]
     else
-        AC_MSG_ERROR([none of the standard ways of determining the Mac OS X Version are available])
+        AC_MSG_ERROR([none of the standard ways of determining the Mac OS X version are available.])
     fi
     AC_MSG_CHECKING([Mac OS X Version])
     case $macosx_version in

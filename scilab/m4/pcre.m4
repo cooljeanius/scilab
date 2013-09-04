@@ -31,12 +31,12 @@ if test "$with_pcre" != 'yes' -a "$with_pcre" != 'no'; then
    PCRE_CONFIG="$with_pcre/bin/pcre-config" 
         if test -x "$PCRE_CONFIG"; then
                 AC_MSG_RESULT([$PCRE_CONFIG])
-				PCRE_FOUND=1
+			PCRE_FOUND=1
 		fi
    if test $PCRE_FOUND -eq 0; then
    PCRE_CONFIG="$with_pcre/pcre-config" 
         if test -x "$PCRE_CONFIG"; then
-				PCRE_FOUND=1
+			PCRE_FOUND=1
                 AC_MSG_RESULT([$PCRE_CONFIG])
         fi
    fi
@@ -48,7 +48,7 @@ if test "$with_pcre" != 'yes' -a "$with_pcre" != 'no'; then
 else
 		AC_CHECK_PROGS([PCRE_CONFIG],[pcre-config],[no])
 		if test "x$PCRE_CONFIG" = "xno"; then
-				AC_MSG_ERROR([Unable to find pcre-config in the path. Please check your installation of pcre (example : libpcre3 & libpcre3-dev with Debian)])
+			AC_MSG_ERROR([Unable to find pcre-config in the path. Please check your installation of pcre (example : libpcre3 & libpcre3-dev with Debian)])
 		fi
 fi
 saved_cflags="$CFLAGS"
@@ -57,6 +57,8 @@ saved_LIBS="$LIBS"
 PCRE_CFLAGS=`$PCRE_CONFIG --cflags`
 PCRE_LIBS=`$PCRE_CONFIG --libs-posix`
 PCRE_VERSION=`$PCRE_CONFIG --version`
+
+AC_REQUIRE([PKG_PROG_PKG_CONFIG])
 
 PCRE_REQUIRED_VERSION=7.6
     PKG_CHECK_MODULES([PCRE],
@@ -74,6 +76,7 @@ AC_CHECK_LIB([pcreposix],[regexec],
                [AC_MSG_ERROR([pcreposix : library missing. (Cannot find symbol regexec). Check if pcre is installed and if the version is correct])])
 
 AC_CHECK_HEADERS([pcre.h])
+AC_CHECK_HEADERS_ONCE([pcre/tree.h])
 
 LIBS="$saved_LIBS"
 CFLAGS="$saved_cflags"

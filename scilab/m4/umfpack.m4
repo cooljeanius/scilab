@@ -1,17 +1,17 @@
-dnl
-dnl Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
-dnl Copyright (C) INRIA - 2008 - Sylvestre Ledru
-dnl 
-dnl This file must be used under the terms of the CeCILL.
-dnl This source file is licensed as described in the file COPYING, which
-dnl you should have received as part of this distribution.  The terms
-dnl are also available at    
-dnl http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
-dnl
-dnl UMFPACK detection
-dnl ------------------------------------------------------
-dnl Check if UMFPACK is usable and working
-dnl
+dnl#
+dnl# Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+dnl# Copyright (C) INRIA - 2008 - Sylvestre Ledru
+dnl# 
+dnl# This file must be used under the terms of the CeCILL.
+dnl# This source file is licensed as described in the file COPYING, which
+dnl# you should have received as part of this distribution.  The terms
+dnl# are also available at    
+dnl# http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
+dnl#
+dnl# UMFPACK detection
+dnl#------------------------------------------------------
+dnl# Check if UMFPACK is usable and working
+dnl#
 
 AC_DEFUN([AC_UMFPACK],[
 
@@ -38,8 +38,8 @@ if test "x$with_umfpack_include" != "xyes"; then
 	AC_CHECK_HEADER([suitesparse/umfpack.h],
 	[UMFPACK_CFLAGS="$CFLAGS"; SUITESPARSE=yes],
 	[AC_CHECK_HEADER([umfpack.h],
-				[UMFPACK_CFLAGS="$CFLAGS"; SUITESPARSE=no],
-				[AC_MSG_ERROR([Cannot find headers (umfpack.h) of the library UMFPACK. Please install the dev package (Debian : libsuitesparse-dev)])
+			[UMFPACK_CFLAGS="$CFLAGS"; SUITESPARSE=no],
+			[AC_MSG_ERROR([Cannot find headers (umfpack.h) of the library UMFPACK. Please install the dev package (Debian : libsuitesparse-dev)])
 	])
 	])
 	CFLAGS="$save_CFLAGS"
@@ -98,6 +98,6 @@ if test $SUITESPARSE = yes; then
 	AC_DEFINE_UNQUOTED([UMFPACK_SUITESPARSE],[],[If it is UMFPACK/Suitesparse or UMFPACK standalone])
 fi
 
-AC_DEFINE([WITH_UMFPACK], [], [With the UMFPACK library])
+AC_DEFINE([WITH_UMFPACK],[],[With the UMFPACK library])
 
 ])

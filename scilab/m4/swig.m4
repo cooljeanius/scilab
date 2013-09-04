@@ -15,6 +15,7 @@
 # if the version of the available SWIG is greater than or equal to the
 # value of the argument.  It should have the format: N[.N[.N]] (N is a
 # number between 0 and 999.  Only the first N is mandatory.)
+
 AC_DEFUN([SWIG_PROG],[
 	AC_PATH_PROG([SWIG_BIN],[swig])
 	if test -z "$SWIG_BIN" ; then
@@ -46,7 +47,7 @@ AC_DEFUN([SWIG_PROG],[
 
 # SWIG_ENABLE_CXX()
 #
-# Enable SWIG C++ support.  This effects all invocations of $(SWIG).
+# Enable SWIG C++ support. This affects all invocations of $(SWIG).
 AC_DEFUN([SWIG_ENABLE_CXX],[
 	AC_REQUIRE([SWIG_PROG])
 	AC_REQUIRE([AC_PROG_CXX])
@@ -55,12 +56,11 @@ AC_DEFUN([SWIG_ENABLE_CXX],[
 
 # SWIG_ENABLE_JAVA()
 #
-# Enable SWIG Java support.  This effects all invocations of $(SWIG).
+# Enable SWIG Java support. This affects all invocations of $(SWIG).
 AC_DEFUN([SWIG_ENABLE_JAVA],[
 	AC_REQUIRE([SWIG_PROG])
 	SWIG_JAVA=" -java"
 ])
-
 
 # SWIG_MULTI_MODULE_SUPPORT()
 #
@@ -87,7 +87,10 @@ AC_DEFUN([SWIG_MULTI_MODULE_SUPPORT],[
 # check system for example.
 AC_DEFUN([SWIG_PYTHON],[
 	AC_REQUIRE([SWIG_PROG])
+	AC_REQUIRE([SWIG_MULTI_MODULE_SUPPORT])
 	AC_REQUIRE([PYTHON_DEVEL])
+	AC_REQUIRE([AM_PATH_PYTHON])
+	AC_REQUIRE([AC_PROG_CPP])
 	test "x$1" != "xno" || swig_shadow=" -noproxy"
 	AC_SUBST([SWIG_PYTHON_OPT],[-python$swig_shadow])
 	AC_SUBST([SWIG_PYTHON_CPPFLAGS],[$PYTHON_CPPFLAGS])
@@ -100,6 +103,7 @@ AC_DEFUN([SWIG_PYTHON],[
 # It provides the $(PYTHON_CPPFLAGS) and $(PYTHON_LDFLAGS) output variable.
 AC_DEFUN([PYTHON_DEVEL],[
 	AC_REQUIRE([AM_PATH_PYTHON])
+	AC_REQUIRE([AC_PROG_CPP])
 
 	# Check for Python include path
 	AC_MSG_CHECKING([for Python include path])
@@ -119,6 +123,8 @@ AC_DEFUN([PYTHON_DEVEL],[
 		AC_MSG_ERROR([cannot find Python include path])
 	fi
 	AC_SUBST([PYTHON_CPPFLAGS],[-I$python_path])
+
+	AC_CHECK_HEADERS_ONCE([Python.h])
 
 	# Check for Python library path
 	AC_MSG_CHECKING([for Python library path])

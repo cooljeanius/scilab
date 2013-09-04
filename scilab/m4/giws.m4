@@ -16,7 +16,10 @@ AC_DEFUN([AC_GIWS],[
 # option to the ./configure script
    AC_CHECK_PROGS([PYTHON],[python],[no])
    if test "x$PYTHON" = "xno"; then
-		AC_MSG_ERROR([Giws needs Python])
+      AM_PATH_PYTHON([2.5],[],[AC_MSG_ERROR([Giws needs Python])])
+   else
+      test ! -z $PYTHON
+      AC_REQUIRE([AM_PATH_PYTHON])
    fi
 
 ## If the user is providing a path to the option
@@ -24,19 +27,19 @@ if test "$enable_build_giws" != 'yes' -a "$enable_build_giws" != 'no'; then
    AC_MSG_CHECKING([giws])
    GIWS_BIN="$enable_build_giws/giws" 
    if test -f "$GIWS_BIN"; then
-                AC_MSG_RESULT([$GIWS_BIN])
-        else
-                AC_MSG_ERROR([Unable to find $GIWS_BIN. Please check the path you provided])
-		fi
+      AC_MSG_RESULT([$GIWS_BIN])
+   else
+      AC_MSG_ERROR([Unable to find $GIWS_BIN. Please check the path you provided])
+   fi
 else
 # Looks for it in the path
    AC_CHECK_PROGS([GIWS_BIN],[giws],[no])
    if test "x$GIWS_BIN" = "xno"; then
-		AC_MSG_ERROR([Could find giws in the PATH])
+      AC_MSG_ERROR([Could find giws in the PATH])
    fi
 fi
 
-if test -f $GIWS_BIN; then
+if test -f $GIWS_BIN -a -w `dirname $GIWS_BIN`; then
    chmod +x $GIWS_BIN
 fi
 
@@ -52,13 +55,12 @@ if test -n "$giws_version" ; then
     [giws_tmp=`echo $giws_version | sed 's/[^0-9]\+/ /g'`]
     [giws_tmp=`echo $giws_tmp | awk '{print  1000000 * $ 1 +  1000 * $ 2 + $ 3}'`]
 
-	if test $giws_required_version -gt $giws_tmp ; then
-       AC_MSG_ERROR([GIWS version $1 is required, $giws_version detected])
-    fi
+   if test $giws_required_version -gt $giws_tmp ; then
+      AC_MSG_ERROR([GIWS version $1 is required, $giws_version detected])
+   fi
 else
-	AC_MSG_ERROR([cannot determine GIWS version])
+   AC_MSG_ERROR([cannot determine GIWS version])
 fi
-
 AC_SUBST([GIWS_BIN])
 ])
 

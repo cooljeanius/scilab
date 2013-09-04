@@ -93,7 +93,7 @@ AC_LIB_RPATH
 # if the version is different
 AM_MAINTAINER_MODE
 
-AB_INIT dnl# Gives extra info about the build
+AB_INIT dnl# Gives extra info about the build (from m4/autobuild.m4)
 CMAKE_FIND_BINARY dnl# Ionic says to use `cmake -v`...
 AM_INIT_AUTOMAKE([1.11 dejagnu dist-zip dist-bzip2 -Wall foreign subdir-objects]) # Not using -Werror because we override {C,F}FLAGS in order to disable optimisation
 dnl# subdir-objects is required as of automake1.14
@@ -361,6 +361,7 @@ fi
 if test -z "$CC"; then
 # No C compiler specified... We rely on Autoconf to find the best
    AC_PROG_CC
+   XORG_COMPILER_BRAND dnl# from m4/xorg-macros.m4
 fi
 
 if test -z "$CC"; then
@@ -412,11 +413,13 @@ AC_PROG_FC_C_O
 
 # If this option is provided, enable the debug on C & C++
 if test "$enable_stop_on_warning" = yes; then
+   XORG_STRICT_OPTION dnl# from m4/xorg-macros.m4
    enable_debug_C=yes
    enable_debug_CXX=yes
 fi
 
 if test "$enable_debug" = yes; then
+   XORG_MEMORY_CHECK_FLAGS dnl# from m4/xorg-macros.m4
    enable_debug_fortran=yes
    enable_debug_C=yes
    enable_debug_CXX=yes
@@ -433,6 +436,7 @@ fi
 
 if test "$enable_debug_C" = yes; then
    CFLAGS="`echo "$CFLAGS"| sed -e 's|-O[0-9+]|-O0|'`"
+   XORG_CWARNFLAGS dnl# from m4/xorg-macros.m4
 else
    enable_debug_C=no
 fi
@@ -849,7 +853,7 @@ if test "$with_xcos" != no -a "$with_gui" != no; then
    ## ocaml which is only called when using Xcos
    #################
    if test "$with_modelica" != no; then
-      AC_CHECK_PROG_OCAML([])
+      AC_CHECK_PROG_OCAML([]) dnl# from m4/ocaml.m4
    fi
    XCOS_ENABLE=yes
 fi
@@ -1036,6 +1040,14 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 # XML to PDF/other Translator
                 AC_JAVA_CHECK_PACKAGE([fop],[org.apache.fop.pdf.PDFInfo],[XML to PDF Translator (fop)])
                 FOP=$PACKAGE_JAR_FILE
+                if test "x$FOP" = "x"; then
+                	test -z "$FOP"
+                	XORG_WITH_FOP dnl# from m4/xorg-macros.m4
+                else
+                	test ! -z "$FOP" && export FOP
+                	HAVE_FOP=1
+                	AC_SUBST([HAVE_FOP])
+                fi
                 AC_SUBST([FOP])
 
                 # xml.apache.org SVG Library (under mandriva for example)
@@ -1145,18 +1157,34 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
     AC_SUBST([JAVAC_DEBUG])
 
     if test "$enable_build_swig" != no -a "$enable_build_swig" != ""; then
-        SWIG_PROG([])
+        dnl# these are from m4/swig.m4
+        dnl# TODO: migrate to the AX_* versions of these macros
+        SWIG_PROG([2.0.9])
+        SWIG_ENABLE_CXX([])
         SWIG_ENABLE_JAVA([])
+        SWIG_MULTI_MODULE_SUPPORT([])
+        SWIG_PYTHON([no])
         AC_SUBST([SWIG_BIN])
+        AC_SUBST([SWIG_CXX])
         AC_SUBST([SWIG_JAVA])
-
+    else
+        enable_build_swig=no
     fi
 
     # Giws is the equivalent of Swig developed by the Scilab team
     # in order to provide a wrapper to Java from C/C++
     if test "$enable_build_giws" != no -a "$enable_build_giws" != ""; then
-        AC_GIWS([1.3.0])
+        AC_GIWS([1.3.0]) dnl# from m4/giws.m4
+    else
+        enable_build_giws=no
     fi
+else
+    enable_build_swig=no
+    enable_build_giws=no
+    HAVE_FOP=no
+    AC_SUBST([enable_build_swig])
+    AC_SUBST([enable_build_giws])
+    AC_SUBST([HAVE_FOP])
 fi
 
 JAVA_ENABLE=yes
@@ -1172,7 +1200,7 @@ AM_CONDITIONAL([NEED_JAVA],[test "$with_javasci" != no -o "$with_gui" != no -o "
 AM_CONDITIONAL([GUI],[test "$with_gui" != no])
 AM_CONDITIONAL([JAVASCI],[test "$with_javasci" != no])
 AM_CONDITIONAL([SWIG],[test "$enable_build_swig" != no -a "$enable_build_swig" != ""])
-AM_CONDITIONAL([GIWS],[test "$enable_build_giws" != no  -a "$enable_build_giws" != ""])
+AM_CONDITIONAL([GIWS],[test "$enable_build_giws" != no -a "$enable_build_giws" != ""])
 
 ##############################################################
 ## GUI module
@@ -1281,6 +1309,7 @@ AC_FUNC_ERROR_AT_LINE
 AC_FUNC_FORK
 AC_FUNC_MBRTOWC
 AC_FUNC_MALLOC
+XORG_CHECK_MALLOC_ZERO dnl# from m4/xorg-macros.m4
 AC_FUNC_MMAP
 AC_FUNC_REALLOC
 AC_CHECK_FUNCS([__argz_count __argz_next __argz_stringify dlopen \
@@ -1554,7 +1583,7 @@ AC_ARG_WITH([umfpack],
 
 UMFPACK_ENABLE=no
 if test "$with_umfpack" != no; then
-   AC_UMFPACK([$BLAS_LIBS])
+   AC_UMFPACK([$BLAS_LIBS]) dnl# from m4/umfpack.m4
    UMFPACK_ENABLE=yes
 fi
 
@@ -1602,19 +1631,22 @@ if test "$with_tk" != no; then
         [USER_TK_INC_PATH=$withval
     ])
 
-###########################
-########## X11 checks
-###########################
-        ## This check is mandatory since tk needs Xlib headers and libs
-        AC_PATH_XTRA
-        ##
+    ###########################
+    ########## X11 checks
+    ###########################
+    ## This check is mandatory since tk needs Xlib headers and libs
+    AC_PATH_XTRA
+    # FIXME: Replace `main' with a function in `-lXlib':
+    AC_CHECK_LIB([Xlib],[main])
+    AC_CHECK_HEADERS_ONCE([X.h Xlib.h])
+    ##
 
     saved_cflags="$CFLAGS"
     saved_ldflags="$LDFLAGS"
     saved_cppflags="$CXXFLAGS"
 
     AC_CHECK_LIB([dl],[main],[TCLTK_LIBS=" -ldl"])
-    AC_CHECK_TCLTK
+    AC_CHECK_TCLTK dnl# from m4/tcltk.m4
 
     # set variables
     if test "$WITH_TKSCI" = yes; then
@@ -1686,9 +1718,15 @@ AC_ARG_ENABLE([build-help],
         ])
 
 if test "$enable_build_help" != no; then
-    AC_DOCBOOK([]) dnl# from m4/docbook.m4
+    AC_DOCBOOK([])     dnl# from m4/docbook.m4
+    XORG_CHECK_DOCBOOK dnl# from m4/xorg-macros.m4
 else
+    unset XSL_STYLESHEET
     HELP_ENABLE=no
+    BUILD_TXTDOC=no
+    BUILD_PDFDOC=no
+    BUILD_PSDOC=no
+    BUILD_HTMLDOC=no
 fi
 
 if test "$JAVA_ENABLE" = no; then
@@ -1697,7 +1735,12 @@ fi
 
 AC_SUBST([HELP_ENABLE])
 
-AM_CONDITIONAL([BUILD_HELP],[test $HELP_ENABLE = yes])
+AM_CONDITIONAL([HAVE_STYLESHEETS],[test "x$XSL_STYLESHEET" != "x"])
+AM_CONDITIONAL([BUILD_HELP],[test "$HELP_ENABLE" = "yes"])
+AM_CONDITIONAL([BUILD_TXTDOC],[test "x$BUILDTXTDOC" = "xyes"])
+AM_CONDITIONAL([BUILD_PDFDOC],[test "x$BUILDPDFDOC" = "xyes"])
+AM_CONDITIONAL([BUILD_PSDOC],[test "x$BUILDPSDOC" = "xyes"])
+AM_CONDITIONAL([BUILD_HTMLDOC],[test "x$BUILDHTMLDOC" = "xyes"])
 
 ## Install XML help files ###
 
@@ -1728,6 +1771,8 @@ AC_SUBST([JAVASCI_ENABLE])
 
 COMPILATION_TESTS=no
 if test "$enable_compilation_tests" != no -a "$enable_compilation_tests" != ""; then
+   XORG_ENABLE_UNIT_TESTS        dnl# from m4/xorg-macros.m4
+   XORG_ENABLE_INTEGRATION_TESTS dnl# from m4/xorg-macros.m4
    COMPILATION_TESTS=yes
 fi
 
@@ -1813,14 +1858,16 @@ fi
 AC_C_BIGENDIAN dnl# For Apple universal builds
 AC_C_CONST([])
 AC_C_INLINE([])
-AC_C_PROTOTYPES
+AC_C_PROTOTYPES dnl# Kinda pointless as most current compilers support this,
+                dnl# but there is no harm in adding it, and I like including it
 
-AC_BACKTRACE([])
+AC_BACKTRACE([]) dnl# from m4/backtrace.m4
 
 ##########
 ##### Code quality
 ##########
 AC_PATH_PROG([SPLINT],[splint],[no])
+XORG_WITH_LINT([]) dnl# from m4/xorg-macros.m4
 
 ##########
 ##### Detect ccache and use it by default if available
@@ -1883,6 +1930,14 @@ AC_SUBST([SCI_CFLAGS])
 AC_SUBST([SCI_CXXFLAGS])
 AC_SUBST([SCI_FFLAGS])
 AC_SUBST([SCI_LDFLAGS])
+
+if test -z "$HAVE_FOP"; then
+	HAVE_FOP=no
+	AC_SUBST([HAVE_FOP])
+else
+	test ! -z "$HAVE_FOP" && export HAVE_FOP
+fi
+AM_CONDITIONAL([HAVE_FOP],[test ! -z "$HAVE_FOP" -a "$HAVE_FOP" != "no"])
 
 AC_CONFIG_FILES([
 libs/MALLOC/Makefile
@@ -2304,6 +2359,7 @@ echo "SWIG Configuration:"
 if test ! -z "$SWIG_BIN"; then
 	echo "  SWIG_BIN ........... = $SWIG_BIN"
 	echo "  SWIG_JAVA .......... = $SWIG_JAVA"
+	echo "  SWIG_CXX ........... = $SWIG_CXX"
 else
 	echo "  SWIG generation disabled"
 fi

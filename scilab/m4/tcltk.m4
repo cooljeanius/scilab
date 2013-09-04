@@ -45,6 +45,9 @@ dnl#  TCL_MAJOR_VERSION:
 dnl#  TCL_MINOR_VERSION: 
 dnl#  Check the version of tcl associated to header file tcl.h 
 
+AC_REQUIRE([AC_PROG_CPP])
+AC_CHECK_HEADERS_ONCE([stdio.h])
+
 CHK_TCL_INCLUDE_PATH=$1
 CHK_TCL_MAJOR=$2
 CHK_TCL_MINOR=$3
@@ -98,7 +101,7 @@ If you are using Intel Compiler, check if Intel Library (ex : libimf.so) is avai
 
 case $host_os in
   darwin* | rhapsody*) 
-# already added to CFLAGS 
+  # already added to CFLAGS 
   ;;
   *)
  TCL_INC_PATH=-I$i 
@@ -111,7 +114,7 @@ if test $TCL_VERSION_OK = 1; then
 else 
 	AC_MSG_RESULT([($TCL_VERSION) no])
 	if test "$TCL_VERSION" == "cannot happen"; then
-		AC_MSG_ERROR([cannot happen])
+	   AC_MSG_ERROR([cannot happen])
         else 
 	   AC_MSG_ERROR([You need at least version $CHK_TCL_MAJOR.$CHK_TCL_MINOR of tcl])
 	fi
@@ -201,6 +204,9 @@ dnl#  TK_VERSION : ( 8.1 f. ex.)
 dnl#  TK_MAJOR_VERSION: 
 dnl#  TK_MINOR_VERSION: 
 
+AC_REQUIRE([AC_PROG_CPP])
+AC_CHECK_HEADERS_ONCE([stdio.h])
+
 CHK_TK_INCLUDE_PATH=$1
 CHK_TK_MAJOR=$2
 CHK_TK_MINOR=$3
@@ -254,7 +260,7 @@ fi
 
 case $host_os in
   darwin* | rhapsody*) 
-# already added to CFLAGS 
+  # already added to CFLAGS 
   ;;
   *)
  TK_INC_PATH=-I$i 
@@ -275,7 +281,6 @@ fi
 CFLAGS=$saved_cflags
 CPPFLAGS=$saved_cppflags
 ]) dnl# End of AC_CHECK_TK_VERSION
-
 
 
 AC_DEFUN([AC_CHECK_TK_LIB],[
@@ -384,6 +389,7 @@ dnl# In addition, if the test was OK, the WITH_TK cpp symbol is defined
   TCL_LIB_OK=0
   TCL_INCLUDE_OK=0
   # Check for tcl header file
+  AC_CHECK_HEADERS_ONCE([tcl.h])
   AC_MSG_CHECKING([for header file tcl.h])
   dirs="$USER_TCL_INC_PATH /include /usr/include /usr/include/tcl /usr/include/tcl8.5 /usr/include/tcl8.* /usr/local/include /usr/local/include/tcl /usr/local/include/tcl8.*  /usr/X11/include/tcl /usr/X11/include/tcl8.* /usr/include/X11 /usr/include/X11/tcl /usr/include/X11/tcl8.* ../include ../../include /usr/tcl /usr/local/tcl /usr/local/tcl/include /usr/tcl/include /opt/local/include /sw/include"
   for i in $dirs ; do
@@ -401,12 +407,12 @@ dnl# In addition, if the test was OK, the WITH_TK cpp symbol is defined
 	fi
   done
 
-  #perform tk tests if tcl test passed
+  # perform tk tests if tcl test passed
   if test $TCL_LIB_OK = 0; then 
 	if test $TCL_INCLUDE_OK = 0; then 
         	AC_MSG_ERROR([no header file tcl.h found for 8.4* or 8.5*. Please install the dev library of tcl 8.4 or 8.5])
         else
-			AC_MSG_ERROR([header file tcl.h has been found for 8.4* or 8.5* but no corresponding tcl library (ie libtcl8.4.so or libtcl8.5.so)])
+		AC_MSG_ERROR([header file tcl.h has been found for 8.4* or 8.5* but no corresponding tcl library (ie libtcl8.4.so or libtcl8.5.so)])
         fi	
   fi
 # Check if X11/Xlib.h is available or not (tk.h needs it ...)
@@ -414,6 +420,7 @@ dnl# In addition, if the test was OK, the WITH_TK cpp symbol is defined
      [AC_MSG_ERROR([Could not find X11/Xlib.h ... This dependency is necessary because of tk.h... Provided by package libx11-dev under Debian/Ubuntu for example.])])
 
   # Check for tk header file
+  AC_CHECK_HEADERS_ONCE([tk.h])
   AC_MSG_CHECKING([for header file tk.h])
   TK_LIB_OK=0
   TK_INCLUDE_OK=0

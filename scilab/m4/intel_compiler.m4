@@ -5,34 +5,31 @@ dnl#
 
 AC_DEFUN([SCI_INTEL_COMPILER],
 [
-		
-		CFLAGS=" $CFLAGS -mp"
-		# -cm remove comments displays, -w90  -w95 remove warnings abort f90 f95 non standard
-
-		FFLAGS=" $FFLAGS -cm  -w90 -w95 -mp"
-
-		case "$host" in
-		  i*86-*-linux-gnu | *-pc-linux-gnu )
-			# -pc64 : double precision 
-			EXTRA_OPTIONS=" -pc64 -ffnalias -falias"
-			;;
-		esac
-
-		if test "$enable_debug_C" = yes; then
-			CFLAGS="-g $CFLAGS $EXTRA_OPTIONS"
-		else
-			CFLAGS="-O -DNDEBUG $CFLAGS "
-		fi
-
-		if test "$enable_debug_fortran" = yes; then
-			FFLAGS="-g $FFLAGS $EXTRA_OPTIONS"
-		else
-			FFLAGS="-O $FFLAGS "
-		fi		
-	
-		# TODO : voir si obligatoire vu que c'est en partie le boulot de AC_PROG_C
-		# TODO : translate the above "TODO" into English
-		# Google Translate says:
-		# "whether mandatory as it is in part the work of AC_PROG_C"
-
+	CFLAGS=" $CFLAGS -mp"
+	# -cm remove comments displays,
+	# -w90  -w95 remove warnings abort f90 f95 non standard
+	FFLAGS=" $FFLAGS -cm  -w90 -w95 -mp"
+	dnl# ?
+	case "$host" in
+	  i*86-*-linux-gnu | *-pc-linux-gnu )
+		# -pc64 : double precision 
+		EXTRA_OPTIONS=" -pc64 -ffnalias -falias"
+		;;
+	esac
+	dnl# ?
+	if test "$enable_debug_C" = yes; then
+		CFLAGS="-g $CFLAGS $EXTRA_OPTIONS"
+	else
+		CFLAGS="-O -DNDEBUG $CFLAGS "
+	fi
+	dnl# ?
+	if test "$enable_debug_fortran" = yes; then
+		FFLAGS="-g $FFLAGS $EXTRA_OPTIONS"
+	else
+		FFLAGS="-O $FFLAGS "
+	fi
+	# TODO : voir si obligatoire vu que c'est en partie le boulot de AC_PROG_C
+	# TODO : translate the above "TODO" into English
+	# Google Translate says:
+	# "whether mandatory as it is in part the work of AC_PROG_C"
 ])dnl# SCI_INTEL_COMPILER

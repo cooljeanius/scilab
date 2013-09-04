@@ -45,7 +45,6 @@ AC_DEFUN([AC_GREP_FILE],[
     fi
 ])
 
-
 #------------------------------------------------------------------------
 # AC_PROG_JAVAC
 #
@@ -96,8 +95,6 @@ AC_DEFUN([AC_PROG_JAVAC],[
         echo "Java base directory (probably) available here : $ac_java_jvm_dir"
     fi
 
-
-
     # If we were searching for javac, then set ac_java_jvm_dir
     if test "x$ac_java_jvm_dir" = "x"; then
         TMP=`dirname $JAVAC`
@@ -124,7 +121,6 @@ AC_DEFUN([AC_PROG_JAVAC],[
 
     AC_MSG_LOG([Using JAVAC=$JAVAC])
 ])
-
 
 #------------------------------------------------------------------------
 # AC_JAVA_TRY_COMPILE(imports, main-body, try-to-run, action-if-worked, [action-if-failed])
@@ -209,7 +205,6 @@ EOF
         ])dnl
     fi
 ])
-
 
 #------------------------------------------------------------------------
 # AC_JAVA_DETECT_JVM
@@ -314,7 +309,6 @@ Maybe JAVA_HOME is pointing to a JRE (Java Runtime Environment) instead of a JDK
     AC_MSG_RESULT([$ac_java_jvm_version])
 ])
 
-
 #------------------------------------------------------------------------
 # AC_JAVA_CLASSPATH
 #
@@ -356,7 +350,6 @@ AC_DEFUN([AC_JAVA_CLASSPATH],[
     AC_MSG_RESULT([$ac_java_classpath])
 ])
 
-
 #------------------------------------------------------------------------
 # AC_JAVA_JNI_INCLUDE
 #
@@ -375,7 +368,7 @@ AC_DEFUN([AC_JAVA_CLASSPATH],[
 #------------------------------------------------------------------------
 
 AC_DEFUN([AC_JAVA_JNI_INCLUDE],[
-
+    AC_CHECK_HEADERS_ONCE([jni.h jni_md.h])
     # JAVA_HOME specificed, check if we can find jni.h in this path
     if test !  -z "$JAVA_HOME"; then
         ac_java_jvm_dir=$JAVA_HOME
@@ -467,7 +460,7 @@ AC_DEFUN([AC_JAVA_JNI_LIBS],[
           machine=i386
           ;;
         sun*|sparc64)
-       # Sun
+        # Sun
           machine=sparc
           ;;
         powerpc|ppc64)
@@ -477,10 +470,10 @@ AC_DEFUN([AC_JAVA_JNI_LIBS],[
           machine=arm
           ;;
         sh*)
-            machine=sh
+          machine=sh
           ;;
         mips64)
-            machine=mips
+          machine=mips
           ;;
     esac
 
@@ -598,9 +591,9 @@ AC_DEFUN([AC_JAVA_JNI_LIBS],[
         fi
     fi
 
-        # Under GNU/Debian on a mipsel CPU, uname -m is still returning mips
-        # causing a confusion with mips... Therefor, I have to hardcode this
-        # test
+        # Under GNU/Debian on a mipsel CPU, uname -m is still returning
+        # "mips" causing a confusion with mips... Therefore, I have to
+        # hardcode this test.
         # Note that most of the code is duplicated from
         # Sun/Blackdown 1.4 for Linux (client JVM) tests
         F=jre/lib/mipsel/libjava.so
@@ -643,6 +636,8 @@ AC_DEFUN([AC_JAVA_JNI_LIBS],[
     # Make sure we can compile and link a trivial JNI program
 
     AC_REQUIRE([AC_PROG_CC])
+
+    AC_CHECK_HEADERS_ONCE([jni.h])
 
     AC_CACHE_CHECK([to see if we can link a JNI application],
         [ac_cv_java_jvm_working_jni_link],[
@@ -757,7 +752,7 @@ AC_DEFUN([AC_JAVA_TOOLS],[
 
     AC_JAVA_TOOLS_CHECK([JAVA],[java],[$ac_java_jvm_bin_dir])
 
-    # Don't error if java_g can not be found
+    # Do not error if java_g can not be found
     AC_JAVA_TOOLS_CHECK([JAVA_G],[java_g],[$ac_java_jvm_bin_dir],[1])
 
     if test "x$JAVA_G" = "x" ; then
@@ -841,7 +836,7 @@ AC_DEFUN([AC_JAVA_CHECK_PACKAGE],[
     for jardir in "`pwd`/thirdparty" "`pwd`/jar" $DEFAULT_JAR_DIR; do
       for jar in "$jardir/$1.jar" "$jardir/lib$1.jar" "$jardir/lib$1-java.jar" "$jardir/$1*.jar"; do
 
-# TODO check the behaviour when spaces
+# TODO check the behaviour when there are spaces
         jars_resolved=`ls $jar 2>/dev/null`
         for jar_resolved in $jars_resolved; do # If several jars matches
           if test -e "$jar_resolved"; then
@@ -891,9 +886,7 @@ AC_DEFUN([AC_JAVA_TOOLS_CHECK],[
     else
         AC_PATH_PROG([$1],[$2],[],[$3])
     fi
-
     # Check to see if $1 could not be found
-
     m4_ifval([$4],[],[
     if test "x[$]$1" = "x" ; then
         AC_MSG_ERROR([Cannot find $2])

@@ -7,7 +7,6 @@
 # are also available at
 # http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
 
-
 LOCALIZATION_C_SOURCES = \
 src/c/InitializeLocalization.c \
 src/c/setgetlanguage.c \
@@ -80,7 +79,7 @@ libscilocalization_la_root_DATA =  license.txt
 libscilocalization_la_etcdir = $(mydatadir)/etc
 libscilocalization_la_etc_DATA = etc/localization.quit etc/localization.start
 
-####�localization : gateway declaration ####
+####localization : gateway declaration ####
 libscilocalization_la_sci_gatewaydir = $(mydatadir)/sci_gateway
 libscilocalization_la_sci_gateway_DATA = sci_gateway/localization_gateway.xml
 
@@ -102,6 +101,5 @@ src/jni/LocaleToLCID.i
 if SWIG
 BUILT_SOURCES=swig
 endif
-
 
 include $(top_srcdir)/Makefile.incl.am

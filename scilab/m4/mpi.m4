@@ -15,7 +15,6 @@ dnl# * if it is available
 dnl# * what are the compilation flags 
 dnl# * what are linking flags
 AC_DEFUN([AC_OPENMPI],[
-
 if test "$with_openmpi" != 'yes' -a "$with_openmpi" != 'no'; then
    # Look if mpicc (which provides cflags and ldflags) is available
    AC_MSG_CHECKING([openmpi, for mpicc])
@@ -23,27 +22,27 @@ if test "$with_openmpi" != 'yes' -a "$with_openmpi" != 'no'; then
    MPICC="$with_openmpi/bin/mpicc" 
         if test -x "$MPICC"; then
                 AC_MSG_RESULT([$MPICC])
-				OPENMPI_CC=$MPICC
-				OPENMPI_FOUND=1
-		fi
+		OPENMPI_CC=$MPICC
+		OPENMPI_FOUND=1
+	fi
    if test $OPENMPI_FOUND -eq 0; then
    MPICC="$with_openmpi/mpicc" 
         if test -x "$MPICC"; then
-				OPENMPI_FOUND=1
-				OPENMPI_CC=$MPICC
+			OPENMPI_FOUND=1
+			OPENMPI_CC=$MPICC
                 AC_MSG_RESULT([$MPICC])
         fi
    fi
-		if test $OPENMPI_FOUND -eq 0; then
-                AC_MSG_ERROR([Unable to find $MPICC. Please check the path you provided])
-		else
-			unset OPENMPI_FOUND
-		fi
+   if test $OPENMPI_FOUND -eq 0; then
+      AC_MSG_ERROR([Unable to find $MPICC. Please check the path you provided])
+   else
+      unset OPENMPI_FOUND
+   fi
 else
-		AC_CHECK_PROGS([OPENMPI_CC],[mpicc],[no])
-		if test "x$MPICC" = "xno"; then
-				AC_MSG_ERROR([Unable to find mpicc in the path. Please check your installation of openmpi (example : openmpi & openmpi-dev with Debian)])
-		fi
+   AC_CHECK_PROGS([OPENMPI_CC],[mpicc],[no])
+   if test "x$MPICC" = "xno"; then
+      AC_MSG_ERROR([Unable to find mpicc in the path. Please check your installation of openmpi (example : openmpi & openmpi-dev with Debian)])
+   fi
 fi
 saved_cflags=$CFLAGS
 saved_LIBS="$LIBS"
@@ -76,8 +75,11 @@ AC_SUBST([OPENMPI_FLAGS])
 AC_SUBST([OPENMPI_LIBS])
 
 CFLAGS="$CFLAGS $OPENMPI_FLAGS"
+
+AC_REQUIRE([AC_LIBXML2])
 AC_CHECK_LIB([xml2],[xmlInitParserCtxt],[],[AC_MSG_ERROR([libxml2 : library missing])])
 
+AC_REQUIRE([AC_PCRE])
 AC_CHECK_HEADERS([pcre/tree.h],[],[AC_MSG_ERROR([pcre : library missing missing])])	
 
 # Gets compilation and library flags

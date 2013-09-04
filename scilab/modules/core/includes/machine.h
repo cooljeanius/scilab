@@ -598,7 +598,7 @@
 /* #undef HAVE___ARGZ_STRINGIFY */
 
 /* Define to the value of ${prefix}, as a string. */
-#define INSTALLPREFIX "/usr/local/Cellar/scilab/5.4.0"
+#define INSTALLPREFIX "/usr/local"
 
 /* libXML2 flags */
 #define LIBXML_FLAGS "-I/opt/local/include/libxml2"

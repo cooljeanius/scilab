@@ -1,3 +1,4 @@
 # ignore openoffice temporary lock files
-.~lock.*#
+.~lock.*
 *.bak
+*~

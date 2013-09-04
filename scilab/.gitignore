@@ -13,13 +13,14 @@
 #
 
 .deps
-.libs
+*.libs
 Makefile
 tmpwrk*/*
 *stamp-h*
 confdefs.h
 conftest.*
 config.h
+po/remove-potcdate.sed
 
 #
 # Java compilation output dir
@@ -148,9 +149,10 @@ tcllib
 _tmp_project.h
 scilab-bin
 scilab-cli-bin
+bin/scilab
 tclmajor
 tclminor
-.libs
+.libs/*
 mainsci.o
 *.log
 /java
@@ -171,7 +173,6 @@ modules/intersci/intersci
 #
 
 .svn
-
 
 # atoms generated files
 

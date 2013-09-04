@@ -3,7 +3,6 @@
 # Hook used to indent all xcos files before commiting
 #
 
-
 #
 # Pre-conditions
 #
@@ -195,4 +194,3 @@ __indent_java() {
 }
 
 indent
-

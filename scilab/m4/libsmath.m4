@@ -45,7 +45,7 @@ AC_ARG_WITH([blas-library],
 saved_ldflags="$LDFLAGS"
 
 if test "$with_blas_library" != no -a "$with_blas_library" != ""; then
-LDFLAGS="$LDFLAGS -L$with_blas_library"
+    LDFLAGS="$LDFLAGS -L$with_blas_library"
 fi
 
 # Get fortran linker names of BLAS functions to check for.
@@ -163,7 +163,7 @@ else
 fi
 ])dnl# ACX_BLAS
 
-dnl#----------------------------------------------------------------------------
+dnl#-----------------------------------------------------------------------
 dnl# @synopsis ACX_LAPACK([ACTION-IF-FOUND],[ACTION-IF-NOT-FOUND])
 dnl#
 dnl# This macro looks for a library that implements the LAPACK
@@ -264,12 +264,13 @@ else
 fi
 ])dnl# ACX_LAPACK
 
-dnl#----------------------------------------------------------------------------
+dnl#-----------------------------------------------------------------------
 dnl# @synopsis ACX_ARPACK([ACTION-IF-FOUND[, ACTION-IF-NOT-FOUND]])
 dnl#
 dnl# This macro looks for a library that implements the ARPACK
 dnl# collection of Fortran77 subroutines designed to solve large 
-dnl# scale eigenvalue problems (http://forge.scilab.org/index.php/p/arpack-ng/).
+dnl# scale eigenvalue problems.
+dnl# (see http://forge.scilab.org/index.php/p/arpack-ng/ for info)
 dnl# On success, it sets the ARPACK_LIBS output variable to
 dnl# hold the requisite library linkages.
 dnl#
@@ -354,7 +355,7 @@ fi
 dnl#
 dnl# Check whether ARPACK works (does not crash)
 dnl#
-dnl# Using a pure Fortran program doesn't seem to crash when linked
+dnl# Using a pure Fortran program does not seem to crash when linked
 dnl# with the buggy ARPACK library but the C++ program does.  Maybe
 dnl# it is the memory allocation that exposes the bug and using statically
 dnl# allocated arrays in Fortran does not?

@@ -6,6 +6,7 @@ DOMAIN = $(PACKAGE)
 # These two variables depend on the location of this directory.
 subdir = po
 top_builddir = ..
+top_srcdir = ..
 
 # These options get passed to xgettext.
 XGETTEXT_OPTIONS = --keyword=_ --keyword=N_ @XGETTEXT_EXTRA_OPTIONS@

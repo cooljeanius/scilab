@@ -170,5 +170,4 @@ _gen_ChangeId() {
 	git hash-object -t commit --stdin
 }
 
-
 add_ChangeId

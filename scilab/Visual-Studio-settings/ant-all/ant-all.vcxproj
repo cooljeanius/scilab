@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -153,8 +153,6 @@ cd $(SolutionDir)modules\javasci &amp;&amp; call ant clean
 cd $(SolutionDir)modules\hdf5 &amp;&amp; call ant clean
 cd $(SolutionDir)modules\xcos &amp;&amp; call ant clean
 
-
-
 </NMakeCleanCommandLine>
     <NMakeOutput>
     </NMakeOutput>
@@ -175,7 +173,6 @@ cd $(SolutionDir)modules\javasci &amp;&amp; call ant clean &amp;&amp; call ant
 cd $(SolutionDir)modules\hdf5 &amp;&amp; call ant clean &amp;&amp; call ant
 cd $(SolutionDir)modules\xcos &amp;&amp; call ant clean &amp;&amp; call ant
 
-
 </NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>set JAVA_HOME=$(SolutionDir)java\jdk
 set PATH=$(SolutionDir)java\ant\bin;%PATH%;
@@ -183,8 +180,6 @@ cd $(SolutionDir)modules\prebuildjava &amp;&amp; call ant clean
 cd $(SolutionDir)modules\javasci &amp;&amp; call ant clean 
 cd $(SolutionDir)modules\hdf5 &amp;&amp; call ant clean
 cd $(SolutionDir)modules\xcos &amp;&amp; call ant clean
-
-
 
 </NMakeCleanCommandLine>
     <NMakeOutput>

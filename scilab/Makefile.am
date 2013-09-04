@@ -34,23 +34,23 @@ changelogs = CHANGES CHANGES_5.1.X CHANGES_5.2.X CHANGES_5.3.X CHANGES_5.4.X
 
 bin_PROGRAMS		= scilab-bin scilab-cli-bin
 
-bin_SCRIPTS			= bin/scilab bin/scilab-adv-cli bin/scilab-cli
+bin_SCRIPTS		= bin/scilab bin/scilab-adv-cli bin/scilab-cli
 
 if IS_MACOSX
 bin_SCRIPTS 		+= bin/checkmacosx.applescript
 endif
 
-scilab_bin_LDFLAGS 	    = $(AM_LDFLAGS)
+scilab_bin_LDFLAGS 	= $(AM_LDFLAGS)
 scilab_cli_bin_LDFLAGS  = $(AM_LDFLAGS)
 
 if IS_MACOSX
-scilab_bin_LDFLAGS 		+= -framework Cocoa
+scilab_bin_LDFLAGS 	+= "-framework Cocoa"
 endif
 
 scilab_bin_CPPFLAGS = -I$(top_srcdir)/modules/io/includes/ \
-                    -I$(top_srcdir)/modules/console/includes/ \
-                    -I$(top_srcdir)/modules/localization/includes/ \
-                    $(AM_CPPFLAGS)
+                      -I$(top_srcdir)/modules/console/includes/ \
+                      -I$(top_srcdir)/modules/localization/includes/ \
+                      $(AM_CPPFLAGS)
 # --no-undefined --relax
 
 # Localization dep already exists because of the `exportLocaleToSystem' symbol
@@ -84,8 +84,8 @@ scilab_static_bin_LDFLAGS = -static -static-libgcc --start-group $(AM_LDFLAGS)
 scilab_static_bin_CFLAGS  = -Wl,--start-group `$(CXX) -print-file-name=libstdc++.a` $(AM_CFLAGS)
 
 #-static
-bin_PROGRAMS	   		+= scilab-static-bin
-scilab_static_bin_LDADD = $(top_builddir)/modules/libscilab.la
+bin_PROGRAMS	   	+= scilab-static-bin
+scilab_static_bin_LDADD  = $(top_builddir)/modules/libscilab.la
 
 scilab_static_bin_SOURCES = $(scilab_bin_SOURCES)
 endif
@@ -113,7 +113,8 @@ TESTS_VAR = $(top_srcdir)/modules/development_tools/tests/unit_tests/test_run_le
 
 all-local: $(TARGETS_ALL)
 
-rootdir=$(pkgdatadir)/etc/
+rootdir = $(pkgdatadir)/etc
+
 root_DATA = $(top_srcdir)/etc/scilab.start \
 $(top_srcdir)/etc/scilab.quit \
 $(top_srcdir)/etc/toolboxes.xml \
@@ -123,7 +124,7 @@ $(top_builddir)/etc/classpath.xml \
 $(top_builddir)/etc/logging.properties \
 $(top_builddir)/etc/librarypath.xml
 
-infofilesdir=$(pkgdatadir)/
+infofilesdir = $(pkgdatadir)
 infofiles_DATA = $(top_srcdir)/CHANGES_2.X \
 $(top_srcdir)/CHANGES_3.X \
 $(top_srcdir)/CHANGES_4.X \
@@ -145,7 +146,7 @@ $(top_srcdir)/Readme_Visual.txt \
 $(top_srcdir)/README_Windows.txt \
 $(top_builddir)/Version.incl
 
-valgrinddir=$(pkgdatadir)/tools/profiling
+valgrinddir = $(pkgdatadir)/tools/profiling
 valgrind_DATA = $(top_srcdir)/tools/profiling/valgrind.supp
 
 macros: $(top_builddir)/scilab-cli-bin $(top_builddir)/bin/scilab-cli check-jvm-dep
@@ -262,7 +263,7 @@ if CODE_COVERAGE
 	$(GENHTML) -o $(top_builddir)/coverage/results/ --show-details --highlight --legend $(top_builddir)/coverage/scilab-code-coverage.info; \
 	echo "To open the result: firefox  $(top_builddir)/coverage/results/index.html"; \
 	rm -f $(top_srcdir)/modules/differential_equations/callinter.h $(top_srcdir)/modules/linear_algebra/callinter.h $(top_srcdir)/modules/scicos/callinter.h $(top_srcdir)/modules/scicos_blocks/callinter.h
-#--frames is disable because of : http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=607206
+# --frames is disabled because of http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=607206
 else
 	@echo "Cannot start the code coverage. Add --enable-code-coverage to the ./configure and 'make clean all'."
 endif

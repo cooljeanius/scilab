@@ -21,7 +21,7 @@ SEP #019: extend exit
 SEP #020: Sparse Matrices Algorithms
 SEP #021: Nelder-Mead Optimization Algorithm
 SEP #022: Sorting Algorithms
-SEP #023: Extend «diary()»
+SEP #023: Extend diary()
 SEP #024: Introduce an easy way to manage sub chapters in the documentation
 SEP #025: Extend "fileinfo" to manage a column vector as input argument
 SEP #026: Extend "strsplit" to manage a column vector as input argument

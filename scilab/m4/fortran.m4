@@ -18,6 +18,7 @@ dnl#
 AC_DEFUN([AC_CHECK_UNDERSCORE_FORTRAN],[
 
 AC_REQUIRE([AC_PROG_CPP])
+AC_REQUIRE([AC_PROG_F77])
 AC_CHECK_PROGS([NM],[nm],[no])
 if test "x$NM" = "xno"; then
 	AC_MSG_ERROR([Unable to find nm in the path. nm is used to list all the symbol from a lib])

@@ -48,14 +48,14 @@ if test "x$with_hdf5_library" != "xyes"; then
     LIBS="$LIBS $HDF5_LIBS"
     AC_CHECK_LIB([hdf5],[H5Fopen],
             [],
-            [AC_MSG_ERROR([libhdf5 : library missing. (Cannot find symbol H5Fopen) in $with_hdf5_library. Check if libhdf5 is installed and if the version is correct])])
+            [AC_MSG_WARN([the libhdf5 library is missing. We cannot find symbol H5Fopen in ${with_hdf5_library}. Check if libhdf5 is installed and if the version is correct. This should be a hard error but it hase been changed to a warning to facilitate configure script development.])])
     
 else
     HDF5_LIBS="-lhdf5"
     LIBS="$LIBS $HDF5_LIBS"
     AC_CHECK_LIB([hdf5],[H5Fopen],
             [],
-            [AC_MSG_ERROR([libhdf5 : library missing. (Cannot find symbol H5Fopen). Check if libhdf5 is installed and if the version is correct])])
+            [AC_MSG_WARN([the libhdf5 library is missing. We cannot find the symbol H5Fopen. Check if libhdf5 is installed and if the version is correct. This should be a hard error but it hase been changed to a warning to facilitate configure script development.])])
 fi
 
 LIBS="$save_LIBS"

@@ -24,10 +24,10 @@ SCI_BUILDDIR="`pwd`"
 SCI_SRCDIR="$srcdir"
 SCI_SRCDIR_FULL="`cd $SCI_SRCDIR && pwd`"
 
-AC_SUBST([top_srcdir])   dnl# SUBST-ing this and the next variable are related to a bug
-AC_SUBST([top_builddir]) dnl# that requires using the --disable-dependency-tracking flag
-                         dnl# in order to work around it
-
+AC_SUBST([top_srcdir])   dnl# SUBST-ing this and the next variable are
+AC_SUBST([top_builddir]) dnl# related to a bug that requires using the
+                         dnl# --disable-dependency-tracking flag in
+                         dnl# order to work around it
 SCILAB_VERSION_MAJOR=5
 SCILAB_VERSION_MINOR=4
 SCILAB_VERSION_MAINTENANCE=0

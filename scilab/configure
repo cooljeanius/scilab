@@ -27825,9 +27825,8 @@ $as_echo "$python_path" >&6; }
 
 
 
-
     else
-        enable_build_swig=no
+                enable_build_swig=no
     fi
 
     # Giws is the equivalent of Swig developed by the Scilab team
@@ -28234,10 +28233,10 @@ else
 fi
 
      else
-        enable_build_giws=no
+                enable_build_giws=no
     fi
 else
-    enable_build_swig=no
+        enable_build_swig=no
     enable_build_giws=no
     HAVE_FOP=no
 
@@ -28248,7 +28247,7 @@ fi
 JAVA_ENABLE=yes
 
 if test -z "$JAVAC"; then
-   JAVA_ENABLE=no
+      JAVA_ENABLE=no
 fi
 
 
@@ -37814,7 +37813,7 @@ $as_echo_n "checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later...
 
 
 cat > conftest.$ac_ext <<EOF
-#line 37817 "configure"
+#line 37816 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TCL_INCLUDE_PATH/$CHK_TCL_INC_NAME"
@@ -38129,7 +38128,7 @@ $as_echo_n "checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later... " 
 
 
 cat > conftest.$ac_ext <<EOF
-#line 38132 "configure"
+#line 38131 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TK_INCLUDE_PATH/$CHK_TK_INC_NAME"
@@ -38697,7 +38696,7 @@ $as_echo_n "checking saxon... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 38700 "configure"
+// #line 38699 "configure"
 import java.util.regex.Pattern;
 
 import com.icl.saxon.Loader;
@@ -38814,7 +38813,7 @@ $as_echo_n "checking jlatexmath-fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 38817 "configure"
+// #line 38816 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.fop.JLaTeXMathObj;
@@ -39223,7 +39222,7 @@ MAKE_HTML="SGML_SEARCH_PATH=$XORG_SGML_PATH $DOCBOOKHTML"
 
 
  else
-    unset XSL_STYLESHEET
+        unset XSL_STYLESHEET
     HELP_ENABLE=no
     BUILD_TXTDOC=no
     BUILD_PDFDOC=no
@@ -39232,18 +39231,10 @@ MAKE_HTML="SGML_SEARCH_PATH=$XORG_SGML_PATH $DOCBOOKHTML"
 fi
 
 if test "$JAVA_ENABLE" = no; then
-    HELP_ENABLE=no
+        HELP_ENABLE=no
 fi
 
 
-
- if test "x$XSL_STYLESHEET" != "x"; then
-  HAVE_STYLESHEETS_TRUE=
-  HAVE_STYLESHEETS_FALSE='#'
-else
-  HAVE_STYLESHEETS_TRUE='#'
-  HAVE_STYLESHEETS_FALSE=
-fi
 
  if test "$HELP_ENABLE" = "yes"; then
   BUILD_HELP_TRUE=
@@ -39251,6 +39242,14 @@ fi
 else
   BUILD_HELP_TRUE='#'
   BUILD_HELP_FALSE=
+fi
+
+ if test "x$XSL_STYLESHEET" != "x"; then
+  HAVE_STYLESHEETS_TRUE=
+  HAVE_STYLESHEETS_FALSE='#'
+else
+  HAVE_STYLESHEETS_TRUE='#'
+  HAVE_STYLESHEETS_FALSE=
 fi
 
  if test "x$BUILDTXTDOC" = "xyes"; then
@@ -59552,12 +59551,12 @@ if test -z "${BUILD_HTMLDOC_TRUE}" && test -z "${BUILD_HTMLDOC_FALSE}"; then
   as_fn_error $? "conditional \"BUILD_HTMLDOC\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
-if test -z "${HAVE_STYLESHEETS_TRUE}" && test -z "${HAVE_STYLESHEETS_FALSE}"; then
-  as_fn_error $? "conditional \"HAVE_STYLESHEETS\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
 if test -z "${BUILD_HELP_TRUE}" && test -z "${BUILD_HELP_FALSE}"; then
   as_fn_error $? "conditional \"BUILD_HELP\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${HAVE_STYLESHEETS_TRUE}" && test -z "${HAVE_STYLESHEETS_FALSE}"; then
+  as_fn_error $? "conditional \"HAVE_STYLESHEETS\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${BUILD_TXTDOC_TRUE}" && test -z "${BUILD_TXTDOC_FALSE}"; then

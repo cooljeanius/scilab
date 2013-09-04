@@ -1042,7 +1042,7 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 FOP=$PACKAGE_JAR_FILE
                 if test "x$FOP" = "x"; then
                 	test -z "$FOP"
-                	XORG_WITH_FOP dnl# from m4/xorg-macros.m4
+                	XORG_WITH_FOP dnl# from m4/xorg-macros.m4 (supplies the HAVE_FOP conditional)
                 else
                 	test ! -z "$FOP" && export FOP
                 	HAVE_FOP=1
@@ -1163,11 +1163,12 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
         SWIG_ENABLE_CXX([])
         SWIG_ENABLE_JAVA([])
         SWIG_MULTI_MODULE_SUPPORT([])
-        SWIG_PYTHON([no])
+        SWIG_PYTHON([no]) dnl# the "no" means "no shadow classes"
         AC_SUBST([SWIG_BIN])
         AC_SUBST([SWIG_CXX])
         AC_SUBST([SWIG_JAVA])
     else
+        dnl# make sure it is turned off if not specifically requested
         enable_build_swig=no
     fi
 
@@ -1176,9 +1177,11 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
     if test "$enable_build_giws" != no -a "$enable_build_giws" != ""; then
         AC_GIWS([1.3.0]) dnl# from m4/giws.m4
     else
+        dnl# make sure it is turned off if not specifically requested
         enable_build_giws=no
     fi
 else
+    dnl# none of these can be turned on if Java is not turned on
     enable_build_swig=no
     enable_build_giws=no
     HAVE_FOP=no
@@ -1190,6 +1193,7 @@ fi
 JAVA_ENABLE=yes
 
 if test -z "$JAVAC"; then
+   dnl# Turn off Java if no java compiler was found
    JAVA_ENABLE=no
 fi
 
@@ -1721,6 +1725,7 @@ if test "$enable_build_help" != no; then
     AC_DOCBOOK([])     dnl# from m4/docbook.m4
     XORG_CHECK_DOCBOOK dnl# from m4/xorg-macros.m4
 else
+    dnl# make sure that the conditionals from XORG_CHECK_DOCBOOK still get defined
     unset XSL_STYLESHEET
     HELP_ENABLE=no
     BUILD_TXTDOC=no
@@ -1730,13 +1735,15 @@ else
 fi
 
 if test "$JAVA_ENABLE" = no; then
+    dnl# Java is needed to build help
     HELP_ENABLE=no
 fi
 
 AC_SUBST([HELP_ENABLE])
 
-AM_CONDITIONAL([HAVE_STYLESHEETS],[test "x$XSL_STYLESHEET" != "x"])
 AM_CONDITIONAL([BUILD_HELP],[test "$HELP_ENABLE" = "yes"])
+dnl# These are in case XORG_CHECK_DOCBOOK never gets run
+AM_CONDITIONAL([HAVE_STYLESHEETS],[test "x$XSL_STYLESHEET" != "x"])
 AM_CONDITIONAL([BUILD_TXTDOC],[test "x$BUILDTXTDOC" = "xyes"])
 AM_CONDITIONAL([BUILD_PDFDOC],[test "x$BUILDPDFDOC" = "xyes"])
 AM_CONDITIONAL([BUILD_PSDOC],[test "x$BUILDPSDOC" = "xyes"])
@@ -1931,6 +1938,8 @@ AC_SUBST([SCI_CXXFLAGS])
 AC_SUBST([SCI_FFLAGS])
 AC_SUBST([SCI_LDFLAGS])
 
+dnl# make sure that the conditionals from XORG_WITH_FOP still get defined,
+dnl# in case that macro never got run
 if test -z "$HAVE_FOP"; then
 	HAVE_FOP=no
 	AC_SUBST([HAVE_FOP])

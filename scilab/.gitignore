@@ -18,7 +18,7 @@ Makefile
 tmpwrk*/*
 *stamp-h*
 confdefs.h
-conftest.*
+conftest*
 config.h
 po/remove-potcdate.sed
 

@@ -1756,7 +1756,11 @@ AC_ARG_WITH([install-help-xml],
         ])
 HELP_INSTALL_ENABLE=no
 if test "$with_install_help_xml" != no -a "$with_install_help_xml" != ""; then
+   AC_PATH_PROG([XMLINDENT],[xmlindent],[no])
    HELP_INSTALL_ENABLE=yes
+else
+   test -z "$XMLINDENT"
+   AM_MISSING_PROG([XMLINDENT],[xmlindent])
 fi
 AM_CONDITIONAL([INSTALL_HELP_XML],[test "$HELP_INSTALL_ENABLE" != ""])
 
@@ -1874,6 +1878,7 @@ AC_BACKTRACE([]) dnl# from m4/backtrace.m4
 ##### Code quality
 ##########
 AC_PATH_PROG([SPLINT],[splint],[no])
+AC_PATH_PROG([ASTYLE],[astyle],[no])
 XORG_WITH_LINT([]) dnl# from m4/xorg-macros.m4
 
 ##########
@@ -2159,8 +2164,7 @@ echo "  Use MATIO (--without-matio) ...................... = $with_matio"
 echo ""
 if test "$with_gui" = no; then
    echo "Not using Xcos because of the option --without-gui"
-else
-if test $XCOS_ENABLE = yes; then
+elif test $XCOS_ENABLE = yes; then
    echo "Xcos enable"
    echo "Build modelica compiler (--without-modelica) ....... = $with_modelica"
    echo ""
@@ -2174,7 +2178,6 @@ if test $XCOS_ENABLE = yes; then
    fi
 else
    echo "Not using Xcos"
-fi
 fi
 
 echo ""
@@ -2248,6 +2251,7 @@ else
    echo "Not using MPI"
 fi
 
+echo ""
 if test "$with_openmpi" != "no"; then
    echo "OpenMPI Configuration:"
    echo "  OpenMPI LIBS ........... = $OPENMPI_LIBS"
@@ -2318,14 +2322,16 @@ else
 fi
 
 echo ""
+echo "Java documentation, graphic export:"
 if test ! -z "$JAVAC"; then
-	echo "Documentation, graphic export:"
 	echo "  FOP (XML => PDF) .... = $FOP"
 	echo "  JLaTeXMath Fop ...... = $JLATEXMATH_FOP"
 	echo "  Batik (SVG) ......... = $BATIK"
 	echo "  Avalon Framework .... = $AVALON_FRAMEWORK"
 	echo "  Commons I/O ......... = $COMMONS_IO"
 	echo "  XML graphics commons  = $XMLGRAPHICS_COMMONS"
+else
+	echo "  JAVA disabled, so documentation disabled as well"
 fi
 
 echo ""
@@ -2335,6 +2341,7 @@ echo "  Commons-beanutils ... = $COMMONS_BEANUTILS"
 echo "  Antlr ............... = $ANTLR"
 echo "  Junit4 .............. = $JUNIT4"
 echo "  Cobertura ........... = $COBERTURA"
+echo "  astyle .............. = $ASTYLE"
 echo "  splint .............. = $SPLINT"
 
 echo ""
@@ -2376,9 +2383,9 @@ fi
 echo ""
 echo "GIWS Configuration:"
 if test ! -z "$GIWS_BIN"; then
-echo "  GIWS_BIN ........... = $GIWS_BIN"
+	echo "  GIWS_BIN ........... = $GIWS_BIN"
 else
-echo "  GIWS generation disabled"
+	echo "  GIWS generation disabled"
 fi
 
 echo ""

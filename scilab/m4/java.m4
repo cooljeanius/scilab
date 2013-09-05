@@ -27,7 +27,7 @@ AC_DEFUN([AC_MSG_LOG],[
 #
 # Arguments:
 #    1. The pattern to search for
-#    2. The name of the file to be grep'ed
+#    2. The name of the file to be grepped
 #    3. The script to execute if PATTERN is found in FILE
 #    4. The script to execute if PATTERN is not found in FILE (optional)
 #------------------------------------------------------------------------
@@ -66,7 +66,7 @@ AC_DEFUN([AC_PROG_JAVAC],[
     if test "x$JAVAC" = "x" ; then
     case "$host_os" in
          *darwin* )
-         # Don't follow the symlink since Java under MacOS is messy
+         # Do NOT follow the symlink since Java under MacOS is messy
          # Uses the wrapper providing by Apple to retrieve the path
          # See: http://developer.apple.com/mac/library/qa/qa2001/qa1170.html
            JAVAC=$(/usr/libexec/java_home --arch x86_64 --failfast --version 1.6+)/bin/javac
@@ -110,7 +110,7 @@ AC_DEFUN([AC_PROG_JAVAC],[
     JAVAC_FLAGS=-g
     JAVAC_D_FLAG=-d
 
-    dnl Test out the Java compiler with an empty class
+    dnl# Test out the Java compiler with an empty class
     AC_MSG_CHECKING([to see if the java compiler works])
     AC_JAVA_TRY_COMPILE([],[],["no"],[works=yes])
     if test "$works" = "yes" ; then
@@ -266,7 +266,7 @@ Maybe JAVA_HOME is pointing to a JRE (Java Runtime Environment) instead of a JDK
 
     AC_MSG_LOG([Java found in $ac_java_jvm_dir])
 
-    # Try to detect non JDK JVMs. If we can't, then just assume a jdk
+    # Try to detect non JDK JVMs. If we cannot, then just assume a jdk
 
     AC_MSG_CHECKING([type of jvm])
 
@@ -340,7 +340,7 @@ AC_DEFUN([AC_JAVA_CLASSPATH],[
 
     # Append CLASSPATH if env var is set. Avoid append
     # under msys because CLASSPATH is in Win32 format
-    # and we can't combine it with a msys path.
+    # and we cannot combine it with a msys path.
     if test "x$CLASSPATH" != "x" && test "$ac_cv_tcl_win32" != "yes" ; then
         AC_MSG_LOG([Adding user supplied CLASSPATH env var])
         ac_java_classpath="${ac_java_classpath}:${CLASSPATH}"

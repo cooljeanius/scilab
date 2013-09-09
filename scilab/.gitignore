@@ -20,7 +20,7 @@ tmpwrk*/*
 confdefs.h
 conftest*
 config.h
-modules/core/include/machine.h
+modules/core/includes/machine.h
 po/remove-potcdate.sed
 
 #

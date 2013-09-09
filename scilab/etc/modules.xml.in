@@ -6,7 +6,7 @@
  @author Allan CORNET
  @date INRIA 2007
  ===================
- Don't touch if you do not know what you are doing
+ Do NOT touch if you do not know what you are doing
  Warning "core" module must be always the first module
  activate="yes" module will be launched ( or not "0")
  -->

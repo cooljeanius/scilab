@@ -20,6 +20,7 @@ tmpwrk*/*
 confdefs.h
 conftest*
 config.h
+modules/core/include/machine.h
 po/remove-potcdate.sed
 
 #
@@ -163,6 +164,7 @@ scilab.pc
 *.dia
 modules/intersci/intersci
 etc/logging.properties
+etc/modules.xml
 
 #
 # Subversion directories

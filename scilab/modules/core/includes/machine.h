@@ -211,7 +211,7 @@
 #define HAVE_LIBM 1
 
 /* Define to 1 if you have the `matio' library (-lmatio). */
-/* #undef HAVE_LIBMATIO */
+#define HAVE_LIBMATIO 1
 
 /* Define to 1 if you have the `ncurses' library (-lncurses). */
 /* #undef HAVE_LIBNCURSES */
@@ -269,10 +269,10 @@
 #define HAVE_MATH_H 1
 
 /* Define to 1 if you have the <matioConfig.h> header file. */
-/* #undef HAVE_MATIOCONFIG_H */
+#define HAVE_MATIOCONFIG_H 1
 
 /* Define to 1 if you have the <matio.h> header file. */
-/* #undef HAVE_MATIO_H */
+#define HAVE_MATIO_H 1
 
 /* Define to 1 if you have the `mblen' function. */
 #define HAVE_MBLEN 1
@@ -723,7 +723,7 @@
 #define WITH_HDF5 /**/
 
 /* With the MATIO library */
-/* #undef WITH_MATIO */
+#define WITH_MATIO /**/
 
 /* With OCAML */
 /* #undef WITH_OCAML */

@@ -1825,13 +1825,13 @@ AC_SUBST([GRAPHICS_ENABLE])
 AC_DISABLE_STATIC([])
 LT_PREREQ([2.2.7])
 LT_INIT([shared dlopen win32-dll])
-LT_LANG([C]) dnl# default
-LT_LANG([C++])
+LT_LANG([C])   dnl# default
+LT_LANG([C++]) dnl# also a default
 LT_LANG([Java])
 LT_LANG([Fortran 77])
 LT_LANG([Fortran])
 LT_LANG([Windows Resource])
-dnl# all of the above "LT_LANG"s (besides the default) add additional checks
+dnl# all of the above "LT_LANG"s (besides the defaults) add additional checks
 
 # Avoid to link all the dep from others libraries (*.la included by LIBADD)
 link_all_deplibs=no

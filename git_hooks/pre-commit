@@ -194,3 +194,7 @@ __indent_java() {
 }
 
 indent
+
+if test -e ".git/hooks/checkstyle-git-pre-commit-hook.pl" -a -x `which perl`; then
+	perl .git/hooks/checkstyle-git-pre-commit-hook.pl
+fi

@@ -6,4 +6,6 @@ workspace/
 *.o
 *.lo
 *.status
-*(autosaved)*
+*(Autosaved)*
+*.jnilib
+*.jar

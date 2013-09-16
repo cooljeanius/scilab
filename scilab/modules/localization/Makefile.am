@@ -50,8 +50,8 @@ libscilocalization_la_CFLAGS = $(AM_CFLAGS)
 
 # FIXME: platform dependent things should be in configure.ac
 if IS_MACOSX
-libscilocalization_la_LDFLAGS += -lintl -framework Cocoa
-libscilocalization_la_CFLAGS += -lintl -framework Cocoa
+libscilocalization_la_LDFLAGS += -lintl -Wl,-framework,Cocoa
+libscilocalization_la_CFLAGS += -lintl -Wl,-framework,Cocoa
 endif
 
 libscilocalization_algo_la_SOURCES = $(LOCALIZATION_C_SOURCES)

@@ -800,13 +800,6 @@ JAVA_ENABLE
 enable_build_giws
 enable_build_swig
 GIWS_BIN
-SWIG_JAVA
-SWIG_CXX
-SWIG_PYTHON_LIBS
-SWIG_PYTHON_CPPFLAGS
-SWIG_PYTHON_OPT
-PYTHON_LDFLAGS
-PYTHON_CPPFLAGS
 pkgpyexecdir
 pyexecdir
 pkgpythondir
@@ -816,6 +809,8 @@ PYTHON_EXEC_PREFIX
 PYTHON_PREFIX
 PYTHON_VERSION
 PYTHON
+SWIG_JAVA
+SWIG_CXX
 SWIG_RUNTIME_LIBS_DIR
 SWIG_BIN
 JAVAC_DEBUG
@@ -3646,7 +3641,6 @@ fi
 
 as_fn_append ac_header_list " jni.h"
 as_fn_append ac_header_list " jni_md.h"
-as_fn_append ac_header_list " Python.h"
 as_fn_append ac_header_list " stdlib.h"
 as_fn_append ac_header_list " unistd.h"
 as_fn_append ac_header_list " sys/param.h"
@@ -12501,10 +12495,11 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 # we cannot just do something like
-# AC_CHECK_PROG([cxx_present], [$CXX], ["yes"], ["no"])
-# because if the user has specified the full path of the desired C++ compiler then AC_CHECK_PROG
-# will fail.  If AC_PROG_CXX fails to find a c++ compiler it will set CXX=g++ so just run AC_CHECK_PROG
-# in this special case
+# AC_CHECK_PROG([cxx_present],[$CXX],["yes"],["no"])
+# because if the user has specified the full path of the desired C++ compiler,
+# then AC_CHECK_PROG will fail. If AC_PROG_CXX fails to find a c++ compiler,
+# then it will set "CXX=g++", so instead just run AC_CHECK_PROG in this
+# special case.
 case $CXX in
     g++)
         # Extract the first word of "$CXX", so it can be a program name with args.
@@ -19093,7 +19088,7 @@ esac
 ##########"
 
 case "$CC" in
-     gcc-* | gcc | ccache*gcc | ccache*gcc-* )
+   gcc-* | gcc | ccache*gcc | ccache*gcc-* )
    ## With GNU Compiler
 
    # enable the code coverage
@@ -19111,9 +19106,9 @@ case "$CC" in
         if test "$enable_debug_linker" = yes; then
             LDFLAGS="$LDFLAGS -Wl,--warn-common,-x"
         fi
-          DEBUG_CFLAGS="$DEBUG_CFLAGS -fdiagnostics-show-option -Werror=format-security"
-          ;;
-          esac
+        DEBUG_CFLAGS="$DEBUG_CFLAGS -fdiagnostics-show-option -Werror=format-security"
+        ;;
+      esac
    else
       DEBUG_CFLAGS="-DNDEBUG"
    fi
@@ -19127,101 +19122,104 @@ case "$CC" in
       COMPILER_LDFLAGS="$COMPILER_LDFLAGS -Wl,--no-as-needed"
    fi
 
-
    case "$host" in
      x86_64-*-linux-gnu | x86_64-linux-gnu)
         ARCH_CFLAGS="-m64"
-    ;;
+     ;;
      alpha-*-linux-gnu)
         ARCH_CFLAGS="-mieee-with-inexact"
         ARCH_LDFLAGS="-mieee-with-inexact"
-    ;;
+     ;;
      powerpc-*-linux-gnu)
         ARCH_CFLAGS="-D_GNU_SOURCE"
-    ;;
+     ;;
      *-*-solaris*)
         ARCH_CFLAGS="-DSVR4 -DSYSV -Dsolaris"
-    ;;
-   *-*-freebsd*)
-     ARCH_CFLAGS="-Dfreebsd"
-     ARCH_LDFLAGS="-lm"
      ;;
+     *-*-freebsd*)
+        ARCH_CFLAGS="-Dfreebsd"
+        ARCH_LDFLAGS="-lm"
+     ;;
+     alpha-*-netbsd*)
+        ARCH_CFLAGS="-Dnetbsd -mieee"
+        ARCH_FFLAGS="-Dnetbsd -mieee"
+     ;;
+     *-*-netbsd*)
+        ARCH_CFLAGS="-Dnetbsd"
+     ;;
+     *-*-darwin*)
+        if test -x ${SW_VERS} -o -x `which sw_vers`; then
+          if test "`sw_vers -productVersion | cut -d\. -f2`" -lt "7"; then
+            ARCH_CFLAGS="$ARCH_CFLAGS -no_compact_linkedit"
+            ARCH_CXXFLAGS="$ARCH_CXXFLAGS -no_compact_linkedit"
+            ARCH_LDFLAGS="$ARCH_LDFLAGS -no_compact_linkedit"
+            # We need this to be passed to all linker commands
+            LDFLAGS="$LDFLAGS -no_compact_linkedit"
+            { $as_echo "$as_me:${as_lineno-$LINENO}: Adding -no_compact_linkedit to the linker flags for Darwin" >&5
+$as_echo "$as_me: Adding -no_compact_linkedit to the linker flags for Darwin" >&6;}
+          else
+            { $as_echo "$as_me:${as_lineno-$LINENO}: Not using the -no_compact_linkedit linker flag on Lion and above" >&5
+$as_echo "$as_me: Not using the -no_compact_linkedit linker flag on Lion and above" >&6;}
+          fi
+        fi
 
-  alpha-*-netbsd*)
-    ARCH_CFLAGS="-Dnetbsd -mieee"
-    ARCH_FFLAGS="-Dnetbsd -mieee"
-    ;;
-
-  *-*-netbsd*)
-    ARCH_CFLAGS="-Dnetbsd"
-    ;;
-
-  *-*-darwin*)
-    ARCH_CFLAGS="$ARCH_CFLAGS -no_compact_linkedit"
-    ARCH_CXXFLAGS="$ARCH_CXXFLAGS -no_compact_linkedit"
-    ARCH_LDFLAGS="$ARCH_LDFLAGS -no_compact_linkedit"
-    # We need this to be passed to all linker commands
-    LDFLAGS="$LDFLAGS -no_compact_linkedit"
-
-    case "$F77" in
-         gfortran-*|gfortran)
-             # Extract from gfortran -v the version it has been built for
-               MAC_DETECTED_ARCH="`$F77 -v 2>&1|grep "Target:"|sed -e "s/Target: \([a-z0-9A-Z_]*\).*/\1/g"`"
-         ;;
-         *)
-        { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: gfortran not used. Could not detect the architecture. Switch to the default case: x86_64" >&5
+        case "$F77" in
+             gfortran-*|gfortran)
+                 # Extract from gfortran -v the version it has been built for
+                 MAC_DETECTED_ARCH="`$F77 -v 2>&1 | grep "Target:" | sed -e "s/Target: \([a-z0-9A-Z_]*\).*/\1/g"`"
+             ;;
+             *)
+                 { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: gfortran not used. Could not detect the architecture. Switch to the default case: x86_64" >&5
 $as_echo "$as_me: WARNING: gfortran not used. Could not detect the architecture. Switch to the default case: x86_64" >&2;}
-        MAC_DETECTED_ARCH="x86_64"
-         ;;
-    esac
-    CC="$CC -arch $MAC_DETECTED_ARCH"
-    CXX="$CXX -arch $MAC_DETECTED_ARCH"
-    ;;
-esac
-;; # end of the gcc case on the $CC
+                 MAC_DETECTED_ARCH="x86_64"
+             ;;
+        esac
+        CC="$CC -arch $MAC_DETECTED_ARCH"
+        CXX="$CXX -arch $MAC_DETECTED_ARCH"
+        ;;
+   esac
+   ;; # end of the gcc case on the $CC
    *)
-
         ## CC compiler (not GCC)
         if test "$enable_debug_C" != yes; then
              ARCH_CFLAGS="-DNDEBUG"
         fi
 
-case "$host" in
-# Dec Alpha OSF 4
-  alpha*-dec-osf4.*)
-      ARCH_CFLAGS="-std -ieee_with_inexact"
-      ARCH_LDFLAGS="-ieee_with_inexact"
-      ;;
-  alpha*-dec-osf*)
-      ARCH_CFLAGS="-ieee_with_inexact"
-      ARCH_LDFLAGS="-ieee_with_inexact"
-      ;;
-  rs6000-*-*) # IBM AIX RS 6000 (NO LONGER SUPPORTED)
-    ARCH_CFLAGS="-Daix -DSYSV"
-  ;;
-  mips-sgi-irix*) # SGI
-    ARCH_CFLAGS="-DSYSV -DSVR4"
-  ;;
-  *-*-hpux9.*)
-    ARCH_CFLAGS="-DSYSV -Dhpux"
-  ;;
-  *-*-hpux10.*) # HP 10
-    if test "$enable_debug_C" = yes; then
-      ARCH_CFLAGS="-DSYSV -Dhpux"
-    else
-      ARCH_CFLAGS="-DSYSV -Dhpux +Z +DAportable"
-    fi
-  ;;
-
-  *-*-hpux11.*) # HP 11
-    ARCH_CFLAGS="-DSYSV -Dhpux -Dhppa +Z +DAportable"
-  ;;
-  *-*-solaris*) # SUN SOLARIS
-    ARCH_CFLAGS="-DSVR4 -DSYSV -Dsolaris -I/usr/local/include/"
-    ARCH_LDFLAGS="-L/usr/local/lib/"
-  ;;
-esac
-;; # end of not a gcc compiler
+        case "$host" in
+        # Dec Alpha OSF 4
+          alpha*-dec-osf4.*)
+              ARCH_CFLAGS="-std -ieee_with_inexact"
+              ARCH_LDFLAGS="-ieee_with_inexact"
+              ;;
+          alpha*-dec-osf*)
+              ARCH_CFLAGS="-ieee_with_inexact"
+              ARCH_LDFLAGS="-ieee_with_inexact"
+              ;;
+          rs6000-*-*) # IBM AIX RS 6000 (NO LONGER SUPPORTED)
+            ARCH_CFLAGS="-Daix -DSYSV"
+          ;;
+          mips-sgi-irix*) # SGI
+            ARCH_CFLAGS="-DSYSV -DSVR4"
+          ;;
+          *-*-hpux9.*)
+            ARCH_CFLAGS="-DSYSV -Dhpux"
+          ;;
+          *-*-hpux10.*) # HP 10
+            if test "$enable_debug_C" = yes; then
+              ARCH_CFLAGS="-DSYSV -Dhpux"
+            else
+              ARCH_CFLAGS="-DSYSV -Dhpux +Z +DAportable"
+            fi
+          ;;
+          *-*-hpux11.*) # HP 11
+            ARCH_CFLAGS="-DSYSV -Dhpux -Dhppa +Z +DAportable"
+          ;;
+          *-*-solaris*) # SUN SOLARIS
+            ARCH_CFLAGS="-DSVR4 -DSYSV -Dsolaris -I/usr/local/include/"
+            ARCH_LDFLAGS="-L/usr/local/lib/"
+          ;;
+        esac
+   ;; # end of not a gcc compiler
 esac
 
 # enable the code coverage
@@ -20321,7 +20319,7 @@ $as_echo "$ac_java_classpath" >&6; }
 $as_echo_n "checking to see if the java compiler works... " >&6; }
 
     cat << \EOF > conftest.java
-// #line 20324 "configure"
+// #line 20322 "configure"
 import java.util.regex.Pattern;
 
 
@@ -20408,7 +20406,7 @@ $as_echo_n "checking type of jvm... " >&6; }
     if test "x$ac_java_jvm_name" = "x" ; then
 
     cat << \EOF > conftest.java
-// #line 20411 "configure"
+// #line 20409 "configure"
 import java.util.regex.Pattern;
 
 import gnu.java.io.EncodingManager;
@@ -20492,7 +20490,7 @@ $as_echo_n "checking java API version... " >&6; }
     # The class java.nio.charset.Charset is new to 1.4
 
     cat << \EOF > conftest.java
-// #line 20495 "configure"
+// #line 20493 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.charset.Charset;
@@ -20557,7 +20555,7 @@ EOF
     # The class java.lang.StringBuilder is new to 1.5
 
     cat << \EOF > conftest.java
-// #line 20560 "configure"
+// #line 20558 "configure"
 import java.util.regex.Pattern;
 
 import java.lang.StringBuilder;
@@ -20622,7 +20620,7 @@ EOF
     # The class java.util.ArrayDeque is new to 1.6
 
     cat << \EOF > conftest.java
-// #line 20625 "configure"
+// #line 20623 "configure"
 import java.util.regex.Pattern;
 
 import java.util.ArrayDeque;
@@ -20687,7 +20685,7 @@ EOF
     # The class java.nio.file.Path is new to 1.7
 
     cat << \EOF > conftest.java
-// #line 20690 "configure"
+// #line 20688 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.file.Path;
@@ -21453,7 +21451,7 @@ $as_echo "$ac_cv_java_jvm_jni_working" >&6; }
         case "$host_os" in
              *Darwin* | *darwin*)
                # Mac OS X does not link against the lib but uses -framework
-               JAVA_JNI_LIBS="-framework JavaVM"
+               JAVA_JNI_LIBS="-Wl,-framework,JavaVM"
              ;;
              *)
 
@@ -22626,7 +22624,7 @@ $as_echo_n "checking jgraphx... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 22629 "configure"
+// #line 22627 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.model.mxCell;
@@ -22733,7 +22731,7 @@ $as_echo_n "checking minimal version (1.8.0.0) of jgraphx... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 22736 "configure"
+// #line 22734 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.view.mxGraph;
@@ -22804,7 +22802,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 22807 "configure"
+// #line 22805 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.view.mxGraph;
@@ -22895,7 +22893,7 @@ $as_echo_n "checking scirenderer... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 22898 "configure"
+// #line 22896 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -23002,7 +23000,7 @@ $as_echo_n "checking minimal version (1.0.2) of scirenderer... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 23005 "configure"
+// #line 23003 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -23073,7 +23071,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 23076 "configure"
+// #line 23074 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -23163,7 +23161,7 @@ $as_echo_n "checking flexdock... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 23166 "configure"
+// #line 23164 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.docking.DockingManager;
@@ -23270,7 +23268,7 @@ $as_echo_n "checking minimal version (1.2.0) of flexdock... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 23273 "configure"
+// #line 23271 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.util.Utilities;
@@ -23341,7 +23339,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 23344 "configure"
+// #line 23342 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.util.Utilities;
@@ -23431,7 +23429,7 @@ $as_echo_n "checking looks... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 23434 "configure"
+// #line 23432 "configure"
 import java.util.regex.Pattern;
 
 import com.jgoodies.looks.common.MenuItemRenderer;
@@ -23548,7 +23546,7 @@ $as_echo_n "checking jgoodies-looks... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 23551 "configure"
+// #line 23549 "configure"
 import java.util.regex.Pattern;
 
 import com.jgoodies.looks.common.MenuItemRenderer;
@@ -23666,7 +23664,7 @@ $as_echo_n "checking skinlf... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 23669 "configure"
+// #line 23667 "configure"
 import java.util.regex.Pattern;
 
 import com.l2fprod.util.AccessUtils;
@@ -23783,7 +23781,7 @@ $as_echo_n "checking jogl2... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 23786 "configure"
+// #line 23784 "configure"
 import java.util.regex.Pattern;
 
 import javax.media.opengl.glu.GLUnurbs;
@@ -24006,7 +24004,7 @@ $as_echo_n "checking gluegen2-rt... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 24009 "configure"
+// #line 24007 "configure"
 import java.util.regex.Pattern;
 
 import jogamp.common.os.MachineDescriptionRuntime;
@@ -24180,7 +24178,7 @@ $as_echo_n "checking jhall... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 24183 "configure"
+// #line 24181 "configure"
 import java.util.regex.Pattern;
 
 import javax.help.JHelp;
@@ -24297,7 +24295,7 @@ $as_echo_n "checking javahelp2... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 24300 "configure"
+// #line 24298 "configure"
 import java.util.regex.Pattern;
 
 import javax.help.JHelp;
@@ -24415,7 +24413,7 @@ $as_echo_n "checking jrosetta-API... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 24418 "configure"
+// #line 24416 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.interfaces.core.ConsoleConfiguration;
@@ -24530,7 +24528,7 @@ $as_echo_n "checking jrosetta-api... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 24533 "configure"
+// #line 24531 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.interfaces.core.ConsoleConfiguration;
@@ -24648,7 +24646,7 @@ $as_echo_n "checking jrosetta-engine... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 24651 "configure"
+// #line 24649 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.core.action.AbstractConsoleAction;
@@ -24754,7 +24752,7 @@ $as_echo_n "checking minimal version (1.0.4) of jrosetta-engine... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 24757 "configure"
+// #line 24755 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.util.ConfigurationBuilder;
@@ -24825,7 +24823,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 24828 "configure"
+// #line 24826 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.util.ConfigurationBuilder;
@@ -24916,7 +24914,7 @@ $as_echo_n "checking jeuclid-core... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 24919 "configure"
+// #line 24917 "configure"
 import java.util.regex.Pattern;
 
 import net.sourceforge.jeuclid.LayoutContext;
@@ -25034,7 +25032,7 @@ $as_echo_n "checking fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 25037 "configure"
+// #line 25035 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.fop.pdf.PDFInfo;
@@ -25284,7 +25282,7 @@ $as_echo_n "checking batik-all... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 25287 "configure"
+// #line 25285 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.parser.Parser;
@@ -25401,7 +25399,7 @@ $as_echo_n "checking batik... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 25404 "configure"
+// #line 25402 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.parser.Parser;
@@ -25508,7 +25506,7 @@ $as_echo_n "checking minimal version (1.7) of batik... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 25511 "configure"
+// #line 25509 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.Version;
@@ -25579,7 +25577,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 25582 "configure"
+// #line 25580 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.Version;
@@ -25669,7 +25667,7 @@ $as_echo_n "checking commons-io... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 25672 "configure"
+// #line 25670 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.output.CountingOutputStream;
@@ -25786,7 +25784,7 @@ $as_echo_n "checking xmlgraphics-commons... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 25789 "configure"
+// #line 25787 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.xmlgraphics.util.Service;
@@ -25903,7 +25901,7 @@ $as_echo_n "checking avalon-framework... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 25906 "configure"
+// #line 25904 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.avalon.framework.configuration.ConfigurationException;
@@ -26020,7 +26018,7 @@ $as_echo_n "checking xml-apis-ext... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 26023 "configure"
+// #line 26021 "configure"
 import java.util.regex.Pattern;
 
 import org.w3c.dom.svg.SVGDocument;
@@ -26137,7 +26135,7 @@ $as_echo_n "checking xml-commons-apis-ext... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 26140 "configure"
+// #line 26138 "configure"
 import java.util.regex.Pattern;
 
 import org.w3c.dom.svg.SVGDocument;
@@ -26257,7 +26255,7 @@ $as_echo_n "checking commons-logging... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 26260 "configure"
+// #line 26258 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.logging.LogFactory;
@@ -26374,7 +26372,7 @@ $as_echo_n "checking jlatexmath... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 26377 "configure"
+// #line 26375 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -26481,7 +26479,7 @@ $as_echo_n "checking minimal version (1.0.0) of jlatexmath... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 26484 "configure"
+// #line 26482 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -26552,7 +26550,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 26555 "configure"
+// #line 26553 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -26647,7 +26645,7 @@ $as_echo_n "checking checkstyle... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 26650 "configure"
+// #line 26648 "configure"
 import java.util.regex.Pattern;
 
 import com.puppycrawl.tools.checkstyle.CheckStyleTask;
@@ -26764,7 +26762,7 @@ $as_echo_n "checking commons-beanutils... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 26767 "configure"
+// #line 26765 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.beanutils.Converter;
@@ -26881,7 +26879,7 @@ $as_echo_n "checking antlr... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 26884 "configure"
+// #line 26882 "configure"
 import java.util.regex.Pattern;
 
 import antlr.TokenStreamException;
@@ -26998,7 +26996,7 @@ $as_echo_n "checking junit4... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 27001 "configure"
+// #line 26999 "configure"
 import java.util.regex.Pattern;
 
 import org.junit.Assert;
@@ -27115,7 +27113,7 @@ $as_echo_n "checking cobertura... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 27118 "configure"
+// #line 27116 "configure"
 import java.util.regex.Pattern;
 
 import net.sourceforge.cobertura.merge.Main;
@@ -27232,7 +27230,7 @@ $as_echo_n "checking asm3... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 27235 "configure"
+// #line 27233 "configure"
 import java.util.regex.Pattern;
 
 import org.objectweb.asm.Type;
@@ -27348,7 +27346,7 @@ $as_echo_n "checking asm... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 27351 "configure"
+// #line 27349 "configure"
 import java.util.regex.Pattern;
 
 import org.objectweb.asm.Type;
@@ -27510,7 +27508,7 @@ fi
 
 	if test -z "$SWIG_BIN" ; then
 		as_fn_error $? "Cannot find swig. Please install it (package swig under Debian) or remove the option --enable-build-swig" "$LINENO" 5
-	elif test -n "2.0.9" ; then
+	elif test -n "" ; then
 		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for SWIG version" >&5
 $as_echo_n "checking for SWIG version... " >&6; }
 		swig_version=`$SWIG_BIN -version 2>&1 | grep 'SWIG Version' | sed 's/.*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/g'`
@@ -27518,16 +27516,16 @@ $as_echo_n "checking for SWIG version... " >&6; }
 $as_echo "$swig_version" >&6; }
 		if test -n "$swig_version" ; then
 			# Calculate the required version number
-                        swig_tmp=`echo 2.0.9 | sed 's/[^0-9]\+/ /g'`
-                        swig_required_version=`echo $swig_tmp | awk '{print  1000000 * 2.0.9 +  1000 *  + }'`
+                        swig_tmp=`echo  | sed 's/[^0-9]\+/ /g'`
+                        swig_required_version=`echo $swig_tmp | awk '{print  1000000 *  +  1000 *  + }'`
 
 			# Calculate the available version number
                         swig_tmp=`echo $swig_version | sed 's/[^0-9]\+/ /g'`
-                        swig_tmp=`echo $swig_tmp | awk '{print  1000000 * 2.0.9 +  1000 *  + }'`
+                        swig_tmp=`echo $swig_tmp | awk '{print  1000000 *  +  1000 *  + }'`
 
 			if test $swig_required_version -gt $swig_tmp ; then
-				{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: SWIG version 2.0.9 is required, you have $swig_version" >&5
-$as_echo "$as_me: WARNING: SWIG version 2.0.9 is required, you have $swig_version" >&2;}
+				{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: SWIG version  is required, you have $swig_version" >&5
+$as_echo "$as_me: WARNING: SWIG version  is required, you have $swig_version" >&2;}
 			fi
 		else
 			{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: cannot determine SWIG version" >&5
@@ -27547,282 +27545,6 @@ $as_echo "$as_me: SWIG runtime library directory is '$SWIG_RUNTIME_LIBS_DIR'" >&
 
 
 	SWIG_JAVA=" -java"
-
-
-
-	SWIG="$SWIG_BIN -c"
-
-
-
-
-
-
-
-        # Find any Python interpreter.
-    if test -z "$PYTHON"; then
-      for ac_prog in python python2 python3 python3.3 python3.2 python3.1 python3.0 python2.7  python2.6 python2.5 python2.4 python2.3 python2.2 python2.1 python2.0
-do
-  # Extract the first word of "$ac_prog", so it can be a program name with args.
-set dummy $ac_prog; ac_word=$2
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-$as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_path_PYTHON+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  case $PYTHON in
-  [\\/]* | ?:[\\/]*)
-  ac_cv_path_PYTHON="$PYTHON" # Let the user override the test with a path.
-  ;;
-  *)
-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_path_PYTHON="$as_dir/$ac_word$ac_exec_ext"
-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-  ;;
-esac
-fi
-PYTHON=$ac_cv_path_PYTHON
-if test -n "$PYTHON"; then
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $PYTHON" >&5
-$as_echo "$PYTHON" >&6; }
-else
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
-$as_echo "no" >&6; }
-fi
-
-
-  test -n "$PYTHON" && break
-done
-test -n "$PYTHON" || PYTHON=":"
-
-    fi
-    am_display_PYTHON=python
-
-
-  if test "$PYTHON" = :; then
-      as_fn_error $? "no suitable Python interpreter found" "$LINENO" 5
-  else
-
-
-  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $am_display_PYTHON version" >&5
-$as_echo_n "checking for $am_display_PYTHON version... " >&6; }
-if ${am_cv_python_version+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  am_cv_python_version=`$PYTHON -c "import sys; sys.stdout.write(sys.version[:3])"`
-fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $am_cv_python_version" >&5
-$as_echo "$am_cv_python_version" >&6; }
-  PYTHON_VERSION=$am_cv_python_version
-
-
-
-  PYTHON_PREFIX='${prefix}'
-
-  PYTHON_EXEC_PREFIX='${exec_prefix}'
-
-
-
-  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $am_display_PYTHON platform" >&5
-$as_echo_n "checking for $am_display_PYTHON platform... " >&6; }
-if ${am_cv_python_platform+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  am_cv_python_platform=`$PYTHON -c "import sys; sys.stdout.write(sys.platform)"`
-fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $am_cv_python_platform" >&5
-$as_echo "$am_cv_python_platform" >&6; }
-  PYTHON_PLATFORM=$am_cv_python_platform
-
-
-  # Just factor out some code duplication.
-  am_python_setup_sysconfig="\
-import sys
-# Prefer sysconfig over distutils.sysconfig, for better compatibility
-# with python 3.x.  See automake bug#10227.
-try:
-    import sysconfig
-except ImportError:
-    can_use_sysconfig = 0
-else:
-    can_use_sysconfig = 1
-# Can't use sysconfig in CPython 2.7, since it's broken in virtualenvs:
-# <https://github.com/pypa/virtualenv/issues/118>
-try:
-    from platform import python_implementation
-    if python_implementation() == 'CPython' and sys.version[:3] == '2.7':
-        can_use_sysconfig = 0
-except ImportError:
-    pass"
-
-
-            { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $am_display_PYTHON script directory" >&5
-$as_echo_n "checking for $am_display_PYTHON script directory... " >&6; }
-if ${am_cv_python_pythondir+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  if test "x$prefix" = xNONE
-     then
-       am_py_prefix=$ac_default_prefix
-     else
-       am_py_prefix=$prefix
-     fi
-     am_cv_python_pythondir=`$PYTHON -c "
-$am_python_setup_sysconfig
-if can_use_sysconfig:
-    sitedir = sysconfig.get_path('purelib', vars={'base':'$am_py_prefix'})
-else:
-    from distutils import sysconfig
-    sitedir = sysconfig.get_python_lib(0, 0, prefix='$am_py_prefix')
-sys.stdout.write(sitedir)"`
-     case $am_cv_python_pythondir in
-     $am_py_prefix*)
-       am__strip_prefix=`echo "$am_py_prefix" | sed 's|.|.|g'`
-       am_cv_python_pythondir=`echo "$am_cv_python_pythondir" | sed "s,^$am__strip_prefix,$PYTHON_PREFIX,"`
-       ;;
-     *)
-       case $am_py_prefix in
-         /usr|/System*) ;;
-         *)
-	  am_cv_python_pythondir=$PYTHON_PREFIX/lib/python$PYTHON_VERSION/site-packages
-	  ;;
-       esac
-       ;;
-     esac
-
-fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $am_cv_python_pythondir" >&5
-$as_echo "$am_cv_python_pythondir" >&6; }
-  pythondir=$am_cv_python_pythondir
-
-
-
-  pkgpythondir=\${pythondir}/$PACKAGE
-
-
-        { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $am_display_PYTHON extension module directory" >&5
-$as_echo_n "checking for $am_display_PYTHON extension module directory... " >&6; }
-if ${am_cv_python_pyexecdir+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  if test "x$exec_prefix" = xNONE
-     then
-       am_py_exec_prefix=$am_py_prefix
-     else
-       am_py_exec_prefix=$exec_prefix
-     fi
-     am_cv_python_pyexecdir=`$PYTHON -c "
-$am_python_setup_sysconfig
-if can_use_sysconfig:
-    sitedir = sysconfig.get_path('platlib', vars={'platbase':'$am_py_prefix'})
-else:
-    from distutils import sysconfig
-    sitedir = sysconfig.get_python_lib(1, 0, prefix='$am_py_prefix')
-sys.stdout.write(sitedir)"`
-     case $am_cv_python_pyexecdir in
-     $am_py_exec_prefix*)
-       am__strip_prefix=`echo "$am_py_exec_prefix" | sed 's|.|.|g'`
-       am_cv_python_pyexecdir=`echo "$am_cv_python_pyexecdir" | sed "s,^$am__strip_prefix,$PYTHON_EXEC_PREFIX,"`
-       ;;
-     *)
-       case $am_py_exec_prefix in
-         /usr|/System*) ;;
-         *)
-	   am_cv_python_pyexecdir=$PYTHON_EXEC_PREFIX/lib/python$PYTHON_VERSION/site-packages
-	   ;;
-       esac
-       ;;
-     esac
-
-fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $am_cv_python_pyexecdir" >&5
-$as_echo "$am_cv_python_pyexecdir" >&6; }
-  pyexecdir=$am_cv_python_pyexecdir
-
-
-
-  pkgpyexecdir=\${pyexecdir}/$PACKAGE
-
-
-
-  fi
-
-
-
-
-
-
-
-
-	# Check for Python include path
-	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for Python include path" >&5
-$as_echo_n "checking for Python include path... " >&6; }
-	python_path=${PYTHON%/bin*}
-	for i in "$python_path/include/python$PYTHON_VERSION/" "$python_path/include/python/" "$python_path/" ; do
-		python_path=`find $i -type f -name Python.h -print`
-		if test -n "$python_path" ; then
-			break
-		fi
-	done
-	for i in $python_path ; do
-		python_path=${python_path%/Python.h}
-		break
-	done
-	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $python_path" >&5
-$as_echo "$python_path" >&6; }
-	if test -z "$python_path" ; then
-		as_fn_error $? "cannot find Python include path" "$LINENO" 5
-	fi
-	PYTHON_CPPFLAGS=-I$python_path
-
-
-
-
-	# Check for Python library path
-	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for Python library path" >&5
-$as_echo_n "checking for Python library path... " >&6; }
-	python_path=${PYTHON%/bin*}
-	for i in "$python_path/lib/python$PYTHON_VERSION/config/" "$python_path/lib/python$PYTHON_VERSION/" "$python_path/lib/python/config/" "$python_path/lib/python/" "$python_path/" ; do
-		python_path=`find $i -type f -name libpython$PYTHON_VERSION.* -print`
-		if test -n "$python_path" ; then
-			break
-		fi
-	done
-	for i in $python_path ; do
-		python_path=${python_path%/libpython*}
-		break
-	done
-	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $python_path" >&5
-$as_echo "$python_path" >&6; }
-	if test -z "$python_path" ; then
-		as_fn_error $? "cannot find Python library path" "$LINENO" 5
-	fi
-	PYTHON_LDFLAGS="-L$python_path -lpython$PYTHON_VERSION"
-
-
-
-
-
-
-
-
-	test "xno" != "xno" || swig_shadow=" -noproxy"
-	SWIG_PYTHON_OPT=-python$swig_shadow
-
-	SWIG_PYTHON_CPPFLAGS=$PYTHON_CPPFLAGS
-
-	SWIG_PYTHON_LIBS="$SWIG_RUNTIME_LIBS_DIR -lswigpy"
 
 
 
@@ -29912,6 +29634,57 @@ done
 ########################
 ## test for header files
 ########################
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking whether sys/types.h defines makedev" >&5
+$as_echo_n "checking whether sys/types.h defines makedev... " >&6; }
+if ${ac_cv_header_sys_types_h_makedev+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+#include <sys/types.h>
+int
+main ()
+{
+return makedev(0, 0);
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_header_sys_types_h_makedev=yes
+else
+  ac_cv_header_sys_types_h_makedev=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_header_sys_types_h_makedev" >&5
+$as_echo "$ac_cv_header_sys_types_h_makedev" >&6; }
+
+if test $ac_cv_header_sys_types_h_makedev = no; then
+ac_fn_c_check_header_mongrel "$LINENO" "sys/mkdev.h" "ac_cv_header_sys_mkdev_h" "$ac_includes_default"
+if test "x$ac_cv_header_sys_mkdev_h" = xyes; then :
+
+$as_echo "#define MAJOR_IN_MKDEV 1" >>confdefs.h
+
+fi
+
+
+
+  if test $ac_cv_header_sys_mkdev_h = no; then
+    ac_fn_c_check_header_mongrel "$LINENO" "sys/sysmacros.h" "ac_cv_header_sys_sysmacros_h" "$ac_includes_default"
+if test "x$ac_cv_header_sys_sysmacros_h" = xyes; then :
+
+$as_echo "#define MAJOR_IN_SYSMACROS 1" >>confdefs.h
+
+fi
+
+
+  fi
+fi
+
 
 for ac_header in limits.h values.h
 do :
@@ -33969,6 +33742,21 @@ fi
 #######################
 ## Test for blas/Atlas and lapack
 #######################
+
+case "$host_os" in
+	*Darwin* | *darwin*)
+	  if test ! -z "$BLAS_LIBS"; then
+	  	BLAS_LIBS="$BLAS_LIBS -Wl,-framework,Accelerate"
+	  fi
+	  if test ! -z "$CPPFLAGS"; then
+	  	CPPFLAGS="$CPPFLAGS -I/System/Library/Frameworks/Accelerate.framework/Headers"
+	  fi
+	  if test ! -z "$CPPFLAGS"; then
+	  	CXXFLAGS="$CXXFLAGS -I/System/Library/Frameworks/Accelerate.framework/Headers"
+	  fi
+	;;
+esac
+
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking if BLAS, ATLAS or MKL is available" >&5
 $as_echo_n "checking if BLAS, ATLAS or MKL is available... " >&6; }
 echo ""
@@ -36217,8 +36005,6 @@ fi
 
 # --with-umfpack-library set then check in this dir
 if test "x$with_umfpack_library" != "xyes"; then
-	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for umf_divcomplex in $with_umfpack_library" >&5
-$as_echo_n "checking for umf_divcomplex in $with_umfpack_library... " >&6; }
 	save_LIBS="$LIBS"
 	LIBS="$BLAS_LIBS -L$with_umfpack_library -lm $LIBS"
 	# We need -lm because sometime (ubuntu 7.10 for example) does not link libamd against lib math
@@ -36325,6 +36111,8 @@ else
 fi
 
 
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for umf_divcomplex in $with_umfpack_library" >&5
+$as_echo_n "checking for umf_divcomplex in $with_umfpack_library... " >&6; }
 	cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
 
@@ -37815,7 +37603,7 @@ $as_echo_n "checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later...
 
 
 cat > conftest.$ac_ext <<EOF
-#line 37818 "configure"
+#line 37606 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TCL_INCLUDE_PATH/$CHK_TCL_INC_NAME"
@@ -38130,7 +37918,7 @@ $as_echo_n "checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later... " 
 
 
 cat > conftest.$ac_ext <<EOF
-#line 38133 "configure"
+#line 37921 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TK_INCLUDE_PATH/$CHK_TK_INC_NAME"
@@ -38698,7 +38486,7 @@ $as_echo_n "checking saxon... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 38701 "configure"
+// #line 38489 "configure"
 import java.util.regex.Pattern;
 
 import com.icl.saxon.Loader;
@@ -38815,7 +38603,7 @@ $as_echo_n "checking jlatexmath-fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 38818 "configure"
+// #line 38606 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.fop.JLaTeXMathObj;
@@ -55753,8 +55541,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 # Only expand once:
 
 
-
-if test -n "$ac_tool_prefix"; then
+    if test -n "$ac_tool_prefix"; then
   # Extract the first word of "${ac_tool_prefix}gcj", so it can be a program name with args.
 set dummy ${ac_tool_prefix}gcj; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -58638,6 +58425,60 @@ case $ac_cv_c_inline in
 _ACEOF
     ;;
 esac
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for C/C++ restrict keyword" >&5
+$as_echo_n "checking for C/C++ restrict keyword... " >&6; }
+if ${ac_cv_c_restrict+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_cv_c_restrict=no
+   # The order here caters to the fact that C++ does not require restrict.
+   for ac_kw in __restrict __restrict__ _Restrict restrict; do
+     cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+typedef int * int_ptr;
+	int foo (int_ptr $ac_kw ip) {
+	return ip[0];
+       }
+#ifdef F77_DUMMY_MAIN
+
+#  ifdef __cplusplus
+     extern "C"
+#  endif
+   int F77_DUMMY_MAIN() { return 1; }
+
+#endif
+int
+main ()
+{
+int s[1];
+	int * $ac_kw t = s;
+	t[0] = 0;
+	return foo(t)
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  ac_cv_c_restrict=$ac_kw
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+     test "$ac_cv_c_restrict" != no && break
+   done
+
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_c_restrict" >&5
+$as_echo "$ac_cv_c_restrict" >&6; }
+
+ case $ac_cv_c_restrict in
+   restrict) ;;
+   no) $as_echo "#define restrict /**/" >>confdefs.h
+ ;;
+   *)  cat >>confdefs.h <<_ACEOF
+#define restrict $ac_cv_c_restrict
+_ACEOF
+ ;;
+ esac
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for function prototypes" >&5
 $as_echo_n "checking for function prototypes... " >&6; }
@@ -63711,6 +63552,7 @@ echo "  VERSION ........ = $PACKAGE_VERSION"
 echo "  CC ............. = $CC"
 echo "  CFLAGS ......... = $CFLAGS"
 echo "  SCI_CFLAGS ..... = $SCI_CFLAGS"
+echo "  CPPFLAGS ....... = $CPPFLAGS"
 echo "  DEFS ........... = $DEFS"
 echo "  LD ............. = $LD"
 echo "  LDFLAGS ........ = $LDFLAGS"

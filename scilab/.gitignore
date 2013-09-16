@@ -164,7 +164,9 @@ scilab.pc
 *.dia
 modules/intersci/intersci
 etc/logging.properties
+etc/classpath.xml
 etc/modules.xml
+etc/Info.plist
 
 #
 # Subversion directories

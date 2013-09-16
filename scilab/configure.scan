@@ -142,6 +142,7 @@ AC_CONFIG_FILES([Makefile
                  modules/umfpack/Makefile
                  modules/windows_tools/Makefile
                  modules/xcos/Makefile
-                 modules/xml/Makefile])
+                 modules/xml/Makefile
+                 thirdparty/docbook/Makefile])
 AC_CONFIG_SUBDIRS([modules/dynamic_link/src/scripts])
 AC_OUTPUT

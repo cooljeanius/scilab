@@ -58,7 +58,6 @@ fi
 
 # --with-umfpack-library set then check in this dir
 if test "x$with_umfpack_library" != "xyes"; then
-	AC_MSG_CHECKING([for umf_divcomplex in $with_umfpack_library])
 	save_LIBS="$LIBS"
 	LIBS="$BLAS_LIBS -L$with_umfpack_library -lm $LIBS"
 	# We need -lm because sometime (ubuntu 7.10 for example) does not link libamd against lib math
@@ -71,6 +70,7 @@ if test "x$with_umfpack_library" != "xyes"; then
 			[UMFPACK_LIB="-L$with_umfpack_library -lumfpack $UMFPACK_LIB"; UMFPACK_OK=yes],
             [AC_MSG_ERROR([libumfpack : Library missing. (Cannot find umf_divcomplex). Check if libumfpack is installed and if the version is correct (also called lib suitesparse)])])
 
+	AC_MSG_CHECKING([for umf_divcomplex in $with_umfpack_library])
 	AC_TRY_LINK_FUNC([umf_divcomplex],[UMFPACK_OK=yes; BLAS_TYPE="Using BLAS_LIBS environment variable"],[UMFPACK_LIBS=""])
 	AC_MSG_RESULT([$UMFPACK_OK])
 	LIBS="$save_LIBS"

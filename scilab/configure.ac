@@ -24,10 +24,10 @@ SCI_BUILDDIR="`pwd`"
 SCI_SRCDIR="$srcdir"
 SCI_SRCDIR_FULL="`cd $SCI_SRCDIR && pwd`"
 
-AC_SUBST([top_srcdir])   dnl# SUBST-ing this and the next variable are
-AC_SUBST([top_builddir]) dnl# related to a bug that requires using the
-                         dnl# --disable-dependency-tracking flag in
-                         dnl# order to work around it
+AC_SUBST([top_srcdir])   dnl# force-SUBST-ing this and the next variable
+AC_SUBST([top_builddir]) dnl# are related to a bug that currently requires
+                         dnl# using the --disable-dependency-tracking
+                         dnl# flag in order to work around it
 SCILAB_VERSION_MAJOR=5
 SCILAB_VERSION_MINOR=4
 SCILAB_VERSION_MAINTENANCE=0
@@ -385,10 +385,11 @@ fi
 AC_PROG_OBJCXX
 AC_PROG_OBJCXXCPP
 # we cannot just do something like
-# AC_CHECK_PROG([cxx_present], [$CXX], ["yes"], ["no"])
-# because if the user has specified the full path of the desired C++ compiler then AC_CHECK_PROG
-# will fail.  If AC_PROG_CXX fails to find a c++ compiler it will set CXX=g++ so just run AC_CHECK_PROG
-# in this special case
+# AC_CHECK_PROG([cxx_present],[$CXX],["yes"],["no"])
+# because if the user has specified the full path of the desired C++ compiler,
+# then AC_CHECK_PROG will fail. If AC_PROG_CXX fails to find a c++ compiler,
+# then it will set "CXX=g++", so instead just run AC_CHECK_PROG in this
+# special case.
 case $CXX in
     g++)
         AC_CHECK_PROG([cxx_present],[$CXX],[yes],[no])
@@ -634,7 +635,7 @@ esac
 ##########"
 
 case "$CC" in
-     gcc-* | gcc | ccache*gcc | ccache*gcc-* )
+   gcc-* | gcc | ccache*gcc | ccache*gcc-* )
    ## With GNU Compiler
 
    # enable the code coverage
@@ -652,9 +653,9 @@ case "$CC" in
         if test "$enable_debug_linker" = yes; then
             LDFLAGS="$LDFLAGS -Wl,--warn-common,-x"
         fi
-          DEBUG_CFLAGS="$DEBUG_CFLAGS -fdiagnostics-show-option -Werror=format-security"
-          ;;
-          esac
+        DEBUG_CFLAGS="$DEBUG_CFLAGS -fdiagnostics-show-option -Werror=format-security"
+        ;;
+      esac
    else
       DEBUG_CFLAGS="-DNDEBUG"
    fi
@@ -668,100 +669,101 @@ case "$CC" in
       COMPILER_LDFLAGS="$COMPILER_LDFLAGS -Wl,--no-as-needed"
    fi
 
-
    case "$host" in
      x86_64-*-linux-gnu | x86_64-linux-gnu)
         ARCH_CFLAGS="-m64"
-    ;;
+     ;;
      alpha-*-linux-gnu)
         ARCH_CFLAGS="-mieee-with-inexact"
         ARCH_LDFLAGS="-mieee-with-inexact"
-    ;;
+     ;;
      powerpc-*-linux-gnu)
         ARCH_CFLAGS="-D_GNU_SOURCE"
-    ;;
+     ;;
      *-*-solaris*)
         ARCH_CFLAGS="-DSVR4 -DSYSV -Dsolaris"
-    ;;
-   *-*-freebsd*)
-     ARCH_CFLAGS="-Dfreebsd"
-     ARCH_LDFLAGS="-lm"
      ;;
+     *-*-freebsd*)
+        ARCH_CFLAGS="-Dfreebsd"
+        ARCH_LDFLAGS="-lm"
+     ;;
+     alpha-*-netbsd*)
+        ARCH_CFLAGS="-Dnetbsd -mieee"
+        ARCH_FFLAGS="-Dnetbsd -mieee"
+     ;;
+     *-*-netbsd*)
+        ARCH_CFLAGS="-Dnetbsd"
+     ;;
+     *-*-darwin*)
+        if test -x ${SW_VERS} -o -x `which sw_vers`; then 
+          if test "`sw_vers -productVersion | cut -d\. -f2`" -lt "7"; then
+            ARCH_CFLAGS="$ARCH_CFLAGS -no_compact_linkedit"
+            ARCH_CXXFLAGS="$ARCH_CXXFLAGS -no_compact_linkedit"
+            ARCH_LDFLAGS="$ARCH_LDFLAGS -no_compact_linkedit"
+            # We need this to be passed to all linker commands
+            LDFLAGS="$LDFLAGS -no_compact_linkedit"
+            AC_MSG_NOTICE([Adding -no_compact_linkedit to the linker flags for Darwin])
+          else
+            AC_MSG_NOTICE([Not using the -no_compact_linkedit linker flag on Lion and above])
+          fi
+        fi
 
-  alpha-*-netbsd*)
-    ARCH_CFLAGS="-Dnetbsd -mieee"
-    ARCH_FFLAGS="-Dnetbsd -mieee"
-    ;;
-
-  *-*-netbsd*)
-    ARCH_CFLAGS="-Dnetbsd"
-    ;;
-
-  *-*-darwin*)
-    ARCH_CFLAGS="$ARCH_CFLAGS -no_compact_linkedit"
-    ARCH_CXXFLAGS="$ARCH_CXXFLAGS -no_compact_linkedit"
-    ARCH_LDFLAGS="$ARCH_LDFLAGS -no_compact_linkedit"
-    # We need this to be passed to all linker commands
-    LDFLAGS="$LDFLAGS -no_compact_linkedit"
-
-    case "$F77" in
-         gfortran-*|gfortran)
-             # Extract from gfortran -v the version it has been built for
-               MAC_DETECTED_ARCH="`$F77 -v 2>&1|grep "Target:"|sed -e "s/Target: \([[a-z0-9A-Z_]]*\).*/\1/g"`"
-         ;;
-         *)
-        AC_MSG_WARN([gfortran not used. Could not detect the architecture. Switch to the default case: x86_64])
-        MAC_DETECTED_ARCH="x86_64"
-         ;;
-    esac
-    CC="$CC -arch $MAC_DETECTED_ARCH"
-    CXX="$CXX -arch $MAC_DETECTED_ARCH"
-    ;;
-esac
-;; # end of the gcc case on the $CC
+        case "$F77" in
+             gfortran-*|gfortran)
+                 # Extract from gfortran -v the version it has been built for
+                 MAC_DETECTED_ARCH="`$F77 -v 2>&1 | grep "Target:" | sed -e "s/Target: \([[a-z0-9A-Z_]]*\).*/\1/g"`"
+             ;;
+             *)
+                 AC_MSG_WARN([gfortran not used. Could not detect the architecture. Switch to the default case: x86_64])
+                 MAC_DETECTED_ARCH="x86_64"
+             ;;
+        esac
+        CC="$CC -arch $MAC_DETECTED_ARCH"
+        CXX="$CXX -arch $MAC_DETECTED_ARCH"
+        ;;
+   esac
+   ;; # end of the gcc case on the $CC
    *)
-
         ## CC compiler (not GCC)
         if test "$enable_debug_C" != yes; then
              ARCH_CFLAGS="-DNDEBUG"
         fi
 
-case "$host" in
-# Dec Alpha OSF 4
-  alpha*-dec-osf4.*)
-      ARCH_CFLAGS="-std -ieee_with_inexact"
-      ARCH_LDFLAGS="-ieee_with_inexact"
-      ;;
-  alpha*-dec-osf*)
-      ARCH_CFLAGS="-ieee_with_inexact"
-      ARCH_LDFLAGS="-ieee_with_inexact"
-      ;;
-  rs6000-*-*) # IBM AIX RS 6000 (NO LONGER SUPPORTED)
-    ARCH_CFLAGS="-Daix -DSYSV"
-  ;;
-  mips-sgi-irix*) # SGI
-    ARCH_CFLAGS="-DSYSV -DSVR4"
-  ;;
-  *-*-hpux9.*)
-    ARCH_CFLAGS="-DSYSV -Dhpux"
-  ;;
-  *-*-hpux10.*) # HP 10
-    if test "$enable_debug_C" = yes; then
-      ARCH_CFLAGS="-DSYSV -Dhpux"
-    else
-      ARCH_CFLAGS="-DSYSV -Dhpux +Z +DAportable"
-    fi
-  ;;
-
-  *-*-hpux11.*) # HP 11
-    ARCH_CFLAGS="-DSYSV -Dhpux -Dhppa +Z +DAportable"
-  ;;
-  *-*-solaris*) # SUN SOLARIS
-    ARCH_CFLAGS="-DSVR4 -DSYSV -Dsolaris -I/usr/local/include/"
-    ARCH_LDFLAGS="-L/usr/local/lib/"
-  ;;
-esac
-;; # end of not a gcc compiler
+        case "$host" in
+        # Dec Alpha OSF 4
+          alpha*-dec-osf4.*)
+              ARCH_CFLAGS="-std -ieee_with_inexact"
+              ARCH_LDFLAGS="-ieee_with_inexact"
+              ;;
+          alpha*-dec-osf*)
+              ARCH_CFLAGS="-ieee_with_inexact"
+              ARCH_LDFLAGS="-ieee_with_inexact"
+              ;;
+          rs6000-*-*) # IBM AIX RS 6000 (NO LONGER SUPPORTED)
+            ARCH_CFLAGS="-Daix -DSYSV"
+          ;;
+          mips-sgi-irix*) # SGI
+            ARCH_CFLAGS="-DSYSV -DSVR4"
+          ;;
+          *-*-hpux9.*)
+            ARCH_CFLAGS="-DSYSV -Dhpux"
+          ;;
+          *-*-hpux10.*) # HP 10
+            if test "$enable_debug_C" = yes; then
+              ARCH_CFLAGS="-DSYSV -Dhpux"
+            else
+              ARCH_CFLAGS="-DSYSV -Dhpux +Z +DAportable"
+            fi
+          ;;
+          *-*-hpux11.*) # HP 11
+            ARCH_CFLAGS="-DSYSV -Dhpux -Dhppa +Z +DAportable"
+          ;;
+          *-*-solaris*) # SUN SOLARIS
+            ARCH_CFLAGS="-DSVR4 -DSYSV -Dsolaris -I/usr/local/include/"
+            ARCH_LDFLAGS="-L/usr/local/lib/"
+          ;;
+        esac
+   ;; # end of not a gcc compiler
 esac
 
 # enable the code coverage
@@ -894,7 +896,7 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
         case "$host_os" in
              *Darwin* | *darwin*)
                # Mac OS X does not link against the lib but uses -framework
-               JAVA_JNI_LIBS="-framework JavaVM"
+               JAVA_JNI_LIBS="-Wl,-framework,JavaVM"
              ;;
              *)
                AC_JAVA_JNI_LIBS
@@ -1159,11 +1161,9 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
     if test "$enable_build_swig" != no -a "$enable_build_swig" != ""; then
         dnl# these are from m4/swig.m4
         dnl# TODO: migrate to the AX_* versions of these macros
-        SWIG_PROG([2.0.9])
+        SWIG_PROG([])
         SWIG_ENABLE_CXX([])
         SWIG_ENABLE_JAVA([])
-        SWIG_MULTI_MODULE_SUPPORT([])
-        SWIG_PYTHON([no]) dnl# the "no" means "no shadow classes"
         AC_SUBST([SWIG_BIN])
         AC_SUBST([SWIG_CXX])
         AC_SUBST([SWIG_JAVA])
@@ -1323,6 +1323,8 @@ mempcpy nl_langinfo realpath stpcpy strcspn strspn strtoul wcwidth])
 ########################
 ## test for header files
 ########################
+
+AC_HEADER_MAJOR
 
 AC_CHECK_HEADERS([limits.h values.h])
 
@@ -1541,6 +1543,21 @@ AM_CONDITIONAL([BUILD_MACROS],[test "$BUILD_LOCALIZATION_ENABLE" = yes])
 #######################
 ## Test for blas/Atlas and lapack
 #######################
+
+case "$host_os" in
+	*Darwin* | *darwin*)
+	  if test ! -z "$BLAS_LIBS"; then
+	  	BLAS_LIBS="$BLAS_LIBS -Wl,-framework,Accelerate"
+	  fi
+	  if test ! -z "$CPPFLAGS"; then
+	  	CPPFLAGS="$CPPFLAGS -I/System/Library/Frameworks/Accelerate.framework/Headers"
+	  fi
+	  if test ! -z "$CPPFLAGS"; then
+	  	CXXFLAGS="$CXXFLAGS -I/System/Library/Frameworks/Accelerate.framework/Headers"
+	  fi
+	;;
+esac
+
 AC_MSG_CHECKING([if BLAS, ATLAS or MKL is available])
 echo ""
 dnl# these are mostly from m4/libsmath.m4
@@ -1869,6 +1886,7 @@ fi
 AC_C_BIGENDIAN dnl# For Apple universal builds
 AC_C_CONST([])
 AC_C_INLINE([])
+AC_C_RESTRICT
 AC_C_PROTOTYPES dnl# Kinda pointless as most current compilers support this,
                 dnl# but there is no harm in adding it, and I like including it
 
@@ -2426,6 +2444,7 @@ echo "  VERSION ........ = $PACKAGE_VERSION"
 echo "  CC ............. = $CC"
 echo "  CFLAGS ......... = $CFLAGS"
 echo "  SCI_CFLAGS ..... = $SCI_CFLAGS"
+echo "  CPPFLAGS ....... = $CPPFLAGS"
 echo "  DEFS ........... = $DEFS"
 echo "  LD ............. = $LD"
 echo "  LDFLAGS ........ = $LDFLAGS"

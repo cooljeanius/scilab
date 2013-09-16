@@ -52,7 +52,7 @@ libscijvm_la_LDFLAGS = -lpthread $(XML_LIBS) $(JAVA_JNI_LIBS) $(AM_LDFLAGS)
 
 # FIXME: This a platform specific flag, this should be done on configure.ac
 if IS_MACOSX 
-libscijvm_la_LDFLAGS += -framework JavaVM
+libscijvm_la_LDFLAGS += -Wl,-framework,JavaVM
 endif
 
 libscijvm_la_LIBADD = libscijvm-algo.la

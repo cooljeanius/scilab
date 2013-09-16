@@ -113,8 +113,8 @@ target_triplet = @target@
 @IS_MACOSX_TRUE@am__append_2 = src/c/getLocaleInfo_Apple.c
 
 # FIXME: platform dependent things should be in configure.ac
-@IS_MACOSX_TRUE@am__append_3 = -lintl -framework Cocoa
-@IS_MACOSX_TRUE@am__append_4 = -lintl -framework Cocoa
+@IS_MACOSX_TRUE@am__append_3 = -lintl -Wl,-framework,Cocoa
+@IS_MACOSX_TRUE@am__append_4 = -lintl -Wl,-framework,Cocoa
 DIST_COMMON = $(top_srcdir)/Makefile.incl.am $(srcdir)/Makefile.in \
 	$(srcdir)/Makefile.am $(top_srcdir)/config/mkinstalldirs \
 	$(top_srcdir)/config/depcomp \
@@ -494,9 +494,7 @@ PKG_CONFIG = @PKG_CONFIG@
 POSUB = @POSUB@
 POW_LIB = @POW_LIB@
 PYTHON = @PYTHON@
-PYTHON_CPPFLAGS = @PYTHON_CPPFLAGS@
 PYTHON_EXEC_PREFIX = @PYTHON_EXEC_PREFIX@
-PYTHON_LDFLAGS = @PYTHON_LDFLAGS@
 PYTHON_PLATFORM = @PYTHON_PLATFORM@
 PYTHON_PREFIX = @PYTHON_PREFIX@
 PYTHON_VERSION = @PYTHON_VERSION@
@@ -529,9 +527,6 @@ STYLESHEET_SRCDIR = @STYLESHEET_SRCDIR@
 SWIG_BIN = @SWIG_BIN@
 SWIG_CXX = @SWIG_CXX@
 SWIG_JAVA = @SWIG_JAVA@
-SWIG_PYTHON_CPPFLAGS = @SWIG_PYTHON_CPPFLAGS@
-SWIG_PYTHON_LIBS = @SWIG_PYTHON_LIBS@
-SWIG_PYTHON_OPT = @SWIG_PYTHON_OPT@
 SWIG_RUNTIME_LIBS_DIR = @SWIG_RUNTIME_LIBS_DIR@
 SW_VERS = @SW_VERS@
 TCLTK_LIBS = @TCLTK_LIBS@

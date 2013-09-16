@@ -44,7 +44,7 @@ scilab_bin_LDFLAGS 	= $(AM_LDFLAGS)
 scilab_cli_bin_LDFLAGS  = $(AM_LDFLAGS)
 
 if IS_MACOSX
-scilab_bin_LDFLAGS 	+= "-framework Cocoa"
+scilab_bin_LDFLAGS 	+= "-Wl,-framework,Cocoa"
 endif
 
 scilab_bin_CPPFLAGS = -I$(top_srcdir)/modules/io/includes/ \
@@ -53,8 +53,8 @@ scilab_bin_CPPFLAGS = -I$(top_srcdir)/modules/io/includes/ \
                       $(AM_CPPFLAGS)
 # --no-undefined --relax
 
-# Localization dep already exists because of the `exportLocaleToSystem' symbol
-# (causing issues on some platform)
+# Localization dep already exists because of the `exportLocaleToSystem'
+# symbol (causing issues on some platform)
 COMMON_LIBS = $(LTLIBINTL)
 
 scilab_bin_SOURCES		= $(top_srcdir)/modules/console/src/c/others/mainscic.c
@@ -274,17 +274,21 @@ clean-recursive: clean-help clean-localization clean-macros clean-generated
 
 clean-macros:
 # Find is necessary because of subdirs...
+	rm -f $(top_builddir)/scilab-bin
+	rm -f $(top_builddir)/scilab-cli-bin
 	-@echo "-- Cleaning macros (*.bin) --"; \
-	find $(top_builddir) -name "*.bin" | xargs --no-run-if-empty rm 2> /dev/null; \
+	find $(top_builddir) -name "*.bin" | xargs --no-run-if-empty rm 2>/dev/null; \
 	echo "-- Cleaning names files (names) --"; \
-	find $(top_builddir)/modules/*/macros -name "names" | xargs --no-run-if-empty rm 2> /dev/null; \
+	find $(top_builddir)/modules/*/macros -name "names" | xargs --no-run-if-empty rm 2>/dev/null; \
 	echo "-- Cleaning lib files (lib) --"; \
-	find $(top_builddir)/modules/*/macros -name "lib" | xargs --no-run-if-empty rm 2> /dev/null
+	find $(top_builddir)/modules/*/macros -name "lib" | xargs --no-run-if-empty rm 2>/dev/null
 
 # To ensure previous compatibility
 clean-doc: clean-help
 
 clean-help:
+	rm -f $(top_builddir)/scilab-bin
+	rm -f $(top_builddir)/scilab-cli-bin
 	-@if test -x $(top_builddir)/scilab-cli-bin; then \
 		COMMAND="try clean_help();catch exit(-1);end;exit(0)"; \
 		for l in $(ALL_LINGUAS_DOC); do \
@@ -306,6 +310,8 @@ clean-help:
 	rm -rf $(top_builddir)/modules/javasci/javadoc;
 
 clean-tests:
+	rm -f $(top_builddir)/scilab-bin
+	rm -f $(top_builddir)/scilab-cli-bin
 	@if test -x $(top_builddir)/scilab-cli-bin; then \
 		$(top_builddir)/bin/scilab-cli -nb -noatomsautoload -l fr -e 'try test_clean();catch exit(-1);end;exit(0);' || exit 1; \
 	else \
@@ -313,23 +319,32 @@ clean-tests:
 	fi
 
 clean-localization:
+	rm -f $(top_builddir)/scilab-bin
+	rm -f $(top_builddir)/scilab-cli-bin
 	rm -rf $(top_srcdir)/locale/
 
 clean-generated:
 # Deleted junit + code coverage
+	rm -f $(top_builddir)/scilab-bin
+	rm -f $(top_builddir)/scilab-cli-bin
 	rm -rf $(top_builddir)/reports/
-	rm -rf $(top_builddir)/modules/scicos_blocks/build/ 2> /dev/null
+	rm -rf $(top_builddir)/modules/scicos_blocks/build/ 2>/dev/null
 
 distclean-generated:
-	rm -f $(top_builddir)/modules/core/includes/stack.h 2> /dev/null
+	rm -f $(top_builddir)/scilab-bin
+	rm -f $(top_builddir)/scilab-cli-bin
+	rm -f $(top_builddir)/modules/core/includes/stack.h 2>/dev/null
 
 
 if IS_MACOSX
-# Used for mac os x because it needs to remove the charset=UTF-8 because it is breaking the accents.
+# Used for Mac OS X because it needs to remove the charset=UTF-8
+# because otherwise it breaks the accents.
 MACOSX=1
 endif
 
 clean-reports:
+	rm -f $(top_builddir)/scilab-bin
+	rm -f $(top_builddir)/scilab-cli-bin
 	rm -f reports/xml/TEST-org.scilab.*.xml
 
 # For each module, build and call Java unitary tests

@@ -14,10 +14,12 @@
 
 AUTOMAKE_OPTIONS = 1.11 dejagnu dist-zip dist-bzip2 foreign subdir-objects -Wall
 
-SUBDIRS = modules \
+SUBDIRS = \
+	libs \
+	modules \
 	contrib \
 	desktop \
-        po
+	po
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -32,8 +34,7 @@ changelogs = CHANGES CHANGES_5.1.X CHANGES_5.2.X CHANGES_5.3.X CHANGES_5.4.X
 
 bin_PROGRAMS		= scilab-bin scilab-cli-bin
 
-bin_SCRIPTS		= bin/scilab bin/scilab-adv-cli bin/scilab-cli \
-bin/scinotes bin/xcos
+bin_SCRIPTS		= bin/scilab bin/scilab-adv-cli bin/scilab-cli
 
 if IS_MACOSX
 bin_SCRIPTS 		+= bin/checkmacosx.applescript
@@ -83,8 +84,8 @@ scilab_static_bin_LDFLAGS = -static -static-libgcc --start-group $(AM_LDFLAGS)
 scilab_static_bin_CFLAGS  = -Wl,--start-group `$(CXX) -print-file-name=libstdc++.a` $(AM_CFLAGS)
 
 #-static
-bin_PROGRAMS	   	  += scilab-static-bin
-scilab_static_bin_LDADD   = $(top_builddir)/modules/libscilab.la
+bin_PROGRAMS	   	+= scilab-static-bin
+scilab_static_bin_LDADD  = $(top_builddir)/modules/libscilab.la
 
 scilab_static_bin_SOURCES = $(scilab_bin_SOURCES)
 endif
@@ -108,7 +109,7 @@ endif
 
 # check is performed with scilab
 TESTS_ENVIRONMENT = LANG=C LC_ALL=C # $(top_builddir)/bin/scilab-cli -nb -noatomsautoload -f
-TESTS = $(top_srcdir)/modules/development_tools/tests/unit_tests/test_run_level_1.tst
+TESTS_VAR = $(top_srcdir)/modules/development_tools/tests/unit_tests/test_run_level_1.tst
 
 all-local: $(TARGETS_ALL)
 
@@ -124,7 +125,6 @@ $(top_builddir)/etc/logging.properties \
 $(top_builddir)/etc/librarypath.xml
 
 infofilesdir = $(pkgdatadir)
-
 infofiles_DATA = $(top_srcdir)/CHANGES_2.X \
 $(top_srcdir)/CHANGES_3.X \
 $(top_srcdir)/CHANGES_4.X \
@@ -201,11 +201,6 @@ doc-ru_RU:
 doc-ja_JP:
 	@$(MAKE) $(AM_MAKEFLAGS) doc ALL_LINGUAS_DOC=ja_JP
 
-# Regenerate all images
-doc-images:
-	rm -rf $(top_srcdir)/modules/helptools/images/
-	mkdir $(top_srcdir)/modules/helptools/images/
-	$(MAKE) doc
 
 doc: javadoc $(top_builddir)/scilab-bin $(top_builddir)/bin/scilab-adv-cli
 if BUILD_HELP
@@ -246,12 +241,6 @@ else
 	@echo "Cannot buid help. Add --enable-build-help to the ./configure if you want to build it."
 endif
 
-doxygen: modules/development_tools/etc/doxyfile
-if DOXYGEN
-	mkdir $(top_builddir)/reports/
-	$(DOXYGEN_BIN) modules/development_tools/etc/doxyfile
-endif
-
 check-help:$(top_builddir)/scilab-cli-bin $(top_builddir)/bin/scilab-cli
 	@if test -x $(top_builddir)/scilab-cli-bin; then \
 		for l in $(ALL_LINGUAS_DOC); do \
@@ -269,14 +258,12 @@ if CODE_COVERAGE
 	@if test ! -d $(top_builddir)/coverage/; then \
 		mkdir $(top_builddir)/coverage/; \
 	fi; \
-	touch $(top_srcdir)/modules/differential_equations/callinter.h $(top_srcdir)/modules/linear_algebra/callinter.h $(top_srcdir)/modules/scicos/callinter.h $(top_srcdir)/modules/scicos_blocks/callinter.h $(top_srcdir)/modules/optimization/callinter.h $(top_srcdir)/modules/signal_processing/callinter.h; \
+	touch $(top_srcdir)/modules/differential_equations/callinter.h $(top_srcdir)/modules/linear_algebra/callinter.h $(top_srcdir)/modules/scicos/callinter.h $(top_srcdir)/modules/scicos_blocks/callinter.h; \
 	$(LCOV) --directory $(top_builddir) --capture --ignore-errors source --output-file $(top_builddir)/coverage/scilab-code-coverage.info; \
-	echo -e "genhtml_hi_limit = 85\ngenhtml_med_limit = 70" > $(top_builddir)/coverage/lcovrc; \
-	$(GENHTML) -o $(top_builddir)/coverage/results/ --config-file $(top_builddir)/coverage/lcovrc --show-details --highlight --legend $(top_builddir)/coverage/scilab-code-coverage.info; \
-	rm -f $(top_builddir)/coverage/lcovrc; \
+	$(GENHTML) -o $(top_builddir)/coverage/results/ --show-details --highlight --legend $(top_builddir)/coverage/scilab-code-coverage.info; \
 	echo "To open the result: firefox  $(top_builddir)/coverage/results/index.html"; \
-	rm -f $(top_srcdir)/modules/differential_equations/callinter.h $(top_srcdir)/modules/linear_algebra/callinter.h $(top_srcdir)/modules/scicos/callinter.h $(top_srcdir)/modules/scicos_blocks/callinter.h $(top_srcdir)/modules/optimization/callinter.h $(top_srcdir)/modules/signal_processing/callinter.h
-#--frames is disable because of : http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=607206
+	rm -f $(top_srcdir)/modules/differential_equations/callinter.h $(top_srcdir)/modules/linear_algebra/callinter.h $(top_srcdir)/modules/scicos/callinter.h $(top_srcdir)/modules/scicos_blocks/callinter.h
+# --frames is disabled because of http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=607206
 else
 	@echo "Cannot start the code coverage. Add --enable-code-coverage to the ./configure and 'make clean all'."
 endif
@@ -300,6 +287,8 @@ clean-macros:
 clean-doc: clean-help
 
 clean-help:
+	rm -f $(top_builddir)/scilab-bin
+	rm -f $(top_builddir)/scilab-cli-bin
 	-@if test -x $(top_builddir)/scilab-cli-bin; then \
 		COMMAND="try clean_help();catch exit(-1);end;exit(0)"; \
 		for l in $(ALL_LINGUAS_DOC); do \
@@ -318,11 +307,11 @@ clean-help:
 	echo "rm -f $(top_builddir)/modules/scicos/jar/"; \
 	rm -rf $(top_builddir)/modules/scicos/jar/; \
 	echo "rm -rf $(top_builddir)/modules/javasci/javadoc"; \
-	rm -rf $(top_builddir)/modules/javasci/javadoc; \
-	echo "rm -rf $(top_builddir)/html"; \
-	rm -rf $(top_builddir)/html;
+	rm -rf $(top_builddir)/modules/javasci/javadoc;
 
 clean-tests:
+	rm -f $(top_builddir)/scilab-bin
+	rm -f $(top_builddir)/scilab-cli-bin
 	@if test -x $(top_builddir)/scilab-cli-bin; then \
 		$(top_builddir)/bin/scilab-cli -nb -noatomsautoload -l fr -e 'try test_clean();catch exit(-1);end;exit(0);' || exit 1; \
 	else \
@@ -330,18 +319,20 @@ clean-tests:
 	fi
 
 clean-localization:
-	rm -rf $(top_srcdir)/locale/*
 	rm -f $(top_builddir)/scilab-bin
 	rm -f $(top_builddir)/scilab-cli-bin
+	rm -rf $(top_srcdir)/locale/
 
 clean-generated:
 # Deleted junit + code coverage
 	rm -f $(top_builddir)/scilab-bin
 	rm -f $(top_builddir)/scilab-cli-bin
-	rm -rf $(top_builddir)/reports
-	rm -rf $(top_builddir)/modules/scicos_blocks/build 2>/dev/null
+	rm -rf $(top_builddir)/reports/
+	rm -rf $(top_builddir)/modules/scicos_blocks/build/ 2>/dev/null
 
 distclean-generated:
+	rm -f $(top_builddir)/scilab-bin
+	rm -f $(top_builddir)/scilab-cli-bin
 	rm -f $(top_builddir)/modules/core/includes/stack.h 2>/dev/null
 
 
@@ -430,7 +421,6 @@ endif
 
 # How help files look like.
 DOCMASK=scilab_*_help.jar
-DOCIMAGES=scilab_images.jar
 
 # Path to builded files
 PATHTOHELPFILES = modules/helptools/jar/
@@ -461,7 +451,7 @@ if BUILD_HELP
 	@$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/$(PATHTOHELPFILES); \
 	echo $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/$(PATHTOHELPFILES); \
 	if ls -lLd $(top_builddir)/$(PATHTOHELPFILES)/$(DOCMASK) >/dev/null 2>&1; then \
-		for file in $(top_builddir)/$(PATHTOHELPFILES)/$(DOCMASK) $(top_builddir)/$(PATHTOHELPFILES)/$(DOCIMAGES); do \
+		for file in $(top_builddir)/$(PATHTOHELPFILES)/$(DOCMASK); do \
 		    echo "$(INSTALL_DATA) $$file $(DESTDIR)$(pkgdatadir)/$(PATHTOHELPFILES)" ; \
 	    	$(INSTALL_DATA) "$$file" $(DESTDIR)$(pkgdatadir)/$(PATHTOHELPFILES) ; \
 		done; \

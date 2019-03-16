@@ -167,9 +167,6 @@
 /* Define to 1 if you have the `gettimeofday' function. */
 #undef HAVE_GETTIMEOFDAY
 
-/* Define to 1 if you have the `getwd' function. */
-#undef HAVE_GETWD
-
 /* HAVE_GLIBC_BACKTRACE */
 #undef HAVE_GLIBC_BACKTRACE
 
@@ -303,6 +300,9 @@
 /* Define to 1 if you have the <malloc.h> header file. */
 #undef HAVE_MALLOC_H
 
+/* Define to 1 if you have the <malloc/malloc.h> header file. */
+#undef HAVE_MALLOC_MALLOC_H
+
 /* Define to 1 if you have the <math.h> header file. */
 #undef HAVE_MATH_H
 
@@ -311,6 +311,9 @@
 
 /* Define to 1 if you have the <matio.h> header file. */
 #undef HAVE_MATIO_H
+
+/* Define to 1 if you have the <matio_pubconf.h> header file. */
+#undef HAVE_MATIO_PUBCONF_H
 
 /* Define to 1 if you have the `mblen' function. */
 #undef HAVE_MBLEN
@@ -632,6 +635,9 @@
 /* Define to 1 if you have the <X11/Xlib.h> header file. */
 #undef HAVE_X11_XLIB_H
 
+/* Define to 1 if you have the <X11/X.h> header file. */
+#undef HAVE_X11_X_H
+
 /* Define to 1 if you have the <Xlib.h> header file. */
 #undef HAVE_XLIB_H
 
@@ -666,8 +672,7 @@
    slash. */
 #undef LSTAT_FOLLOWS_SLASHED_SYMLINK
 
-/* Define to the sub-directory in which libtool stores uninstalled libraries.
-   */
+/* Define to the sub-directory where libtool stores uninstalled libraries. */
 #undef LT_OBJDIR
 
 /* Define to 1 if `major', `minor', and `makedev' are declared in <mkdev.h>.
@@ -867,9 +872,6 @@
 
 /* Define to empty if `const' does not conform to ANSI C. */
 #undef const
-
-/* Do not use getwd. Instead use getcwd. */
-#undef getwd
 
 /* Define to `__inline__' or `__inline' if that's what the C compiler
    calls it, or to nothing if 'inline' is not supported under any name.  */

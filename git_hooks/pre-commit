@@ -38,7 +38,7 @@ then
     echo "  git config --add xmlindent.ignored 'scilab/Visual-Studio-settings/*.xml' "
     echo "  git config --add xmlindent.ignored 'scilab/checkstyle/*.xml' "
     echo
-    
+
     XMLINDENT_IGNORED=""
 else
     XMLINDENT_IGNORED="$(find $(git config --get-all xmlindent.ignored))"
@@ -76,9 +76,9 @@ then
     echo "  git config --add astyle.ignored 'scilab/modules/scinotes/src/java/org/scilab/modules/scinotes/MatchingBlockScanner.java' "
     echo "  git config --add astyle.ignored 'scilab/modules/scinotes/src/java/org/scilab/modules/scinotes/ScilabLexer.java' "
     echo "  git config --add astyle.ignored 'scilab/modules/scicos/src/scicos_sundials/*' "
-    
+
     echo
-    
+
     ASTYLE_IGNORED=""
 else
     ASTYLE_IGNORED="$(find $(git config --get-all astyle.ignored) 2>/dev/null)"
@@ -195,10 +195,12 @@ __indent_java() {
 
 indent
 
-if test -e ".git/hooks/checkstyle-git-pre-commit-hook.pl" -a -x `which perl`; then
+if test "x${DO_CHECKSTYLE}" = "xyes"; then
+    if test -e ".git/hooks/checkstyle-git-pre-commit-hook.pl" -a -x `which perl`; then
 	perl .git/hooks/checkstyle-git-pre-commit-hook.pl
-elif test -e "git_hooks/checkstyle-git-pre-commit-hook.pl" -a -x `which perl`; then
-	perl .git/hooks/checkstyle-git-pre-commit-hook.pl
-elif test -e checkstyle-git-pre-commit-hook.pl -a -x `which perl`; then
+    elif test -e "git_hooks/checkstyle-git-pre-commit-hook.pl" -a -x `which perl`; then
+	perl git_hooks/checkstyle-git-pre-commit-hook.pl
+    elif test -e checkstyle-git-pre-commit-hook.pl -a -x `which perl`; then
 	perl checkstyle-git-pre-commit-hook.pl
+    fi
 fi

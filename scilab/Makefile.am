@@ -12,7 +12,7 @@
 
 ## Process this file with automake to produce Makefile.in (which will be changed by the ./configure)
 
-AUTOMAKE_OPTIONS = 1.11 dejagnu dist-zip dist-bzip2 foreign subdir-objects -Wall
+AUTOMAKE_OPTIONS = 1.11.6 dejagnu dist-zip dist-bzip2 foreign subdir-objects -Wall
 
 SUBDIRS = modules \
 	contrib \
@@ -108,7 +108,8 @@ endif
 
 # check is performed with scilab
 TESTS_ENVIRONMENT = LANG=C LC_ALL=C # $(top_builddir)/bin/scilab-cli -nb -noatomsautoload -f
-TESTS = $(top_srcdir)/modules/development_tools/tests/unit_tests/test_run_level_1.tst
+## had to remove $(top_srcdir) here:
+TESTS = modules/development_tools/tests/unit_tests/test_run_level_1.tst
 
 all-local: $(TARGETS_ALL)
 

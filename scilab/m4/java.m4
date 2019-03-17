@@ -377,15 +377,15 @@ AC_DEFUN([AC_JAVA_JNI_INCLUDE],[
 
     F=$ac_java_jvm_dir/include/jni.h
     if test -f "$F" ; then
-         ac_java_jvm_jni_include_flags="-I`dirname $F`"
+         ac_java_jvm_jni_include_flags="-Wp,-I`dirname $F`"
     else
          F=`ls $ac_java_jvm_dir/include/*/jni.h 2>/dev/null`
          if test -f "$F" ; then
-             ac_java_jvm_jni_include_flags="-I`dirname $F`"
+             ac_java_jvm_jni_include_flags="-Wp,-I`dirname $F`"
          else
         case "$host_os" in
              *darwin* )
-                       ac_java_jvm_jni_include_flags="-I/Developer/SDKs/MacOSX${macosx_version}.sdk/System/Library/Frameworks/JavaVM.framework/Headers -I$(/usr/libexec/java_home --arch x86_64 --failfast --version 1.6+)/include/ -I/System/Library/Frameworks/JavaVM.framework/Versions/A/Headers/"
+                       ac_java_jvm_jni_include_flags="-Wp,-I/Developer/SDKs/MacOSX${macosx_version}.sdk/System/Library/Frameworks/JavaVM.framework/Headers -Wp,-I$(/usr/libexec/java_home --arch x86_64 --failfast --version 1.6+)/include/ -Wp,-I/System/Library/Frameworks/JavaVM.framework/Versions/A/Headers/"
                   ;;
               *)
                        AC_MSG_ERROR([Could not locate Java's jni.h include file])
@@ -400,14 +400,14 @@ AC_DEFUN([AC_JAVA_JNI_INCLUDE],[
 
     F=`ls $ac_java_jvm_dir/include/*/jni_md.h 2>/dev/null`
     if test -f "$F" ; then
-        ac_java_jvm_jni_include_flags="$ac_java_jvm_jni_include_flags -I`dirname $F`"
+        ac_java_jvm_jni_include_flags="$ac_java_jvm_jni_include_flags -Wp,-I`dirname $F`"
     fi
 
     AC_MSG_LOG([Using the following JNI include flags $ac_java_jvm_jni_include_flags])
 
     # Make sure a simple #include <jni.h> will compile.
 
-    AC_REQUIRE([AC_PROG_CC])
+    AC_REQUIRE([AC_PROG_CC])dnl
 
     AC_CACHE_CHECK([if jni.h can be included],
         [ac_cv_java_jvm_jni_working],[

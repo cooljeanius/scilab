@@ -46,9 +46,9 @@ if IS_MACOSX
 scilab_bin_LDFLAGS 	+= "-Wl,-framework,Cocoa"
 endif
 
-scilab_bin_CPPFLAGS = -I$(top_srcdir)/modules/io/includes/ \
-                      -I$(top_srcdir)/modules/console/includes/ \
-                      -I$(top_srcdir)/modules/localization/includes/ \
+scilab_bin_CPPFLAGS = -Wp,-I$(top_srcdir)/modules/io/includes/ \
+                      -Wp,-I$(top_srcdir)/modules/console/includes/ \
+                      -Wp,-I$(top_srcdir)/modules/localization/includes/ \
                       $(AM_CPPFLAGS)
 # --no-undefined --relax
 

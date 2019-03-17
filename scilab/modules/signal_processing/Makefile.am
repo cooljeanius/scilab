@@ -88,13 +88,13 @@ sci_gateway/fortran/bgetx.f \
 sci_gateway/fortran/bgety.f \
 sci_gateway/fortran/Ex-corr.f
 
-libscisignal_processing_la_CPPFLAGS = -I$(srcdir)/includes/ \
--I$(srcdir)/src/c/ \
--I$(top_srcdir)/libs/MALLOC/includes/ \
--I$(top_srcdir)/modules/api_scilab/includes/ \
--I$(top_srcdir)/modules/localization/includes/ \
--I$(top_srcdir)/modules/output_stream/includes/ \
--I$(top_srcdir)/modules/dynamic_link/includes/ \
+libscisignal_processing_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+-Wp,-I$(srcdir)/src/c/ \
+-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+-Wp,-I$(top_srcdir)/modules/dynamic_link/includes/ \
 $(AM_CPPFLAGS)
 
 pkglib_LTLIBRARIES = libscisignal_processing.la

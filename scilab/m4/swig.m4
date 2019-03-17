@@ -43,7 +43,7 @@ AC_DEFUN([SWIG_PROG],[
 		AC_MSG_NOTICE([SWIG runtime library directory is '$SWIG_RUNTIME_LIBS_DIR'])
 	fi
 	AC_SUBST([SWIG_RUNTIME_LIBS_DIR])
-])
+])dnl
 
 # SWIG_ENABLE_CXX()
 #
@@ -52,7 +52,7 @@ AC_DEFUN([SWIG_ENABLE_CXX],[
 	AC_REQUIRE([SWIG_PROG])
 	AC_REQUIRE([AC_PROG_CXX])
 	SWIG_CXX=" -c++"
-])
+])dnl
 
 # SWIG_ENABLE_JAVA()
 #
@@ -60,7 +60,7 @@ AC_DEFUN([SWIG_ENABLE_CXX],[
 AC_DEFUN([SWIG_ENABLE_JAVA],[
 	AC_REQUIRE([SWIG_PROG])
 	SWIG_JAVA=" -java"
-])
+])dnl
 
 # SWIG_MULTI_MODULE_SUPPORT()
 #
@@ -72,7 +72,7 @@ AC_DEFUN([SWIG_ENABLE_JAVA],[
 AC_DEFUN([SWIG_MULTI_MODULE_SUPPORT],[
 	AC_REQUIRE([SWIG_PROG])
 	SWIG="$SWIG_BIN -c"
-])
+])dnl
 
 # SWIG_PYTHON([use-shadow-classes = {no, yes}])
 #
@@ -95,7 +95,7 @@ AC_DEFUN([SWIG_PYTHON],[
 	AC_SUBST([SWIG_PYTHON_OPT],[-python$swig_shadow])
 	AC_SUBST([SWIG_PYTHON_CPPFLAGS],[$PYTHON_CPPFLAGS])
 	AC_SUBST([SWIG_PYTHON_LIBS],["$SWIG_RUNTIME_LIBS_DIR -lswigpy"])
-])
+])dnl
 
 # PYTHON_DEVEL()
 #
@@ -122,7 +122,7 @@ AC_DEFUN([PYTHON_DEVEL],[
 	if test -z "$python_path" ; then
 		AC_MSG_ERROR([cannot find Python include path])
 	fi
-	AC_SUBST([PYTHON_CPPFLAGS],[-I$python_path])
+	AC_SUBST([PYTHON_CPPFLAGS],[-Wp,-I${python_path}])
 
 	AC_CHECK_HEADERS_ONCE([Python.h])
 
@@ -144,4 +144,4 @@ AC_DEFUN([PYTHON_DEVEL],[
 		AC_MSG_ERROR([cannot find Python library path])
 	fi
 	AC_SUBST([PYTHON_LDFLAGS],["-L$python_path -lpython$PYTHON_VERSION"])
-])
+])dnl

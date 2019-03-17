@@ -20,13 +20,13 @@ sci_gateway/c/gw_boolean.c
 GATEWAY_FORTRAN_SOURCES =  sci_gateway/fortran/sci_f_bool2s.f \
 sci_gateway/fortran/sci_f_find.f
 
-libsciboolean_la_CPPFLAGS= -I$(srcdir)/includes/ \
-				-I$(srcdir)/src/c/ \
-				-I$(top_srcdir)/libs/MALLOC/includes/ \
-				-I$(top_srcdir)/modules/api_scilab/includes/ \
-				-I$(top_srcdir)/modules/localization/includes/ \
-				-I$(top_srcdir)/modules/output_stream/includes/ \
-				$(AM_CPPFLAGS)
+libsciboolean_la_CPPFLAGS= -Wp,-I$(srcdir)/includes/ \
+			   -Wp,-I$(srcdir)/src/c/ \
+			   -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			   -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			   -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			   -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			   $(AM_CPPFLAGS)
 
 if MAINTAINER_MODE
 pkglib_LTLIBRARIES = libsciboolean.la

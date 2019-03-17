@@ -41,12 +41,12 @@ sci_gateway/fortran/sci_f_getfield.f \
 sci_gateway/fortran/sci_f_lstcat.f \
 sci_gateway/fortran/sci_f_list.f
 
-libscidata_structures_la_CPPFLAGS = -I$(srcdir)/includes/ \
--I$(top_srcdir)/libs/MALLOC/includes/ \
--I$(top_srcdir)/modules/localization/includes/ \
--I$(top_srcdir)/modules/output_stream/includes/ \
--I$(top_srcdir)/modules/api_scilab/includes/ \
--I$(top_srcdir)/modules/string/includes/ \
+libscidata_structures_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+-Wp,-I$(top_srcdir)/modules/string/includes/ \
 $(AM_CPPFLAGS)
 
 # FIXME: why disabling optimisation ? Any bug reference ?

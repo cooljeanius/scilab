@@ -14,18 +14,18 @@ GATEWAY_C_SOURCES = sci_gateway/c/sci_fromjava.c \
 		sci_gateway/c/sci_fromc.c \
 		sci_gateway/c/gw_call_scilab.c
 
-libscicall_scilab_la_CPPFLAGS= -I$(srcdir)/includes/ \
-			-I$(srcdir)/src/c/ \
-			-I$(top_srcdir)/libs/MALLOC/includes/ \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
-			-I$(top_srcdir)/modules/output_stream/includes/ \
-			-I$(top_srcdir)/modules/action_binding/includes/ \
-			-I$(top_srcdir)/modules/api_scilab/includes/ \
-			-I$(top_srcdir)/modules/fileio/includes/ \
-			-I$(top_srcdir)/modules/graphics/includes/ \
-			-I$(top_srcdir)/modules/graphic_objects/includes/ \
-			-I$(top_srcdir)/modules/core/src/c/ \
+libscicall_scilab_la_CPPFLAGS= -Wp,-I$(srcdir)/includes/ \
+			-Wp,-I$(srcdir)/src/c/ \
+			-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			-Wp,-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
+			-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			-Wp,-I$(top_srcdir)/modules/action_binding/includes/ \
+			-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			-Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+			-Wp,-I$(top_srcdir)/modules/graphics/includes/ \
+			-Wp,-I$(top_srcdir)/modules/graphic_objects/includes/ \
+			-Wp,-I$(top_srcdir)/modules/core/src/c/ \
 			$(AM_CPPFLAGS)
 
 pkglib_LTLIBRARIES = libscicall_scilab.la

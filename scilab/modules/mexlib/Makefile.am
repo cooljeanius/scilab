@@ -6,13 +6,13 @@
 MEXLIB_C_SOURCES = src/c/mexlib.c \
 src/c/sci_gateway.c
 
-MEXLIB_FLAGS = -I$(srcdir)/includes/ \
--I$(top_srcdir)/libs/MALLOC/includes/ \
--I$(top_srcdir)/modules/call_scilab/includes/ \
--I$(top_srcdir)/modules/elementary_functions/includes/ \
--I$(top_srcdir)/modules/localization/includes/ \
--I$(top_srcdir)/modules/output_stream/includes/ \
--I$(top_srcdir)/modules/string/includes/
+MEXLIB_FLAGS = -Wp,-I$(srcdir)/includes/ \
+-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+-Wp,-I$(top_srcdir)/modules/call_scilab/includes/ \
+-Wp,-I$(top_srcdir)/modules/elementary_functions/includes/ \
+-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+-Wp,-I$(top_srcdir)/modules/string/includes/
 
 if MAINTAINER_MODE
 pkglib_LTLIBRARIES = libmat.la libmex.la libmx.la

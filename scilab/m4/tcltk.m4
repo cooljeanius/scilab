@@ -38,7 +38,7 @@ dnl#  $4 : include file name (tcl.h f. ex.)
 dnl#
 dnl# OUTPUTS
 dnl#  TCL_VERSION_OK : 1 if OK, 0 otherwise
-dnl#  TCL_INC_PATH : include path flag for tcl.h (-I/usr/include f. ex.)
+dnl#  TCL_INC_PATH : include path flag for tcl.h (-Wp,-I/usr/include f. ex.)
 dnl#  TCL_LIB : tcl lib name ( tcl8.1 f. ex.)
 dnl#  TCL_VERSION : ( 8.1 f. ex.)
 dnl#  TCL_MAJOR_VERSION: 
@@ -54,8 +54,8 @@ CHK_TCL_MINOR=$3
 CHK_TCL_INC_NAME=$4
 saved_cflags="$CFLAGS"
 saved_cppflags="$CPPFLAGS"
-CFLAGS="$CFLAGS -I$CHK_TCL_INCLUDE_PATH"
-CPPFLAGS="$CPPFLAGS -I$CHK_TCL_INCLUDE_PATH"
+CFLAGS="${CFLAGS} -Wp,-I${CHK_TCL_INCLUDE_PATH}"
+CPPFLAGS="${CPPFLAGS} -Wp,-I${CHK_TCL_INCLUDE_PATH}"
 
 AC_MSG_CHECKING([if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later])
 AC_GREP_CPP([TCL_VERSION_OK],
@@ -104,7 +104,7 @@ case $host_os in
   # already added to CFLAGS 
   ;;
   *)
- TCL_INC_PATH=-I$i 
+ TCL_INC_PATH=-Wp,-I$i 
   ;;
 esac
 
@@ -198,7 +198,7 @@ dnl#  ** WARNING : uses TCL_INC_PATH. it must be set correctly **
 dnl#
 dnl# OUTPUTS
 dnl#  TK_VERSION_OK : 1 if OK, 0 otherwise
-dnl#  TK_INC_PATH : include path flag for tcl.h (-I/usr/include f. ex.)
+dnl#  TK_INC_PATH : include path flag for tcl.h (-Wp,-I/usr/include f. ex.)
 dnl#  TK_LIB : tcl lib name ( tk8.1 f. ex.)
 dnl#  TK_VERSION : ( 8.1 f. ex.)
 dnl#  TK_MAJOR_VERSION: 
@@ -213,8 +213,8 @@ CHK_TK_MINOR=$3
 CHK_TK_INC_NAME=$4
 saved_cflags="$CFLAGS"
 saved_cppflags="$CPPFLAGS"
-CFLAGS="$CFLAGS $TCL_INC_PATH -I$CHK_TK_INCLUDE_PATH $X_CFLAGS"
-CPPFLAGS="$CPPFLAGS $TCL_INC_PATH -I$CHK_TK_INCLUDE_PATH $X_CFLAGS"
+CFLAGS="${CFLAGS} ${TCL_INC_PATH} -Wp,-I${CHK_TK_INCLUDE_PATH} ${X_CFLAGS}"
+CPPFLAGS="${CPPFLAGS} ${TCL_INC_PATH} -Wp,-I${CHK_TK_INCLUDE_PATH} ${X_CFLAGS}"
 AC_MSG_CHECKING([if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later])
 
 AC_GREP_CPP([TK_VERSION_OK],
@@ -263,7 +263,7 @@ case $host_os in
   # already added to CFLAGS 
   ;;
   *)
- TK_INC_PATH=-I$i 
+ TK_INC_PATH=-Wp,-I$i 
   ;;
 esac
 

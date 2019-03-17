@@ -711,6 +711,7 @@ DOCBOOKPDF = @DOCBOOKPDF@
 DOCBOOKPS = @DOCBOOKPS@
 DOCBOOKTXT = @DOCBOOKTXT@
 DOCBOOK_ROOT = @DOCBOOK_ROOT@
+DOXYGEN_PROG = @DOXYGEN_PROG@
 DSYMUTIL = @DSYMUTIL@
 DUMPBIN = @DUMPBIN@
 ECHO_C = @ECHO_C@
@@ -852,6 +853,8 @@ PCRE_VERSION = @PCRE_VERSION@
 PKG_CONFIG = @PKG_CONFIG@
 POSUB = @POSUB@
 POW_LIB = @POW_LIB@
+PRE_PKG_CONFIG_PCRE_CFLAGS = @PRE_PKG_CONFIG_PCRE_CFLAGS@
+PRE_PKG_CONFIG_XML_FLAGS = @PRE_PKG_CONFIG_XML_FLAGS@
 PYTHON = @PYTHON@
 PYTHON_EXEC_PREFIX = @PYTHON_EXEC_PREFIX@
 PYTHON_PLATFORM = @PYTHON_PLATFORM@
@@ -1009,9 +1012,9 @@ bin_SCRIPTS = bin/scilab bin/scilab-adv-cli bin/scilab-cli \
 	bin/scinotes bin/xcos $(am__append_1)
 scilab_bin_LDFLAGS = $(AM_LDFLAGS) $(am__append_2)
 scilab_cli_bin_LDFLAGS = $(AM_LDFLAGS)
-scilab_bin_CPPFLAGS = -I$(top_srcdir)/modules/io/includes/ \
-                      -I$(top_srcdir)/modules/console/includes/ \
-                      -I$(top_srcdir)/modules/localization/includes/ \
+scilab_bin_CPPFLAGS = -Wp,-I$(top_srcdir)/modules/io/includes/ \
+                      -Wp,-I$(top_srcdir)/modules/console/includes/ \
+                      -Wp,-I$(top_srcdir)/modules/localization/includes/ \
                       $(AM_CPPFLAGS)
 
 # --no-undefined --relax
@@ -1096,7 +1099,7 @@ pkgconfigdir = $(libdir)/pkgconfig
 
 # Files to install in Pkgconfig directory
 pkgconfig_DATA = scilab.pc
-CALL_SCILAB_CFLAGS_COMMON = -I$(top_srcdir)/modules/call_scilab/includes/ -I$(top_srcdir)/modules/core/includes/ -I$(top_srcdir)/modules/api_scilab/includes/ $(FLIBS)
+CALL_SCILAB_CFLAGS_COMMON = -Wp,-I$(top_srcdir)/modules/call_scilab/includes/ -Wp,-I$(top_srcdir)/modules/core/includes/ -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ $(FLIBS)
 CALL_SCILAB_LDADD_COMMON = $(top_builddir)/modules/libscilab.la $(top_builddir)/modules/core/libscicore.la $(top_builddir)/modules/call_scilab/libscicall_scilab.la $(COMPILER_LDFLAGS)
 call_scilab_c_SOURCES = $(top_srcdir)/modules/call_scilab/examples/call_scilab/c/common/myprog.c
 call_scilab_c_CFLAGS = $(CALL_SCILAB_CFLAGS_COMMON)

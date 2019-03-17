@@ -681,6 +681,7 @@ COMPILATION_TESTS_TRUE
 JAVASCI_ENABLE
 DOXYGEN_FALSE
 DOXYGEN_TRUE
+DOXYGEN_PROG
 INSTALL_HELP_XML_FALSE
 INSTALL_HELP_XML_TRUE
 XMLINDENT
@@ -730,6 +731,7 @@ XMKMF
 PCRE_VERSION
 PCRE_LIBS
 PCRE_CFLAGS
+PRE_PKG_CONFIG_PCRE_CFLAGS
 PCRE_CONFIG
 UMFPACK_FALSE
 UMFPACK_TRUE
@@ -751,6 +753,7 @@ ALL_LINGUAS
 XML_VERSION
 XML_LIBS
 XML_FLAGS
+PRE_PKG_CONFIG_XML_FLAGS
 XML_CONFIG
 OPENMP_FALSE
 OPENMP_TRUE
@@ -8591,23 +8594,23 @@ case "${host}" in
             # remove that part
         elif test -x `which port`; then
         	if test -L `which port`; then
-				REAL_PORT=$(readlink `which port`)
-				{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: \`which port\` is a symlink to ${REAL_PORT}." >&5
+        	    REAL_PORT=$(readlink `which port`)
+        	    { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: \`which port\` is a symlink to ${REAL_PORT}." >&5
 $as_echo "$as_me: WARNING: \`which port\` is a symlink to ${REAL_PORT}." >&2;}
-				export MACPORTS_PREFIX=$(dirname $(dirname ${REAL_PORT}))
-				{ $as_echo "$as_me:${as_lineno-$LINENO}: Assuming MACPORTS_PREFIX is actually ${MACPORTS_PREFIX}." >&5
+        	    export MACPORTS_PREFIX=$(dirname $(dirname ${REAL_PORT}))
+        	    { $as_echo "$as_me:${as_lineno-$LINENO}: Assuming MACPORTS_PREFIX is actually ${MACPORTS_PREFIX}." >&5
 $as_echo "$as_me: Assuming MACPORTS_PREFIX is actually ${MACPORTS_PREFIX}." >&6;}
-			else
-				export MACPORTS_PREFIX=$(dirname $(dirname `which port`))
-			fi
 		else
-			# default
-            MACPORTS_PREFIX="/opt/local"
-        fi
+        	    export MACPORTS_PREFIX=$(dirname $(dirname `which port`))
+		fi
+	else
+		# default
+		MACPORTS_PREFIX="/opt/local"
+	fi
 
         # Append to the default flags on Apple machines
-        CPPFLAGS="`echo \"$CPPFLAGS -I${MACPORTS_PREFIX}/include\" | uniq`"
-        LDFLAGS="`echo \"$LDFLAGS -L${MACPORTS_PREFIX}/lib\" | uniq`"
+        CPPFLAGS="`echo \"${CPPFLAGS} -Wp,-I${MACPORTS_PREFIX}/include\" | uniq`"
+        LDFLAGS="`echo \"${LDFLAGS} -L${MACPORTS_PREFIX}/lib\" | uniq`"
         ;;
 esac
 
@@ -8755,13 +8758,13 @@ fi
 ## check if options are correct (or not)
 #####################################################
 
-if test "$with_intelcompilers" = yes -a "$with_gcc" = yes; then
+if test "x${with_intelcompilers}" = "xyes" -a "x${with_gcc}" = "xyes"; then
     as_fn_error $? "Conflicting options : you specified two compiler series" "$LINENO" 5
 fi
 
 ######## fortran ########
 
-if test "$with_gfortran" = yes; then
+if test "x${with_gfortran}" = "xyes"; then
    ac_ext=f
 ac_compile='$F77 -c $FFLAGS conftest.$ac_ext >&5'
 ac_link='$F77 -o conftest$ac_exeext $FFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
@@ -8978,7 +8981,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
     fi
 fi
 
-if test "$with_intelcompilers" = yes; then
+if test "x${with_intelcompilers}" = "xyes"; then
    ac_ext=f
 ac_compile='$F77 -c $FFLAGS conftest.$ac_ext >&5'
 ac_link='$F77 -o conftest$ac_exeext $FFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
@@ -9676,7 +9679,7 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 ############ C ###############
-if test "$with_gcc" = yes; then
+if test "x${with_gcc}" = "xyes"; then
    ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
@@ -10088,7 +10091,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
     fi
 fi
 
-if test "$with_intelcompilers" = yes; then
+if test "x${with_intelcompilers}" = "xyes"; then
    ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
@@ -12534,11 +12537,11 @@ esac
 # testing for support for both "-c" and "-o" is for the "subdir-objects"
 # automake option
 
-if test "x$CC_C_O" = "x"; then
-	test -z "$CC_C_O"
+if test "x${CC_C_O}" = "x"; then
+	test -z "${CC_C_O}"
 
 else
-	test ! -z "$CC_C_O" && export CC_C_O
+	test ! -z "${CC_C_O}" && export CC_C_O
 
 fi
 ac_ext=cpp
@@ -12937,7 +12940,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 # If this option is provided, enable the debug on C & C++
-if test "$enable_stop_on_warning" = yes; then
+if test "x${enable_stop_on_warning}" = "xyes"; then
 
 
 
@@ -18702,7 +18705,7 @@ fi
    enable_debug_CXX=yes
 fi
 
-if test "$enable_debug" = yes; then
+if test "x${enable_debug}" = "xyes"; then
 
 
 
@@ -18775,17 +18778,18 @@ XORG_MALLOC_DEBUG_ENV=$malloc_debug_env
    enable_debug_C=yes
    enable_debug_CXX=yes
    enable_debug_java=yes
+   enable_debug_linker=yes
 else
    enable_debug=no
 fi
 
-if test "$enable_debug_fortran" = yes; then
+if test "x${enable_debug_fortran}" = "xyes"; then
    FFLAGS="`echo "$FFLAGS"| sed -e 's|-O0-9+|-O0|'`"
 else
    enable_debug_fortran=no
 fi
 
-if test "$enable_debug_C" = yes; then
+if test "x${enable_debug_C}" = "xyes"; then
    CFLAGS="`echo "$CFLAGS"| sed -e 's|-O0-9+|-O0|'`"
 
 
@@ -18802,13 +18806,13 @@ if test "$enable_debug_C" = yes; then
    enable_debug_C=no
 fi
 
-if test "$enable_debug_CXX" = yes; then
+if test "x${enable_debug_CXX}" = "xyes"; then
    CXXFLAGS="`echo "$CXXFLAGS"| sed -e 's|-O0-9+|-O0|'`"
 else
    enable_debug_CXX=no
 fi
 
-if test "$enable_debug_java" = yes; then
+if test "x${enable_debug_java}" = "xyes"; then
    LOGGING_LEVEL="INFO"
 else
    LOGGING_LEVEL="SEVERE"
@@ -18832,7 +18836,7 @@ SCIVERSION=`cat $SCI_SRCDIR/Version.incl | sed -e "s/SCIVERSION=//" `
 ######## Set compilation options for intel C/Fortran compilers
 ######################
 
-if test "$with_intelcompilers" = yes; then
+if test "x${with_intelcompilers}" = "xyes"; then
 
 	CFLAGS=" $CFLAGS -mp"
 	# -cm remove comments displays,
@@ -18869,7 +18873,7 @@ if test -n "$F77"; then
    case "$F77" in
      gfortran*)
         ## With GNU Compiler enable the code coverage
-        if test "$enable_code_coverage" = yes; then
+        if test "x${enable_code_coverage}" = "xyes"; then
             CODE_COVERAGE_FFLAGS="-fprofile-arcs -ftest-coverage"
         fi
      ;;
@@ -18878,13 +18882,13 @@ if test -n "$F77"; then
      ;;
    esac
 
-   if test "$enable_debug_fortran" = yes; then
+   if test "x${enable_debug_fortran}" = "xyes"; then
     ac_ext=f
 ac_compile='$F77 -c $FFLAGS conftest.$ac_ext >&5'
 ac_link='$F77 -o conftest$ac_exeext $FFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
 ac_compiler_gnu=$ac_cv_f77_compiler_gnu
 
-    for flag in -g -Wall -Wsurprising; do
+            for flag in -g -Wall -Wextra -Wsurprising -Warray-temporaries -Wcharacter-truncation -Wconversion-extra -Wfrontend-loop-interchange -Wuse-without-only -Wrealloc-lhs -Wrealloc-lhs-all; do
         case " ${FFLAGS} " in
             *\ ${flag}\ *)
                 # flag is already present
@@ -18943,14 +18947,14 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
             ARCH_FFLAGS="+Obb1200 +E4 -Dhpux"
         ;;
           *-*-hpux10.*)
-            if test "$enable_debug_fortran" = yes; then
+            if test "x${enable_debug_fortran}" = "xyes"; then
                 ARCH_FFLAGS="+E4 +Z +DAportable -Dhpux"
             else
                 ARCH_FFLAGS="+O2 +E4 +Z +DAportable -Dhpux"
             fi
             ;;
           *-*-hpux11.*)
-           if test "$enable_debug_fortran" = yes; then
+           if test "x${enable_debug_fortran}" = "xyes"; then
               ARCH_FFLAGS=" +Z +DAportable -Dhpux"
              else
               ARCH_FFLAGS="+O2 +Z +DAportable -Dhpux"
@@ -18982,7 +18986,7 @@ case "$host" in
     ;;
 esac
 
- if test -n "$MACOSX"; then
+ if test -n "${MACOSX}"; then
   IS_MACOSX_TRUE=
   IS_MACOSX_FALSE='#'
 else
@@ -18990,7 +18994,7 @@ else
   IS_MACOSX_FALSE=
 fi
 
- if test -n "$HPUX"; then
+ if test -n "${HPUX}"; then
   IS_HPUX_TRUE=
   IS_HPUX_FALSE='#'
 else
@@ -18998,7 +19002,7 @@ else
   IS_HPUX_FALSE=
 fi
 
- if test -n "$SPARC"; then
+ if test -n "${SPARC}"; then
   IS_SPARC_TRUE=
   IS_SPARC_FALSE='#'
 else
@@ -19006,7 +19010,7 @@ else
   IS_SPARC_FALSE=
 fi
 
- if test -n "$SOLARIS"; then
+ if test -n "${SOLARIS}"; then
   IS_SOLARIS_TRUE=
   IS_SOLARIS_FALSE='#'
 else
@@ -19014,7 +19018,7 @@ else
   IS_SOLARIS_FALSE=
 fi
 
- if test -n "$MIPS_SGI_IRIX"; then
+ if test -n "${MIPS_SGI_IRIX}"; then
   IS_MIPS_SGI_IRIX_TRUE=
   IS_MIPS_SGI_IRIX_FALSE='#'
 else
@@ -19026,21 +19030,21 @@ fi
 ## C++
 ############
 
-if test -z "$CXX"; then
+if test -z "${CXX}"; then
   as_fn_error $? "No C++ compiler found. Cannot compile scilab without a C++ compiler." "$LINENO" 5
 fi
 
-case "$CXX" in
+case "${CXX}" in
     g++-* | g++ | ccache*g++ | ccache*g++-* )
         ## With GNU C++ Compiler
 
         # enable the code coverage
-        if test "$enable_code_coverage" = yes; then
+        if test "x${enable_code_coverage}" = "xyes"; then
             CODE_COVERAGE_CXXFLAGS="-fprofile-arcs -ftest-coverage"
         fi
 
-        if test "$enable_debug_CXX" = yes; then
-            DEBUG_CXXFLAGS="-pipe -Wshadow -Wpointer-arith -Wcast-align -Wreturn-type -Wswitch -Wtrigraphs -Wcomment -Wchar-subscripts -Wformat -Wparentheses -Wsign-compare -Wwrite-strings -Wunused -Wno-strict-aliasing -Wextra -Wall -g3 -Wunsafe-loop-optimizations"
+        if test "x${enable_debug_CXX}" = "xyes"; then
+            DEBUG_CXXFLAGS="-pipe -Wshadow -Wpointer-arith -Wcast-align -Wreturn-type -Wswitch -Wtrigraphs -Wcomment -Wchar-subscripts -Wformat -Wparentheses -Wsign-compare -Wwrite-strings -Wunused -fno-strict-aliasing -Wextra -Wall -g3 -Wunsafe-loop-optimizations"
             case "$host" in
                 *-linux-gnu )
                     # Only doing that under Linux
@@ -19076,18 +19080,18 @@ case "$CC" in
    ## With GNU Compiler
 
    # enable the code coverage
-   if test "$enable_code_coverage" = yes; then
+   if test "x${enable_code_coverage}" = "xyes"; then
     CODE_COVERAGE_CFLAGS="-fprofile-arcs -ftest-coverage"
    fi
 
-   if test "$enable_debug_C" = yes; then
-      DEBUG_CFLAGS="-pipe -Wformat -Wshadow -Wfloat-equal -Wpointer-arith -Wcast-align -Wmissing-prototypes -Wmissing-declarations  -Wstrict-prototypes  -Wmissing-noreturn -Wendif-labels -Wpointer-arith -Wbad-function-cast -Wcast-qual -Wwrite-strings -Winline -Wredundant-decls -Wall -Wchar-subscripts -Wextra  -Wuninitialized -Wno-format-y2k -Wmissing-format-attribute -Wno-missing-field-initializers -Wno-strict-aliasing  -Wold-style-definition -g3 -Wunsafe-loop-optimizations"
+   if test "x${enable_debug_C}" = "xyes"; then
+      DEBUG_CFLAGS="-pipe -Wformat -Wshadow -Wfloat-equal -Wpointer-arith -Wcast-align -Wmissing-prototypes -Wmissing-declarations  -Wstrict-prototypes  -Wmissing-noreturn -Wendif-labels -Wpointer-arith -Wbad-function-cast -Wcast-qual -Wwrite-strings -Winline -Wredundant-decls -Wall -Wchar-subscripts -Wextra  -Wuninitialized -Wno-format-y2k -Wmissing-format-attribute -Wno-missing-field-initializers -fno-strict-aliasing -Wold-style-definition -g3 -Wunsafe-loop-optimizations"
       # used to be -O
       # -D_FORTIFY_SOURCE=2
       case "$host" in
       *-linux-gnu )
       # Only doing that under Linux
-        if test "$enable_debug_linker" = yes; then
+        if test "x${enable_debug_linker}" = "xyes"; then
             LDFLAGS="$LDFLAGS -Wl,--warn-common,-x"
         fi
         DEBUG_CFLAGS="$DEBUG_CFLAGS -fdiagnostics-show-option -Werror=format-security"
@@ -19135,9 +19139,9 @@ case "$CC" in
      *-*-darwin*)
         if test -x ${SW_VERS} -o -x `which sw_vers`; then
           if test "`sw_vers -productVersion | cut -d\. -f2`" -lt "7"; then
-                                                            ARCH_CFLAGS="$ARCH_CFLAGS -no_compact_linkedit"
-            ARCH_CXXFLAGS="$ARCH_CXXFLAGS -no_compact_linkedit"
-            ARCH_LDFLAGS="$ARCH_LDFLAGS -no_compact_linkedit"
+                                                            ARCH_CFLAGS="${ARCH_CFLAGS} -Wl,-no_compact_linkedit"
+            ARCH_CXXFLAGS="${ARCH_CXXFLAGS} -Wl,-no_compact_linkedit"
+            ARCH_LDFLAGS="${ARCH_LDFLAGS} -Wl,-no_compact_linkedit"
             # We need this to be passed to all linker commands... except not
             # really because that can break further conftests
             LD_CLASSIC_FLAGS="${LD_CLASSIC_FLAGS} -no_compact_linkedit"
@@ -19148,6 +19152,10 @@ $as_echo "$as_me: Adding -no_compact_linkedit to the linker flags for Darwin" >&
             { $as_echo "$as_me:${as_lineno-$LINENO}: Not using the -no_compact_linkedit linker flag on Lion and above" >&5
 $as_echo "$as_me: Not using the -no_compact_linkedit linker flag on Lion and above" >&6;}
           fi
+        fi
+
+        if test "x${enable_debug_linker}" = "xyes"; then
+                        LDFLAGS="${LDFLAGS} -Wl,-warn_compact_unwind -Wl,-warn_weak_exports -Wl,-warn_stabs -Wl,-warn_commons"
         fi
 
         case "$F77" in
@@ -19161,14 +19169,14 @@ $as_echo "$as_me: WARNING: gfortran not used. Could not detect the architecture.
                  MAC_DETECTED_ARCH="x86_64"
              ;;
         esac
-        CC="$CC -arch $MAC_DETECTED_ARCH"
-        CXX="$CXX -arch $MAC_DETECTED_ARCH"
+        CC="${CC} -arch ${MAC_DETECTED_ARCH}"
+        CXX="${CXX} -arch ${MAC_DETECTED_ARCH}"
         ;;
    esac
    ;; # end of the gcc case on the $CC
    *)
         ## CC compiler (not GCC)
-        if test "$enable_debug_C" != yes; then
+        if test "x${enable_debug_C}" != "xyes"; then
              ARCH_CFLAGS="-DNDEBUG"
         fi
 
@@ -19192,7 +19200,7 @@ $as_echo "$as_me: WARNING: gfortran not used. Could not detect the architecture.
             ARCH_CFLAGS="-DSYSV -Dhpux"
           ;;
           *-*-hpux10.*) # HP 10
-            if test "$enable_debug_C" = yes; then
+            if test "x${enable_debug_C}" = "xyes"; then
               ARCH_CFLAGS="-DSYSV -Dhpux"
             else
               ARCH_CFLAGS="-DSYSV -Dhpux +Z +DAportable"
@@ -19202,7 +19210,7 @@ $as_echo "$as_me: WARNING: gfortran not used. Could not detect the architecture.
             ARCH_CFLAGS="-DSYSV -Dhpux -Dhppa +Z +DAportable"
           ;;
           *-*-solaris*) # SUN SOLARIS
-            ARCH_CFLAGS="-DSVR4 -DSYSV -Dsolaris -I/usr/local/include/"
+            ARCH_CFLAGS="-DSVR4 -DSYSV -Dsolaris -Wp,-I/usr/local/include/"
             ARCH_LDFLAGS="-L/usr/local/lib/"
           ;;
         esac
@@ -19210,7 +19218,7 @@ $as_echo "$as_me: WARNING: gfortran not used. Could not detect the architecture.
 esac
 
 # enable the code coverage
-if test "$enable_code_coverage" = yes; then
+if test "x${enable_code_coverage}" = "xyes"; then
    # Extract the first word of "lcov", so it can be a program name with args.
 set dummy lcov; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -19251,7 +19259,7 @@ $as_echo "no" >&6; }
 fi
 
 
-   if test -z "$LCOV" ; then
+   if test -z "${LCOV}"; then
         as_fn_error $? "Cannot find lcov. Please install it (package lcov under Debian) or remove the option --enable-code-coverage" "$LINENO" 5
    fi
    # Extract the first word of "genhtml", so it can be a program name with args.
@@ -19294,12 +19302,12 @@ $as_echo "no" >&6; }
 fi
 
 
-   if test -z "$GENHTML" ; then
+   if test -z "${GENHTML}"; then
         as_fn_error $? "Cannot find genhtml. Please install it (package lcov under Debian) or remove the option --enable-code-coverage" "$LINENO" 5
    fi
    CODE_COVERAGE_LDFLAGS="-coverage"
 fi
- if test "$enable_code_coverage" = yes; then
+ if test "x${enable_code_coverage}" = "xyes"; then
   CODE_COVERAGE_TRUE=
   CODE_COVERAGE_FALSE='#'
 else
@@ -19534,33 +19542,31 @@ fi
 
 # Check whether --with-hdf5_include was given.
 if test "${with_hdf5_include+set}" = set; then :
-  withval=$with_hdf5_include; with_hdf5_include=$withval
+  withval=$with_hdf5_include; with_hdf5_include=${withval}
 else
   with_hdf5_include='yes'
 fi
 
 
-
 # Check whether --with-hdf5_library was given.
 if test "${with_hdf5_library+set}" = set; then :
-  withval=$with_hdf5_library; with_hdf5_library=$withval
+  withval=$with_hdf5_library; with_hdf5_library=${withval}
 else
   with_hdf5_library='yes'
 fi
 
-
-if test "x$with_hdf5_include" != "xyes"; then
-    save_CFLAGS="$CFLAGS"
-    CFLAGS="-I$with_hdf5_include"
+if test "x${with_hdf5_include}" != "xyes"; then
+    save_CFLAGS="${CFLAGS}"
+    CFLAGS="-Wp,-I${with_hdf5_include}"
     ac_fn_c_check_header_mongrel "$LINENO" "hdf5.h" "ac_cv_header_hdf5_h" "$ac_includes_default"
 if test "x$ac_cv_header_hdf5_h" = xyes; then :
-  HDF5_CFLAGS="$CFLAGS"
+  HDF5_CFLAGS="${CFLAGS}"
 else
-  as_fn_error $? "Cannot find headers (hdf5.h) of the library HDF5 in $with_hdf5_include. Please install the dev package" "$LINENO" 5
+  as_fn_error $? "Cannot find headers (hdf5.h) of the library HDF5 in ${with_hdf5_include}. Please install the dev package" "$LINENO" 5
 fi
 
 
-    CFLAGS="$save_CFLAGS"
+    CFLAGS="${save_CFLAGS}"
 else
     HDF5_CFLAGS=""
     ac_fn_c_check_header_mongrel "$LINENO" "hdf5.h" "ac_cv_header_hdf5_h" "$ac_includes_default"
@@ -19573,12 +19579,12 @@ fi
 
 fi
 
-save_LIBS="$LIBS"
+save_LIBS="${LIBS}"
 
 # --with-hdf5-library set then check in this dir
-if test "x$with_hdf5_library" != "xyes"; then
-    HDF5_LIBS="-L$with_hdf5_library -lhdf5"
-    LIBS="$LIBS $HDF5_LIBS"
+if test "x${with_hdf5_library}" != "xyes"; then
+    HDF5_LIBS="-L${with_hdf5_library} -lhdf5"
+    LIBS="${LIBS} ${HDF5_LIBS}"
     { $as_echo "$as_me:${as_lineno-$LINENO}: checking for H5Fopen in -lhdf5" >&5
 $as_echo_n "checking for H5Fopen in -lhdf5... " >&6; }
 if ${ac_cv_lib_hdf5_H5Fopen+:} false; then :
@@ -19626,11 +19632,10 @@ else
   { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: the libhdf5 library is missing. We cannot find symbol H5Fopen in ${with_hdf5_library}. Check if libhdf5 is installed and if the version is correct. This should be a hard error but it hase been changed to a warning to facilitate configure script development." >&5
 $as_echo "$as_me: WARNING: the libhdf5 library is missing. We cannot find symbol H5Fopen in ${with_hdf5_library}. Check if libhdf5 is installed and if the version is correct. This should be a hard error but it hase been changed to a warning to facilitate configure script development." >&2;}
 fi
-
-
+    ## (sorry about that)
 else
     HDF5_LIBS="-lhdf5"
-    LIBS="$LIBS $HDF5_LIBS"
+    LIBS="${LIBS} ${HDF5_LIBS}"
     { $as_echo "$as_me:${as_lineno-$LINENO}: checking for H5Fopen in -lhdf5" >&5
 $as_echo_n "checking for H5Fopen in -lhdf5... " >&6; }
 if ${ac_cv_lib_hdf5_H5Fopen+:} false; then :
@@ -19681,14 +19686,11 @@ fi
 
 fi
 
-LIBS="$save_LIBS"
-
-
+LIBS="${save_LIBS}"
 
 
 
 $as_echo "#define WITH_HDF5 /**/" >>confdefs.h
-
 
 # Gets compilation and library flags
  # The Java detection is done after in this file.
@@ -19709,7 +19711,7 @@ if test "${with_modelica+set}" = set; then :
   withval=$with_modelica;
 fi
 
-if test "$with_gui" = no; then
+if test "x${with_gui}" = "xno"; then
    { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: GUI is disabled. Disabling then xcos" >&5
 $as_echo "$as_me: WARNING: GUI is disabled. Disabling then xcos" >&2;}
    with_xcos=no
@@ -19717,7 +19719,7 @@ fi
 
 XCOS_ENABLE=no
 
-if test "$with_xcos" != no -a "$with_gui" != no; then
+if test "x${with_xcos}" != "xno" -a "x${with_gui}" != "xno"; then
 
 $as_echo "#define WITH_XCOS /**/" >>confdefs.h
 
@@ -19830,7 +19832,7 @@ fi
    #################
    ## ocaml which is only called when using Xcos
    #################
-   if test "$with_modelica" != no; then
+   if test "x${with_modelica}" != "xno"; then
 
 # checking for ocamlc
 	OCAMLC=
@@ -20060,6 +20062,9 @@ $as_echo "#define WITH_OCAML /**/" >>confdefs.h
 
     fi
    XCOS_ENABLE=yes
+else
+   { $as_echo "$as_me:${as_lineno-$LINENO}: skipping xcos checks" >&5
+$as_echo "$as_me: skipping xcos checks" >&6;}
 fi
 
 
@@ -20083,9 +20088,8 @@ fi
 ## test for JAVA compiler
 ###########################
 
-if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no; then
-
-   # See if --with-jdk command line argument is given
+if test "x${with_javasci}" != "xno" -o "x${with_gui}" != "xno" -o "x${enable_build_help}" != "xno"; then
+     # See if --with-jdk command line argument is given
      # Try to detect the installed JVM, this could be controlled
      # by the above --with options
 
@@ -20299,7 +20303,7 @@ $as_echo "$ac_java_classpath" >&6; }
 $as_echo_n "checking to see if the java compiler works... " >&6; }
 
     cat << \EOF > conftest.java
-// #line 20302 "configure"
+// #line 20306 "configure"
 import java.util.regex.Pattern;
 
 
@@ -20386,7 +20390,7 @@ $as_echo_n "checking type of jvm... " >&6; }
     if test "x$ac_java_jvm_name" = "x" ; then
 
     cat << \EOF > conftest.java
-// #line 20389 "configure"
+// #line 20393 "configure"
 import java.util.regex.Pattern;
 
 import gnu.java.io.EncodingManager;
@@ -20470,7 +20474,7 @@ $as_echo_n "checking java API version... " >&6; }
     # The class java.nio.charset.Charset is new to 1.4
 
     cat << \EOF > conftest.java
-// #line 20473 "configure"
+// #line 20477 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.charset.Charset;
@@ -20535,7 +20539,7 @@ EOF
     # The class java.lang.StringBuilder is new to 1.5
 
     cat << \EOF > conftest.java
-// #line 20538 "configure"
+// #line 20542 "configure"
 import java.util.regex.Pattern;
 
 import java.lang.StringBuilder;
@@ -20600,7 +20604,7 @@ EOF
     # The class java.util.ArrayDeque is new to 1.6
 
     cat << \EOF > conftest.java
-// #line 20603 "configure"
+// #line 20607 "configure"
 import java.util.regex.Pattern;
 
 import java.util.ArrayDeque;
@@ -20665,7 +20669,7 @@ EOF
     # The class java.nio.file.Path is new to 1.7
 
     cat << \EOF > conftest.java
-// #line 20668 "configure"
+// #line 20672 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.file.Path;
@@ -20742,7 +20746,7 @@ $as_echo "$ac_java_jvm_version" >&6; }
         ;;
      esac
 
-   if test "$ac_java_jvm_name" = "jdk"; then
+   if test "x${ac_java_jvm_name}" = "xjdk"; then
         JAVA_HOME=$ac_java_jvm_dir
         JAVA_VERSION=$ac_java_jvm_version
 
@@ -21351,15 +21355,15 @@ done
 
     F=$ac_java_jvm_dir/include/jni.h
     if test -f "$F" ; then
-         ac_java_jvm_jni_include_flags="-I`dirname $F`"
+         ac_java_jvm_jni_include_flags="-Wp,-I`dirname $F`"
     else
          F=`ls $ac_java_jvm_dir/include/*/jni.h 2>/dev/null`
          if test -f "$F" ; then
-             ac_java_jvm_jni_include_flags="-I`dirname $F`"
+             ac_java_jvm_jni_include_flags="-Wp,-I`dirname $F`"
          else
         case "$host_os" in
              *darwin* )
-                       ac_java_jvm_jni_include_flags="-I/Developer/SDKs/MacOSX${macosx_version}.sdk/System/Library/Frameworks/JavaVM.framework/Headers -I$(/usr/libexec/java_home --arch x86_64 --failfast --version 1.6+)/include/ -I/System/Library/Frameworks/JavaVM.framework/Versions/A/Headers/"
+                       ac_java_jvm_jni_include_flags="-Wp,-I/Developer/SDKs/MacOSX${macosx_version}.sdk/System/Library/Frameworks/JavaVM.framework/Headers -Wp,-I$(/usr/libexec/java_home --arch x86_64 --failfast --version 1.6+)/include/ -Wp,-I/System/Library/Frameworks/JavaVM.framework/Versions/A/Headers/"
                   ;;
               *)
                        as_fn_error $? "Could not locate Java's jni.h include file" "$LINENO" 5
@@ -21374,7 +21378,7 @@ done
 
     F=`ls $ac_java_jvm_dir/include/*/jni_md.h 2>/dev/null`
     if test -f "$F" ; then
-        ac_java_jvm_jni_include_flags="$ac_java_jvm_jni_include_flags -I`dirname $F`"
+        ac_java_jvm_jni_include_flags="$ac_java_jvm_jni_include_flags -Wp,-I`dirname $F`"
     fi
 
 
@@ -21383,7 +21387,6 @@ done
 
 
     # Make sure a simple #include <jni.h> will compile.
-
 
 
     { $as_echo "$as_me:${as_lineno-$LINENO}: checking if jni.h can be included" >&5
@@ -22584,8 +22587,8 @@ fi
              ;;
         esac
 
-        if test "$with_gui" != no; then
-                if test $XCOS_ENABLE = yes; then
+        if test "x${with_gui}" != "xno"; then
+                if test "x${XCOS_ENABLE}" = "xyes"; then
                    # jgraphx
 
     { $as_echo "$as_me:${as_lineno-$LINENO}: checking jgraphx" >&5
@@ -22604,7 +22607,7 @@ $as_echo_n "checking jgraphx... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 22607 "configure"
+// #line 22610 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.model.mxCell;
@@ -22710,7 +22713,7 @@ $as_echo_n "checking minimal version (1.8.0.0) of jgraphx... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 22713 "configure"
+// #line 22716 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.view.mxGraph;
@@ -22781,7 +22784,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 22784 "configure"
+// #line 22787 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.view.mxGraph;
@@ -22872,7 +22875,7 @@ $as_echo_n "checking scirenderer... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 22875 "configure"
+// #line 22878 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -22978,7 +22981,7 @@ $as_echo_n "checking minimal version (1.0.2) of scirenderer... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 22981 "configure"
+// #line 22984 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -23049,7 +23052,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 23052 "configure"
+// #line 23055 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -23138,7 +23141,7 @@ $as_echo_n "checking flexdock... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 23141 "configure"
+// #line 23144 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.docking.DockingManager;
@@ -23244,7 +23247,7 @@ $as_echo_n "checking minimal version (1.2.0) of flexdock... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 23247 "configure"
+// #line 23250 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.util.Utilities;
@@ -23315,7 +23318,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 23318 "configure"
+// #line 23321 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.util.Utilities;
@@ -23404,7 +23407,7 @@ $as_echo_n "checking looks... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 23407 "configure"
+// #line 23410 "configure"
 import java.util.regex.Pattern;
 
 import com.jgoodies.looks.common.MenuItemRenderer;
@@ -23521,7 +23524,7 @@ $as_echo_n "checking jgoodies-looks... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 23524 "configure"
+// #line 23527 "configure"
 import java.util.regex.Pattern;
 
 import com.jgoodies.looks.common.MenuItemRenderer;
@@ -23638,7 +23641,7 @@ $as_echo_n "checking skinlf... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 23641 "configure"
+// #line 23644 "configure"
 import java.util.regex.Pattern;
 
 import com.l2fprod.util.AccessUtils;
@@ -23754,7 +23757,7 @@ $as_echo_n "checking jogl2... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 23757 "configure"
+// #line 23760 "configure"
 import java.util.regex.Pattern;
 
 import javax.media.opengl.glu.GLUnurbs;
@@ -23857,10 +23860,10 @@ $as_echo "$as_me: WARNING: Could not find or use the Java package/jar jogl2 used
                 else
                    LDFLAGS_save=$LDFLAGS
                    # Provide known paths where distribs/OS can store JNI libs
-                   LDFLAGS="$LDFLAGS -L/usr/lib/jni -L/usr/lib64/jni"                   # Debian
-                   LDFLAGS="$LDFLAGS -L/usr/lib/java -L/usr/lib64/java"                 # jpackage.org
-                   LDFLAGS="$LDFLAGS -L/usr/lib/jogl -L/usr/lib64/jogl"                 # RedHat
-                   LDFLAGS="$LDFLAGS -L$SCI_SRCDIR/thirdparty -L$SCI_SRCDIR/bin"        # Scilab thirdparties
+                   LDFLAGS="$LDFLAGS -L/usr/lib/jni -L/usr/lib64/jni" # Debian
+                   LDFLAGS="$LDFLAGS -L/usr/lib/java -L/usr/lib64/java" # jpackage.org
+                   LDFLAGS="$LDFLAGS -L/usr/lib/jogl -L/usr/lib64/jogl" # RedHat
+                   LDFLAGS="$LDFLAGS -L$SCI_SRCDIR/thirdparty -L$SCI_SRCDIR/bin" # Scilab 3rdparties
                    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for glTexParameterf in -ljogl_desktop" >&5
 $as_echo_n "checking for glTexParameterf in -ljogl_desktop... " >&6; }
 if ${ac_cv_lib_jogl_desktop_glTexParameterf+:} false; then :
@@ -23976,7 +23979,7 @@ $as_echo_n "checking gluegen2-rt... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 23979 "configure"
+// #line 23982 "configure"
 import java.util.regex.Pattern;
 
 import jogamp.common.os.MachineDescriptionRuntime;
@@ -24079,10 +24082,10 @@ $as_echo "$as_me: WARNING: Could not find or use the Java package/jar gluegen2-r
                 else
                    LDFLAGS_save=$LDFLAGS
                    # Provide known paths where distribs/OS can store JNI libs
-                   LDFLAGS="$LDFLAGS -L/usr/lib/jni -L/usr/lib64/jni"                   # Debian
-                   LDFLAGS="$LDFLAGS -L/usr/lib/java -L/usr/lib64/java"                 # jpackage.org
-                   LDFLAGS="$LDFLAGS -L/usr/lib/gluegen -L/usr/lib64/gluegen"           # RedHat
-                   LDFLAGS="$LDFLAGS -L$SCI_SRCDIR/thirdparty -L$SCI_SRCDIR/bin"        # Scilab thirdparties
+                   LDFLAGS="$LDFLAGS -L/usr/lib/jni -L/usr/lib64/jni" # Debian
+                   LDFLAGS="$LDFLAGS -L/usr/lib/java -L/usr/lib64/java" # jpackage.org
+                   LDFLAGS="$LDFLAGS -L/usr/lib/gluegen -L/usr/lib64/gluegen" # RedHat
+                   LDFLAGS="$LDFLAGS -L$SCI_SRCDIR/thirdparty -L$SCI_SRCDIR/bin" # Scilab 3rdparties
                    symbol="Java_jogamp_common_jvm_JVMUtil_initialize"
                    as_ac_Lib=`$as_echo "ac_cv_lib_gluegen2-rt_$symbol" | $as_tr_sh`
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $symbol in -lgluegen2-rt" >&5
@@ -24149,7 +24152,7 @@ $as_echo_n "checking jhall... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 24152 "configure"
+// #line 24155 "configure"
 import java.util.regex.Pattern;
 
 import javax.help.JHelp;
@@ -24266,7 +24269,7 @@ $as_echo_n "checking javahelp2... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 24269 "configure"
+// #line 24272 "configure"
 import java.util.regex.Pattern;
 
 import javax.help.JHelp;
@@ -24383,7 +24386,7 @@ $as_echo_n "checking jrosetta-API... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 24386 "configure"
+// #line 24389 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.interfaces.core.ConsoleConfiguration;
@@ -24498,7 +24501,7 @@ $as_echo_n "checking jrosetta-api... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 24501 "configure"
+// #line 24504 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.interfaces.core.ConsoleConfiguration;
@@ -24615,7 +24618,7 @@ $as_echo_n "checking jrosetta-engine... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 24618 "configure"
+// #line 24621 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.core.action.AbstractConsoleAction;
@@ -24721,7 +24724,7 @@ $as_echo_n "checking minimal version (1.0.4) of jrosetta-engine... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 24724 "configure"
+// #line 24727 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.util.ConfigurationBuilder;
@@ -24792,7 +24795,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 24795 "configure"
+// #line 24798 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.util.ConfigurationBuilder;
@@ -24882,7 +24885,7 @@ $as_echo_n "checking jeuclid-core... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 24885 "configure"
+// #line 24888 "configure"
 import java.util.regex.Pattern;
 
 import net.sourceforge.jeuclid.LayoutContext;
@@ -24999,7 +25002,7 @@ $as_echo_n "checking fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 25002 "configure"
+// #line 25005 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.fop.pdf.PDFInfo;
@@ -25096,7 +25099,7 @@ $as_echo "$as_me: WARNING: Could not find or use the Java package/jar fop used b
     fi
 
                 FOP=$PACKAGE_JAR_FILE
-                if test "x$FOP" = "x"; then
+                if test "x${FOP}" = "x"; then
                 	test -z "$FOP"
 
 
@@ -25248,7 +25251,7 @@ $as_echo_n "checking batik-all... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 25251 "configure"
+// #line 25254 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.parser.Parser;
@@ -25365,7 +25368,7 @@ $as_echo_n "checking batik... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 25368 "configure"
+// #line 25371 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.parser.Parser;
@@ -25472,7 +25475,7 @@ $as_echo_n "checking minimal version (1.7) of batik... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 25475 "configure"
+// #line 25478 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.Version;
@@ -25543,7 +25546,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 25546 "configure"
+// #line 25549 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.Version;
@@ -25632,7 +25635,7 @@ $as_echo_n "checking commons-io... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 25635 "configure"
+// #line 25638 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.output.CountingOutputStream;
@@ -25748,7 +25751,7 @@ $as_echo_n "checking xmlgraphics-commons... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 25751 "configure"
+// #line 25754 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.xmlgraphics.util.Service;
@@ -25864,7 +25867,7 @@ $as_echo_n "checking avalon-framework... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 25867 "configure"
+// #line 25870 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.avalon.framework.configuration.ConfigurationException;
@@ -25980,7 +25983,7 @@ $as_echo_n "checking xml-apis-ext... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 25983 "configure"
+// #line 25986 "configure"
 import java.util.regex.Pattern;
 
 import org.w3c.dom.svg.SVGDocument;
@@ -26097,7 +26100,7 @@ $as_echo_n "checking xml-commons-apis-ext... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 26100 "configure"
+// #line 26103 "configure"
 import java.util.regex.Pattern;
 
 import org.w3c.dom.svg.SVGDocument;
@@ -26216,7 +26219,7 @@ $as_echo_n "checking commons-logging... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 26219 "configure"
+// #line 26222 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.logging.LogFactory;
@@ -26332,7 +26335,7 @@ $as_echo_n "checking jlatexmath... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 26335 "configure"
+// #line 26338 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -26438,7 +26441,7 @@ $as_echo_n "checking minimal version (1.0.0) of jlatexmath... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 26441 "configure"
+// #line 26444 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -26509,7 +26512,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 26512 "configure"
+// #line 26515 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -26603,7 +26606,7 @@ $as_echo_n "checking checkstyle... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 26606 "configure"
+// #line 26609 "configure"
 import java.util.regex.Pattern;
 
 import com.puppycrawl.tools.checkstyle.CheckStyleTask;
@@ -26719,7 +26722,7 @@ $as_echo_n "checking commons-beanutils... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 26722 "configure"
+// #line 26725 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.beanutils.Converter;
@@ -26835,7 +26838,7 @@ $as_echo_n "checking antlr... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 26838 "configure"
+// #line 26841 "configure"
 import java.util.regex.Pattern;
 
 import antlr.TokenStreamException;
@@ -26951,7 +26954,7 @@ $as_echo_n "checking junit4... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 26954 "configure"
+// #line 26957 "configure"
 import java.util.regex.Pattern;
 
 import org.junit.Assert;
@@ -27067,7 +27070,7 @@ $as_echo_n "checking cobertura... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 27070 "configure"
+// #line 27073 "configure"
 import java.util.regex.Pattern;
 
 import net.sourceforge.cobertura.merge.Main;
@@ -27183,7 +27186,7 @@ $as_echo_n "checking asm3... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 27186 "configure"
+// #line 27189 "configure"
 import java.util.regex.Pattern;
 
 import org.objectweb.asm.Type;
@@ -27299,7 +27302,7 @@ $as_echo_n "checking asm... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 27302 "configure"
+// #line 27305 "configure"
 import java.util.regex.Pattern;
 
 import org.objectweb.asm.Type;
@@ -27401,19 +27404,19 @@ $as_echo "$as_me: WARNING: Could not find or use the Java package/jar asm used b
     else
         { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: Sun javac not found: I will not build the java interface" >&5
 $as_echo "$as_me: WARNING: Sun javac not found: I will not build the java interface" >&2;}
-        if test "$ac_java_jvm_name" != ""; then
+        if test "x${ac_java_jvm_name}" != "x"; then
             { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: We do not support $ac_java_jvm_name yet" >&5
 $as_echo "$as_me: WARNING: We do not support $ac_java_jvm_name yet" >&2;}
         fi
     fi
 
-    if test "$enable_debug_java" = yes; then
+    if test "x${enable_debug_java}" = "xyes"; then
         JAVAC_DEBUG="on"
     else
         JAVAC_DEBUG="off"
     fi
 
-    if test "$enable_build_swig" != no -a "$enable_build_swig" != ""; then
+    if test "x${enable_build_swig}" != "xno" -a "x${enable_build_swig}" != "x"; then
 
 	# Extract the first word of "swig", so it can be a program name with args.
 set dummy swig; ac_word=$2
@@ -27495,16 +27498,14 @@ $as_echo "$as_me: SWIG runtime library directory is '$SWIG_RUNTIME_LIBS_DIR'" >&
 
 	SWIG_JAVA=" -java"
 
-
-
-
+                                ## that should be enough
     else
                 enable_build_swig=no
     fi
 
     # Giws is the equivalent of Swig developed by the Scilab team
     # in order to provide a wrapper to Java from C/C++
-    if test "$enable_build_giws" != no -a "$enable_build_giws" != ""; then
+    if test "x${enable_build_giws}" != "xno" -a "x${enable_build_giws}" != "x"; then
 
 # Checking Python in the current path... As Giws is not at all mandatory
 # Python is not mandatory and we do not want to provide an additional
@@ -27912,9 +27913,7 @@ else
         enable_build_swig=no
     enable_build_giws=no
     HAVE_FOP=no
-
-
-
+                ## done with this java part
 fi
 
 JAVA_ENABLE=yes
@@ -27925,7 +27924,7 @@ fi
 
 
 # Xcos is not checked here because gui=no disables it
- if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no; then
+ if test "x${with_javasci}" != "xno" -o "x${with_gui}" != "xno" -o "x${enable_build_help}" != "xno"; then
   NEED_JAVA_TRUE=
   NEED_JAVA_FALSE='#'
 else
@@ -27933,7 +27932,7 @@ else
   NEED_JAVA_FALSE=
 fi
 
- if test "$with_gui" != no; then
+ if test "x${with_gui}" != "xno"; then
   GUI_TRUE=
   GUI_FALSE='#'
 else
@@ -27941,7 +27940,7 @@ else
   GUI_FALSE=
 fi
 
- if test "$with_javasci" != no; then
+ if test "x${with_javasci}" != "xno"; then
   JAVASCI_TRUE=
   JAVASCI_FALSE='#'
 else
@@ -27949,7 +27948,7 @@ else
   JAVASCI_FALSE=
 fi
 
- if test "$enable_build_swig" != no -a "$enable_build_swig" != ""; then
+ if test "x${enable_build_swig}" != no -a "x${enable_build_swig}" != "x"; then
   SWIG_TRUE=
   SWIG_FALSE='#'
 else
@@ -27971,11 +27970,11 @@ fi
 
 GUI_ENABLE=no
 
-if test "$JAVA_ENABLE" != no; then
+if test "x${JAVA_ENABLE}" != "xno"; then
    GUI_ENABLE=yes
 fi
 
-if test "$with_gui" != no; then
+if test "x${with_gui}" != "xno"; then
    GUI_ENABLE=yes
 fi
 
@@ -28035,7 +28034,8 @@ fi
 done
 
 # Provided by string.h
-for ac_func in bzero memmove memset strcasecmp strerror strchr strdup strpbrk strrchr strstr strtol
+for ac_func in bzero memmove memset strcasecmp strerror strchr \
+                strdup strpbrk strrchr strstr strtol
 do :
   as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
 ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"
@@ -32310,7 +32310,7 @@ _ACEOF
 
 fi
 
-if test $ac_cv_lib_curses_main = no ; then
+if test "x${ac_cv_lib_curses_main}" = "xno"; then
     { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lncurses" >&5
 $as_echo_n "checking for main in -lncurses... " >&6; }
 if ${ac_cv_lib_ncurses_main+:} false; then :
@@ -32422,7 +32422,7 @@ fi
 
 done
 
-if test "x$ac_cv_lib_curses_main" = "xyes" -o "x$ac_cv_lib_ncurses_main" = "xyes" ; then
+if test "x${ac_cv_lib_curses_main}" = "xyes" -o "x${ac_cv_lib_ncurses_main}" = "xyes" ; then
 
 $as_echo "#define HAVE_TERMCAP /**/" >>confdefs.h
 
@@ -32739,7 +32739,7 @@ return sqrt ();
   return 0;
 }
 _ACEOF
-for ac_lib in '' m; do
+for ac_lib in '' m c; do
   if test -z "$ac_lib"; then
     ac_res="none required"
   else
@@ -32885,7 +32885,7 @@ return pthread_join ();
   return 0;
 }
 _ACEOF
-for ac_lib in '' pthread; do
+for ac_lib in '' pthread c; do
   if test -z "$ac_lib"; then
     ac_res="none required"
   else
@@ -33018,39 +33018,37 @@ if test "${with_fftw+set}" = set; then :
 fi
 
 FFTW_ENABLE=no
-if test "$with_fftw" != no; then
+if test "x${with_fftw}" != "xno"; then
 
 
 
 # Check whether --with-fftw_include was given.
 if test "${with_fftw_include+set}" = set; then :
-  withval=$with_fftw_include; with_fftw_include=$withval
+  withval=$with_fftw_include; with_fftw_include=${withval}
 else
   with_fftw_include='yes'
 fi
 
 
-
 # Check whether --with-fftw_library was given.
 if test "${with_fftw_library+set}" = set; then :
-  withval=$with_fftw_library; with_fftw_library=$withval
+  withval=$with_fftw_library; with_fftw_library=${withval}
 else
   with_fftw_library='yes'
 fi
 
-
-if test "x$with_fftw_include" != "xyes"; then
-	save_CFLAGS="$CFLAGS"
-	CFLAGS="-I$with_fftw_include"
+if test "x${with_fftw_include}" != "xyes"; then
+	save_CFLAGS="${CFLAGS}"
+	CFLAGS="-Wp,-I${with_fftw_include}"
 	ac_fn_c_check_header_mongrel "$LINENO" "fftw3.h" "ac_cv_header_fftw3_h" "$ac_includes_default"
 if test "x$ac_cv_header_fftw3_h" = xyes; then :
-  FFTW3_CFLAGS="$CFLAGS"
+  FFTW3_CFLAGS="${CFLAGS}"
 else
-  as_fn_error $? "Cannot find headers (fftw3.h) of the library FFTW in $with_fftw_include. Please install the dev package (Debian : libfftw3-dev)" "$LINENO" 5
+  as_fn_error $? "Cannot find headers (fftw3.h) of the library FFTW in ${with_fftw_include}. Please install the dev package (Debian : libfftw3-dev)" "$LINENO" 5
 fi
 
 
-	CFLAGS="$save_CFLAGS"
+	CFLAGS="${save_CFLAGS}"
 else
 	ac_fn_c_check_header_mongrel "$LINENO" "fftw3.h" "ac_cv_header_fftw3_h" "$ac_includes_default"
 if test "x$ac_cv_header_fftw3_h" = xyes; then :
@@ -33064,9 +33062,9 @@ fi
 
 
 # --with-fftw-library set then check in this dir
-if test "x$with_fftw_library" != "xyes"; then
-	save_LIBS="$LIBS"
-	LIBS="-L$with_fftw_library -lfftw3"
+if test "x${with_fftw_library}" != "xyes"; then
+	save_LIBS="${LIBS}"
+	LIBS="-L${with_fftw_library} -lfftw3"
 	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for fftw_plan_dft_r2c in -lfftw3" >&5
 $as_echo_n "checking for fftw_plan_dft_r2c in -lfftw3... " >&6; }
 if ${ac_cv_lib_fftw3_fftw_plan_dft_r2c+:} false; then :
@@ -33104,14 +33102,14 @@ fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_fftw3_fftw_plan_dft_r2c" >&5
 $as_echo "$ac_cv_lib_fftw3_fftw_plan_dft_r2c" >&6; }
 if test "x$ac_cv_lib_fftw3_fftw_plan_dft_r2c" = xyes; then :
-  FFTW3_LIB="-L$with_fftw_library -lfftw3"
+  FFTW3_LIB="-L${with_fftw_library} -lfftw3"
 else
-  as_fn_error $? "libfftw3 : library missing. (Cannot find symbol fftw_plan_dft_r2c) in $with_fftw_library. Check if libfftw3 is installed and if the version is correct" "$LINENO" 5
+  as_fn_error $? "libfftw3 : library missing. (Cannot find symbol fftw_plan_dft_r2c) in ${with_fftw_library}. Check if libfftw3 is installed and if the version is correct" "$LINENO" 5
 fi
 
-	LIBS="$save_LIBS"
+	LIBS="${save_LIBS}"
 else
-	save_LIBS="$LIBS"
+	save_LIBS="${LIBS}"
 	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for fftw_plan_dft_r2c in -lfftw3" >&5
 $as_echo_n "checking for fftw_plan_dft_r2c in -lfftw3... " >&6; }
 if ${ac_cv_lib_fftw3_fftw_plan_dft_r2c+:} false; then :
@@ -33154,18 +33152,20 @@ else
   as_fn_error $? "libfftw3 : library missing. (Cannot find symbol fftw_plan_dft_r2c). Check if libfftw3 is installed and if the version is correct" "$LINENO" 5
 fi
 
-	LIBS="$save_LIBS"
+	LIBS="${save_LIBS}"
 fi
 
 
 $as_echo "#define WITH_FFTW /**/" >>confdefs.h
 
-
     FFTW_ENABLE=yes
+else
+   { $as_echo "$as_me:${as_lineno-$LINENO}: skipping checks for fftw" >&5
+$as_echo "$as_me: skipping checks for fftw" >&6;}
 fi
 
 
- if test "$with_fftw" != no; then
+ if test "x${with_fftw}" != "xno"; then
   FFTW_TRUE=
   FFTW_FALSE='#'
 else
@@ -33184,7 +33184,7 @@ if test "${with_openmp+set}" = set; then :
 fi
 
 OPENMP_ENABLE=no
-if test "$with_openmp" != no; then
+if test "x${with_openmp}" != "xno"; then
 
   OPENMP_CFLAGS=
   # Check whether --enable-openmp was given.
@@ -33270,9 +33270,12 @@ fi
 done
 
     OPENMP_ENABLE=yes
+else
+    { $as_echo "$as_me:${as_lineno-$LINENO}: skipping checks for openmp" >&5
+$as_echo "$as_me: skipping checks for openmp" >&6;}
 fi
 
- if test "$with_openmp" != no; then
+ if test "x${with_openmp}" != "xno"; then
   OPENMP_TRUE=
   OPENMP_FALSE='#'
 else
@@ -33290,17 +33293,16 @@ fi
 
 # Check whether --with-libxml2 was given.
 if test "${with_libxml2+set}" = set; then :
-  withval=$with_libxml2; with_libxml2=$withval
+  withval=$with_libxml2; with_libxml2=${withval}
 else
   with_libxml2='yes'
 fi
-
 
 if test "$with_libxml2" != 'yes' -a "$with_libxml2" != 'no'; then
    # Look if xml-config xml2_config (which provides cflags and ldflags) is available
    { $as_echo "$as_me:${as_lineno-$LINENO}: checking libxml2, for xml-config" >&5
 $as_echo_n "checking libxml2, for xml-config... " >&6; }
-   XML_CONFIG="$with_libxml2/bin/xml2-config"
+   XML_CONFIG="${with_libxml2}/bin/xml2-config"
         if test -x "$XML_CONFIG"; then
                 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $XML_CONFIG" >&5
 $as_echo "$XML_CONFIG" >&6; }
@@ -33355,15 +33357,21 @@ test -n "$XML_CONFIG" || XML_CONFIG="no"
 		as_fn_error $? "Unable to find xml2-config in the path. Please check your installation of libxml2" "$LINENO" 5
 	fi
 fi
-saved_cflags=$CFLAGS
-saved_LIBS="$LIBS"
+saved_cflags="${CFLAGS}"
+saved_LIBS="${LIBS}"
 
-XML_FLAGS=`$XML_CONFIG --cflags`
-XML_LIBS=`$XML_CONFIG --libs`
-XML_VERSION=`$XML_CONFIG --version`
 
-CFLAGS="$CFLAGS $XML_FLAGS"
-LIBS="$LIBS $XML_LIBS"
+# extra space is so the pipe thru sed works correctly:
+XML_FLAGS=$(echo " `${XML_CONFIG} --cflags`" | ${SED} "s/ -I/ -Wp,-I/g")
+XML_LIBS=`${XML_CONFIG} --libs`
+XML_VERSION=`${XML_CONFIG} --version`
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: ${XML_CONFIG} told us that libxml2 requires flags of ${XML_FLAGS}, libs of ${XML_LIBS}, and has a version of ${XML_VERSION}" >&5
+$as_echo "$as_me: ${XML_CONFIG} told us that libxml2 requires flags of ${XML_FLAGS}, libs of ${XML_LIBS}, and has a version of ${XML_VERSION}" >&6;}
+PRE_PKG_CONFIG_XML_FLAGS="${XML_FLAGS}"
+
+CFLAGS="${CFLAGS} ${XML_FLAGS}"
+LIBS="${LIBS} ${XML_LIBS}"
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for xmlReaderForFile in -lxml2" >&5
 $as_echo_n "checking for xmlReaderForFile in -lxml2... " >&6; }
@@ -33436,7 +33444,6 @@ fi
 
 done
 
-
 for ac_header in libxml/xpath.h
 do :
   ac_fn_c_check_header_mongrel "$LINENO" "libxml/xpath.h" "ac_cv_header_libxml_xpath_h" "$ac_includes_default"
@@ -33461,12 +33468,8 @@ fi
 
 done
 
-
 CFLAGS=$saved_cflags
 LIBS="$saved_LIBS"
-
-
-
 
 
 
@@ -33560,13 +33563,9 @@ fi
 
 BUILD_LOCALIZATION_ENABLE=no
 
-if test "$enable_build_localization" != no; then
-
-   test ! -z "$LANG"
-   test ! -z "$LC_ALL"
-
-
-   for ac_func in bind_textdomain_codeset
+if test "x${enable_build_localization}" != "xno"; then
+   test ! -z "${LANG}" && test ! -z "${LC_ALL}"
+         for ac_func in bind_textdomain_codeset
 do :
   ac_fn_c_check_func "$LINENO" "bind_textdomain_codeset" "ac_cv_func_bind_textdomain_codeset"
 if test "x$ac_cv_func_bind_textdomain_codeset" = xyes; then :
@@ -33621,15 +33620,18 @@ fi
    # the main gettext macro used farther above already checks for msgfmt and
    # xgettext, so we can remove the checks for them here
 
-   if test x$MSGFMT = xno; then
+   if test "x${MSGFMT}" = "xno"; then
       as_fn_error $? "The msgfmt command is required to build Scilab. If it is installed on your system, ensure that it is in your path. If it is not, install GNU gettext to continue or use the option --disable-build-localization" "$LINENO" 5
       fi
-    if test x$MSGCAT = xno; then
+    if test "x${MSGCAT}" = "xno"; then
       as_fn_error $? "The msgcat command is required to build Scilab. If it is installed on your system, ensure that it is in your path. If it is not, install GNU gettext to continue or use the option --disable-build-localization" "$LINENO" 5
     fi
     BUILD_LOCALIZATION_ENABLE=yes
+else
+    { $as_echo "$as_me:${as_lineno-$LINENO}: skipping checks required for building localizations" >&5
+$as_echo "$as_me: skipping checks required for building localizations" >&6;}
 fi
- if test "$BUILD_LOCALIZATION_ENABLE" = yes; then
+ if test "x${BUILD_LOCALIZATION_ENABLE}" = "xyes"; then
   GENERATE_LOCALIZATION_FILES_TRUE=
   GENERATE_LOCALIZATION_FILES_FALSE='#'
 else
@@ -33637,7 +33639,7 @@ else
   GENERATE_LOCALIZATION_FILES_FALSE=
 fi
 
- if test "$BUILD_LOCALIZATION_ENABLE" = yes; then
+ if test "x${BUILD_LOCALIZATION_ENABLE}" = "xyes"; then
   BUILD_MACROS_TRUE=
   BUILD_MACROS_FALSE='#'
 else
@@ -33651,14 +33653,14 @@ fi
 
 case "$host_os" in
 	*Darwin* | *darwin*)
-	  if test ! -z "$BLAS_LIBS"; then
-	  	BLAS_LIBS="$BLAS_LIBS -Wl,-framework,Accelerate"
+	  if test ! -z "${BLAS_LIBS}"; then
+	  	BLAS_LIBS="${BLAS_LIBS} -Wl,-framework,Accelerate"
 	  fi
-	  if test ! -z "$CPPFLAGS"; then
-	  	CPPFLAGS="$CPPFLAGS -I/System/Library/Frameworks/Accelerate.framework/Headers"
+	  if test ! -z "${CPPFLAGS}"; then
+	  	CPPFLAGS="${CPPFLAGS} -Wp,-I/System/Library/Frameworks/Accelerate.framework/Headers"
 	  fi
-	  if test ! -z "$CPPFLAGS"; then
-	  	CXXFLAGS="$CXXFLAGS -I/System/Library/Frameworks/Accelerate.framework/Headers"
+	  if test ! -z "${CXXFLAGS}"; then
+	  	CXXFLAGS="${CXXFLAGS} -Wp,-I/System/Library/Frameworks/Accelerate.framework/Headers"
 	  fi
 	;;
 esac
@@ -35505,7 +35507,7 @@ if test "${with_arpack_ng+set}" = set; then :
 fi
 
 ARPACK_NG=no
-if test "$with_arpack_ng" != no; then
+if test "x${with_arpack_ng}" != "xno"; then
    ARPACK_NG=yes
    { $as_echo "$as_me:${as_lineno-$LINENO}: checking if ARPACK-NG is available" >&5
 $as_echo_n "checking if ARPACK-NG is available... " >&6; }
@@ -35817,7 +35819,7 @@ $as_echo_n "checking ... actually nope, not checking this (skip ARPACK-NG detect
 $as_echo " " >&6; }
 fi
 
- if test "$ARPACK_NG" != "no"; then
+ if test "x${ARPACK_NG}" != "xno"; then
   ARPACK_NG_TRUE=
   ARPACK_NG_FALSE='#'
 else
@@ -35836,7 +35838,7 @@ if test "${with_umfpack+set}" = set; then :
 fi
 
 UMFPACK_ENABLE=no
-if test "$with_umfpack" != no; then
+if test "x${with_umfpack}" != "xno"; then
 
 
 BLAS_LIBS="$BLAS_LIBS"
@@ -35853,7 +35855,6 @@ else
 fi
 
 
-
 # Check whether --with-umfpack_include was given.
 if test "${with_umfpack_include+set}" = set; then :
   withval=$with_umfpack_include; with_umfpack_include=$withval
@@ -35862,11 +35863,11 @@ else
 fi
 
 
-# Include provided... check if you set it as -I/path/ if it can find the
+# Include provided... check if you set it as -Wp,-I/path/ if it can find the
 # header
 if test "x$with_umfpack_include" != "xyes"; then
 	save_CFLAGS="$CFLAGS"
-	CFLAGS="-I$with_umfpack_include"
+	CFLAGS="-Wp,-I${with_umfpack_include}"
 	ac_fn_c_check_header_mongrel "$LINENO" "suitesparse/umfpack.h" "ac_cv_header_suitesparse_umfpack_h" "$ac_includes_default"
 if test "x$ac_cv_header_suitesparse_umfpack_h" = xyes; then :
   UMFPACK_CFLAGS="$CFLAGS"; SUITESPARSE=yes
@@ -36164,7 +36165,7 @@ else
   as_fn_error $? "libumfpack: Library missing. (Cannot find symbol umf_divcomplex). Check if libumfpack is installed and if the version is correct (also called lib suitesparse)" "$LINENO" 5
 fi
 
-		LIBS="$save_LIBS"
+	LIBS="$save_LIBS"
 fi
 
 
@@ -36179,12 +36180,13 @@ fi
 
 $as_echo "#define WITH_UMFPACK /**/" >>confdefs.h
 
-
     UMFPACK_ENABLE=yes
+else
+   { $as_echo "$as_me:${as_lineno-$LINENO}: skipping checks for umfpack" >&5
+$as_echo "$as_me: skipping checks for umfpack" >&6;}
 fi
 
-
- if test "$with_umfpack" != no; then
+ if test "x${with_umfpack}" != "xno"; then
   UMFPACK_TRUE=
   UMFPACK_FALSE='#'
 else
@@ -36203,38 +36205,37 @@ fi
 
 # Check whether --with-pcre was given.
 if test "${with_pcre+set}" = set; then :
-  withval=$with_pcre; with_pcre=$withval
+  withval=$with_pcre; with_pcre=${withval}
 else
   with_pcre='yes'
 fi
-
 
 if test "$with_pcre" != 'yes' -a "$with_pcre" != 'no'; then
    # Look if pcre-config (which provides cflags and ldflags) is available
    { $as_echo "$as_me:${as_lineno-$LINENO}: checking pcre, for pcre-config" >&5
 $as_echo_n "checking pcre, for pcre-config... " >&6; }
    PCRE_FOUND=0
-   PCRE_CONFIG="$with_pcre/bin/pcre-config"
-        if test -x "$PCRE_CONFIG"; then
-                { $as_echo "$as_me:${as_lineno-$LINENO}: result: $PCRE_CONFIG" >&5
+   PCRE_CONFIG="${with_pcre}/bin/pcre-config"
+   if test -x "$PCRE_CONFIG"; then
+       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $PCRE_CONFIG" >&5
 $as_echo "$PCRE_CONFIG" >&6; }
-			PCRE_FOUND=1
-		fi
+       PCRE_FOUND=1
+   fi
    if test $PCRE_FOUND -eq 0; then
-   PCRE_CONFIG="$with_pcre/pcre-config"
+        PCRE_CONFIG="$with_pcre/pcre-config"
         if test -x "$PCRE_CONFIG"; then
-			PCRE_FOUND=1
+                PCRE_FOUND=1
                 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $PCRE_CONFIG" >&5
 $as_echo "$PCRE_CONFIG" >&6; }
         fi
    fi
-		if test $PCRE_FOUND -eq 0; then
-                as_fn_error $? "Unable to find $PCRE_CONFIG. Please check the path you provided" "$LINENO" 5
-		else
-			unset PCRE_FOUND
-		fi
+   if test $PCRE_FOUND -eq 0; then
+        as_fn_error $? "Unable to find $PCRE_CONFIG. Please check the path you provided" "$LINENO" 5
+   else
+	unset PCRE_FOUND
+   fi
 else
-		for ac_prog in pcre-config
+   for ac_prog in pcre-config
 do
   # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
@@ -36277,17 +36278,22 @@ fi
 done
 test -n "$PCRE_CONFIG" || PCRE_CONFIG="no"
 
-		if test "x$PCRE_CONFIG" = "xno"; then
-			as_fn_error $? "Unable to find pcre-config in the path. Please check your installation of pcre (example : libpcre3 & libpcre3-dev with Debian)" "$LINENO" 5
-		fi
+   if test "x$PCRE_CONFIG" = "xno"; then
+        as_fn_error $? "Unable to find pcre-config in the path. Please check your installation of pcre (example : libpcre3 & libpcre3-dev with Debian)" "$LINENO" 5
+   fi
 fi
-saved_cflags="$CFLAGS"
-saved_LIBS="$LIBS"
+saved_cflags="${CFLAGS}"
+saved_LIBS="${LIBS}"
 
-PCRE_CFLAGS=`$PCRE_CONFIG --cflags`
-PCRE_LIBS=`$PCRE_CONFIG --libs-posix`
-PCRE_VERSION=`$PCRE_CONFIG --version`
 
+# extra space is so the pipe thru sed works correctly:
+PCRE_CFLAGS=$(echo " `${PCRE_CONFIG} --cflags`" | ${SED} "s/ -I/ -Wp,-I/g")
+PCRE_LIBS=`${PCRE_CONFIG} --libs-posix`
+PCRE_VERSION=`${PCRE_CONFIG} --version`
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: ${PCRE_CONFIG} told us that pcre has flags of ${PCRE_CFLAGS}, libs of ${PCRE_LIBS}, and version of ${PCRE_VERSION}" >&5
+$as_echo "$as_me: ${PCRE_CONFIG} told us that pcre has flags of ${PCRE_CFLAGS}, libs of ${PCRE_LIBS}, and version of ${PCRE_VERSION}" >&6;}
+PRE_PKG_CONFIG_PCRE_CFLAGS="${PCRE_CFLAGS}"
 
 
 PCRE_REQUIRED_VERSION=7.6
@@ -36301,12 +36307,12 @@ if test -n "$PKG_CONFIG"; then
         pkg_cv_PCRE_CFLAGS="$PCRE_CFLAGS"
     else
         if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libpcre >= \$PCRE_REQUIRED_VERSION\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "libpcre >= $PCRE_REQUIRED_VERSION") 2>&5
+    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libpcre >= \${PCRE_REQUIRED_VERSION}\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "libpcre >= ${PCRE_REQUIRED_VERSION}") 2>&5
   ac_status=$?
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; }; then
-  pkg_cv_PCRE_CFLAGS=`$PKG_CONFIG --cflags "libpcre >= $PCRE_REQUIRED_VERSION" 2>/dev/null`
+  pkg_cv_PCRE_CFLAGS=`$PKG_CONFIG --cflags "libpcre >= ${PCRE_REQUIRED_VERSION}" 2>/dev/null`
 else
   pkg_failed=yes
 fi
@@ -36319,12 +36325,12 @@ if test -n "$PKG_CONFIG"; then
         pkg_cv_PCRE_LIBS="$PCRE_LIBS"
     else
         if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libpcre >= \$PCRE_REQUIRED_VERSION\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "libpcre >= $PCRE_REQUIRED_VERSION") 2>&5
+    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libpcre >= \${PCRE_REQUIRED_VERSION}\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "libpcre >= ${PCRE_REQUIRED_VERSION}") 2>&5
   ac_status=$?
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; }; then
-  pkg_cv_PCRE_LIBS=`$PKG_CONFIG --libs "libpcre >= $PCRE_REQUIRED_VERSION" 2>/dev/null`
+  pkg_cv_PCRE_LIBS=`$PKG_CONFIG --libs "libpcre >= ${PCRE_REQUIRED_VERSION}" 2>/dev/null`
 else
   pkg_failed=yes
 fi
@@ -36343,14 +36349,14 @@ else
         _pkg_short_errors_supported=no
 fi
         if test $_pkg_short_errors_supported = yes; then
-	        PCRE_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "libpcre >= $PCRE_REQUIRED_VERSION"`
+	        PCRE_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "libpcre >= ${PCRE_REQUIRED_VERSION}"`
         else
-	        PCRE_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libpcre >= $PCRE_REQUIRED_VERSION"`
+	        PCRE_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libpcre >= ${PCRE_REQUIRED_VERSION}"`
         fi
 	# Put the nasty error message in config.log where it belongs
 	echo "$PCRE_PKG_ERRORS" >&5
 
-	as_fn_error $? "Package requirements (libpcre >= $PCRE_REQUIRED_VERSION) were not met:
+	as_fn_error $? "Package requirements (libpcre >= ${PCRE_REQUIRED_VERSION}) were not met:
 
 $PCRE_PKG_ERRORS
 
@@ -36381,9 +36387,8 @@ else
 $as_echo "yes" >&6; }
 	:
 fi
-
-LIBS="$PCRE_LIBS $LIBS"
-CFLAGS="$PCRE_CFLAGS $CFLAGS"
+LIBS="${PCRE_LIBS} ${LIBS}"
+CFLAGS="${PCRE_CFLAGS} ${CFLAGS}"
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for pcre_compile in -lpcre" >&5
 $as_echo_n "checking for pcre_compile in -lpcre... " >&6; }
@@ -36440,7 +36445,6 @@ else
   as_fn_error $? "pcre : library missing. (Cannot find symbol pcre_compile). Check if pcre is installed and if the version is correct" "$LINENO" 5
 fi
 
-
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for regexec in -lpcreposix" >&5
 $as_echo_n "checking for regexec in -lpcreposix... " >&6; }
 if ${ac_cv_lib_pcreposix_regexec+:} false; then :
@@ -36496,7 +36500,6 @@ else
   as_fn_error $? "pcreposix : library missing. (Cannot find symbol regexec). Check if pcre is installed and if the version is correct" "$LINENO" 5
 fi
 
-
 for ac_header in pcre.h
 do :
   ac_fn_c_check_header_mongrel "$LINENO" "pcre.h" "ac_cv_header_pcre_h" "$ac_includes_default"
@@ -36510,12 +36513,8 @@ fi
 done
 
 
-
-LIBS="$saved_LIBS"
-CFLAGS="$saved_cflags"
-
-
-
+LIBS="${saved_LIBS}"
+CFLAGS="${saved_cflags}"
 
 
 
@@ -36533,7 +36532,6 @@ cat >>confdefs.h <<_ACEOF
 #define PCRE_VERSION "$PCRE_VERSION"
 _ACEOF
 
-
 # Gets compilation and library flags
 
 #################
@@ -36541,7 +36539,7 @@ _ACEOF
 #################
 
 WITH_TKSCI=no
-if test "$with_tk" != no; then
+if test "x${with_tk}" != "xno"; then
    if test "$MACOSX" = "1"; then
       as_fn_error $? "Due to technical constraints, Tcl/Tk must be disabled under Mac OS X (--without-tk)" "$LINENO" 5
    fi
@@ -37500,8 +37498,8 @@ CHK_TCL_MINOR=4
 CHK_TCL_INC_NAME=tcl.h
 saved_cflags="$CFLAGS"
 saved_cppflags="$CPPFLAGS"
-CFLAGS="$CFLAGS -I$CHK_TCL_INCLUDE_PATH"
-CPPFLAGS="$CPPFLAGS -I$CHK_TCL_INCLUDE_PATH"
+CFLAGS="${CFLAGS} -Wp,-I${CHK_TCL_INCLUDE_PATH}"
+CPPFLAGS="${CPPFLAGS} -Wp,-I${CHK_TCL_INCLUDE_PATH}"
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later" >&5
 $as_echo_n "checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later... " >&6; }
@@ -37509,7 +37507,7 @@ $as_echo_n "checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later...
 
 
 cat > conftest.$ac_ext <<EOF
-#line 37512 "configure"
+#line 37510 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TCL_INCLUDE_PATH/$CHK_TCL_INC_NAME"
@@ -37583,7 +37581,7 @@ case $host_os in
   # already added to CFLAGS
   ;;
   *)
- TCL_INC_PATH=-I$i
+ TCL_INC_PATH=-Wp,-I$i
   ;;
 esac
 
@@ -37815,8 +37813,8 @@ CHK_TK_MINOR=4
 CHK_TK_INC_NAME=tk.h
 saved_cflags="$CFLAGS"
 saved_cppflags="$CPPFLAGS"
-CFLAGS="$CFLAGS $TCL_INC_PATH -I$CHK_TK_INCLUDE_PATH $X_CFLAGS"
-CPPFLAGS="$CPPFLAGS $TCL_INC_PATH -I$CHK_TK_INCLUDE_PATH $X_CFLAGS"
+CFLAGS="${CFLAGS} ${TCL_INC_PATH} -Wp,-I${CHK_TK_INCLUDE_PATH} ${X_CFLAGS}"
+CPPFLAGS="${CPPFLAGS} ${TCL_INC_PATH} -Wp,-I${CHK_TK_INCLUDE_PATH} ${X_CFLAGS}"
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later" >&5
 $as_echo_n "checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later... " >&6; }
 
@@ -37824,7 +37822,7 @@ $as_echo_n "checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later... " 
 
 
 cat > conftest.$ac_ext <<EOF
-#line 37827 "configure"
+#line 37825 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TK_INCLUDE_PATH/$CHK_TK_INC_NAME"
@@ -37882,7 +37880,7 @@ case $host_os in
   # already added to CFLAGS
   ;;
   *)
- TK_INC_PATH=-I$i
+ TK_INC_PATH=-Wp,-I$i
   ;;
 esac
 
@@ -38097,19 +38095,20 @@ done
   fi
 
     # set variables
-    if test "$WITH_TKSCI" = yes; then
+    if test "x${WITH_TKSCI}" = "xyes"; then
 
 $as_echo "#define WITH_TK /**/" >>confdefs.h
 
     else
         as_fn_error $? "TCL/TK not found. Use --without-tk or specify the librairies and include paths manually" "$LINENO" 5
     fi
-
-
-
+                ## TK = OK
+else
+    { $as_echo "$as_me:${as_lineno-$LINENO}: skipping checks for tk" >&5
+$as_echo "$as_me: skipping checks for tk" >&6;}
 fi
 
- if test "$WITH_TKSCI" = yes; then
+ if test "x${WITH_TKSCI}" = "xyes"; then
   TCLTK_TRUE=
   TCLTK_FALSE='#'
 else
@@ -38130,19 +38129,19 @@ fi
 
 # Check whether --with-matio_include was given.
 if test "${with_matio_include+set}" = set; then :
-  withval=$with_matio_include; with_matio_include="-I$withval"
+  withval=$with_matio_include; with_matio_include="-Wp,-I${withval}"
 fi
 
 
 # Check whether --with-matio_library was given.
 if test "${with_matio_library+set}" = set; then :
-  withval=$with_matio_library; with_matio_library="-L$withval"
+  withval=$with_matio_library; with_matio_library="-L${withval}"
 fi
 
 MATIO_ENABLE=no
 
-if test "$with_matio" != no; then
-   if test -n "$with_matio_include" -o -n "$with_matio_library" ; then
+if test "x${with_matio}" != "xno"; then
+   if test -n "${with_matio_include}" -o -n "${with_matio_library}"; then
       MATIO_CFLAGS="$with_matio_include"
       MATIO_LIBS="$with_matio_library -lm -lz -lmatio"
    else
@@ -38336,10 +38335,13 @@ fi
 $as_echo "#define WITH_MATIO /**/" >>confdefs.h
 
    MATIO_ENABLE=yes
+else
+   { $as_echo "$as_me:${as_lineno-$LINENO}: skipping checks for matio" >&5
+$as_echo "$as_me: skipping checks for matio" >&6;}
 fi
 
 
- if test "$with_matio" != no; then
+ if test "x${with_matio}" != "xno"; then
   MATIO_TRUE=
   MATIO_FALSE='#'
 else
@@ -38367,18 +38369,17 @@ DOCBOOK_ROOT=""
 
 # Check whether --with-docbook was given.
 if test "${with_docbook+set}" = set; then :
-  withval=$with_docbook; with_docbook=$withval
+  withval=$with_docbook; with_docbook=${withval}
 else
   with_docbook='yes'
 fi
 
-
-	for dir in $with_docbook $SCI_SRCDIR_FULL/thirdparty/docbook/ /usr/share/sgml/docbook/stylesheet/xsl/nwalsh /usr/share/docbook2X/xslt/man/ /usr/share/xml/docbook/stylesheet/nwalsh/ /usr/share/xml/docbook/stylesheet/nwalsh/current/ /sw/share/xml/xsl/docbook-xsl /usr/share/xml/docbook/xsl-stylesheets-*/ /usr/share/sgml/docbook/xsl-stylesheets-*/ /usr/share/sgml/docbook/xsl-stylesheets /usr/share/sgml/docbook/xsl-ns-stylesheets-*/; do
-		if test -r "$dir/javahelp/javahelp.xsl" -a "$DOCBOOK_ROOT" = ""; then
-			DOCBOOK_ROOT=$dir
+	for dir in ${with_docbook} ${SCI_SRCDIR_FULL}/thirdparty/docbook/ /usr/share/sgml/docbook/stylesheet/xsl/nwalsh /usr/share/docbook2X/xslt/man/ /usr/share/xml/docbook/stylesheet/nwalsh/ /usr/share/xml/docbook/stylesheet/nwalsh/current/ /sw/share/xml/xsl/docbook-xsl /usr/share/xml/docbook/xsl-stylesheets-*/ /usr/share/sgml/docbook/xsl-stylesheets-*/ /usr/share/sgml/docbook/xsl-stylesheets /usr/share/sgml/docbook/xsl-ns-stylesheets-*/; do
+		if test -r "${dir}/javahelp/javahelp.xsl" -a "${DOCBOOK_ROOT}" = ""; then
+			DOCBOOK_ROOT=${dir}
         fi
 	done
-	if test -z "$DOCBOOK_ROOT"; then
+	if test -z "${DOCBOOK_ROOT}"; then
 		as_fn_error $? "Could not find the Docbook root directory. If you have installed it on your system and we haven't been able to find it. Please report a bug" "$LINENO" 5
 	fi
 
@@ -38400,7 +38401,7 @@ $as_echo_n "checking saxon... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 38403 "configure"
+// #line 38404 "configure"
 import java.util.regex.Pattern;
 
 import com.icl.saxon.Loader;
@@ -38496,8 +38497,7 @@ $as_echo "$as_me: WARNING: Could not find or use the Java package/jar saxon used
       fi
     fi
 
-	SAXON=$PACKAGE_JAR_FILE
-
+	SAXON=${PACKAGE_JAR_FILE}
 
     # JLaTeXMath FOP
 
@@ -38613,9 +38613,7 @@ $as_echo "$as_me: WARNING: Could not find or use the Java package/jar jlatexmath
       fi
     fi
 
-    JLATEXMATH_FOP=$PACKAGE_JAR_FILE
-
-
+    JLATEXMATH_FOP=${PACKAGE_JAR_FILE}
 
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for X.Org SGML entities " >&5
@@ -38934,12 +38932,12 @@ MAKE_HTML="SGML_SEARCH_PATH=$XORG_SGML_PATH $DOCBOOKHTML"
     BUILD_HTMLDOC=no
 fi
 
-if test "$JAVA_ENABLE" = no; then
+if test "x${JAVA_ENABLE}" = "xno"; then
         HELP_ENABLE=no
 fi
 
 
- if test "$HELP_ENABLE" = "yes"; then
+ if test "x${HELP_ENABLE}" = "xyes"; then
   BUILD_HELP_TRUE=
   BUILD_HELP_FALSE='#'
 else
@@ -38947,7 +38945,7 @@ else
   BUILD_HELP_FALSE=
 fi
 
- if test "x$XSL_STYLESHEET" != "x"; then
+ if test "x${XSL_STYLESHEET}" != "x"; then
   HAVE_STYLESHEETS_TRUE=
   HAVE_STYLESHEETS_FALSE='#'
 else
@@ -38955,7 +38953,7 @@ else
   HAVE_STYLESHEETS_FALSE=
 fi
 
- if test "x$BUILDTXTDOC" = "xyes"; then
+ if test "x${BUILDTXTDOC}" = "xyes"; then
   BUILD_TXTDOC_TRUE=
   BUILD_TXTDOC_FALSE='#'
 else
@@ -38963,7 +38961,7 @@ else
   BUILD_TXTDOC_FALSE=
 fi
 
- if test "x$BUILDPDFDOC" = "xyes"; then
+ if test "x${BUILDPDFDOC}" = "xyes"; then
   BUILD_PDFDOC_TRUE=
   BUILD_PDFDOC_FALSE='#'
 else
@@ -38971,7 +38969,7 @@ else
   BUILD_PDFDOC_FALSE=
 fi
 
- if test "x$BUILDPSDOC" = "xyes"; then
+ if test "x${BUILDPSDOC}" = "xyes"; then
   BUILD_PSDOC_TRUE=
   BUILD_PSDOC_FALSE='#'
 else
@@ -38979,7 +38977,7 @@ else
   BUILD_PSDOC_FALSE=
 fi
 
- if test "x$BUILDHTMLDOC" = "xyes"; then
+ if test "x${BUILDHTMLDOC}" = "xyes"; then
   BUILD_HTMLDOC_TRUE=
   BUILD_HTMLDOC_FALSE='#'
 else
@@ -38996,7 +38994,7 @@ if test "${with_install_help_xml+set}" = set; then :
 fi
 
 HELP_INSTALL_ENABLE=no
-if test "$with_install_help_xml" != no -a "$with_install_help_xml" != ""; then
+if test "x${with_install_help_xml}" != "xno" -a "x${with_install_help_xml}" != "x"; then
    # Extract the first word of "xmlindent", so it can be a program name with args.
 set dummy xmlindent; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -39045,7 +39043,7 @@ else
 XMLINDENT=${XMLINDENT-"${am_missing_run}xmlindent"}
 
 fi
- if test "$HELP_INSTALL_ENABLE" != ""; then
+ if test "x${HELP_INSTALL_ENABLE}" != "x"; then
   INSTALL_HELP_XML_TRUE=
   INSTALL_HELP_XML_FALSE='#'
 else
@@ -39060,14 +39058,17 @@ if test "${enable_build_doxygen+set}" = set; then :
 fi
 
 DOXYGEN_ENABLE=yes
-if test "$enable_build_doxygen" != no -a "$enable_build_doxygen" != ""; then
+if test "x${enable_build_doxygen}" != "xno" -a "x${enable_build_doxygen}" != "x"; then
     { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: autoconf macro for doxygen has gone missing; skipping checking for it" >&5
 $as_echo "$as_me: WARNING: autoconf macro for doxygen has gone missing; skipping checking for it" >&2;}
+
+DOXYGEN_PROG=${DOXYGEN_PROG-"${am_missing_run}doxygen"}
+
     DOXYGEN_ENABLE="FIXME"
 else
     DOXYGEN_ENABLE=no
 fi
- if test $DOXYGEN_ENABLE = yes; then
+ if test "x${DOXYGEN_ENABLE}" = "xyes"; then
   DOXYGEN_TRUE=
   DOXYGEN_FALSE='#'
 else
@@ -39081,7 +39082,7 @@ fi
 
 JAVASCI_ENABLE=yes
 
-if test "$JAVA_ENABLE" = no -o "$JAVASCI" = no; then
+if test "x${JAVA_ENABLE}" = "xno" -o "x${JAVASCI}" = "xno"; then
    JAVASCI_ENABLE=no
 fi
 
@@ -39091,7 +39092,7 @@ fi
 ##############################################################
 
 COMPILATION_TESTS=no
-if test "$enable_compilation_tests" != no -a "$enable_compilation_tests" != ""; then
+if test "x${enable_compilation_tests}" != "xno" -a "x${enable_compilation_tests}" != "x"; then
    COMPILATION_TESTS=yes
 fi
 
@@ -39101,7 +39102,7 @@ $as_echo "$as_me: WARNING: --enable-compilation-tests deactivated: Could not fin
    COMPILATION_TESTS=no
 fi
 
- if test "$COMPILATION_TESTS" != "no"; then
+ if test "x${COMPILATION_TESTS}" != "xno"; then
   COMPILATION_TESTS_TRUE=
   COMPILATION_TESTS_FALSE='#'
 else
@@ -39119,7 +39120,7 @@ if test "${enable_force_full_link+set}" = set; then :
 fi
 
 FORCE_FULL_LINK="no"
-if test "$enable_force_full_link" == "yes"; then
+if test "x${enable_force_full_link}" == "xyes"; then
     FORCE_FULL_LINK="yes"
 fi
 
@@ -39137,7 +39138,7 @@ fi
 
 DEMOTOOLS_ENABLE=yes
 
-if test "$GUI_ENABLE" = no; then
+if test "x${GUI_ENABLE}" = "xno"; then
    DEMOTOOLS_ENABLE=no
 fi
 
@@ -39148,7 +39149,7 @@ fi
 
 GRAPHICS_ENABLE=yes
 
-if test "$GUI_ENABLE" = no; then
+if test "x${GUI_ENABLE}" = "xno"; then
    GRAPHICS_ENABLE=no
 fi
 
@@ -58916,13 +58917,13 @@ link_all_deplibs=no
 
 # Check to see if building shared libraries
 libtool_build_shared_libs=no
-if test "$enable_shared" = "yes"; then
+if test "x${enable_shared}" = "xyes"; then
   libtool_build_shared_libs=yes
 fi
 
 # Check to see if building static libraries
 libtool_build_static_libs=no
-if test "$enable_static" = "yes"; then
+if test "x${enable_static}" = "xyes"; then
   libtool_build_static_libs=yes
 fi
 
@@ -58999,8 +59000,8 @@ fi
 
 #
 
-if test "x$RANLIB" = "x"; then
-	test -z "$RANLIB"
+if test "x${RANLIB}" = "x"; then
+	test -z "${RANLIB}"
 	if test -n "$ac_tool_prefix"; then
   # Extract the first word of "${ac_tool_prefix}ranlib", so it can be a program name with args.
 set dummy ${ac_tool_prefix}ranlib; ac_word=$2
@@ -59094,7 +59095,7 @@ else
 fi
 
 else
-	test ! -z "$RANLIB" && export RANLIB
+	test ! -z "${RANLIB}" && export RANLIB
 
 fi
 
@@ -60178,9 +60179,13 @@ $as_echo "no" >&6; }
 fi
 
 
-if test x"$CCACHE" != x -a "$enable_ccache" != no; then
-  CC="$CCACHE $CC"
-  CXX="$CCACHE $CXX"
+if test x"${CCACHE}" != x"" -a "x${enable_ccache}" != "xno"; then
+  if test -x "${CCACHE}"; then
+    { $as_echo "$as_me:${as_lineno-$LINENO}: prepending CCACHE to compile commands" >&5
+$as_echo "$as_me: prepending CCACHE to compile commands" >&6;}
+    CC="${CCACHE} ${CC}"
+    CXX="${CCACHE} ${CXX}"
+  fi
 fi
 
 #######################
@@ -60208,24 +60213,29 @@ _ACEOF
 # This stuff is at the end of the configure.ac because it causes some
 # problem with AC_COMPILE (the -Werror is added to the test)
 #
-if test "$enable_stop_on_warning" = yes; then
+if test "x${enable_stop_on_warning}" = "xyes"; then
     WARNING_CFLAGS="-Werror=implicit-function-declaration -O0"
     WARNING_CXXFLAGS="-Werror=implicit-function-declaration -O0"
 fi
 
-# SCI_*FLAGS contains all defaults values detected on configure
-SCI_CFLAGS=$(echo   $LARGEFILE_CFLAGS   $CODECOVERAGE_CFLAGS   $DEBUG_CFLAGS   $ARCH_CFLAGS   $COMPILER_CFLAGS   $SCILIBS_CFLAGS   $SSE_CFLAGS   $BACKTRACE_CFLAGS   $WARNING_CFLAGS)
-SCI_CXXFLAGS=$(echo $LARGEFILE_CXXFLAGS $CODECOVERAGE_CXXFLAGS $DEBUG_CXXFLAGS $ARCH_CXXFLAGS $COMPILER_CXXFLAGS $SCILIBS_CXXFLAGS $SSE_CXXFLAGS $BACKTRACE_CXXFLAGS $WARNING_CXXFLAGS)
-SCI_FFLAGS=$(echo   $LARGEFILE_FFLAGS   $CODECOVERAGE_FFLAGS   $DEBUG_FFLAGS   $ARCH_FFLAGS   $COMPILER_FFLAGS   $SCILIBS_FFLAGS   $SSE_FFLAGS   $BACKTRACE_FFLAGS   $WARNING_FFLAGS)
-SCI_LDFLAGS=$(echo  $LARGEFILE_LDFLAGS  $CODECOVERAGE_LDFLAGS  $DEBUG_LDFLAGS  $ARCH_LDFLAGS  $COMPILER_LDFLAGS  $SCILIBS_LDFLAGS  $SSE_LDFLAGS  $BACKTRACE_LDFLAGS  $WARNING_LDFLAGS)
+# SCI_*FLAGS contains all defaults values detected on configure.
+# The point of all the calls to echo here is to strip excess spaces between
+# the flags, so leave the set of variables unquoted:
+SCI_CFLAGS=$(echo ${LARGEFILE_CFLAGS} ${CODECOVERAGE_CFLAGS} ${DEBUG_CFLAGS} ${ARCH_CFLAGS} ${COMPILER_CFLAGS} ${SCILIBS_CFLAGS} ${SSE_CFLAGS} ${BACKTRACE_CFLAGS} ${WARNING_CFLAGS})
+SCI_CXXFLAGS=$(echo ${LARGEFILE_CXXFLAGS} ${CODECOVERAGE_CXXFLAGS} ${DEBUG_CXXFLAGS} ${ARCH_CXXFLAGS} ${COMPILER_CXXFLAGS} ${SCILIBS_CXXFLAGS} ${SSE_CXXFLAGS} ${BACKTRACE_CXXFLAGS} ${WARNING_CXXFLAGS})
+SCI_FFLAGS=$(echo ${LARGEFILE_FFLAGS} ${CODECOVERAGE_FFLAGS} ${DEBUG_FFLAGS} ${ARCH_FFLAGS} ${COMPILER_FFLAGS} ${SCILIBS_FFLAGS} ${SSE_FFLAGS} ${BACKTRACE_FFLAGS} ${WARNING_FFLAGS})
+SCI_LDFLAGS=$(echo ${LARGEFILE_LDFLAGS} ${CODECOVERAGE_LDFLAGS} ${DEBUG_LDFLAGS} ${ARCH_LDFLAGS} ${COMPILER_LDFLAGS} ${SCILIBS_LDFLAGS} ${SSE_LDFLAGS} ${BACKTRACE_LDFLAGS} ${WARNING_LDFLAGS})
 
-if test -z "$HAVE_FOP"; then
+# extra space is so the pipe thru sed works correctly:
+CPPFLAGS=$(echo " ${CPPFLAGS}" | ${SED} "s/ -I/ -Wp,-I/g")
+
+if test -z "${HAVE_FOP}"; then
 	HAVE_FOP=no
 
 else
-	test ! -z "$HAVE_FOP" && export HAVE_FOP
+	test ! -z "${HAVE_FOP}" && export HAVE_FOP
 fi
- if test ! -z "$HAVE_FOP" -a "$HAVE_FOP" != "no"; then
+ if test ! -z "${HAVE_FOP}" -a "x${HAVE_FOP}" != "xno"; then
   HAVE_FOP_TRUE=
   HAVE_FOP_FALSE='#'
 else
@@ -60233,12 +60243,12 @@ else
   HAVE_FOP_FALSE=
 fi
 
-ac_config_files="$ac_config_files contrib/Makefile desktop/images/icons/Makefile desktop/Makefile modules/helptools/Makefile modules/data_structures/Makefile modules/differential_equations/Makefile modules/optimization/Makefile modules/elementary_functions/Makefile modules/special_functions/Makefile modules/io/Makefile modules/completion/Makefile modules/history_manager/Makefile modules/jvm/Makefile modules/commons/Makefile modules/sound/Makefile modules/statistics/Makefile modules/mexlib/Makefile modules/sparse/Makefile modules/linear_algebra/Makefile modules/polynomials/Makefile modules/symbolic/Makefile modules/signal_processing/Makefile modules/arnoldi/Makefile modules/interpolation/Makefile modules/intersci/Makefile modules/localization/Makefile modules/cacsd/Makefile modules/boolean/Makefile modules/integer/Makefile modules/double/Makefile modules/fileio/Makefile modules/spreadsheet/Makefile modules/string/Makefile modules/time/Makefile modules/graphics/Makefile modules/graphic_export/Makefile modules/graphic_objects/Makefile modules/renderer/Makefile modules/action_binding/Makefile modules/gui/Makefile modules/randlib/Makefile modules/tclsci/Makefile modules/windows_tools/Makefile modules/core/Makefile modules/prebuildjava/Makefile modules/api_scilab/Makefile modules/call_scilab/Makefile modules/types/Makefile modules/hdf5/Makefile modules/fftw/Makefile modules/umfpack/Makefile modules/functions/Makefile modules/dynamic_link/Makefile modules/overloading/Makefile modules/javasci/Makefile modules/m2sci/Makefile modules/compatibility_functions/Makefile modules/development_tools/Makefile modules/output_stream/Makefile modules/console/Makefile modules/demo_tools/Makefile modules/genetic_algorithms/Makefile modules/simulated_annealing/Makefile modules/parameters/Makefile modules/matio/Makefile modules/atoms/Makefile modules/xcos/Makefile modules/scinotes/Makefile modules/ui_data/Makefile modules/graph/Makefile modules/parallel/Makefile modules/modules_manager/Makefile modules/history_browser/Makefile modules/preferences/Makefile modules/xml/Makefile modules/external_objects/Makefile modules/Makefile Makefile po/Makefile.in po/Makefile po/Makevars po/POTFILES scilab.pc etc/modules.xml etc/classpath.xml etc/Info.plist etc/logging.properties scilab.properties scilab-lib.properties scilab-lib-doc.properties modules/helptools/etc/SciDocConf.xml modules/core/includes/version.h"
+ac_config_files="$ac_config_files contrib/Makefile desktop/images/icons/Makefile desktop/Makefile modules/Makefile modules/action_binding/Makefile modules/api_scilab/Makefile modules/arnoldi/Makefile modules/atoms/Makefile modules/boolean/Makefile modules/cacsd/Makefile modules/call_scilab/Makefile modules/commons/Makefile modules/compatibility_functions/Makefile modules/completion/Makefile modules/console/Makefile modules/core/Makefile modules/data_structures/Makefile modules/demo_tools/Makefile modules/development_tools/Makefile modules/differential_equations/Makefile modules/double/Makefile modules/dynamic_link/Makefile modules/elementary_functions/Makefile modules/external_objects/Makefile modules/fftw/Makefile modules/fileio/Makefile modules/functions/Makefile modules/genetic_algorithms/Makefile modules/graph/Makefile modules/graphic_export/Makefile modules/graphic_objects/Makefile modules/graphics/Makefile modules/gui/Makefile modules/hdf5/Makefile modules/helptools/Makefile modules/history_browser/Makefile modules/history_manager/Makefile modules/integer/Makefile modules/interpolation/Makefile modules/intersci/Makefile modules/io/Makefile modules/javasci/Makefile modules/jvm/Makefile modules/linear_algebra/Makefile modules/localization/Makefile modules/m2sci/Makefile modules/matio/Makefile modules/mexlib/Makefile modules/modules_manager/Makefile modules/optimization/Makefile modules/output_stream/Makefile modules/overloading/Makefile modules/parallel/Makefile modules/parameters/Makefile modules/polynomials/Makefile modules/prebuildjava/Makefile modules/preferences/Makefile modules/randlib/Makefile modules/renderer/Makefile modules/scicos/Makefile modules/scicos_blocks/Makefile modules/scinotes/Makefile modules/signal_processing/Makefile modules/simulated_annealing/Makefile modules/sound/Makefile modules/sparse/Makefile modules/special_functions/Makefile modules/spreadsheet/Makefile modules/statistics/Makefile modules/string/Makefile modules/symbolic/Makefile modules/tclsci/Makefile modules/time/Makefile modules/types/Makefile modules/ui_data/Makefile modules/umfpack/Makefile modules/windows_tools/Makefile modules/xcos/Makefile modules/xml/Makefile Makefile po/Makefile.in po/Makefile po/Makevars po/POTFILES scilab.pc etc/modules.xml etc/classpath.xml etc/Info.plist etc/logging.properties scilab.properties scilab-lib.properties scilab-lib-doc.properties modules/helptools/etc/SciDocConf.xml modules/core/includes/version.h"
 
 # Detection of the module for the future version of Scilab 6
 # ie we detect module which ends with _yasp
 
-if test "$enable_yasp" = "yes"; then
+if test "x${enable_yasp}" = "xyes"; then
    ac_config_files="$ac_config_files modules/development_tools/src/fake/Makefile"
 
 fi
@@ -60247,15 +60257,15 @@ fi
 
 # MAN_FR MAN_ENG
 # modules/mpi/Makefile
-for top_builddir in . .. ../.. $ac_auxdir $ac_auxdir/..; do
-  test -f $top_builddir/configure && break
+for top_builddir in . .. ../.. ${ac_auxdir} ${ac_auxdir}/..; do
+  test -f ${top_builddir}/configure && break
 done
 
 # Generate stack.h
-if test "$IS_64_BITS_CPU" = true -o "$MACOSX" = "1"; then
+if test "${IS_64_BITS_CPU}" = true -o "${MACOSX}" = "1"; then
    stack_h_cpp_flags=-DUSE_DYNAMIC_STACK
 else
-   stack_h_cpp_flags=
+   stack_h_cpp_flags=""
 fi
 
 ac_config_commands="$ac_config_commands modules/core/includes/stack.h"
@@ -61907,9 +61917,9 @@ fi
 
 
 
-CPP="$CPP"
-   GREP="$GREP"
-   stack_h_cpp_flags="$stack_h_cpp_flags"
+CPP="${CPP}"
+   GREP="${GREP}"
+   stack_h_cpp_flags="${stack_h_cpp_flags}"
 
 
 _ACEOF
@@ -61928,80 +61938,82 @@ do
     "contrib/Makefile") CONFIG_FILES="$CONFIG_FILES contrib/Makefile" ;;
     "desktop/images/icons/Makefile") CONFIG_FILES="$CONFIG_FILES desktop/images/icons/Makefile" ;;
     "desktop/Makefile") CONFIG_FILES="$CONFIG_FILES desktop/Makefile" ;;
-    "modules/helptools/Makefile") CONFIG_FILES="$CONFIG_FILES modules/helptools/Makefile" ;;
-    "modules/data_structures/Makefile") CONFIG_FILES="$CONFIG_FILES modules/data_structures/Makefile" ;;
-    "modules/differential_equations/Makefile") CONFIG_FILES="$CONFIG_FILES modules/differential_equations/Makefile" ;;
-    "modules/optimization/Makefile") CONFIG_FILES="$CONFIG_FILES modules/optimization/Makefile" ;;
-    "modules/elementary_functions/Makefile") CONFIG_FILES="$CONFIG_FILES modules/elementary_functions/Makefile" ;;
-    "modules/special_functions/Makefile") CONFIG_FILES="$CONFIG_FILES modules/special_functions/Makefile" ;;
-    "modules/io/Makefile") CONFIG_FILES="$CONFIG_FILES modules/io/Makefile" ;;
-    "modules/completion/Makefile") CONFIG_FILES="$CONFIG_FILES modules/completion/Makefile" ;;
-    "modules/history_manager/Makefile") CONFIG_FILES="$CONFIG_FILES modules/history_manager/Makefile" ;;
-    "modules/jvm/Makefile") CONFIG_FILES="$CONFIG_FILES modules/jvm/Makefile" ;;
-    "modules/commons/Makefile") CONFIG_FILES="$CONFIG_FILES modules/commons/Makefile" ;;
-    "modules/sound/Makefile") CONFIG_FILES="$CONFIG_FILES modules/sound/Makefile" ;;
-    "modules/statistics/Makefile") CONFIG_FILES="$CONFIG_FILES modules/statistics/Makefile" ;;
-    "modules/mexlib/Makefile") CONFIG_FILES="$CONFIG_FILES modules/mexlib/Makefile" ;;
-    "modules/sparse/Makefile") CONFIG_FILES="$CONFIG_FILES modules/sparse/Makefile" ;;
-    "modules/linear_algebra/Makefile") CONFIG_FILES="$CONFIG_FILES modules/linear_algebra/Makefile" ;;
-    "modules/polynomials/Makefile") CONFIG_FILES="$CONFIG_FILES modules/polynomials/Makefile" ;;
-    "modules/symbolic/Makefile") CONFIG_FILES="$CONFIG_FILES modules/symbolic/Makefile" ;;
-    "modules/signal_processing/Makefile") CONFIG_FILES="$CONFIG_FILES modules/signal_processing/Makefile" ;;
+    "modules/Makefile") CONFIG_FILES="$CONFIG_FILES modules/Makefile" ;;
+    "modules/action_binding/Makefile") CONFIG_FILES="$CONFIG_FILES modules/action_binding/Makefile" ;;
+    "modules/api_scilab/Makefile") CONFIG_FILES="$CONFIG_FILES modules/api_scilab/Makefile" ;;
     "modules/arnoldi/Makefile") CONFIG_FILES="$CONFIG_FILES modules/arnoldi/Makefile" ;;
-    "modules/interpolation/Makefile") CONFIG_FILES="$CONFIG_FILES modules/interpolation/Makefile" ;;
-    "modules/intersci/Makefile") CONFIG_FILES="$CONFIG_FILES modules/intersci/Makefile" ;;
-    "modules/localization/Makefile") CONFIG_FILES="$CONFIG_FILES modules/localization/Makefile" ;;
-    "modules/cacsd/Makefile") CONFIG_FILES="$CONFIG_FILES modules/cacsd/Makefile" ;;
+    "modules/atoms/Makefile") CONFIG_FILES="$CONFIG_FILES modules/atoms/Makefile" ;;
     "modules/boolean/Makefile") CONFIG_FILES="$CONFIG_FILES modules/boolean/Makefile" ;;
-    "modules/integer/Makefile") CONFIG_FILES="$CONFIG_FILES modules/integer/Makefile" ;;
+    "modules/cacsd/Makefile") CONFIG_FILES="$CONFIG_FILES modules/cacsd/Makefile" ;;
+    "modules/call_scilab/Makefile") CONFIG_FILES="$CONFIG_FILES modules/call_scilab/Makefile" ;;
+    "modules/commons/Makefile") CONFIG_FILES="$CONFIG_FILES modules/commons/Makefile" ;;
+    "modules/compatibility_functions/Makefile") CONFIG_FILES="$CONFIG_FILES modules/compatibility_functions/Makefile" ;;
+    "modules/completion/Makefile") CONFIG_FILES="$CONFIG_FILES modules/completion/Makefile" ;;
+    "modules/console/Makefile") CONFIG_FILES="$CONFIG_FILES modules/console/Makefile" ;;
+    "modules/core/Makefile") CONFIG_FILES="$CONFIG_FILES modules/core/Makefile" ;;
+    "modules/data_structures/Makefile") CONFIG_FILES="$CONFIG_FILES modules/data_structures/Makefile" ;;
+    "modules/demo_tools/Makefile") CONFIG_FILES="$CONFIG_FILES modules/demo_tools/Makefile" ;;
+    "modules/development_tools/Makefile") CONFIG_FILES="$CONFIG_FILES modules/development_tools/Makefile" ;;
+    "modules/differential_equations/Makefile") CONFIG_FILES="$CONFIG_FILES modules/differential_equations/Makefile" ;;
     "modules/double/Makefile") CONFIG_FILES="$CONFIG_FILES modules/double/Makefile" ;;
+    "modules/dynamic_link/Makefile") CONFIG_FILES="$CONFIG_FILES modules/dynamic_link/Makefile" ;;
+    "modules/elementary_functions/Makefile") CONFIG_FILES="$CONFIG_FILES modules/elementary_functions/Makefile" ;;
+    "modules/external_objects/Makefile") CONFIG_FILES="$CONFIG_FILES modules/external_objects/Makefile" ;;
+    "modules/fftw/Makefile") CONFIG_FILES="$CONFIG_FILES modules/fftw/Makefile" ;;
     "modules/fileio/Makefile") CONFIG_FILES="$CONFIG_FILES modules/fileio/Makefile" ;;
-    "modules/spreadsheet/Makefile") CONFIG_FILES="$CONFIG_FILES modules/spreadsheet/Makefile" ;;
-    "modules/string/Makefile") CONFIG_FILES="$CONFIG_FILES modules/string/Makefile" ;;
-    "modules/time/Makefile") CONFIG_FILES="$CONFIG_FILES modules/time/Makefile" ;;
-    "modules/graphics/Makefile") CONFIG_FILES="$CONFIG_FILES modules/graphics/Makefile" ;;
+    "modules/functions/Makefile") CONFIG_FILES="$CONFIG_FILES modules/functions/Makefile" ;;
+    "modules/genetic_algorithms/Makefile") CONFIG_FILES="$CONFIG_FILES modules/genetic_algorithms/Makefile" ;;
+    "modules/graph/Makefile") CONFIG_FILES="$CONFIG_FILES modules/graph/Makefile" ;;
     "modules/graphic_export/Makefile") CONFIG_FILES="$CONFIG_FILES modules/graphic_export/Makefile" ;;
     "modules/graphic_objects/Makefile") CONFIG_FILES="$CONFIG_FILES modules/graphic_objects/Makefile" ;;
-    "modules/renderer/Makefile") CONFIG_FILES="$CONFIG_FILES modules/renderer/Makefile" ;;
-    "modules/action_binding/Makefile") CONFIG_FILES="$CONFIG_FILES modules/action_binding/Makefile" ;;
+    "modules/graphics/Makefile") CONFIG_FILES="$CONFIG_FILES modules/graphics/Makefile" ;;
     "modules/gui/Makefile") CONFIG_FILES="$CONFIG_FILES modules/gui/Makefile" ;;
-    "modules/randlib/Makefile") CONFIG_FILES="$CONFIG_FILES modules/randlib/Makefile" ;;
-    "modules/tclsci/Makefile") CONFIG_FILES="$CONFIG_FILES modules/tclsci/Makefile" ;;
-    "modules/windows_tools/Makefile") CONFIG_FILES="$CONFIG_FILES modules/windows_tools/Makefile" ;;
-    "modules/core/Makefile") CONFIG_FILES="$CONFIG_FILES modules/core/Makefile" ;;
-    "modules/prebuildjava/Makefile") CONFIG_FILES="$CONFIG_FILES modules/prebuildjava/Makefile" ;;
-    "modules/api_scilab/Makefile") CONFIG_FILES="$CONFIG_FILES modules/api_scilab/Makefile" ;;
-    "modules/call_scilab/Makefile") CONFIG_FILES="$CONFIG_FILES modules/call_scilab/Makefile" ;;
-    "modules/types/Makefile") CONFIG_FILES="$CONFIG_FILES modules/types/Makefile" ;;
     "modules/hdf5/Makefile") CONFIG_FILES="$CONFIG_FILES modules/hdf5/Makefile" ;;
-    "modules/fftw/Makefile") CONFIG_FILES="$CONFIG_FILES modules/fftw/Makefile" ;;
-    "modules/umfpack/Makefile") CONFIG_FILES="$CONFIG_FILES modules/umfpack/Makefile" ;;
-    "modules/functions/Makefile") CONFIG_FILES="$CONFIG_FILES modules/functions/Makefile" ;;
-    "modules/dynamic_link/Makefile") CONFIG_FILES="$CONFIG_FILES modules/dynamic_link/Makefile" ;;
-    "modules/overloading/Makefile") CONFIG_FILES="$CONFIG_FILES modules/overloading/Makefile" ;;
-    "modules/javasci/Makefile") CONFIG_FILES="$CONFIG_FILES modules/javasci/Makefile" ;;
-    "modules/m2sci/Makefile") CONFIG_FILES="$CONFIG_FILES modules/m2sci/Makefile" ;;
-    "modules/compatibility_functions/Makefile") CONFIG_FILES="$CONFIG_FILES modules/compatibility_functions/Makefile" ;;
-    "modules/development_tools/Makefile") CONFIG_FILES="$CONFIG_FILES modules/development_tools/Makefile" ;;
-    "modules/output_stream/Makefile") CONFIG_FILES="$CONFIG_FILES modules/output_stream/Makefile" ;;
-    "modules/console/Makefile") CONFIG_FILES="$CONFIG_FILES modules/console/Makefile" ;;
-    "modules/demo_tools/Makefile") CONFIG_FILES="$CONFIG_FILES modules/demo_tools/Makefile" ;;
-    "modules/genetic_algorithms/Makefile") CONFIG_FILES="$CONFIG_FILES modules/genetic_algorithms/Makefile" ;;
-    "modules/simulated_annealing/Makefile") CONFIG_FILES="$CONFIG_FILES modules/simulated_annealing/Makefile" ;;
-    "modules/parameters/Makefile") CONFIG_FILES="$CONFIG_FILES modules/parameters/Makefile" ;;
-    "modules/matio/Makefile") CONFIG_FILES="$CONFIG_FILES modules/matio/Makefile" ;;
-    "modules/atoms/Makefile") CONFIG_FILES="$CONFIG_FILES modules/atoms/Makefile" ;;
-    "modules/xcos/Makefile") CONFIG_FILES="$CONFIG_FILES modules/xcos/Makefile" ;;
-    "modules/scinotes/Makefile") CONFIG_FILES="$CONFIG_FILES modules/scinotes/Makefile" ;;
-    "modules/ui_data/Makefile") CONFIG_FILES="$CONFIG_FILES modules/ui_data/Makefile" ;;
-    "modules/graph/Makefile") CONFIG_FILES="$CONFIG_FILES modules/graph/Makefile" ;;
-    "modules/parallel/Makefile") CONFIG_FILES="$CONFIG_FILES modules/parallel/Makefile" ;;
-    "modules/modules_manager/Makefile") CONFIG_FILES="$CONFIG_FILES modules/modules_manager/Makefile" ;;
+    "modules/helptools/Makefile") CONFIG_FILES="$CONFIG_FILES modules/helptools/Makefile" ;;
     "modules/history_browser/Makefile") CONFIG_FILES="$CONFIG_FILES modules/history_browser/Makefile" ;;
+    "modules/history_manager/Makefile") CONFIG_FILES="$CONFIG_FILES modules/history_manager/Makefile" ;;
+    "modules/integer/Makefile") CONFIG_FILES="$CONFIG_FILES modules/integer/Makefile" ;;
+    "modules/interpolation/Makefile") CONFIG_FILES="$CONFIG_FILES modules/interpolation/Makefile" ;;
+    "modules/intersci/Makefile") CONFIG_FILES="$CONFIG_FILES modules/intersci/Makefile" ;;
+    "modules/io/Makefile") CONFIG_FILES="$CONFIG_FILES modules/io/Makefile" ;;
+    "modules/javasci/Makefile") CONFIG_FILES="$CONFIG_FILES modules/javasci/Makefile" ;;
+    "modules/jvm/Makefile") CONFIG_FILES="$CONFIG_FILES modules/jvm/Makefile" ;;
+    "modules/linear_algebra/Makefile") CONFIG_FILES="$CONFIG_FILES modules/linear_algebra/Makefile" ;;
+    "modules/localization/Makefile") CONFIG_FILES="$CONFIG_FILES modules/localization/Makefile" ;;
+    "modules/m2sci/Makefile") CONFIG_FILES="$CONFIG_FILES modules/m2sci/Makefile" ;;
+    "modules/matio/Makefile") CONFIG_FILES="$CONFIG_FILES modules/matio/Makefile" ;;
+    "modules/mexlib/Makefile") CONFIG_FILES="$CONFIG_FILES modules/mexlib/Makefile" ;;
+    "modules/modules_manager/Makefile") CONFIG_FILES="$CONFIG_FILES modules/modules_manager/Makefile" ;;
+    "modules/optimization/Makefile") CONFIG_FILES="$CONFIG_FILES modules/optimization/Makefile" ;;
+    "modules/output_stream/Makefile") CONFIG_FILES="$CONFIG_FILES modules/output_stream/Makefile" ;;
+    "modules/overloading/Makefile") CONFIG_FILES="$CONFIG_FILES modules/overloading/Makefile" ;;
+    "modules/parallel/Makefile") CONFIG_FILES="$CONFIG_FILES modules/parallel/Makefile" ;;
+    "modules/parameters/Makefile") CONFIG_FILES="$CONFIG_FILES modules/parameters/Makefile" ;;
+    "modules/polynomials/Makefile") CONFIG_FILES="$CONFIG_FILES modules/polynomials/Makefile" ;;
+    "modules/prebuildjava/Makefile") CONFIG_FILES="$CONFIG_FILES modules/prebuildjava/Makefile" ;;
     "modules/preferences/Makefile") CONFIG_FILES="$CONFIG_FILES modules/preferences/Makefile" ;;
+    "modules/randlib/Makefile") CONFIG_FILES="$CONFIG_FILES modules/randlib/Makefile" ;;
+    "modules/renderer/Makefile") CONFIG_FILES="$CONFIG_FILES modules/renderer/Makefile" ;;
+    "modules/scicos/Makefile") CONFIG_FILES="$CONFIG_FILES modules/scicos/Makefile" ;;
+    "modules/scicos_blocks/Makefile") CONFIG_FILES="$CONFIG_FILES modules/scicos_blocks/Makefile" ;;
+    "modules/scinotes/Makefile") CONFIG_FILES="$CONFIG_FILES modules/scinotes/Makefile" ;;
+    "modules/signal_processing/Makefile") CONFIG_FILES="$CONFIG_FILES modules/signal_processing/Makefile" ;;
+    "modules/simulated_annealing/Makefile") CONFIG_FILES="$CONFIG_FILES modules/simulated_annealing/Makefile" ;;
+    "modules/sound/Makefile") CONFIG_FILES="$CONFIG_FILES modules/sound/Makefile" ;;
+    "modules/sparse/Makefile") CONFIG_FILES="$CONFIG_FILES modules/sparse/Makefile" ;;
+    "modules/special_functions/Makefile") CONFIG_FILES="$CONFIG_FILES modules/special_functions/Makefile" ;;
+    "modules/spreadsheet/Makefile") CONFIG_FILES="$CONFIG_FILES modules/spreadsheet/Makefile" ;;
+    "modules/statistics/Makefile") CONFIG_FILES="$CONFIG_FILES modules/statistics/Makefile" ;;
+    "modules/string/Makefile") CONFIG_FILES="$CONFIG_FILES modules/string/Makefile" ;;
+    "modules/symbolic/Makefile") CONFIG_FILES="$CONFIG_FILES modules/symbolic/Makefile" ;;
+    "modules/tclsci/Makefile") CONFIG_FILES="$CONFIG_FILES modules/tclsci/Makefile" ;;
+    "modules/time/Makefile") CONFIG_FILES="$CONFIG_FILES modules/time/Makefile" ;;
+    "modules/types/Makefile") CONFIG_FILES="$CONFIG_FILES modules/types/Makefile" ;;
+    "modules/ui_data/Makefile") CONFIG_FILES="$CONFIG_FILES modules/ui_data/Makefile" ;;
+    "modules/umfpack/Makefile") CONFIG_FILES="$CONFIG_FILES modules/umfpack/Makefile" ;;
+    "modules/windows_tools/Makefile") CONFIG_FILES="$CONFIG_FILES modules/windows_tools/Makefile" ;;
+    "modules/xcos/Makefile") CONFIG_FILES="$CONFIG_FILES modules/xcos/Makefile" ;;
     "modules/xml/Makefile") CONFIG_FILES="$CONFIG_FILES modules/xml/Makefile" ;;
-    "modules/external_objects/Makefile") CONFIG_FILES="$CONFIG_FILES modules/external_objects/Makefile" ;;
-    "modules/Makefile") CONFIG_FILES="$CONFIG_FILES modules/Makefile" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "po/Makefile.in") CONFIG_FILES="$CONFIG_FILES po/Makefile.in" ;;
     "po/Makefile") CONFIG_FILES="$CONFIG_FILES po/Makefile" ;;
@@ -64147,8 +64159,8 @@ compiler_lib_search_path=$lt_compiler_lib_search_path_RC
 _LT_EOF
 
  ;;
-    "modules/core/includes/stack.h":C) if ! $CPP $stack_h_cpp_flags - < $srcdir/modules/core/includes/stack.h.in |\
-              $GREP -v '^#' > $srcdir/modules/core/includes/stack.h ; then
+    "modules/core/includes/stack.h":C) if ! ${CPP} ${stack_h_cpp_flags} - < ${srcdir}/modules/core/includes/stack.h.in |\
+              ${GREP} -v '^#' > ${srcdir}/modules/core/includes/stack.h; then
      as_fn_error $? "stack.h generation failed" "$LINENO" 5
    fi ;;
 
@@ -64163,7 +64175,7 @@ ac_clean_files=$ac_clean_files_save
 test $ac_write_fail = 0 ||
   as_fn_error $? "write failure creating $CONFIG_STATUS" "$LINENO" 5
 
-chmod +x $SCI_SRCDIR_FULL/modules/dynamic_link/src/scripts/scicompile.sh $SCI_SRCDIR_FULL/modules/dynamic_link/src/scripts/compilerDetection.sh $SCI_SRCDIR_FULL/modules/dynamic_link/src/scripts/configure
+chmod +x ${SCI_SRCDIR_FULL}/modules/dynamic_link/src/scripts/scicompile.sh ${SCI_SRCDIR_FULL}/modules/dynamic_link/src/scripts/compilerDetection.sh ${SCI_SRCDIR_FULL}/modules/dynamic_link/src/scripts/configure
 
 # configure is writing to config.log, and then calls config.status.
 # config.status does its own redirection, appending to config.log.
@@ -64250,13 +64262,13 @@ echo "  Use FFTW (--without-fftw) ........................ = $with_fftw"
 echo "  Use MATIO (--without-matio) ...................... = $with_matio"
 
 echo ""
-if test "$with_gui" = no; then
+if test "x${with_gui}" = "xno"; then
    echo "Not using Xcos because of the option --without-gui"
-elif test $XCOS_ENABLE = yes; then
+elif test "x${XCOS_ENABLE}" = "xyes"; then
    echo "Xcos enable"
    echo "Build modelica compiler (--without-modelica) ....... = $with_modelica"
    echo ""
-   if test "$with_ocaml" != no -a "$OCAMLC" != no -a "$OCAMLOPT" != no; then
+   if test "x${with_ocaml}" != "xno" -a "x${OCAMLC}" != "xno" -a "x${OCAMLOPT}" != "xno"; then
      echo "Ocaml Configuration (for Modelica compiler):"
      echo "  OCAMLC ............. = $OCAMLC"
      echo "  OCAMLOPT ........... = $OCAMLOPT"
@@ -64269,7 +64281,7 @@ else
 fi
 
 echo ""
-if test "$enable_code_coverage" = yes;  then
+if test "x${enable_code_coverage}" = "xyes";  then
    echo "Code coverage configuration:"
    echo "  LCOV .............. = $LCOV"
    echo "  GENHTML ........... = $GENHTML"
@@ -64278,7 +64290,7 @@ else
 fi
 
 echo ""
-if test $OPENMP_ENABLE = yes; then
+if test "x${OPENMP_ENABLE}" = "xyes"; then
    echo "OpenMP Configuration:"
    echo "OpenMP CFLAGS ...... = $OPENMP_CFLAGS"
    echo "OpenMP CXXFLAGS .... = $OPENMP_CXXFLAGS"
@@ -64289,7 +64301,7 @@ else
 fi
 
 echo ""
-if test $FFTW_ENABLE = yes;  then
+if test "x${FFTW_ENABLE}" = "xyes";  then
    echo "FFTW Configuration:"
    echo "  FFTW LIBS .......... = $FFTW3_LIB"
    echo "  FFTW CFLAGS ........ = $FFTW3_CFLAGS"
@@ -64298,7 +64310,7 @@ else
 fi
 
 echo ""
-if test $MATIO_ENABLE = yes;  then
+if test "x${MATIO_ENABLE}" = "xyes";  then
    echo "MATIO Configuration:"
    echo "  MATIO LIBS .......... = $MATIO_LIBS"
    echo "  MATIO CFLAGS ........ = $MATIO_CFLAGS"
@@ -64307,11 +64319,11 @@ else
 fi
 
 echo ""
-if test $UMFPACK_ENABLE = yes;  then
+if test "x${UMFPACK_ENABLE}" = "xyes";  then
    echo "UMFPACK Configuration:"
    echo "  UMFPACK LIBS ....... = $UMFPACK_LIB"
    echo "  UMFPACK CFLAGS ..... = $UMFPACK_CFLAGS"
-   if test $SUITESPARSE = yes; then
+   if test "x${SUITESPARSE}" = "xyes"; then
       echo "  UMFPACK SUITESPARSE  = Yes"
    else
       echo "  UMFPACK SUITESPARSE  = No"
@@ -64329,7 +64341,7 @@ echo "  LAPACK TYPE ........... = $LAPACK_TYPE"
 echo "  ARPACK LIBS ........... = $ARPACK_LIBS"
 echo ""
 
-if test "$with_mpi" = yes; then
+if test "x${with_mpi}" = "xyes"; then
    echo "MPI Configuration:"
    echo "  MPI LIBS ........... = $MPILIBS"
    echo "  MPI C Compiler ..... = $MPICC"
@@ -64340,7 +64352,7 @@ else
 fi
 
 echo ""
-if test "$with_openmpi" != "no"; then
+if test "x${with_openmpi}" != "xno"; then
    echo "OpenMPI Configuration:"
    echo "  OpenMPI LIBS ........... = $OPENMPI_LIBS"
    echo "  OpenMPI C Compiler ..... = $OPENMPI_CC"
@@ -64350,7 +64362,7 @@ else
 fi
 
 echo ""
-if test $BUILD_LOCALIZATION_ENABLE != no; then
+if test "x${BUILD_LOCALIZATION_ENABLE}" != "xno"; then
    echo "Gettext/localization configuration:"
    echo "  xgettext ............... = $XGETTEXT"
    echo "  msgfmt  ................ = $MSGFMT"
@@ -64361,7 +64373,7 @@ else
 fi
 
 echo ""
-if test $HELP_ENABLE = yes; then
+if test "x${HELP_ENABLE}" = "xyes"; then
    echo "Documentation building configuration:"
    echo "  Docbook XSL path ....... = $DOCBOOK_ROOT"
    echo "  Saxon XSLT ............. = $SAXON"
@@ -64489,7 +64501,7 @@ echo "Compilation paths:"
 echo "  srcdir .............. = $SCI_SRCDIR"
 echo "  srcdir_full ......... = $SCI_SRCDIR_FULL"
 echo "  builddir ............ = $SCI_BUILDDIR"
-if test "$SCI_SRCDIR_FULL" != "$SCI_BUILDDIR"; then
+if test "x${SCI_SRCDIR_FULL}" != "x${SCI_BUILDDIR}"; then
 	echo "  VPATH build ......... = Activated"
 fi
 
@@ -64501,7 +64513,7 @@ echo "  host_vendor .... = $host_vendor"
 echo "  host_os ... .... = $host_os"
 echo "  hostname ....... = $ac_hostname"
 echo "  CPU 64 bits .... = $IS_64_BITS_CPU"
-if test -n "$MAC_DETECTED_ARCH"; then
+if test -n "${MAC_DETECTED_ARCH}"; then
 	echo "  Mac OS X arch .. = $MAC_DETECTED_ARCH"
 	echo "  Mac OS X version = $macosx_version"
 fi

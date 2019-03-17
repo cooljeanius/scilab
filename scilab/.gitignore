@@ -21,6 +21,7 @@ confdefs.h
 conftest*
 config.h
 modules/core/includes/machine.h
+modules/core/includes/stack.h
 po/remove-potcdate.sed
 
 #
@@ -127,6 +128,7 @@ workspace/
 
 .DS_Store
 bin/*.scpt
+*.dSYM
 
 #
 # scilab/ specific files

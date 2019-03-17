@@ -28,7 +28,7 @@ AM_LDFLAGS  = $(SCI_LDFLAGS)
 # Tag shared libraries with the Scilab version
 AM_LDFLAGS += -version-number $(SCILAB_LIBRARY_VERSION)
 # append includes to AM_FFLAGS to manage fortran includes
-AM_FFLAGS  += -I$(top_srcdir)/modules/core/includes/
+AM_FFLAGS  += -Wp,-I$(top_srcdir)/modules/core/includes/
 
 # This target enables tests for Scilab
 check-local: $(top_builddir)/scilab-bin test
@@ -38,6 +38,8 @@ check-local: $(top_builddir)/scilab-bin test
 
 # splint options
 SPLINT_OPTIONS=-weak -booltype BOOL
+## OK to leave "-I" un-prefixed here, since splint is different from the
+## compiler
 check-code:
 	if test -f build.xml; then \
 		$(ANT) checkstyle; \

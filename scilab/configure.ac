@@ -1,4 +1,4 @@
-#                                               -*- Autoconf -*-
+dnl# configure.ac                                  -*- Autoconf -*-
 #
 # Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
 # Copyright (C) INRIA - 2006-2008 - Sylvestre Ledru
@@ -254,21 +254,21 @@ case "${host}" in
             # remove that part
         elif test -x `which port`; then
         	if test -L `which port`; then
-				REAL_PORT=$(readlink `which port`)
-				AC_MSG_WARN([`which port` is a symlink to ${REAL_PORT}.])
-				export MACPORTS_PREFIX=$(dirname $(dirname ${REAL_PORT}))
-				AC_MSG_NOTICE([Assuming MACPORTS_PREFIX is actually ${MACPORTS_PREFIX}.])
-			else
-				export MACPORTS_PREFIX=$(dirname $(dirname `which port`))
-			fi
+        	    REAL_PORT=$(readlink `which port`)
+        	    AC_MSG_WARN([`which port` is a symlink to ${REAL_PORT}.])
+        	    export MACPORTS_PREFIX=$(dirname $(dirname ${REAL_PORT}))
+        	    AC_MSG_NOTICE([Assuming MACPORTS_PREFIX is actually ${MACPORTS_PREFIX}.])
 		else
-			# default
-            MACPORTS_PREFIX="/opt/local"
-        fi
+        	    export MACPORTS_PREFIX=$(dirname $(dirname `which port`))
+		fi
+	else
+		# default
+		MACPORTS_PREFIX="/opt/local"
+	fi
 
         # Append to the default flags on Apple machines
-        CPPFLAGS="`echo \"$CPPFLAGS -I${MACPORTS_PREFIX}/include\" | uniq`"
-        LDFLAGS="`echo \"$LDFLAGS -L${MACPORTS_PREFIX}/lib\" | uniq`"
+        CPPFLAGS="`echo \"${CPPFLAGS} -Wp,-I${MACPORTS_PREFIX}/include\" | uniq`"
+        LDFLAGS="`echo \"${LDFLAGS} -L${MACPORTS_PREFIX}/lib\" | uniq`"
         ;;
 esac
 
@@ -299,20 +299,20 @@ PKG_PROG_PKG_CONFIG dnl# from m4/pkg.m4
 ## check if options are correct (or not)
 #####################################################
 
-if test "$with_intelcompilers" = yes -a "$with_gcc" = yes; then
+if test "x${with_intelcompilers}" = "xyes" -a "x${with_gcc}" = "xyes"; then
     AC_MSG_ERROR([Conflicting options : you specified two compiler series])
 fi
 
 ######## fortran ########
 
-if test "$with_gfortran" = yes; then
+if test "x${with_gfortran}" = "xyes"; then
    AC_PROG_F77([gfortran])
    if test -z "$F77"; then
      AC_MSG_ERROR([You asked me to use gfortran, but I have not been able to find it])
     fi
 fi
 
-if test "$with_intelcompilers" = yes; then
+if test "x${with_intelcompilers}" = "xyes"; then
    AC_PROG_F77([ifc ifort])
    if test -z "$F77"; then
      AC_MSG_ERROR([You asked me to use ifc (intel fortran compiler), but I have not been able to find it])
@@ -360,14 +360,14 @@ AC_COMPILE_IFELSE([AC_LANG_SOURCE([[
 AC_LANG_POP([Fortran 77])dnl
 
 ############ C ###############
-if test "$with_gcc" = yes; then
+if test "x${with_gcc}" = "xyes"; then
    AC_PROG_CC([gcc])
    if test -z "$CC"; then
      AC_MSG_ERROR([You asked me to use gcc, but I have not been able to find it])
     fi
 fi
 
-if test "$with_intelcompilers" = yes; then
+if test "x${with_intelcompilers}" = "xyes"; then
    AC_PROG_CC([icc ecc])
    if test -z "$CC"; then
      AC_MSG_ERROR([You asked me to use icc (intel C compiler), but I have not been able to find it])
@@ -418,11 +418,11 @@ esac
 # testing for support for both "-c" and "-o" is for the "subdir-objects"
 # automake option
 
-if test "x$CC_C_O" = "x"; then
-	test -z "$CC_C_O"
+if test "x${CC_C_O}" = "x"; then
+	test -z "${CC_C_O}"
 	AM_PROG_CC_C_O
 else
-	test ! -z "$CC_C_O" && export CC_C_O
+	test ! -z "${CC_C_O}" && export CC_C_O
 	AC_SUBST([CC_C_O])
 fi
 AC_PROG_CXX_C_O
@@ -430,42 +430,43 @@ AC_PROG_F77_C_O
 AC_PROG_FC_C_O
 
 # If this option is provided, enable the debug on C & C++
-if test "$enable_stop_on_warning" = yes; then
+if test "x${enable_stop_on_warning}" = "xyes"; then
    XORG_STRICT_OPTION dnl# from m4/xorg-macros.m4
    enable_debug_C=yes
    enable_debug_CXX=yes
 fi
 
-if test "$enable_debug" = yes; then
+if test "x${enable_debug}" = "xyes"; then
    XORG_MEMORY_CHECK_FLAGS dnl# from m4/xorg-macros.m4
    enable_debug_fortran=yes
    enable_debug_C=yes
    enable_debug_CXX=yes
    enable_debug_java=yes
+   enable_debug_linker=yes
 else
    enable_debug=no
 fi
 
-if test "$enable_debug_fortran" = yes; then
+if test "x${enable_debug_fortran}" = "xyes"; then
    FFLAGS="`echo "$FFLAGS"| sed -e 's|-O[0-9+]|-O0|'`"
 else
    enable_debug_fortran=no
 fi
 
-if test "$enable_debug_C" = yes; then
+if test "x${enable_debug_C}" = "xyes"; then
    CFLAGS="`echo "$CFLAGS"| sed -e 's|-O[0-9+]|-O0|'`"
    XORG_CWARNFLAGS dnl# from m4/xorg-macros.m4
 else
    enable_debug_C=no
 fi
 
-if test "$enable_debug_CXX" = yes; then
+if test "x${enable_debug_CXX}" = "xyes"; then
    CXXFLAGS="`echo "$CXXFLAGS"| sed -e 's|-O[0-9+]|-O0|'`"
 else
    enable_debug_CXX=no
 fi
 
-if test "$enable_debug_java" = yes; then
+if test "x${enable_debug_java}" = "xyes"; then
    LOGGING_LEVEL="INFO"
 else
    LOGGING_LEVEL="SEVERE"
@@ -490,7 +491,7 @@ SCIVERSION=`cat $SCI_SRCDIR/Version.incl | sed -e "s/SCIVERSION=//" `
 ######## Set compilation options for intel C/Fortran compilers
 ######################
 
-if test "$with_intelcompilers" = yes; then
+if test "x${with_intelcompilers}" = "xyes"; then
    SCI_INTEL_COMPILER([]) dnl# from m4/intel_compiler.m4
 fi
 
@@ -503,7 +504,7 @@ if test -n "$F77"; then
    case "$F77" in
      gfortran*)
         ## With GNU Compiler enable the code coverage
-        if test "$enable_code_coverage" = yes; then
+        if test "x${enable_code_coverage}" = "xyes"; then
             CODE_COVERAGE_FFLAGS="-fprofile-arcs -ftest-coverage"
         fi
      ;;
@@ -512,9 +513,11 @@ if test -n "$F77"; then
      ;;
    esac
 
-   if test "$enable_debug_fortran" = yes; then
+   if test "x${enable_debug_fortran}" = "xyes"; then
     AC_LANG_PUSH([Fortran 77])
-    for flag in -g -Wall -Wsurprising; do
+    dnl# FIXME: also add -Wimplicit-interface and -Wimplicit-procedure, but
+    dnl# they are rather noisy:
+    for flag in -g -Wall -Wextra -Wsurprising -Warray-temporaries -Wcharacter-truncation -Wconversion-extra -Wfrontend-loop-interchange -Wuse-without-only -Wrealloc-lhs -Wrealloc-lhs-all; do
         case " ${FFLAGS} " in
             *\ ${flag}\ *)
                 # flag is already present
@@ -557,14 +560,14 @@ if test -n "$F77"; then
             ARCH_FFLAGS="+Obb1200 +E4 -Dhpux"
         ;;
           *-*-hpux10.*)
-            if test "$enable_debug_fortran" = yes; then
+            if test "x${enable_debug_fortran}" = "xyes"; then
                 ARCH_FFLAGS="+E4 +Z +DAportable -Dhpux"
             else
                 ARCH_FFLAGS="+O2 +E4 +Z +DAportable -Dhpux"
             fi
             ;;
           *-*-hpux11.*)
-           if test "$enable_debug_fortran" = yes; then
+           if test "x${enable_debug_fortran}" = "xyes"; then
               ARCH_FFLAGS=" +Z +DAportable -Dhpux"
              else
               ARCH_FFLAGS="+O2 +Z +DAportable -Dhpux"
@@ -596,31 +599,31 @@ case "$host" in
     ;;
 esac
 
-AM_CONDITIONAL([IS_MACOSX],[test -n "$MACOSX"])
-AM_CONDITIONAL([IS_HPUX],[test -n "$HPUX"])
-AM_CONDITIONAL([IS_SPARC],[test -n "$SPARC"])
-AM_CONDITIONAL([IS_SOLARIS],[test -n "$SOLARIS"])
-AM_CONDITIONAL([IS_MIPS_SGI_IRIX],[test -n "$MIPS_SGI_IRIX"])dnl
+AM_CONDITIONAL([IS_MACOSX],[test -n "${MACOSX}"])
+AM_CONDITIONAL([IS_HPUX],[test -n "${HPUX}"])
+AM_CONDITIONAL([IS_SPARC],[test -n "${SPARC}"])
+AM_CONDITIONAL([IS_SOLARIS],[test -n "${SOLARIS}"])
+AM_CONDITIONAL([IS_MIPS_SGI_IRIX],[test -n "${MIPS_SGI_IRIX}"])dnl
 
 ############
 ## C++
 ############
 
-if test -z "$CXX"; then
+if test -z "${CXX}"; then
   AC_MSG_ERROR([No C++ compiler found. Cannot compile scilab without a C++ compiler.])
 fi
 
-case "$CXX" in
+case "${CXX}" in
     g++-* | g++ | ccache*g++ | ccache*g++-* )
         ## With GNU C++ Compiler
 
         # enable the code coverage
-        if test "$enable_code_coverage" = yes; then
+        if test "x${enable_code_coverage}" = "xyes"; then
             CODE_COVERAGE_CXXFLAGS="-fprofile-arcs -ftest-coverage"
         fi
 
-        if test "$enable_debug_CXX" = yes; then
-            DEBUG_CXXFLAGS="-pipe -Wshadow -Wpointer-arith -Wcast-align -Wreturn-type -Wswitch -Wtrigraphs -Wcomment -Wchar-subscripts -Wformat -Wparentheses -Wsign-compare -Wwrite-strings -Wunused -Wno-strict-aliasing -Wextra -Wall -g3 -Wunsafe-loop-optimizations"
+        if test "x${enable_debug_CXX}" = "xyes"; then
+            DEBUG_CXXFLAGS="-pipe -Wshadow -Wpointer-arith -Wcast-align -Wreturn-type -Wswitch -Wtrigraphs -Wcomment -Wchar-subscripts -Wformat -Wparentheses -Wsign-compare -Wwrite-strings -Wunused -fno-strict-aliasing -Wextra -Wall -g3 -Wunsafe-loop-optimizations"
             case "$host" in
                 *-linux-gnu )
                     # Only doing that under Linux
@@ -656,18 +659,18 @@ case "$CC" in
    ## With GNU Compiler
 
    # enable the code coverage
-   if test "$enable_code_coverage" = yes; then
+   if test "x${enable_code_coverage}" = "xyes"; then
     CODE_COVERAGE_CFLAGS="-fprofile-arcs -ftest-coverage"
    fi
 
-   if test "$enable_debug_C" = yes; then
-      DEBUG_CFLAGS="-pipe -Wformat -Wshadow -Wfloat-equal -Wpointer-arith -Wcast-align -Wmissing-prototypes -Wmissing-declarations  -Wstrict-prototypes  -Wmissing-noreturn -Wendif-labels -Wpointer-arith -Wbad-function-cast -Wcast-qual -Wwrite-strings -Winline -Wredundant-decls -Wall -Wchar-subscripts -Wextra  -Wuninitialized -Wno-format-y2k -Wmissing-format-attribute -Wno-missing-field-initializers -Wno-strict-aliasing  -Wold-style-definition -g3 -Wunsafe-loop-optimizations"
+   if test "x${enable_debug_C}" = "xyes"; then
+      DEBUG_CFLAGS="-pipe -Wformat -Wshadow -Wfloat-equal -Wpointer-arith -Wcast-align -Wmissing-prototypes -Wmissing-declarations  -Wstrict-prototypes  -Wmissing-noreturn -Wendif-labels -Wpointer-arith -Wbad-function-cast -Wcast-qual -Wwrite-strings -Winline -Wredundant-decls -Wall -Wchar-subscripts -Wextra  -Wuninitialized -Wno-format-y2k -Wmissing-format-attribute -Wno-missing-field-initializers -fno-strict-aliasing -Wold-style-definition -g3 -Wunsafe-loop-optimizations"
       # used to be -O
       # -D_FORTIFY_SOURCE=2
       case "$host" in
       *-linux-gnu )
       # Only doing that under Linux
-        if test "$enable_debug_linker" = yes; then
+        if test "x${enable_debug_linker}" = "xyes"; then
             LDFLAGS="$LDFLAGS -Wl,--warn-common,-x"
         fi
         DEBUG_CFLAGS="$DEBUG_CFLAGS -fdiagnostics-show-option -Werror=format-security"
@@ -719,9 +722,9 @@ case "$CC" in
             dnl# linker flag; it should be based on linker version rather than
             dnl# OS version, since newer linkers can be installed on older
             dnl# systems, and older linkers can be installed on newer systems.
-            ARCH_CFLAGS="$ARCH_CFLAGS -no_compact_linkedit"
-            ARCH_CXXFLAGS="$ARCH_CXXFLAGS -no_compact_linkedit"
-            ARCH_LDFLAGS="$ARCH_LDFLAGS -no_compact_linkedit"
+            ARCH_CFLAGS="${ARCH_CFLAGS} -Wl,-no_compact_linkedit"
+            ARCH_CXXFLAGS="${ARCH_CXXFLAGS} -Wl,-no_compact_linkedit"
+            ARCH_LDFLAGS="${ARCH_LDFLAGS} -Wl,-no_compact_linkedit"
             # We need this to be passed to all linker commands... except not
             # really because that can break further conftests
             LD_CLASSIC_FLAGS="${LD_CLASSIC_FLAGS} -no_compact_linkedit"
@@ -730,6 +733,11 @@ case "$CC" in
           else
             AC_MSG_NOTICE([Not using the -no_compact_linkedit linker flag on Lion and above])
           fi
+        fi
+
+        if test "x${enable_debug_linker}" = "xyes"; then
+            dnl# FIXME: test these to ensure they work:
+            LDFLAGS="${LDFLAGS} -Wl,-warn_compact_unwind -Wl,-warn_weak_exports -Wl,-warn_stabs -Wl,-warn_commons"
         fi
 
         case "$F77" in
@@ -742,14 +750,14 @@ case "$CC" in
                  MAC_DETECTED_ARCH="x86_64"
              ;;
         esac
-        CC="$CC -arch $MAC_DETECTED_ARCH"
-        CXX="$CXX -arch $MAC_DETECTED_ARCH"
+        CC="${CC} -arch ${MAC_DETECTED_ARCH}"
+        CXX="${CXX} -arch ${MAC_DETECTED_ARCH}"
         ;;
    esac
    ;; # end of the gcc case on the $CC
    *)
         ## CC compiler (not GCC)
-        if test "$enable_debug_C" != yes; then
+        if test "x${enable_debug_C}" != "xyes"; then
              ARCH_CFLAGS="-DNDEBUG"
         fi
 
@@ -773,7 +781,7 @@ case "$CC" in
             ARCH_CFLAGS="-DSYSV -Dhpux"
           ;;
           *-*-hpux10.*) # HP 10
-            if test "$enable_debug_C" = yes; then
+            if test "x${enable_debug_C}" = "xyes"; then
               ARCH_CFLAGS="-DSYSV -Dhpux"
             else
               ARCH_CFLAGS="-DSYSV -Dhpux +Z +DAportable"
@@ -783,7 +791,7 @@ case "$CC" in
             ARCH_CFLAGS="-DSYSV -Dhpux -Dhppa +Z +DAportable"
           ;;
           *-*-solaris*) # SUN SOLARIS
-            ARCH_CFLAGS="-DSVR4 -DSYSV -Dsolaris -I/usr/local/include/"
+            ARCH_CFLAGS="-DSVR4 -DSYSV -Dsolaris -Wp,-I/usr/local/include/"
             ARCH_LDFLAGS="-L/usr/local/lib/"
           ;;
         esac
@@ -791,18 +799,18 @@ case "$CC" in
 esac
 
 # enable the code coverage
-if test "$enable_code_coverage" = yes; then
+if test "x${enable_code_coverage}" = "xyes"; then
    AC_PATH_PROG([LCOV],[lcov])
-   if test -z "$LCOV" ; then
+   if test -z "${LCOV}"; then
         AC_MSG_ERROR([Cannot find lcov. Please install it (package lcov under Debian) or remove the option --enable-code-coverage])
    fi
    AC_PATH_PROG([GENHTML],[genhtml])
-   if test -z "$GENHTML" ; then
+   if test -z "${GENHTML}"; then
         AC_MSG_ERROR([Cannot find genhtml. Please install it (package lcov under Debian) or remove the option --enable-code-coverage])
    fi
    CODE_COVERAGE_LDFLAGS="-coverage"
 fi
-AM_CONDITIONAL([CODE_COVERAGE],[test "$enable_code_coverage" = yes])dnl
+AM_CONDITIONAL([CODE_COVERAGE],[test "x${enable_code_coverage}" = "xyes"])dnl
 
 # flag for possible compilations in configure
 SCILIBS_CFLAGS=''
@@ -858,14 +866,14 @@ AC_ARG_WITH([modelica],
     [AS_HELP_STRING([--without-modelica],
                     [Disable the OCaml module (modelica)])])dnl
 
-if test "$with_gui" = no; then
+if test "x${with_gui}" = "xno"; then
    AC_MSG_WARN([GUI is disabled. Disabling then xcos])
    with_xcos=no
 fi
 
 XCOS_ENABLE=no
 
-if test "$with_xcos" != no -a "$with_gui" != no; then
+if test "x${with_xcos}" != "xno" -a "x${with_gui}" != "xno"; then
    AC_DEFINE([WITH_XCOS],[],[With XCOS])dnl
 
    save_LIBS="$LIBS"
@@ -877,14 +885,17 @@ if test "$with_xcos" != no -a "$with_gui" != no; then
                         [Whether clock_gettime is available])],
         [AC_MSG_WARN([librt: library missing (Cannot find symbol clock_gettime). Check if librt is installed (it is usually provided by the libc) and if the version is correct])])
    LIBS="$save_LIBS"
-   AC_SUBST([RT_LIB])
+   AC_SUBST([RT_LIB])dnl
+
    #################
    ## ocaml which is only called when using Xcos
    #################
-   if test "$with_modelica" != no; then
+   if test "x${with_modelica}" != "xno"; then
       AC_CHECK_PROG_OCAML([]) dnl# from m4/ocaml.m4
    fi
    XCOS_ENABLE=yes
+else
+   AC_MSG_NOTICE([skipping xcos checks])
 fi
 
 AC_SUBST([XCOS_ENABLE])dnl
@@ -899,9 +910,8 @@ AM_CONDITIONAL([XCOS],[test "$XCOS_ENABLE" != no])dnl
 dnl# most of these macros come from either m4/java.m4
 dnl# or m4/java-thirdparty.m4
 
-if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no; then
-
-   # See if --with-jdk command line argument is given
+if test "x${with_javasci}" != "xno" -o "x${with_gui}" != "xno" -o "x${enable_build_help}" != "xno"; then
+     # See if --with-jdk command line argument is given
      # Try to detect the installed JVM, this could be controlled
      # by the above --with options
      AC_JAVA_WITH_JDK
@@ -914,7 +924,7 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
         ;;
      esac
 
-   if test "$ac_java_jvm_name" = "jdk"; then
+   if test "x${ac_java_jvm_name}" = "xjdk"; then
         JAVA_HOME=$ac_java_jvm_dir
         JAVA_VERSION=$ac_java_jvm_version
         AC_JAVA_TOOLS
@@ -944,48 +954,67 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
              ;;
         esac
 
-        if test "$with_gui" != no; then
-                if test $XCOS_ENABLE = yes; then
+        if test "x${with_gui}" != "xno"; then
+                if test "x${XCOS_ENABLE}" = "xyes"; then
                    # jgraphx
-                   AC_JAVA_CHECK_PACKAGE([jgraphx],[com.mxgraph.model.mxCell],[Diagram design])
+                   AC_JAVA_CHECK_PACKAGE([jgraphx],[com.mxgraph.model.mxCell],
+                                         [Diagram design])
                    JGRAPHX=$PACKAGE_JAR_FILE
                    AC_SUBST([JGRAPHX])dnl
 
-                   AC_JAVA_CHECK_VERSION_PACKAGE([jgraphx],[import com.mxgraph.view.mxGraph;],[$JGRAPHX],[1.8.0.0],[mxGraph.VERSION],[],[])
+                   AC_JAVA_CHECK_VERSION_PACKAGE([jgraphx],
+                                                 [import com.mxgraph.view.mxGraph;],
+                                                 [$JGRAPHX],[1.8.0.0],[mxGraph.VERSION],[],[])
                 fi
 
                 # scirenderer
-                AC_JAVA_CHECK_PACKAGE([scirenderer],[org.scilab.forge.scirenderer.PackageInfo],[Scilab Renderer])
+                AC_JAVA_CHECK_PACKAGE([scirenderer],
+                                      [org.scilab.forge.scirenderer.PackageInfo],
+                                      [Scilab Renderer])
                 SCIRENDERER=$PACKAGE_JAR_FILE
                 AC_SUBST([SCIRENDERER])dnl
 
-                AC_JAVA_CHECK_VERSION_PACKAGE([scirenderer],[import org.scilab.forge.scirenderer.PackageInfo;],[$SCIRENDERER],[1.0.2],[PackageInfo.VERSION])dnl
+                AC_JAVA_CHECK_VERSION_PACKAGE([scirenderer],
+                                          [import org.scilab.forge.scirenderer.PackageInfo;],
+                                          [$SCIRENDERER],[1.0.2],[PackageInfo.VERSION])dnl
 
                # Docking system
-                AC_JAVA_CHECK_PACKAGE([flexdock],[org.flexdock.docking.DockingManager],[Scilab Gui])
+                AC_JAVA_CHECK_PACKAGE([flexdock],
+                                      [org.flexdock.docking.DockingManager],
+                                      [Scilab Gui])
                 FLEXDOCK=$PACKAGE_JAR_FILE
                 AC_SUBST([FLEXDOCK])dnl
 
-                AC_JAVA_CHECK_VERSION_PACKAGE([flexdock],[import org.flexdock.util.Utilities;],[$FLEXDOCK],[1.2.0],[Utilities.VERSION])dnl
+                AC_JAVA_CHECK_VERSION_PACKAGE([flexdock],
+                                              [import org.flexdock.util.Utilities;],
+                                              [$FLEXDOCK],[1.2.0],[Utilities.VERSION])dnl
 
                 # Swing look&feel implementations
-                AC_JAVA_CHECK_PACKAGE([looks],[com.jgoodies.looks.common.MenuItemRenderer],[Scilab Gui - Look and feel],"yes")
+                AC_JAVA_CHECK_PACKAGE([looks],
+                                      [com.jgoodies.looks.common.MenuItemRenderer],
+                                      [Scilab Gui - Look and feel],["yes"])
                 LOOKS=$PACKAGE_JAR_FILE
 
                 # Named differently under ArchLinux or Fedora
                 if test -z "$LOOKS"; then
-                    AC_JAVA_CHECK_PACKAGE([jgoodies-looks],[com.jgoodies.looks.common.MenuItemRenderer],[Scilab Gui - Look and feel])
+                    AC_JAVA_CHECK_PACKAGE([jgoodies-looks],
+                                          [com.jgoodies.looks.common.MenuItemRenderer],
+                                          [Scilab Gui - Look and feel])
                     LOOKS=$PACKAGE_JAR_FILE
                 fi
                 AC_SUBST([LOOKS])dnl
 
                 #  Skin Look and Feel
-                AC_JAVA_CHECK_PACKAGE([skinlf],[com.l2fprod.util.AccessUtils],[Scilab Gui - Skin Look and Feel])
+                AC_JAVA_CHECK_PACKAGE([skinlf],
+                                      [com.l2fprod.util.AccessUtils],
+                                      [Scilab Gui - Skin Look and Feel])
                 SKINLF=$PACKAGE_JAR_FILE
                 AC_SUBST([SKINLF])dnl
 
                 # JOGL 2
-                AC_JAVA_CHECK_PACKAGE([jogl2],[javax.media.opengl.glu.GLUnurbs],[Scilab 3D rendering - Version 2.0])
+                AC_JAVA_CHECK_PACKAGE([jogl2],
+                                      [javax.media.opengl.glu.GLUnurbs],
+                                      [Scilab 3D rendering - Version 2.0])
                 JOGL2=$PACKAGE_JAR_FILE
                 AC_SUBST([JOGL2])dnl
 
@@ -994,11 +1023,12 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
                 else
                    LDFLAGS_save=$LDFLAGS
                    # Provide known paths where distribs/OS can store JNI libs
-                   LDFLAGS="$LDFLAGS -L/usr/lib/jni -L/usr/lib64/jni"                   # Debian
-                   LDFLAGS="$LDFLAGS -L/usr/lib/java -L/usr/lib64/java"                 # jpackage.org
-                   LDFLAGS="$LDFLAGS -L/usr/lib/jogl -L/usr/lib64/jogl"                 # RedHat
-                   LDFLAGS="$LDFLAGS -L$SCI_SRCDIR/thirdparty -L$SCI_SRCDIR/bin"        # Scilab thirdparties
-                   AC_CHECK_LIB([jogl_desktop],[glTexParameterf],[JOGL2_LIBS="-ljogl"],[AC_MSG_WARN([Could not link against -ljogl_desktop. Will try against -ljogl2 -lGL])])
+                   LDFLAGS="$LDFLAGS -L/usr/lib/jni -L/usr/lib64/jni" # Debian
+                   LDFLAGS="$LDFLAGS -L/usr/lib/java -L/usr/lib64/java" # jpackage.org
+                   LDFLAGS="$LDFLAGS -L/usr/lib/jogl -L/usr/lib64/jogl" # RedHat
+                   LDFLAGS="$LDFLAGS -L$SCI_SRCDIR/thirdparty -L$SCI_SRCDIR/bin" # Scilab 3rdparties
+                   AC_CHECK_LIB([jogl_desktop],[glTexParameterf],[JOGL2_LIBS="-ljogl"],
+                                [AC_MSG_WARN([Could not link against -ljogl_desktop. Will try against -ljogl2 -lGL])])
                    if test -z "$JOGL2_LIBS"; then # The previous test failed add more options to the LDFLAGS
                        # the space after "jogl" in the following line is on
                        # purpose to disable the cache
@@ -1014,7 +1044,9 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 fi
 
                 # JoGL Native <=> Java connector
-                AC_JAVA_CHECK_PACKAGE([gluegen2-rt],[jogamp.common.os.MachineDescriptionRuntime],[Scilab 3D rendering])
+                AC_JAVA_CHECK_PACKAGE([gluegen2-rt],
+                                      [jogamp.common.os.MachineDescriptionRuntime],
+                                      [Scilab 3D rendering])
                 GLUEGEN2_RT=$PACKAGE_JAR_FILE
                 AC_SUBST([GLUEGEN2_RT])dnl
 
@@ -1023,10 +1055,10 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 else
                    LDFLAGS_save=$LDFLAGS
                    # Provide known paths where distribs/OS can store JNI libs
-                   LDFLAGS="$LDFLAGS -L/usr/lib/jni -L/usr/lib64/jni"                   # Debian
-                   LDFLAGS="$LDFLAGS -L/usr/lib/java -L/usr/lib64/java"                 # jpackage.org
-                   LDFLAGS="$LDFLAGS -L/usr/lib/gluegen -L/usr/lib64/gluegen"           # RedHat
-                   LDFLAGS="$LDFLAGS -L$SCI_SRCDIR/thirdparty -L$SCI_SRCDIR/bin"        # Scilab thirdparties
+                   LDFLAGS="$LDFLAGS -L/usr/lib/jni -L/usr/lib64/jni" # Debian
+                   LDFLAGS="$LDFLAGS -L/usr/lib/java -L/usr/lib64/java" # jpackage.org
+                   LDFLAGS="$LDFLAGS -L/usr/lib/gluegen -L/usr/lib64/gluegen" # RedHat
+                   LDFLAGS="$LDFLAGS -L$SCI_SRCDIR/thirdparty -L$SCI_SRCDIR/bin" # Scilab 3rdparties
                    symbol="Java_jogamp_common_jvm_JVMUtil_initialize"
                    AC_CHECK_LIB([gluegen2-rt],[$symbol],[GLUEGEN_RT_LIBS="-lgluegen-rt"],
                    [AC_MSG_ERROR([libgluegen2-rt: Library missing (Cannot find symbol $symbol). Check if libgluegen-rt - C/Java (JNI) interface for GLUEGEN2 - is installed and if the version is correct. Note that you might have to update etc/librarypath.xml to provide the actual path the the JNI libraries.])],
@@ -1035,42 +1067,57 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 fi
 
                 # Jhall
-                AC_JAVA_CHECK_PACKAGE([jhall],[javax.help.JHelp],[Scilab Help Browser],["yes"])
+                AC_JAVA_CHECK_PACKAGE([jhall],[javax.help.JHelp],
+                                      [Scilab Help Browser],["yes"])
                 JHALL=$PACKAGE_JAR_FILE
 
                 # Named differently under Mandriva or Fedora
                 if test -z "$JHALL"; then
-                    AC_JAVA_CHECK_PACKAGE([javahelp2],[javax.help.JHelp],[Scilab Help Browser])
+                    AC_JAVA_CHECK_PACKAGE([javahelp2],
+                                          [javax.help.JHelp],
+                                          [Scilab Help Browser])
                     JHALL=$PACKAGE_JAR_FILE
                 fi
                 AC_SUBST([JHALL])dnl
 
                 # Console API
-                AC_JAVA_CHECK_PACKAGE([jrosetta-API],[com.artenum.rosetta.interfaces.core.ConsoleConfiguration],[JRosetta : Console API Artenum / Scilab],["yes"])
+                AC_JAVA_CHECK_PACKAGE([jrosetta-API],
+                                  [com.artenum.rosetta.interfaces.core.ConsoleConfiguration],
+                                  [JRosetta : Console API Artenum / Scilab],["yes"])
                 JROSETTA_API=$PACKAGE_JAR_FILE
 		if test -z "$JROSETTA_API"; then
-	                AC_JAVA_CHECK_PACKAGE([jrosetta-api],[com.artenum.rosetta.interfaces.core.ConsoleConfiguration],[JRosetta : Console API Artenum / Scilab])
+	                AC_JAVA_CHECK_PACKAGE([jrosetta-api],
+                                  [com.artenum.rosetta.interfaces.core.ConsoleConfiguration],
+                                  [JRosetta : Console API Artenum / Scilab])
         	        JROSETTA_API=$PACKAGE_JAR_FILE
 		fi
                 AC_SUBST([JROSETTA_API])dnl
 
                 # Console Core
-                AC_JAVA_CHECK_PACKAGE([jrosetta-engine],[com.artenum.rosetta.core.action.AbstractConsoleAction],[JRosetta : Console Core Artenum / Scilab])
+                AC_JAVA_CHECK_PACKAGE([jrosetta-engine],
+                                  [com.artenum.rosetta.core.action.AbstractConsoleAction],
+                                  [JRosetta : Console Core Artenum / Scilab])
                 JROSETTA_ENGINE=$PACKAGE_JAR_FILE
                 AC_SUBST([JROSETTA_ENGINE])
-                AC_JAVA_CHECK_VERSION_PACKAGE([jrosetta-engine],[import com.artenum.rosetta.util.ConfigurationBuilder;],[$JROSETTA_ENGINE],[1.0.4],[ConfigurationBuilder.getVersion()])dnl
+                AC_JAVA_CHECK_VERSION_PACKAGE([jrosetta-engine],
+                                      [import com.artenum.rosetta.util.ConfigurationBuilder;],
+                                      [$JROSETTA_ENGINE],[1.0.4],
+                                      [ConfigurationBuilder.getVersion()])dnl
 
                 # MathML rendering solution
                 # Used in both graphic & help
-                AC_JAVA_CHECK_PACKAGE([jeuclid-core],[net.sourceforge.jeuclid.LayoutContext],[MathML rendering solution (at least version 3.1.X)])
+                AC_JAVA_CHECK_PACKAGE([jeuclid-core],
+                                      [net.sourceforge.jeuclid.LayoutContext],
+                                      [MathML rendering solution (at least version 3.1.X)])
                 JEUCLID_CORE=$PACKAGE_JAR_FILE
                 AC_SUBST([JEUCLID_CORE])dnl
 
                 ################ Mandatory for graphic_export features #####
                 # XML to PDF/other Translator
-                AC_JAVA_CHECK_PACKAGE([fop],[org.apache.fop.pdf.PDFInfo],[XML to PDF Translator (fop)])
+                AC_JAVA_CHECK_PACKAGE([fop],[org.apache.fop.pdf.PDFInfo],
+                                      [XML to PDF Translator (fop)])
                 FOP=$PACKAGE_JAR_FILE
-                if test "x$FOP" = "x"; then
+                if test "x${FOP}" = "x"; then
                 	test -z "$FOP"
                 	XORG_WITH_FOP dnl# from m4/xorg-macros.m4 (supplies the HAVE_FOP conditional)
                 else
@@ -1081,39 +1128,55 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 AC_SUBST([FOP])dnl
 
                 # xml.apache.org SVG Library (under mandriva for example)
-                AC_JAVA_CHECK_PACKAGE([batik-all],[org.apache.batik.parser.Parser],[Apache SVG Library],["yes"])
+                AC_JAVA_CHECK_PACKAGE([batik-all],
+                                      [org.apache.batik.parser.Parser],
+                                      [Apache SVG Library],["yes"])
                 BATIK=$PACKAGE_JAR_FILE
 
                 if test -z "$BATIK"; then
                    # Other other distribs
-                   AC_JAVA_CHECK_PACKAGE([batik],[org.apache.batik.parser.Parser],[Apache SVG Library])
+                   AC_JAVA_CHECK_PACKAGE([batik],
+                                         [org.apache.batik.parser.Parser],
+                                         [Apache SVG Library])
                    BATIK=$PACKAGE_JAR_FILE
                 fi
                 AC_SUBST([BATIK])
-                AC_JAVA_CHECK_VERSION_PACKAGE([batik],[import org.apache.batik.Version;],[$BATIK],[1.7],[Version.getVersion()])dnl
+                AC_JAVA_CHECK_VERSION_PACKAGE([batik],
+                                              [import org.apache.batik.Version;],
+                                              [$BATIK],[1.7],[Version.getVersion()])dnl
 
                 # Commons I/O library
-                AC_JAVA_CHECK_PACKAGE([commons-io],[org.apache.commons.io.output.CountingOutputStream],[Commons I/O library])
+                AC_JAVA_CHECK_PACKAGE([commons-io],
+                                      [org.apache.commons.io.output.CountingOutputStream],
+                                      [Commons I/O library])
                 COMMONS_IO=$PACKAGE_JAR_FILE
                 AC_SUBST([COMMONS_IO])dnl
 
                 # XML graphics common
-                AC_JAVA_CHECK_PACKAGE([xmlgraphics-commons],[org.apache.xmlgraphics.util.Service],[Commons graphics library])
+                AC_JAVA_CHECK_PACKAGE([xmlgraphics-commons],
+                                      [org.apache.xmlgraphics.util.Service],
+                                      [Commons graphics library])
                 XMLGRAPHICS_COMMONS=$PACKAGE_JAR_FILE
                 AC_SUBST([XMLGRAPHICS_COMMONS])dnl
 
                 # Avalon Framework (PDF)
-                AC_JAVA_CHECK_PACKAGE([avalon-framework],[org.apache.avalon.framework.configuration.ConfigurationException],[Common framework for Java server application])
+                AC_JAVA_CHECK_PACKAGE([avalon-framework],
+                          [org.apache.avalon.framework.configuration.ConfigurationException],
+                          [Common framework for Java server application])
                 AVALON_FRAMEWORK=$PACKAGE_JAR_FILE
                 AC_SUBST([AVALON_FRAMEWORK])dnl
 
                 # XML API EXT (conversion of a SVG => PNG)
-                AC_JAVA_CHECK_PACKAGE([xml-apis-ext],[org.w3c.dom.svg.SVGDocument],[XML Commons external code],["yes"])
+                AC_JAVA_CHECK_PACKAGE([xml-apis-ext],
+                                      [org.w3c.dom.svg.SVGDocument],
+                                      [XML Commons external code],["yes"])
                 XML_APIS_EXT=$PACKAGE_JAR_FILE
 
                 if test -z "$XML_APIS_EXT"; then
                     # Other other distribs (Ex: Fedora/Redhat)
-                    AC_JAVA_CHECK_PACKAGE([xml-commons-apis-ext],[org.w3c.dom.svg.SVGDocument],[XML Commons external code])
+                    AC_JAVA_CHECK_PACKAGE([xml-commons-apis-ext],
+                                          [org.w3c.dom.svg.SVGDocument],
+                                          [XML Commons external code])
                     XML_APIS_EXT=$PACKAGE_JAR_FILE
                 fi
                 AC_SUBST([XML_APIS_EXT])dnl
@@ -1121,57 +1184,82 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 ################ END Mandatory for graphic_export features #####
 
                 # Logging (flexdock dep)
-                AC_JAVA_CHECK_PACKAGE([commons-logging],[org.apache.commons.logging.LogFactory],[Apache logging])
+                AC_JAVA_CHECK_PACKAGE([commons-logging],
+                                      [org.apache.commons.logging.LogFactory],
+                                      [Apache logging])
                 COMMONS_LOGGING=$PACKAGE_JAR_FILE
                 AC_SUBST([COMMONS_LOGGING])dnl
 
                 # JLaTeXMath
-                AC_JAVA_CHECK_PACKAGE([jlatexmath],[org.scilab.forge.jlatexmath.TeXFormula],[LaTex Rendering])
+                AC_JAVA_CHECK_PACKAGE([jlatexmath],
+                                      [org.scilab.forge.jlatexmath.TeXFormula],
+                                      [LaTex Rendering])
                 JLATEXMATH=$PACKAGE_JAR_FILE
                 AC_SUBST([JLATEXMATH])dnl
 
-                AC_JAVA_CHECK_VERSION_PACKAGE([jlatexmath],[import org.scilab.forge.jlatexmath.TeXFormula;],[$JLATEXMATH],[1.0.0],[TeXFormula.VERSION])dnl
+                AC_JAVA_CHECK_VERSION_PACKAGE([jlatexmath],
+                                          [import org.scilab.forge.jlatexmath.TeXFormula;],
+                                          [$JLATEXMATH],[1.0.0],[TeXFormula.VERSION])dnl
 
                 AC_DEFINE([WITH_GUI],[],[With the JAVA stuff (GUI, Console, JOGL...)])
         fi
 
         # Checkstyle (code checking)
-        AC_JAVA_CHECK_PACKAGE([checkstyle],[com.puppycrawl.tools.checkstyle.CheckStyleTask],[Checkstyle - code checking],["yes"])
+        AC_JAVA_CHECK_PACKAGE([checkstyle],
+                              [com.puppycrawl.tools.checkstyle.CheckStyleTask],
+                              [Checkstyle - code checking],["yes"])
         CHECKSTYLE=$PACKAGE_JAR_FILE
         AC_SUBST([CHECKSTYLE])dnl
 
         # Commons beanutils (dependency of checkstyle)
-        AC_JAVA_CHECK_PACKAGE([commons-beanutils],[org.apache.commons.beanutils.Converter],[Bean utility],["yes"])
+        AC_JAVA_CHECK_PACKAGE([commons-beanutils],
+                              [org.apache.commons.beanutils.Converter],
+                              [Bean utility],["yes"])
         COMMONS_BEANUTILS=$PACKAGE_JAR_FILE
         AC_SUBST([COMMONS_BEANUTILS])dnl
 
         # antlr (dependency of checkstyle)
-        AC_JAVA_CHECK_PACKAGE([antlr],[antlr.TokenStreamException],[language tool for constructing recognizers],["yes"])
+        AC_JAVA_CHECK_PACKAGE([antlr],
+                              [antlr.TokenStreamException],
+                              [language tool for constructing recognizers],
+                              ["yes"])
         ANTLR=$PACKAGE_JAR_FILE
         AC_SUBST([ANTLR])dnl
 
         # Junit 4 (java unitary test)
-        AC_JAVA_CHECK_PACKAGE([junit4],[org.junit.Assert],[Junit4 - Unit tests],["yes"])
+        AC_JAVA_CHECK_PACKAGE([junit4],
+                              [org.junit.Assert],
+                              [Junit4 - Unit tests],
+                              ["yes"])
         JUNIT4=$PACKAGE_JAR_FILE
         AC_SUBST([JUNIT4])dnl
 
         # Cobertura (java code coverage)
-        AC_JAVA_CHECK_PACKAGE([cobertura],[net.sourceforge.cobertura.merge.Main],[cobertura - Java code coverage],["yes"])
+        AC_JAVA_CHECK_PACKAGE([cobertura],
+                              [net.sourceforge.cobertura.merge.Main],
+                              [cobertura - Java code coverage],
+                              ["yes"])
         COBERTURA=$PACKAGE_JAR_FILE
         AC_SUBST([COBERTURA])dnl
 
         # ASM (a dependency of Cobertura)
-        AC_JAVA_CHECK_PACKAGE([asm3],[org.objectweb.asm.Type],[Java bytecode manipulation (dep of cobertura)],["yes"])
+        AC_JAVA_CHECK_PACKAGE([asm3],
+                              [org.objectweb.asm.Type],
+                              [Java bytecode manipulation (dep of cobertura)],
+                              ["yes"])
         ASM3=$PACKAGE_JAR_FILE
         AC_SUBST([ASM3])
         if test -z "$ASM3"; then
-                AC_JAVA_CHECK_PACKAGE([asm],[org.objectweb.asm.Type],[Java bytecode manipulation (dep of cobertura)],["yes"])
+                AC_JAVA_CHECK_PACKAGE([asm],
+                                      [org.objectweb.asm.Type],
+                                      [Java bytecode manipulation (dep of cobertura)],
+                                      ["yes"])
                 ASM3=$PACKAGE_JAR_FILE
         fi
 
     else
         AC_MSG_WARN([Sun javac not found: I will not build the java interface])
-        if test "$ac_java_jvm_name" != ""; then
+        if test "x${ac_java_jvm_name}" != "x"; then
             AC_MSG_WARN([We do not support $ac_java_jvm_name yet])
         fi
     fi
@@ -1179,22 +1267,23 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
     AC_SUBST([JAVA_JNI_LIBS])dnl
     AC_SUBST([JAVA_HOME])dnl
 
-    if test "$enable_debug_java" = yes; then
+    if test "x${enable_debug_java}" = "xyes"; then
         JAVAC_DEBUG="on"
     else
         JAVAC_DEBUG="off"
     fi
     AC_SUBST([JAVAC_DEBUG])dnl
 
-    if test "$enable_build_swig" != no -a "$enable_build_swig" != ""; then
+    if test "x${enable_build_swig}" != "xno" -a "x${enable_build_swig}" != "x"; then
         dnl# these are from m4/swig.m4
         dnl# TODO: migrate to the AX_* versions of these macros
         SWIG_PROG([])
         SWIG_ENABLE_CXX([])
         SWIG_ENABLE_JAVA([])
-        AC_SUBST([SWIG_BIN])
-        AC_SUBST([SWIG_CXX])
-        AC_SUBST([SWIG_JAVA])
+        AC_SUBST([SWIG_BIN])dnl
+        AC_SUBST([SWIG_CXX])dnl
+        AC_SUBST([SWIG_JAVA])dnl
+        ## that should be enough
     else
         dnl# make sure it is turned off if not specifically requested
         enable_build_swig=no
@@ -1202,7 +1291,7 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
 
     # Giws is the equivalent of Swig developed by the Scilab team
     # in order to provide a wrapper to Java from C/C++
-    if test "$enable_build_giws" != no -a "$enable_build_giws" != ""; then
+    if test "x${enable_build_giws}" != "xno" -a "x${enable_build_giws}" != "x"; then
         AC_GIWS([1.3.0]) dnl# from m4/giws.m4
     else
         dnl# make sure it is turned off if not specifically requested
@@ -1213,9 +1302,10 @@ else
     enable_build_swig=no
     enable_build_giws=no
     HAVE_FOP=no
-    AC_SUBST([enable_build_swig])
-    AC_SUBST([enable_build_giws])
-    AC_SUBST([HAVE_FOP])
+    AC_SUBST([enable_build_swig])dnl
+    AC_SUBST([enable_build_giws])dnl
+    AC_SUBST([HAVE_FOP])dnl
+    ## done with this java part
 fi
 
 JAVA_ENABLE=yes
@@ -1228,10 +1318,12 @@ fi
 AC_SUBST([JAVA_ENABLE])dnl
 
 # Xcos is not checked here because gui=no disables it
-AM_CONDITIONAL([NEED_JAVA],[test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no])
-AM_CONDITIONAL([GUI],[test "$with_gui" != no])
-AM_CONDITIONAL([JAVASCI],[test "$with_javasci" != no])
-AM_CONDITIONAL([SWIG],[test "$enable_build_swig" != no -a "$enable_build_swig" != ""])
+AM_CONDITIONAL([NEED_JAVA],
+               [test "x${with_javasci}" != "xno" -o "x${with_gui}" != "xno" -o "x${enable_build_help}" != "xno"])
+AM_CONDITIONAL([GUI],[test "x${with_gui}" != "xno"])
+AM_CONDITIONAL([JAVASCI],[test "x${with_javasci}" != "xno"])
+AM_CONDITIONAL([SWIG],
+               [test "x${enable_build_swig}" != no -a "x${enable_build_swig}" != "x"])
 AM_CONDITIONAL([GIWS],
                [test "x${enable_build_giws}" != "xno" -a "x${enable_build_giws}" != "x"])dnl
 
@@ -1241,11 +1333,11 @@ AM_CONDITIONAL([GIWS],
 
 GUI_ENABLE=no
 
-if test "$JAVA_ENABLE" != no; then
+if test "x${JAVA_ENABLE}" != "xno"; then
    GUI_ENABLE=yes
 fi
 
-if test "$with_gui" != no; then
+if test "x${with_gui}" != "xno"; then
    GUI_ENABLE=yes
 fi
 
@@ -1256,7 +1348,7 @@ AC_SUBST([GUI_ENABLE])dnl
 ##############################################################
 
 # Provided by unistd.h
-AC_CHECK_FUNCS([sleep] [usleep] [dup2] [getcwd] [getpagesize] [getpass])
+AC_CHECK_FUNCS([sleep usleep dup2 getcwd getpagesize getpass])
 AC_CHECK_FUNCS([rmdir])dnl
 
 dnl# replacing getwd via define is the wrong way to go about dealing with it;
@@ -1267,10 +1359,11 @@ dnl# (the define that was here previously broke further conftests after it)
 AC_CHECK_FUNCS([regcomp])dnl
 
 # Provided by stdlib.h
-AC_CHECK_FUNCS([atexit] [putenv] [setenv])dnl
+AC_CHECK_FUNCS([atexit putenv setenv])dnl
 
 # Provided by string.h
-AC_CHECK_FUNCS([bzero] [memmove] [memset] [strcasecmp] [strerror] [strchr] [strdup] [strpbrk] [strrchr] [strstr] [strtol])dnl
+AC_CHECK_FUNCS([bzero memmove memset strcasecmp strerror strchr \
+                strdup strpbrk strrchr strstr strtol])dnl
 
 # Provided by select.h
 AC_CHECK_FUNCS([select])dnl
@@ -1279,7 +1372,7 @@ AC_CHECK_FUNCS([select])dnl
 AC_CHECK_FUNCS([endpwent])dnl
 
 # Provided by netdb.h
-AC_CHECK_FUNCS([gethostbyaddr] [gethostbyname] [gethostname])dnl
+AC_CHECK_FUNCS([gethostbyaddr gethostbyname gethostname])dnl
 
 # Provided by time.h
 AC_CHECK_FUNCS([gettimeofday])dnl
@@ -1306,7 +1399,7 @@ LT_LIB_M([])dnl
 # Provided by math.h
 
 LDFLAGS="$LDFLAGS $LIBM"
-AC_CHECK_FUNCS([pow] [sqrt] [finite] [floor] [exp10])dnl
+AC_CHECK_FUNCS([pow sqrt finite floor exp10])dnl
 
 ### If isinf exists or not (used to not be the case under Solaris)
 ### See bug #4164
@@ -1456,7 +1549,7 @@ TERMCAP_LIB=no
 #
 
 AC_CHECK_LIB([curses],[main])
-if test $ac_cv_lib_curses_main = no ; then
+if test "x${ac_cv_lib_curses_main}" = "xno"; then
     AC_CHECK_LIB([ncurses],[main])
 fi
 
@@ -1465,7 +1558,7 @@ AC_SEARCH_LIBS([tgetent],[termcap tinfo curses ncurses])dnl
 
 AC_CHECK_HEADERS([ncurses.h curses.h])dnl
 
-if test "x$ac_cv_lib_curses_main" = "xyes" -o "x$ac_cv_lib_ncurses_main" = "xyes" ; then
+if test "x${ac_cv_lib_curses_main}" = "xyes" -o "x${ac_cv_lib_ncurses_main}" = "xyes" ; then
   AC_DEFINE([HAVE_TERMCAP],[],[Have Term Cap])
 else
  AC_MSG_ERROR([No termcap library detected. Please install ncurses dev library (or termcap library)])
@@ -1481,10 +1574,10 @@ AC_CHECK_LIB([dl],[dlsym])
 AC_CHECK_LIB([iconv],[iconv])
 AC_CHECK_LIB([intl],[gettext])
 AC_CHECK_LIB([ltdl],[lt_dlopen])
-AC_SEARCH_LIBS([sqrt],[m])
+AC_SEARCH_LIBS([sqrt],[m c])
 AC_CHECK_LIB([m],[cos])
 AC_CHECK_LIB([pthread],[pthread_create])
-AC_SEARCH_LIBS([pthread_join],[pthread])
+AC_SEARCH_LIBS([pthread_join],[pthread c])
 AC_CHECK_LIB([stdc++],[__cxa_atexit])
 AC_CHECK_LIB([z],[gzread])dnl
 
@@ -1497,13 +1590,15 @@ AC_ARG_WITH([fftw],
                     [Disable the interface to the FFTW 3 library])])dnl
 
 FFTW_ENABLE=no
-if test "$with_fftw" != no; then
+if test "x${with_fftw}" != "xno"; then
    AC_FFTW([]) dnl# from m4/fftw.m4
    FFTW_ENABLE=yes
+else
+   AC_MSG_NOTICE([skipping checks for fftw])
 fi
 
 AC_SUBST([FFTW_ENABLE])
-AM_CONDITIONAL([FFTW],[test "$with_fftw" != no])dnl
+AM_CONDITIONAL([FFTW],[test "x${with_fftw}" != "xno"])dnl
 
 #################
 ## OpenMP
@@ -1514,7 +1609,7 @@ AC_ARG_WITH([openmp],
                     [Disable the usage of OpenMP (parallelization of some algoritms)])])dnl
 
 OPENMP_ENABLE=no
-if test "$with_openmp" != no; then
+if test "x${with_openmp}" != "xno"; then
     AC_OPENMP
     OPENMP_CFLAGS="-fopenmp"
     OPENMP_CXXFLAGS="-fopenmp"
@@ -1524,13 +1619,15 @@ if test "$with_openmp" != no; then
      [AC_MSG_ERROR([Could not find omp.h])])dnl
 
     OPENMP_ENABLE=yes
+else
+    AC_MSG_NOTICE([skipping checks for openmp])
 fi
 AC_SUBST([OPENMP_ENABLE])dnl
 AC_SUBST([OPENMP_CFLAGS])dnl
 AC_SUBST([OPENMP_CXXFLAGS])dnl
 AC_SUBST([OPENMP_LIBS])dnl
 
-AM_CONDITIONAL([OPENMP],[test "$with_openmp" != no])dnl
+AM_CONDITIONAL([OPENMP],[test "x${with_openmp}" != "xno"])dnl
 
 
 #######################
@@ -1552,28 +1649,30 @@ AC_ARG_ENABLE([build-localization],
         ])
 BUILD_LOCALIZATION_ENABLE=no
 
-if test "$enable_build_localization" != no; then
-
-   test ! -z "$LANG"
-   test ! -z "$LC_ALL"
-   AC_SUBST([ALL_LINGUAS])
-   AC_SUBST([ALL_LINGUAS_DOC])
+if test "x${enable_build_localization}" != "xno"; then
+   test ! -z "${LANG}" && test ! -z "${LC_ALL}"
+   AC_SUBST([ALL_LINGUAS])dnl
+   AC_SUBST([ALL_LINGUAS_DOC])dnl
    AC_CHECK_FUNCS([bind_textdomain_codeset])dnl
 
    AC_PATH_PROG([MSGCAT],[msgcat],[no])
    # the main gettext macro used farther above already checks for msgfmt and
    # xgettext, so we can remove the checks for them here
 
-   if test x$MSGFMT = xno; then
+   if test "x${MSGFMT}" = "xno"; then
       AC_MSG_ERROR([The msgfmt command is required to build Scilab. If it is installed on your system, ensure that it is in your path. If it is not, install GNU gettext to continue or use the option --disable-build-localization])
       fi
-    if test x$MSGCAT = xno; then
+    if test "x${MSGCAT}" = "xno"; then
       AC_MSG_ERROR([The msgcat command is required to build Scilab. If it is installed on your system, ensure that it is in your path. If it is not, install GNU gettext to continue or use the option --disable-build-localization])
     fi
     BUILD_LOCALIZATION_ENABLE=yes
+else
+    AC_MSG_NOTICE([skipping checks required for building localizations])
 fi
-AM_CONDITIONAL([GENERATE_LOCALIZATION_FILES],[test "$BUILD_LOCALIZATION_ENABLE" = yes])
-AM_CONDITIONAL([BUILD_MACROS],[test "$BUILD_LOCALIZATION_ENABLE" = yes])dnl
+AM_CONDITIONAL([GENERATE_LOCALIZATION_FILES],
+               [test "x${BUILD_LOCALIZATION_ENABLE}" = "xyes"])
+AM_CONDITIONAL([BUILD_MACROS],
+               [test "x${BUILD_LOCALIZATION_ENABLE}" = "xyes"])dnl
 
 #######################
 ## Test for blas/Atlas and lapack
@@ -1581,14 +1680,14 @@ AM_CONDITIONAL([BUILD_MACROS],[test "$BUILD_LOCALIZATION_ENABLE" = yes])dnl
 
 case "$host_os" in
 	*Darwin* | *darwin*)
-	  if test ! -z "$BLAS_LIBS"; then
-	  	BLAS_LIBS="$BLAS_LIBS -Wl,-framework,Accelerate"
+	  if test ! -z "${BLAS_LIBS}"; then
+	  	BLAS_LIBS="${BLAS_LIBS} -Wl,-framework,Accelerate"
 	  fi
-	  if test ! -z "$CPPFLAGS"; then
-	  	CPPFLAGS="$CPPFLAGS -I/System/Library/Frameworks/Accelerate.framework/Headers"
+	  if test ! -z "${CPPFLAGS}"; then
+	  	CPPFLAGS="${CPPFLAGS} -Wp,-I/System/Library/Frameworks/Accelerate.framework/Headers"
 	  fi
-	  if test ! -z "$CPPFLAGS"; then
-	  	CXXFLAGS="$CXXFLAGS -I/System/Library/Frameworks/Accelerate.framework/Headers"
+	  if test ! -z "${CXXFLAGS}"; then
+	  	CXXFLAGS="${CXXFLAGS} -Wp,-I/System/Library/Frameworks/Accelerate.framework/Headers"
 	  fi
 	;;
 esac
@@ -1612,7 +1711,7 @@ AC_ARG_WITH([arpack-ng],
                     [Disable the interface to ARPACK-NG])])dnl
 
 ARPACK_NG=no
-if test "$with_arpack_ng" != no; then
+if test "x${with_arpack_ng}" != "xno"; then
    ARPACK_NG=yes
    AC_MSG_CHECKING([if ARPACK-NG is available])
 echo ""
@@ -1628,7 +1727,7 @@ else
    AC_MSG_RESULT([ ])
 fi
 
-AM_CONDITIONAL([ARPACK_NG],[test "$ARPACK_NG" != "no"])dnl
+AM_CONDITIONAL([ARPACK_NG],[test "x${ARPACK_NG}" != "xno"])dnl
 
 #################
 ## UMFPACK
@@ -1639,13 +1738,15 @@ AC_ARG_WITH([umfpack],
                     [Disable the interface to the UMFPACK library])])dnl
 
 UMFPACK_ENABLE=no
-if test "$with_umfpack" != no; then
+if test "x${with_umfpack}" != "xno"; then
    AC_UMFPACK([$BLAS_LIBS]) dnl# from m4/umfpack.m4
    UMFPACK_ENABLE=yes
+else
+   AC_MSG_NOTICE([skipping checks for umfpack])
 fi
 
-AC_SUBST([UMFPACK_ENABLE])
-AM_CONDITIONAL([UMFPACK],[test "$with_umfpack" != no])dnl
+AC_SUBST([UMFPACK_ENABLE])dnl
+AM_CONDITIONAL([UMFPACK],[test "x${with_umfpack}" != "xno"])dnl
 
 #######################
 ## Test for PCRE
@@ -1658,7 +1759,7 @@ AC_PCRE([]) dnl# from m4/pcre.m4
 #################
 
 WITH_TKSCI=no
-if test "$with_tk" != no; then
+if test "x${with_tk}" != "xno"; then
    if test "$MACOSX" = "1"; then
       AC_MSG_ERROR([Due to technical constraints, Tcl/Tk must be disabled under Mac OS X (--without-tk)])
    fi
@@ -1709,17 +1810,20 @@ if test "$with_tk" != no; then
     AC_CHECK_TCLTK dnl# from m4/tcltk.m4
 
     # set variables
-    if test "$WITH_TKSCI" = yes; then
+    if test "x${WITH_TKSCI}" = "xyes"; then
         AC_DEFINE([WITH_TK],[],[With TK])
     else
         AC_MSG_ERROR([TCL/TK not found. Use --without-tk or specify the librairies and include paths manually])
     fi
-    AC_SUBST([TCLTK_LIBS])
-    AC_SUBST([TCL_INC_PATH])
-    AC_SUBST([TK_INC_PATH])
+    AC_SUBST([TCLTK_LIBS])dnl
+    AC_SUBST([TCL_INC_PATH])dnl
+    AC_SUBST([TK_INC_PATH])dnl
+    ## TK = OK
+else
+    AC_MSG_NOTICE([skipping checks for tk])
 fi
 AC_SUBST([WITH_TKSCI])
-AM_CONDITIONAL([TCLTK], [test "$WITH_TKSCI" = yes])dnl
+AM_CONDITIONAL([TCLTK],[test "x${WITH_TKSCI}" = "xyes"])dnl
 
 #################
 ## MATIO LIBRARY (MAT File I/O Library)
@@ -1732,17 +1836,17 @@ AC_ARG_WITH([matio],
 AC_ARG_WITH([matio_include],
         [AS_HELP_STRING([--with-matio-include=DIR],
                         [Set the path to the MATIO headers])],
-        [with_matio_include="-I$withval"], [])dnl
+        [with_matio_include="-Wp,-I${withval}"],[])dnl
 
 AC_ARG_WITH([matio_library],
         [AS_HELP_STRING([--with-matio-library=DIR],
                         [Set the path to the MATIO libraries])],
-        [with_matio_library="-L$withval"], [])dnl
+        [with_matio_library="-L${withval}"],[])dnl
 
 MATIO_ENABLE=no
 
-if test "$with_matio" != no; then
-   if test -n "$with_matio_include" -o -n "$with_matio_library" ; then
+if test "x${with_matio}" != "xno"; then
+   if test -n "${with_matio_include}" -o -n "${with_matio_library}"; then
       MATIO_CFLAGS="$with_matio_include"
       MATIO_LIBS="$with_matio_library -lm -lz -lmatio"
    else
@@ -1768,10 +1872,12 @@ if test "$with_matio" != no; then
 
    AC_DEFINE([WITH_MATIO],[],[With the MATIO library])
    MATIO_ENABLE=yes
+else
+   AC_MSG_NOTICE([skipping checks for matio])
 fi
 
 AC_SUBST([MATIO_ENABLE])
-AM_CONDITIONAL([MATIO],[test "$with_matio" != no])dnl
+AM_CONDITIONAL([MATIO],[test "x${with_matio}" != "xno"])dnl
 
 #############################
 ## Documentation management #
@@ -1797,20 +1903,20 @@ else
     BUILD_HTMLDOC=no
 fi
 
-if test "$JAVA_ENABLE" = no; then
+if test "x${JAVA_ENABLE}" = "xno"; then
     dnl# Java is needed to build help
     HELP_ENABLE=no
 fi
 
 AC_SUBST([HELP_ENABLE])dnl
 
-AM_CONDITIONAL([BUILD_HELP],[test "$HELP_ENABLE" = "yes"])
+AM_CONDITIONAL([BUILD_HELP],[test "x${HELP_ENABLE}" = "xyes"])
 dnl# These are in case XORG_CHECK_DOCBOOK never gets run
-AM_CONDITIONAL([HAVE_STYLESHEETS],[test "x$XSL_STYLESHEET" != "x"])
-AM_CONDITIONAL([BUILD_TXTDOC],[test "x$BUILDTXTDOC" = "xyes"])
-AM_CONDITIONAL([BUILD_PDFDOC],[test "x$BUILDPDFDOC" = "xyes"])
-AM_CONDITIONAL([BUILD_PSDOC],[test "x$BUILDPSDOC" = "xyes"])
-AM_CONDITIONAL([BUILD_HTMLDOC],[test "x$BUILDHTMLDOC" = "xyes"])dnl
+AM_CONDITIONAL([HAVE_STYLESHEETS],[test "x${XSL_STYLESHEET}" != "x"])
+AM_CONDITIONAL([BUILD_TXTDOC],[test "x${BUILDTXTDOC}" = "xyes"])
+AM_CONDITIONAL([BUILD_PDFDOC],[test "x${BUILDPDFDOC}" = "xyes"])
+AM_CONDITIONAL([BUILD_PSDOC],[test "x${BUILDPSDOC}" = "xyes"])
+AM_CONDITIONAL([BUILD_HTMLDOC],[test "x${BUILDHTMLDOC}" = "xyes"])dnl
 
 ## Install XML help files ###
 
@@ -1819,14 +1925,15 @@ AC_ARG_WITH([install-help-xml],
                         [make install will install XML files])
         ])
 HELP_INSTALL_ENABLE=no
-if test "$with_install_help_xml" != no -a "$with_install_help_xml" != ""; then
+if test "x${with_install_help_xml}" != "xno" -a "x${with_install_help_xml}" != "x"; then
    AC_PATH_PROG([XMLINDENT],[xmlindent],[no])
    HELP_INSTALL_ENABLE=yes
 else
    test -z "$XMLINDENT"
    AM_MISSING_PROG([XMLINDENT],[xmlindent])
 fi
-AM_CONDITIONAL([INSTALL_HELP_XML],[test "$HELP_INSTALL_ENABLE" != ""])dnl
+AM_CONDITIONAL([INSTALL_HELP_XML],
+               [test "x${HELP_INSTALL_ENABLE}" != "x"])dnl
 
 ## Doxygen help generation
 AC_ARG_ENABLE([build-doxygen],
@@ -1834,13 +1941,14 @@ AC_ARG_ENABLE([build-doxygen],
                     [Generate doxygen C/C++ documentation])])dnl
 
 DOXYGEN_ENABLE=yes
-if test "$enable_build_doxygen" != no -a "$enable_build_doxygen" != ""; then
+if test "x${enable_build_doxygen}" != "xno" -a "x${enable_build_doxygen}" != "x"; then
     AC_MSG_WARN([autoconf macro for doxygen has gone missing; skipping checking for it])
+    AM_MISSING_PROG([DOXYGEN_PROG],[doxygen])
     DOXYGEN_ENABLE="FIXME"
 else
     DOXYGEN_ENABLE=no
 fi
-AM_CONDITIONAL([DOXYGEN],[test $DOXYGEN_ENABLE = yes])dnl
+AM_CONDITIONAL([DOXYGEN],[test "x${DOXYGEN_ENABLE}" = "xyes"])dnl
 
 ##############################################################
 ## Javasci module
@@ -1848,7 +1956,7 @@ AM_CONDITIONAL([DOXYGEN],[test $DOXYGEN_ENABLE = yes])dnl
 
 JAVASCI_ENABLE=yes
 
-if test "$JAVA_ENABLE" = no -o "$JAVASCI" = no; then
+if test "x${JAVA_ENABLE}" = "xno" -o "x${JAVASCI}" = "xno"; then
    JAVASCI_ENABLE=no
 fi
 
@@ -1859,7 +1967,7 @@ AC_SUBST([JAVASCI_ENABLE])dnl
 ##############################################################
 
 COMPILATION_TESTS=no
-if test "$enable_compilation_tests" != no -a "$enable_compilation_tests" != ""; then
+if test "x${enable_compilation_tests}" != "xno" -a "x${enable_compilation_tests}" != "x"; then
    COMPILATION_TESTS=yes
 fi
 
@@ -1868,7 +1976,7 @@ if test COMPILATION_TESTS=yes -a "$JUNIT4" == ""; then
    COMPILATION_TESTS=no
 fi
 
-AM_CONDITIONAL([COMPILATION_TESTS],[test "$COMPILATION_TESTS" != "no"])dnl
+AM_CONDITIONAL([COMPILATION_TESTS],[test "x${COMPILATION_TESTS}" != "xno"])dnl
 
 ##############################################################
 ## Enable the global force link
@@ -1879,7 +1987,7 @@ AC_ARG_ENABLE([force-full-link],
                     [Forces the explicit link between libscilab and some "on-the-fly" loaded libraries. DO NOT USE IN PRODUCTION.])])dnl
 
 FORCE_FULL_LINK="no"
-if test "$enable_force_full_link" == "yes"; then
+if test "x${enable_force_full_link}" == "xyes"; then
     FORCE_FULL_LINK="yes"
 fi
 
@@ -1891,7 +1999,7 @@ AM_CONDITIONAL([FORCE_LINK],[test "x${FORCE_FULL_LINK}" == "xyes"])dnl
 
 DEMOTOOLS_ENABLE=yes
 
-if test "$GUI_ENABLE" = no; then
+if test "x${GUI_ENABLE}" = "xno"; then
    DEMOTOOLS_ENABLE=no
 fi
 
@@ -1903,7 +2011,7 @@ AC_SUBST([DEMOTOOLS_ENABLE])dnl
 
 GRAPHICS_ENABLE=yes
 
-if test "$GUI_ENABLE" = no; then
+if test "x${GUI_ENABLE}" = "xno"; then
    GRAPHICS_ENABLE=no
 fi
 
@@ -1929,13 +2037,13 @@ link_all_deplibs=no
 
 # Check to see if building shared libraries
 libtool_build_shared_libs=no
-if test "$enable_shared" = "yes"; then
+if test "x${enable_shared}" = "xyes"; then
   libtool_build_shared_libs=yes
 fi
 
 # Check to see if building static libraries
 libtool_build_static_libs=no
-if test "$enable_static" = "yes"; then
+if test "x${enable_static}" = "xyes"; then
   libtool_build_static_libs=yes
 fi
 
@@ -1947,11 +2055,12 @@ XORG_LD_WRAP dnl# from m4/xorg-macros.m4
 dnl# libtool should have already found ranlib, but autoscan will still
 dnl# complain about it, and I am more okay with libtoolize warnings than
 dnl# I am with autoscan warnings
-if test "x$RANLIB" = "x"; then
-	test -z "$RANLIB"
+dnl# see: https://savannah.gnu.org/support/?108503
+if test "x${RANLIB}" = "x"; then
+	test -z "${RANLIB}"
 	AC_PROG_RANLIB
 else
-	test ! -z "$RANLIB" && export RANLIB
+	test ! -z "${RANLIB}" && export RANLIB
 	AC_SUBST([RANLIB])
 fi
 
@@ -1980,9 +2089,14 @@ AC_ARG_ENABLE([ccache],
         [AS_HELP_STRING([--disable-ccache],[Disable the use of ccache])
         ])
 AC_PATH_PROG([CCACHE],[ccache])
-if test x"$CCACHE" != x -a "$enable_ccache" != no; then
-  CC="$CCACHE $CC"
-  CXX="$CCACHE $CXX"
+dnl# FIXME: ensure that CC and CXX do not already contain CCACHE before
+dnl# prepending it to them again:
+if test x"${CCACHE}" != x"" -a "x${enable_ccache}" != "xno"; then
+  if test -x "${CCACHE}"; then
+    AC_MSG_NOTICE([prepending CCACHE to compile commands])
+    CC="${CCACHE} ${CC}"
+    CXX="${CCACHE} ${CXX}"
+  fi
 fi
 
 #######################
@@ -2020,109 +2134,116 @@ AC_DEFINE_UNQUOTED([SHARED_LIB_EXT],["$shrext_cmds"],
 # problem with AC_COMPILE (the -Werror is added to the test)
 #
 dnl# @TODO : -O0 is only to bypass stack stercus... Must be removed.
-if test "$enable_stop_on_warning" = yes; then
+if test "x${enable_stop_on_warning}" = "xyes"; then
     WARNING_CFLAGS="-Werror=implicit-function-declaration -O0"
     WARNING_CXXFLAGS="-Werror=implicit-function-declaration -O0"
 fi
 
-# SCI_*FLAGS contains all defaults values detected on configure
-SCI_CFLAGS=$(echo   $LARGEFILE_CFLAGS   $CODECOVERAGE_CFLAGS   $DEBUG_CFLAGS   $ARCH_CFLAGS   $COMPILER_CFLAGS   $SCILIBS_CFLAGS   $SSE_CFLAGS   $BACKTRACE_CFLAGS   $WARNING_CFLAGS)
-SCI_CXXFLAGS=$(echo $LARGEFILE_CXXFLAGS $CODECOVERAGE_CXXFLAGS $DEBUG_CXXFLAGS $ARCH_CXXFLAGS $COMPILER_CXXFLAGS $SCILIBS_CXXFLAGS $SSE_CXXFLAGS $BACKTRACE_CXXFLAGS $WARNING_CXXFLAGS)
-SCI_FFLAGS=$(echo   $LARGEFILE_FFLAGS   $CODECOVERAGE_FFLAGS   $DEBUG_FFLAGS   $ARCH_FFLAGS   $COMPILER_FFLAGS   $SCILIBS_FFLAGS   $SSE_FFLAGS   $BACKTRACE_FFLAGS   $WARNING_FFLAGS)
-SCI_LDFLAGS=$(echo  $LARGEFILE_LDFLAGS  $CODECOVERAGE_LDFLAGS  $DEBUG_LDFLAGS  $ARCH_LDFLAGS  $COMPILER_LDFLAGS  $SCILIBS_LDFLAGS  $SSE_LDFLAGS  $BACKTRACE_LDFLAGS  $WARNING_LDFLAGS)
+# SCI_*FLAGS contains all defaults values detected on configure.
+# The point of all the calls to echo here is to strip excess spaces between
+# the flags, so leave the set of variables unquoted:
+SCI_CFLAGS=$(echo ${LARGEFILE_CFLAGS} ${CODECOVERAGE_CFLAGS} ${DEBUG_CFLAGS} ${ARCH_CFLAGS} ${COMPILER_CFLAGS} ${SCILIBS_CFLAGS} ${SSE_CFLAGS} ${BACKTRACE_CFLAGS} ${WARNING_CFLAGS})
+SCI_CXXFLAGS=$(echo ${LARGEFILE_CXXFLAGS} ${CODECOVERAGE_CXXFLAGS} ${DEBUG_CXXFLAGS} ${ARCH_CXXFLAGS} ${COMPILER_CXXFLAGS} ${SCILIBS_CXXFLAGS} ${SSE_CXXFLAGS} ${BACKTRACE_CXXFLAGS} ${WARNING_CXXFLAGS})
+SCI_FFLAGS=$(echo ${LARGEFILE_FFLAGS} ${CODECOVERAGE_FFLAGS} ${DEBUG_FFLAGS} ${ARCH_FFLAGS} ${COMPILER_FFLAGS} ${SCILIBS_FFLAGS} ${SSE_FFLAGS} ${BACKTRACE_FFLAGS} ${WARNING_FFLAGS})
+SCI_LDFLAGS=$(echo ${LARGEFILE_LDFLAGS} ${CODECOVERAGE_LDFLAGS} ${DEBUG_LDFLAGS} ${ARCH_LDFLAGS} ${COMPILER_LDFLAGS} ${SCILIBS_LDFLAGS} ${SSE_LDFLAGS} ${BACKTRACE_LDFLAGS} ${WARNING_LDFLAGS})
 AC_SUBST([SCI_CFLAGS])dnl
 AC_SUBST([SCI_CXXFLAGS])dnl
 AC_SUBST([SCI_FFLAGS])dnl
 AC_SUBST([SCI_LDFLAGS])dnl
 
+# extra space is so the pipe thru sed works correctly:
+CPPFLAGS=$(echo " ${CPPFLAGS}" | ${SED} "s/ -I/ -Wp,-I/g")
+
 dnl# make sure that the conditionals from XORG_WITH_FOP still get defined,
 dnl# in case that macro never got run
-if test -z "$HAVE_FOP"; then
+if test -z "${HAVE_FOP}"; then
 	HAVE_FOP=no
 	AC_SUBST([HAVE_FOP])
 else
-	test ! -z "$HAVE_FOP" && export HAVE_FOP
+	test ! -z "${HAVE_FOP}" && export HAVE_FOP
 fi
-AM_CONDITIONAL([HAVE_FOP],[test ! -z "$HAVE_FOP" -a "$HAVE_FOP" != "no"])dnl
+AM_CONDITIONAL([HAVE_FOP],[test ! -z "${HAVE_FOP}" -a "x${HAVE_FOP}" != "xno"])dnl
 
 AC_CONFIG_FILES([
 contrib/Makefile
 desktop/images/icons/Makefile
 desktop/Makefile
-modules/helptools/Makefile
-modules/data_structures/Makefile
-modules/differential_equations/Makefile
-modules/optimization/Makefile
-modules/elementary_functions/Makefile
-modules/special_functions/Makefile
-modules/io/Makefile
-modules/completion/Makefile
-modules/history_manager/Makefile
-modules/jvm/Makefile
-modules/commons/Makefile
-modules/sound/Makefile
-modules/statistics/Makefile
-modules/mexlib/Makefile
-modules/sparse/Makefile
-modules/linear_algebra/Makefile
-modules/polynomials/Makefile
-modules/symbolic/Makefile
-modules/signal_processing/Makefile
+modules/Makefile
+modules/action_binding/Makefile
+modules/api_scilab/Makefile
 modules/arnoldi/Makefile
-modules/interpolation/Makefile
-modules/intersci/Makefile
-modules/localization/Makefile
-modules/cacsd/Makefile
+modules/atoms/Makefile
 modules/boolean/Makefile
-modules/integer/Makefile
+modules/cacsd/Makefile
+modules/call_scilab/Makefile
+modules/commons/Makefile
+modules/compatibility_functions/Makefile
+modules/completion/Makefile
+modules/console/Makefile
+modules/core/Makefile
+modules/data_structures/Makefile
+modules/demo_tools/Makefile
+modules/development_tools/Makefile
+modules/differential_equations/Makefile
 modules/double/Makefile
+modules/dynamic_link/Makefile
+modules/elementary_functions/Makefile
+modules/external_objects/Makefile
+modules/fftw/Makefile
 modules/fileio/Makefile
-modules/spreadsheet/Makefile
-modules/string/Makefile
-modules/time/Makefile
-modules/graphics/Makefile
+modules/functions/Makefile
+modules/genetic_algorithms/Makefile
+modules/graph/Makefile
 modules/graphic_export/Makefile
 modules/graphic_objects/Makefile
-modules/renderer/Makefile
-modules/action_binding/Makefile
+modules/graphics/Makefile
 modules/gui/Makefile
-modules/randlib/Makefile
-modules/tclsci/Makefile
-modules/windows_tools/Makefile
-modules/core/Makefile
-modules/prebuildjava/Makefile
-modules/api_scilab/Makefile
-modules/call_scilab/Makefile
-modules/types/Makefile
 modules/hdf5/Makefile
-modules/fftw/Makefile
-modules/umfpack/Makefile
-modules/functions/Makefile
-modules/dynamic_link/Makefile
-modules/overloading/Makefile
-modules/javasci/Makefile
-modules/m2sci/Makefile
-modules/compatibility_functions/Makefile
-modules/development_tools/Makefile
-modules/output_stream/Makefile
-modules/console/Makefile
-modules/demo_tools/Makefile
-modules/genetic_algorithms/Makefile
-modules/simulated_annealing/Makefile
-modules/parameters/Makefile
-modules/matio/Makefile
-modules/atoms/Makefile
-modules/xcos/Makefile
-modules/scinotes/Makefile
-modules/ui_data/Makefile
-modules/graph/Makefile
-modules/parallel/Makefile
-modules/modules_manager/Makefile
+modules/helptools/Makefile
 modules/history_browser/Makefile
+modules/history_manager/Makefile
+modules/integer/Makefile
+modules/interpolation/Makefile
+modules/intersci/Makefile
+modules/io/Makefile
+modules/javasci/Makefile
+modules/jvm/Makefile
+modules/linear_algebra/Makefile
+modules/localization/Makefile
+modules/m2sci/Makefile
+modules/matio/Makefile
+modules/mexlib/Makefile
+modules/modules_manager/Makefile
+modules/optimization/Makefile
+modules/output_stream/Makefile
+modules/overloading/Makefile
+modules/parallel/Makefile
+modules/parameters/Makefile
+modules/polynomials/Makefile
+modules/prebuildjava/Makefile
 modules/preferences/Makefile
+modules/randlib/Makefile
+modules/renderer/Makefile
+modules/scicos/Makefile
+modules/scicos_blocks/Makefile
+modules/scinotes/Makefile
+modules/signal_processing/Makefile
+modules/simulated_annealing/Makefile
+modules/sound/Makefile
+modules/sparse/Makefile
+modules/special_functions/Makefile
+modules/spreadsheet/Makefile
+modules/statistics/Makefile
+modules/string/Makefile
+modules/symbolic/Makefile
+modules/tclsci/Makefile
+modules/time/Makefile
+modules/types/Makefile
+modules/ui_data/Makefile
+modules/umfpack/Makefile
+modules/windows_tools/Makefile
+modules/xcos/Makefile
 modules/xml/Makefile
-modules/external_objects/Makefile
-modules/Makefile
 Makefile
 po/Makefile.in
 po/Makefile
@@ -2143,36 +2264,36 @@ modules/core/includes/version.h
 # Detection of the module for the future version of Scilab 6
 # ie we detect module which ends with _yasp
 
-if test "$enable_yasp" = "yes"; then
+if test "x${enable_yasp}" = "xyes"; then
    AC_CONFIG_FILES([
    modules/development_tools/src/fake/Makefile
   ])
 fi
 
 # This script is used by Xcos in order to regenerate the function/block list
-AC_CONFIG_COMMANDS_POST([chmod +x $SCI_SRCDIR_FULL/modules/dynamic_link/src/scripts/scicompile.sh $SCI_SRCDIR_FULL/modules/dynamic_link/src/scripts/compilerDetection.sh $SCI_SRCDIR_FULL/modules/dynamic_link/src/scripts/configure])dnl
+AC_CONFIG_COMMANDS_POST([chmod +x ${SCI_SRCDIR_FULL}/modules/dynamic_link/src/scripts/scicompile.sh ${SCI_SRCDIR_FULL}/modules/dynamic_link/src/scripts/compilerDetection.sh ${SCI_SRCDIR_FULL}/modules/dynamic_link/src/scripts/configure])dnl
 
 # MAN_FR MAN_ENG
 # modules/mpi/Makefile
-for top_builddir in . .. ../.. $ac_auxdir $ac_auxdir/..; do
-  test -f $top_builddir/configure && break
+for top_builddir in . .. ../.. ${ac_auxdir} ${ac_auxdir}/..; do
+  test -f ${top_builddir}/configure && break
 done
 
 # Generate stack.h
-if test "$IS_64_BITS_CPU" = true -o "$MACOSX" = "1"; then
+if test "${IS_64_BITS_CPU}" = true -o "${MACOSX}" = "1"; then
    stack_h_cpp_flags=-DUSE_DYNAMIC_STACK
 else
-   stack_h_cpp_flags=
+   stack_h_cpp_flags=""
 fi
 
 AC_CONFIG_COMMANDS([modules/core/includes/stack.h],
-  [if ! $CPP $stack_h_cpp_flags - < $srcdir/modules/core/includes/stack.h.in |\
-              $GREP -v '^#' > $srcdir/modules/core/includes/stack.h ; then
+  [if ! ${CPP} ${stack_h_cpp_flags} - < ${srcdir}/modules/core/includes/stack.h.in |\
+              ${GREP} -v '^#' > ${srcdir}/modules/core/includes/stack.h; then
      AC_MSG_ERROR([stack.h generation failed])
    fi],
-  [CPP="$CPP"
-   GREP="$GREP"
-   stack_h_cpp_flags="$stack_h_cpp_flags"
+  [CPP="${CPP}"
+   GREP="${GREP}"
+   stack_h_cpp_flags="${stack_h_cpp_flags}"
   ])dnl
 
 AC_OUTPUT
@@ -2235,13 +2356,13 @@ echo "  Use FFTW (--without-fftw) ........................ = $with_fftw"
 echo "  Use MATIO (--without-matio) ...................... = $with_matio"
 
 echo ""
-if test "$with_gui" = no; then
+if test "x${with_gui}" = "xno"; then
    echo "Not using Xcos because of the option --without-gui"
-elif test $XCOS_ENABLE = yes; then
+elif test "x${XCOS_ENABLE}" = "xyes"; then
    echo "Xcos enable"
    echo "Build modelica compiler (--without-modelica) ....... = $with_modelica"
    echo ""
-   if test "$with_ocaml" != no -a "$OCAMLC" != no -a "$OCAMLOPT" != no; then
+   if test "x${with_ocaml}" != "xno" -a "x${OCAMLC}" != "xno" -a "x${OCAMLOPT}" != "xno"; then
      echo "Ocaml Configuration (for Modelica compiler):"
      echo "  OCAMLC ............. = $OCAMLC"
      echo "  OCAMLOPT ........... = $OCAMLOPT"
@@ -2254,7 +2375,7 @@ else
 fi
 
 echo ""
-if test "$enable_code_coverage" = yes;  then
+if test "x${enable_code_coverage}" = "xyes";  then
    echo "Code coverage configuration:"
    echo "  LCOV .............. = $LCOV"
    echo "  GENHTML ........... = $GENHTML"
@@ -2263,7 +2384,7 @@ else
 fi
 
 echo ""
-if test $OPENMP_ENABLE = yes; then
+if test "x${OPENMP_ENABLE}" = "xyes"; then
    echo "OpenMP Configuration:"
    echo "OpenMP CFLAGS ...... = $OPENMP_CFLAGS"
    echo "OpenMP CXXFLAGS .... = $OPENMP_CXXFLAGS"
@@ -2274,7 +2395,7 @@ else
 fi
 
 echo ""
-if test $FFTW_ENABLE = yes;  then
+if test "x${FFTW_ENABLE}" = "xyes";  then
    echo "FFTW Configuration:"
    echo "  FFTW LIBS .......... = $FFTW3_LIB"
    echo "  FFTW CFLAGS ........ = $FFTW3_CFLAGS"
@@ -2283,7 +2404,7 @@ else
 fi
 
 echo ""
-if test $MATIO_ENABLE = yes;  then
+if test "x${MATIO_ENABLE}" = "xyes";  then
    echo "MATIO Configuration:"
    echo "  MATIO LIBS .......... = $MATIO_LIBS"
    echo "  MATIO CFLAGS ........ = $MATIO_CFLAGS"
@@ -2292,11 +2413,11 @@ else
 fi
 
 echo ""
-if test $UMFPACK_ENABLE = yes;  then
+if test "x${UMFPACK_ENABLE}" = "xyes";  then
    echo "UMFPACK Configuration:"
    echo "  UMFPACK LIBS ....... = $UMFPACK_LIB"
    echo "  UMFPACK CFLAGS ..... = $UMFPACK_CFLAGS"
-   if test $SUITESPARSE = yes; then
+   if test "x${SUITESPARSE}" = "xyes"; then
       echo "  UMFPACK SUITESPARSE  = Yes"
    else
       echo "  UMFPACK SUITESPARSE  = No"
@@ -2314,7 +2435,7 @@ echo "  LAPACK TYPE ........... = $LAPACK_TYPE"
 echo "  ARPACK LIBS ........... = $ARPACK_LIBS"
 echo ""
 
-if test "$with_mpi" = yes; then
+if test "x${with_mpi}" = "xyes"; then
    echo "MPI Configuration:"
    echo "  MPI LIBS ........... = $MPILIBS"
    echo "  MPI C Compiler ..... = $MPICC"
@@ -2325,7 +2446,7 @@ else
 fi
 
 echo ""
-if test "$with_openmpi" != "no"; then
+if test "x${with_openmpi}" != "xno"; then
    echo "OpenMPI Configuration:"
    echo "  OpenMPI LIBS ........... = $OPENMPI_LIBS"
    echo "  OpenMPI C Compiler ..... = $OPENMPI_CC"
@@ -2335,7 +2456,7 @@ else
 fi
 
 echo ""
-if test $BUILD_LOCALIZATION_ENABLE != no; then
+if test "x${BUILD_LOCALIZATION_ENABLE}" != "xno"; then
    echo "Gettext/localization configuration:"
    echo "  xgettext ............... = $XGETTEXT"
    echo "  msgfmt  ................ = $MSGFMT"
@@ -2346,7 +2467,7 @@ else
 fi
 
 echo ""
-if test $HELP_ENABLE = yes; then
+if test "x${HELP_ENABLE}" = "xyes"; then
    echo "Documentation building configuration:"
    echo "  Docbook XSL path ....... = $DOCBOOK_ROOT"
    echo "  Saxon XSLT ............. = $SAXON"
@@ -2474,7 +2595,7 @@ echo "Compilation paths:"
 echo "  srcdir .............. = $SCI_SRCDIR"
 echo "  srcdir_full ......... = $SCI_SRCDIR_FULL"
 echo "  builddir ............ = $SCI_BUILDDIR"
-if test "$SCI_SRCDIR_FULL" != "$SCI_BUILDDIR"; then
+if test "x${SCI_SRCDIR_FULL}" != "x${SCI_BUILDDIR}"; then
 	echo "  VPATH build ......... = Activated"
 fi
 
@@ -2486,7 +2607,7 @@ echo "  host_vendor .... = $host_vendor"
 echo "  host_os ... .... = $host_os"
 echo "  hostname ....... = $ac_hostname"
 echo "  CPU 64 bits .... = $IS_64_BITS_CPU"
-if test -n "$MAC_DETECTED_ARCH"; then
+if test -n "${MAC_DETECTED_ARCH}"; then
 	echo "  Mac OS X arch .. = $MAC_DETECTED_ARCH"
 	echo "  Mac OS X version = $macosx_version"
 fi

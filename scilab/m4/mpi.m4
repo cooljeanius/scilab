@@ -19,17 +19,17 @@ if test "$with_openmpi" != 'yes' -a "$with_openmpi" != 'no'; then
    # Look if mpicc (which provides cflags and ldflags) is available
    AC_MSG_CHECKING([openmpi, for mpicc])
    OPENMPI_FOUND=0
-   MPICC="$with_openmpi/bin/mpicc" 
+   MPICC="${with_openmpi}/bin/mpicc" 
         if test -x "$MPICC"; then
                 AC_MSG_RESULT([$MPICC])
 		OPENMPI_CC=$MPICC
 		OPENMPI_FOUND=1
 	fi
    if test $OPENMPI_FOUND -eq 0; then
-   MPICC="$with_openmpi/mpicc" 
+        MPICC="$with_openmpi/mpicc" 
         if test -x "$MPICC"; then
-			OPENMPI_FOUND=1
-			OPENMPI_CC=$MPICC
+                OPENMPI_FOUND=1
+                OPENMPI_CC=$MPICC
                 AC_MSG_RESULT([$MPICC])
         fi
    fi
@@ -48,21 +48,21 @@ saved_cflags=$CFLAGS
 saved_LIBS="$LIBS"
 AC_CHECK_HEADER([mpi.h],
 	[],
-	[AC_MSG_ERROR([Cannot find headers of the library OpenMPI. Please install the dev package (Debian : openmpi-dev)])])
+	[AC_MSG_ERROR([Cannot find headers of the library OpenMPI. Please install the dev package (Debian : openmpi-dev)])])dnl
 
 AC_CHECK_LIB([mpi],[MPI_Init],
-               [OPENMPI_LIBS="-lmpi"],
-               [AC_MSG_ERROR([openmpi : library missing. (Cannot find symbol MPI_Init in -lmpi). Check if OpenMPI is installed])])
+             [OPENMPI_LIBS="-lmpi"],
+             [AC_MSG_ERROR([openmpi : library missing. (Cannot find symbol MPI_Init in -lmpi). Check if OpenMPI is installed])])dnl
 
 if test "x$OPENMPI_CPPFLAGS" = "x"; then
-	OPENMPI_CPPFLAGS="-I$openmpi_dir/include"
+	OPENMPI_CPPFLAGS="-Wp,-I${openmpi_dir}/include"
 fi
 if test "x$OPENMPI_LDFLAGS" = "x"; then
-	OPENMPI_LDFLAGS="-L$openmpi_dir/lib/"
+	OPENMPI_LDFLAGS="-L${openmpi_dir}/lib/"
 fi
 
 if test "x$OPENMPI_HEADER" = "x"; then
-	OPENMPI_HEADER="$openmpi_dir/include/mpi.h"
+	OPENMPI_HEADER="${openmpi_dir}/include/mpi.h"
 fi
 if test "x$OPENMPI_DIR" = "x"; then
 	OPENMPI_DIR="$openmpi_dir"
@@ -71,16 +71,18 @@ fi
 LIBS="$saved_LIBS"
 CFLAGS=$saved_cflags
 
-AC_SUBST([OPENMPI_FLAGS])
-AC_SUBST([OPENMPI_LIBS])
+AC_SUBST([OPENMPI_FLAGS])dnl
+AC_SUBST([OPENMPI_LIBS])dnl
 
 CFLAGS="$CFLAGS $OPENMPI_FLAGS"
 
 AC_REQUIRE([AC_LIBXML2])
-AC_CHECK_LIB([xml2],[xmlInitParserCtxt],[],[AC_MSG_ERROR([libxml2 : library missing])])
+AC_CHECK_LIB([xml2],[xmlInitParserCtxt],[],
+             [AC_MSG_ERROR([libxml2 : library missing])])dnl
 
 AC_REQUIRE([AC_PCRE])
-AC_CHECK_HEADERS([pcre/tree.h],[],[AC_MSG_ERROR([pcre : library missing missing])])	
+AC_CHECK_HEADERS([pcre/tree.h],[],
+                 [AC_MSG_ERROR([pcre : library missing missing])])dnl	
 
 # Gets compilation and library flags
-])
+])dnl

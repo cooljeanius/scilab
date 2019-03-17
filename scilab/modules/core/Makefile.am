@@ -275,28 +275,28 @@ sci_gateway/fortran/sci_f_iserror.f \
 sci_gateway/fortran/sci_f_comp.f \
 sci_gateway/fortran/sci_f_isglobal.f
 
-libscicore_la_CPPFLAGS = -I$(srcdir)/includes/ \
-	-I$(srcdir)/src/c/ \
-	-I$(srcdir)/src/cpp/ \
-	-I$(top_srcdir)/libs/MALLOC/includes/ \
-	-I$(top_srcdir)/libs/dynamiclibrary/includes/ \
-	-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
-	-I$(top_srcdir)/modules/intersci/includes/ \
-	-I$(top_srcdir)/modules/call_scilab/includes/ \
-	-I$(top_srcdir)/modules/api_scilab/includes/ \
-	-I$(top_srcdir)/modules/action_binding/includes/ \
-	-I$(top_srcdir)/modules/output_stream/includes/ \
-	-I$(top_srcdir)/modules/localization/includes/ \
-	-I$(top_srcdir)/modules/io/includes/ \
-	-I$(top_srcdir)/modules/tclsci/includes/ \
-	-I$(top_srcdir)/modules/dynamic_link/includes/ \
-	-I$(top_srcdir)/modules/elementary_functions/includes/ \
-	-I$(top_srcdir)/modules/string/includes/ \
-	-I$(top_srcdir)/modules/fileio/includes/ \
-	-I$(top_srcdir)/modules/console/includes/ \
-	-I$(top_srcdir)/modules/history_manager/includes/ \
-	-I$(top_srcdir)/modules/preferences/includes/ \
-	-I$(top_srcdir)/modules/external_objects/includes/ \
+libscicore_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+	-Wp,-I$(srcdir)/src/c/ \
+	-Wp,-I$(srcdir)/src/cpp/ \
+	-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+	-Wp,-I$(top_srcdir)/libs/dynamiclibrary/includes/ \
+	-Wp,-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
+	-Wp,-I$(top_srcdir)/modules/intersci/includes/ \
+	-Wp,-I$(top_srcdir)/modules/call_scilab/includes/ \
+	-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+	-Wp,-I$(top_srcdir)/modules/action_binding/includes/ \
+	-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+	-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+	-Wp,-I$(top_srcdir)/modules/io/includes/ \
+	-Wp,-I$(top_srcdir)/modules/tclsci/includes/ \
+	-Wp,-I$(top_srcdir)/modules/dynamic_link/includes/ \
+	-Wp,-I$(top_srcdir)/modules/elementary_functions/includes/ \
+	-Wp,-I$(top_srcdir)/modules/string/includes/ \
+	-Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+	-Wp,-I$(top_srcdir)/modules/console/includes/ \
+	-Wp,-I$(top_srcdir)/modules/history_manager/includes/ \
+	-Wp,-I$(top_srcdir)/modules/preferences/includes/ \
+	-Wp,-I$(top_srcdir)/modules/external_objects/includes/ \
 	$(XML_FLAGS) \
     $(AM_CPPFLAGS)
 

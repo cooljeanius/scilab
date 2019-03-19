@@ -452,6 +452,8 @@ PYTHON_EXEC_PREFIX = @PYTHON_EXEC_PREFIX@
 PYTHON_PLATFORM = @PYTHON_PLATFORM@
 PYTHON_PREFIX = @PYTHON_PREFIX@
 PYTHON_VERSION = @PYTHON_VERSION@
+QUIET_CFLAGS = @QUIET_CFLAGS@
+QUIET_CXXFLAGS = @QUIET_CXXFLAGS@
 RANLIB = @RANLIB@
 RAWCPP = @RAWCPP@
 RAWCPPFLAGS = @RAWCPPFLAGS@
@@ -491,6 +493,10 @@ UMFPACK_LIB = @UMFPACK_LIB@
 UNAME = @UNAME@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
+WARNING_CFLAGS = @WARNING_CFLAGS@
+WARNING_CXXFLAGS = @WARNING_CXXFLAGS@
+WERROR_CFLAGS = @WERROR_CFLAGS@
+WERROR_CXXFLAGS = @WERROR_CXXFLAGS@
 WITH_OCAML = @WITH_OCAML@
 WITH_TKSCI = @WITH_TKSCI@
 XCOS_ENABLE = @XCOS_ENABLE@
@@ -681,9 +687,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign libs/libst/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnits libs/libst/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign libs/libst/Makefile
+	  $(AUTOMAKE) --gnits libs/libst/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \

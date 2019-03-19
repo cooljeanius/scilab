@@ -12,7 +12,7 @@
 GETTEXT_MACRO_VERSION = 0.18
 
 PACKAGE = scilab
-VERSION = 5
+VERSION = 5.4.0
 PACKAGE_BUGREPORT = http://bugzilla.scilab.org/
 
 SED = /opt/local/bin/gsed
@@ -172,7 +172,7 @@ $(DOMAIN).pot-update: $(POTFILES) $(srcdir)/POTFILES.in remove-potcdate.sed
 	      --files-from=$(srcdir)/POTFILES.in \
 	      --copyright-holder='$(COPYRIGHT_HOLDER)' \
 	      --package-name="$${package_gnu}scilab" \
-	      --package-version='5' \
+	      --package-version='5.4.0' \
 	      --msgid-bugs-address="$$msgid_bugs_address" \
 	    ;; \
 	esac

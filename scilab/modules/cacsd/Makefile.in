@@ -179,91 +179,188 @@ am__installdirs = "$(DESTDIR)$(pkglibdir)" \
 LTLIBRARIES = $(noinst_LTLIBRARIES) $(pkglib_LTLIBRARIES)
 libscicacsd_algo_la_LIBADD =
 am__dirstamp = $(am__leading_dot)dirstamp
-am__objects_1 = src/fortran/jacl2.lo src/fortran/onface.lo \
-	src/fortran/tild.lo src/fortran/degl2.lo src/fortran/qvalz.lo \
-	src/fortran/dfrmg.lo src/fortran/hessl2.lo \
-	src/fortran/rtitr.lo src/fortran/watfac.lo \
-	src/fortran/sszer.lo src/fortran/mzdivq.lo \
-	src/fortran/expan.lo src/fortran/optml2.lo \
-	src/fortran/wdegre.lo src/fortran/phi.lo src/fortran/ricd.lo \
-	src/fortran/shrslv.lo src/fortran/qhesz.lo \
-	src/fortran/rilac.lo src/fortran/arl2.lo src/fortran/wesidu.lo \
-	src/fortran/dzdivq.lo src/fortran/arl2a.lo src/fortran/lq.lo \
-	src/fortran/outl2.lo src/fortran/dhetr.lo \
-	src/fortran/domout.lo src/fortran/rootgp.lo src/fortran/feq.lo \
-	src/fortran/fout.lo src/fortran/deg1l2.lo src/fortran/modul.lo \
-	src/fortran/scapol.lo src/fortran/giv.lo src/fortran/storl2.lo \
-	src/fortran/calsca.lo src/fortran/qitz.lo src/fortran/front.lo
-am__objects_2 = src/slicot/sb04pd.lo src/slicot/ib01ad.lo \
-	src/slicot/tb01wd.lo src/slicot/ib01py.lo src/slicot/mb01rx.lo \
-	src/slicot/ib01md.lo src/slicot/sb02ru.lo src/slicot/sb04nw.lo \
-	src/slicot/sb10dd.lo src/slicot/mb04id.lo src/slicot/sb04ny.lo \
-	src/slicot/ib01qd.lo src/slicot/sb04px.lo src/slicot/sb04rw.lo \
-	src/slicot/sb04ry.lo src/slicot/mb01qd.lo src/slicot/mb01ud.lo \
-	src/slicot/sb02od.lo src/slicot/mb02ud.lo src/slicot/sb10pd.lo \
-	src/slicot/sb03od.lo src/slicot/mb03ud.lo src/slicot/sb02sd.lo \
-	src/slicot/ib01oy.lo src/slicot/sb02ms.lo src/slicot/ab13md.lo \
-	src/slicot/sb03or.lo src/slicot/mb03oy.lo src/slicot/ma02fd.lo \
-	src/slicot/sb03ot.lo src/slicot/mb04oy.lo src/slicot/sb04mu.lo \
-	src/slicot/sb03mw.lo src/slicot/sb02ov.lo src/slicot/sb03ov.lo \
-	src/slicot/sb04mw.lo src/slicot/sb03my.lo src/slicot/sb04my.lo \
-	src/slicot/sb04qu.lo src/slicot/ib01pd.lo src/slicot/sb03qy.lo \
-	src/slicot/sb03sx.lo src/slicot/sb04qy.lo src/slicot/mb01pd.lo \
-	src/slicot/mb02pd.lo src/slicot/mb01td.lo src/slicot/sb02nd.lo \
-	src/slicot/sb04nd.lo src/slicot/sb02rd.lo src/slicot/sb04rd.lo \
-	src/slicot/ib01cd.lo src/slicot/ib01px.lo src/slicot/ma02ad.lo \
-	src/slicot/ab01od.lo src/slicot/mb01ru.lo src/slicot/ma02ed.lo \
-	src/slicot/mb04ny.lo src/slicot/mb01ry.lo src/slicot/sb04nv.lo \
-	src/slicot/ib01od.lo src/slicot/sb04nx.lo src/slicot/sb10fd.lo \
-	src/slicot/select.lo src/slicot/sb04rv.lo src/slicot/mb04kd.lo \
-	src/slicot/sb04py.lo src/slicot/sb04rx.lo src/slicot/mb03od.lo \
-	src/slicot/mb04od.lo src/slicot/mb01sd.lo src/slicot/sb03md.lo \
-	src/slicot/sb04md.lo src/slicot/sb02qd.lo src/slicot/sb10rd.lo \
-	src/slicot/sb04qd.lo src/slicot/ib01my.lo src/slicot/ib01bd.lo \
-	src/slicot/mb04iy.lo src/slicot/sb02mr.lo src/slicot/ab01nd.lo \
-	src/slicot/sb02mt.lo src/slicot/sb04mr.lo src/slicot/sb03mv.lo \
-	src/slicot/sb02ou.lo src/slicot/mb02qy.lo src/slicot/sb03ou.lo \
-	src/slicot/sb04qr.lo src/slicot/sb03mx.lo src/slicot/ib01nd.lo \
-	src/slicot/sb02oy.lo src/slicot/sb03oy.lo src/slicot/sb03qx.lo \
-	src/slicot/ib01rd.lo src/slicot/sb03sy.lo src/slicot/mb04nd.lo \
-	src/slicot/mb01rd.lo src/slicot/mb01vd.lo src/slicot/sb10qd.lo \
-	src/slicot/ereduc.lo src/slicot/fstair.lo src/slicot/inva.lo \
-	src/slicot/polmc.lo src/slicot/ssxmc.lo src/slicot/ZB03OD.lo \
-	src/slicot/riccpack.lo src/slicot/Ex-schur.lo
+am__objects_1 = src/fortran/libscicacsd_algo_la-jacl2.lo \
+	src/fortran/libscicacsd_algo_la-onface.lo \
+	src/fortran/libscicacsd_algo_la-tild.lo \
+	src/fortran/libscicacsd_algo_la-degl2.lo \
+	src/fortran/libscicacsd_algo_la-qvalz.lo \
+	src/fortran/libscicacsd_algo_la-dfrmg.lo \
+	src/fortran/libscicacsd_algo_la-hessl2.lo \
+	src/fortran/libscicacsd_algo_la-rtitr.lo \
+	src/fortran/libscicacsd_algo_la-watfac.lo \
+	src/fortran/libscicacsd_algo_la-sszer.lo \
+	src/fortran/libscicacsd_algo_la-mzdivq.lo \
+	src/fortran/libscicacsd_algo_la-expan.lo \
+	src/fortran/libscicacsd_algo_la-optml2.lo \
+	src/fortran/libscicacsd_algo_la-wdegre.lo \
+	src/fortran/libscicacsd_algo_la-phi.lo \
+	src/fortran/libscicacsd_algo_la-ricd.lo \
+	src/fortran/libscicacsd_algo_la-shrslv.lo \
+	src/fortran/libscicacsd_algo_la-qhesz.lo \
+	src/fortran/libscicacsd_algo_la-rilac.lo \
+	src/fortran/libscicacsd_algo_la-arl2.lo \
+	src/fortran/libscicacsd_algo_la-wesidu.lo \
+	src/fortran/libscicacsd_algo_la-dzdivq.lo \
+	src/fortran/libscicacsd_algo_la-arl2a.lo \
+	src/fortran/libscicacsd_algo_la-lq.lo \
+	src/fortran/libscicacsd_algo_la-outl2.lo \
+	src/fortran/libscicacsd_algo_la-dhetr.lo \
+	src/fortran/libscicacsd_algo_la-domout.lo \
+	src/fortran/libscicacsd_algo_la-rootgp.lo \
+	src/fortran/libscicacsd_algo_la-feq.lo \
+	src/fortran/libscicacsd_algo_la-fout.lo \
+	src/fortran/libscicacsd_algo_la-deg1l2.lo \
+	src/fortran/libscicacsd_algo_la-modul.lo \
+	src/fortran/libscicacsd_algo_la-scapol.lo \
+	src/fortran/libscicacsd_algo_la-giv.lo \
+	src/fortran/libscicacsd_algo_la-storl2.lo \
+	src/fortran/libscicacsd_algo_la-calsca.lo \
+	src/fortran/libscicacsd_algo_la-qitz.lo \
+	src/fortran/libscicacsd_algo_la-front.lo
+am__objects_2 = src/slicot/libscicacsd_algo_la-sb04pd.lo \
+	src/slicot/libscicacsd_algo_la-ib01ad.lo \
+	src/slicot/libscicacsd_algo_la-tb01wd.lo \
+	src/slicot/libscicacsd_algo_la-ib01py.lo \
+	src/slicot/libscicacsd_algo_la-mb01rx.lo \
+	src/slicot/libscicacsd_algo_la-ib01md.lo \
+	src/slicot/libscicacsd_algo_la-sb02ru.lo \
+	src/slicot/libscicacsd_algo_la-sb04nw.lo \
+	src/slicot/libscicacsd_algo_la-sb10dd.lo \
+	src/slicot/libscicacsd_algo_la-mb04id.lo \
+	src/slicot/libscicacsd_algo_la-sb04ny.lo \
+	src/slicot/libscicacsd_algo_la-ib01qd.lo \
+	src/slicot/libscicacsd_algo_la-sb04px.lo \
+	src/slicot/libscicacsd_algo_la-sb04rw.lo \
+	src/slicot/libscicacsd_algo_la-sb04ry.lo \
+	src/slicot/libscicacsd_algo_la-mb01qd.lo \
+	src/slicot/libscicacsd_algo_la-mb01ud.lo \
+	src/slicot/libscicacsd_algo_la-sb02od.lo \
+	src/slicot/libscicacsd_algo_la-mb02ud.lo \
+	src/slicot/libscicacsd_algo_la-sb10pd.lo \
+	src/slicot/libscicacsd_algo_la-sb03od.lo \
+	src/slicot/libscicacsd_algo_la-mb03ud.lo \
+	src/slicot/libscicacsd_algo_la-sb02sd.lo \
+	src/slicot/libscicacsd_algo_la-ib01oy.lo \
+	src/slicot/libscicacsd_algo_la-sb02ms.lo \
+	src/slicot/libscicacsd_algo_la-ab13md.lo \
+	src/slicot/libscicacsd_algo_la-sb03or.lo \
+	src/slicot/libscicacsd_algo_la-mb03oy.lo \
+	src/slicot/libscicacsd_algo_la-ma02fd.lo \
+	src/slicot/libscicacsd_algo_la-sb03ot.lo \
+	src/slicot/libscicacsd_algo_la-mb04oy.lo \
+	src/slicot/libscicacsd_algo_la-sb04mu.lo \
+	src/slicot/libscicacsd_algo_la-sb03mw.lo \
+	src/slicot/libscicacsd_algo_la-sb02ov.lo \
+	src/slicot/libscicacsd_algo_la-sb03ov.lo \
+	src/slicot/libscicacsd_algo_la-sb04mw.lo \
+	src/slicot/libscicacsd_algo_la-sb03my.lo \
+	src/slicot/libscicacsd_algo_la-sb04my.lo \
+	src/slicot/libscicacsd_algo_la-sb04qu.lo \
+	src/slicot/libscicacsd_algo_la-ib01pd.lo \
+	src/slicot/libscicacsd_algo_la-sb03qy.lo \
+	src/slicot/libscicacsd_algo_la-sb03sx.lo \
+	src/slicot/libscicacsd_algo_la-sb04qy.lo \
+	src/slicot/libscicacsd_algo_la-mb01pd.lo \
+	src/slicot/libscicacsd_algo_la-mb02pd.lo \
+	src/slicot/libscicacsd_algo_la-mb01td.lo \
+	src/slicot/libscicacsd_algo_la-sb02nd.lo \
+	src/slicot/libscicacsd_algo_la-sb04nd.lo \
+	src/slicot/libscicacsd_algo_la-sb02rd.lo \
+	src/slicot/libscicacsd_algo_la-sb04rd.lo \
+	src/slicot/libscicacsd_algo_la-ib01cd.lo \
+	src/slicot/libscicacsd_algo_la-ib01px.lo \
+	src/slicot/libscicacsd_algo_la-ma02ad.lo \
+	src/slicot/libscicacsd_algo_la-ab01od.lo \
+	src/slicot/libscicacsd_algo_la-mb01ru.lo \
+	src/slicot/libscicacsd_algo_la-ma02ed.lo \
+	src/slicot/libscicacsd_algo_la-mb04ny.lo \
+	src/slicot/libscicacsd_algo_la-mb01ry.lo \
+	src/slicot/libscicacsd_algo_la-sb04nv.lo \
+	src/slicot/libscicacsd_algo_la-ib01od.lo \
+	src/slicot/libscicacsd_algo_la-sb04nx.lo \
+	src/slicot/libscicacsd_algo_la-sb10fd.lo \
+	src/slicot/libscicacsd_algo_la-select.lo \
+	src/slicot/libscicacsd_algo_la-sb04rv.lo \
+	src/slicot/libscicacsd_algo_la-mb04kd.lo \
+	src/slicot/libscicacsd_algo_la-sb04py.lo \
+	src/slicot/libscicacsd_algo_la-sb04rx.lo \
+	src/slicot/libscicacsd_algo_la-mb03od.lo \
+	src/slicot/libscicacsd_algo_la-mb04od.lo \
+	src/slicot/libscicacsd_algo_la-mb01sd.lo \
+	src/slicot/libscicacsd_algo_la-sb03md.lo \
+	src/slicot/libscicacsd_algo_la-sb04md.lo \
+	src/slicot/libscicacsd_algo_la-sb02qd.lo \
+	src/slicot/libscicacsd_algo_la-sb10rd.lo \
+	src/slicot/libscicacsd_algo_la-sb04qd.lo \
+	src/slicot/libscicacsd_algo_la-ib01my.lo \
+	src/slicot/libscicacsd_algo_la-ib01bd.lo \
+	src/slicot/libscicacsd_algo_la-mb04iy.lo \
+	src/slicot/libscicacsd_algo_la-sb02mr.lo \
+	src/slicot/libscicacsd_algo_la-ab01nd.lo \
+	src/slicot/libscicacsd_algo_la-sb02mt.lo \
+	src/slicot/libscicacsd_algo_la-sb04mr.lo \
+	src/slicot/libscicacsd_algo_la-sb03mv.lo \
+	src/slicot/libscicacsd_algo_la-sb02ou.lo \
+	src/slicot/libscicacsd_algo_la-mb02qy.lo \
+	src/slicot/libscicacsd_algo_la-sb03ou.lo \
+	src/slicot/libscicacsd_algo_la-sb04qr.lo \
+	src/slicot/libscicacsd_algo_la-sb03mx.lo \
+	src/slicot/libscicacsd_algo_la-ib01nd.lo \
+	src/slicot/libscicacsd_algo_la-sb02oy.lo \
+	src/slicot/libscicacsd_algo_la-sb03oy.lo \
+	src/slicot/libscicacsd_algo_la-sb03qx.lo \
+	src/slicot/libscicacsd_algo_la-ib01rd.lo \
+	src/slicot/libscicacsd_algo_la-sb03sy.lo \
+	src/slicot/libscicacsd_algo_la-mb04nd.lo \
+	src/slicot/libscicacsd_algo_la-mb01rd.lo \
+	src/slicot/libscicacsd_algo_la-mb01vd.lo \
+	src/slicot/libscicacsd_algo_la-sb10qd.lo \
+	src/slicot/libscicacsd_algo_la-ereduc.lo \
+	src/slicot/libscicacsd_algo_la-fstair.lo \
+	src/slicot/libscicacsd_algo_la-inva.lo \
+	src/slicot/libscicacsd_algo_la-polmc.lo \
+	src/slicot/libscicacsd_algo_la-ssxmc.lo \
+	src/slicot/libscicacsd_algo_la-ZB03OD.lo \
+	src/slicot/libscicacsd_algo_la-riccpack.lo \
+	src/slicot/libscicacsd_algo_la-Ex-schur.lo
 am_libscicacsd_algo_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 libscicacsd_algo_la_OBJECTS = $(am_libscicacsd_algo_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+libscicacsd_algo_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libscicacsd_algo_la_FFLAGS) $(FFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
 @MAINTAINER_MODE_FALSE@am_libscicacsd_algo_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libscicacsd_algo_la_rpath =
 libscicacsd_la_DEPENDENCIES = libscicacsd-algo.la
-am__objects_3 = sci_gateway/fortran/sci_f_hinf.lo \
-	sci_gateway/fortran/sci_f_zrankqr.lo \
-	sci_gateway/fortran/sci_f_tzer.lo \
-	sci_gateway/fortran/sci_f_residu.lo \
-	sci_gateway/fortran/sci_f_sylv.lo \
-	sci_gateway/fortran/sci_f_ppol.lo \
-	sci_gateway/fortran/sci_f_freq.lo \
-	sci_gateway/fortran/sci_f_ldiv.lo \
-	sci_gateway/fortran/sci_f_ricc.lo \
-	sci_gateway/fortran/sci_f_sident.lo \
-	sci_gateway/fortran/sci_f_lyap.lo \
-	sci_gateway/fortran/sci_f_rtitr.lo \
-	sci_gateway/fortran/sci_f_sorder.lo \
-	sci_gateway/fortran/sci_f_mucomp.lo \
-	sci_gateway/fortran/sci_f_ltitr.lo \
-	sci_gateway/fortran/sci_f_dhinf.lo \
-	sci_gateway/fortran/sci_f_ricc2.lo \
-	sci_gateway/fortran/sci_f_arl2.lo \
-	sci_gateway/fortran/sci_f_gschur.lo \
-	sci_gateway/fortran/sci_f_ereduc.lo \
-	sci_gateway/fortran/sci_f_findbd.lo \
-	sci_gateway/fortran/sci_f_fstair.lo \
-	sci_gateway/fortran/sci_f_gspec.lo \
-	sci_gateway/fortran/sci_f_linmeq.lo \
-	sci_gateway/fortran/sci_f_rankqr.lo
+am__objects_3 = sci_gateway/fortran/libscicacsd_la-sci_f_hinf.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_zrankqr.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_tzer.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_residu.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_sylv.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_ppol.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_freq.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_ldiv.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_ricc.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_sident.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_lyap.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_rtitr.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_sorder.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_mucomp.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_ltitr.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_dhinf.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_ricc2.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_arl2.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_gschur.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_ereduc.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_findbd.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_fstair.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_gspec.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_linmeq.lo \
+	sci_gateway/fortran/libscicacsd_la-sci_f_rankqr.lo
 am__objects_4 = sci_gateway/c/libscicacsd_la-sci_arl2.lo \
 	sci_gateway/c/libscicacsd_la-sci_gspec.lo \
 	sci_gateway/c/libscicacsd_la-sci_rtitr.lo \
@@ -287,8 +384,8 @@ am_libscicacsd_la_OBJECTS = $(am__objects_3) $(am__objects_4)
 libscicacsd_la_OBJECTS = $(am_libscicacsd_la_OBJECTS)
 libscicacsd_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
-	$(AM_FFLAGS) $(FFLAGS) $(libscicacsd_la_LDFLAGS) $(LDFLAGS) -o \
-	$@
+	$(libscicacsd_la_FFLAGS) $(FFLAGS) $(libscicacsd_la_LDFLAGS) \
+	$(LDFLAGS) -o $@
 @MAINTAINER_MODE_FALSE@am_libscicacsd_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libscicacsd_la_rpath = -rpath $(pkglibdir)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -599,6 +696,8 @@ PYTHON_EXEC_PREFIX = @PYTHON_EXEC_PREFIX@
 PYTHON_PLATFORM = @PYTHON_PLATFORM@
 PYTHON_PREFIX = @PYTHON_PREFIX@
 PYTHON_VERSION = @PYTHON_VERSION@
+QUIET_CFLAGS = @QUIET_CFLAGS@
+QUIET_CXXFLAGS = @QUIET_CXXFLAGS@
 RANLIB = @RANLIB@
 RAWCPP = @RAWCPP@
 RAWCPPFLAGS = @RAWCPPFLAGS@
@@ -638,6 +737,10 @@ UMFPACK_LIB = @UMFPACK_LIB@
 UNAME = @UNAME@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
+WARNING_CFLAGS = @WARNING_CFLAGS@
+WARNING_CXXFLAGS = @WARNING_CXXFLAGS@
+WERROR_CFLAGS = @WERROR_CFLAGS@
+WERROR_CXXFLAGS = @WERROR_CXXFLAGS@
 WITH_OCAML = @WITH_OCAML@
 WITH_TKSCI = @WITH_TKSCI@
 XCOS_ENABLE = @XCOS_ENABLE@
@@ -927,11 +1030,13 @@ sci_gateway/fortran/sci_f_rankqr.f
 
 libscicacsd_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
 			 -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			 -Wp,-I$(top_srcdir)/modules/core/includes/ \
 			 -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
 			 -Wp,-I$(top_srcdir)/modules/localization/includes/ \
 			 -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
 			 $(AM_CPPFLAGS)
 
+libscicacsd_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 @MAINTAINER_MODE_TRUE@pkglib_LTLIBRARIES = libscicacsd.la
 @MAINTAINER_MODE_FALSE@noinst_LTLIBRARIES = libscicacsd-algo.la libscicacsd.la
 @MAINTAINER_MODE_TRUE@noinst_LTLIBRARIES = libscicacsd-algo.la
@@ -939,6 +1044,7 @@ libscicacsd_la_LDFLAGS = $(ATLAS_LIBS) $(AM_LDFLAGS)
 libscicacsd_algo_la_SOURCES = $(CACSD_FORTRAN_SOURCES) $(SLICOT_FORTRAN_SOURCES)
 libscicacsd_la_SOURCES = $(GATEWAY_FORTRAN_SOURCES) $(GATEWAY_C_SOURCES)
 libscicacsd_algo_la_CPPFLAGS = $(libscicacsd_la_CPPFLAGS)
+libscicacsd_algo_la_FFLAGS = $(libscicacsd_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC = $(GATEWAY_C_SOURCES)
@@ -1045,9 +1151,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign modules/cacsd/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnits modules/cacsd/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign modules/cacsd/Makefile
+	  $(AUTOMAKE) --gnits modules/cacsd/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
@@ -1118,81 +1224,96 @@ src/fortran/$(am__dirstamp):
 src/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/fortran/$(DEPDIR)
 	@: > src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/jacl2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-jacl2.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/onface.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-onface.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/tild.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-tild.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/degl2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-degl2.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/qvalz.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-qvalz.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dfrmg.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-dfrmg.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/hessl2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-hessl2.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rtitr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-rtitr.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/watfac.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-watfac.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/sszer.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-sszer.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/mzdivq.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-mzdivq.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/expan.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-expan.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/optml2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-optml2.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wdegre.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-wdegre.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/phi.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-phi.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ricd.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-ricd.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/shrslv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-shrslv.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/qhesz.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-qhesz.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rilac.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-rilac.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/arl2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-arl2.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wesidu.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-wesidu.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dzdivq.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-dzdivq.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/arl2a.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-arl2a.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lq.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-lq.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/outl2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-outl2.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dhetr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-dhetr.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/domout.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-domout.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rootgp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-rootgp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/feq.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-feq.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/fout.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-fout.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/deg1l2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-deg1l2.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/modul.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-modul.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/scapol.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-scapol.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/giv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-giv.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/storl2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-storl2.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/calsca.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-calsca.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/qitz.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-qitz.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/front.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicacsd_algo_la-front.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
 src/slicot/$(am__dirstamp):
 	@$(MKDIR_P) src/slicot
@@ -1200,300 +1321,302 @@ src/slicot/$(am__dirstamp):
 src/slicot/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/slicot/$(DEPDIR)
 	@: > src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04pd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04pd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ib01ad.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ib01ad.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/tb01wd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-tb01wd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ib01py.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ib01py.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb01rx.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb01rx.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ib01md.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ib01md.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb02ru.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb02ru.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04nw.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04nw.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb10dd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb10dd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb04id.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb04id.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04ny.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04ny.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ib01qd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ib01qd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04px.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04px.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04rw.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04rw.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04ry.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04ry.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb01qd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb01qd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb01ud.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb01ud.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb02od.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb02od.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb02ud.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb02ud.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb10pd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb10pd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb03od.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb03od.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb03ud.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb03ud.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb02sd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb02sd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ib01oy.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ib01oy.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb02ms.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb02ms.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ab13md.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ab13md.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb03or.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb03or.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb03oy.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb03oy.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ma02fd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ma02fd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb03ot.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb03ot.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb04oy.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb04oy.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04mu.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04mu.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb03mw.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb03mw.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb02ov.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb02ov.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb03ov.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb03ov.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04mw.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04mw.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb03my.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb03my.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04my.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04my.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04qu.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04qu.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ib01pd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ib01pd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb03qy.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb03qy.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb03sx.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb03sx.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04qy.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04qy.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb01pd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb01pd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb02pd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb02pd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb01td.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb01td.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb02nd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb02nd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04nd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04nd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb02rd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb02rd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04rd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04rd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ib01cd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ib01cd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ib01px.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ib01px.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ma02ad.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ma02ad.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ab01od.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ab01od.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb01ru.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb01ru.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ma02ed.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ma02ed.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb04ny.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb04ny.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb01ry.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb01ry.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04nv.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04nv.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ib01od.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ib01od.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04nx.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04nx.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb10fd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb10fd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/select.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-select.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04rv.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04rv.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb04kd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb04kd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04py.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04py.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04rx.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04rx.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb03od.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb03od.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb04od.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb04od.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb01sd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb01sd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb03md.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb03md.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04md.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04md.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb02qd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb02qd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb10rd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb10rd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04qd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04qd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ib01my.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ib01my.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ib01bd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ib01bd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb04iy.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb04iy.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb02mr.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb02mr.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ab01nd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ab01nd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb02mt.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb02mt.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04mr.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04mr.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb03mv.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb03mv.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb02ou.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb02ou.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb02qy.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb02qy.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb03ou.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb03ou.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb04qr.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb04qr.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb03mx.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb03mx.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ib01nd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ib01nd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb02oy.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb02oy.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb03oy.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb03oy.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb03qx.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb03qx.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ib01rd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ib01rd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb03sy.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb03sy.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb04nd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb04nd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb01rd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb01rd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/mb01vd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-mb01vd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/sb10qd.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-sb10qd.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ereduc.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ereduc.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/fstair.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-fstair.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/inva.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-inva.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/polmc.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-polmc.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ssxmc.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ssxmc.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/ZB03OD.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-ZB03OD.lo: src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/riccpack.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-riccpack.lo:  \
+	src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
-src/slicot/Ex-schur.lo: src/slicot/$(am__dirstamp) \
+src/slicot/libscicacsd_algo_la-Ex-schur.lo:  \
+	src/slicot/$(am__dirstamp) \
 	src/slicot/$(DEPDIR)/$(am__dirstamp)
 
 libscicacsd-algo.la: $(libscicacsd_algo_la_OBJECTS) $(libscicacsd_algo_la_DEPENDENCIES) $(EXTRA_libscicacsd_algo_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libscicacsd_algo_la_rpath) $(libscicacsd_algo_la_OBJECTS) $(libscicacsd_algo_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscicacsd_algo_la_LINK) $(am_libscicacsd_algo_la_rpath) $(libscicacsd_algo_la_OBJECTS) $(libscicacsd_algo_la_LIBADD) $(LIBS)
 sci_gateway/fortran/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran
 	@: > sci_gateway/fortran/$(am__dirstamp)
 sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran/$(DEPDIR)
 	@: > sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_hinf.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_hinf.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_zrankqr.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_zrankqr.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_tzer.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_tzer.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_residu.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_residu.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_sylv.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_sylv.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_ppol.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_ppol.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_freq.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_freq.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_ldiv.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_ldiv.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_ricc.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_ricc.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_sident.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_sident.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_lyap.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_lyap.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_rtitr.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_rtitr.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_sorder.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_sorder.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_mucomp.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_mucomp.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_ltitr.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_ltitr.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_dhinf.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_dhinf.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_ricc2.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_ricc2.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_arl2.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_arl2.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_gschur.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_gschur.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_ereduc.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_ereduc.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_findbd.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_findbd.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_fstair.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_fstair.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_gspec.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_gspec.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_linmeq.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_linmeq.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_rankqr.lo:  \
+sci_gateway/fortran/libscicacsd_la-sci_f_rankqr.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
 sci_gateway/c/$(am__dirstamp):
@@ -1768,6 +1891,513 @@ sci_gateway/c/libscicacsd_la-gw_cacsd3.lo: sci_gateway/c/gw_cacsd3.c
 
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
+
+src/fortran/libscicacsd_algo_la-jacl2.lo: src/fortran/jacl2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-jacl2.lo `test -f 'src/fortran/jacl2.f' || echo '$(srcdir)/'`src/fortran/jacl2.f
+
+src/fortran/libscicacsd_algo_la-onface.lo: src/fortran/onface.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-onface.lo `test -f 'src/fortran/onface.f' || echo '$(srcdir)/'`src/fortran/onface.f
+
+src/fortran/libscicacsd_algo_la-tild.lo: src/fortran/tild.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-tild.lo `test -f 'src/fortran/tild.f' || echo '$(srcdir)/'`src/fortran/tild.f
+
+src/fortran/libscicacsd_algo_la-degl2.lo: src/fortran/degl2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-degl2.lo `test -f 'src/fortran/degl2.f' || echo '$(srcdir)/'`src/fortran/degl2.f
+
+src/fortran/libscicacsd_algo_la-qvalz.lo: src/fortran/qvalz.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-qvalz.lo `test -f 'src/fortran/qvalz.f' || echo '$(srcdir)/'`src/fortran/qvalz.f
+
+src/fortran/libscicacsd_algo_la-dfrmg.lo: src/fortran/dfrmg.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-dfrmg.lo `test -f 'src/fortran/dfrmg.f' || echo '$(srcdir)/'`src/fortran/dfrmg.f
+
+src/fortran/libscicacsd_algo_la-hessl2.lo: src/fortran/hessl2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-hessl2.lo `test -f 'src/fortran/hessl2.f' || echo '$(srcdir)/'`src/fortran/hessl2.f
+
+src/fortran/libscicacsd_algo_la-rtitr.lo: src/fortran/rtitr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-rtitr.lo `test -f 'src/fortran/rtitr.f' || echo '$(srcdir)/'`src/fortran/rtitr.f
+
+src/fortran/libscicacsd_algo_la-watfac.lo: src/fortran/watfac.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-watfac.lo `test -f 'src/fortran/watfac.f' || echo '$(srcdir)/'`src/fortran/watfac.f
+
+src/fortran/libscicacsd_algo_la-sszer.lo: src/fortran/sszer.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-sszer.lo `test -f 'src/fortran/sszer.f' || echo '$(srcdir)/'`src/fortran/sszer.f
+
+src/fortran/libscicacsd_algo_la-mzdivq.lo: src/fortran/mzdivq.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-mzdivq.lo `test -f 'src/fortran/mzdivq.f' || echo '$(srcdir)/'`src/fortran/mzdivq.f
+
+src/fortran/libscicacsd_algo_la-expan.lo: src/fortran/expan.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-expan.lo `test -f 'src/fortran/expan.f' || echo '$(srcdir)/'`src/fortran/expan.f
+
+src/fortran/libscicacsd_algo_la-optml2.lo: src/fortran/optml2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-optml2.lo `test -f 'src/fortran/optml2.f' || echo '$(srcdir)/'`src/fortran/optml2.f
+
+src/fortran/libscicacsd_algo_la-wdegre.lo: src/fortran/wdegre.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-wdegre.lo `test -f 'src/fortran/wdegre.f' || echo '$(srcdir)/'`src/fortran/wdegre.f
+
+src/fortran/libscicacsd_algo_la-phi.lo: src/fortran/phi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-phi.lo `test -f 'src/fortran/phi.f' || echo '$(srcdir)/'`src/fortran/phi.f
+
+src/fortran/libscicacsd_algo_la-ricd.lo: src/fortran/ricd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-ricd.lo `test -f 'src/fortran/ricd.f' || echo '$(srcdir)/'`src/fortran/ricd.f
+
+src/fortran/libscicacsd_algo_la-shrslv.lo: src/fortran/shrslv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-shrslv.lo `test -f 'src/fortran/shrslv.f' || echo '$(srcdir)/'`src/fortran/shrslv.f
+
+src/fortran/libscicacsd_algo_la-qhesz.lo: src/fortran/qhesz.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-qhesz.lo `test -f 'src/fortran/qhesz.f' || echo '$(srcdir)/'`src/fortran/qhesz.f
+
+src/fortran/libscicacsd_algo_la-rilac.lo: src/fortran/rilac.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-rilac.lo `test -f 'src/fortran/rilac.f' || echo '$(srcdir)/'`src/fortran/rilac.f
+
+src/fortran/libscicacsd_algo_la-arl2.lo: src/fortran/arl2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-arl2.lo `test -f 'src/fortran/arl2.f' || echo '$(srcdir)/'`src/fortran/arl2.f
+
+src/fortran/libscicacsd_algo_la-wesidu.lo: src/fortran/wesidu.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-wesidu.lo `test -f 'src/fortran/wesidu.f' || echo '$(srcdir)/'`src/fortran/wesidu.f
+
+src/fortran/libscicacsd_algo_la-dzdivq.lo: src/fortran/dzdivq.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-dzdivq.lo `test -f 'src/fortran/dzdivq.f' || echo '$(srcdir)/'`src/fortran/dzdivq.f
+
+src/fortran/libscicacsd_algo_la-arl2a.lo: src/fortran/arl2a.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-arl2a.lo `test -f 'src/fortran/arl2a.f' || echo '$(srcdir)/'`src/fortran/arl2a.f
+
+src/fortran/libscicacsd_algo_la-lq.lo: src/fortran/lq.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-lq.lo `test -f 'src/fortran/lq.f' || echo '$(srcdir)/'`src/fortran/lq.f
+
+src/fortran/libscicacsd_algo_la-outl2.lo: src/fortran/outl2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-outl2.lo `test -f 'src/fortran/outl2.f' || echo '$(srcdir)/'`src/fortran/outl2.f
+
+src/fortran/libscicacsd_algo_la-dhetr.lo: src/fortran/dhetr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-dhetr.lo `test -f 'src/fortran/dhetr.f' || echo '$(srcdir)/'`src/fortran/dhetr.f
+
+src/fortran/libscicacsd_algo_la-domout.lo: src/fortran/domout.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-domout.lo `test -f 'src/fortran/domout.f' || echo '$(srcdir)/'`src/fortran/domout.f
+
+src/fortran/libscicacsd_algo_la-rootgp.lo: src/fortran/rootgp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-rootgp.lo `test -f 'src/fortran/rootgp.f' || echo '$(srcdir)/'`src/fortran/rootgp.f
+
+src/fortran/libscicacsd_algo_la-feq.lo: src/fortran/feq.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-feq.lo `test -f 'src/fortran/feq.f' || echo '$(srcdir)/'`src/fortran/feq.f
+
+src/fortran/libscicacsd_algo_la-fout.lo: src/fortran/fout.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-fout.lo `test -f 'src/fortran/fout.f' || echo '$(srcdir)/'`src/fortran/fout.f
+
+src/fortran/libscicacsd_algo_la-deg1l2.lo: src/fortran/deg1l2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-deg1l2.lo `test -f 'src/fortran/deg1l2.f' || echo '$(srcdir)/'`src/fortran/deg1l2.f
+
+src/fortran/libscicacsd_algo_la-modul.lo: src/fortran/modul.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-modul.lo `test -f 'src/fortran/modul.f' || echo '$(srcdir)/'`src/fortran/modul.f
+
+src/fortran/libscicacsd_algo_la-scapol.lo: src/fortran/scapol.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-scapol.lo `test -f 'src/fortran/scapol.f' || echo '$(srcdir)/'`src/fortran/scapol.f
+
+src/fortran/libscicacsd_algo_la-giv.lo: src/fortran/giv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-giv.lo `test -f 'src/fortran/giv.f' || echo '$(srcdir)/'`src/fortran/giv.f
+
+src/fortran/libscicacsd_algo_la-storl2.lo: src/fortran/storl2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-storl2.lo `test -f 'src/fortran/storl2.f' || echo '$(srcdir)/'`src/fortran/storl2.f
+
+src/fortran/libscicacsd_algo_la-calsca.lo: src/fortran/calsca.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-calsca.lo `test -f 'src/fortran/calsca.f' || echo '$(srcdir)/'`src/fortran/calsca.f
+
+src/fortran/libscicacsd_algo_la-qitz.lo: src/fortran/qitz.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-qitz.lo `test -f 'src/fortran/qitz.f' || echo '$(srcdir)/'`src/fortran/qitz.f
+
+src/fortran/libscicacsd_algo_la-front.lo: src/fortran/front.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicacsd_algo_la-front.lo `test -f 'src/fortran/front.f' || echo '$(srcdir)/'`src/fortran/front.f
+
+src/slicot/libscicacsd_algo_la-sb04pd.lo: src/slicot/sb04pd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04pd.lo `test -f 'src/slicot/sb04pd.f' || echo '$(srcdir)/'`src/slicot/sb04pd.f
+
+src/slicot/libscicacsd_algo_la-ib01ad.lo: src/slicot/ib01ad.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ib01ad.lo `test -f 'src/slicot/ib01ad.f' || echo '$(srcdir)/'`src/slicot/ib01ad.f
+
+src/slicot/libscicacsd_algo_la-tb01wd.lo: src/slicot/tb01wd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-tb01wd.lo `test -f 'src/slicot/tb01wd.f' || echo '$(srcdir)/'`src/slicot/tb01wd.f
+
+src/slicot/libscicacsd_algo_la-ib01py.lo: src/slicot/ib01py.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ib01py.lo `test -f 'src/slicot/ib01py.f' || echo '$(srcdir)/'`src/slicot/ib01py.f
+
+src/slicot/libscicacsd_algo_la-mb01rx.lo: src/slicot/mb01rx.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb01rx.lo `test -f 'src/slicot/mb01rx.f' || echo '$(srcdir)/'`src/slicot/mb01rx.f
+
+src/slicot/libscicacsd_algo_la-ib01md.lo: src/slicot/ib01md.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ib01md.lo `test -f 'src/slicot/ib01md.f' || echo '$(srcdir)/'`src/slicot/ib01md.f
+
+src/slicot/libscicacsd_algo_la-sb02ru.lo: src/slicot/sb02ru.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb02ru.lo `test -f 'src/slicot/sb02ru.f' || echo '$(srcdir)/'`src/slicot/sb02ru.f
+
+src/slicot/libscicacsd_algo_la-sb04nw.lo: src/slicot/sb04nw.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04nw.lo `test -f 'src/slicot/sb04nw.f' || echo '$(srcdir)/'`src/slicot/sb04nw.f
+
+src/slicot/libscicacsd_algo_la-sb10dd.lo: src/slicot/sb10dd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb10dd.lo `test -f 'src/slicot/sb10dd.f' || echo '$(srcdir)/'`src/slicot/sb10dd.f
+
+src/slicot/libscicacsd_algo_la-mb04id.lo: src/slicot/mb04id.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb04id.lo `test -f 'src/slicot/mb04id.f' || echo '$(srcdir)/'`src/slicot/mb04id.f
+
+src/slicot/libscicacsd_algo_la-sb04ny.lo: src/slicot/sb04ny.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04ny.lo `test -f 'src/slicot/sb04ny.f' || echo '$(srcdir)/'`src/slicot/sb04ny.f
+
+src/slicot/libscicacsd_algo_la-ib01qd.lo: src/slicot/ib01qd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ib01qd.lo `test -f 'src/slicot/ib01qd.f' || echo '$(srcdir)/'`src/slicot/ib01qd.f
+
+src/slicot/libscicacsd_algo_la-sb04px.lo: src/slicot/sb04px.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04px.lo `test -f 'src/slicot/sb04px.f' || echo '$(srcdir)/'`src/slicot/sb04px.f
+
+src/slicot/libscicacsd_algo_la-sb04rw.lo: src/slicot/sb04rw.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04rw.lo `test -f 'src/slicot/sb04rw.f' || echo '$(srcdir)/'`src/slicot/sb04rw.f
+
+src/slicot/libscicacsd_algo_la-sb04ry.lo: src/slicot/sb04ry.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04ry.lo `test -f 'src/slicot/sb04ry.f' || echo '$(srcdir)/'`src/slicot/sb04ry.f
+
+src/slicot/libscicacsd_algo_la-mb01qd.lo: src/slicot/mb01qd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb01qd.lo `test -f 'src/slicot/mb01qd.f' || echo '$(srcdir)/'`src/slicot/mb01qd.f
+
+src/slicot/libscicacsd_algo_la-mb01ud.lo: src/slicot/mb01ud.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb01ud.lo `test -f 'src/slicot/mb01ud.f' || echo '$(srcdir)/'`src/slicot/mb01ud.f
+
+src/slicot/libscicacsd_algo_la-sb02od.lo: src/slicot/sb02od.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb02od.lo `test -f 'src/slicot/sb02od.f' || echo '$(srcdir)/'`src/slicot/sb02od.f
+
+src/slicot/libscicacsd_algo_la-mb02ud.lo: src/slicot/mb02ud.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb02ud.lo `test -f 'src/slicot/mb02ud.f' || echo '$(srcdir)/'`src/slicot/mb02ud.f
+
+src/slicot/libscicacsd_algo_la-sb10pd.lo: src/slicot/sb10pd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb10pd.lo `test -f 'src/slicot/sb10pd.f' || echo '$(srcdir)/'`src/slicot/sb10pd.f
+
+src/slicot/libscicacsd_algo_la-sb03od.lo: src/slicot/sb03od.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb03od.lo `test -f 'src/slicot/sb03od.f' || echo '$(srcdir)/'`src/slicot/sb03od.f
+
+src/slicot/libscicacsd_algo_la-mb03ud.lo: src/slicot/mb03ud.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb03ud.lo `test -f 'src/slicot/mb03ud.f' || echo '$(srcdir)/'`src/slicot/mb03ud.f
+
+src/slicot/libscicacsd_algo_la-sb02sd.lo: src/slicot/sb02sd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb02sd.lo `test -f 'src/slicot/sb02sd.f' || echo '$(srcdir)/'`src/slicot/sb02sd.f
+
+src/slicot/libscicacsd_algo_la-ib01oy.lo: src/slicot/ib01oy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ib01oy.lo `test -f 'src/slicot/ib01oy.f' || echo '$(srcdir)/'`src/slicot/ib01oy.f
+
+src/slicot/libscicacsd_algo_la-sb02ms.lo: src/slicot/sb02ms.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb02ms.lo `test -f 'src/slicot/sb02ms.f' || echo '$(srcdir)/'`src/slicot/sb02ms.f
+
+src/slicot/libscicacsd_algo_la-ab13md.lo: src/slicot/ab13md.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ab13md.lo `test -f 'src/slicot/ab13md.f' || echo '$(srcdir)/'`src/slicot/ab13md.f
+
+src/slicot/libscicacsd_algo_la-sb03or.lo: src/slicot/sb03or.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb03or.lo `test -f 'src/slicot/sb03or.f' || echo '$(srcdir)/'`src/slicot/sb03or.f
+
+src/slicot/libscicacsd_algo_la-mb03oy.lo: src/slicot/mb03oy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb03oy.lo `test -f 'src/slicot/mb03oy.f' || echo '$(srcdir)/'`src/slicot/mb03oy.f
+
+src/slicot/libscicacsd_algo_la-ma02fd.lo: src/slicot/ma02fd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ma02fd.lo `test -f 'src/slicot/ma02fd.f' || echo '$(srcdir)/'`src/slicot/ma02fd.f
+
+src/slicot/libscicacsd_algo_la-sb03ot.lo: src/slicot/sb03ot.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb03ot.lo `test -f 'src/slicot/sb03ot.f' || echo '$(srcdir)/'`src/slicot/sb03ot.f
+
+src/slicot/libscicacsd_algo_la-mb04oy.lo: src/slicot/mb04oy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb04oy.lo `test -f 'src/slicot/mb04oy.f' || echo '$(srcdir)/'`src/slicot/mb04oy.f
+
+src/slicot/libscicacsd_algo_la-sb04mu.lo: src/slicot/sb04mu.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04mu.lo `test -f 'src/slicot/sb04mu.f' || echo '$(srcdir)/'`src/slicot/sb04mu.f
+
+src/slicot/libscicacsd_algo_la-sb03mw.lo: src/slicot/sb03mw.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb03mw.lo `test -f 'src/slicot/sb03mw.f' || echo '$(srcdir)/'`src/slicot/sb03mw.f
+
+src/slicot/libscicacsd_algo_la-sb02ov.lo: src/slicot/sb02ov.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb02ov.lo `test -f 'src/slicot/sb02ov.f' || echo '$(srcdir)/'`src/slicot/sb02ov.f
+
+src/slicot/libscicacsd_algo_la-sb03ov.lo: src/slicot/sb03ov.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb03ov.lo `test -f 'src/slicot/sb03ov.f' || echo '$(srcdir)/'`src/slicot/sb03ov.f
+
+src/slicot/libscicacsd_algo_la-sb04mw.lo: src/slicot/sb04mw.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04mw.lo `test -f 'src/slicot/sb04mw.f' || echo '$(srcdir)/'`src/slicot/sb04mw.f
+
+src/slicot/libscicacsd_algo_la-sb03my.lo: src/slicot/sb03my.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb03my.lo `test -f 'src/slicot/sb03my.f' || echo '$(srcdir)/'`src/slicot/sb03my.f
+
+src/slicot/libscicacsd_algo_la-sb04my.lo: src/slicot/sb04my.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04my.lo `test -f 'src/slicot/sb04my.f' || echo '$(srcdir)/'`src/slicot/sb04my.f
+
+src/slicot/libscicacsd_algo_la-sb04qu.lo: src/slicot/sb04qu.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04qu.lo `test -f 'src/slicot/sb04qu.f' || echo '$(srcdir)/'`src/slicot/sb04qu.f
+
+src/slicot/libscicacsd_algo_la-ib01pd.lo: src/slicot/ib01pd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ib01pd.lo `test -f 'src/slicot/ib01pd.f' || echo '$(srcdir)/'`src/slicot/ib01pd.f
+
+src/slicot/libscicacsd_algo_la-sb03qy.lo: src/slicot/sb03qy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb03qy.lo `test -f 'src/slicot/sb03qy.f' || echo '$(srcdir)/'`src/slicot/sb03qy.f
+
+src/slicot/libscicacsd_algo_la-sb03sx.lo: src/slicot/sb03sx.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb03sx.lo `test -f 'src/slicot/sb03sx.f' || echo '$(srcdir)/'`src/slicot/sb03sx.f
+
+src/slicot/libscicacsd_algo_la-sb04qy.lo: src/slicot/sb04qy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04qy.lo `test -f 'src/slicot/sb04qy.f' || echo '$(srcdir)/'`src/slicot/sb04qy.f
+
+src/slicot/libscicacsd_algo_la-mb01pd.lo: src/slicot/mb01pd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb01pd.lo `test -f 'src/slicot/mb01pd.f' || echo '$(srcdir)/'`src/slicot/mb01pd.f
+
+src/slicot/libscicacsd_algo_la-mb02pd.lo: src/slicot/mb02pd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb02pd.lo `test -f 'src/slicot/mb02pd.f' || echo '$(srcdir)/'`src/slicot/mb02pd.f
+
+src/slicot/libscicacsd_algo_la-mb01td.lo: src/slicot/mb01td.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb01td.lo `test -f 'src/slicot/mb01td.f' || echo '$(srcdir)/'`src/slicot/mb01td.f
+
+src/slicot/libscicacsd_algo_la-sb02nd.lo: src/slicot/sb02nd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb02nd.lo `test -f 'src/slicot/sb02nd.f' || echo '$(srcdir)/'`src/slicot/sb02nd.f
+
+src/slicot/libscicacsd_algo_la-sb04nd.lo: src/slicot/sb04nd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04nd.lo `test -f 'src/slicot/sb04nd.f' || echo '$(srcdir)/'`src/slicot/sb04nd.f
+
+src/slicot/libscicacsd_algo_la-sb02rd.lo: src/slicot/sb02rd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb02rd.lo `test -f 'src/slicot/sb02rd.f' || echo '$(srcdir)/'`src/slicot/sb02rd.f
+
+src/slicot/libscicacsd_algo_la-sb04rd.lo: src/slicot/sb04rd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04rd.lo `test -f 'src/slicot/sb04rd.f' || echo '$(srcdir)/'`src/slicot/sb04rd.f
+
+src/slicot/libscicacsd_algo_la-ib01cd.lo: src/slicot/ib01cd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ib01cd.lo `test -f 'src/slicot/ib01cd.f' || echo '$(srcdir)/'`src/slicot/ib01cd.f
+
+src/slicot/libscicacsd_algo_la-ib01px.lo: src/slicot/ib01px.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ib01px.lo `test -f 'src/slicot/ib01px.f' || echo '$(srcdir)/'`src/slicot/ib01px.f
+
+src/slicot/libscicacsd_algo_la-ma02ad.lo: src/slicot/ma02ad.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ma02ad.lo `test -f 'src/slicot/ma02ad.f' || echo '$(srcdir)/'`src/slicot/ma02ad.f
+
+src/slicot/libscicacsd_algo_la-ab01od.lo: src/slicot/ab01od.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ab01od.lo `test -f 'src/slicot/ab01od.f' || echo '$(srcdir)/'`src/slicot/ab01od.f
+
+src/slicot/libscicacsd_algo_la-mb01ru.lo: src/slicot/mb01ru.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb01ru.lo `test -f 'src/slicot/mb01ru.f' || echo '$(srcdir)/'`src/slicot/mb01ru.f
+
+src/slicot/libscicacsd_algo_la-ma02ed.lo: src/slicot/ma02ed.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ma02ed.lo `test -f 'src/slicot/ma02ed.f' || echo '$(srcdir)/'`src/slicot/ma02ed.f
+
+src/slicot/libscicacsd_algo_la-mb04ny.lo: src/slicot/mb04ny.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb04ny.lo `test -f 'src/slicot/mb04ny.f' || echo '$(srcdir)/'`src/slicot/mb04ny.f
+
+src/slicot/libscicacsd_algo_la-mb01ry.lo: src/slicot/mb01ry.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb01ry.lo `test -f 'src/slicot/mb01ry.f' || echo '$(srcdir)/'`src/slicot/mb01ry.f
+
+src/slicot/libscicacsd_algo_la-sb04nv.lo: src/slicot/sb04nv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04nv.lo `test -f 'src/slicot/sb04nv.f' || echo '$(srcdir)/'`src/slicot/sb04nv.f
+
+src/slicot/libscicacsd_algo_la-ib01od.lo: src/slicot/ib01od.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ib01od.lo `test -f 'src/slicot/ib01od.f' || echo '$(srcdir)/'`src/slicot/ib01od.f
+
+src/slicot/libscicacsd_algo_la-sb04nx.lo: src/slicot/sb04nx.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04nx.lo `test -f 'src/slicot/sb04nx.f' || echo '$(srcdir)/'`src/slicot/sb04nx.f
+
+src/slicot/libscicacsd_algo_la-sb10fd.lo: src/slicot/sb10fd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb10fd.lo `test -f 'src/slicot/sb10fd.f' || echo '$(srcdir)/'`src/slicot/sb10fd.f
+
+src/slicot/libscicacsd_algo_la-select.lo: src/slicot/select.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-select.lo `test -f 'src/slicot/select.f' || echo '$(srcdir)/'`src/slicot/select.f
+
+src/slicot/libscicacsd_algo_la-sb04rv.lo: src/slicot/sb04rv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04rv.lo `test -f 'src/slicot/sb04rv.f' || echo '$(srcdir)/'`src/slicot/sb04rv.f
+
+src/slicot/libscicacsd_algo_la-mb04kd.lo: src/slicot/mb04kd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb04kd.lo `test -f 'src/slicot/mb04kd.f' || echo '$(srcdir)/'`src/slicot/mb04kd.f
+
+src/slicot/libscicacsd_algo_la-sb04py.lo: src/slicot/sb04py.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04py.lo `test -f 'src/slicot/sb04py.f' || echo '$(srcdir)/'`src/slicot/sb04py.f
+
+src/slicot/libscicacsd_algo_la-sb04rx.lo: src/slicot/sb04rx.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04rx.lo `test -f 'src/slicot/sb04rx.f' || echo '$(srcdir)/'`src/slicot/sb04rx.f
+
+src/slicot/libscicacsd_algo_la-mb03od.lo: src/slicot/mb03od.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb03od.lo `test -f 'src/slicot/mb03od.f' || echo '$(srcdir)/'`src/slicot/mb03od.f
+
+src/slicot/libscicacsd_algo_la-mb04od.lo: src/slicot/mb04od.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb04od.lo `test -f 'src/slicot/mb04od.f' || echo '$(srcdir)/'`src/slicot/mb04od.f
+
+src/slicot/libscicacsd_algo_la-mb01sd.lo: src/slicot/mb01sd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb01sd.lo `test -f 'src/slicot/mb01sd.f' || echo '$(srcdir)/'`src/slicot/mb01sd.f
+
+src/slicot/libscicacsd_algo_la-sb03md.lo: src/slicot/sb03md.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb03md.lo `test -f 'src/slicot/sb03md.f' || echo '$(srcdir)/'`src/slicot/sb03md.f
+
+src/slicot/libscicacsd_algo_la-sb04md.lo: src/slicot/sb04md.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04md.lo `test -f 'src/slicot/sb04md.f' || echo '$(srcdir)/'`src/slicot/sb04md.f
+
+src/slicot/libscicacsd_algo_la-sb02qd.lo: src/slicot/sb02qd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb02qd.lo `test -f 'src/slicot/sb02qd.f' || echo '$(srcdir)/'`src/slicot/sb02qd.f
+
+src/slicot/libscicacsd_algo_la-sb10rd.lo: src/slicot/sb10rd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb10rd.lo `test -f 'src/slicot/sb10rd.f' || echo '$(srcdir)/'`src/slicot/sb10rd.f
+
+src/slicot/libscicacsd_algo_la-sb04qd.lo: src/slicot/sb04qd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04qd.lo `test -f 'src/slicot/sb04qd.f' || echo '$(srcdir)/'`src/slicot/sb04qd.f
+
+src/slicot/libscicacsd_algo_la-ib01my.lo: src/slicot/ib01my.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ib01my.lo `test -f 'src/slicot/ib01my.f' || echo '$(srcdir)/'`src/slicot/ib01my.f
+
+src/slicot/libscicacsd_algo_la-ib01bd.lo: src/slicot/ib01bd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ib01bd.lo `test -f 'src/slicot/ib01bd.f' || echo '$(srcdir)/'`src/slicot/ib01bd.f
+
+src/slicot/libscicacsd_algo_la-mb04iy.lo: src/slicot/mb04iy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb04iy.lo `test -f 'src/slicot/mb04iy.f' || echo '$(srcdir)/'`src/slicot/mb04iy.f
+
+src/slicot/libscicacsd_algo_la-sb02mr.lo: src/slicot/sb02mr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb02mr.lo `test -f 'src/slicot/sb02mr.f' || echo '$(srcdir)/'`src/slicot/sb02mr.f
+
+src/slicot/libscicacsd_algo_la-ab01nd.lo: src/slicot/ab01nd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ab01nd.lo `test -f 'src/slicot/ab01nd.f' || echo '$(srcdir)/'`src/slicot/ab01nd.f
+
+src/slicot/libscicacsd_algo_la-sb02mt.lo: src/slicot/sb02mt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb02mt.lo `test -f 'src/slicot/sb02mt.f' || echo '$(srcdir)/'`src/slicot/sb02mt.f
+
+src/slicot/libscicacsd_algo_la-sb04mr.lo: src/slicot/sb04mr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04mr.lo `test -f 'src/slicot/sb04mr.f' || echo '$(srcdir)/'`src/slicot/sb04mr.f
+
+src/slicot/libscicacsd_algo_la-sb03mv.lo: src/slicot/sb03mv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb03mv.lo `test -f 'src/slicot/sb03mv.f' || echo '$(srcdir)/'`src/slicot/sb03mv.f
+
+src/slicot/libscicacsd_algo_la-sb02ou.lo: src/slicot/sb02ou.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb02ou.lo `test -f 'src/slicot/sb02ou.f' || echo '$(srcdir)/'`src/slicot/sb02ou.f
+
+src/slicot/libscicacsd_algo_la-mb02qy.lo: src/slicot/mb02qy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb02qy.lo `test -f 'src/slicot/mb02qy.f' || echo '$(srcdir)/'`src/slicot/mb02qy.f
+
+src/slicot/libscicacsd_algo_la-sb03ou.lo: src/slicot/sb03ou.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb03ou.lo `test -f 'src/slicot/sb03ou.f' || echo '$(srcdir)/'`src/slicot/sb03ou.f
+
+src/slicot/libscicacsd_algo_la-sb04qr.lo: src/slicot/sb04qr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb04qr.lo `test -f 'src/slicot/sb04qr.f' || echo '$(srcdir)/'`src/slicot/sb04qr.f
+
+src/slicot/libscicacsd_algo_la-sb03mx.lo: src/slicot/sb03mx.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb03mx.lo `test -f 'src/slicot/sb03mx.f' || echo '$(srcdir)/'`src/slicot/sb03mx.f
+
+src/slicot/libscicacsd_algo_la-ib01nd.lo: src/slicot/ib01nd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ib01nd.lo `test -f 'src/slicot/ib01nd.f' || echo '$(srcdir)/'`src/slicot/ib01nd.f
+
+src/slicot/libscicacsd_algo_la-sb02oy.lo: src/slicot/sb02oy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb02oy.lo `test -f 'src/slicot/sb02oy.f' || echo '$(srcdir)/'`src/slicot/sb02oy.f
+
+src/slicot/libscicacsd_algo_la-sb03oy.lo: src/slicot/sb03oy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb03oy.lo `test -f 'src/slicot/sb03oy.f' || echo '$(srcdir)/'`src/slicot/sb03oy.f
+
+src/slicot/libscicacsd_algo_la-sb03qx.lo: src/slicot/sb03qx.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb03qx.lo `test -f 'src/slicot/sb03qx.f' || echo '$(srcdir)/'`src/slicot/sb03qx.f
+
+src/slicot/libscicacsd_algo_la-ib01rd.lo: src/slicot/ib01rd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ib01rd.lo `test -f 'src/slicot/ib01rd.f' || echo '$(srcdir)/'`src/slicot/ib01rd.f
+
+src/slicot/libscicacsd_algo_la-sb03sy.lo: src/slicot/sb03sy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb03sy.lo `test -f 'src/slicot/sb03sy.f' || echo '$(srcdir)/'`src/slicot/sb03sy.f
+
+src/slicot/libscicacsd_algo_la-mb04nd.lo: src/slicot/mb04nd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb04nd.lo `test -f 'src/slicot/mb04nd.f' || echo '$(srcdir)/'`src/slicot/mb04nd.f
+
+src/slicot/libscicacsd_algo_la-mb01rd.lo: src/slicot/mb01rd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb01rd.lo `test -f 'src/slicot/mb01rd.f' || echo '$(srcdir)/'`src/slicot/mb01rd.f
+
+src/slicot/libscicacsd_algo_la-mb01vd.lo: src/slicot/mb01vd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-mb01vd.lo `test -f 'src/slicot/mb01vd.f' || echo '$(srcdir)/'`src/slicot/mb01vd.f
+
+src/slicot/libscicacsd_algo_la-sb10qd.lo: src/slicot/sb10qd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-sb10qd.lo `test -f 'src/slicot/sb10qd.f' || echo '$(srcdir)/'`src/slicot/sb10qd.f
+
+src/slicot/libscicacsd_algo_la-ereduc.lo: src/slicot/ereduc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ereduc.lo `test -f 'src/slicot/ereduc.f' || echo '$(srcdir)/'`src/slicot/ereduc.f
+
+src/slicot/libscicacsd_algo_la-fstair.lo: src/slicot/fstair.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-fstair.lo `test -f 'src/slicot/fstair.f' || echo '$(srcdir)/'`src/slicot/fstair.f
+
+src/slicot/libscicacsd_algo_la-inva.lo: src/slicot/inva.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-inva.lo `test -f 'src/slicot/inva.f' || echo '$(srcdir)/'`src/slicot/inva.f
+
+src/slicot/libscicacsd_algo_la-polmc.lo: src/slicot/polmc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-polmc.lo `test -f 'src/slicot/polmc.f' || echo '$(srcdir)/'`src/slicot/polmc.f
+
+src/slicot/libscicacsd_algo_la-ssxmc.lo: src/slicot/ssxmc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ssxmc.lo `test -f 'src/slicot/ssxmc.f' || echo '$(srcdir)/'`src/slicot/ssxmc.f
+
+src/slicot/libscicacsd_algo_la-ZB03OD.lo: src/slicot/ZB03OD.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-ZB03OD.lo `test -f 'src/slicot/ZB03OD.f' || echo '$(srcdir)/'`src/slicot/ZB03OD.f
+
+src/slicot/libscicacsd_algo_la-riccpack.lo: src/slicot/riccpack.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-riccpack.lo `test -f 'src/slicot/riccpack.f' || echo '$(srcdir)/'`src/slicot/riccpack.f
+
+src/slicot/libscicacsd_algo_la-Ex-schur.lo: src/slicot/Ex-schur.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_algo_la_FFLAGS) $(FFLAGS) -c -o src/slicot/libscicacsd_algo_la-Ex-schur.lo `test -f 'src/slicot/Ex-schur.f' || echo '$(srcdir)/'`src/slicot/Ex-schur.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_hinf.lo: sci_gateway/fortran/sci_f_hinf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_hinf.lo `test -f 'sci_gateway/fortran/sci_f_hinf.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_hinf.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_zrankqr.lo: sci_gateway/fortran/sci_f_zrankqr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_zrankqr.lo `test -f 'sci_gateway/fortran/sci_f_zrankqr.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_zrankqr.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_tzer.lo: sci_gateway/fortran/sci_f_tzer.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_tzer.lo `test -f 'sci_gateway/fortran/sci_f_tzer.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_tzer.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_residu.lo: sci_gateway/fortran/sci_f_residu.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_residu.lo `test -f 'sci_gateway/fortran/sci_f_residu.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_residu.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_sylv.lo: sci_gateway/fortran/sci_f_sylv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_sylv.lo `test -f 'sci_gateway/fortran/sci_f_sylv.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_sylv.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_ppol.lo: sci_gateway/fortran/sci_f_ppol.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_ppol.lo `test -f 'sci_gateway/fortran/sci_f_ppol.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_ppol.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_freq.lo: sci_gateway/fortran/sci_f_freq.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_freq.lo `test -f 'sci_gateway/fortran/sci_f_freq.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_freq.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_ldiv.lo: sci_gateway/fortran/sci_f_ldiv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_ldiv.lo `test -f 'sci_gateway/fortran/sci_f_ldiv.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_ldiv.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_ricc.lo: sci_gateway/fortran/sci_f_ricc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_ricc.lo `test -f 'sci_gateway/fortran/sci_f_ricc.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_ricc.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_sident.lo: sci_gateway/fortran/sci_f_sident.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_sident.lo `test -f 'sci_gateway/fortran/sci_f_sident.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_sident.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_lyap.lo: sci_gateway/fortran/sci_f_lyap.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_lyap.lo `test -f 'sci_gateway/fortran/sci_f_lyap.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_lyap.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_rtitr.lo: sci_gateway/fortran/sci_f_rtitr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_rtitr.lo `test -f 'sci_gateway/fortran/sci_f_rtitr.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_rtitr.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_sorder.lo: sci_gateway/fortran/sci_f_sorder.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_sorder.lo `test -f 'sci_gateway/fortran/sci_f_sorder.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_sorder.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_mucomp.lo: sci_gateway/fortran/sci_f_mucomp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_mucomp.lo `test -f 'sci_gateway/fortran/sci_f_mucomp.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_mucomp.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_ltitr.lo: sci_gateway/fortran/sci_f_ltitr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_ltitr.lo `test -f 'sci_gateway/fortran/sci_f_ltitr.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_ltitr.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_dhinf.lo: sci_gateway/fortran/sci_f_dhinf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_dhinf.lo `test -f 'sci_gateway/fortran/sci_f_dhinf.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_dhinf.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_ricc2.lo: sci_gateway/fortran/sci_f_ricc2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_ricc2.lo `test -f 'sci_gateway/fortran/sci_f_ricc2.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_ricc2.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_arl2.lo: sci_gateway/fortran/sci_f_arl2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_arl2.lo `test -f 'sci_gateway/fortran/sci_f_arl2.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_arl2.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_gschur.lo: sci_gateway/fortran/sci_f_gschur.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_gschur.lo `test -f 'sci_gateway/fortran/sci_f_gschur.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_gschur.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_ereduc.lo: sci_gateway/fortran/sci_f_ereduc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_ereduc.lo `test -f 'sci_gateway/fortran/sci_f_ereduc.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_ereduc.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_findbd.lo: sci_gateway/fortran/sci_f_findbd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_findbd.lo `test -f 'sci_gateway/fortran/sci_f_findbd.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_findbd.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_fstair.lo: sci_gateway/fortran/sci_f_fstair.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_fstair.lo `test -f 'sci_gateway/fortran/sci_f_fstair.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_fstair.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_gspec.lo: sci_gateway/fortran/sci_f_gspec.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_gspec.lo `test -f 'sci_gateway/fortran/sci_f_gspec.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_gspec.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_linmeq.lo: sci_gateway/fortran/sci_f_linmeq.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_linmeq.lo `test -f 'sci_gateway/fortran/sci_f_linmeq.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_linmeq.f
+
+sci_gateway/fortran/libscicacsd_la-sci_f_rankqr.lo: sci_gateway/fortran/sci_f_rankqr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicacsd_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicacsd_la-sci_f_rankqr.lo `test -f 'sci_gateway/fortran/sci_f_rankqr.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_rankqr.f
 
 mostlyclean-libtool:
 	-rm -f *.lo

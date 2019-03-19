@@ -184,7 +184,7 @@ am__objects_1 = src/c/libscifunctions_algo_la-getmacroslist.lo \
 	src/c/libscifunctions_algo_la-libraryinfo.lo \
 	src/c/libscifunctions_algo_la-isScilabFunction.lo \
 	src/c/libscifunctions_algo_la-searchmacroinlibraries.lo
-am__objects_2 = src/fortran/whereis.lo
+am__objects_2 = src/fortran/libscifunctions_algo_la-whereis.lo
 am_libscifunctions_algo_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 libscifunctions_algo_la_OBJECTS =  \
 	$(am_libscifunctions_algo_la_OBJECTS)
@@ -192,6 +192,10 @@ AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+libscifunctions_algo_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libscifunctions_algo_la_FFLAGS) $(FFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
 libscifunctions_la_DEPENDENCIES = libscifunctions-algo.la
 am__objects_3 = sci_gateway/c/libscifunctions_la-gw_functions.lo \
 	sci_gateway/c/libscifunctions_la-sci_lib.lo \
@@ -201,12 +205,16 @@ am__objects_3 = sci_gateway/c/libscifunctions_la-gw_functions.lo \
 	sci_gateway/c/libscifunctions_la-sci_whereis.lo \
 	sci_gateway/c/libscifunctions_la-sci_librarieslist.lo \
 	sci_gateway/c/libscifunctions_la-sci_libraryinfo.lo
-am__objects_4 = sci_gateway/fortran/intlib.lo \
-	sci_gateway/fortran/intdeff.lo \
-	sci_gateway/fortran/intexecstr.lo \
-	sci_gateway/fortran/intexec.lo
+am__objects_4 = sci_gateway/fortran/libscifunctions_la-intlib.lo \
+	sci_gateway/fortran/libscifunctions_la-intdeff.lo \
+	sci_gateway/fortran/libscifunctions_la-intexecstr.lo \
+	sci_gateway/fortran/libscifunctions_la-intexec.lo
 am_libscifunctions_la_OBJECTS = $(am__objects_3) $(am__objects_4)
 libscifunctions_la_OBJECTS = $(am_libscifunctions_la_OBJECTS)
+libscifunctions_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libscifunctions_la_FFLAGS) $(FFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -510,6 +518,8 @@ PYTHON_EXEC_PREFIX = @PYTHON_EXEC_PREFIX@
 PYTHON_PLATFORM = @PYTHON_PLATFORM@
 PYTHON_PREFIX = @PYTHON_PREFIX@
 PYTHON_VERSION = @PYTHON_VERSION@
+QUIET_CFLAGS = @QUIET_CFLAGS@
+QUIET_CXXFLAGS = @QUIET_CXXFLAGS@
 RANLIB = @RANLIB@
 RAWCPP = @RAWCPP@
 RAWCPPFLAGS = @RAWCPPFLAGS@
@@ -549,6 +559,10 @@ UMFPACK_LIB = @UMFPACK_LIB@
 UNAME = @UNAME@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
+WARNING_CFLAGS = @WARNING_CFLAGS@
+WARNING_CXXFLAGS = @WARNING_CXXFLAGS@
+WERROR_CFLAGS = @WERROR_CFLAGS@
+WERROR_CXXFLAGS = @WERROR_CXXFLAGS@
 WITH_OCAML = @WITH_OCAML@
 WITH_TKSCI = @WITH_TKSCI@
 XCOS_ENABLE = @XCOS_ENABLE@
@@ -665,23 +679,25 @@ sci_gateway/fortran/intexecstr.f \
 sci_gateway/fortran/intexec.f
 
 libscifunctions_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
-			      -Wp,-I$(srcdir)/src/c/ \
-			      -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
-			      -Wp,-I$(top_srcdir)/modules/core/includes/ \
-			      -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
-			      -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
-			      -Wp,-I$(top_srcdir)/modules/fileio/includes/ \
-			      -Wp,-I$(top_srcdir)/modules/call_scilab/includes/ \
-			      -Wp,-I$(top_srcdir)/modules/io/includes/ \
-			      -Wp,-I$(top_srcdir)/modules/string/includes/ \
-			      -Wp,-I$(top_srcdir)/modules/localization/includes/ \
-			      $(AM_CPPFLAGS)
+		      -Wp,-I$(srcdir)/src/c/ \
+		      -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+		      -Wp,-I$(top_srcdir)/modules/core/includes/ \
+		      -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+		      -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+		      -Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+		      -Wp,-I$(top_srcdir)/modules/call_scilab/includes/ \
+		      -Wp,-I$(top_srcdir)/modules/io/includes/ \
+		      -Wp,-I$(top_srcdir)/modules/string/includes/ \
+		      -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+		      $(AM_CPPFLAGS)
 
+libscifunctions_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 pkglib_LTLIBRARIES = libscifunctions.la
 noinst_LTLIBRARIES = libscifunctions-algo.la
 libscifunctions_algo_la_SOURCES = $(FUNCTIONS_C_SOURCES) $(FUNCTIONS_FORTRAN_SOURCES)
 libscifunctions_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libscifunctions_algo_la_CPPFLAGS = $(libscifunctions_la_CPPFLAGS)
+libscifunctions_algo_la_FFLAGS = $(libscifunctions_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC = $(FUNCTIONS_SOURCES) $(GATEWAY_SOURCES)
@@ -790,9 +806,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign modules/functions/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnits modules/functions/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign modules/functions/Makefile
+	  $(AUTOMAKE) --gnits modules/functions/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
@@ -879,11 +895,12 @@ src/fortran/$(am__dirstamp):
 src/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/fortran/$(DEPDIR)
 	@: > src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/whereis.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscifunctions_algo_la-whereis.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscifunctions-algo.la: $(libscifunctions_algo_la_OBJECTS) $(libscifunctions_algo_la_DEPENDENCIES) $(EXTRA_libscifunctions_algo_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK)  $(libscifunctions_algo_la_OBJECTS) $(libscifunctions_algo_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscifunctions_algo_la_LINK)  $(libscifunctions_algo_la_OBJECTS) $(libscifunctions_algo_la_LIBADD) $(LIBS)
 sci_gateway/c/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/c
 	@: > sci_gateway/c/$(am__dirstamp)
@@ -920,18 +937,21 @@ sci_gateway/fortran/$(am__dirstamp):
 sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran/$(DEPDIR)
 	@: > sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/intlib.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/intdeff.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/intexecstr.lo:  \
+sci_gateway/fortran/libscifunctions_la-intlib.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/intexec.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscifunctions_la-intdeff.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscifunctions_la-intexecstr.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscifunctions_la-intexec.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscifunctions.la: $(libscifunctions_la_OBJECTS) $(libscifunctions_la_DEPENDENCIES) $(EXTRA_libscifunctions_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) -rpath $(pkglibdir) $(libscifunctions_la_OBJECTS) $(libscifunctions_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscifunctions_la_LINK) -rpath $(pkglibdir) $(libscifunctions_la_OBJECTS) $(libscifunctions_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -1090,6 +1110,21 @@ sci_gateway/c/libscifunctions_la-sci_libraryinfo.lo: sci_gateway/c/sci_libraryin
 
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
+
+src/fortran/libscifunctions_algo_la-whereis.lo: src/fortran/whereis.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscifunctions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscifunctions_algo_la-whereis.lo `test -f 'src/fortran/whereis.f' || echo '$(srcdir)/'`src/fortran/whereis.f
+
+sci_gateway/fortran/libscifunctions_la-intlib.lo: sci_gateway/fortran/intlib.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscifunctions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscifunctions_la-intlib.lo `test -f 'sci_gateway/fortran/intlib.f' || echo '$(srcdir)/'`sci_gateway/fortran/intlib.f
+
+sci_gateway/fortran/libscifunctions_la-intdeff.lo: sci_gateway/fortran/intdeff.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscifunctions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscifunctions_la-intdeff.lo `test -f 'sci_gateway/fortran/intdeff.f' || echo '$(srcdir)/'`sci_gateway/fortran/intdeff.f
+
+sci_gateway/fortran/libscifunctions_la-intexecstr.lo: sci_gateway/fortran/intexecstr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscifunctions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscifunctions_la-intexecstr.lo `test -f 'sci_gateway/fortran/intexecstr.f' || echo '$(srcdir)/'`sci_gateway/fortran/intexecstr.f
+
+sci_gateway/fortran/libscifunctions_la-intexec.lo: sci_gateway/fortran/intexec.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscifunctions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscifunctions_la-intexec.lo `test -f 'sci_gateway/fortran/intexec.f' || echo '$(srcdir)/'`sci_gateway/fortran/intexec.f
 
 mostlyclean-libtool:
 	-rm -f *.lo

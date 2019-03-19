@@ -30,6 +30,11 @@ int sci_conv2(char *fname, unsigned long fname_len)
     int edgM = 0, edgN = 0;
     int rhs = Rhs;
 
+    if (fname_len < strlen(fname))
+    {
+        ; /* this should probably be some sort of error */
+    }
+
     /* Check if last argument is one of the string "full", "same","valid" */
     sciErr = getVarAddressFromPosition(pvApiCtx, Rhs, &piAddr);
     if (sciErr.iErr)

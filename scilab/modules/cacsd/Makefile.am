@@ -201,10 +201,14 @@ sci_gateway/fortran/sci_f_rankqr.f
 
 libscicacsd_la_CPPFLAGS= -Wp,-I$(srcdir)/includes/ \
 			 -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			 -Wp,-I$(top_srcdir)/modules/core/includes/ \
 			 -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
 			 -Wp,-I$(top_srcdir)/modules/localization/includes/ \
 			 -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
 			 $(AM_CPPFLAGS)
+
+## Need to put this include in FFLAGS too, because fortran is different:
+libscicacsd_la_FFLAGS= -I$(top_srcdir)/modules/core/includes/
 
 if MAINTAINER_MODE
 pkglib_LTLIBRARIES = libscicacsd.la
@@ -219,7 +223,7 @@ libscicacsd_la_LDFLAGS = $(ATLAS_LIBS) $(AM_LDFLAGS)
 libscicacsd_algo_la_SOURCES = $(CACSD_FORTRAN_SOURCES) $(SLICOT_FORTRAN_SOURCES)
 libscicacsd_la_SOURCES = $(GATEWAY_FORTRAN_SOURCES) $(GATEWAY_C_SOURCES)
 libscicacsd_algo_la_CPPFLAGS = $(libscicacsd_la_CPPFLAGS)
-
+libscicacsd_algo_la_FFLAGS = $(libscicacsd_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC= $(GATEWAY_C_SOURCES)

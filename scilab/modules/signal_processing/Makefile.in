@@ -179,32 +179,63 @@ am__installdirs = "$(DESTDIR)$(pkglibdir)" \
 LTLIBRARIES = $(noinst_LTLIBRARIES) $(pkglib_LTLIBRARIES)
 libscisignal_processing_algo_la_LIBADD =
 am__dirstamp = $(am__leading_dot)dirstamp
-am__objects_1 = src/fortran/degree.lo src/fortran/parcha.lo \
-	src/fortran/ouch.lo src/fortran/dfftbi.lo \
-	src/fortran/dsqrtc.lo src/fortran/tranze.lo \
-	src/fortran/tscccf.lo src/fortran/dsn2.lo \
-	src/fortran/hammin.lo src/fortran/bounn.lo \
-	src/fortran/nstabl.lo src/fortran/ino.lo src/fortran/desia.lo \
-	src/fortran/desi11.lo src/fortran/cmpse3.lo \
-	src/fortran/cheby.lo src/fortran/trbize.lo src/fortran/r2tx.lo \
-	src/fortran/deli2.lo src/fortran/gee.lo src/fortran/r4tx.lo \
-	src/fortran/transn.lo src/fortran/r8tx.lo \
-	src/fortran/deli11.lo src/fortran/compel.lo \
-	src/fortran/filbut.lo src/fortran/desi01.lo \
-	src/fortran/desi22.lo src/fortran/amell.lo \
-	src/fortran/desi24.lo src/fortran/dellk.lo \
-	src/fortran/syredi.lo src/fortran/coeft.lo \
-	src/fortran/tranpo.lo src/fortran/blnumz.lo src/fortran/sn.lo \
-	src/fortran/bldenz.lo src/fortran/desib.lo \
-	src/fortran/freque.lo src/fortran/desi12.lo \
-	src/fortran/cmpse2.lo src/fortran/desi14.lo \
-	src/fortran/delip.lo src/fortran/deli1.lo \
-	src/fortran/trbipo.lo src/fortran/rpem.lo src/fortran/dfft2.lo \
-	src/fortran/dgee01.lo src/fortran/romeg.lo \
-	src/fortran/snell.lo src/fortran/fft842.lo \
-	src/fortran/tg02ad.lo src/fortran/remez.lo \
-	src/fortran/poles.lo src/fortran/desi00.lo \
-	src/fortran/desi21.lo src/fortran/dfftmx.lo
+am__objects_1 = src/fortran/libscisignal_processing_algo_la-degree.lo \
+	src/fortran/libscisignal_processing_algo_la-parcha.lo \
+	src/fortran/libscisignal_processing_algo_la-ouch.lo \
+	src/fortran/libscisignal_processing_algo_la-dfftbi.lo \
+	src/fortran/libscisignal_processing_algo_la-dsqrtc.lo \
+	src/fortran/libscisignal_processing_algo_la-tranze.lo \
+	src/fortran/libscisignal_processing_algo_la-tscccf.lo \
+	src/fortran/libscisignal_processing_algo_la-dsn2.lo \
+	src/fortran/libscisignal_processing_algo_la-hammin.lo \
+	src/fortran/libscisignal_processing_algo_la-bounn.lo \
+	src/fortran/libscisignal_processing_algo_la-nstabl.lo \
+	src/fortran/libscisignal_processing_algo_la-ino.lo \
+	src/fortran/libscisignal_processing_algo_la-desia.lo \
+	src/fortran/libscisignal_processing_algo_la-desi11.lo \
+	src/fortran/libscisignal_processing_algo_la-cmpse3.lo \
+	src/fortran/libscisignal_processing_algo_la-cheby.lo \
+	src/fortran/libscisignal_processing_algo_la-trbize.lo \
+	src/fortran/libscisignal_processing_algo_la-r2tx.lo \
+	src/fortran/libscisignal_processing_algo_la-deli2.lo \
+	src/fortran/libscisignal_processing_algo_la-gee.lo \
+	src/fortran/libscisignal_processing_algo_la-r4tx.lo \
+	src/fortran/libscisignal_processing_algo_la-transn.lo \
+	src/fortran/libscisignal_processing_algo_la-r8tx.lo \
+	src/fortran/libscisignal_processing_algo_la-deli11.lo \
+	src/fortran/libscisignal_processing_algo_la-compel.lo \
+	src/fortran/libscisignal_processing_algo_la-filbut.lo \
+	src/fortran/libscisignal_processing_algo_la-desi01.lo \
+	src/fortran/libscisignal_processing_algo_la-desi22.lo \
+	src/fortran/libscisignal_processing_algo_la-amell.lo \
+	src/fortran/libscisignal_processing_algo_la-desi24.lo \
+	src/fortran/libscisignal_processing_algo_la-dellk.lo \
+	src/fortran/libscisignal_processing_algo_la-syredi.lo \
+	src/fortran/libscisignal_processing_algo_la-coeft.lo \
+	src/fortran/libscisignal_processing_algo_la-tranpo.lo \
+	src/fortran/libscisignal_processing_algo_la-blnumz.lo \
+	src/fortran/libscisignal_processing_algo_la-sn.lo \
+	src/fortran/libscisignal_processing_algo_la-bldenz.lo \
+	src/fortran/libscisignal_processing_algo_la-desib.lo \
+	src/fortran/libscisignal_processing_algo_la-freque.lo \
+	src/fortran/libscisignal_processing_algo_la-desi12.lo \
+	src/fortran/libscisignal_processing_algo_la-cmpse2.lo \
+	src/fortran/libscisignal_processing_algo_la-desi14.lo \
+	src/fortran/libscisignal_processing_algo_la-delip.lo \
+	src/fortran/libscisignal_processing_algo_la-deli1.lo \
+	src/fortran/libscisignal_processing_algo_la-trbipo.lo \
+	src/fortran/libscisignal_processing_algo_la-rpem.lo \
+	src/fortran/libscisignal_processing_algo_la-dfft2.lo \
+	src/fortran/libscisignal_processing_algo_la-dgee01.lo \
+	src/fortran/libscisignal_processing_algo_la-romeg.lo \
+	src/fortran/libscisignal_processing_algo_la-snell.lo \
+	src/fortran/libscisignal_processing_algo_la-fft842.lo \
+	src/fortran/libscisignal_processing_algo_la-tg02ad.lo \
+	src/fortran/libscisignal_processing_algo_la-remez.lo \
+	src/fortran/libscisignal_processing_algo_la-poles.lo \
+	src/fortran/libscisignal_processing_algo_la-desi00.lo \
+	src/fortran/libscisignal_processing_algo_la-desi21.lo \
+	src/fortran/libscisignal_processing_algo_la-dfftmx.lo
 am__objects_2 = src/c/libscisignal_processing_algo_la-corrtable.lo \
 	src/c/libscisignal_processing_algo_la-conv2.lo
 am_libscisignal_processing_algo_la_OBJECTS = $(am__objects_1) \
@@ -215,6 +246,10 @@ AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+libscisignal_processing_algo_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 libscisignal_processing_la_DEPENDENCIES =  \
 	libscisignal_processing-algo.la
 am__objects_3 = sci_gateway/c/libscisignal_processing_la-sci_remez.lo \
@@ -228,20 +263,26 @@ am__objects_3 = sci_gateway/c/libscisignal_processing_la-sci_remez.lo \
 	sci_gateway/c/libscisignal_processing_la-sci_fft.lo \
 	sci_gateway/c/libscisignal_processing_la-sci_syredi.lo \
 	sci_gateway/c/libscisignal_processing_la-sci_conv2.lo
-am__objects_4 = sci_gateway/fortran/sci_f_delip.lo \
-	sci_gateway/fortran/sci_f_fft.lo \
-	sci_gateway/fortran/sci_f_syredi.lo \
-	sci_gateway/fortran/sci_f_remez.lo \
-	sci_gateway/fortran/sci_f_rpem.lo \
-	sci_gateway/fortran/sci_f_corr.lo \
-	sci_gateway/fortran/sci_f_fiir.lo \
-	sci_gateway/fortran/sci_f_amell.lo \
-	sci_gateway/fortran/bgetx.lo sci_gateway/fortran/bgety.lo \
-	sci_gateway/fortran/Ex-corr.lo
+am__objects_4 =  \
+	sci_gateway/fortran/libscisignal_processing_la-sci_f_delip.lo \
+	sci_gateway/fortran/libscisignal_processing_la-sci_f_fft.lo \
+	sci_gateway/fortran/libscisignal_processing_la-sci_f_syredi.lo \
+	sci_gateway/fortran/libscisignal_processing_la-sci_f_remez.lo \
+	sci_gateway/fortran/libscisignal_processing_la-sci_f_rpem.lo \
+	sci_gateway/fortran/libscisignal_processing_la-sci_f_corr.lo \
+	sci_gateway/fortran/libscisignal_processing_la-sci_f_fiir.lo \
+	sci_gateway/fortran/libscisignal_processing_la-sci_f_amell.lo \
+	sci_gateway/fortran/libscisignal_processing_la-bgetx.lo \
+	sci_gateway/fortran/libscisignal_processing_la-bgety.lo \
+	sci_gateway/fortran/libscisignal_processing_la-Ex-corr.lo
 am_libscisignal_processing_la_OBJECTS = $(am__objects_3) \
 	$(am__objects_4)
 libscisignal_processing_la_OBJECTS =  \
 	$(am_libscisignal_processing_la_OBJECTS)
+libscisignal_processing_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libscisignal_processing_la_FFLAGS) $(FFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -545,6 +586,8 @@ PYTHON_EXEC_PREFIX = @PYTHON_EXEC_PREFIX@
 PYTHON_PLATFORM = @PYTHON_PLATFORM@
 PYTHON_PREFIX = @PYTHON_PREFIX@
 PYTHON_VERSION = @PYTHON_VERSION@
+QUIET_CFLAGS = @QUIET_CFLAGS@
+QUIET_CXXFLAGS = @QUIET_CXXFLAGS@
 RANLIB = @RANLIB@
 RAWCPP = @RAWCPP@
 RAWCPPFLAGS = @RAWCPPFLAGS@
@@ -584,6 +627,10 @@ UMFPACK_LIB = @UMFPACK_LIB@
 UNAME = @UNAME@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
+WARNING_CFLAGS = @WARNING_CFLAGS@
+WARNING_CXXFLAGS = @WARNING_CXXFLAGS@
+WERROR_CFLAGS = @WERROR_CFLAGS@
+WERROR_CXXFLAGS = @WERROR_CXXFLAGS@
 WITH_OCAML = @WITH_OCAML@
 WITH_TKSCI = @WITH_TKSCI@
 XCOS_ENABLE = @XCOS_ENABLE@
@@ -766,17 +813,20 @@ sci_gateway/fortran/Ex-corr.f
 libscisignal_processing_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
 -Wp,-I$(srcdir)/src/c/ \
 -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+-Wp,-I$(top_srcdir)/modules/core/includes/ \
 -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
 -Wp,-I$(top_srcdir)/modules/localization/includes/ \
 -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
 -Wp,-I$(top_srcdir)/modules/dynamic_link/includes/ \
 $(AM_CPPFLAGS)
 
+libscisignal_processing_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 pkglib_LTLIBRARIES = libscisignal_processing.la
 noinst_LTLIBRARIES = libscisignal_processing-algo.la
 libscisignal_processing_algo_la_SOURCES = $(SIGNAL_PROCESSING_FORTRAN_SOURCES) $(SIGNAL_PROCESSING_C_SOURCES) 
 libscisignal_processing_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libscisignal_processing_algo_la_CPPFLAGS = $(libscisignal_processing_la_CPPFLAGS)
+libscisignal_processing_algo_la_FFLAGS = $(libscisignal_processing_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC = $(SIGNAL_PROCESSING_C_SOURCES) $(GATEWAY_C_SOURCES)
@@ -883,9 +933,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign modules/signal_processing/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnits modules/signal_processing/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign modules/signal_processing/Makefile
+	  $(AUTOMAKE) --gnits modules/signal_processing/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
@@ -956,119 +1006,176 @@ src/fortran/$(am__dirstamp):
 src/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/fortran/$(DEPDIR)
 	@: > src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/degree.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-degree.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/parcha.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-parcha.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ouch.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-ouch.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dfftbi.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-dfftbi.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dsqrtc.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-dsqrtc.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/tranze.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-tranze.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/tscccf.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-tscccf.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dsn2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-dsn2.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/hammin.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-hammin.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/bounn.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-bounn.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/nstabl.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-nstabl.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ino.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-ino.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/desia.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-desia.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/desi11.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-desi11.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/cmpse3.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-cmpse3.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/cheby.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-cheby.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/trbize.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-trbize.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/r2tx.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-r2tx.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/deli2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-deli2.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/gee.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-gee.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/r4tx.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-r4tx.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/transn.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-transn.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/r8tx.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-r8tx.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/deli11.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-deli11.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/compel.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-compel.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/filbut.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-filbut.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/desi01.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-desi01.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/desi22.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-desi22.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/amell.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-amell.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/desi24.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-desi24.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dellk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-dellk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/syredi.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-syredi.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/coeft.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-coeft.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/tranpo.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-tranpo.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/blnumz.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-blnumz.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/sn.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-sn.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/bldenz.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-bldenz.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/desib.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-desib.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/freque.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-freque.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/desi12.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-desi12.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/cmpse2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-cmpse2.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/desi14.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-desi14.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/delip.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-delip.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/deli1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-deli1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/trbipo.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-trbipo.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rpem.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-rpem.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dfft2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-dfft2.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dgee01.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-dgee01.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/romeg.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-romeg.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/snell.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-snell.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/fft842.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-fft842.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/tg02ad.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-tg02ad.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/remez.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-remez.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/poles.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-poles.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/desi00.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-desi00.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/desi21.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-desi21.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dfftmx.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisignal_processing_algo_la-dfftmx.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
 src/c/$(am__dirstamp):
 	@$(MKDIR_P) src/c
@@ -1082,7 +1189,7 @@ src/c/libscisignal_processing_algo_la-conv2.lo: src/c/$(am__dirstamp) \
 	src/c/$(DEPDIR)/$(am__dirstamp)
 
 libscisignal_processing-algo.la: $(libscisignal_processing_algo_la_OBJECTS) $(libscisignal_processing_algo_la_DEPENDENCIES) $(EXTRA_libscisignal_processing_algo_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK)  $(libscisignal_processing_algo_la_OBJECTS) $(libscisignal_processing_algo_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscisignal_processing_algo_la_LINK)  $(libscisignal_processing_algo_la_OBJECTS) $(libscisignal_processing_algo_la_LIBADD) $(LIBS)
 sci_gateway/c/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/c
 	@: > sci_gateway/c/$(am__dirstamp)
@@ -1128,38 +1235,42 @@ sci_gateway/fortran/$(am__dirstamp):
 sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran/$(DEPDIR)
 	@: > sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_delip.lo:  \
+sci_gateway/fortran/libscisignal_processing_la-sci_f_delip.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_fft.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_syredi.lo:  \
+sci_gateway/fortran/libscisignal_processing_la-sci_f_fft.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_remez.lo:  \
+sci_gateway/fortran/libscisignal_processing_la-sci_f_syredi.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_rpem.lo:  \
+sci_gateway/fortran/libscisignal_processing_la-sci_f_remez.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_corr.lo:  \
+sci_gateway/fortran/libscisignal_processing_la-sci_f_rpem.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_fiir.lo:  \
+sci_gateway/fortran/libscisignal_processing_la-sci_f_corr.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_amell.lo:  \
+sci_gateway/fortran/libscisignal_processing_la-sci_f_fiir.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/bgetx.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscisignal_processing_la-sci_f_amell.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/bgety.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscisignal_processing_la-bgetx.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/Ex-corr.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscisignal_processing_la-bgety.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscisignal_processing_la-Ex-corr.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscisignal_processing.la: $(libscisignal_processing_la_OBJECTS) $(libscisignal_processing_la_DEPENDENCIES) $(EXTRA_libscisignal_processing_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) -rpath $(pkglibdir) $(libscisignal_processing_la_OBJECTS) $(libscisignal_processing_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscisignal_processing_la_LINK) -rpath $(pkglibdir) $(libscisignal_processing_la_OBJECTS) $(libscisignal_processing_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -1318,6 +1429,210 @@ sci_gateway/c/libscisignal_processing_la-sci_conv2.lo: sci_gateway/c/sci_conv2.c
 
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
+
+src/fortran/libscisignal_processing_algo_la-degree.lo: src/fortran/degree.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-degree.lo `test -f 'src/fortran/degree.f' || echo '$(srcdir)/'`src/fortran/degree.f
+
+src/fortran/libscisignal_processing_algo_la-parcha.lo: src/fortran/parcha.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-parcha.lo `test -f 'src/fortran/parcha.f' || echo '$(srcdir)/'`src/fortran/parcha.f
+
+src/fortran/libscisignal_processing_algo_la-ouch.lo: src/fortran/ouch.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-ouch.lo `test -f 'src/fortran/ouch.f' || echo '$(srcdir)/'`src/fortran/ouch.f
+
+src/fortran/libscisignal_processing_algo_la-dfftbi.lo: src/fortran/dfftbi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-dfftbi.lo `test -f 'src/fortran/dfftbi.f' || echo '$(srcdir)/'`src/fortran/dfftbi.f
+
+src/fortran/libscisignal_processing_algo_la-dsqrtc.lo: src/fortran/dsqrtc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-dsqrtc.lo `test -f 'src/fortran/dsqrtc.f' || echo '$(srcdir)/'`src/fortran/dsqrtc.f
+
+src/fortran/libscisignal_processing_algo_la-tranze.lo: src/fortran/tranze.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-tranze.lo `test -f 'src/fortran/tranze.f' || echo '$(srcdir)/'`src/fortran/tranze.f
+
+src/fortran/libscisignal_processing_algo_la-tscccf.lo: src/fortran/tscccf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-tscccf.lo `test -f 'src/fortran/tscccf.f' || echo '$(srcdir)/'`src/fortran/tscccf.f
+
+src/fortran/libscisignal_processing_algo_la-dsn2.lo: src/fortran/dsn2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-dsn2.lo `test -f 'src/fortran/dsn2.f' || echo '$(srcdir)/'`src/fortran/dsn2.f
+
+src/fortran/libscisignal_processing_algo_la-hammin.lo: src/fortran/hammin.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-hammin.lo `test -f 'src/fortran/hammin.f' || echo '$(srcdir)/'`src/fortran/hammin.f
+
+src/fortran/libscisignal_processing_algo_la-bounn.lo: src/fortran/bounn.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-bounn.lo `test -f 'src/fortran/bounn.f' || echo '$(srcdir)/'`src/fortran/bounn.f
+
+src/fortran/libscisignal_processing_algo_la-nstabl.lo: src/fortran/nstabl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-nstabl.lo `test -f 'src/fortran/nstabl.f' || echo '$(srcdir)/'`src/fortran/nstabl.f
+
+src/fortran/libscisignal_processing_algo_la-ino.lo: src/fortran/ino.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-ino.lo `test -f 'src/fortran/ino.f' || echo '$(srcdir)/'`src/fortran/ino.f
+
+src/fortran/libscisignal_processing_algo_la-desia.lo: src/fortran/desia.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-desia.lo `test -f 'src/fortran/desia.f' || echo '$(srcdir)/'`src/fortran/desia.f
+
+src/fortran/libscisignal_processing_algo_la-desi11.lo: src/fortran/desi11.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-desi11.lo `test -f 'src/fortran/desi11.f' || echo '$(srcdir)/'`src/fortran/desi11.f
+
+src/fortran/libscisignal_processing_algo_la-cmpse3.lo: src/fortran/cmpse3.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-cmpse3.lo `test -f 'src/fortran/cmpse3.f' || echo '$(srcdir)/'`src/fortran/cmpse3.f
+
+src/fortran/libscisignal_processing_algo_la-cheby.lo: src/fortran/cheby.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-cheby.lo `test -f 'src/fortran/cheby.f' || echo '$(srcdir)/'`src/fortran/cheby.f
+
+src/fortran/libscisignal_processing_algo_la-trbize.lo: src/fortran/trbize.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-trbize.lo `test -f 'src/fortran/trbize.f' || echo '$(srcdir)/'`src/fortran/trbize.f
+
+src/fortran/libscisignal_processing_algo_la-r2tx.lo: src/fortran/r2tx.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-r2tx.lo `test -f 'src/fortran/r2tx.f' || echo '$(srcdir)/'`src/fortran/r2tx.f
+
+src/fortran/libscisignal_processing_algo_la-deli2.lo: src/fortran/deli2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-deli2.lo `test -f 'src/fortran/deli2.f' || echo '$(srcdir)/'`src/fortran/deli2.f
+
+src/fortran/libscisignal_processing_algo_la-gee.lo: src/fortran/gee.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-gee.lo `test -f 'src/fortran/gee.f' || echo '$(srcdir)/'`src/fortran/gee.f
+
+src/fortran/libscisignal_processing_algo_la-r4tx.lo: src/fortran/r4tx.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-r4tx.lo `test -f 'src/fortran/r4tx.f' || echo '$(srcdir)/'`src/fortran/r4tx.f
+
+src/fortran/libscisignal_processing_algo_la-transn.lo: src/fortran/transn.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-transn.lo `test -f 'src/fortran/transn.f' || echo '$(srcdir)/'`src/fortran/transn.f
+
+src/fortran/libscisignal_processing_algo_la-r8tx.lo: src/fortran/r8tx.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-r8tx.lo `test -f 'src/fortran/r8tx.f' || echo '$(srcdir)/'`src/fortran/r8tx.f
+
+src/fortran/libscisignal_processing_algo_la-deli11.lo: src/fortran/deli11.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-deli11.lo `test -f 'src/fortran/deli11.f' || echo '$(srcdir)/'`src/fortran/deli11.f
+
+src/fortran/libscisignal_processing_algo_la-compel.lo: src/fortran/compel.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-compel.lo `test -f 'src/fortran/compel.f' || echo '$(srcdir)/'`src/fortran/compel.f
+
+src/fortran/libscisignal_processing_algo_la-filbut.lo: src/fortran/filbut.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-filbut.lo `test -f 'src/fortran/filbut.f' || echo '$(srcdir)/'`src/fortran/filbut.f
+
+src/fortran/libscisignal_processing_algo_la-desi01.lo: src/fortran/desi01.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-desi01.lo `test -f 'src/fortran/desi01.f' || echo '$(srcdir)/'`src/fortran/desi01.f
+
+src/fortran/libscisignal_processing_algo_la-desi22.lo: src/fortran/desi22.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-desi22.lo `test -f 'src/fortran/desi22.f' || echo '$(srcdir)/'`src/fortran/desi22.f
+
+src/fortran/libscisignal_processing_algo_la-amell.lo: src/fortran/amell.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-amell.lo `test -f 'src/fortran/amell.f' || echo '$(srcdir)/'`src/fortran/amell.f
+
+src/fortran/libscisignal_processing_algo_la-desi24.lo: src/fortran/desi24.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-desi24.lo `test -f 'src/fortran/desi24.f' || echo '$(srcdir)/'`src/fortran/desi24.f
+
+src/fortran/libscisignal_processing_algo_la-dellk.lo: src/fortran/dellk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-dellk.lo `test -f 'src/fortran/dellk.f' || echo '$(srcdir)/'`src/fortran/dellk.f
+
+src/fortran/libscisignal_processing_algo_la-syredi.lo: src/fortran/syredi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-syredi.lo `test -f 'src/fortran/syredi.f' || echo '$(srcdir)/'`src/fortran/syredi.f
+
+src/fortran/libscisignal_processing_algo_la-coeft.lo: src/fortran/coeft.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-coeft.lo `test -f 'src/fortran/coeft.f' || echo '$(srcdir)/'`src/fortran/coeft.f
+
+src/fortran/libscisignal_processing_algo_la-tranpo.lo: src/fortran/tranpo.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-tranpo.lo `test -f 'src/fortran/tranpo.f' || echo '$(srcdir)/'`src/fortran/tranpo.f
+
+src/fortran/libscisignal_processing_algo_la-blnumz.lo: src/fortran/blnumz.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-blnumz.lo `test -f 'src/fortran/blnumz.f' || echo '$(srcdir)/'`src/fortran/blnumz.f
+
+src/fortran/libscisignal_processing_algo_la-sn.lo: src/fortran/sn.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-sn.lo `test -f 'src/fortran/sn.f' || echo '$(srcdir)/'`src/fortran/sn.f
+
+src/fortran/libscisignal_processing_algo_la-bldenz.lo: src/fortran/bldenz.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-bldenz.lo `test -f 'src/fortran/bldenz.f' || echo '$(srcdir)/'`src/fortran/bldenz.f
+
+src/fortran/libscisignal_processing_algo_la-desib.lo: src/fortran/desib.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-desib.lo `test -f 'src/fortran/desib.f' || echo '$(srcdir)/'`src/fortran/desib.f
+
+src/fortran/libscisignal_processing_algo_la-freque.lo: src/fortran/freque.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-freque.lo `test -f 'src/fortran/freque.f' || echo '$(srcdir)/'`src/fortran/freque.f
+
+src/fortran/libscisignal_processing_algo_la-desi12.lo: src/fortran/desi12.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-desi12.lo `test -f 'src/fortran/desi12.f' || echo '$(srcdir)/'`src/fortran/desi12.f
+
+src/fortran/libscisignal_processing_algo_la-cmpse2.lo: src/fortran/cmpse2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-cmpse2.lo `test -f 'src/fortran/cmpse2.f' || echo '$(srcdir)/'`src/fortran/cmpse2.f
+
+src/fortran/libscisignal_processing_algo_la-desi14.lo: src/fortran/desi14.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-desi14.lo `test -f 'src/fortran/desi14.f' || echo '$(srcdir)/'`src/fortran/desi14.f
+
+src/fortran/libscisignal_processing_algo_la-delip.lo: src/fortran/delip.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-delip.lo `test -f 'src/fortran/delip.f' || echo '$(srcdir)/'`src/fortran/delip.f
+
+src/fortran/libscisignal_processing_algo_la-deli1.lo: src/fortran/deli1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-deli1.lo `test -f 'src/fortran/deli1.f' || echo '$(srcdir)/'`src/fortran/deli1.f
+
+src/fortran/libscisignal_processing_algo_la-trbipo.lo: src/fortran/trbipo.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-trbipo.lo `test -f 'src/fortran/trbipo.f' || echo '$(srcdir)/'`src/fortran/trbipo.f
+
+src/fortran/libscisignal_processing_algo_la-rpem.lo: src/fortran/rpem.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-rpem.lo `test -f 'src/fortran/rpem.f' || echo '$(srcdir)/'`src/fortran/rpem.f
+
+src/fortran/libscisignal_processing_algo_la-dfft2.lo: src/fortran/dfft2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-dfft2.lo `test -f 'src/fortran/dfft2.f' || echo '$(srcdir)/'`src/fortran/dfft2.f
+
+src/fortran/libscisignal_processing_algo_la-dgee01.lo: src/fortran/dgee01.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-dgee01.lo `test -f 'src/fortran/dgee01.f' || echo '$(srcdir)/'`src/fortran/dgee01.f
+
+src/fortran/libscisignal_processing_algo_la-romeg.lo: src/fortran/romeg.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-romeg.lo `test -f 'src/fortran/romeg.f' || echo '$(srcdir)/'`src/fortran/romeg.f
+
+src/fortran/libscisignal_processing_algo_la-snell.lo: src/fortran/snell.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-snell.lo `test -f 'src/fortran/snell.f' || echo '$(srcdir)/'`src/fortran/snell.f
+
+src/fortran/libscisignal_processing_algo_la-fft842.lo: src/fortran/fft842.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-fft842.lo `test -f 'src/fortran/fft842.f' || echo '$(srcdir)/'`src/fortran/fft842.f
+
+src/fortran/libscisignal_processing_algo_la-tg02ad.lo: src/fortran/tg02ad.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-tg02ad.lo `test -f 'src/fortran/tg02ad.f' || echo '$(srcdir)/'`src/fortran/tg02ad.f
+
+src/fortran/libscisignal_processing_algo_la-remez.lo: src/fortran/remez.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-remez.lo `test -f 'src/fortran/remez.f' || echo '$(srcdir)/'`src/fortran/remez.f
+
+src/fortran/libscisignal_processing_algo_la-poles.lo: src/fortran/poles.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-poles.lo `test -f 'src/fortran/poles.f' || echo '$(srcdir)/'`src/fortran/poles.f
+
+src/fortran/libscisignal_processing_algo_la-desi00.lo: src/fortran/desi00.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-desi00.lo `test -f 'src/fortran/desi00.f' || echo '$(srcdir)/'`src/fortran/desi00.f
+
+src/fortran/libscisignal_processing_algo_la-desi21.lo: src/fortran/desi21.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-desi21.lo `test -f 'src/fortran/desi21.f' || echo '$(srcdir)/'`src/fortran/desi21.f
+
+src/fortran/libscisignal_processing_algo_la-dfftmx.lo: src/fortran/dfftmx.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisignal_processing_algo_la-dfftmx.lo `test -f 'src/fortran/dfftmx.f' || echo '$(srcdir)/'`src/fortran/dfftmx.f
+
+sci_gateway/fortran/libscisignal_processing_la-sci_f_delip.lo: sci_gateway/fortran/sci_f_delip.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisignal_processing_la-sci_f_delip.lo `test -f 'sci_gateway/fortran/sci_f_delip.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_delip.f
+
+sci_gateway/fortran/libscisignal_processing_la-sci_f_fft.lo: sci_gateway/fortran/sci_f_fft.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisignal_processing_la-sci_f_fft.lo `test -f 'sci_gateway/fortran/sci_f_fft.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_fft.f
+
+sci_gateway/fortran/libscisignal_processing_la-sci_f_syredi.lo: sci_gateway/fortran/sci_f_syredi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisignal_processing_la-sci_f_syredi.lo `test -f 'sci_gateway/fortran/sci_f_syredi.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_syredi.f
+
+sci_gateway/fortran/libscisignal_processing_la-sci_f_remez.lo: sci_gateway/fortran/sci_f_remez.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisignal_processing_la-sci_f_remez.lo `test -f 'sci_gateway/fortran/sci_f_remez.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_remez.f
+
+sci_gateway/fortran/libscisignal_processing_la-sci_f_rpem.lo: sci_gateway/fortran/sci_f_rpem.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisignal_processing_la-sci_f_rpem.lo `test -f 'sci_gateway/fortran/sci_f_rpem.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_rpem.f
+
+sci_gateway/fortran/libscisignal_processing_la-sci_f_corr.lo: sci_gateway/fortran/sci_f_corr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisignal_processing_la-sci_f_corr.lo `test -f 'sci_gateway/fortran/sci_f_corr.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_corr.f
+
+sci_gateway/fortran/libscisignal_processing_la-sci_f_fiir.lo: sci_gateway/fortran/sci_f_fiir.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisignal_processing_la-sci_f_fiir.lo `test -f 'sci_gateway/fortran/sci_f_fiir.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_fiir.f
+
+sci_gateway/fortran/libscisignal_processing_la-sci_f_amell.lo: sci_gateway/fortran/sci_f_amell.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisignal_processing_la-sci_f_amell.lo `test -f 'sci_gateway/fortran/sci_f_amell.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_amell.f
+
+sci_gateway/fortran/libscisignal_processing_la-bgetx.lo: sci_gateway/fortran/bgetx.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisignal_processing_la-bgetx.lo `test -f 'sci_gateway/fortran/bgetx.f' || echo '$(srcdir)/'`sci_gateway/fortran/bgetx.f
+
+sci_gateway/fortran/libscisignal_processing_la-bgety.lo: sci_gateway/fortran/bgety.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisignal_processing_la-bgety.lo `test -f 'sci_gateway/fortran/bgety.f' || echo '$(srcdir)/'`sci_gateway/fortran/bgety.f
+
+sci_gateway/fortran/libscisignal_processing_la-Ex-corr.lo: sci_gateway/fortran/Ex-corr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisignal_processing_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisignal_processing_la-Ex-corr.lo `test -f 'sci_gateway/fortran/Ex-corr.f' || echo '$(srcdir)/'`sci_gateway/fortran/Ex-corr.f
 
 mostlyclean-libtool:
 	-rm -f *.lo

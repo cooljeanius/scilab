@@ -12,7 +12,7 @@
 
 ## Process this file with automake to produce Makefile.in (which will be changed by the ./configure)
 
-AUTOMAKE_OPTIONS = 1.11.6 dejagnu dist-zip dist-bzip2 foreign subdir-objects -Wall
+AUTOMAKE_OPTIONS = 1.11.6 dejagnu dist-zip dist-bzip2 gnits subdir-objects -Wall
 
 SUBDIRS = libs \
 	modules \
@@ -33,8 +33,8 @@ changelogs = CHANGES CHANGES_5.1.X CHANGES_5.2.X CHANGES_5.3.X CHANGES_5.4.X
 
 bin_PROGRAMS		= scilab-bin scilab-cli-bin
 
-bin_SCRIPTS		= bin/scilab bin/scilab-adv-cli bin/scilab-cli \
-bin/scinotes bin/xcos
+bin_SCRIPTS		= bin/scilab bin/scilab-adv-cli bin/scilab-cli
+## FIXME: where are bin/scinotes and bin/xcos supposed to come from?
 
 if IS_MACOSX
 bin_SCRIPTS 		+= bin/checkmacosx.applescript

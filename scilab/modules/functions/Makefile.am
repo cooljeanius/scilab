@@ -26,17 +26,20 @@ sci_gateway/fortran/intexecstr.f \
 sci_gateway/fortran/intexec.f
 
 libscifunctions_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
-			      -Wp,-I$(srcdir)/src/c/ \
-			      -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
-			      -Wp,-I$(top_srcdir)/modules/core/includes/ \
-			      -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
-			      -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
-			      -Wp,-I$(top_srcdir)/modules/fileio/includes/ \
-			      -Wp,-I$(top_srcdir)/modules/call_scilab/includes/ \
-			      -Wp,-I$(top_srcdir)/modules/io/includes/ \
-			      -Wp,-I$(top_srcdir)/modules/string/includes/ \
-			      -Wp,-I$(top_srcdir)/modules/localization/includes/ \
-			      $(AM_CPPFLAGS)
+		      -Wp,-I$(srcdir)/src/c/ \
+		      -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+		      -Wp,-I$(top_srcdir)/modules/core/includes/ \
+		      -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+		      -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+		      -Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+		      -Wp,-I$(top_srcdir)/modules/call_scilab/includes/ \
+		      -Wp,-I$(top_srcdir)/modules/io/includes/ \
+		      -Wp,-I$(top_srcdir)/modules/string/includes/ \
+		      -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+		      $(AM_CPPFLAGS)
+
+## Need to put this include in FFLAGS too, because fortran is different:
+libscifunctions_la_FFLAGS= -I$(top_srcdir)/modules/core/includes/
 
 pkglib_LTLIBRARIES = libscifunctions.la
 noinst_LTLIBRARIES = libscifunctions-algo.la
@@ -45,6 +48,7 @@ noinst_LTLIBRARIES = libscifunctions-algo.la
 libscifunctions_algo_la_SOURCES = $(FUNCTIONS_C_SOURCES) $(FUNCTIONS_FORTRAN_SOURCES)
 libscifunctions_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libscifunctions_algo_la_CPPFLAGS = $(libscifunctions_la_CPPFLAGS)
+libscifunctions_algo_la_FFLAGS = $(libscifunctions_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC= $(FUNCTIONS_SOURCES) $(GATEWAY_SOURCES)

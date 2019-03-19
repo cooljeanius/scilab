@@ -23,6 +23,9 @@ config.h
 modules/core/includes/machine.h
 modules/core/includes/stack.h
 po/remove-potcdate.sed
+*.sum
+*.tst.trs
+scilab-5.4.0/*
 
 #
 # Java compilation output dir
@@ -169,6 +172,8 @@ etc/logging.properties
 etc/classpath.xml
 etc/modules.xml
 etc/Info.plist
+call_scilab_c*
+call_scilab_readwrite*
 
 #
 # Subversion directories

@@ -15,7 +15,7 @@ dnl# configure.ac                                  -*- Autoconf -*-
 dnl# Process this file with autoconf to produce a configure script.
 
 AC_REVISION($Revision$)dnl
-AC_INIT([Scilab],[5],[http://bugzilla.scilab.org/])
+AC_INIT([Scilab],[5.4.0],[http://bugzilla.scilab.org/])
 AC_PREREQ([2.69])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([contrib/toolbox_skeleton/sci_gateway/c/sci_csub.c])dnl
@@ -95,7 +95,7 @@ AM_MAINTAINER_MODE
 
 AB_INIT dnl# Gives extra info about the build (from m4/autobuild.m4)
 CMAKE_FIND_BINARY dnl# Ionic says to use `cmake -v`... (from m4/cmake.m4)
-AM_INIT_AUTOMAKE([1.11.6 dejagnu dist-zip dist-bzip2 -Wall foreign subdir-objects]) # Not using -Werror because we override {C,F}FLAGS in order to disable optimization
+AM_INIT_AUTOMAKE([1.11.6 dejagnu dist-zip dist-bzip2 -Wall gnits subdir-objects]) # Not using -Werror because we override {C,F}FLAGS in order to disable optimization
 dnl# subdir-objects is required as of automake1.14
 
 #################################
@@ -745,12 +745,40 @@ case "${CC}" in
             CHECK_COMPILER_ARG([C],[-Wa,-Qunused-arguments],[CFLAGS],
                                [QUIET_CFLAGS])
         fi
+        if test -n "${QUIET_CFLAGS}"; then
+            if test -n "${ARCH_CFLAGS}"; then
+                ARCH_CFLAGS="${ARCH_CFLAGS} ${QUIET_CFLAGS}"
+            elif test -n "${DEBUG_CFLAGS}"; then
+                DEBUG_CFLAGS="${DEBUG_CFLAGS} ${QUIET_CFLAGS}"
+            elif test -n "${COMPILER_CFLAGS}"; then
+                COMPILER_CFLAGS="${COMPILER_CFLAGS} ${QUIET_CFLAGS}"
+            elif test -n "${WARNING_CFLAGS}"; then
+                WARNING_CFLAGS="${WARNING_CFLAGS} ${QUIET_CFLAGS}"
+            elif test -n "${WERROR_CFLAGS}"; then
+                WERROR_CFLAGS="${WERROR_CFLAGS} ${QUIET_CFLAGS}"
+            fi
+        fi
+        AC_SUBST([QUIET_CFLAGS])
         CHECK_COMPILER_ARG([C++],[-Qunused-arguments],[CXXFLAGS],
                            [QUIET_CXXFLAGS])
         if test -z "${QUIET_CXXFLAGS}"; then
             CHECK_COMPILER_ARG([C++],[-Wa,-Qunused-arguments],[CXXFLAGS],
                                [QUIET_CXXFLAGS])
         fi
+        if test -n "${QUIET_CXXFLAGS}"; then
+            if test -n "${ARCH_CXXFLAGS}"; then
+                ARCH_CXXFLAGS="${ARCH_CXXFLAGS} ${QUIET_CXXFLAGS}"
+            elif test -n "${DEBUG_CXXFLAGS}"; then
+                DEBUG_CXXFLAGS="${DEBUG_CXXFLAGS} ${QUIET_CXXFLAGS}"
+            elif test -n "${COMPILER_CXXFLAGS}"; then
+                COMPILER_CXXFLAGS="${COMPILER_CXXFLAGS} ${QUIET_CXXFLAGS}"
+            elif test -n "${WARNING_CXXFLAGS}"; then
+                WARNING_CXXFLAGS="${WARNING_CXXFLAGS} ${QUIET_CXXFLAGS}"
+            elif test -n "${WERROR_CXXFLAGS}"; then
+                WERROR_CXXFLAGS="${WERROR_CXXFLAGS} ${QUIET_CXXFLAGS}"
+            fi
+        fi
+        AC_SUBST([QUIET_CXXFLAGS])dnl
 
         case "${F77}" in
              gfortran-*|gfortran)
@@ -888,7 +916,7 @@ XCOS_ENABLE=no
 if test "x${with_xcos}" != "xno" -a "x${with_gui}" != "xno"; then
    AC_DEFINE([WITH_XCOS],[],[With XCOS])dnl
 
-   save_LIBS="$LIBS"
+   save_LIBS="${LIBS}"
 
    AC_SEARCH_LIBS([clock_gettime],[rt c])
    AC_CHECK_LIB([rt],[clock_gettime],
@@ -896,7 +924,7 @@ if test "x${with_xcos}" != "xno" -a "x${with_gui}" != "xno"; then
               AC_DEFINE([HAVE_CLOCK_GETTIME],[1],
                         [Whether clock_gettime is available])],
         [AC_MSG_WARN([librt: library missing (Cannot find symbol clock_gettime). Check if librt is installed (it is usually provided by the libc) and if the version is correct])])
-   LIBS="$save_LIBS"
+   LIBS="${save_LIBS}"
    AC_SUBST([RT_LIB])dnl
 
    #################
@@ -1591,7 +1619,7 @@ AC_SEARCH_LIBS([tgetent],[termcap tinfo curses ncurses])dnl
 
 AC_CHECK_HEADERS([ncurses.h curses.h])dnl
 
-if test "x${ac_cv_lib_curses_main}" = "xyes" -o "x${ac_cv_lib_ncurses_main}" = "xyes" ; then
+if test "x${ac_cv_lib_curses_main}" = "xyes" -o "x${ac_cv_lib_ncurses_main}" = "xyes"; then
   AC_DEFINE([HAVE_TERMCAP],[],[Have Term Cap])
 else
  AC_MSG_ERROR([No termcap library detected. Please install ncurses dev library (or termcap library)])
@@ -1604,8 +1632,16 @@ fi
 AC_CHECK_LIB([c],[printf])
 AC_SEARCH_LIBS([dlopen],[dl xpdl dlcompat dyld ltdl zrldsrl])
 AC_CHECK_LIB([dl],[dlsym])
-AC_CHECK_LIB([iconv],[iconv])
-AC_CHECK_LIB([intl],[gettext])
+AC_CHECK_LIB([iconv],[iconv],[:],[
+  AC_CHECK_LIB([iconv],[libiconv],[:],[
+    AC_CHECK_LIB([libiconv],[iconv],[:],[
+      AC_CHECK_LIB([libiconv],[libiconv])
+    ])dnl
+  ])dnl
+])dnl
+AC_CHECK_LIB([intl],[gettext],[:],[
+  AC_CHECK_LIB([intl],[libintl_gettext])
+])dnl
 AC_CHECK_LIB([ltdl],[lt_dlopen])
 AC_SEARCH_LIBS([sqrt],[m c])
 AC_CHECK_LIB([m],[cos])
@@ -2027,7 +2063,8 @@ if test "x${enable_compilation_tests}" != "xno" -a "x${enable_compilation_tests}
    COMPILATION_TESTS=yes
 fi
 
-if test COMPILATION_TESTS=yes -a "$JUNIT4" == ""; then
+if test "x${COMPILATION_TESTS}" = "xyes" -a "x${JUNIT4}" = "x"; then
+   test -z "${JUNIT4}"
    AC_MSG_WARN([--enable-compilation-tests deactivated: Could not find Junit4.])
    COMPILATION_TESTS=no
 fi
@@ -2191,9 +2228,16 @@ AC_DEFINE_UNQUOTED([SHARED_LIB_EXT],["$shrext_cmds"],
 #
 dnl# @TODO : -O0 is only to bypass stack stercus... Must be removed.
 if test "x${enable_stop_on_warning}" = "xyes"; then
-    WARNING_CFLAGS="-Werror=implicit-function-declaration -O0"
-    WARNING_CXXFLAGS="-Werror=implicit-function-declaration -O0"
+    CHECK_COMPILER_ARG([C],[-Werror=all],[CFLAGS],[WERROR_CFLAGS])
+    WARNING_CFLAGS="-Werror=implicit-function-declaration -O0 ${WERROR_CFLAGS}"
+    CHECK_COMPILER_ARG([C++],[-Werror=all],[CXXFLAGS],[WERROR_CXXFLAGS])
+    WARNING_CXXFLAGS="-Werror=implicit-function-declaration -O0 ${WERROR_CXXFLAGS}"
 fi
+
+AC_SUBST([WARNING_CFLAGS])dnl
+AC_SUBST([WARNING_CXXFLAGS])dnl
+AC_SUBST([WERROR_CFLAGS])dnl
+AC_SUBST([WERROR_CXXFLAGS])dnl
 
 # SCI_*FLAGS contains all defaults values detected on configure.
 # The point of all the calls to echo here is to strip excess spaces between

@@ -91,11 +91,15 @@ sci_gateway/fortran/Ex-corr.f
 libscisignal_processing_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
 -Wp,-I$(srcdir)/src/c/ \
 -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+-Wp,-I$(top_srcdir)/modules/core/includes/ \
 -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
 -Wp,-I$(top_srcdir)/modules/localization/includes/ \
 -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
 -Wp,-I$(top_srcdir)/modules/dynamic_link/includes/ \
 $(AM_CPPFLAGS)
+
+## Need to put this include in FFLAGS too, because fortran is different:
+libscisignal_processing_la_FFLAGS= -I$(top_srcdir)/modules/core/includes/
 
 pkglib_LTLIBRARIES = libscisignal_processing.la
 noinst_LTLIBRARIES = libscisignal_processing-algo.la
@@ -104,6 +108,7 @@ noinst_LTLIBRARIES = libscisignal_processing-algo.la
 libscisignal_processing_algo_la_SOURCES = $(SIGNAL_PROCESSING_FORTRAN_SOURCES) $(SIGNAL_PROCESSING_C_SOURCES) 
 libscisignal_processing_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libscisignal_processing_algo_la_CPPFLAGS = $(libscisignal_processing_la_CPPFLAGS)
+libscisignal_processing_algo_la_FFLAGS = $(libscisignal_processing_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC= $(SIGNAL_PROCESSING_C_SOURCES) $(GATEWAY_C_SOURCES)

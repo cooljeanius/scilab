@@ -182,13 +182,18 @@ am__dirstamp = $(am__leading_dot)dirstamp
 am__objects_1 = src/c/libsciboolean_algo_la-matboolean.lo \
 	src/c/libsciboolean_algo_la-vect_or.lo \
 	src/c/libsciboolean_algo_la-vect_and.lo
-am__objects_2 = src/fortran/logic.lo src/fortran/find.lo
+am__objects_2 = src/fortran/libsciboolean_algo_la-logic.lo \
+	src/fortran/libsciboolean_algo_la-find.lo
 am_libsciboolean_algo_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 libsciboolean_algo_la_OBJECTS = $(am_libsciboolean_algo_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+libsciboolean_algo_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libsciboolean_algo_la_FFLAGS) $(FFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
 @MAINTAINER_MODE_FALSE@am_libsciboolean_algo_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libsciboolean_algo_la_rpath =
 libsciboolean_la_DEPENDENCIES = libsciboolean-algo.la
@@ -197,10 +202,14 @@ am__objects_3 = sci_gateway/c/libsciboolean_la-sci_and.lo \
 	sci_gateway/c/libsciboolean_la-sci_find.lo \
 	sci_gateway/c/libsciboolean_la-sci_bool2s.lo \
 	sci_gateway/c/libsciboolean_la-gw_boolean.lo
-am__objects_4 = sci_gateway/fortran/sci_f_bool2s.lo \
-	sci_gateway/fortran/sci_f_find.lo
+am__objects_4 = sci_gateway/fortran/libsciboolean_la-sci_f_bool2s.lo \
+	sci_gateway/fortran/libsciboolean_la-sci_f_find.lo
 am_libsciboolean_la_OBJECTS = $(am__objects_3) $(am__objects_4)
 libsciboolean_la_OBJECTS = $(am_libsciboolean_la_OBJECTS)
+libsciboolean_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libsciboolean_la_FFLAGS) $(FFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
+	-o $@
 @MAINTAINER_MODE_FALSE@am_libsciboolean_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libsciboolean_la_rpath = -rpath $(pkglibdir)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -500,6 +509,8 @@ PYTHON_EXEC_PREFIX = @PYTHON_EXEC_PREFIX@
 PYTHON_PLATFORM = @PYTHON_PLATFORM@
 PYTHON_PREFIX = @PYTHON_PREFIX@
 PYTHON_VERSION = @PYTHON_VERSION@
+QUIET_CFLAGS = @QUIET_CFLAGS@
+QUIET_CXXFLAGS = @QUIET_CXXFLAGS@
 RANLIB = @RANLIB@
 RAWCPP = @RAWCPP@
 RAWCPPFLAGS = @RAWCPPFLAGS@
@@ -539,6 +550,10 @@ UMFPACK_LIB = @UMFPACK_LIB@
 UNAME = @UNAME@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
+WARNING_CFLAGS = @WARNING_CFLAGS@
+WARNING_CXXFLAGS = @WARNING_CXXFLAGS@
+WERROR_CFLAGS = @WERROR_CFLAGS@
+WERROR_CXXFLAGS = @WERROR_CXXFLAGS@
 WITH_OCAML = @WITH_OCAML@
 WITH_TKSCI = @WITH_TKSCI@
 XCOS_ENABLE = @XCOS_ENABLE@
@@ -650,19 +665,22 @@ GATEWAY_FORTRAN_SOURCES = sci_gateway/fortran/sci_f_bool2s.f \
 sci_gateway/fortran/sci_f_find.f
 
 libsciboolean_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
-			   -Wp,-I$(srcdir)/src/c/ \
-			   -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
-			   -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
-			   -Wp,-I$(top_srcdir)/modules/localization/includes/ \
-			   -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
-			   $(AM_CPPFLAGS)
+		   -Wp,-I$(srcdir)/src/c/ \
+		   -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/core/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+		   $(AM_CPPFLAGS)
 
+libsciboolean_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 @MAINTAINER_MODE_TRUE@pkglib_LTLIBRARIES = libsciboolean.la
 @MAINTAINER_MODE_FALSE@noinst_LTLIBRARIES = libsciboolean-algo.la libsciboolean.la
 @MAINTAINER_MODE_TRUE@noinst_LTLIBRARIES = libsciboolean-algo.la
 libsciboolean_algo_la_SOURCES = $(BOOLEAN_C_SOURCES) $(BOOLEAN_FORTRAN_SOURCES)
 libsciboolean_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libsciboolean_algo_la_CPPFLAGS = $(libsciboolean_la_CPPFLAGS)
+libsciboolean_algo_la_FFLAGS = $(libsciboolean_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC = $(BOOLEAN_C_SOURCES) $(GATEWAY_C_SOURCES)
@@ -767,9 +785,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign modules/boolean/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnits modules/boolean/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign modules/boolean/Makefile
+	  $(AUTOMAKE) --gnits modules/boolean/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
@@ -852,13 +870,15 @@ src/fortran/$(am__dirstamp):
 src/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/fortran/$(DEPDIR)
 	@: > src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/logic.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciboolean_algo_la-logic.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/find.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciboolean_algo_la-find.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libsciboolean-algo.la: $(libsciboolean_algo_la_OBJECTS) $(libsciboolean_algo_la_DEPENDENCIES) $(EXTRA_libsciboolean_algo_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libsciboolean_algo_la_rpath) $(libsciboolean_algo_la_OBJECTS) $(libsciboolean_algo_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libsciboolean_algo_la_LINK) $(am_libsciboolean_algo_la_rpath) $(libsciboolean_algo_la_OBJECTS) $(libsciboolean_algo_la_LIBADD) $(LIBS)
 sci_gateway/c/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/c
 	@: > sci_gateway/c/$(am__dirstamp)
@@ -886,15 +906,15 @@ sci_gateway/fortran/$(am__dirstamp):
 sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran/$(DEPDIR)
 	@: > sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_bool2s.lo:  \
+sci_gateway/fortran/libsciboolean_la-sci_f_bool2s.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_find.lo:  \
+sci_gateway/fortran/libsciboolean_la-sci_f_find.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libsciboolean.la: $(libsciboolean_la_OBJECTS) $(libsciboolean_la_DEPENDENCIES) $(EXTRA_libsciboolean_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libsciboolean_la_rpath) $(libsciboolean_la_OBJECTS) $(libsciboolean_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libsciboolean_la_LINK) $(am_libsciboolean_la_rpath) $(libsciboolean_la_OBJECTS) $(libsciboolean_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -1013,6 +1033,18 @@ sci_gateway/c/libsciboolean_la-gw_boolean.lo: sci_gateway/c/gw_boolean.c
 
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
+
+src/fortran/libsciboolean_algo_la-logic.lo: src/fortran/logic.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciboolean_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciboolean_algo_la-logic.lo `test -f 'src/fortran/logic.f' || echo '$(srcdir)/'`src/fortran/logic.f
+
+src/fortran/libsciboolean_algo_la-find.lo: src/fortran/find.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciboolean_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciboolean_algo_la-find.lo `test -f 'src/fortran/find.f' || echo '$(srcdir)/'`src/fortran/find.f
+
+sci_gateway/fortran/libsciboolean_la-sci_f_bool2s.lo: sci_gateway/fortran/sci_f_bool2s.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciboolean_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciboolean_la-sci_f_bool2s.lo `test -f 'sci_gateway/fortran/sci_f_bool2s.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_bool2s.f
+
+sci_gateway/fortran/libsciboolean_la-sci_f_find.lo: sci_gateway/fortran/sci_f_find.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciboolean_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciboolean_la-sci_f_find.lo `test -f 'sci_gateway/fortran/sci_f_find.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_find.f
 
 mostlyclean-libtool:
 	-rm -f *.lo

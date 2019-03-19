@@ -222,61 +222,88 @@ am__objects_1 = src/c/libsciinteger_algo_la-genconcatcol.lo \
 	src/c/libsciinteger_algo_la-gencuprod.lo \
 	src/c/libsciinteger_algo_la-genbitops.lo \
 	src/c/libsciinteger_algo_la-genimpl.lo
-am__objects_2 = src/fortran/unarybit.lo src/fortran/i_mput.lo \
-	src/fortran/i_logic.lo src/fortran/i_a_i.lo \
-	src/fortran/i_b_i.lo src/fortran/i_c_i.lo src/fortran/i_d_i.lo \
-	src/fortran/i_mini.lo src/fortran/intinttype.lo \
-	src/fortran/i_f_i.lo src/fortran/i_maxi.lo \
-	src/fortran/i_matrix.lo src/fortran/i_i_i.lo \
-	src/fortran/i_l_i.lo src/fortran/i_m_i.lo \
-	src/fortran/intops.lo src/fortran/i_prod.lo \
-	src/fortran/i_q_i.lo src/fortran/i_r_i.lo \
-	src/fortran/i_tril.lo src/fortran/i_s_i.lo \
-	src/fortran/i_x_i.lo src/fortran/uppertype.lo \
-	src/fortran/i_triu.lo src/fortran/i_e.lo \
-	src/fortran/memused.lo src/fortran/bitops.lo \
-	src/fortran/i_mget.lo src/fortran/i_p.lo src/fortran/i_t.lo \
-	src/fortran/i_sum.lo src/fortran/i_diag.lo \
-	src/fortran/i_abs.lo src/fortran/stack_convert.lo \
-	src/fortran/i_cumprod.lo src/fortran/i_cumsum.lo \
-	src/fortran/i_kron.lo
+am__objects_2 = src/fortran/libsciinteger_algo_la-unarybit.lo \
+	src/fortran/libsciinteger_algo_la-i_mput.lo \
+	src/fortran/libsciinteger_algo_la-i_logic.lo \
+	src/fortran/libsciinteger_algo_la-i_a_i.lo \
+	src/fortran/libsciinteger_algo_la-i_b_i.lo \
+	src/fortran/libsciinteger_algo_la-i_c_i.lo \
+	src/fortran/libsciinteger_algo_la-i_d_i.lo \
+	src/fortran/libsciinteger_algo_la-i_mini.lo \
+	src/fortran/libsciinteger_algo_la-intinttype.lo \
+	src/fortran/libsciinteger_algo_la-i_f_i.lo \
+	src/fortran/libsciinteger_algo_la-i_maxi.lo \
+	src/fortran/libsciinteger_algo_la-i_matrix.lo \
+	src/fortran/libsciinteger_algo_la-i_i_i.lo \
+	src/fortran/libsciinteger_algo_la-i_l_i.lo \
+	src/fortran/libsciinteger_algo_la-i_m_i.lo \
+	src/fortran/libsciinteger_algo_la-intops.lo \
+	src/fortran/libsciinteger_algo_la-i_prod.lo \
+	src/fortran/libsciinteger_algo_la-i_q_i.lo \
+	src/fortran/libsciinteger_algo_la-i_r_i.lo \
+	src/fortran/libsciinteger_algo_la-i_tril.lo \
+	src/fortran/libsciinteger_algo_la-i_s_i.lo \
+	src/fortran/libsciinteger_algo_la-i_x_i.lo \
+	src/fortran/libsciinteger_algo_la-uppertype.lo \
+	src/fortran/libsciinteger_algo_la-i_triu.lo \
+	src/fortran/libsciinteger_algo_la-i_e.lo \
+	src/fortran/libsciinteger_algo_la-memused.lo \
+	src/fortran/libsciinteger_algo_la-bitops.lo \
+	src/fortran/libsciinteger_algo_la-i_mget.lo \
+	src/fortran/libsciinteger_algo_la-i_p.lo \
+	src/fortran/libsciinteger_algo_la-i_t.lo \
+	src/fortran/libsciinteger_algo_la-i_sum.lo \
+	src/fortran/libsciinteger_algo_la-i_diag.lo \
+	src/fortran/libsciinteger_algo_la-i_abs.lo \
+	src/fortran/libsciinteger_algo_la-stack_convert.lo \
+	src/fortran/libsciinteger_algo_la-i_cumprod.lo \
+	src/fortran/libsciinteger_algo_la-i_cumsum.lo \
+	src/fortran/libsciinteger_algo_la-i_kron.lo
 am_libsciinteger_algo_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 libsciinteger_algo_la_OBJECTS = $(am_libsciinteger_algo_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+libsciinteger_algo_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libsciinteger_algo_la_FFLAGS) $(FFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
 @MAINTAINER_MODE_FALSE@am_libsciinteger_algo_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libsciinteger_algo_la_rpath =
 libsciinteger_la_DEPENDENCIES = libsciinteger-algo.la
 am__objects_3 = sci_gateway/c/libsciinteger_la-gw_integer.lo \
 	sci_gateway/c/libsciinteger_la-sci_iconvert.lo
-am__objects_4 = sci_gateway/fortran/sci_i_matrix.lo \
-	sci_gateway/fortran/sci_i_mput.lo \
-	sci_gateway/fortran/sci_i_max.lo \
-	sci_gateway/fortran/sci_int32.lo \
-	sci_gateway/fortran/sci_int16.lo \
-	sci_gateway/fortran/sci_i_mini.lo \
-	sci_gateway/fortran/sci_mgeti.lo \
-	sci_gateway/fortran/sci_i_maxi.lo \
-	sci_gateway/fortran/sci_i_p.lo \
-	sci_gateway/fortran/sci_uint8.lo \
-	sci_gateway/fortran/sci_double.lo \
-	sci_gateway/fortran/sci_i_sum.lo \
-	sci_gateway/fortran/sci_i_prod.lo \
-	sci_gateway/fortran/sci_i_cumsum.lo \
-	sci_gateway/fortran/sci_i_diag.lo \
-	sci_gateway/fortran/sci_i_abs.lo \
-	sci_gateway/fortran/sci_i_cumprod.lo \
-	sci_gateway/fortran/sci_i_tril.lo \
-	sci_gateway/fortran/sci_int8.lo \
-	sci_gateway/fortran/sci_uint32.lo \
-	sci_gateway/fortran/sci_uint16.lo \
-	sci_gateway/fortran/sci_i_triu.lo \
-	sci_gateway/fortran/sci_i_min.lo \
-	sci_gateway/fortran/sci_inttype.lo
+am__objects_4 = sci_gateway/fortran/libsciinteger_la-sci_i_matrix.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_i_mput.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_i_max.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_int32.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_int16.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_i_mini.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_mgeti.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_i_maxi.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_i_p.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_uint8.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_double.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_i_sum.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_i_prod.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_i_cumsum.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_i_diag.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_i_abs.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_i_cumprod.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_i_tril.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_int8.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_uint32.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_uint16.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_i_triu.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_i_min.lo \
+	sci_gateway/fortran/libsciinteger_la-sci_inttype.lo
 am_libsciinteger_la_OBJECTS = $(am__objects_3) $(am__objects_4)
 libsciinteger_la_OBJECTS = $(am_libsciinteger_la_OBJECTS)
+libsciinteger_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libsciinteger_la_FFLAGS) $(FFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
+	-o $@
 @MAINTAINER_MODE_FALSE@am_libsciinteger_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libsciinteger_la_rpath = -rpath $(pkglibdir)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -856,19 +883,22 @@ sci_gateway/fortran/sci_i_triu.f \
 sci_gateway/fortran/sci_i_min.f \
 sci_gateway/fortran/sci_inttype.f
 
-libsciinteger_la_CPPFLAGS = -I$(srcdir)/includes/ \
-				-I$(top_srcdir)/libs/MALLOC/includes/ \
-				-I$(top_srcdir)/modules/api_scilab/includes/ \
-				-I$(top_srcdir)/modules/output_stream/includes/ \
-				-I$(top_srcdir)/modules/localization/includes/ \
-				$(AM_CPPFLAGS)
+libsciinteger_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+			    -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			    -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			    -Wp,-I$(top_srcdir)/modules/core/includes/ \
+			    -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			    -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			    $(AM_CPPFLAGS)
 
+libsciinteger_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 @MAINTAINER_MODE_TRUE@pkglib_LTLIBRARIES = libsciinteger.la
 @MAINTAINER_MODE_FALSE@noinst_LTLIBRARIES = libsciinteger-algo.la libsciinteger.la
 @MAINTAINER_MODE_TRUE@noinst_LTLIBRARIES = libsciinteger-algo.la
 libsciinteger_algo_la_SOURCES = $(INTEGER_C_SOURCES) $(INTEGER_FORTRAN_SOURCES) 
 libsciinteger_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libsciinteger_algo_la_CPPFLAGS = $(libsciinteger_la_CPPFLAGS)
+libsciinteger_algo_la_FFLAGS = $(libsciinteger_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC = $(INTEGER_C_SOURCES) $(GATEWAY_C_SOURCES)
@@ -1142,83 +1172,117 @@ src/fortran/$(am__dirstamp):
 src/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/fortran/$(DEPDIR)
 	@: > src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/unarybit.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-unarybit.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_mput.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_mput.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_logic.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_logic.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_a_i.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_a_i.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_b_i.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_b_i.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_c_i.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_c_i.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_d_i.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_d_i.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_mini.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_mini.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/intinttype.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-intinttype.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_f_i.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_f_i.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_maxi.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_maxi.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_matrix.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_matrix.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_i_i.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_i_i.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_l_i.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_l_i.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_m_i.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_m_i.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/intops.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-intops.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_prod.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_prod.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_q_i.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_q_i.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_r_i.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_r_i.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_tril.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_tril.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_s_i.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_s_i.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_x_i.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_x_i.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/uppertype.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-uppertype.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_triu.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_triu.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_e.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_e.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/memused.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-memused.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/bitops.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-bitops.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_mget.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_mget.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_p.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_p.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_t.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_t.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_sum.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_sum.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_diag.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_diag.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_abs.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_abs.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/stack_convert.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-stack_convert.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_cumprod.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_cumprod.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_cumsum.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_cumsum.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i_kron.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciinteger_algo_la-i_kron.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libsciinteger-algo.la: $(libsciinteger_algo_la_OBJECTS) $(libsciinteger_algo_la_DEPENDENCIES) $(EXTRA_libsciinteger_algo_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libsciinteger_algo_la_rpath) $(libsciinteger_algo_la_OBJECTS) $(libsciinteger_algo_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libsciinteger_algo_la_LINK) $(am_libsciinteger_algo_la_rpath) $(libsciinteger_algo_la_OBJECTS) $(libsciinteger_algo_la_LIBADD) $(LIBS)
 sci_gateway/c/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/c
 	@: > sci_gateway/c/$(am__dirstamp)
@@ -1237,71 +1301,81 @@ sci_gateway/fortran/$(am__dirstamp):
 sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran/$(DEPDIR)
 	@: > sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_i_matrix.lo:  \
+sci_gateway/fortran/libsciinteger_la-sci_i_matrix.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_i_mput.lo:  \
+sci_gateway/fortran/libsciinteger_la-sci_i_mput.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_i_max.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_int32.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_int16.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_i_mini.lo:  \
+sci_gateway/fortran/libsciinteger_la-sci_i_max.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_mgeti.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_i_maxi.lo:  \
+sci_gateway/fortran/libsciinteger_la-sci_int32.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_i_p.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_uint8.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_double.lo:  \
+sci_gateway/fortran/libsciinteger_la-sci_int16.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_i_sum.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_i_prod.lo:  \
+sci_gateway/fortran/libsciinteger_la-sci_i_mini.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_i_cumsum.lo:  \
+sci_gateway/fortran/libsciinteger_la-sci_mgeti.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_i_diag.lo:  \
+sci_gateway/fortran/libsciinteger_la-sci_i_maxi.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_i_abs.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_i_cumprod.lo:  \
+sci_gateway/fortran/libsciinteger_la-sci_i_p.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_i_tril.lo:  \
+sci_gateway/fortran/libsciinteger_la-sci_uint8.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_int8.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_uint32.lo:  \
+sci_gateway/fortran/libsciinteger_la-sci_double.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_uint16.lo:  \
+sci_gateway/fortran/libsciinteger_la-sci_i_sum.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_i_triu.lo:  \
+sci_gateway/fortran/libsciinteger_la-sci_i_prod.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_i_min.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libsciinteger_la-sci_i_cumsum.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_inttype.lo:  \
+sci_gateway/fortran/libsciinteger_la-sci_i_diag.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libsciinteger_la-sci_i_abs.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libsciinteger_la-sci_i_cumprod.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libsciinteger_la-sci_i_tril.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libsciinteger_la-sci_int8.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libsciinteger_la-sci_uint32.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libsciinteger_la-sci_uint16.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libsciinteger_la-sci_i_triu.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libsciinteger_la-sci_i_min.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libsciinteger_la-sci_inttype.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libsciinteger.la: $(libsciinteger_la_OBJECTS) $(libsciinteger_la_DEPENDENCIES) $(EXTRA_libsciinteger_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libsciinteger_la_rpath) $(libsciinteger_la_OBJECTS) $(libsciinteger_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libsciinteger_la_LINK) $(am_libsciinteger_la_rpath) $(libsciinteger_la_OBJECTS) $(libsciinteger_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -1716,6 +1790,189 @@ sci_gateway/c/libsciinteger_la-sci_iconvert.lo: sci_gateway/c/sci_iconvert.c
 
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
+
+src/fortran/libsciinteger_algo_la-unarybit.lo: src/fortran/unarybit.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-unarybit.lo `test -f 'src/fortran/unarybit.f' || echo '$(srcdir)/'`src/fortran/unarybit.f
+
+src/fortran/libsciinteger_algo_la-i_mput.lo: src/fortran/i_mput.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_mput.lo `test -f 'src/fortran/i_mput.f' || echo '$(srcdir)/'`src/fortran/i_mput.f
+
+src/fortran/libsciinteger_algo_la-i_logic.lo: src/fortran/i_logic.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_logic.lo `test -f 'src/fortran/i_logic.f' || echo '$(srcdir)/'`src/fortran/i_logic.f
+
+src/fortran/libsciinteger_algo_la-i_a_i.lo: src/fortran/i_a_i.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_a_i.lo `test -f 'src/fortran/i_a_i.f' || echo '$(srcdir)/'`src/fortran/i_a_i.f
+
+src/fortran/libsciinteger_algo_la-i_b_i.lo: src/fortran/i_b_i.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_b_i.lo `test -f 'src/fortran/i_b_i.f' || echo '$(srcdir)/'`src/fortran/i_b_i.f
+
+src/fortran/libsciinteger_algo_la-i_c_i.lo: src/fortran/i_c_i.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_c_i.lo `test -f 'src/fortran/i_c_i.f' || echo '$(srcdir)/'`src/fortran/i_c_i.f
+
+src/fortran/libsciinteger_algo_la-i_d_i.lo: src/fortran/i_d_i.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_d_i.lo `test -f 'src/fortran/i_d_i.f' || echo '$(srcdir)/'`src/fortran/i_d_i.f
+
+src/fortran/libsciinteger_algo_la-i_mini.lo: src/fortran/i_mini.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_mini.lo `test -f 'src/fortran/i_mini.f' || echo '$(srcdir)/'`src/fortran/i_mini.f
+
+src/fortran/libsciinteger_algo_la-intinttype.lo: src/fortran/intinttype.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-intinttype.lo `test -f 'src/fortran/intinttype.f' || echo '$(srcdir)/'`src/fortran/intinttype.f
+
+src/fortran/libsciinteger_algo_la-i_f_i.lo: src/fortran/i_f_i.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_f_i.lo `test -f 'src/fortran/i_f_i.f' || echo '$(srcdir)/'`src/fortran/i_f_i.f
+
+src/fortran/libsciinteger_algo_la-i_maxi.lo: src/fortran/i_maxi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_maxi.lo `test -f 'src/fortran/i_maxi.f' || echo '$(srcdir)/'`src/fortran/i_maxi.f
+
+src/fortran/libsciinteger_algo_la-i_matrix.lo: src/fortran/i_matrix.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_matrix.lo `test -f 'src/fortran/i_matrix.f' || echo '$(srcdir)/'`src/fortran/i_matrix.f
+
+src/fortran/libsciinteger_algo_la-i_i_i.lo: src/fortran/i_i_i.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_i_i.lo `test -f 'src/fortran/i_i_i.f' || echo '$(srcdir)/'`src/fortran/i_i_i.f
+
+src/fortran/libsciinteger_algo_la-i_l_i.lo: src/fortran/i_l_i.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_l_i.lo `test -f 'src/fortran/i_l_i.f' || echo '$(srcdir)/'`src/fortran/i_l_i.f
+
+src/fortran/libsciinteger_algo_la-i_m_i.lo: src/fortran/i_m_i.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_m_i.lo `test -f 'src/fortran/i_m_i.f' || echo '$(srcdir)/'`src/fortran/i_m_i.f
+
+src/fortran/libsciinteger_algo_la-intops.lo: src/fortran/intops.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-intops.lo `test -f 'src/fortran/intops.f' || echo '$(srcdir)/'`src/fortran/intops.f
+
+src/fortran/libsciinteger_algo_la-i_prod.lo: src/fortran/i_prod.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_prod.lo `test -f 'src/fortran/i_prod.f' || echo '$(srcdir)/'`src/fortran/i_prod.f
+
+src/fortran/libsciinteger_algo_la-i_q_i.lo: src/fortran/i_q_i.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_q_i.lo `test -f 'src/fortran/i_q_i.f' || echo '$(srcdir)/'`src/fortran/i_q_i.f
+
+src/fortran/libsciinteger_algo_la-i_r_i.lo: src/fortran/i_r_i.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_r_i.lo `test -f 'src/fortran/i_r_i.f' || echo '$(srcdir)/'`src/fortran/i_r_i.f
+
+src/fortran/libsciinteger_algo_la-i_tril.lo: src/fortran/i_tril.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_tril.lo `test -f 'src/fortran/i_tril.f' || echo '$(srcdir)/'`src/fortran/i_tril.f
+
+src/fortran/libsciinteger_algo_la-i_s_i.lo: src/fortran/i_s_i.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_s_i.lo `test -f 'src/fortran/i_s_i.f' || echo '$(srcdir)/'`src/fortran/i_s_i.f
+
+src/fortran/libsciinteger_algo_la-i_x_i.lo: src/fortran/i_x_i.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_x_i.lo `test -f 'src/fortran/i_x_i.f' || echo '$(srcdir)/'`src/fortran/i_x_i.f
+
+src/fortran/libsciinteger_algo_la-uppertype.lo: src/fortran/uppertype.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-uppertype.lo `test -f 'src/fortran/uppertype.f' || echo '$(srcdir)/'`src/fortran/uppertype.f
+
+src/fortran/libsciinteger_algo_la-i_triu.lo: src/fortran/i_triu.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_triu.lo `test -f 'src/fortran/i_triu.f' || echo '$(srcdir)/'`src/fortran/i_triu.f
+
+src/fortran/libsciinteger_algo_la-i_e.lo: src/fortran/i_e.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_e.lo `test -f 'src/fortran/i_e.f' || echo '$(srcdir)/'`src/fortran/i_e.f
+
+src/fortran/libsciinteger_algo_la-memused.lo: src/fortran/memused.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-memused.lo `test -f 'src/fortran/memused.f' || echo '$(srcdir)/'`src/fortran/memused.f
+
+src/fortran/libsciinteger_algo_la-bitops.lo: src/fortran/bitops.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-bitops.lo `test -f 'src/fortran/bitops.f' || echo '$(srcdir)/'`src/fortran/bitops.f
+
+src/fortran/libsciinteger_algo_la-i_mget.lo: src/fortran/i_mget.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_mget.lo `test -f 'src/fortran/i_mget.f' || echo '$(srcdir)/'`src/fortran/i_mget.f
+
+src/fortran/libsciinteger_algo_la-i_p.lo: src/fortran/i_p.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_p.lo `test -f 'src/fortran/i_p.f' || echo '$(srcdir)/'`src/fortran/i_p.f
+
+src/fortran/libsciinteger_algo_la-i_t.lo: src/fortran/i_t.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_t.lo `test -f 'src/fortran/i_t.f' || echo '$(srcdir)/'`src/fortran/i_t.f
+
+src/fortran/libsciinteger_algo_la-i_sum.lo: src/fortran/i_sum.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_sum.lo `test -f 'src/fortran/i_sum.f' || echo '$(srcdir)/'`src/fortran/i_sum.f
+
+src/fortran/libsciinteger_algo_la-i_diag.lo: src/fortran/i_diag.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_diag.lo `test -f 'src/fortran/i_diag.f' || echo '$(srcdir)/'`src/fortran/i_diag.f
+
+src/fortran/libsciinteger_algo_la-i_abs.lo: src/fortran/i_abs.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_abs.lo `test -f 'src/fortran/i_abs.f' || echo '$(srcdir)/'`src/fortran/i_abs.f
+
+src/fortran/libsciinteger_algo_la-stack_convert.lo: src/fortran/stack_convert.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-stack_convert.lo `test -f 'src/fortran/stack_convert.f' || echo '$(srcdir)/'`src/fortran/stack_convert.f
+
+src/fortran/libsciinteger_algo_la-i_cumprod.lo: src/fortran/i_cumprod.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_cumprod.lo `test -f 'src/fortran/i_cumprod.f' || echo '$(srcdir)/'`src/fortran/i_cumprod.f
+
+src/fortran/libsciinteger_algo_la-i_cumsum.lo: src/fortran/i_cumsum.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_cumsum.lo `test -f 'src/fortran/i_cumsum.f' || echo '$(srcdir)/'`src/fortran/i_cumsum.f
+
+src/fortran/libsciinteger_algo_la-i_kron.lo: src/fortran/i_kron.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciinteger_algo_la-i_kron.lo `test -f 'src/fortran/i_kron.f' || echo '$(srcdir)/'`src/fortran/i_kron.f
+
+sci_gateway/fortran/libsciinteger_la-sci_i_matrix.lo: sci_gateway/fortran/sci_i_matrix.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_i_matrix.lo `test -f 'sci_gateway/fortran/sci_i_matrix.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_i_matrix.f
+
+sci_gateway/fortran/libsciinteger_la-sci_i_mput.lo: sci_gateway/fortran/sci_i_mput.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_i_mput.lo `test -f 'sci_gateway/fortran/sci_i_mput.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_i_mput.f
+
+sci_gateway/fortran/libsciinteger_la-sci_i_max.lo: sci_gateway/fortran/sci_i_max.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_i_max.lo `test -f 'sci_gateway/fortran/sci_i_max.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_i_max.f
+
+sci_gateway/fortran/libsciinteger_la-sci_int32.lo: sci_gateway/fortran/sci_int32.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_int32.lo `test -f 'sci_gateway/fortran/sci_int32.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_int32.f
+
+sci_gateway/fortran/libsciinteger_la-sci_int16.lo: sci_gateway/fortran/sci_int16.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_int16.lo `test -f 'sci_gateway/fortran/sci_int16.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_int16.f
+
+sci_gateway/fortran/libsciinteger_la-sci_i_mini.lo: sci_gateway/fortran/sci_i_mini.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_i_mini.lo `test -f 'sci_gateway/fortran/sci_i_mini.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_i_mini.f
+
+sci_gateway/fortran/libsciinteger_la-sci_mgeti.lo: sci_gateway/fortran/sci_mgeti.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_mgeti.lo `test -f 'sci_gateway/fortran/sci_mgeti.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_mgeti.f
+
+sci_gateway/fortran/libsciinteger_la-sci_i_maxi.lo: sci_gateway/fortran/sci_i_maxi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_i_maxi.lo `test -f 'sci_gateway/fortran/sci_i_maxi.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_i_maxi.f
+
+sci_gateway/fortran/libsciinteger_la-sci_i_p.lo: sci_gateway/fortran/sci_i_p.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_i_p.lo `test -f 'sci_gateway/fortran/sci_i_p.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_i_p.f
+
+sci_gateway/fortran/libsciinteger_la-sci_uint8.lo: sci_gateway/fortran/sci_uint8.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_uint8.lo `test -f 'sci_gateway/fortran/sci_uint8.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_uint8.f
+
+sci_gateway/fortran/libsciinteger_la-sci_double.lo: sci_gateway/fortran/sci_double.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_double.lo `test -f 'sci_gateway/fortran/sci_double.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_double.f
+
+sci_gateway/fortran/libsciinteger_la-sci_i_sum.lo: sci_gateway/fortran/sci_i_sum.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_i_sum.lo `test -f 'sci_gateway/fortran/sci_i_sum.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_i_sum.f
+
+sci_gateway/fortran/libsciinteger_la-sci_i_prod.lo: sci_gateway/fortran/sci_i_prod.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_i_prod.lo `test -f 'sci_gateway/fortran/sci_i_prod.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_i_prod.f
+
+sci_gateway/fortran/libsciinteger_la-sci_i_cumsum.lo: sci_gateway/fortran/sci_i_cumsum.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_i_cumsum.lo `test -f 'sci_gateway/fortran/sci_i_cumsum.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_i_cumsum.f
+
+sci_gateway/fortran/libsciinteger_la-sci_i_diag.lo: sci_gateway/fortran/sci_i_diag.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_i_diag.lo `test -f 'sci_gateway/fortran/sci_i_diag.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_i_diag.f
+
+sci_gateway/fortran/libsciinteger_la-sci_i_abs.lo: sci_gateway/fortran/sci_i_abs.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_i_abs.lo `test -f 'sci_gateway/fortran/sci_i_abs.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_i_abs.f
+
+sci_gateway/fortran/libsciinteger_la-sci_i_cumprod.lo: sci_gateway/fortran/sci_i_cumprod.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_i_cumprod.lo `test -f 'sci_gateway/fortran/sci_i_cumprod.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_i_cumprod.f
+
+sci_gateway/fortran/libsciinteger_la-sci_i_tril.lo: sci_gateway/fortran/sci_i_tril.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_i_tril.lo `test -f 'sci_gateway/fortran/sci_i_tril.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_i_tril.f
+
+sci_gateway/fortran/libsciinteger_la-sci_int8.lo: sci_gateway/fortran/sci_int8.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_int8.lo `test -f 'sci_gateway/fortran/sci_int8.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_int8.f
+
+sci_gateway/fortran/libsciinteger_la-sci_uint32.lo: sci_gateway/fortran/sci_uint32.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_uint32.lo `test -f 'sci_gateway/fortran/sci_uint32.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_uint32.f
+
+sci_gateway/fortran/libsciinteger_la-sci_uint16.lo: sci_gateway/fortran/sci_uint16.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_uint16.lo `test -f 'sci_gateway/fortran/sci_uint16.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_uint16.f
+
+sci_gateway/fortran/libsciinteger_la-sci_i_triu.lo: sci_gateway/fortran/sci_i_triu.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_i_triu.lo `test -f 'sci_gateway/fortran/sci_i_triu.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_i_triu.f
+
+sci_gateway/fortran/libsciinteger_la-sci_i_min.lo: sci_gateway/fortran/sci_i_min.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_i_min.lo `test -f 'sci_gateway/fortran/sci_i_min.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_i_min.f
+
+sci_gateway/fortran/libsciinteger_la-sci_inttype.lo: sci_gateway/fortran/sci_inttype.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciinteger_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciinteger_la-sci_inttype.lo `test -f 'sci_gateway/fortran/sci_inttype.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_inttype.f
 
 mostlyclean-libtool:
 	-rm -f *.lo

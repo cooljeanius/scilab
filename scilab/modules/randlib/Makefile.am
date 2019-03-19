@@ -42,12 +42,16 @@ src/fortran/gennor.f
 GATEWAY_C_SOURCES = sci_gateway/c/gw_randlib.c \
 sci_gateway/c/sci_grand.c
 
-libscirandlib_la_CPPFLAGS = -I$(srcdir)/includes/ \
-				-I$(top_srcdir)/libs/MALLOC/includes/ \
-				-I$(top_srcdir)/modules/api_scilab/includes/ \
-				-I$(top_srcdir)/modules/localization/includes/ \
-				-I$(top_srcdir)/modules/output_stream/includes/ \
-				$(AM_CPPFLAGS)
+libscirandlib_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+			    -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			    -Wp,-I$(top_srcdir)/modules/core/includes/ \
+			    -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			    -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			    -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			    $(AM_CPPFLAGS)
+
+## Need to put this include in FFLAGS too, because fortran is different:
+libscirandlib_la_FFLAGS= -I$(top_srcdir)/modules/core/includes/
 
 pkglib_LTLIBRARIES = libscirandlib.la
 noinst_LTLIBRARIES = libscirandlib-algo.la
@@ -56,6 +60,7 @@ noinst_LTLIBRARIES = libscirandlib-algo.la
 libscirandlib_algo_la_SOURCES = $(RANDLIB_C_SOURCES) $(RANDLIB_FORTRAN_SOURCES)
 libscirandlib_la_SOURCES = $(GATEWAY_C_SOURCES) 
 libscirandlib_algo_la_CPPFLAGS = $(libscirandlib_la_CPPFLAGS)
+libscirandlib_algo_la_FFLAGS = $(libscirandlib_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC= $(RANDLIB_C_SOURCES) $(GATEWAY_C_SOURCES)

@@ -187,54 +187,104 @@ am__objects_1 = src/c/libscisparse_algo_la-spUtils.lo \
 	src/c/libscisparse_algo_la-spOutput.lo \
 	src/c/libscisparse_algo_la-spAllocate.lo \
 	src/c/libscisparse_algo_la-spSolve.lo
-am__objects_2 = src/fortran/spcompack.lo src/fortran/wsposp.lo \
-	src/fortran/findl.lo src/fortran/spcho1.lo \
-	src/fortran/dspful.lo src/fortran/blkslv.lo \
-	src/fortran/wspcle.lo src/fortran/wspt.lo \
-	src/fortran/wspssp.lo src/fortran/lspmat.lo \
-	src/fortran/lsosp.lo src/fortran/blkfc1.lo \
-	src/fortran/wspxsp.lo src/fortran/lspful.lo \
-	src/fortran/blkfct.lo src/fortran/symfct.lo \
-	src/fortran/dspt.lo src/fortran/wspos.lo \
-	src/fortran/dful2sp.lo src/fortran/sputil.lo \
-	src/fortran/lspt.lo src/fortran/dspxs.lo src/fortran/sp2col.lo \
-	src/fortran/dcompa.lo src/fortran/sz2ptr.lo src/fortran/spt.lo \
-	src/fortran/lcompa.lo src/fortran/wspmat.lo \
-	src/fortran/iperm.lo src/fortran/wspful.lo \
-	src/fortran/spif1b.lo src/fortran/spextr.lo \
-	src/fortran/lful2sp.lo src/fortran/dspos.lo \
-	src/fortran/dspasp.lo src/fortran/inpnv.lo \
-	src/fortran/spreshape.lo src/fortran/spsort.lo \
-	src/fortran/wperm.lo src/fortran/dij2sp.lo \
-	src/fortran/dspcsp.lo src/fortran/spcho2.lo \
-	src/fortran/lspos.lo src/fortran/wspe2.lo src/fortran/spif.lo \
-	src/fortran/lspasp.lo src/fortran/dspisp.lo \
-	src/fortran/wful2sp.lo src/fortran/lij2sp.lo \
-	src/fortran/lspcsp.lo src/fortran/wspis.lo \
-	src/fortran/dspmsp.lo src/fortran/dsposp.lo \
-	src/fortran/wsmsp.lo src/fortran/wspms.lo \
-	src/fortran/lspisp.lo src/fortran/dspcle.lo \
-	src/fortran/wsosp.lo src/fortran/dspssp.lo \
-	src/fortran/lsposp.lo src/fortran/dspxsp.lo \
-	src/fortran/ordmmd.lo src/fortran/spextr1.lo \
-	src/fortran/wcompa.lo src/fortran/lspxsp.lo \
-	src/fortran/spisp.lo src/fortran/dperm.lo src/fortran/spind.lo \
-	src/fortran/dspe2.lo src/fortran/wspasp.lo \
-	src/fortran/wij2sp.lo src/fortran/wspcsp.lo \
-	src/fortran/lspops.lo src/fortran/spifp.lo \
-	src/fortran/isort1.lo src/fortran/dspis.lo \
-	src/fortran/wspxs.lo src/fortran/lspe2.lo \
-	src/fortran/wspisp.lo src/fortran/dsmsp.lo \
-	src/fortran/dspms.lo src/fortran/spord.lo src/fortran/dsosp.lo \
-	src/fortran/dspmat.lo src/fortran/wspmsp.lo \
-	src/fortran/lspis.lo src/fortran/writebuf.lo \
-	src/fortran/ta2lpd.lo
+am__objects_2 = src/fortran/libscisparse_algo_la-spcompack.lo \
+	src/fortran/libscisparse_algo_la-wsposp.lo \
+	src/fortran/libscisparse_algo_la-findl.lo \
+	src/fortran/libscisparse_algo_la-spcho1.lo \
+	src/fortran/libscisparse_algo_la-dspful.lo \
+	src/fortran/libscisparse_algo_la-blkslv.lo \
+	src/fortran/libscisparse_algo_la-wspcle.lo \
+	src/fortran/libscisparse_algo_la-wspt.lo \
+	src/fortran/libscisparse_algo_la-wspssp.lo \
+	src/fortran/libscisparse_algo_la-lspmat.lo \
+	src/fortran/libscisparse_algo_la-lsosp.lo \
+	src/fortran/libscisparse_algo_la-blkfc1.lo \
+	src/fortran/libscisparse_algo_la-wspxsp.lo \
+	src/fortran/libscisparse_algo_la-lspful.lo \
+	src/fortran/libscisparse_algo_la-blkfct.lo \
+	src/fortran/libscisparse_algo_la-symfct.lo \
+	src/fortran/libscisparse_algo_la-dspt.lo \
+	src/fortran/libscisparse_algo_la-wspos.lo \
+	src/fortran/libscisparse_algo_la-dful2sp.lo \
+	src/fortran/libscisparse_algo_la-sputil.lo \
+	src/fortran/libscisparse_algo_la-lspt.lo \
+	src/fortran/libscisparse_algo_la-dspxs.lo \
+	src/fortran/libscisparse_algo_la-sp2col.lo \
+	src/fortran/libscisparse_algo_la-dcompa.lo \
+	src/fortran/libscisparse_algo_la-sz2ptr.lo \
+	src/fortran/libscisparse_algo_la-spt.lo \
+	src/fortran/libscisparse_algo_la-lcompa.lo \
+	src/fortran/libscisparse_algo_la-wspmat.lo \
+	src/fortran/libscisparse_algo_la-iperm.lo \
+	src/fortran/libscisparse_algo_la-wspful.lo \
+	src/fortran/libscisparse_algo_la-spif1b.lo \
+	src/fortran/libscisparse_algo_la-spextr.lo \
+	src/fortran/libscisparse_algo_la-lful2sp.lo \
+	src/fortran/libscisparse_algo_la-dspos.lo \
+	src/fortran/libscisparse_algo_la-dspasp.lo \
+	src/fortran/libscisparse_algo_la-inpnv.lo \
+	src/fortran/libscisparse_algo_la-spreshape.lo \
+	src/fortran/libscisparse_algo_la-spsort.lo \
+	src/fortran/libscisparse_algo_la-wperm.lo \
+	src/fortran/libscisparse_algo_la-dij2sp.lo \
+	src/fortran/libscisparse_algo_la-dspcsp.lo \
+	src/fortran/libscisparse_algo_la-spcho2.lo \
+	src/fortran/libscisparse_algo_la-lspos.lo \
+	src/fortran/libscisparse_algo_la-wspe2.lo \
+	src/fortran/libscisparse_algo_la-spif.lo \
+	src/fortran/libscisparse_algo_la-lspasp.lo \
+	src/fortran/libscisparse_algo_la-dspisp.lo \
+	src/fortran/libscisparse_algo_la-wful2sp.lo \
+	src/fortran/libscisparse_algo_la-lij2sp.lo \
+	src/fortran/libscisparse_algo_la-lspcsp.lo \
+	src/fortran/libscisparse_algo_la-wspis.lo \
+	src/fortran/libscisparse_algo_la-dspmsp.lo \
+	src/fortran/libscisparse_algo_la-dsposp.lo \
+	src/fortran/libscisparse_algo_la-wsmsp.lo \
+	src/fortran/libscisparse_algo_la-wspms.lo \
+	src/fortran/libscisparse_algo_la-lspisp.lo \
+	src/fortran/libscisparse_algo_la-dspcle.lo \
+	src/fortran/libscisparse_algo_la-wsosp.lo \
+	src/fortran/libscisparse_algo_la-dspssp.lo \
+	src/fortran/libscisparse_algo_la-lsposp.lo \
+	src/fortran/libscisparse_algo_la-dspxsp.lo \
+	src/fortran/libscisparse_algo_la-ordmmd.lo \
+	src/fortran/libscisparse_algo_la-spextr1.lo \
+	src/fortran/libscisparse_algo_la-wcompa.lo \
+	src/fortran/libscisparse_algo_la-lspxsp.lo \
+	src/fortran/libscisparse_algo_la-spisp.lo \
+	src/fortran/libscisparse_algo_la-dperm.lo \
+	src/fortran/libscisparse_algo_la-spind.lo \
+	src/fortran/libscisparse_algo_la-dspe2.lo \
+	src/fortran/libscisparse_algo_la-wspasp.lo \
+	src/fortran/libscisparse_algo_la-wij2sp.lo \
+	src/fortran/libscisparse_algo_la-wspcsp.lo \
+	src/fortran/libscisparse_algo_la-lspops.lo \
+	src/fortran/libscisparse_algo_la-spifp.lo \
+	src/fortran/libscisparse_algo_la-isort1.lo \
+	src/fortran/libscisparse_algo_la-dspis.lo \
+	src/fortran/libscisparse_algo_la-wspxs.lo \
+	src/fortran/libscisparse_algo_la-lspe2.lo \
+	src/fortran/libscisparse_algo_la-wspisp.lo \
+	src/fortran/libscisparse_algo_la-dsmsp.lo \
+	src/fortran/libscisparse_algo_la-dspms.lo \
+	src/fortran/libscisparse_algo_la-spord.lo \
+	src/fortran/libscisparse_algo_la-dsosp.lo \
+	src/fortran/libscisparse_algo_la-dspmat.lo \
+	src/fortran/libscisparse_algo_la-wspmsp.lo \
+	src/fortran/libscisparse_algo_la-lspis.lo \
+	src/fortran/libscisparse_algo_la-writebuf.lo \
+	src/fortran/libscisparse_algo_la-ta2lpd.lo
 am_libscisparse_algo_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 libscisparse_algo_la_OBJECTS = $(am_libscisparse_algo_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+libscisparse_algo_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libscisparse_algo_la_FFLAGS) $(FFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
 @MAINTAINER_MODE_FALSE@am_libscisparse_algo_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libscisparse_algo_la_rpath =
 libscisparse_la_DEPENDENCIES = libscisparse-algo.la
@@ -262,30 +312,34 @@ am__objects_3 = sci_gateway/c/libscisparse_la-sci_spcompa.lo \
 	sci_gateway/c/libscisparse_la-sci_sfinit.lo \
 	sci_gateway/c/libscisparse_la-sci_sparse.lo \
 	sci_gateway/c/libscisparse_la-sci_mspget.lo
-am__objects_4 = sci_gateway/fortran/sci_f_spcompa.lo \
-	sci_gateway/fortran/sci_f_sparse.lo \
-	sci_gateway/fortran/sci_f_full.lo \
-	sci_gateway/fortran/sci_f_blkslvi.lo \
-	sci_gateway/fortran/sci_f_inpnvi.lo \
-	sci_gateway/fortran/sci_f_nnz.lo \
-	sci_gateway/fortran/sci_f_ludel.lo \
-	sci_gateway/fortran/sci_f_bfinit.lo \
-	sci_gateway/fortran/spops.lo \
-	sci_gateway/fortran/sci_f_spmatrix.lo \
-	sci_gateway/fortran/sci_f_blkfc1i.lo \
-	sci_gateway/fortran/sci_f_lufact.lo \
-	sci_gateway/fortran/sci_f_symfcti.lo \
-	sci_gateway/fortran/sci_f_luget.lo \
-	sci_gateway/fortran/sci_f_ordmmd.lo \
-	sci_gateway/fortran/sci_f_spget.lo \
-	sci_gateway/fortran/sci_f_spclean.lo \
-	sci_gateway/fortran/sci_f_spchol.lo \
-	sci_gateway/fortran/sci_f_lusolve.lo \
-	sci_gateway/fortran/sci_f_fadj2sp.lo \
-	sci_gateway/fortran/sci_f_sfinit.lo \
-	sci_gateway/fortran/sci_f_ta2lpd.lo
+am__objects_4 = sci_gateway/fortran/libscisparse_la-sci_f_spcompa.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_sparse.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_full.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_blkslvi.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_inpnvi.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_nnz.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_ludel.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_bfinit.lo \
+	sci_gateway/fortran/libscisparse_la-spops.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_spmatrix.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_blkfc1i.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_lufact.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_symfcti.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_luget.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_ordmmd.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_spget.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_spclean.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_spchol.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_lusolve.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_fadj2sp.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_sfinit.lo \
+	sci_gateway/fortran/libscisparse_la-sci_f_ta2lpd.lo
 am_libscisparse_la_OBJECTS = $(am__objects_3) $(am__objects_4)
 libscisparse_la_OBJECTS = $(am_libscisparse_la_OBJECTS)
+libscisparse_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libscisparse_la_FFLAGS) $(FFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
+	-o $@
 @MAINTAINER_MODE_FALSE@am_libscisparse_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libscisparse_la_rpath = -rpath $(pkglibdir)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -890,14 +944,16 @@ sci_gateway/fortran/sci_f_fadj2sp.f \
 sci_gateway/fortran/sci_f_sfinit.f \
 sci_gateway/fortran/sci_f_ta2lpd.f
 
-libscisparse_la_CPPFLAGS = -I$(srcdir)/includes/ \
-				-I$(top_srcdir)/libs/MALLOC/includes/ \
-				-I$(top_srcdir)/modules/api_scilab/includes/ \
-				-I$(top_srcdir)/modules/elementary_functions/includes/ \
-				-I$(top_srcdir)/modules/localization/includes/ \
-				-I$(top_srcdir)/modules/output_stream/includes/ \
-				$(AM_CPPFLAGS)
+libscisparse_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+			   -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			   -Wp,-I$(top_srcdir)/modules/core/includes/ \
+			   -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			   -Wp,-I$(top_srcdir)/modules/elementary_functions/includes/ \
+			   -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			   -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			   $(AM_CPPFLAGS)
 
+libscisparse_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 
 #-Isrc/c/
 @MAINTAINER_MODE_TRUE@pkglib_LTLIBRARIES = libscisparse.la
@@ -906,6 +962,7 @@ libscisparse_la_CPPFLAGS = -I$(srcdir)/includes/ \
 libscisparse_algo_la_SOURCES = $(SPARSE_C_SOURCES) $(SPARSE_FORTRAN_SOURCES)
 libscisparse_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libscisparse_algo_la_CPPFLAGS = $(libscisparse_la_CPPFLAGS)
+libscisparse_algo_la_FFLAGS = $(libscisparse_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC = $(SPARSE_C_SOURCES) $(GATEWAY_C_SOURCES)
@@ -1107,185 +1164,268 @@ src/fortran/$(am__dirstamp):
 src/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/fortran/$(DEPDIR)
 	@: > src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/spcompack.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-spcompack.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wsposp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wsposp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/findl.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-findl.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/spcho1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-spcho1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dspful.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dspful.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/blkslv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-blkslv.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wspcle.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wspcle.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wspt.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wspt.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wspssp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wspssp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lspmat.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-lspmat.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lsosp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-lsosp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/blkfc1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-blkfc1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wspxsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wspxsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lspful.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-lspful.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/blkfct.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-blkfct.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/symfct.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-symfct.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dspt.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dspt.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wspos.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wspos.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dful2sp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dful2sp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/sputil.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-sputil.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lspt.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-lspt.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dspxs.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dspxs.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/sp2col.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-sp2col.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dcompa.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dcompa.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/sz2ptr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-sz2ptr.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/spt.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-spt.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lcompa.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-lcompa.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wspmat.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wspmat.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/iperm.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-iperm.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wspful.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wspful.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/spif1b.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-spif1b.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/spextr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-spextr.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lful2sp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-lful2sp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dspos.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dspos.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dspasp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dspasp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/inpnv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-inpnv.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/spreshape.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-spreshape.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/spsort.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-spsort.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wperm.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wperm.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dij2sp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dij2sp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dspcsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dspcsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/spcho2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-spcho2.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lspos.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-lspos.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wspe2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wspe2.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/spif.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-spif.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lspasp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-lspasp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dspisp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dspisp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wful2sp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wful2sp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lij2sp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-lij2sp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lspcsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-lspcsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wspis.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wspis.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dspmsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dspmsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dsposp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dsposp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wsmsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wsmsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wspms.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wspms.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lspisp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-lspisp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dspcle.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dspcle.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wsosp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wsosp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dspssp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dspssp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lsposp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-lsposp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dspxsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dspxsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ordmmd.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-ordmmd.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/spextr1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-spextr1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wcompa.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wcompa.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lspxsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-lspxsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/spisp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-spisp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dperm.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dperm.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/spind.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-spind.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dspe2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dspe2.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wspasp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wspasp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wij2sp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wij2sp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wspcsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wspcsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lspops.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-lspops.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/spifp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-spifp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/isort1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-isort1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dspis.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dspis.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wspxs.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wspxs.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lspe2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-lspe2.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wspisp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wspisp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dsmsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dsmsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dspms.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dspms.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/spord.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-spord.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dsosp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dsosp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dspmat.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-dspmat.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wspmsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-wspmsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lspis.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-lspis.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/writebuf.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-writebuf.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ta2lpd.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisparse_algo_la-ta2lpd.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscisparse-algo.la: $(libscisparse_algo_la_OBJECTS) $(libscisparse_algo_la_DEPENDENCIES) $(EXTRA_libscisparse_algo_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libscisparse_algo_la_rpath) $(libscisparse_algo_la_OBJECTS) $(libscisparse_algo_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscisparse_algo_la_LINK) $(am_libscisparse_algo_la_rpath) $(libscisparse_algo_la_OBJECTS) $(libscisparse_algo_la_LIBADD) $(LIBS)
 sci_gateway/c/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/c
 	@: > sci_gateway/c/$(am__dirstamp)
@@ -1370,73 +1510,75 @@ sci_gateway/fortran/$(am__dirstamp):
 sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran/$(DEPDIR)
 	@: > sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_spcompa.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_spcompa.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_sparse.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_sparse.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_full.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_full.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_blkslvi.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_blkslvi.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_inpnvi.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_inpnvi.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_nnz.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_ludel.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_nnz.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_bfinit.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_ludel.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/spops.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_spmatrix.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_bfinit.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_blkfc1i.lo:  \
+sci_gateway/fortran/libscisparse_la-spops.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_lufact.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_spmatrix.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_symfcti.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_blkfc1i.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_luget.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_lufact.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_ordmmd.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_symfcti.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_spget.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_luget.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_spclean.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_ordmmd.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_spchol.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_spget.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_lusolve.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_spclean.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_fadj2sp.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_spchol.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_sfinit.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_lusolve.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_ta2lpd.lo:  \
+sci_gateway/fortran/libscisparse_la-sci_f_fadj2sp.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscisparse_la-sci_f_sfinit.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscisparse_la-sci_f_ta2lpd.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscisparse.la: $(libscisparse_la_OBJECTS) $(libscisparse_la_DEPENDENCIES) $(EXTRA_libscisparse_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libscisparse_la_rpath) $(libscisparse_la_OBJECTS) $(libscisparse_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscisparse_la_LINK) $(am_libscisparse_la_rpath) $(libscisparse_la_OBJECTS) $(libscisparse_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -1747,6 +1889,336 @@ sci_gateway/c/libscisparse_la-sci_mspget.lo: sci_gateway/c/sci_mspget.c
 
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
+
+src/fortran/libscisparse_algo_la-spcompack.lo: src/fortran/spcompack.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-spcompack.lo `test -f 'src/fortran/spcompack.f' || echo '$(srcdir)/'`src/fortran/spcompack.f
+
+src/fortran/libscisparse_algo_la-wsposp.lo: src/fortran/wsposp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wsposp.lo `test -f 'src/fortran/wsposp.f' || echo '$(srcdir)/'`src/fortran/wsposp.f
+
+src/fortran/libscisparse_algo_la-findl.lo: src/fortran/findl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-findl.lo `test -f 'src/fortran/findl.f' || echo '$(srcdir)/'`src/fortran/findl.f
+
+src/fortran/libscisparse_algo_la-spcho1.lo: src/fortran/spcho1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-spcho1.lo `test -f 'src/fortran/spcho1.f' || echo '$(srcdir)/'`src/fortran/spcho1.f
+
+src/fortran/libscisparse_algo_la-dspful.lo: src/fortran/dspful.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dspful.lo `test -f 'src/fortran/dspful.f' || echo '$(srcdir)/'`src/fortran/dspful.f
+
+src/fortran/libscisparse_algo_la-blkslv.lo: src/fortran/blkslv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-blkslv.lo `test -f 'src/fortran/blkslv.f' || echo '$(srcdir)/'`src/fortran/blkslv.f
+
+src/fortran/libscisparse_algo_la-wspcle.lo: src/fortran/wspcle.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wspcle.lo `test -f 'src/fortran/wspcle.f' || echo '$(srcdir)/'`src/fortran/wspcle.f
+
+src/fortran/libscisparse_algo_la-wspt.lo: src/fortran/wspt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wspt.lo `test -f 'src/fortran/wspt.f' || echo '$(srcdir)/'`src/fortran/wspt.f
+
+src/fortran/libscisparse_algo_la-wspssp.lo: src/fortran/wspssp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wspssp.lo `test -f 'src/fortran/wspssp.f' || echo '$(srcdir)/'`src/fortran/wspssp.f
+
+src/fortran/libscisparse_algo_la-lspmat.lo: src/fortran/lspmat.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-lspmat.lo `test -f 'src/fortran/lspmat.f' || echo '$(srcdir)/'`src/fortran/lspmat.f
+
+src/fortran/libscisparse_algo_la-lsosp.lo: src/fortran/lsosp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-lsosp.lo `test -f 'src/fortran/lsosp.f' || echo '$(srcdir)/'`src/fortran/lsosp.f
+
+src/fortran/libscisparse_algo_la-blkfc1.lo: src/fortran/blkfc1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-blkfc1.lo `test -f 'src/fortran/blkfc1.f' || echo '$(srcdir)/'`src/fortran/blkfc1.f
+
+src/fortran/libscisparse_algo_la-wspxsp.lo: src/fortran/wspxsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wspxsp.lo `test -f 'src/fortran/wspxsp.f' || echo '$(srcdir)/'`src/fortran/wspxsp.f
+
+src/fortran/libscisparse_algo_la-lspful.lo: src/fortran/lspful.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-lspful.lo `test -f 'src/fortran/lspful.f' || echo '$(srcdir)/'`src/fortran/lspful.f
+
+src/fortran/libscisparse_algo_la-blkfct.lo: src/fortran/blkfct.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-blkfct.lo `test -f 'src/fortran/blkfct.f' || echo '$(srcdir)/'`src/fortran/blkfct.f
+
+src/fortran/libscisparse_algo_la-symfct.lo: src/fortran/symfct.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-symfct.lo `test -f 'src/fortran/symfct.f' || echo '$(srcdir)/'`src/fortran/symfct.f
+
+src/fortran/libscisparse_algo_la-dspt.lo: src/fortran/dspt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dspt.lo `test -f 'src/fortran/dspt.f' || echo '$(srcdir)/'`src/fortran/dspt.f
+
+src/fortran/libscisparse_algo_la-wspos.lo: src/fortran/wspos.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wspos.lo `test -f 'src/fortran/wspos.f' || echo '$(srcdir)/'`src/fortran/wspos.f
+
+src/fortran/libscisparse_algo_la-dful2sp.lo: src/fortran/dful2sp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dful2sp.lo `test -f 'src/fortran/dful2sp.f' || echo '$(srcdir)/'`src/fortran/dful2sp.f
+
+src/fortran/libscisparse_algo_la-sputil.lo: src/fortran/sputil.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-sputil.lo `test -f 'src/fortran/sputil.f' || echo '$(srcdir)/'`src/fortran/sputil.f
+
+src/fortran/libscisparse_algo_la-lspt.lo: src/fortran/lspt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-lspt.lo `test -f 'src/fortran/lspt.f' || echo '$(srcdir)/'`src/fortran/lspt.f
+
+src/fortran/libscisparse_algo_la-dspxs.lo: src/fortran/dspxs.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dspxs.lo `test -f 'src/fortran/dspxs.f' || echo '$(srcdir)/'`src/fortran/dspxs.f
+
+src/fortran/libscisparse_algo_la-sp2col.lo: src/fortran/sp2col.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-sp2col.lo `test -f 'src/fortran/sp2col.f' || echo '$(srcdir)/'`src/fortran/sp2col.f
+
+src/fortran/libscisparse_algo_la-dcompa.lo: src/fortran/dcompa.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dcompa.lo `test -f 'src/fortran/dcompa.f' || echo '$(srcdir)/'`src/fortran/dcompa.f
+
+src/fortran/libscisparse_algo_la-sz2ptr.lo: src/fortran/sz2ptr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-sz2ptr.lo `test -f 'src/fortran/sz2ptr.f' || echo '$(srcdir)/'`src/fortran/sz2ptr.f
+
+src/fortran/libscisparse_algo_la-spt.lo: src/fortran/spt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-spt.lo `test -f 'src/fortran/spt.f' || echo '$(srcdir)/'`src/fortran/spt.f
+
+src/fortran/libscisparse_algo_la-lcompa.lo: src/fortran/lcompa.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-lcompa.lo `test -f 'src/fortran/lcompa.f' || echo '$(srcdir)/'`src/fortran/lcompa.f
+
+src/fortran/libscisparse_algo_la-wspmat.lo: src/fortran/wspmat.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wspmat.lo `test -f 'src/fortran/wspmat.f' || echo '$(srcdir)/'`src/fortran/wspmat.f
+
+src/fortran/libscisparse_algo_la-iperm.lo: src/fortran/iperm.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-iperm.lo `test -f 'src/fortran/iperm.f' || echo '$(srcdir)/'`src/fortran/iperm.f
+
+src/fortran/libscisparse_algo_la-wspful.lo: src/fortran/wspful.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wspful.lo `test -f 'src/fortran/wspful.f' || echo '$(srcdir)/'`src/fortran/wspful.f
+
+src/fortran/libscisparse_algo_la-spif1b.lo: src/fortran/spif1b.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-spif1b.lo `test -f 'src/fortran/spif1b.f' || echo '$(srcdir)/'`src/fortran/spif1b.f
+
+src/fortran/libscisparse_algo_la-spextr.lo: src/fortran/spextr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-spextr.lo `test -f 'src/fortran/spextr.f' || echo '$(srcdir)/'`src/fortran/spextr.f
+
+src/fortran/libscisparse_algo_la-lful2sp.lo: src/fortran/lful2sp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-lful2sp.lo `test -f 'src/fortran/lful2sp.f' || echo '$(srcdir)/'`src/fortran/lful2sp.f
+
+src/fortran/libscisparse_algo_la-dspos.lo: src/fortran/dspos.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dspos.lo `test -f 'src/fortran/dspos.f' || echo '$(srcdir)/'`src/fortran/dspos.f
+
+src/fortran/libscisparse_algo_la-dspasp.lo: src/fortran/dspasp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dspasp.lo `test -f 'src/fortran/dspasp.f' || echo '$(srcdir)/'`src/fortran/dspasp.f
+
+src/fortran/libscisparse_algo_la-inpnv.lo: src/fortran/inpnv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-inpnv.lo `test -f 'src/fortran/inpnv.f' || echo '$(srcdir)/'`src/fortran/inpnv.f
+
+src/fortran/libscisparse_algo_la-spreshape.lo: src/fortran/spreshape.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-spreshape.lo `test -f 'src/fortran/spreshape.f' || echo '$(srcdir)/'`src/fortran/spreshape.f
+
+src/fortran/libscisparse_algo_la-spsort.lo: src/fortran/spsort.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-spsort.lo `test -f 'src/fortran/spsort.f' || echo '$(srcdir)/'`src/fortran/spsort.f
+
+src/fortran/libscisparse_algo_la-wperm.lo: src/fortran/wperm.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wperm.lo `test -f 'src/fortran/wperm.f' || echo '$(srcdir)/'`src/fortran/wperm.f
+
+src/fortran/libscisparse_algo_la-dij2sp.lo: src/fortran/dij2sp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dij2sp.lo `test -f 'src/fortran/dij2sp.f' || echo '$(srcdir)/'`src/fortran/dij2sp.f
+
+src/fortran/libscisparse_algo_la-dspcsp.lo: src/fortran/dspcsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dspcsp.lo `test -f 'src/fortran/dspcsp.f' || echo '$(srcdir)/'`src/fortran/dspcsp.f
+
+src/fortran/libscisparse_algo_la-spcho2.lo: src/fortran/spcho2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-spcho2.lo `test -f 'src/fortran/spcho2.f' || echo '$(srcdir)/'`src/fortran/spcho2.f
+
+src/fortran/libscisparse_algo_la-lspos.lo: src/fortran/lspos.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-lspos.lo `test -f 'src/fortran/lspos.f' || echo '$(srcdir)/'`src/fortran/lspos.f
+
+src/fortran/libscisparse_algo_la-wspe2.lo: src/fortran/wspe2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wspe2.lo `test -f 'src/fortran/wspe2.f' || echo '$(srcdir)/'`src/fortran/wspe2.f
+
+src/fortran/libscisparse_algo_la-spif.lo: src/fortran/spif.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-spif.lo `test -f 'src/fortran/spif.f' || echo '$(srcdir)/'`src/fortran/spif.f
+
+src/fortran/libscisparse_algo_la-lspasp.lo: src/fortran/lspasp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-lspasp.lo `test -f 'src/fortran/lspasp.f' || echo '$(srcdir)/'`src/fortran/lspasp.f
+
+src/fortran/libscisparse_algo_la-dspisp.lo: src/fortran/dspisp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dspisp.lo `test -f 'src/fortran/dspisp.f' || echo '$(srcdir)/'`src/fortran/dspisp.f
+
+src/fortran/libscisparse_algo_la-wful2sp.lo: src/fortran/wful2sp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wful2sp.lo `test -f 'src/fortran/wful2sp.f' || echo '$(srcdir)/'`src/fortran/wful2sp.f
+
+src/fortran/libscisparse_algo_la-lij2sp.lo: src/fortran/lij2sp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-lij2sp.lo `test -f 'src/fortran/lij2sp.f' || echo '$(srcdir)/'`src/fortran/lij2sp.f
+
+src/fortran/libscisparse_algo_la-lspcsp.lo: src/fortran/lspcsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-lspcsp.lo `test -f 'src/fortran/lspcsp.f' || echo '$(srcdir)/'`src/fortran/lspcsp.f
+
+src/fortran/libscisparse_algo_la-wspis.lo: src/fortran/wspis.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wspis.lo `test -f 'src/fortran/wspis.f' || echo '$(srcdir)/'`src/fortran/wspis.f
+
+src/fortran/libscisparse_algo_la-dspmsp.lo: src/fortran/dspmsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dspmsp.lo `test -f 'src/fortran/dspmsp.f' || echo '$(srcdir)/'`src/fortran/dspmsp.f
+
+src/fortran/libscisparse_algo_la-dsposp.lo: src/fortran/dsposp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dsposp.lo `test -f 'src/fortran/dsposp.f' || echo '$(srcdir)/'`src/fortran/dsposp.f
+
+src/fortran/libscisparse_algo_la-wsmsp.lo: src/fortran/wsmsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wsmsp.lo `test -f 'src/fortran/wsmsp.f' || echo '$(srcdir)/'`src/fortran/wsmsp.f
+
+src/fortran/libscisparse_algo_la-wspms.lo: src/fortran/wspms.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wspms.lo `test -f 'src/fortran/wspms.f' || echo '$(srcdir)/'`src/fortran/wspms.f
+
+src/fortran/libscisparse_algo_la-lspisp.lo: src/fortran/lspisp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-lspisp.lo `test -f 'src/fortran/lspisp.f' || echo '$(srcdir)/'`src/fortran/lspisp.f
+
+src/fortran/libscisparse_algo_la-dspcle.lo: src/fortran/dspcle.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dspcle.lo `test -f 'src/fortran/dspcle.f' || echo '$(srcdir)/'`src/fortran/dspcle.f
+
+src/fortran/libscisparse_algo_la-wsosp.lo: src/fortran/wsosp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wsosp.lo `test -f 'src/fortran/wsosp.f' || echo '$(srcdir)/'`src/fortran/wsosp.f
+
+src/fortran/libscisparse_algo_la-dspssp.lo: src/fortran/dspssp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dspssp.lo `test -f 'src/fortran/dspssp.f' || echo '$(srcdir)/'`src/fortran/dspssp.f
+
+src/fortran/libscisparse_algo_la-lsposp.lo: src/fortran/lsposp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-lsposp.lo `test -f 'src/fortran/lsposp.f' || echo '$(srcdir)/'`src/fortran/lsposp.f
+
+src/fortran/libscisparse_algo_la-dspxsp.lo: src/fortran/dspxsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dspxsp.lo `test -f 'src/fortran/dspxsp.f' || echo '$(srcdir)/'`src/fortran/dspxsp.f
+
+src/fortran/libscisparse_algo_la-ordmmd.lo: src/fortran/ordmmd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-ordmmd.lo `test -f 'src/fortran/ordmmd.f' || echo '$(srcdir)/'`src/fortran/ordmmd.f
+
+src/fortran/libscisparse_algo_la-spextr1.lo: src/fortran/spextr1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-spextr1.lo `test -f 'src/fortran/spextr1.f' || echo '$(srcdir)/'`src/fortran/spextr1.f
+
+src/fortran/libscisparse_algo_la-wcompa.lo: src/fortran/wcompa.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wcompa.lo `test -f 'src/fortran/wcompa.f' || echo '$(srcdir)/'`src/fortran/wcompa.f
+
+src/fortran/libscisparse_algo_la-lspxsp.lo: src/fortran/lspxsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-lspxsp.lo `test -f 'src/fortran/lspxsp.f' || echo '$(srcdir)/'`src/fortran/lspxsp.f
+
+src/fortran/libscisparse_algo_la-spisp.lo: src/fortran/spisp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-spisp.lo `test -f 'src/fortran/spisp.f' || echo '$(srcdir)/'`src/fortran/spisp.f
+
+src/fortran/libscisparse_algo_la-dperm.lo: src/fortran/dperm.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dperm.lo `test -f 'src/fortran/dperm.f' || echo '$(srcdir)/'`src/fortran/dperm.f
+
+src/fortran/libscisparse_algo_la-spind.lo: src/fortran/spind.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-spind.lo `test -f 'src/fortran/spind.f' || echo '$(srcdir)/'`src/fortran/spind.f
+
+src/fortran/libscisparse_algo_la-dspe2.lo: src/fortran/dspe2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dspe2.lo `test -f 'src/fortran/dspe2.f' || echo '$(srcdir)/'`src/fortran/dspe2.f
+
+src/fortran/libscisparse_algo_la-wspasp.lo: src/fortran/wspasp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wspasp.lo `test -f 'src/fortran/wspasp.f' || echo '$(srcdir)/'`src/fortran/wspasp.f
+
+src/fortran/libscisparse_algo_la-wij2sp.lo: src/fortran/wij2sp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wij2sp.lo `test -f 'src/fortran/wij2sp.f' || echo '$(srcdir)/'`src/fortran/wij2sp.f
+
+src/fortran/libscisparse_algo_la-wspcsp.lo: src/fortran/wspcsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wspcsp.lo `test -f 'src/fortran/wspcsp.f' || echo '$(srcdir)/'`src/fortran/wspcsp.f
+
+src/fortran/libscisparse_algo_la-lspops.lo: src/fortran/lspops.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-lspops.lo `test -f 'src/fortran/lspops.f' || echo '$(srcdir)/'`src/fortran/lspops.f
+
+src/fortran/libscisparse_algo_la-spifp.lo: src/fortran/spifp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-spifp.lo `test -f 'src/fortran/spifp.f' || echo '$(srcdir)/'`src/fortran/spifp.f
+
+src/fortran/libscisparse_algo_la-isort1.lo: src/fortran/isort1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-isort1.lo `test -f 'src/fortran/isort1.f' || echo '$(srcdir)/'`src/fortran/isort1.f
+
+src/fortran/libscisparse_algo_la-dspis.lo: src/fortran/dspis.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dspis.lo `test -f 'src/fortran/dspis.f' || echo '$(srcdir)/'`src/fortran/dspis.f
+
+src/fortran/libscisparse_algo_la-wspxs.lo: src/fortran/wspxs.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wspxs.lo `test -f 'src/fortran/wspxs.f' || echo '$(srcdir)/'`src/fortran/wspxs.f
+
+src/fortran/libscisparse_algo_la-lspe2.lo: src/fortran/lspe2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-lspe2.lo `test -f 'src/fortran/lspe2.f' || echo '$(srcdir)/'`src/fortran/lspe2.f
+
+src/fortran/libscisparse_algo_la-wspisp.lo: src/fortran/wspisp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wspisp.lo `test -f 'src/fortran/wspisp.f' || echo '$(srcdir)/'`src/fortran/wspisp.f
+
+src/fortran/libscisparse_algo_la-dsmsp.lo: src/fortran/dsmsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dsmsp.lo `test -f 'src/fortran/dsmsp.f' || echo '$(srcdir)/'`src/fortran/dsmsp.f
+
+src/fortran/libscisparse_algo_la-dspms.lo: src/fortran/dspms.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dspms.lo `test -f 'src/fortran/dspms.f' || echo '$(srcdir)/'`src/fortran/dspms.f
+
+src/fortran/libscisparse_algo_la-spord.lo: src/fortran/spord.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-spord.lo `test -f 'src/fortran/spord.f' || echo '$(srcdir)/'`src/fortran/spord.f
+
+src/fortran/libscisparse_algo_la-dsosp.lo: src/fortran/dsosp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dsosp.lo `test -f 'src/fortran/dsosp.f' || echo '$(srcdir)/'`src/fortran/dsosp.f
+
+src/fortran/libscisparse_algo_la-dspmat.lo: src/fortran/dspmat.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-dspmat.lo `test -f 'src/fortran/dspmat.f' || echo '$(srcdir)/'`src/fortran/dspmat.f
+
+src/fortran/libscisparse_algo_la-wspmsp.lo: src/fortran/wspmsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-wspmsp.lo `test -f 'src/fortran/wspmsp.f' || echo '$(srcdir)/'`src/fortran/wspmsp.f
+
+src/fortran/libscisparse_algo_la-lspis.lo: src/fortran/lspis.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-lspis.lo `test -f 'src/fortran/lspis.f' || echo '$(srcdir)/'`src/fortran/lspis.f
+
+src/fortran/libscisparse_algo_la-writebuf.lo: src/fortran/writebuf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-writebuf.lo `test -f 'src/fortran/writebuf.f' || echo '$(srcdir)/'`src/fortran/writebuf.f
+
+src/fortran/libscisparse_algo_la-ta2lpd.lo: src/fortran/ta2lpd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisparse_algo_la-ta2lpd.lo `test -f 'src/fortran/ta2lpd.f' || echo '$(srcdir)/'`src/fortran/ta2lpd.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_spcompa.lo: sci_gateway/fortran/sci_f_spcompa.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_spcompa.lo `test -f 'sci_gateway/fortran/sci_f_spcompa.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_spcompa.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_sparse.lo: sci_gateway/fortran/sci_f_sparse.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_sparse.lo `test -f 'sci_gateway/fortran/sci_f_sparse.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_sparse.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_full.lo: sci_gateway/fortran/sci_f_full.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_full.lo `test -f 'sci_gateway/fortran/sci_f_full.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_full.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_blkslvi.lo: sci_gateway/fortran/sci_f_blkslvi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_blkslvi.lo `test -f 'sci_gateway/fortran/sci_f_blkslvi.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_blkslvi.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_inpnvi.lo: sci_gateway/fortran/sci_f_inpnvi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_inpnvi.lo `test -f 'sci_gateway/fortran/sci_f_inpnvi.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_inpnvi.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_nnz.lo: sci_gateway/fortran/sci_f_nnz.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_nnz.lo `test -f 'sci_gateway/fortran/sci_f_nnz.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_nnz.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_ludel.lo: sci_gateway/fortran/sci_f_ludel.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_ludel.lo `test -f 'sci_gateway/fortran/sci_f_ludel.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_ludel.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_bfinit.lo: sci_gateway/fortran/sci_f_bfinit.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_bfinit.lo `test -f 'sci_gateway/fortran/sci_f_bfinit.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_bfinit.f
+
+sci_gateway/fortran/libscisparse_la-spops.lo: sci_gateway/fortran/spops.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-spops.lo `test -f 'sci_gateway/fortran/spops.f' || echo '$(srcdir)/'`sci_gateway/fortran/spops.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_spmatrix.lo: sci_gateway/fortran/sci_f_spmatrix.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_spmatrix.lo `test -f 'sci_gateway/fortran/sci_f_spmatrix.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_spmatrix.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_blkfc1i.lo: sci_gateway/fortran/sci_f_blkfc1i.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_blkfc1i.lo `test -f 'sci_gateway/fortran/sci_f_blkfc1i.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_blkfc1i.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_lufact.lo: sci_gateway/fortran/sci_f_lufact.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_lufact.lo `test -f 'sci_gateway/fortran/sci_f_lufact.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_lufact.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_symfcti.lo: sci_gateway/fortran/sci_f_symfcti.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_symfcti.lo `test -f 'sci_gateway/fortran/sci_f_symfcti.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_symfcti.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_luget.lo: sci_gateway/fortran/sci_f_luget.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_luget.lo `test -f 'sci_gateway/fortran/sci_f_luget.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_luget.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_ordmmd.lo: sci_gateway/fortran/sci_f_ordmmd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_ordmmd.lo `test -f 'sci_gateway/fortran/sci_f_ordmmd.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_ordmmd.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_spget.lo: sci_gateway/fortran/sci_f_spget.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_spget.lo `test -f 'sci_gateway/fortran/sci_f_spget.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_spget.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_spclean.lo: sci_gateway/fortran/sci_f_spclean.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_spclean.lo `test -f 'sci_gateway/fortran/sci_f_spclean.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_spclean.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_spchol.lo: sci_gateway/fortran/sci_f_spchol.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_spchol.lo `test -f 'sci_gateway/fortran/sci_f_spchol.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_spchol.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_lusolve.lo: sci_gateway/fortran/sci_f_lusolve.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_lusolve.lo `test -f 'sci_gateway/fortran/sci_f_lusolve.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_lusolve.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_fadj2sp.lo: sci_gateway/fortran/sci_f_fadj2sp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_fadj2sp.lo `test -f 'sci_gateway/fortran/sci_f_fadj2sp.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_fadj2sp.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_sfinit.lo: sci_gateway/fortran/sci_f_sfinit.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_sfinit.lo `test -f 'sci_gateway/fortran/sci_f_sfinit.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_sfinit.f
+
+sci_gateway/fortran/libscisparse_la-sci_f_ta2lpd.lo: sci_gateway/fortran/sci_f_ta2lpd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisparse_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisparse_la-sci_f_ta2lpd.lo `test -f 'sci_gateway/fortran/sci_f_ta2lpd.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_ta2lpd.f
 
 mostlyclean-libtool:
 	-rm -f *.lo

@@ -179,23 +179,37 @@ LTLIBRARIES = $(noinst_LTLIBRARIES) $(pkglib_LTLIBRARIES)
 libscidouble_la_LIBADD =
 am__dirstamp = $(am__leading_dot)dirstamp
 am__objects_1 = sci_gateway/c/libscidouble_la-gw_double.lo
-am__objects_2 = sci_gateway/fortran/vecldiv.lo \
-	sci_gateway/fortran/vecmul.lo sci_gateway/fortran/matxpow.lo \
-	sci_gateway/fortran/vecimpl.lo sci_gateway/fortran/matldiv.lo \
-	sci_gateway/fortran/matsubst.lo sci_gateway/fortran/vecrdiv.lo \
-	sci_gateway/fortran/matchsgn.lo sci_gateway/fortran/matrdiv.lo \
-	sci_gateway/fortran/matrc.lo sci_gateway/fortran/matpow.lo \
-	sci_gateway/fortran/matins1.lo sci_gateway/fortran/matins2.lo \
-	sci_gateway/fortran/matcmp.lo sci_gateway/fortran/matmult.lo \
-	sci_gateway/fortran/matext1.lo sci_gateway/fortran/matext2.lo \
-	sci_gateway/fortran/mattr.lo sci_gateway/fortran/matcc.lo \
-	sci_gateway/fortran/mattrc.lo sci_gateway/fortran/matadd.lo
+am__objects_2 = sci_gateway/fortran/libscidouble_la-vecldiv.lo \
+	sci_gateway/fortran/libscidouble_la-vecmul.lo \
+	sci_gateway/fortran/libscidouble_la-matxpow.lo \
+	sci_gateway/fortran/libscidouble_la-vecimpl.lo \
+	sci_gateway/fortran/libscidouble_la-matldiv.lo \
+	sci_gateway/fortran/libscidouble_la-matsubst.lo \
+	sci_gateway/fortran/libscidouble_la-vecrdiv.lo \
+	sci_gateway/fortran/libscidouble_la-matchsgn.lo \
+	sci_gateway/fortran/libscidouble_la-matrdiv.lo \
+	sci_gateway/fortran/libscidouble_la-matrc.lo \
+	sci_gateway/fortran/libscidouble_la-matpow.lo \
+	sci_gateway/fortran/libscidouble_la-matins1.lo \
+	sci_gateway/fortran/libscidouble_la-matins2.lo \
+	sci_gateway/fortran/libscidouble_la-matcmp.lo \
+	sci_gateway/fortran/libscidouble_la-matmult.lo \
+	sci_gateway/fortran/libscidouble_la-matext1.lo \
+	sci_gateway/fortran/libscidouble_la-matext2.lo \
+	sci_gateway/fortran/libscidouble_la-mattr.lo \
+	sci_gateway/fortran/libscidouble_la-matcc.lo \
+	sci_gateway/fortran/libscidouble_la-mattrc.lo \
+	sci_gateway/fortran/libscidouble_la-matadd.lo
 am_libscidouble_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 libscidouble_la_OBJECTS = $(am_libscidouble_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+libscidouble_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libscidouble_la_FFLAGS) $(FFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
+	-o $@
 @MAINTAINER_MODE_FALSE@am_libscidouble_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libscidouble_la_rpath = -rpath $(pkglibdir)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -644,10 +658,12 @@ sci_gateway/fortran/matadd.f
 
 @MAINTAINER_MODE_TRUE@pkglib_LTLIBRARIES = libscidouble.la
 @MAINTAINER_MODE_FALSE@noinst_LTLIBRARIES = libscidouble.la
-libscidouble_la_CPPFLAGS = -I$(top_srcdir)/modules/api_scilab/includes/ \
--I$(top_srcdir)/modules/output_stream/includes/ \
+libscidouble_la_CPPFLAGS = -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+-Wp,-I$(top_srcdir)/modules/core/includes/ \
+-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
 $(AM_CPPFLAGS)
 
+libscidouble_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 libscidouble_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 
 # For the code check (splint)
@@ -832,51 +848,72 @@ sci_gateway/fortran/$(am__dirstamp):
 sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran/$(DEPDIR)
 	@: > sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/vecldiv.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-vecldiv.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/vecmul.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-vecmul.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/matxpow.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-matxpow.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/vecimpl.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-vecimpl.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/matldiv.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-matldiv.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/matsubst.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-matsubst.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/vecrdiv.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-vecrdiv.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/matchsgn.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-matchsgn.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/matrdiv.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-matrdiv.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/matrc.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-matrc.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/matpow.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-matpow.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/matins1.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-matins1.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/matins2.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-matins2.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/matcmp.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-matcmp.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/matmult.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-matmult.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/matext1.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-matext1.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/matext2.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-matext2.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/mattr.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-mattr.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/matcc.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-matcc.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/mattrc.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-mattrc.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/matadd.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidouble_la-matadd.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscidouble.la: $(libscidouble_la_OBJECTS) $(libscidouble_la_DEPENDENCIES) $(EXTRA_libscidouble_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libscidouble_la_rpath) $(libscidouble_la_OBJECTS) $(libscidouble_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscidouble_la_LINK) $(am_libscidouble_la_rpath) $(libscidouble_la_OBJECTS) $(libscidouble_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -935,6 +972,69 @@ sci_gateway/c/libscidouble_la-gw_double.lo: sci_gateway/c/gw_double.c
 
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
+
+sci_gateway/fortran/libscidouble_la-vecldiv.lo: sci_gateway/fortran/vecldiv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-vecldiv.lo `test -f 'sci_gateway/fortran/vecldiv.f' || echo '$(srcdir)/'`sci_gateway/fortran/vecldiv.f
+
+sci_gateway/fortran/libscidouble_la-vecmul.lo: sci_gateway/fortran/vecmul.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-vecmul.lo `test -f 'sci_gateway/fortran/vecmul.f' || echo '$(srcdir)/'`sci_gateway/fortran/vecmul.f
+
+sci_gateway/fortran/libscidouble_la-matxpow.lo: sci_gateway/fortran/matxpow.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-matxpow.lo `test -f 'sci_gateway/fortran/matxpow.f' || echo '$(srcdir)/'`sci_gateway/fortran/matxpow.f
+
+sci_gateway/fortran/libscidouble_la-vecimpl.lo: sci_gateway/fortran/vecimpl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-vecimpl.lo `test -f 'sci_gateway/fortran/vecimpl.f' || echo '$(srcdir)/'`sci_gateway/fortran/vecimpl.f
+
+sci_gateway/fortran/libscidouble_la-matldiv.lo: sci_gateway/fortran/matldiv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-matldiv.lo `test -f 'sci_gateway/fortran/matldiv.f' || echo '$(srcdir)/'`sci_gateway/fortran/matldiv.f
+
+sci_gateway/fortran/libscidouble_la-matsubst.lo: sci_gateway/fortran/matsubst.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-matsubst.lo `test -f 'sci_gateway/fortran/matsubst.f' || echo '$(srcdir)/'`sci_gateway/fortran/matsubst.f
+
+sci_gateway/fortran/libscidouble_la-vecrdiv.lo: sci_gateway/fortran/vecrdiv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-vecrdiv.lo `test -f 'sci_gateway/fortran/vecrdiv.f' || echo '$(srcdir)/'`sci_gateway/fortran/vecrdiv.f
+
+sci_gateway/fortran/libscidouble_la-matchsgn.lo: sci_gateway/fortran/matchsgn.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-matchsgn.lo `test -f 'sci_gateway/fortran/matchsgn.f' || echo '$(srcdir)/'`sci_gateway/fortran/matchsgn.f
+
+sci_gateway/fortran/libscidouble_la-matrdiv.lo: sci_gateway/fortran/matrdiv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-matrdiv.lo `test -f 'sci_gateway/fortran/matrdiv.f' || echo '$(srcdir)/'`sci_gateway/fortran/matrdiv.f
+
+sci_gateway/fortran/libscidouble_la-matrc.lo: sci_gateway/fortran/matrc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-matrc.lo `test -f 'sci_gateway/fortran/matrc.f' || echo '$(srcdir)/'`sci_gateway/fortran/matrc.f
+
+sci_gateway/fortran/libscidouble_la-matpow.lo: sci_gateway/fortran/matpow.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-matpow.lo `test -f 'sci_gateway/fortran/matpow.f' || echo '$(srcdir)/'`sci_gateway/fortran/matpow.f
+
+sci_gateway/fortran/libscidouble_la-matins1.lo: sci_gateway/fortran/matins1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-matins1.lo `test -f 'sci_gateway/fortran/matins1.f' || echo '$(srcdir)/'`sci_gateway/fortran/matins1.f
+
+sci_gateway/fortran/libscidouble_la-matins2.lo: sci_gateway/fortran/matins2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-matins2.lo `test -f 'sci_gateway/fortran/matins2.f' || echo '$(srcdir)/'`sci_gateway/fortran/matins2.f
+
+sci_gateway/fortran/libscidouble_la-matcmp.lo: sci_gateway/fortran/matcmp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-matcmp.lo `test -f 'sci_gateway/fortran/matcmp.f' || echo '$(srcdir)/'`sci_gateway/fortran/matcmp.f
+
+sci_gateway/fortran/libscidouble_la-matmult.lo: sci_gateway/fortran/matmult.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-matmult.lo `test -f 'sci_gateway/fortran/matmult.f' || echo '$(srcdir)/'`sci_gateway/fortran/matmult.f
+
+sci_gateway/fortran/libscidouble_la-matext1.lo: sci_gateway/fortran/matext1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-matext1.lo `test -f 'sci_gateway/fortran/matext1.f' || echo '$(srcdir)/'`sci_gateway/fortran/matext1.f
+
+sci_gateway/fortran/libscidouble_la-matext2.lo: sci_gateway/fortran/matext2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-matext2.lo `test -f 'sci_gateway/fortran/matext2.f' || echo '$(srcdir)/'`sci_gateway/fortran/matext2.f
+
+sci_gateway/fortran/libscidouble_la-mattr.lo: sci_gateway/fortran/mattr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-mattr.lo `test -f 'sci_gateway/fortran/mattr.f' || echo '$(srcdir)/'`sci_gateway/fortran/mattr.f
+
+sci_gateway/fortran/libscidouble_la-matcc.lo: sci_gateway/fortran/matcc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-matcc.lo `test -f 'sci_gateway/fortran/matcc.f' || echo '$(srcdir)/'`sci_gateway/fortran/matcc.f
+
+sci_gateway/fortran/libscidouble_la-mattrc.lo: sci_gateway/fortran/mattrc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-mattrc.lo `test -f 'sci_gateway/fortran/mattrc.f' || echo '$(srcdir)/'`sci_gateway/fortran/mattrc.f
+
+sci_gateway/fortran/libscidouble_la-matadd.lo: sci_gateway/fortran/matadd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidouble_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidouble_la-matadd.lo `test -f 'sci_gateway/fortran/matadd.f' || echo '$(srcdir)/'`sci_gateway/fortran/matadd.f
 
 mostlyclean-libtool:
 	-rm -f *.lo

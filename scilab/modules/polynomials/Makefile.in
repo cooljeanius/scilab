@@ -179,35 +179,63 @@ am__installdirs = "$(DESTDIR)$(pkglibdir)" \
 LTLIBRARIES = $(noinst_LTLIBRARIES) $(pkglib_LTLIBRARIES)
 libscipolynomials_algo_la_LIBADD =
 am__dirstamp = $(am__leading_dot)dirstamp
-am__objects_1 = src/fortran/residu.lo src/fortran/imptra.lo \
-	src/fortran/dmpadj.lo src/fortran/impins.lo \
-	src/fortran/dpmul1.lo src/fortran/wprxc.lo \
-	src/fortran/dmpcnc.lo src/fortran/wmpmu.lo \
-	src/fortran/mpinsp.lo src/fortran/impext.lo \
-	src/fortran/recbez.lo src/fortran/sfact1.lo \
-	src/fortran/dpodiv.lo src/fortran/dmptra.lo \
-	src/fortran/dmpins.lo src/fortran/dpsimp.lo \
-	src/fortran/dmp2pm.lo src/fortran/dmpext.lo \
-	src/fortran/wpmul.lo src/fortran/bezstp.lo \
-	src/fortran/wmpad.lo src/fortran/dprxc.lo \
-	src/fortran/quadsd.lo src/fortran/wmpadj.lo \
-	src/fortran/dmpmu.lo src/fortran/wpmul1.lo \
-	src/fortran/wmpcnc.lo src/fortran/mptri.lo \
-	src/fortran/horner.lo src/fortran/idegre.lo \
-	src/fortran/fxshfr.lo src/fortran/mpdiag.lo \
-	src/fortran/dmpcle.lo src/fortran/rpoly.lo \
-	src/fortran/wpodiv.lo src/fortran/wdmpmu.lo \
-	src/fortran/wmptra.lo src/fortran/wmpins.lo \
-	src/fortran/mpdegr.lo src/fortran/ddmpev.lo \
-	src/fortran/realit.lo src/fortran/dpmul.lo \
-	src/fortran/sfact2.lo src/fortran/dmpad.lo \
-	src/fortran/nextk.lo src/fortran/blktit.lo \
-	src/fortran/dimin.lo src/fortran/newest.lo \
-	src/fortran/dwmpmu.lo src/fortran/impcnc.lo \
-	src/fortran/wdmpad.lo src/fortran/wmpcle.lo \
-	src/fortran/quadit.lo src/fortran/quad.lo \
-	src/fortran/calcsc.lo src/fortran/writebufsfact.lo \
-	src/fortran/chkvar.lo
+am__objects_1 = src/fortran/libscipolynomials_algo_la-residu.lo \
+	src/fortran/libscipolynomials_algo_la-imptra.lo \
+	src/fortran/libscipolynomials_algo_la-dmpadj.lo \
+	src/fortran/libscipolynomials_algo_la-impins.lo \
+	src/fortran/libscipolynomials_algo_la-dpmul1.lo \
+	src/fortran/libscipolynomials_algo_la-wprxc.lo \
+	src/fortran/libscipolynomials_algo_la-dmpcnc.lo \
+	src/fortran/libscipolynomials_algo_la-wmpmu.lo \
+	src/fortran/libscipolynomials_algo_la-mpinsp.lo \
+	src/fortran/libscipolynomials_algo_la-impext.lo \
+	src/fortran/libscipolynomials_algo_la-recbez.lo \
+	src/fortran/libscipolynomials_algo_la-sfact1.lo \
+	src/fortran/libscipolynomials_algo_la-dpodiv.lo \
+	src/fortran/libscipolynomials_algo_la-dmptra.lo \
+	src/fortran/libscipolynomials_algo_la-dmpins.lo \
+	src/fortran/libscipolynomials_algo_la-dpsimp.lo \
+	src/fortran/libscipolynomials_algo_la-dmp2pm.lo \
+	src/fortran/libscipolynomials_algo_la-dmpext.lo \
+	src/fortran/libscipolynomials_algo_la-wpmul.lo \
+	src/fortran/libscipolynomials_algo_la-bezstp.lo \
+	src/fortran/libscipolynomials_algo_la-wmpad.lo \
+	src/fortran/libscipolynomials_algo_la-dprxc.lo \
+	src/fortran/libscipolynomials_algo_la-quadsd.lo \
+	src/fortran/libscipolynomials_algo_la-wmpadj.lo \
+	src/fortran/libscipolynomials_algo_la-dmpmu.lo \
+	src/fortran/libscipolynomials_algo_la-wpmul1.lo \
+	src/fortran/libscipolynomials_algo_la-wmpcnc.lo \
+	src/fortran/libscipolynomials_algo_la-mptri.lo \
+	src/fortran/libscipolynomials_algo_la-horner.lo \
+	src/fortran/libscipolynomials_algo_la-idegre.lo \
+	src/fortran/libscipolynomials_algo_la-fxshfr.lo \
+	src/fortran/libscipolynomials_algo_la-mpdiag.lo \
+	src/fortran/libscipolynomials_algo_la-dmpcle.lo \
+	src/fortran/libscipolynomials_algo_la-rpoly.lo \
+	src/fortran/libscipolynomials_algo_la-wpodiv.lo \
+	src/fortran/libscipolynomials_algo_la-wdmpmu.lo \
+	src/fortran/libscipolynomials_algo_la-wmptra.lo \
+	src/fortran/libscipolynomials_algo_la-wmpins.lo \
+	src/fortran/libscipolynomials_algo_la-mpdegr.lo \
+	src/fortran/libscipolynomials_algo_la-ddmpev.lo \
+	src/fortran/libscipolynomials_algo_la-realit.lo \
+	src/fortran/libscipolynomials_algo_la-dpmul.lo \
+	src/fortran/libscipolynomials_algo_la-sfact2.lo \
+	src/fortran/libscipolynomials_algo_la-dmpad.lo \
+	src/fortran/libscipolynomials_algo_la-nextk.lo \
+	src/fortran/libscipolynomials_algo_la-blktit.lo \
+	src/fortran/libscipolynomials_algo_la-dimin.lo \
+	src/fortran/libscipolynomials_algo_la-newest.lo \
+	src/fortran/libscipolynomials_algo_la-dwmpmu.lo \
+	src/fortran/libscipolynomials_algo_la-impcnc.lo \
+	src/fortran/libscipolynomials_algo_la-wdmpad.lo \
+	src/fortran/libscipolynomials_algo_la-wmpcle.lo \
+	src/fortran/libscipolynomials_algo_la-quadit.lo \
+	src/fortran/libscipolynomials_algo_la-quad.lo \
+	src/fortran/libscipolynomials_algo_la-calcsc.lo \
+	src/fortran/libscipolynomials_algo_la-writebufsfact.lo \
+	src/fortran/libscipolynomials_algo_la-chkvar.lo
 am_libscipolynomials_algo_la_OBJECTS = $(am__objects_1)
 libscipolynomials_algo_la_OBJECTS =  \
 	$(am_libscipolynomials_algo_la_OBJECTS)
@@ -215,27 +243,32 @@ AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+libscipolynomials_algo_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
 @MAINTAINER_MODE_FALSE@am_libscipolynomials_algo_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libscipolynomials_algo_la_rpath =
 libscipolynomials_la_DEPENDENCIES = libscipolynomials-algo.la
-am__objects_2 = sci_gateway/fortran/sci_f_simp.lo \
-	sci_gateway/fortran/sci_f_poly.lo \
-	sci_gateway/fortran/sci_f_varn.lo \
-	sci_gateway/fortran/sci_f_sum.lo \
-	sci_gateway/fortran/sci_f_div.lo \
-	sci_gateway/fortran/sci_f_diag.lo \
-	sci_gateway/fortran/sci_f_prod.lo \
-	sci_gateway/fortran/polops.lo \
-	sci_gateway/fortran/sci_f_bezout.lo \
-	sci_gateway/fortran/sci_f_triu_tril.lo \
-	sci_gateway/fortran/sci_f_roots.lo \
-	sci_gateway/fortran/sci_f_psimp.lo \
-	sci_gateway/fortran/sci_f_rsimp.lo \
-	sci_gateway/fortran/sci_f_coeff.lo \
-	sci_gateway/fortran/sci_f_degree.lo \
-	sci_gateway/fortran/sci_f_pclean.lo \
-	sci_gateway/fortran/sci_f_sfact.lo \
-	sci_gateway/fortran/sci_f_simpmd.lo
+am__objects_2 =  \
+	sci_gateway/fortran/libscipolynomials_la-sci_f_simp.lo \
+	sci_gateway/fortran/libscipolynomials_la-sci_f_poly.lo \
+	sci_gateway/fortran/libscipolynomials_la-sci_f_varn.lo \
+	sci_gateway/fortran/libscipolynomials_la-sci_f_sum.lo \
+	sci_gateway/fortran/libscipolynomials_la-sci_f_div.lo \
+	sci_gateway/fortran/libscipolynomials_la-sci_f_diag.lo \
+	sci_gateway/fortran/libscipolynomials_la-sci_f_prod.lo \
+	sci_gateway/fortran/libscipolynomials_la-polops.lo \
+	sci_gateway/fortran/libscipolynomials_la-sci_f_bezout.lo \
+	sci_gateway/fortran/libscipolynomials_la-sci_f_triu_tril.lo \
+	sci_gateway/fortran/libscipolynomials_la-sci_f_roots.lo \
+	sci_gateway/fortran/libscipolynomials_la-sci_f_psimp.lo \
+	sci_gateway/fortran/libscipolynomials_la-sci_f_rsimp.lo \
+	sci_gateway/fortran/libscipolynomials_la-sci_f_coeff.lo \
+	sci_gateway/fortran/libscipolynomials_la-sci_f_degree.lo \
+	sci_gateway/fortran/libscipolynomials_la-sci_f_pclean.lo \
+	sci_gateway/fortran/libscipolynomials_la-sci_f_sfact.lo \
+	sci_gateway/fortran/libscipolynomials_la-sci_f_simpmd.lo
 am__objects_3 = sci_gateway/c/libscipolynomials_la-gw_polynomials.lo \
 	sci_gateway/c/libscipolynomials_la-sci_sfact.lo \
 	sci_gateway/c/libscipolynomials_la-sci_cleanp.lo \
@@ -255,6 +288,10 @@ am__objects_3 = sci_gateway/c/libscipolynomials_la-gw_polynomials.lo \
 	sci_gateway/c/libscipolynomials_la-sci_degree.lo
 am_libscipolynomials_la_OBJECTS = $(am__objects_2) $(am__objects_3)
 libscipolynomials_la_OBJECTS = $(am_libscipolynomials_la_OBJECTS)
+libscipolynomials_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libscipolynomials_la_FFLAGS) $(FFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
 @MAINTAINER_MODE_FALSE@am_libscipolynomials_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libscipolynomials_la_rpath = -rpath \
 @MAINTAINER_MODE_TRUE@	$(pkglibdir)
@@ -793,22 +830,25 @@ sci_gateway/fortran/sci_f_pclean.f \
 sci_gateway/fortran/sci_f_sfact.f \
 sci_gateway/fortran/sci_f_simpmd.f
 
-libscipolynomials_la_CPPFLAGS = -I$(srcdir)/includes/ \
-				-I$(top_srcdir)/libs/MALLOC/includes/ \
-				-I$(top_srcdir)/modules/api_scilab/includes/ \
-				-I$(top_srcdir)/modules/output_stream/includes/ \
-				-I$(top_srcdir)/modules/localization/includes/ \
+libscipolynomials_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+				-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+				-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+				-Wp,-I$(top_srcdir)/modules/cores/includes/ \
+				-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+				-Wp,-I$(top_srcdir)/modules/localization/includes/ \
 				$(AM_CPPFLAGS)
 
+libscipolynomials_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 @MAINTAINER_MODE_TRUE@pkglib_LTLIBRARIES = libscipolynomials.la
 @MAINTAINER_MODE_FALSE@noinst_LTLIBRARIES = libscipolynomials-algo.la libscipolynomials.la
 @MAINTAINER_MODE_TRUE@noinst_LTLIBRARIES = libscipolynomials-algo.la
 libscipolynomials_algo_la_SOURCES = $(POLYNOMIALS_FORTRAN_SOURCES)
 libscipolynomials_la_SOURCES = $(GATEWAY_FORTRAN_SOURCES) $(GATEWAY_C_SOURCES)
 libscipolynomials_algo_la_CPPFLAGS = $(libscipolynomials_la_CPPFLAGS)
+libscipolynomials_algo_la_FFLAGS = $(libscipolynomials_la_FFLAGS)
 
 # For the code check (splint)
-CHECK_SRC = ) $(GATEWAY_C_SOURCES)
+CHECK_SRC = $(GATEWAY_C_SOURCES)
 INCLUDE_FLAGS = $(libscipolynomials_la_CPPFLAGS)
 libscipolynomials_la_LIBADD = libscipolynomials-algo.la
 
@@ -985,178 +1025,238 @@ src/fortran/$(am__dirstamp):
 src/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/fortran/$(DEPDIR)
 	@: > src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/residu.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-residu.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/imptra.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-imptra.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmpadj.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-dmpadj.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/impins.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-impins.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dpmul1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-dpmul1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wprxc.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-wprxc.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmpcnc.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-dmpcnc.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wmpmu.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-wmpmu.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/mpinsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-mpinsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/impext.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-impext.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/recbez.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-recbez.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/sfact1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-sfact1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dpodiv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-dpodiv.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmptra.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-dmptra.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmpins.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-dmpins.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dpsimp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-dpsimp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmp2pm.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-dmp2pm.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmpext.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-dmpext.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wpmul.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-wpmul.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/bezstp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-bezstp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wmpad.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-wmpad.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dprxc.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-dprxc.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/quadsd.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-quadsd.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wmpadj.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-wmpadj.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmpmu.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-dmpmu.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wpmul1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-wpmul1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wmpcnc.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-wmpcnc.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/mptri.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-mptri.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/horner.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-horner.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/idegre.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-idegre.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/fxshfr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-fxshfr.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/mpdiag.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-mpdiag.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmpcle.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-dmpcle.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rpoly.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-rpoly.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wpodiv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-wpodiv.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wdmpmu.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-wdmpmu.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wmptra.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-wmptra.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wmpins.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-wmpins.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/mpdegr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-mpdegr.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ddmpev.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-ddmpev.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/realit.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-realit.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dpmul.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-dpmul.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/sfact2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-sfact2.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmpad.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-dmpad.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/nextk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-nextk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/blktit.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-blktit.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dimin.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-dimin.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/newest.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-newest.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dwmpmu.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-dwmpmu.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/impcnc.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-impcnc.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wdmpad.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-wdmpad.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wmpcle.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-wmpcle.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/quadit.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-quadit.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/quad.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-quad.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/calcsc.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-calcsc.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/writebufsfact.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-writebufsfact.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/chkvar.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscipolynomials_algo_la-chkvar.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscipolynomials-algo.la: $(libscipolynomials_algo_la_OBJECTS) $(libscipolynomials_algo_la_DEPENDENCIES) $(EXTRA_libscipolynomials_algo_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libscipolynomials_algo_la_rpath) $(libscipolynomials_algo_la_OBJECTS) $(libscipolynomials_algo_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscipolynomials_algo_la_LINK) $(am_libscipolynomials_algo_la_rpath) $(libscipolynomials_algo_la_OBJECTS) $(libscipolynomials_algo_la_LIBADD) $(LIBS)
 sci_gateway/fortran/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran
 	@: > sci_gateway/fortran/$(am__dirstamp)
 sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran/$(DEPDIR)
 	@: > sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_simp.lo:  \
+sci_gateway/fortran/libscipolynomials_la-sci_f_simp.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_poly.lo:  \
+sci_gateway/fortran/libscipolynomials_la-sci_f_poly.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_varn.lo:  \
+sci_gateway/fortran/libscipolynomials_la-sci_f_varn.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_sum.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_div.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_diag.lo:  \
+sci_gateway/fortran/libscipolynomials_la-sci_f_sum.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_prod.lo:  \
+sci_gateway/fortran/libscipolynomials_la-sci_f_div.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/polops.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_bezout.lo:  \
+sci_gateway/fortran/libscipolynomials_la-sci_f_diag.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_triu_tril.lo:  \
+sci_gateway/fortran/libscipolynomials_la-sci_f_prod.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_roots.lo:  \
+sci_gateway/fortran/libscipolynomials_la-polops.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_psimp.lo:  \
+sci_gateway/fortran/libscipolynomials_la-sci_f_bezout.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_rsimp.lo:  \
+sci_gateway/fortran/libscipolynomials_la-sci_f_triu_tril.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_coeff.lo:  \
+sci_gateway/fortran/libscipolynomials_la-sci_f_roots.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_degree.lo:  \
+sci_gateway/fortran/libscipolynomials_la-sci_f_psimp.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_pclean.lo:  \
+sci_gateway/fortran/libscipolynomials_la-sci_f_rsimp.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_sfact.lo:  \
+sci_gateway/fortran/libscipolynomials_la-sci_f_coeff.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_simpmd.lo:  \
+sci_gateway/fortran/libscipolynomials_la-sci_f_degree.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscipolynomials_la-sci_f_pclean.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscipolynomials_la-sci_f_sfact.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscipolynomials_la-sci_f_simpmd.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
 sci_gateway/c/$(am__dirstamp):
@@ -1218,7 +1318,7 @@ sci_gateway/c/libscipolynomials_la-sci_degree.lo:  \
 	sci_gateway/c/$(DEPDIR)/$(am__dirstamp)
 
 libscipolynomials.la: $(libscipolynomials_la_OBJECTS) $(libscipolynomials_la_DEPENDENCIES) $(EXTRA_libscipolynomials_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libscipolynomials_la_rpath) $(libscipolynomials_la_OBJECTS) $(libscipolynomials_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscipolynomials_la_LINK) $(am_libscipolynomials_la_rpath) $(libscipolynomials_la_OBJECTS) $(libscipolynomials_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -1407,6 +1507,231 @@ sci_gateway/c/libscipolynomials_la-sci_degree.lo: sci_gateway/c/sci_degree.c
 
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
+
+src/fortran/libscipolynomials_algo_la-residu.lo: src/fortran/residu.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-residu.lo `test -f 'src/fortran/residu.f' || echo '$(srcdir)/'`src/fortran/residu.f
+
+src/fortran/libscipolynomials_algo_la-imptra.lo: src/fortran/imptra.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-imptra.lo `test -f 'src/fortran/imptra.f' || echo '$(srcdir)/'`src/fortran/imptra.f
+
+src/fortran/libscipolynomials_algo_la-dmpadj.lo: src/fortran/dmpadj.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-dmpadj.lo `test -f 'src/fortran/dmpadj.f' || echo '$(srcdir)/'`src/fortran/dmpadj.f
+
+src/fortran/libscipolynomials_algo_la-impins.lo: src/fortran/impins.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-impins.lo `test -f 'src/fortran/impins.f' || echo '$(srcdir)/'`src/fortran/impins.f
+
+src/fortran/libscipolynomials_algo_la-dpmul1.lo: src/fortran/dpmul1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-dpmul1.lo `test -f 'src/fortran/dpmul1.f' || echo '$(srcdir)/'`src/fortran/dpmul1.f
+
+src/fortran/libscipolynomials_algo_la-wprxc.lo: src/fortran/wprxc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-wprxc.lo `test -f 'src/fortran/wprxc.f' || echo '$(srcdir)/'`src/fortran/wprxc.f
+
+src/fortran/libscipolynomials_algo_la-dmpcnc.lo: src/fortran/dmpcnc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-dmpcnc.lo `test -f 'src/fortran/dmpcnc.f' || echo '$(srcdir)/'`src/fortran/dmpcnc.f
+
+src/fortran/libscipolynomials_algo_la-wmpmu.lo: src/fortran/wmpmu.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-wmpmu.lo `test -f 'src/fortran/wmpmu.f' || echo '$(srcdir)/'`src/fortran/wmpmu.f
+
+src/fortran/libscipolynomials_algo_la-mpinsp.lo: src/fortran/mpinsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-mpinsp.lo `test -f 'src/fortran/mpinsp.f' || echo '$(srcdir)/'`src/fortran/mpinsp.f
+
+src/fortran/libscipolynomials_algo_la-impext.lo: src/fortran/impext.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-impext.lo `test -f 'src/fortran/impext.f' || echo '$(srcdir)/'`src/fortran/impext.f
+
+src/fortran/libscipolynomials_algo_la-recbez.lo: src/fortran/recbez.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-recbez.lo `test -f 'src/fortran/recbez.f' || echo '$(srcdir)/'`src/fortran/recbez.f
+
+src/fortran/libscipolynomials_algo_la-sfact1.lo: src/fortran/sfact1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-sfact1.lo `test -f 'src/fortran/sfact1.f' || echo '$(srcdir)/'`src/fortran/sfact1.f
+
+src/fortran/libscipolynomials_algo_la-dpodiv.lo: src/fortran/dpodiv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-dpodiv.lo `test -f 'src/fortran/dpodiv.f' || echo '$(srcdir)/'`src/fortran/dpodiv.f
+
+src/fortran/libscipolynomials_algo_la-dmptra.lo: src/fortran/dmptra.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-dmptra.lo `test -f 'src/fortran/dmptra.f' || echo '$(srcdir)/'`src/fortran/dmptra.f
+
+src/fortran/libscipolynomials_algo_la-dmpins.lo: src/fortran/dmpins.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-dmpins.lo `test -f 'src/fortran/dmpins.f' || echo '$(srcdir)/'`src/fortran/dmpins.f
+
+src/fortran/libscipolynomials_algo_la-dpsimp.lo: src/fortran/dpsimp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-dpsimp.lo `test -f 'src/fortran/dpsimp.f' || echo '$(srcdir)/'`src/fortran/dpsimp.f
+
+src/fortran/libscipolynomials_algo_la-dmp2pm.lo: src/fortran/dmp2pm.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-dmp2pm.lo `test -f 'src/fortran/dmp2pm.f' || echo '$(srcdir)/'`src/fortran/dmp2pm.f
+
+src/fortran/libscipolynomials_algo_la-dmpext.lo: src/fortran/dmpext.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-dmpext.lo `test -f 'src/fortran/dmpext.f' || echo '$(srcdir)/'`src/fortran/dmpext.f
+
+src/fortran/libscipolynomials_algo_la-wpmul.lo: src/fortran/wpmul.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-wpmul.lo `test -f 'src/fortran/wpmul.f' || echo '$(srcdir)/'`src/fortran/wpmul.f
+
+src/fortran/libscipolynomials_algo_la-bezstp.lo: src/fortran/bezstp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-bezstp.lo `test -f 'src/fortran/bezstp.f' || echo '$(srcdir)/'`src/fortran/bezstp.f
+
+src/fortran/libscipolynomials_algo_la-wmpad.lo: src/fortran/wmpad.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-wmpad.lo `test -f 'src/fortran/wmpad.f' || echo '$(srcdir)/'`src/fortran/wmpad.f
+
+src/fortran/libscipolynomials_algo_la-dprxc.lo: src/fortran/dprxc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-dprxc.lo `test -f 'src/fortran/dprxc.f' || echo '$(srcdir)/'`src/fortran/dprxc.f
+
+src/fortran/libscipolynomials_algo_la-quadsd.lo: src/fortran/quadsd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-quadsd.lo `test -f 'src/fortran/quadsd.f' || echo '$(srcdir)/'`src/fortran/quadsd.f
+
+src/fortran/libscipolynomials_algo_la-wmpadj.lo: src/fortran/wmpadj.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-wmpadj.lo `test -f 'src/fortran/wmpadj.f' || echo '$(srcdir)/'`src/fortran/wmpadj.f
+
+src/fortran/libscipolynomials_algo_la-dmpmu.lo: src/fortran/dmpmu.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-dmpmu.lo `test -f 'src/fortran/dmpmu.f' || echo '$(srcdir)/'`src/fortran/dmpmu.f
+
+src/fortran/libscipolynomials_algo_la-wpmul1.lo: src/fortran/wpmul1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-wpmul1.lo `test -f 'src/fortran/wpmul1.f' || echo '$(srcdir)/'`src/fortran/wpmul1.f
+
+src/fortran/libscipolynomials_algo_la-wmpcnc.lo: src/fortran/wmpcnc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-wmpcnc.lo `test -f 'src/fortran/wmpcnc.f' || echo '$(srcdir)/'`src/fortran/wmpcnc.f
+
+src/fortran/libscipolynomials_algo_la-mptri.lo: src/fortran/mptri.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-mptri.lo `test -f 'src/fortran/mptri.f' || echo '$(srcdir)/'`src/fortran/mptri.f
+
+src/fortran/libscipolynomials_algo_la-horner.lo: src/fortran/horner.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-horner.lo `test -f 'src/fortran/horner.f' || echo '$(srcdir)/'`src/fortran/horner.f
+
+src/fortran/libscipolynomials_algo_la-idegre.lo: src/fortran/idegre.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-idegre.lo `test -f 'src/fortran/idegre.f' || echo '$(srcdir)/'`src/fortran/idegre.f
+
+src/fortran/libscipolynomials_algo_la-fxshfr.lo: src/fortran/fxshfr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-fxshfr.lo `test -f 'src/fortran/fxshfr.f' || echo '$(srcdir)/'`src/fortran/fxshfr.f
+
+src/fortran/libscipolynomials_algo_la-mpdiag.lo: src/fortran/mpdiag.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-mpdiag.lo `test -f 'src/fortran/mpdiag.f' || echo '$(srcdir)/'`src/fortran/mpdiag.f
+
+src/fortran/libscipolynomials_algo_la-dmpcle.lo: src/fortran/dmpcle.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-dmpcle.lo `test -f 'src/fortran/dmpcle.f' || echo '$(srcdir)/'`src/fortran/dmpcle.f
+
+src/fortran/libscipolynomials_algo_la-rpoly.lo: src/fortran/rpoly.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-rpoly.lo `test -f 'src/fortran/rpoly.f' || echo '$(srcdir)/'`src/fortran/rpoly.f
+
+src/fortran/libscipolynomials_algo_la-wpodiv.lo: src/fortran/wpodiv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-wpodiv.lo `test -f 'src/fortran/wpodiv.f' || echo '$(srcdir)/'`src/fortran/wpodiv.f
+
+src/fortran/libscipolynomials_algo_la-wdmpmu.lo: src/fortran/wdmpmu.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-wdmpmu.lo `test -f 'src/fortran/wdmpmu.f' || echo '$(srcdir)/'`src/fortran/wdmpmu.f
+
+src/fortran/libscipolynomials_algo_la-wmptra.lo: src/fortran/wmptra.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-wmptra.lo `test -f 'src/fortran/wmptra.f' || echo '$(srcdir)/'`src/fortran/wmptra.f
+
+src/fortran/libscipolynomials_algo_la-wmpins.lo: src/fortran/wmpins.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-wmpins.lo `test -f 'src/fortran/wmpins.f' || echo '$(srcdir)/'`src/fortran/wmpins.f
+
+src/fortran/libscipolynomials_algo_la-mpdegr.lo: src/fortran/mpdegr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-mpdegr.lo `test -f 'src/fortran/mpdegr.f' || echo '$(srcdir)/'`src/fortran/mpdegr.f
+
+src/fortran/libscipolynomials_algo_la-ddmpev.lo: src/fortran/ddmpev.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-ddmpev.lo `test -f 'src/fortran/ddmpev.f' || echo '$(srcdir)/'`src/fortran/ddmpev.f
+
+src/fortran/libscipolynomials_algo_la-realit.lo: src/fortran/realit.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-realit.lo `test -f 'src/fortran/realit.f' || echo '$(srcdir)/'`src/fortran/realit.f
+
+src/fortran/libscipolynomials_algo_la-dpmul.lo: src/fortran/dpmul.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-dpmul.lo `test -f 'src/fortran/dpmul.f' || echo '$(srcdir)/'`src/fortran/dpmul.f
+
+src/fortran/libscipolynomials_algo_la-sfact2.lo: src/fortran/sfact2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-sfact2.lo `test -f 'src/fortran/sfact2.f' || echo '$(srcdir)/'`src/fortran/sfact2.f
+
+src/fortran/libscipolynomials_algo_la-dmpad.lo: src/fortran/dmpad.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-dmpad.lo `test -f 'src/fortran/dmpad.f' || echo '$(srcdir)/'`src/fortran/dmpad.f
+
+src/fortran/libscipolynomials_algo_la-nextk.lo: src/fortran/nextk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-nextk.lo `test -f 'src/fortran/nextk.f' || echo '$(srcdir)/'`src/fortran/nextk.f
+
+src/fortran/libscipolynomials_algo_la-blktit.lo: src/fortran/blktit.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-blktit.lo `test -f 'src/fortran/blktit.f' || echo '$(srcdir)/'`src/fortran/blktit.f
+
+src/fortran/libscipolynomials_algo_la-dimin.lo: src/fortran/dimin.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-dimin.lo `test -f 'src/fortran/dimin.f' || echo '$(srcdir)/'`src/fortran/dimin.f
+
+src/fortran/libscipolynomials_algo_la-newest.lo: src/fortran/newest.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-newest.lo `test -f 'src/fortran/newest.f' || echo '$(srcdir)/'`src/fortran/newest.f
+
+src/fortran/libscipolynomials_algo_la-dwmpmu.lo: src/fortran/dwmpmu.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-dwmpmu.lo `test -f 'src/fortran/dwmpmu.f' || echo '$(srcdir)/'`src/fortran/dwmpmu.f
+
+src/fortran/libscipolynomials_algo_la-impcnc.lo: src/fortran/impcnc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-impcnc.lo `test -f 'src/fortran/impcnc.f' || echo '$(srcdir)/'`src/fortran/impcnc.f
+
+src/fortran/libscipolynomials_algo_la-wdmpad.lo: src/fortran/wdmpad.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-wdmpad.lo `test -f 'src/fortran/wdmpad.f' || echo '$(srcdir)/'`src/fortran/wdmpad.f
+
+src/fortran/libscipolynomials_algo_la-wmpcle.lo: src/fortran/wmpcle.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-wmpcle.lo `test -f 'src/fortran/wmpcle.f' || echo '$(srcdir)/'`src/fortran/wmpcle.f
+
+src/fortran/libscipolynomials_algo_la-quadit.lo: src/fortran/quadit.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-quadit.lo `test -f 'src/fortran/quadit.f' || echo '$(srcdir)/'`src/fortran/quadit.f
+
+src/fortran/libscipolynomials_algo_la-quad.lo: src/fortran/quad.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-quad.lo `test -f 'src/fortran/quad.f' || echo '$(srcdir)/'`src/fortran/quad.f
+
+src/fortran/libscipolynomials_algo_la-calcsc.lo: src/fortran/calcsc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-calcsc.lo `test -f 'src/fortran/calcsc.f' || echo '$(srcdir)/'`src/fortran/calcsc.f
+
+src/fortran/libscipolynomials_algo_la-writebufsfact.lo: src/fortran/writebufsfact.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-writebufsfact.lo `test -f 'src/fortran/writebufsfact.f' || echo '$(srcdir)/'`src/fortran/writebufsfact.f
+
+src/fortran/libscipolynomials_algo_la-chkvar.lo: src/fortran/chkvar.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscipolynomials_algo_la-chkvar.lo `test -f 'src/fortran/chkvar.f' || echo '$(srcdir)/'`src/fortran/chkvar.f
+
+sci_gateway/fortran/libscipolynomials_la-sci_f_simp.lo: sci_gateway/fortran/sci_f_simp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-sci_f_simp.lo `test -f 'sci_gateway/fortran/sci_f_simp.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_simp.f
+
+sci_gateway/fortran/libscipolynomials_la-sci_f_poly.lo: sci_gateway/fortran/sci_f_poly.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-sci_f_poly.lo `test -f 'sci_gateway/fortran/sci_f_poly.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_poly.f
+
+sci_gateway/fortran/libscipolynomials_la-sci_f_varn.lo: sci_gateway/fortran/sci_f_varn.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-sci_f_varn.lo `test -f 'sci_gateway/fortran/sci_f_varn.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_varn.f
+
+sci_gateway/fortran/libscipolynomials_la-sci_f_sum.lo: sci_gateway/fortran/sci_f_sum.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-sci_f_sum.lo `test -f 'sci_gateway/fortran/sci_f_sum.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_sum.f
+
+sci_gateway/fortran/libscipolynomials_la-sci_f_div.lo: sci_gateway/fortran/sci_f_div.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-sci_f_div.lo `test -f 'sci_gateway/fortran/sci_f_div.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_div.f
+
+sci_gateway/fortran/libscipolynomials_la-sci_f_diag.lo: sci_gateway/fortran/sci_f_diag.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-sci_f_diag.lo `test -f 'sci_gateway/fortran/sci_f_diag.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_diag.f
+
+sci_gateway/fortran/libscipolynomials_la-sci_f_prod.lo: sci_gateway/fortran/sci_f_prod.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-sci_f_prod.lo `test -f 'sci_gateway/fortran/sci_f_prod.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_prod.f
+
+sci_gateway/fortran/libscipolynomials_la-polops.lo: sci_gateway/fortran/polops.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-polops.lo `test -f 'sci_gateway/fortran/polops.f' || echo '$(srcdir)/'`sci_gateway/fortran/polops.f
+
+sci_gateway/fortran/libscipolynomials_la-sci_f_bezout.lo: sci_gateway/fortran/sci_f_bezout.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-sci_f_bezout.lo `test -f 'sci_gateway/fortran/sci_f_bezout.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_bezout.f
+
+sci_gateway/fortran/libscipolynomials_la-sci_f_triu_tril.lo: sci_gateway/fortran/sci_f_triu_tril.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-sci_f_triu_tril.lo `test -f 'sci_gateway/fortran/sci_f_triu_tril.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_triu_tril.f
+
+sci_gateway/fortran/libscipolynomials_la-sci_f_roots.lo: sci_gateway/fortran/sci_f_roots.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-sci_f_roots.lo `test -f 'sci_gateway/fortran/sci_f_roots.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_roots.f
+
+sci_gateway/fortran/libscipolynomials_la-sci_f_psimp.lo: sci_gateway/fortran/sci_f_psimp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-sci_f_psimp.lo `test -f 'sci_gateway/fortran/sci_f_psimp.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_psimp.f
+
+sci_gateway/fortran/libscipolynomials_la-sci_f_rsimp.lo: sci_gateway/fortran/sci_f_rsimp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-sci_f_rsimp.lo `test -f 'sci_gateway/fortran/sci_f_rsimp.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_rsimp.f
+
+sci_gateway/fortran/libscipolynomials_la-sci_f_coeff.lo: sci_gateway/fortran/sci_f_coeff.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-sci_f_coeff.lo `test -f 'sci_gateway/fortran/sci_f_coeff.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_coeff.f
+
+sci_gateway/fortran/libscipolynomials_la-sci_f_degree.lo: sci_gateway/fortran/sci_f_degree.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-sci_f_degree.lo `test -f 'sci_gateway/fortran/sci_f_degree.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_degree.f
+
+sci_gateway/fortran/libscipolynomials_la-sci_f_pclean.lo: sci_gateway/fortran/sci_f_pclean.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-sci_f_pclean.lo `test -f 'sci_gateway/fortran/sci_f_pclean.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_pclean.f
+
+sci_gateway/fortran/libscipolynomials_la-sci_f_sfact.lo: sci_gateway/fortran/sci_f_sfact.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-sci_f_sfact.lo `test -f 'sci_gateway/fortran/sci_f_sfact.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_sfact.f
+
+sci_gateway/fortran/libscipolynomials_la-sci_f_simpmd.lo: sci_gateway/fortran/sci_f_simpmd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscipolynomials_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscipolynomials_la-sci_f_simpmd.lo `test -f 'sci_gateway/fortran/sci_f_simpmd.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_simpmd.f
 
 mostlyclean-libtool:
 	-rm -f *.lo

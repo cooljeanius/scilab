@@ -66,15 +66,19 @@ sci_gateway/c/sci_regexp.c
 GATEWAY_FORTRAN_SOURCES =  sci_gateway/fortran/sci_f_string.f \
 sci_gateway/fortran/strops.f
 
-libscistring_la_CPPFLAGS = -I$(srcdir)/src/c \
-	-I$(srcdir)/includes/ \
-	-I$(top_srcdir)/libs/MALLOC/includes/ \
-	-I$(top_srcdir)/modules/functions/includes/ \
-	-I$(top_srcdir)/modules/api_scilab/includes/ \
-	-I$(top_srcdir)/modules/localization/includes/ \
-	-I$(top_srcdir)/modules/output_stream/includes/ \
+libscistring_la_CPPFLAGS = -Wp,-I$(srcdir)/src/c \
+	-Wp,-I$(srcdir)/includes/ \
+	-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+	-Wp,-I$(top_srcdir)/modules/core/includes/ \
+	-Wp,-I$(top_srcdir)/modules/functions/includes/ \
+	-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+	-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+	-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
 	$(PCRE_CFLAGS) \
 	$(AM_CPPFLAGS)
+
+## Need to put this include in FFLAGS too, because fortran is different:
+libscistring_la_FFLAGS= -I$(top_srcdir)/modules/core/includes/
 
 if MAINTAINER_MODE
 pkglib_LTLIBRARIES = libscistring.la
@@ -89,6 +93,7 @@ libscistring_la_LDFLAGS = $(PCRE_LIBS) $(AM_LDFLAGS)
 libscistring_algo_la_SOURCES = $(STRING_C_SOURCES) $(STRING_FORTRAN_SOURCES)
 libscistring_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libscistring_algo_la_CPPFLAGS = $(libscistring_la_CPPFLAGS)
+libscistring_algo_la_FFLAGS = $(libscistring_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC= $(STRING_C_SOURCES) $(GATEWAY_C_SOURCES)

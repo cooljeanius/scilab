@@ -40,18 +40,18 @@ sci_gateway/cpp/sci_csvStringToDouble.cpp \
 sci_gateway/cpp/sci_csvTextScan.cpp \
 sci_gateway/cpp/sci_csvWrite.cpp
 
-libscispreadsheet_la_CPPFLAGS = -I$(srcdir)/includes/ \
-				-I$(srcdir)/src/c/ \
-				-I$(srcdir)/src/cpp/ \
-				-I$(srcdir)/src/c/ripole \
-				-I$(top_srcdir)/libs/MALLOC/includes/ \
-				-I$(top_srcdir)/modules/localization/includes/ \
-				-I$(top_srcdir)/modules/output_stream/includes/ \
-				-I$(top_srcdir)/modules/io/includes/ \
-				-I$(top_srcdir)/modules/string/src/c/ \
-				-I$(top_srcdir)/modules/string/includes/ \
-				-I$(top_srcdir)/modules/api_scilab/includes/ \
-				-I$(top_srcdir)/modules/fileio/includes/ \
+libscispreadsheet_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+				-Wp,-I$(srcdir)/src/c/ \
+				-Wp,-I$(srcdir)/src/cpp/ \
+				-Wp,-I$(srcdir)/src/c/ripole \
+				-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+				-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+				-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+				-Wp,-I$(top_srcdir)/modules/io/includes/ \
+				-Wp,-I$(top_srcdir)/modules/string/src/c/ \
+				-Wp,-I$(top_srcdir)/modules/string/includes/ \
+				-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+				-Wp,-I$(top_srcdir)/modules/fileio/includes/ \
 				$(AM_CPPFLAGS)
 
 pkglib_LTLIBRARIES = libscispreadsheet.la

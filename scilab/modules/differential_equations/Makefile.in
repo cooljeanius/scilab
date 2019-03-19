@@ -244,31 +244,48 @@ am__objects_3 =  \
 	sci_gateway/c/libscidifferential_equations_la-gw_differential_equations4.lo \
 	sci_gateway/c/libscidifferential_equations_la-sci_bvode.lo \
 	sci_gateway/c/libscidifferential_equations_la-gw_differential_equations6.lo
-am__objects_4 = sci_gateway/fortran/sci_f_dasrt.lo \
-	sci_gateway/fortran/sci_f_feval.lo \
-	sci_gateway/fortran/sci_f_odedc.lo \
-	sci_gateway/fortran/sci_f_bvode.lo \
-	sci_gateway/fortran/sci_f_impl.lo \
-	sci_gateway/fortran/sci_f_dassl.lo \
-	sci_gateway/fortran/sci_f_ode.lo sci_gateway/fortran/bsurf.lo \
-	sci_gateway/fortran/bsurfd.lo sci_gateway/fortran/bydot.lo \
-	sci_gateway/fortran/bydot2.lo sci_gateway/fortran/bresd.lo \
-	sci_gateway/fortran/bresid.lo sci_gateway/fortran/bjac.lo \
-	sci_gateway/fortran/bjacd.lo sci_gateway/fortran/badd.lo \
-	sci_gateway/fortran/bj2.lo sci_gateway/fortran/bfeval.lo \
-	sci_gateway/fortran/int2d.lo sci_gateway/fortran/bint2d.lo \
-	sci_gateway/fortran/bint3d.lo sci_gateway/fortran/bintg.lo \
-	sci_gateway/fortran/int3d.lo sci_gateway/fortran/intg.lo \
-	sci_gateway/fortran/Ex-odedc.lo sci_gateway/fortran/Ex-ode.lo \
-	sci_gateway/fortran/Ex-impl.lo sci_gateway/fortran/Ex-int2d.lo \
-	sci_gateway/fortran/Ex-int3d.lo sci_gateway/fortran/Ex-intg.lo \
-	sci_gateway/fortran/Ex-dasrt.lo \
-	sci_gateway/fortran/Ex-dassl.lo \
-	sci_gateway/fortran/Ex-bvode.lo sci_gateway/fortran/bbvode.lo
+am__objects_4 = sci_gateway/fortran/libscidifferential_equations_la-sci_f_dasrt.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-sci_f_feval.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-sci_f_odedc.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-sci_f_bvode.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-sci_f_impl.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-sci_f_dassl.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-sci_f_ode.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-bsurf.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-bsurfd.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-bydot.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-bydot2.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-bresd.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-bresid.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-bjac.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-bjacd.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-badd.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-bj2.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-bfeval.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-int2d.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-bint2d.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-bint3d.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-bintg.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-int3d.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-intg.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-Ex-odedc.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-Ex-ode.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-Ex-impl.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-Ex-int2d.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-Ex-int3d.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-Ex-intg.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-Ex-dasrt.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-Ex-dassl.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-Ex-bvode.lo \
+	sci_gateway/fortran/libscidifferential_equations_la-bbvode.lo
 am_libscidifferential_equations_la_OBJECTS = $(am__objects_3) \
 	$(am__objects_4)
 libscidifferential_equations_la_OBJECTS =  \
 	$(am_libscidifferential_equations_la_OBJECTS)
+libscidifferential_equations_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libscidifferential_equations_la_FFLAGS) $(FFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 @MAINTAINER_MODE_FALSE@am_libscidifferential_equations_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libscidifferential_equations_la_rpath =  \
 @MAINTAINER_MODE_TRUE@	-rpath $(pkglibdir)
@@ -841,15 +858,17 @@ sci_gateway/fortran/Ex-dassl.f \
 sci_gateway/fortran/Ex-bvode.f \
 sci_gateway/fortran/bbvode.f
 
-libscidifferential_equations_la_CPPFLAGS = -I$(srcdir)/includes/ \
--I$(top_srcdir)/libs/MALLOC/includes/ \
--I$(top_srcdir)/modules/localization/includes/ \
--I$(top_srcdir)/modules/api_scilab/includes/ \
--I$(top_srcdir)/modules/output_stream/includes/ \
--I$(top_srcdir)/modules/elementary_functions/includes/ \
--I$(top_srcdir)/modules/dynamic_link/includes/ \
+libscidifferential_equations_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+-Wp,-I$(top_srcdir)/modules/core/includes/ \
+-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+-Wp,-I$(top_srcdir)/modules/elementary_functions/includes/ \
+-Wp,-I$(top_srcdir)/modules/dynamic_link/includes/ \
 $(AM_CPPFLAGS)
 
+libscidifferential_equations_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 @MAINTAINER_MODE_TRUE@pkglib_LTLIBRARIES = libscidifferential_equations.la
 @MAINTAINER_MODE_FALSE@noinst_LTLIBRARIES = libscidifferential_equations-algo.la libscidifferential_equations.la
 @MAINTAINER_MODE_TRUE@noinst_LTLIBRARIES = libscidifferential_equations-algo.la
@@ -1230,83 +1249,111 @@ sci_gateway/fortran/$(am__dirstamp):
 sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran/$(DEPDIR)
 	@: > sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_dasrt.lo:  \
+sci_gateway/fortran/libscidifferential_equations_la-sci_f_dasrt.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_feval.lo:  \
+sci_gateway/fortran/libscidifferential_equations_la-sci_f_feval.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_odedc.lo:  \
+sci_gateway/fortran/libscidifferential_equations_la-sci_f_odedc.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_bvode.lo:  \
+sci_gateway/fortran/libscidifferential_equations_la-sci_f_bvode.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_impl.lo:  \
+sci_gateway/fortran/libscidifferential_equations_la-sci_f_impl.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_dassl.lo:  \
+sci_gateway/fortran/libscidifferential_equations_la-sci_f_dassl.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_ode.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-sci_f_ode.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/bsurf.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-bsurf.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/bsurfd.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-bsurfd.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/bydot.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-bydot.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/bydot2.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-bydot2.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/bresd.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-bresd.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/bresid.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-bresid.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/bjac.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-bjac.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/bjacd.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-bjacd.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/badd.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-badd.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/bj2.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-bj2.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/bfeval.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-bfeval.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/int2d.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-int2d.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/bint2d.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-bint2d.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/bint3d.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-bint3d.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/bintg.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-bintg.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/int3d.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-int3d.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/intg.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-intg.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/Ex-odedc.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-Ex-odedc.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/Ex-ode.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-Ex-ode.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/Ex-impl.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-Ex-impl.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/Ex-int2d.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-Ex-int2d.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/Ex-int3d.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-Ex-int3d.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/Ex-intg.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-Ex-intg.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/Ex-dasrt.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-Ex-dasrt.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/Ex-dassl.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-Ex-dassl.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/Ex-bvode.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-Ex-bvode.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/bbvode.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscidifferential_equations_la-bbvode.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscidifferential_equations.la: $(libscidifferential_equations_la_OBJECTS) $(libscidifferential_equations_la_DEPENDENCIES) $(EXTRA_libscidifferential_equations_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libscidifferential_equations_la_rpath) $(libscidifferential_equations_la_OBJECTS) $(libscidifferential_equations_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscidifferential_equations_la_LINK) $(am_libscidifferential_equations_la_rpath) $(libscidifferential_equations_la_OBJECTS) $(libscidifferential_equations_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -1561,6 +1608,108 @@ sci_gateway/c/libscidifferential_equations_la-gw_differential_equations6.lo: sci
 
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
+
+sci_gateway/fortran/libscidifferential_equations_la-sci_f_dasrt.lo: sci_gateway/fortran/sci_f_dasrt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-sci_f_dasrt.lo `test -f 'sci_gateway/fortran/sci_f_dasrt.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_dasrt.f
+
+sci_gateway/fortran/libscidifferential_equations_la-sci_f_feval.lo: sci_gateway/fortran/sci_f_feval.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-sci_f_feval.lo `test -f 'sci_gateway/fortran/sci_f_feval.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_feval.f
+
+sci_gateway/fortran/libscidifferential_equations_la-sci_f_odedc.lo: sci_gateway/fortran/sci_f_odedc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-sci_f_odedc.lo `test -f 'sci_gateway/fortran/sci_f_odedc.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_odedc.f
+
+sci_gateway/fortran/libscidifferential_equations_la-sci_f_bvode.lo: sci_gateway/fortran/sci_f_bvode.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-sci_f_bvode.lo `test -f 'sci_gateway/fortran/sci_f_bvode.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_bvode.f
+
+sci_gateway/fortran/libscidifferential_equations_la-sci_f_impl.lo: sci_gateway/fortran/sci_f_impl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-sci_f_impl.lo `test -f 'sci_gateway/fortran/sci_f_impl.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_impl.f
+
+sci_gateway/fortran/libscidifferential_equations_la-sci_f_dassl.lo: sci_gateway/fortran/sci_f_dassl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-sci_f_dassl.lo `test -f 'sci_gateway/fortran/sci_f_dassl.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_dassl.f
+
+sci_gateway/fortran/libscidifferential_equations_la-sci_f_ode.lo: sci_gateway/fortran/sci_f_ode.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-sci_f_ode.lo `test -f 'sci_gateway/fortran/sci_f_ode.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_ode.f
+
+sci_gateway/fortran/libscidifferential_equations_la-bsurf.lo: sci_gateway/fortran/bsurf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-bsurf.lo `test -f 'sci_gateway/fortran/bsurf.f' || echo '$(srcdir)/'`sci_gateway/fortran/bsurf.f
+
+sci_gateway/fortran/libscidifferential_equations_la-bsurfd.lo: sci_gateway/fortran/bsurfd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-bsurfd.lo `test -f 'sci_gateway/fortran/bsurfd.f' || echo '$(srcdir)/'`sci_gateway/fortran/bsurfd.f
+
+sci_gateway/fortran/libscidifferential_equations_la-bydot.lo: sci_gateway/fortran/bydot.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-bydot.lo `test -f 'sci_gateway/fortran/bydot.f' || echo '$(srcdir)/'`sci_gateway/fortran/bydot.f
+
+sci_gateway/fortran/libscidifferential_equations_la-bydot2.lo: sci_gateway/fortran/bydot2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-bydot2.lo `test -f 'sci_gateway/fortran/bydot2.f' || echo '$(srcdir)/'`sci_gateway/fortran/bydot2.f
+
+sci_gateway/fortran/libscidifferential_equations_la-bresd.lo: sci_gateway/fortran/bresd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-bresd.lo `test -f 'sci_gateway/fortran/bresd.f' || echo '$(srcdir)/'`sci_gateway/fortran/bresd.f
+
+sci_gateway/fortran/libscidifferential_equations_la-bresid.lo: sci_gateway/fortran/bresid.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-bresid.lo `test -f 'sci_gateway/fortran/bresid.f' || echo '$(srcdir)/'`sci_gateway/fortran/bresid.f
+
+sci_gateway/fortran/libscidifferential_equations_la-bjac.lo: sci_gateway/fortran/bjac.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-bjac.lo `test -f 'sci_gateway/fortran/bjac.f' || echo '$(srcdir)/'`sci_gateway/fortran/bjac.f
+
+sci_gateway/fortran/libscidifferential_equations_la-bjacd.lo: sci_gateway/fortran/bjacd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-bjacd.lo `test -f 'sci_gateway/fortran/bjacd.f' || echo '$(srcdir)/'`sci_gateway/fortran/bjacd.f
+
+sci_gateway/fortran/libscidifferential_equations_la-badd.lo: sci_gateway/fortran/badd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-badd.lo `test -f 'sci_gateway/fortran/badd.f' || echo '$(srcdir)/'`sci_gateway/fortran/badd.f
+
+sci_gateway/fortran/libscidifferential_equations_la-bj2.lo: sci_gateway/fortran/bj2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-bj2.lo `test -f 'sci_gateway/fortran/bj2.f' || echo '$(srcdir)/'`sci_gateway/fortran/bj2.f
+
+sci_gateway/fortran/libscidifferential_equations_la-bfeval.lo: sci_gateway/fortran/bfeval.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-bfeval.lo `test -f 'sci_gateway/fortran/bfeval.f' || echo '$(srcdir)/'`sci_gateway/fortran/bfeval.f
+
+sci_gateway/fortran/libscidifferential_equations_la-int2d.lo: sci_gateway/fortran/int2d.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-int2d.lo `test -f 'sci_gateway/fortran/int2d.f' || echo '$(srcdir)/'`sci_gateway/fortran/int2d.f
+
+sci_gateway/fortran/libscidifferential_equations_la-bint2d.lo: sci_gateway/fortran/bint2d.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-bint2d.lo `test -f 'sci_gateway/fortran/bint2d.f' || echo '$(srcdir)/'`sci_gateway/fortran/bint2d.f
+
+sci_gateway/fortran/libscidifferential_equations_la-bint3d.lo: sci_gateway/fortran/bint3d.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-bint3d.lo `test -f 'sci_gateway/fortran/bint3d.f' || echo '$(srcdir)/'`sci_gateway/fortran/bint3d.f
+
+sci_gateway/fortran/libscidifferential_equations_la-bintg.lo: sci_gateway/fortran/bintg.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-bintg.lo `test -f 'sci_gateway/fortran/bintg.f' || echo '$(srcdir)/'`sci_gateway/fortran/bintg.f
+
+sci_gateway/fortran/libscidifferential_equations_la-int3d.lo: sci_gateway/fortran/int3d.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-int3d.lo `test -f 'sci_gateway/fortran/int3d.f' || echo '$(srcdir)/'`sci_gateway/fortran/int3d.f
+
+sci_gateway/fortran/libscidifferential_equations_la-intg.lo: sci_gateway/fortran/intg.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-intg.lo `test -f 'sci_gateway/fortran/intg.f' || echo '$(srcdir)/'`sci_gateway/fortran/intg.f
+
+sci_gateway/fortran/libscidifferential_equations_la-Ex-odedc.lo: sci_gateway/fortran/Ex-odedc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-Ex-odedc.lo `test -f 'sci_gateway/fortran/Ex-odedc.f' || echo '$(srcdir)/'`sci_gateway/fortran/Ex-odedc.f
+
+sci_gateway/fortran/libscidifferential_equations_la-Ex-ode.lo: sci_gateway/fortran/Ex-ode.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-Ex-ode.lo `test -f 'sci_gateway/fortran/Ex-ode.f' || echo '$(srcdir)/'`sci_gateway/fortran/Ex-ode.f
+
+sci_gateway/fortran/libscidifferential_equations_la-Ex-impl.lo: sci_gateway/fortran/Ex-impl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-Ex-impl.lo `test -f 'sci_gateway/fortran/Ex-impl.f' || echo '$(srcdir)/'`sci_gateway/fortran/Ex-impl.f
+
+sci_gateway/fortran/libscidifferential_equations_la-Ex-int2d.lo: sci_gateway/fortran/Ex-int2d.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-Ex-int2d.lo `test -f 'sci_gateway/fortran/Ex-int2d.f' || echo '$(srcdir)/'`sci_gateway/fortran/Ex-int2d.f
+
+sci_gateway/fortran/libscidifferential_equations_la-Ex-int3d.lo: sci_gateway/fortran/Ex-int3d.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-Ex-int3d.lo `test -f 'sci_gateway/fortran/Ex-int3d.f' || echo '$(srcdir)/'`sci_gateway/fortran/Ex-int3d.f
+
+sci_gateway/fortran/libscidifferential_equations_la-Ex-intg.lo: sci_gateway/fortran/Ex-intg.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-Ex-intg.lo `test -f 'sci_gateway/fortran/Ex-intg.f' || echo '$(srcdir)/'`sci_gateway/fortran/Ex-intg.f
+
+sci_gateway/fortran/libscidifferential_equations_la-Ex-dasrt.lo: sci_gateway/fortran/Ex-dasrt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-Ex-dasrt.lo `test -f 'sci_gateway/fortran/Ex-dasrt.f' || echo '$(srcdir)/'`sci_gateway/fortran/Ex-dasrt.f
+
+sci_gateway/fortran/libscidifferential_equations_la-Ex-dassl.lo: sci_gateway/fortran/Ex-dassl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-Ex-dassl.lo `test -f 'sci_gateway/fortran/Ex-dassl.f' || echo '$(srcdir)/'`sci_gateway/fortran/Ex-dassl.f
+
+sci_gateway/fortran/libscidifferential_equations_la-Ex-bvode.lo: sci_gateway/fortran/Ex-bvode.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-Ex-bvode.lo `test -f 'sci_gateway/fortran/Ex-bvode.f' || echo '$(srcdir)/'`sci_gateway/fortran/Ex-bvode.f
+
+sci_gateway/fortran/libscidifferential_equations_la-bbvode.lo: sci_gateway/fortran/bbvode.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-bbvode.lo `test -f 'sci_gateway/fortran/bbvode.f' || echo '$(srcdir)/'`sci_gateway/fortran/bbvode.f
 
 mostlyclean-libtool:
 	-rm -f *.lo

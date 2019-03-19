@@ -957,24 +957,24 @@ GATEWAY_CPP_SOURCES = sci_gateway/cpp/sci_percent_EObj_e.cpp \
 	sci_gateway/cpp/sci_invoke_lu.cpp \
 	sci_gateway/cpp/sci_percent_EObj_disp.cpp
 
-libsciexternal_objects_la_CFLAGS = -I$(srcdir)/includes/ \
-             -I$(top_srcdir)/libs/MALLOC/includes/ \
-             -I$(top_srcdir)/modules/core/includes \
-             -I$(top_srcdir)/modules/api_scilab/includes \
-             -I$(top_srcdir)/modules/output_stream/includes \
-             -I$(top_srcdir)/modules/string/includes \
-             -I$(top_srcdir)/modules/fileio/includes
+libsciexternal_objects_la_CFLAGS = -Wp,-I$(srcdir)/includes/ \
+             -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+             -Wp,-I$(top_srcdir)/modules/core/includes \
+             -Wp,-I$(top_srcdir)/modules/api_scilab/includes \
+             -Wp,-I$(top_srcdir)/modules/output_stream/includes \
+             -Wp,-I$(top_srcdir)/modules/string/includes \
+             -Wp,-I$(top_srcdir)/modules/fileio/includes
 
-libsciexternal_objects_la_CPPFLAGS = -I$(srcdir)/includes/ \
-    -I$(srcdir)/src/cpp/ \
-    -I$(srcdir)/src/c/ \
-    -I$(top_srcdir)/libs/MALLOC/includes/ \
-    -I$(top_srcdir)/modules/localization/includes \
-    -I$(top_srcdir)/modules/api_scilab/includes \
-    -I$(top_srcdir)/modules/output_stream/includes \
-    -I$(top_srcdir)/modules/string/includes \
-    -I$(top_srcdir)/modules/fileio/includes \
-    -I$(top_srcdir)/modules/core/src/c \
+libsciexternal_objects_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+    -Wp,-I$(srcdir)/src/cpp/ \
+    -Wp,-I$(srcdir)/src/c/ \
+    -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+    -Wp,-I$(top_srcdir)/modules/localization/includes \
+    -Wp,-I$(top_srcdir)/modules/api_scilab/includes \
+    -Wp,-I$(top_srcdir)/modules/output_stream/includes \
+    -Wp,-I$(top_srcdir)/modules/string/includes \
+    -Wp,-I$(top_srcdir)/modules/fileio/includes \
+    -Wp,-I$(top_srcdir)/modules/core/src/c \
     $(EXTERNAL_OBJECTS_FLAGS)
 
 pkglib_LTLIBRARIES = libsciexternal_objects.la 

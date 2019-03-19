@@ -46,18 +46,18 @@ endif
 
 # Includes need for the compilation
 libscihistory_manager_la_CPPFLAGS =  $(JAVA_JNI_INCLUDE) \
--I$(srcdir)/includes/ \
--I$(srcdir)/src/cpp/ \
--I$(srcdir)/src/c/ \
--I$(srcdir)/src/jni/ \
--I$(top_srcdir)/libs/MALLOC/includes/ \
--I$(top_srcdir)/modules/api_scilab/includes/ \
--I$(top_srcdir)/modules/console/includes/ \
--I$(top_srcdir)/modules/fileio/includes/ \
--I$(top_srcdir)/modules/history_browser/includes/ \
--I$(top_srcdir)/modules/history_manager/includes/ \
--I$(top_srcdir)/modules/localization/includes/ \
--I$(top_srcdir)/modules/output_stream/includes/ \
+-Wp,-I$(srcdir)/includes/ \
+-Wp,-I$(srcdir)/src/cpp/ \
+-Wp,-I$(srcdir)/src/c/ \
+-Wp,-I$(srcdir)/src/jni/ \
+-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+-Wp,-I$(top_srcdir)/modules/console/includes/ \
+-Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+-Wp,-I$(top_srcdir)/modules/history_browser/includes/ \
+-Wp,-I$(top_srcdir)/modules/history_manager/includes/ \
+-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
 $(AM_CPPFLAGS)
 
 # Name of the future library (.la will be replace by .so, .a, etc regarding

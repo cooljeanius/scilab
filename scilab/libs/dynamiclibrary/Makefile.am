@@ -10,7 +10,7 @@ libscidynamiclibrary_la_includedir=$(pkgincludedir)
 libscidynamiclibrary_la_include_HEADERS = includes/dynamiclibrary_others.h \
 includes/dynamiclibrary.h
 
-libscidynamiclibrary_la_CPPFLAGS= -I$(srcdir)/src/ -I$(srcdir)/includes/
+libscidynamiclibrary_la_CPPFLAGS= -Wp,-I$(srcdir)/src/ -Wp,-I$(srcdir)/includes/
 
 pkglib_LTLIBRARIES = libscidynamiclibrary.la
 

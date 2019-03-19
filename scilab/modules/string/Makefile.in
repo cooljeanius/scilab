@@ -243,14 +243,14 @@ am__objects_3 = sci_gateway/c/libscistring_la-gw_string.lo \
 	sci_gateway/c/libscistring_la-sci_strtod.lo \
 	sci_gateway/c/libscistring_la-sci_strtok.lo \
 	sci_gateway/c/libscistring_la-sci_regexp.lo
-am__objects_4 = sci_gateway/fortran/sci_f_string.lo \
-	sci_gateway/fortran/strops.lo
+am__objects_4 = sci_gateway/fortran/libscistring_la-sci_f_string.lo \
+	sci_gateway/fortran/libscistring_la-strops.lo
 am_libscistring_la_OBJECTS = $(am__objects_3) $(am__objects_4)
 libscistring_la_OBJECTS = $(am_libscistring_la_OBJECTS)
 libscistring_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
-	$(AM_FFLAGS) $(FFLAGS) $(libscistring_la_LDFLAGS) $(LDFLAGS) \
-	-o $@
+	$(libscistring_la_FFLAGS) $(FFLAGS) $(libscistring_la_LDFLAGS) \
+	$(LDFLAGS) -o $@
 @MAINTAINER_MODE_FALSE@am_libscistring_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libscistring_la_rpath = -rpath $(pkglibdir)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -789,16 +789,18 @@ sci_gateway/c/sci_regexp.c
 GATEWAY_FORTRAN_SOURCES = sci_gateway/fortran/sci_f_string.f \
 sci_gateway/fortran/strops.f
 
-libscistring_la_CPPFLAGS = -I$(srcdir)/src/c \
-	-I$(srcdir)/includes/ \
-	-I$(top_srcdir)/libs/MALLOC/includes/ \
-	-I$(top_srcdir)/modules/functions/includes/ \
-	-I$(top_srcdir)/modules/api_scilab/includes/ \
-	-I$(top_srcdir)/modules/localization/includes/ \
-	-I$(top_srcdir)/modules/output_stream/includes/ \
+libscistring_la_CPPFLAGS = -Wp,-I$(srcdir)/src/c \
+	-Wp,-I$(srcdir)/includes/ \
+	-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+	-Wp,-I$(top_srcdir)/modules/core/includes/ \
+	-Wp,-I$(top_srcdir)/modules/functions/includes/ \
+	-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+	-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+	-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
 	$(PCRE_CFLAGS) \
 	$(AM_CPPFLAGS)
 
+libscistring_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 @MAINTAINER_MODE_TRUE@pkglib_LTLIBRARIES = libscistring.la
 @MAINTAINER_MODE_FALSE@noinst_LTLIBRARIES = libscistring-algo.la libscistring.la
 @MAINTAINER_MODE_TRUE@noinst_LTLIBRARIES = libscistring-algo.la
@@ -806,6 +808,7 @@ libscistring_la_LDFLAGS = $(PCRE_LIBS) $(AM_LDFLAGS)
 libscistring_algo_la_SOURCES = $(STRING_C_SOURCES) $(STRING_FORTRAN_SOURCES)
 libscistring_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libscistring_algo_la_CPPFLAGS = $(libscistring_la_CPPFLAGS)
+libscistring_algo_la_FFLAGS = $(libscistring_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC = $(STRING_C_SOURCES) $(GATEWAY_C_SOURCES)
@@ -1140,10 +1143,11 @@ sci_gateway/fortran/$(am__dirstamp):
 sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran/$(DEPDIR)
 	@: > sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_string.lo:  \
+sci_gateway/fortran/libscistring_la-sci_f_string.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/strops.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscistring_la-strops.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscistring.la: $(libscistring_la_OBJECTS) $(libscistring_la_DEPENDENCIES) $(EXTRA_libscistring_la_DEPENDENCIES) 
@@ -1632,6 +1636,12 @@ sci_gateway/c/libscistring_la-sci_regexp.lo: sci_gateway/c/sci_regexp.c
 
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
+
+sci_gateway/fortran/libscistring_la-sci_f_string.lo: sci_gateway/fortran/sci_f_string.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscistring_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscistring_la-sci_f_string.lo `test -f 'sci_gateway/fortran/sci_f_string.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_string.f
+
+sci_gateway/fortran/libscistring_la-strops.lo: sci_gateway/fortran/strops.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscistring_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscistring_la-strops.lo `test -f 'sci_gateway/fortran/strops.f' || echo '$(srcdir)/'`sci_gateway/fortran/strops.f
 
 mostlyclean-libtool:
 	-rm -f *.lo

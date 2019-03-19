@@ -209,14 +209,22 @@ am__objects_2 = src/cpp/libscioutput_stream_algo_la-Diary.lo \
 	src/cpp/libscioutput_stream_algo_la-diary_manager.lo \
 	src/cpp/libscioutput_stream_algo_la-getDiaryDate.lo \
 	src/cpp/libscioutput_stream_algo_la-getFullFilename.lo
-am__objects_3 = src/fortran/wspdsp.lo src/fortran/wmdsp.lo \
-	src/fortran/strdsp.lo src/fortran/prntid.lo \
-	src/fortran/print.lo src/fortran/lspdsp.lo \
-	src/fortran/fmttyp.lo src/fortran/fmt.lo src/fortran/dspdsp.lo \
-	src/fortran/dmrdsp.lo src/fortran/dmpdsp.lo \
-	src/fortran/dmdspf.lo src/fortran/dmdsp.lo \
-	src/fortran/dldsp.lo src/fortran/basouttofile.lo \
-	src/fortran/formatnumber.lo
+am__objects_3 = src/fortran/libscioutput_stream_algo_la-wspdsp.lo \
+	src/fortran/libscioutput_stream_algo_la-wmdsp.lo \
+	src/fortran/libscioutput_stream_algo_la-strdsp.lo \
+	src/fortran/libscioutput_stream_algo_la-prntid.lo \
+	src/fortran/libscioutput_stream_algo_la-print.lo \
+	src/fortran/libscioutput_stream_algo_la-lspdsp.lo \
+	src/fortran/libscioutput_stream_algo_la-fmttyp.lo \
+	src/fortran/libscioutput_stream_algo_la-fmt.lo \
+	src/fortran/libscioutput_stream_algo_la-dspdsp.lo \
+	src/fortran/libscioutput_stream_algo_la-dmrdsp.lo \
+	src/fortran/libscioutput_stream_algo_la-dmpdsp.lo \
+	src/fortran/libscioutput_stream_algo_la-dmdspf.lo \
+	src/fortran/libscioutput_stream_algo_la-dmdsp.lo \
+	src/fortran/libscioutput_stream_algo_la-dldsp.lo \
+	src/fortran/libscioutput_stream_algo_la-basouttofile.lo \
+	src/fortran/libscioutput_stream_algo_la-formatnumber.lo
 am_libscioutput_stream_algo_la_OBJECTS = $(am__objects_1) \
 	$(am__objects_2) $(am__objects_3)
 libscioutput_stream_algo_la_OBJECTS =  \
@@ -235,8 +243,9 @@ am__objects_4 =  \
 	sci_gateway/c/libscioutput_stream_la-sci_msprintf.lo \
 	sci_gateway/c/libscioutput_stream_la-sci_disp.lo
 am__objects_5 = sci_gateway/cpp/libscioutput_stream_la-sci_diary.lo
-am__objects_6 = sci_gateway/fortran/intprint.lo \
-	sci_gateway/fortran/intdisp.lo
+am__objects_6 =  \
+	sci_gateway/fortran/libscioutput_stream_la-intprint.lo \
+	sci_gateway/fortran/libscioutput_stream_la-intdisp.lo
 am_libscioutput_stream_la_OBJECTS = $(am__objects_4) $(am__objects_5) \
 	$(am__objects_6)
 libscioutput_stream_la_OBJECTS = $(am_libscioutput_stream_la_OBJECTS)
@@ -764,23 +773,25 @@ GATEWAY_C_SOURCES = sci_gateway/c/gw_output_stream.c \
 GATEWAY_FORTRAN_SOURCES = sci_gateway/fortran/intprint.f \
 			sci_gateway/fortran/intdisp.f
 
-libscioutput_stream_la_CPPFLAGS = -I$(top_srcdir)/libs/MALLOC/includes/ \
--I$(srcdir)/includes/ \
--I$(top_srcdir)/modules/core/includes/ \
--I$(srcdir)/src/cpp/ \
--I$(srcdir)/src/c/ \
--I$(top_srcdir)/modules/console/includes/ \
--I$(top_srcdir)/modules/api_scilab/includes/ \
--I$(top_srcdir)/modules/string/includes/ \
--I$(top_srcdir)/modules/localization/includes/ \
+libscioutput_stream_la_CPPFLAGS = -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+-Wp,-I$(srcdir)/includes/ \
+-Wp,-I$(top_srcdir)/modules/core/includes/ \
+-Wp,-I$(srcdir)/src/cpp/ \
+-Wp,-I$(srcdir)/src/c/ \
+-Wp,-I$(top_srcdir)/modules/console/includes/ \
+-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+-Wp,-I$(top_srcdir)/modules/string/includes/ \
+-Wp,-I$(top_srcdir)/modules/localization/includes/ \
 $(AM_CPPFLAGS)
 
+libscioutput_stream_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 @MAINTAINER_MODE_TRUE@pkglib_LTLIBRARIES = libscioutput_stream.la
 @MAINTAINER_MODE_FALSE@noinst_LTLIBRARIES = libscioutput_stream-algo.la libscioutput_stream.la
 @MAINTAINER_MODE_TRUE@noinst_LTLIBRARIES = libscioutput_stream-algo.la
 libscioutput_stream_algo_la_SOURCES = $(OUTPUT_STREAM_C_SOURCES) $(OUTPUT_STREAM_CXX_SOURCES) $(OUTPUT_STREAM_FORTRAN_SOURCES) $(JNI_SOURCES)
 libscioutput_stream_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_CXX_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libscioutput_stream_algo_la_CPPFLAGS = $(libscioutput_stream_la_CPPFLAGS)
+libscioutput_stream_algo_la_FFLAGS = $(libscioutput_stream_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC = $(OUTPUT_STREAM_C_SOURCES) $(GATEWAY_C_SOURCES)
@@ -1024,37 +1035,53 @@ src/fortran/$(am__dirstamp):
 src/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/fortran/$(DEPDIR)
 	@: > src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wspdsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscioutput_stream_algo_la-wspdsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wmdsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscioutput_stream_algo_la-wmdsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/strdsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscioutput_stream_algo_la-strdsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/prntid.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscioutput_stream_algo_la-prntid.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/print.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscioutput_stream_algo_la-print.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lspdsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscioutput_stream_algo_la-lspdsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/fmttyp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscioutput_stream_algo_la-fmttyp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/fmt.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscioutput_stream_algo_la-fmt.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dspdsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscioutput_stream_algo_la-dspdsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmrdsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscioutput_stream_algo_la-dmrdsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmpdsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscioutput_stream_algo_la-dmpdsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmdspf.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscioutput_stream_algo_la-dmdspf.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmdsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscioutput_stream_algo_la-dmdsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dldsp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscioutput_stream_algo_la-dldsp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/basouttofile.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscioutput_stream_algo_la-basouttofile.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/formatnumber.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscioutput_stream_algo_la-formatnumber.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscioutput_stream-algo.la: $(libscioutput_stream_algo_la_OBJECTS) $(libscioutput_stream_algo_la_DEPENDENCIES) $(EXTRA_libscioutput_stream_algo_la_DEPENDENCIES) 
@@ -1095,9 +1122,11 @@ sci_gateway/fortran/$(am__dirstamp):
 sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran/$(DEPDIR)
 	@: > sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/intprint.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscioutput_stream_la-intprint.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/intdisp.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscioutput_stream_la-intdisp.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscioutput_stream.la: $(libscioutput_stream_la_OBJECTS) $(libscioutput_stream_la_DEPENDENCIES) $(EXTRA_libscioutput_stream_la_DEPENDENCIES) 
@@ -1408,6 +1437,60 @@ sci_gateway/cpp/libscioutput_stream_la-sci_diary.lo: sci_gateway/cpp/sci_diary.c
 
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
+
+src/fortran/libscioutput_stream_algo_la-wspdsp.lo: src/fortran/wspdsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscioutput_stream_algo_la-wspdsp.lo `test -f 'src/fortran/wspdsp.f' || echo '$(srcdir)/'`src/fortran/wspdsp.f
+
+src/fortran/libscioutput_stream_algo_la-wmdsp.lo: src/fortran/wmdsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscioutput_stream_algo_la-wmdsp.lo `test -f 'src/fortran/wmdsp.f' || echo '$(srcdir)/'`src/fortran/wmdsp.f
+
+src/fortran/libscioutput_stream_algo_la-strdsp.lo: src/fortran/strdsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscioutput_stream_algo_la-strdsp.lo `test -f 'src/fortran/strdsp.f' || echo '$(srcdir)/'`src/fortran/strdsp.f
+
+src/fortran/libscioutput_stream_algo_la-prntid.lo: src/fortran/prntid.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscioutput_stream_algo_la-prntid.lo `test -f 'src/fortran/prntid.f' || echo '$(srcdir)/'`src/fortran/prntid.f
+
+src/fortran/libscioutput_stream_algo_la-print.lo: src/fortran/print.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscioutput_stream_algo_la-print.lo `test -f 'src/fortran/print.f' || echo '$(srcdir)/'`src/fortran/print.f
+
+src/fortran/libscioutput_stream_algo_la-lspdsp.lo: src/fortran/lspdsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscioutput_stream_algo_la-lspdsp.lo `test -f 'src/fortran/lspdsp.f' || echo '$(srcdir)/'`src/fortran/lspdsp.f
+
+src/fortran/libscioutput_stream_algo_la-fmttyp.lo: src/fortran/fmttyp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscioutput_stream_algo_la-fmttyp.lo `test -f 'src/fortran/fmttyp.f' || echo '$(srcdir)/'`src/fortran/fmttyp.f
+
+src/fortran/libscioutput_stream_algo_la-fmt.lo: src/fortran/fmt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscioutput_stream_algo_la-fmt.lo `test -f 'src/fortran/fmt.f' || echo '$(srcdir)/'`src/fortran/fmt.f
+
+src/fortran/libscioutput_stream_algo_la-dspdsp.lo: src/fortran/dspdsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscioutput_stream_algo_la-dspdsp.lo `test -f 'src/fortran/dspdsp.f' || echo '$(srcdir)/'`src/fortran/dspdsp.f
+
+src/fortran/libscioutput_stream_algo_la-dmrdsp.lo: src/fortran/dmrdsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscioutput_stream_algo_la-dmrdsp.lo `test -f 'src/fortran/dmrdsp.f' || echo '$(srcdir)/'`src/fortran/dmrdsp.f
+
+src/fortran/libscioutput_stream_algo_la-dmpdsp.lo: src/fortran/dmpdsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscioutput_stream_algo_la-dmpdsp.lo `test -f 'src/fortran/dmpdsp.f' || echo '$(srcdir)/'`src/fortran/dmpdsp.f
+
+src/fortran/libscioutput_stream_algo_la-dmdspf.lo: src/fortran/dmdspf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscioutput_stream_algo_la-dmdspf.lo `test -f 'src/fortran/dmdspf.f' || echo '$(srcdir)/'`src/fortran/dmdspf.f
+
+src/fortran/libscioutput_stream_algo_la-dmdsp.lo: src/fortran/dmdsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscioutput_stream_algo_la-dmdsp.lo `test -f 'src/fortran/dmdsp.f' || echo '$(srcdir)/'`src/fortran/dmdsp.f
+
+src/fortran/libscioutput_stream_algo_la-dldsp.lo: src/fortran/dldsp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscioutput_stream_algo_la-dldsp.lo `test -f 'src/fortran/dldsp.f' || echo '$(srcdir)/'`src/fortran/dldsp.f
+
+src/fortran/libscioutput_stream_algo_la-basouttofile.lo: src/fortran/basouttofile.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscioutput_stream_algo_la-basouttofile.lo `test -f 'src/fortran/basouttofile.f' || echo '$(srcdir)/'`src/fortran/basouttofile.f
+
+src/fortran/libscioutput_stream_algo_la-formatnumber.lo: src/fortran/formatnumber.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscioutput_stream_algo_la-formatnumber.lo `test -f 'src/fortran/formatnumber.f' || echo '$(srcdir)/'`src/fortran/formatnumber.f
+
+sci_gateway/fortran/libscioutput_stream_la-intprint.lo: sci_gateway/fortran/intprint.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscioutput_stream_la-intprint.lo `test -f 'sci_gateway/fortran/intprint.f' || echo '$(srcdir)/'`sci_gateway/fortran/intprint.f
+
+sci_gateway/fortran/libscioutput_stream_la-intdisp.lo: sci_gateway/fortran/intdisp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscioutput_stream_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscioutput_stream_la-intdisp.lo `test -f 'sci_gateway/fortran/intdisp.f' || echo '$(srcdir)/'`sci_gateway/fortran/intdisp.f
 
 mostlyclean-libtool:
 	-rm -f *.lo

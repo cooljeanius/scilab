@@ -17,16 +17,16 @@ GATEWAY_C_SOURCES = sci_gateway/c/gw_parallel.c \
 sci_gateway/c/sci_parallel_concurrency.c
 
 libsciparallel_la_CPPFLAGS= $(OPENMP_CPPFLAGS) \
--I$(top_srcdir)/libs/MALLOC/includes/ \
--I$(srcdir)/includes/ \
--I$(top_srcdir)/modules/core/includes/ \
--I$(srcdir)/src/cpp/ \
--I$(top_srcdir)/modules/api_scilab/includes/ \
--I$(top_srcdir)/modules/localization/includes/ \
--I$(top_srcdir)/modules/string/includes/ \
--I$(top_srcdir)/modules/output_stream/includes/ \
--I$(top_srcdir)/modules/parameters/includes/ \
--I$(top_srcdir)/modules/dynamic_link/includes/ \
+-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+-Wp,-I$(srcdir)/includes/ \
+-Wp,-I$(top_srcdir)/modules/core/includes/ \
+-Wp,-I$(srcdir)/src/cpp/ \
+-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+-Wp,-I$(top_srcdir)/modules/string/includes/ \
+-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+-Wp,-I$(top_srcdir)/modules/parameters/includes/ \
+-Wp,-I$(top_srcdir)/modules/dynamic_link/includes/ \
 $(AM_CPPFLAGS)
 
 

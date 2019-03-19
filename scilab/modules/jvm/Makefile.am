@@ -26,18 +26,18 @@ libscijvm_la_etc_DATA = etc/jvm.quit etc/jvm.start
 
 
 libscijvm_la_CPPFLAGS = $(JAVA_JNI_INCLUDE) \
-			-I$(top_srcdir)/libs/MALLOC/includes/ \
-			-I$(top_srcdir)/libs/dynamiclibrary/includes/ \
-			-I$(srcdir)/includes/ \
-			-I$(srcdir)/src/c \
+			-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			-Wp,-I$(top_srcdir)/libs/dynamiclibrary/includes/ \
+			-Wp,-I$(srcdir)/includes/ \
+			-Wp,-I$(srcdir)/src/c \
 			$(XML_FLAGS) \
-			-I$(top_srcdir)/modules/output_stream/includes/ \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			-I$(top_srcdir)/modules/string/includes/ \
-			-I$(top_srcdir)/modules/api_scilab/includes/ \
-			-I$(top_srcdir)/modules/call_scilab/includes/ \
-			-I$(top_srcdir)/modules/fileio/includes/ \
-			-I$(top_srcdir)/modules/preferences/includes/ \
+			-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			-Wp,-I$(top_srcdir)/modules/string/includes/ \
+			-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			-Wp,-I$(top_srcdir)/modules/call_scilab/includes/ \
+			-Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+			-Wp,-I$(top_srcdir)/modules/preferences/includes/ \
 			$(AM_CPPFLAGS)
 
 pkglib_LTLIBRARIES = libscijvm-disable.la
@@ -101,14 +101,14 @@ src/c/addToLibrarypath.c \
 src/c/getJvmOptions.c
 
 libscijvm_disable_la_SOURCES = src/nojvm/nojvm.c
-libscijvm_disable_la_CPPFLAGS = -I$(srcdir)/includes/ \
-			-I$(top_srcdir)/libs/MALLOC/includes/ \
-			-I$(top_srcdir)/modules/call_scilab/includes/ \
-			-I$(srcdir)/src/c \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			-I$(top_srcdir)/modules/api_scilab/includes/ \
-			-I$(top_srcdir)/modules/output_stream/includes/ \
-			-I$(top_srcdir)/modules/preferences/src/c \
+libscijvm_disable_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+			-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			-Wp,-I$(top_srcdir)/modules/call_scilab/includes/ \
+			-Wp,-I$(srcdir)/src/c \
+			-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			-Wp,-I$(top_srcdir)/modules/preferences/src/c \
 			$(AM_CPPFLAGS)
 
 libscijvm_algo_la_SOURCES = $(JVM_C_SOURCES)

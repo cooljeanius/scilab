@@ -183,17 +183,22 @@ am__installdirs = "$(DESTDIR)$(pkglibdir)" \
 LTLIBRARIES = $(noinst_LTLIBRARIES) $(pkglib_LTLIBRARIES)
 libscisymbolic_algo_la_LIBADD =
 am__dirstamp = $(am__leading_dot)dirstamp
-am__objects_1 = sci_gateway/fortran/sci_f_addsubf.lo \
-	sci_gateway/fortran/sci_f_mulf.lo \
-	sci_gateway/fortran/sci_f_ldivf.lo \
-	sci_gateway/fortran/sci_f_rdivf.lo
-am__objects_2 = src/fortran/atome.lo
+am__objects_1 =  \
+	sci_gateway/fortran/libscisymbolic_algo_la-sci_f_addsubf.lo \
+	sci_gateway/fortran/libscisymbolic_algo_la-sci_f_mulf.lo \
+	sci_gateway/fortran/libscisymbolic_algo_la-sci_f_ldivf.lo \
+	sci_gateway/fortran/libscisymbolic_algo_la-sci_f_rdivf.lo
+am__objects_2 = src/fortran/libscisymbolic_algo_la-atome.lo
 am_libscisymbolic_algo_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 libscisymbolic_algo_la_OBJECTS = $(am_libscisymbolic_algo_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+libscisymbolic_algo_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libscisymbolic_algo_la_FFLAGS) $(FFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
 libscisymbolic_la_DEPENDENCIES = libscisymbolic-algo.la
 am__objects_3 = sci_gateway/c/libscisymbolic_la-gw_symbolic.lo \
 	sci_gateway/c/libscisymbolic_la-sci_mulf.lo \
@@ -642,12 +647,15 @@ sci_gateway/fortran/sci_f_ldivf.f \
 sci_gateway/fortran/sci_f_rdivf.f
 
 FORTRAN_SOURCES = src/fortran/atome.f
-libscisymbolic_la_CPPFLAGS = -I$(srcdir)/includes/ \
-				-I$(top_srcdir)/libs/MALLOC/includes/ \
-				-I$(top_srcdir)/modules/api_scilab/includes/ \
-				-I$(top_srcdir)/modules/localization/includes/ \
-				-I$(top_srcdir)/modules/output_stream/includes/ \
-				$(AM_CPPFLAGS)
+libscisymbolic_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+			     -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			     -Wp,-I$(top_srcdir)/modules/core/includes/ \
+			     -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			     -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			     -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			     $(AM_CPPFLAGS)
+
+libscisymbolic_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 
 #-Isrc/c/
 pkglib_LTLIBRARIES = libscisymbolic.la
@@ -655,6 +663,8 @@ noinst_LTLIBRARIES = libscisymbolic-algo.la
 libscisymbolic_algo_la_SOURCES = $(GATEWAY_FORTRAN_SOURCES) $(FORTRAN_SOURCES)
 libscisymbolic_la_SOURCES = $(GATEWAY_C_SOURCES)
 libscisymbolic_algo_la_CPPFLAGS = $(libscisymbolic_la_CPPFLAGS)
+libscisymbolic_algo_la_FFLAGS = $(libscisymbolic_la_FFLAGS)
+
 # For the code check (splint)
 CHECK_SRC = $(GATEWAY_C_SOURCES)
 INCLUDE_FLAGS = $(libscisymbolic_la_CPPFLAGS)
@@ -833,16 +843,16 @@ sci_gateway/fortran/$(am__dirstamp):
 sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran/$(DEPDIR)
 	@: > sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_addsubf.lo:  \
+sci_gateway/fortran/libscisymbolic_algo_la-sci_f_addsubf.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_mulf.lo:  \
+sci_gateway/fortran/libscisymbolic_algo_la-sci_f_mulf.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_ldivf.lo:  \
+sci_gateway/fortran/libscisymbolic_algo_la-sci_f_ldivf.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_rdivf.lo:  \
+sci_gateway/fortran/libscisymbolic_algo_la-sci_f_rdivf.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
 src/fortran/$(am__dirstamp):
@@ -851,11 +861,12 @@ src/fortran/$(am__dirstamp):
 src/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/fortran/$(DEPDIR)
 	@: > src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/atome.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscisymbolic_algo_la-atome.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscisymbolic-algo.la: $(libscisymbolic_algo_la_OBJECTS) $(libscisymbolic_algo_la_DEPENDENCIES) $(EXTRA_libscisymbolic_algo_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK)  $(libscisymbolic_algo_la_OBJECTS) $(libscisymbolic_algo_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscisymbolic_algo_la_LINK)  $(libscisymbolic_algo_la_OBJECTS) $(libscisymbolic_algo_la_LIBADD) $(LIBS)
 sci_gateway/c/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/c
 	@: > sci_gateway/c/$(am__dirstamp)
@@ -972,6 +983,21 @@ sci_gateway/c/libscisymbolic_la-sci_rdivf.lo: sci_gateway/c/sci_rdivf.c
 
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
+
+sci_gateway/fortran/libscisymbolic_algo_la-sci_f_addsubf.lo: sci_gateway/fortran/sci_f_addsubf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisymbolic_algo_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisymbolic_algo_la-sci_f_addsubf.lo `test -f 'sci_gateway/fortran/sci_f_addsubf.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_addsubf.f
+
+sci_gateway/fortran/libscisymbolic_algo_la-sci_f_mulf.lo: sci_gateway/fortran/sci_f_mulf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisymbolic_algo_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisymbolic_algo_la-sci_f_mulf.lo `test -f 'sci_gateway/fortran/sci_f_mulf.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_mulf.f
+
+sci_gateway/fortran/libscisymbolic_algo_la-sci_f_ldivf.lo: sci_gateway/fortran/sci_f_ldivf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisymbolic_algo_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisymbolic_algo_la-sci_f_ldivf.lo `test -f 'sci_gateway/fortran/sci_f_ldivf.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_ldivf.f
+
+sci_gateway/fortran/libscisymbolic_algo_la-sci_f_rdivf.lo: sci_gateway/fortran/sci_f_rdivf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisymbolic_algo_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscisymbolic_algo_la-sci_f_rdivf.lo `test -f 'sci_gateway/fortran/sci_f_rdivf.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_rdivf.f
+
+src/fortran/libscisymbolic_algo_la-atome.lo: src/fortran/atome.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscisymbolic_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscisymbolic_algo_la-atome.lo `test -f 'src/fortran/atome.f' || echo '$(srcdir)/'`src/fortran/atome.f
 
 mostlyclean-libtool:
 	-rm -f *.lo

@@ -20,12 +20,12 @@ GATEWAY_C_SOURCES = \
     sci_gateway/c/sci_eigs.c
 
 libsciarnoldi_la_CPPFLAGS = \
-    -I$(top_srcdir)/libs/MALLOC/includes/ \
-    -I$(srcdir)/includes/ \
-    -I$(top_srcdir)/modules/api_scilab/includes/ \
-    -I$(top_srcdir)/modules/localization/includes/ \
-    -I$(top_srcdir)/modules/output_stream/includes/ \
-    -I$(top_srcdir)/modules/core/includes/ \
+    -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+    -Wp,-I$(srcdir)/includes/ \
+    -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+    -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+    -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+    -Wp,-I$(top_srcdir)/modules/core/includes/ \
     $(AM_CPPFLAGS)
 
 pkglib_LTLIBRARIES = libsciarnoldi.la

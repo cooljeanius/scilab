@@ -40,15 +40,18 @@ sci_gateway/fortran/intread.f \
 sci_gateway/fortran/intreadb.f \
 sci_gateway/fortran/intfile.f
 
-libsciio_la_CPPFLAGS = -I$(srcdir)/includes/ \
-			-I$(srcdir)/src/c/ \
-			-I$(top_srcdir)/libs/MALLOC/includes/ \
-			-I$(top_srcdir)/modules/core/includes/ \
-			-I$(top_srcdir)/modules/fileio/includes/ \
-			-I$(top_srcdir)/modules/api_scilab/includes/ \
-			-I$(top_srcdir)/modules/output_stream/includes/ \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			$(AM_CPPFLAGS)
+libsciio_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+		       -Wp,-I$(srcdir)/src/c/ \
+		       -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+		       -Wp,-I$(top_srcdir)/modules/core/includes/ \
+		       -Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+		       -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+		       -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+		       -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+		       $(AM_CPPFLAGS)
+
+## Need to put this include in FFLAGS too, because fortran is different:
+libsciio_la_FFLAGS= -I$(top_srcdir)/modules/core/includes/
 
 if MAINTAINER_MODE
 pkglib_LTLIBRARIES = libsciio.la
@@ -62,6 +65,7 @@ endif
 libsciio_algo_la_SOURCES = $(IO_C_SOURCES) $(IO_FORTRAN_SOURCES)
 libsciio_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libsciio_algo_la_CPPFLAGS = $(libsciio_la_CPPFLAGS)
+libsciio_algo_la_FFLAGS = $(libsciio_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC= $(IO_C_SOURCES) $(GATEWAY_C_SOURCES)

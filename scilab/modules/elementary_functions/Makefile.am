@@ -366,21 +366,25 @@ libdummy_elementary_functions_la_SOURCES = src/fortran/eispack/hqror2.f \
 	src/c/unsfdcopy.c \
 	src/fortran/linpack/icopy.f
 
-libdummy_elementary_functions_la_CPPFLAGS = -I$(srcdir)/includes/ \
-    -I$(top_srcdir)/modules/core/includes/ \
+libdummy_elementary_functions_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+    -Wp,-I$(top_srcdir)/modules/core/includes/ \
     $(AM_CPPFLAGS)
 	
 
 # Includes need for the compilation
-libscielementary_functions_la_CPPFLAGS = -I$(srcdir)/includes/ \
-	-I$(srcdir)/src/cpp/ \
-	-I$(srcdir)/src/c/ \
-	-I$(top_srcdir)/libs/MALLOC/includes/ \
-	-I$(top_srcdir)/modules/api_scilab/includes/ \
-	-I$(top_srcdir)/modules/core/src/c/ \
-	-I$(top_srcdir)/modules/localization/includes/ \
-	-I$(top_srcdir)/modules/output_stream/includes/ \
+libscielementary_functions_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+	-Wp,-I$(srcdir)/src/cpp/ \
+	-Wp,-I$(srcdir)/src/c/ \
+	-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+	-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+	-Wp,-I$(top_srcdir)/modules/core/includes/ \
+	-Wp,-I$(top_srcdir)/modules/core/src/c/ \
+	-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+	-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
 	$(AM_CPPFLAGS)
+
+## Need to put this include in FFLAGS too, because fortran is different:
+libscielementary_functions_la_FFLAGS= -I$(top_srcdir)/modules/core/includes/
 
 if MAINTAINER_MODE
 pkglib_LTLIBRARIES = libscielementary_functions.la
@@ -395,6 +399,7 @@ endif
 libscielementary_functions_algo_la_SOURCES = $(SLATEC_SOURCES) $(LINPACK_SOURCES)  $(EISPACK_SOURCES) $(ELEMENTARIES_FUNCTIONS_C_SOURCES) $(ELEMENTARIES_FUNCTIONS_FORTRAN_SOURCES) $(ELEMENTARIES_FUNCTIONS_CXX_SOURCES)
 libscielementary_functions_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libscielementary_functions_algo_la_CPPFLAGS = $(libscielementary_functions_la_CPPFLAGS)
+libscielementary_functions_algo_la_FFLAGS = $(libscielementary_functions_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC= $(ELEMENTARIES_FUNCTIONS_C_SOURCES) $(GATEWAY_C_SOURCES)

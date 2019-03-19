@@ -66,25 +66,25 @@ INCLUDE_FLAGS = $(libsciumfpack_la_CPPFLAGS)
 
 libsciumfpack_la_LIBADD =  libsciumfpack-algo.la
 
-libsciumfpack_la_CPPFLAGS= -I$(srcdir)/includes/ \
-			-I$(srcdir)/src/c/ \
-			-I$(top_srcdir)/libs/MALLOC/includes/ \
-			-I$(top_srcdir)/libs/dynamiclibrary/includes/ \
-			-I$(top_srcdir)/modules/output_stream/includes/ \
-			-I$(top_srcdir)/modules/api_scilab/includes/ \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			-I$(top_srcdir)/modules/mexlib/includes/ \
-			$(AM_CPPFLAGS)
+libsciumfpack_la_CPPFLAGS=-Wp,-I$(srcdir)/includes/ \
+			  -Wp,-I$(srcdir)/src/c/ \
+			  -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			  -Wp,-I$(top_srcdir)/libs/dynamiclibrary/includes/ \
+			  -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			  -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			  -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			  -Wp,-I$(top_srcdir)/modules/mexlib/includes/ \
+			  $(AM_CPPFLAGS)
 
 else
 
 UMFPACK_C_SOURCES = src/noumfpack/noumfpack.c
 
 libsciumfpack_la_SOURCES = $(UMFPACK_C_SOURCES)
-libsciumfpack_la_CPPFLAGS= -I$(top_srcdir)/modules/api_scilab/includes/ \
--I$(top_srcdir)/modules/umfpack/includes/ \
--I$(top_srcdir)/modules/output_stream/includes/ \
--I$(top_srcdir)/modules/localization/includes/ \
+libsciumfpack_la_CPPFLAGS= -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+-Wp,-I$(top_srcdir)/modules/umfpack/includes/ \
+-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+-Wp,-I$(top_srcdir)/modules/localization/includes/ \
 $(AM_CPPFLAGS)
 endif
 

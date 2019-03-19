@@ -111,7 +111,7 @@ target_triplet = @target@
 # javasci should be compile at the end because it needs libscilab.la
 # Don't forget that the order in subdirs does matter !!!
 @JAVASCI_TRUE@am__append_2 = javasci
-@GUI_TRUE@am__append_3 = $(GUI_LIBS) 	$(top_builddir)/modules/types/libscitypes.la
+@GUI_TRUE@am__append_3 = $(GUI_LIBS) $(top_builddir)/modules/types/libscitypes.la
 @GUI_FALSE@am__append_4 = $(NO_GUI_LIBS)
 subdir = modules
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -672,11 +672,7 @@ libscilab_la_rootdir = $(mydatadir)
 # libscilab-cli is for scilab-cli (without GUI)
 pkglib_LTLIBRARIES = libscilab-cli.la libscilab.la
 libscilab_la_SOURCES = 
-
-################## libscilab-cli  ##################
-libscilab_cli_la_SOURCES = 
 libscilab_la_LDFLAGS = $(LAPACK_LIBS) $(BLAS_LIBS) $(AM_LDFLAGS)
-libscilab_cli_la_LDFLAGS = $(LAPACK_LIBS) $(BLAS_LIBS) $(AM_LDFLAGS)
 EXTERNAL_LIBS = $(top_builddir)/libs/hashtable/libscihashtable.la \
 $(top_builddir)/libs/MALLOC/libscimalloc.la  \
 $(top_builddir)/libs/doublylinkedlist/libscidoublylinkedlist.la  \
@@ -767,11 +763,15 @@ ENGINE_LIBS_DYNAMIC_LOAD = \
 
 
 # Core modules
-libscilab_cli_la_LIBADD = $(ENGINE_LIBS) $(NO_GUI_LIBS) $(OTHER_LIBS) $(EXTERNAL_LIBS)
-
-# Core modules
 libscilab_la_LIBADD = $(am__append_3) $(am__append_4) $(OTHER_LIBS) \
 	$(EXTERNAL_LIBS) $(top_builddir)/modules/libscilab-cli.la
+
+################## libscilab-cli  ##################
+libscilab_cli_la_SOURCES = 
+libscilab_cli_la_LDFLAGS = $(LAPACK_LIBS) $(BLAS_LIBS) -lstdc++ $(AM_LDFLAGS)
+
+# Core modules
+libscilab_cli_la_LIBADD = $(ENGINE_LIBS) $(NO_GUI_LIBS) $(OTHER_LIBS) $(EXTERNAL_LIBS)
 all: all-recursive
 
 .SUFFIXES:

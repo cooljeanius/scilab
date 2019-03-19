@@ -663,20 +663,20 @@ sci_gateway/cpp/sci_listvar_in_hdf5.cpp
 @GIWS_TRUE@BUILT_SOURCES = giws
 
 #### hdf5 : include files ####
-libscihdf5_la_CPPFLAGS = -I$(srcdir)/includes/ \
-				-I$(srcdir)/src/c/ \
-				-I$(srcdir)/src/cpp/ \
-				-I$(srcdir)/src/jni/ \
-				-I$(top_srcdir)/libs/MALLOC/includes/ \
-				-I$(top_srcdir)/modules/output_stream/includes/ \
-				-I$(top_srcdir)/modules/api_scilab/includes/ \
-                -I$(top_srcdir)/modules/jvm/includes/ \
-                -I$(top_srcdir)/modules/commons/src/jni/ \
-				-I$(top_srcdir)/modules/localization/includes/ \
-				-I$(top_srcdir)/modules/fileio/includes/ \
-				$(JAVA_JNI_INCLUDE) \
-				$(HDF5_CFLAGS) \
-				$(AM_CPPFLAGS)
+libscihdf5_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+			 -Wp,-I$(srcdir)/src/c/ \
+			 -Wp,-I$(srcdir)/src/cpp/ \
+			 -Wp,-I$(srcdir)/src/jni/ \
+			 -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			 -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			 -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+                         -Wp,-I$(top_srcdir)/modules/jvm/includes/ \
+                         -Wp,-I$(top_srcdir)/modules/commons/src/jni/ \
+			 -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			 -Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+			 $(JAVA_JNI_INCLUDE) \
+			 $(HDF5_CFLAGS) \
+			 $(AM_CPPFLAGS)
 
 
 #### hdf5 : gateway declaration ####

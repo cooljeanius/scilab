@@ -44,14 +44,14 @@ MATIO_C_SOURCES = src/nomatio/nomatio.c
 
 endif
 
-libscimatio_la_CPPFLAGS = -I$(srcdir)/includes/ \
-			-I$(srcdir)/src/c/ \
-			-I$(srcdir)/src/matio/ \
-			-I$(top_srcdir)/libs/MALLOC/includes/ \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			-I$(top_srcdir)/modules/output_stream/includes/ \
-			-I$(top_srcdir)/modules/string/includes/ \
-			-I$(top_srcdir)/modules/api_scilab/includes/ \
+libscimatio_la_CPPFLAGS=-Wp,-I$(srcdir)/includes/ \
+			-Wp,-I$(srcdir)/src/c/ \
+			-Wp,-I$(srcdir)/src/matio/ \
+			-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			-Wp,-I$(top_srcdir)/modules/string/includes/ \
+			-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
 			$(MATIO_CFLAGS) \
 			$(AM_CPPFLAGS)
 

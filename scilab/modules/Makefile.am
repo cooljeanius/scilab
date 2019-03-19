@@ -112,10 +112,10 @@ libscilab_la_rootdir = $(mydatadir)
 # libscilab-cli is for scilab-cli (without GUI)
 pkglib_LTLIBRARIES = libscilab-cli.la libscilab.la
 libscilab_la_SOURCES =
-libscilab_cli_la_SOURCES =
+## libscilab_cli_la_SOURCES moved further below
 
 libscilab_la_LDFLAGS = $(LAPACK_LIBS) $(BLAS_LIBS) $(AM_LDFLAGS)
-libscilab_cli_la_LDFLAGS = $(LAPACK_LIBS) $(BLAS_LIBS) -lstdc++
+## libscilab_cli_la_LDFLAGS moved further below
 
 EXTERNAL_LIBS = $(top_builddir)/libs/hashtable/libscihashtable.la \
 $(top_builddir)/libs/MALLOC/libscimalloc.la  \
@@ -206,14 +206,12 @@ ENGINE_LIBS_DYNAMIC_LOAD = \
 	$(top_builddir)/modules/helptools/libscihelptools.la \
 	$(top_builddir)/modules/parallel/libsciparallel.la
 
-
-# Core modules
-libscilab_cli_la_LIBADD = $(ENGINE_LIBS) $(NO_GUI_LIBS) $(OTHER_LIBS) $(EXTERNAL_LIBS)
+## libscilab_cli_la_LIBADD moved further below
 
 libscilab_la_LIBADD =
 
 if GUI
-libscilab_la_LIBADD += $(GUI_LIBS) 	$(top_builddir)/modules/types/libscitypes.la
+libscilab_la_LIBADD += $(GUI_LIBS) $(top_builddir)/modules/types/libscitypes.la
 else
 libscilab_la_LIBADD += $(NO_GUI_LIBS)
 endif
@@ -227,7 +225,7 @@ libscilab_la_LIBADD += $(OTHER_LIBS) $(EXTERNAL_LIBS) \
 
 libscilab_cli_la_SOURCES =
 
-libscilab_cli_la_LDFLAGS = $(LAPACK_LIBS) $(BLAS_LIBS) $(AM_LDFLAGS)
+libscilab_cli_la_LDFLAGS = $(LAPACK_LIBS) $(BLAS_LIBS) -lstdc++ $(AM_LDFLAGS)
 
 # Core modules
 libscilab_cli_la_LIBADD = $(ENGINE_LIBS) $(NO_GUI_LIBS) $(OTHER_LIBS) $(EXTERNAL_LIBS)

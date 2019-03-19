@@ -61,17 +61,19 @@ GATEWAY_C_SOURCES = sci_gateway/c/gw_output_stream.c \
 GATEWAY_FORTRAN_SOURCES = sci_gateway/fortran/intprint.f \
 			sci_gateway/fortran/intdisp.f
 
-libscioutput_stream_la_CPPFLAGS=  -I$(top_srcdir)/libs/MALLOC/includes/ \
--I$(srcdir)/includes/ \
--I$(top_srcdir)/modules/core/includes/ \
--I$(srcdir)/src/cpp/ \
--I$(srcdir)/src/c/ \
--I$(top_srcdir)/modules/console/includes/ \
--I$(top_srcdir)/modules/api_scilab/includes/ \
--I$(top_srcdir)/modules/string/includes/ \
--I$(top_srcdir)/modules/localization/includes/ \
+libscioutput_stream_la_CPPFLAGS= -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+-Wp,-I$(srcdir)/includes/ \
+-Wp,-I$(top_srcdir)/modules/core/includes/ \
+-Wp,-I$(srcdir)/src/cpp/ \
+-Wp,-I$(srcdir)/src/c/ \
+-Wp,-I$(top_srcdir)/modules/console/includes/ \
+-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+-Wp,-I$(top_srcdir)/modules/string/includes/ \
+-Wp,-I$(top_srcdir)/modules/localization/includes/ \
 $(AM_CPPFLAGS)
 
+## Need to put this include in FFLAGS too, because fortran is different:
+libscioutput_stream_la_FFLAGS= -I$(top_srcdir)/modules/core/includes/
 
 if MAINTAINER_MODE
 pkglib_LTLIBRARIES = libscioutput_stream.la
@@ -84,6 +86,7 @@ endif
 libscioutput_stream_algo_la_SOURCES = $(OUTPUT_STREAM_C_SOURCES) $(OUTPUT_STREAM_CXX_SOURCES) $(OUTPUT_STREAM_FORTRAN_SOURCES) $(JNI_SOURCES)
 libscioutput_stream_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_CXX_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libscioutput_stream_algo_la_CPPFLAGS = $(libscioutput_stream_la_CPPFLAGS)
+libscioutput_stream_algo_la_FFLAGS = $(libscioutput_stream_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC= $(OUTPUT_STREAM_C_SOURCES) $(GATEWAY_C_SOURCES)

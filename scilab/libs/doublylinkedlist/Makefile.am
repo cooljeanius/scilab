@@ -9,9 +9,9 @@ libscidoublylinkedlist_la_includedir=$(pkgincludedir)
 
 libscidoublylinkedlist_la_include_HEADERS = includes/DoublyLinkedList.h
 
-libscidoublylinkedlist_la_CPPFLAGS= -I$(srcdir)/src/ \
-    -I$(srcdir)/includes/ \
-    -I$(top_srcdir)/libs/MALLOC/includes/ \
+libscidoublylinkedlist_la_CPPFLAGS= -Wp,-I$(srcdir)/src/ \
+    -Wp,-I$(srcdir)/includes/ \
+    -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
     $(AM_CPPFLAGS)
 
 pkglib_LTLIBRARIES = libscidoublylinkedlist.la

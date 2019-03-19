@@ -47,15 +47,15 @@ endif
 #GATEWAY_CXX_SOURCES =
 
 libscitypes_la_CPPFLAGS = $(JAVA_JNI_INCLUDE) \
-			   -I$(srcdir)/includes/ \
-			   -I$(srcdir)/src/jni/ \
-			   -I$(srcdir)/src/cpp/ \
-			   -I$(srcdir)/includes/ \
-			   -I$(top_srcdir)/modules/commons/src/jni/ \
-			   -I$(top_srcdir)/modules/jvm/includes/ \
-			   -I$(top_srcdir)/modules/output_stream/includes/ \
-			   -I$(top_srcdir)/modules/api_scilab/includes/ \
-			   $(AM_CPPFLAGS)
+			  -Wp,-I$(srcdir)/includes/ \
+			  -Wp,-I$(srcdir)/src/jni/ \
+			  -Wp,-I$(srcdir)/src/cpp/ \
+			  -Wp,-I$(srcdir)/includes/ \
+			  -Wp,-I$(top_srcdir)/modules/commons/src/jni/ \
+			  -Wp,-I$(top_srcdir)/modules/jvm/includes/ \
+			  -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			  -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			  $(AM_CPPFLAGS)
 
 TYPES_DISABLE_C_SOURCES =
 libscitypes_disable_la_SOURCES = $(TYPES_DISABLE_C_SOURCES)

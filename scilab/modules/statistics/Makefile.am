@@ -82,14 +82,17 @@ sci_gateway/c/sci_cdfbet.c \
 sci_gateway/c/sci_cdfnbn.c \
 sci_gateway/c/sci_cdfnor.c
 
-libscistatistics_la_CPPFLAGS= -I$(srcdir)/includes/ \
-				-I$(srcdir)/src/c/ \
-				-I$(top_srcdir)/libs/MALLOC/includes/ \
-				-I$(top_srcdir)/modules/api_scilab/includes/ \
-				-I$(top_srcdir)/modules/localization/includes/ \
-				-I$(top_srcdir)/modules/output_stream/includes/ \
-				$(AM_CPPFLAGS)
+libscistatistics_la_CPPFLAGS= -Wp,-I$(srcdir)/includes/ \
+			      -Wp,-I$(srcdir)/src/c/ \
+			      -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			      -Wp,-I$(top_srcdir)/modules/core/includes/ \
+			      -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			      -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			      -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			      $(AM_CPPFLAGS)
 
+## Need to put this include in FFLAGS too, because fortran is different:
+libscistatistics_la_FFLAGS= -I$(top_srcdir)/modules/core/includes/
 
 pkglib_LTLIBRARIES = libscistatistics.la
 noinst_LTLIBRARIES = libscistatistics-algo.la
@@ -99,6 +102,7 @@ noinst_LTLIBRARIES = libscistatistics-algo.la
 libscistatistics_algo_la_SOURCES = $(STATISTICS_C_SOURCES) $(STATISTICS_FORTRAN_SOURCES)
 libscistatistics_la_SOURCES = $(GATEWAY_C_SOURCES)
 libscistatistics_algo_la_CPPFLAGS = $(libscistatistics_la_CPPFLAGS)
+libscistatistics_algo_la_FFLAGS = $(libscistatistics_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC= $(STATISTICS_C_SOURCES) $(GATEWAY_C_SOURCES)

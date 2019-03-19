@@ -33,14 +33,18 @@ sci_gateway/c/sci_getlanguage.c \
 sci_gateway/c/sci_setdefaultlanguage.c
 
 libscilocalization_la_CPPFLAGS = $(JAVA_JNI_INCLUDE) \
-				-I$(srcdir)/includes/ \
-				-I$(srcdir)/src/c/ \
-				-I$(top_srcdir)/libs/MALLOC/includes/ \
-				-I$(top_srcdir)/modules/string/includes/ \
-				-I$(top_srcdir)/modules/fileio/includes/ \
-				-I$(top_srcdir)/modules/api_scilab/includes/ \
-				-I$(top_srcdir)/modules/output_stream/includes \
-				$(AM_CPPFLAGS)
+				 -Wp,-I$(srcdir)/includes/ \
+				 -Wp,-I$(srcdir)/src/c/ \
+				 -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+				 -Wp,-I$(top_srcdir)/modules/core/includes/ \
+				 -Wp,-I$(top_srcdir)/modules/string/includes/ \
+				 -Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+				 -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+				 -Wp,-I$(top_srcdir)/modules/output_stream/includes \
+				 $(AM_CPPFLAGS)
+
+## Need to put this include in FFLAGS too, because fortran is different:
+libscilocalization_la_FFLAGS= -I$(top_srcdir)/modules/core/includes/
 
 pkglib_LTLIBRARIES = libscilocalization.la
 noinst_LTLIBRARIES = libscilocalization-algo.la
@@ -58,6 +62,7 @@ libscilocalization_algo_la_SOURCES = $(LOCALIZATION_C_SOURCES)
 libscilocalization_la_SOURCES = $(GATEWAY_C_SOURCES)
 libscilocalization_algo_la_CPPFLAGS = $(libscilocalization_la_CPPFLAGS)
 libscilocalization_algo_la_CFLAGS = $(libscilocalization_la_CFLAGS)
+libscilocalization_algo_la_FFLAGS = $(libscilocalization_la_FFLAGS)
 libscilocalization_algo_la_LDFLAGS = $(libscilocalization_la_LDFLAGS)
 
 # For the code check (splint)

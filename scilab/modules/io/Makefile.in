@@ -185,14 +185,19 @@ am__objects_1 = src/c/libsciio_algo_la-getpidc.lo \
 	src/c/libsciio_algo_la-getenvc.lo \
 	src/c/libsciio_algo_la-GetenvB.lo \
 	src/c/libsciio_algo_la-v2cuniterror.lo
-am__objects_2 = src/fortran/v2unit.lo src/fortran/newsave.lo \
-	src/fortran/v2cunit.lo
+am__objects_2 = src/fortran/libsciio_algo_la-v2unit.lo \
+	src/fortran/libsciio_algo_la-newsave.lo \
+	src/fortran/libsciio_algo_la-v2cunit.lo
 am_libsciio_algo_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 libsciio_algo_la_OBJECTS = $(am_libsciio_algo_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+libsciio_algo_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libsciio_algo_la_FFLAGS) $(FFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
+	-o $@
 @MAINTAINER_MODE_FALSE@am_libsciio_algo_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libsciio_algo_la_rpath =
 libsciio_la_DEPENDENCIES = libsciio-algo.la
@@ -212,14 +217,18 @@ am__objects_3 = sci_gateway/c/libsciio_la-sci_read4b.lo \
 	sci_gateway/c/libsciio_la-sci_load.lo \
 	sci_gateway/c/libsciio_la-sci_unix.lo \
 	sci_gateway/c/libsciio_la-sci_save.lo
-am__objects_4 = sci_gateway/fortran/intwrite4b.lo \
-	sci_gateway/fortran/intwritb.lo \
-	sci_gateway/fortran/intwrite.lo \
-	sci_gateway/fortran/intread4b.lo \
-	sci_gateway/fortran/intread.lo sci_gateway/fortran/intreadb.lo \
-	sci_gateway/fortran/intfile.lo
+am__objects_4 = sci_gateway/fortran/libsciio_la-intwrite4b.lo \
+	sci_gateway/fortran/libsciio_la-intwritb.lo \
+	sci_gateway/fortran/libsciio_la-intwrite.lo \
+	sci_gateway/fortran/libsciio_la-intread4b.lo \
+	sci_gateway/fortran/libsciio_la-intread.lo \
+	sci_gateway/fortran/libsciio_la-intreadb.lo \
+	sci_gateway/fortran/libsciio_la-intfile.lo
 am_libsciio_la_OBJECTS = $(am__objects_3) $(am__objects_4)
 libsciio_la_OBJECTS = $(am_libsciio_la_OBJECTS)
+libsciio_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(F77LD) $(libsciio_la_FFLAGS) \
+	$(FFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 @MAINTAINER_MODE_FALSE@am_libsciio_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libsciio_la_rpath = -rpath $(pkglibdir)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -700,22 +709,24 @@ sci_gateway/fortran/intread.f \
 sci_gateway/fortran/intreadb.f \
 sci_gateway/fortran/intfile.f
 
-libsciio_la_CPPFLAGS = -I$(srcdir)/includes/ \
-			-I$(srcdir)/src/c/ \
-			-I$(top_srcdir)/libs/MALLOC/includes/ \
-			-I$(top_srcdir)/modules/core/includes/ \
-			-I$(top_srcdir)/modules/fileio/includes/ \
-			-I$(top_srcdir)/modules/api_scilab/includes/ \
-			-I$(top_srcdir)/modules/output_stream/includes/ \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			$(AM_CPPFLAGS)
+libsciio_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+		       -Wp,-I$(srcdir)/src/c/ \
+		       -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+		       -Wp,-I$(top_srcdir)/modules/core/includes/ \
+		       -Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+		       -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+		       -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+		       -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+		       $(AM_CPPFLAGS)
 
+libsciio_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 @MAINTAINER_MODE_TRUE@pkglib_LTLIBRARIES = libsciio.la
 @MAINTAINER_MODE_FALSE@noinst_LTLIBRARIES = libsciio-algo.la libsciio.la
 @MAINTAINER_MODE_TRUE@noinst_LTLIBRARIES = libsciio-algo.la
 libsciio_algo_la_SOURCES = $(IO_C_SOURCES) $(IO_FORTRAN_SOURCES)
 libsciio_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libsciio_algo_la_CPPFLAGS = $(libsciio_la_CPPFLAGS)
+libsciio_algo_la_FFLAGS = $(libsciio_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC = $(IO_C_SOURCES) $(GATEWAY_C_SOURCES)
@@ -913,15 +924,15 @@ src/fortran/$(am__dirstamp):
 src/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/fortran/$(DEPDIR)
 	@: > src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/v2unit.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciio_algo_la-v2unit.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/newsave.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciio_algo_la-newsave.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/v2cunit.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciio_algo_la-v2cunit.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libsciio-algo.la: $(libsciio_algo_la_OBJECTS) $(libsciio_algo_la_DEPENDENCIES) $(EXTRA_libsciio_algo_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libsciio_algo_la_rpath) $(libsciio_algo_la_OBJECTS) $(libsciio_algo_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libsciio_algo_la_LINK) $(am_libsciio_algo_la_rpath) $(libsciio_algo_la_OBJECTS) $(libsciio_algo_la_LIBADD) $(LIBS)
 sci_gateway/c/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/c
 	@: > sci_gateway/c/$(am__dirstamp)
@@ -972,24 +983,30 @@ sci_gateway/fortran/$(am__dirstamp):
 sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran/$(DEPDIR)
 	@: > sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/intwrite4b.lo:  \
+sci_gateway/fortran/libsciio_la-intwrite4b.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/intwritb.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libsciio_la-intwritb.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/intwrite.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libsciio_la-intwrite.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/intread4b.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libsciio_la-intread4b.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/intread.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libsciio_la-intread.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/intreadb.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libsciio_la-intreadb.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/intfile.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libsciio_la-intfile.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libsciio.la: $(libsciio_la_OBJECTS) $(libsciio_la_DEPENDENCIES) $(EXTRA_libsciio_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libsciio_la_rpath) $(libsciio_la_OBJECTS) $(libsciio_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libsciio_la_LINK) $(am_libsciio_la_rpath) $(libsciio_la_OBJECTS) $(libsciio_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -1220,6 +1237,36 @@ sci_gateway/c/libsciio_la-sci_save.lo: sci_gateway/c/sci_save.c
 
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
+
+src/fortran/libsciio_algo_la-v2unit.lo: src/fortran/v2unit.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciio_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciio_algo_la-v2unit.lo `test -f 'src/fortran/v2unit.f' || echo '$(srcdir)/'`src/fortran/v2unit.f
+
+src/fortran/libsciio_algo_la-newsave.lo: src/fortran/newsave.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciio_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciio_algo_la-newsave.lo `test -f 'src/fortran/newsave.f' || echo '$(srcdir)/'`src/fortran/newsave.f
+
+src/fortran/libsciio_algo_la-v2cunit.lo: src/fortran/v2cunit.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciio_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciio_algo_la-v2cunit.lo `test -f 'src/fortran/v2cunit.f' || echo '$(srcdir)/'`src/fortran/v2cunit.f
+
+sci_gateway/fortran/libsciio_la-intwrite4b.lo: sci_gateway/fortran/intwrite4b.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciio_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciio_la-intwrite4b.lo `test -f 'sci_gateway/fortran/intwrite4b.f' || echo '$(srcdir)/'`sci_gateway/fortran/intwrite4b.f
+
+sci_gateway/fortran/libsciio_la-intwritb.lo: sci_gateway/fortran/intwritb.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciio_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciio_la-intwritb.lo `test -f 'sci_gateway/fortran/intwritb.f' || echo '$(srcdir)/'`sci_gateway/fortran/intwritb.f
+
+sci_gateway/fortran/libsciio_la-intwrite.lo: sci_gateway/fortran/intwrite.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciio_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciio_la-intwrite.lo `test -f 'sci_gateway/fortran/intwrite.f' || echo '$(srcdir)/'`sci_gateway/fortran/intwrite.f
+
+sci_gateway/fortran/libsciio_la-intread4b.lo: sci_gateway/fortran/intread4b.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciio_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciio_la-intread4b.lo `test -f 'sci_gateway/fortran/intread4b.f' || echo '$(srcdir)/'`sci_gateway/fortran/intread4b.f
+
+sci_gateway/fortran/libsciio_la-intread.lo: sci_gateway/fortran/intread.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciio_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciio_la-intread.lo `test -f 'sci_gateway/fortran/intread.f' || echo '$(srcdir)/'`sci_gateway/fortran/intread.f
+
+sci_gateway/fortran/libsciio_la-intreadb.lo: sci_gateway/fortran/intreadb.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciio_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciio_la-intreadb.lo `test -f 'sci_gateway/fortran/intreadb.f' || echo '$(srcdir)/'`sci_gateway/fortran/intreadb.f
+
+sci_gateway/fortran/libsciio_la-intfile.lo: sci_gateway/fortran/intfile.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciio_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libsciio_la-intfile.lo `test -f 'sci_gateway/fortran/intfile.f' || echo '$(srcdir)/'`sci_gateway/fortran/intfile.f
 
 mostlyclean-libtool:
 	-rm -f *.lo

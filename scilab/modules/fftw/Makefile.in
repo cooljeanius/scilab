@@ -718,23 +718,23 @@ libscifftw_la_etc_DATA = etc/fftw.quit etc/fftw.start
 @FFTW_TRUE@CHECK_SRC = $(FFTW_C_SOURCES) $(GATEWAY_C_SOURCES)
 @FFTW_TRUE@INCLUDE_FLAGS = $(libscifftw_la_CPPFLAGS)
 @FFTW_TRUE@libscifftw_la_LIBADD = libscifftw-algo.la
-@FFTW_FALSE@libscifftw_la_CPPFLAGS = -I$(srcdir)/includes/ \
-@FFTW_FALSE@			-I$(srcdir)/src/c/ \
-@FFTW_FALSE@			-I$(top_srcdir)/modules/api_scilab/includes/ \
-@FFTW_FALSE@			-I$(top_srcdir)/modules/output_stream/includes/ \
-@FFTW_FALSE@			-I$(top_srcdir)/modules/localization/includes/ \
-@FFTW_FALSE@			$(AM_CPPFLAGS)
+@FFTW_FALSE@libscifftw_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+@FFTW_FALSE@			 -Wp,-I$(srcdir)/src/c/ \
+@FFTW_FALSE@			 -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+@FFTW_FALSE@			 -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+@FFTW_FALSE@			 -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+@FFTW_FALSE@			 $(AM_CPPFLAGS)
 
-@FFTW_TRUE@libscifftw_la_CPPFLAGS = -I$(srcdir)/includes/ \
-@FFTW_TRUE@			-I$(srcdir)/src/c/ \
-@FFTW_TRUE@			-I$(top_srcdir)/libs/MALLOC/includes/ \
-@FFTW_TRUE@			-I$(top_srcdir)/libs/dynamiclibrary/includes/ \
-@FFTW_TRUE@			-I$(top_srcdir)/modules/fileio/includes/ \
-@FFTW_TRUE@			-I$(top_srcdir)/modules/output_stream/includes/ \
-@FFTW_TRUE@			-I$(top_srcdir)/modules/api_scilab/includes/ \
-@FFTW_TRUE@			-I$(top_srcdir)/modules/localization/includes/ \
-@FFTW_TRUE@			$(FFTW3_CFLAGS) \
-@FFTW_TRUE@			$(AM_CPPFLAGS)
+@FFTW_TRUE@libscifftw_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+@FFTW_TRUE@			 -Wp,-I$(srcdir)/src/c/ \
+@FFTW_TRUE@			 -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+@FFTW_TRUE@			 -Wp,-I$(top_srcdir)/libs/dynamiclibrary/includes/ \
+@FFTW_TRUE@			 -Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+@FFTW_TRUE@			 -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+@FFTW_TRUE@			 -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+@FFTW_TRUE@			 -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+@FFTW_TRUE@			 $(FFTW3_CFLAGS) \
+@FFTW_TRUE@			 $(AM_CPPFLAGS)
 
 
 # Where all the Scilab stuff is installed (macros, help, ...)

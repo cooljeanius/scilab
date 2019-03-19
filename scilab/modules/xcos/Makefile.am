@@ -72,25 +72,25 @@ GATEWAY_CXX_SOURCES = \
 	sci_gateway/cpp/sci_xcosSimulationStarted.cpp
 
 libscixcos_la_CPPFLAGS = \
-			-I$(srcdir)/includes/ \
-			-I$(srcdir)/src/jni/ \
-			-I$(srcdir)/src/cpp/ \
-			-I$(srcdir)/src/c/ \
-			-I$(top_srcdir)/libs/MALLOC/includes/ \
-	 		-I$(top_srcdir)/modules/jvm/includes/ \
-			-I$(top_srcdir)/modules/output_stream/includes/ \
-			-I$(top_srcdir)/modules/commons/src/jni/ \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			-I$(top_srcdir)/modules/fileio/includes/ \
-			-I$(top_srcdir)/modules/scicos_blocks/src/jni/ \
-			-I$(top_srcdir)/modules/api_scilab/includes/ \
+			-Wp,-I$(srcdir)/includes/ \
+			-Wp,-I$(srcdir)/src/jni/ \
+			-Wp,-I$(srcdir)/src/cpp/ \
+			-Wp,-I$(srcdir)/src/c/ \
+			-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+	 		-Wp,-I$(top_srcdir)/modules/jvm/includes/ \
+			-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			-Wp,-I$(top_srcdir)/modules/commons/src/jni/ \
+			-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			-Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+			-Wp,-I$(top_srcdir)/modules/scicos_blocks/src/jni/ \
+			-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
 			$(JAVA_JNI_INCLUDE) \
 			$(AM_CPPFLAGS)
 
 # Without the xcos module
-libscixcos_disable_la_CPPFLAGS = -I$(srcdir)/includes/ \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			-I$(top_srcdir)/modules/output_stream/includes \
+libscixcos_disable_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+			-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			-Wp,-I$(top_srcdir)/modules/output_stream/includes \
 			$(AM_CPPFLAGS)
 
 XCOS_DISABLE_C_SOURCES = src/noxcos/noxcos.c

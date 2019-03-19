@@ -716,19 +716,19 @@ top_srcdir = @top_srcdir@
 pkglib_LTLIBRARIES = libscitclsci.la
 noinst_LTLIBRARIES = libscitclsci-algo.la
 libscitclsci_la_LDFLAGS = $(TCLTK_LIBS) $(AM_LDFLAGS)
-libscitclsci_la_CPPFLAGS = -I$(srcdir)/includes/ \
-			-I$(srcdir)/src/c \
-			-I$(srcdir)/sci_gateway/c/ \
-			-I$(top_srcdir)/libs/MALLOC/includes/ \
-			$(TCL_INC_PATH) \
-			$(TK_INC_PATH) \
-			-I$(top_srcdir)/modules/action_binding/includes/ \
-			-I$(top_srcdir)/modules/fileio/includes/ \
-			-I$(top_srcdir)/modules/call_scilab/includes/ \
-			-I$(top_srcdir)/modules/output_stream/includes/ \
-			-I$(top_srcdir)/modules/api_scilab/includes/ \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			$(AM_CPPFLAGS)
+libscitclsci_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+			  -Wp,-I$(srcdir)/src/c \
+			  -Wp,-I$(srcdir)/sci_gateway/c/ \
+			  -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			  $(TCL_INC_PATH) \
+			  $(TK_INC_PATH) \
+			  -Wp,-I$(top_srcdir)/modules/action_binding/includes/ \
+			  -Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+			  -Wp,-I$(top_srcdir)/modules/call_scilab/includes/ \
+			  -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			  -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			  -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			  $(AM_CPPFLAGS)
 
 libscitclsci_algo_la_SOURCES = $(TCLSCI_C_SOURCES)
 libscitclsci_la_SOURCES = $(GATEWAY_C_SOURCES)

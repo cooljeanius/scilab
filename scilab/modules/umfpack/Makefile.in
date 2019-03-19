@@ -717,21 +717,21 @@ libsciumfpack_la_etc_DATA = etc/umfpack.quit etc/umfpack.start
 @UMFPACK_TRUE@CHECK_SRC = $(libsciumfpack_la_SOURCES)
 @UMFPACK_TRUE@INCLUDE_FLAGS = $(libsciumfpack_la_CPPFLAGS)
 @UMFPACK_TRUE@libsciumfpack_la_LIBADD = libsciumfpack-algo.la
-@UMFPACK_FALSE@libsciumfpack_la_CPPFLAGS = -I$(top_srcdir)/modules/api_scilab/includes/ \
-@UMFPACK_FALSE@-I$(top_srcdir)/modules/umfpack/includes/ \
-@UMFPACK_FALSE@-I$(top_srcdir)/modules/output_stream/includes/ \
-@UMFPACK_FALSE@-I$(top_srcdir)/modules/localization/includes/ \
+@UMFPACK_FALSE@libsciumfpack_la_CPPFLAGS = -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+@UMFPACK_FALSE@-Wp,-I$(top_srcdir)/modules/umfpack/includes/ \
+@UMFPACK_FALSE@-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+@UMFPACK_FALSE@-Wp,-I$(top_srcdir)/modules/localization/includes/ \
 @UMFPACK_FALSE@$(AM_CPPFLAGS)
 
-@UMFPACK_TRUE@libsciumfpack_la_CPPFLAGS = -I$(srcdir)/includes/ \
-@UMFPACK_TRUE@			-I$(srcdir)/src/c/ \
-@UMFPACK_TRUE@			-I$(top_srcdir)/libs/MALLOC/includes/ \
-@UMFPACK_TRUE@			-I$(top_srcdir)/libs/dynamiclibrary/includes/ \
-@UMFPACK_TRUE@			-I$(top_srcdir)/modules/output_stream/includes/ \
-@UMFPACK_TRUE@			-I$(top_srcdir)/modules/api_scilab/includes/ \
-@UMFPACK_TRUE@			-I$(top_srcdir)/modules/localization/includes/ \
-@UMFPACK_TRUE@			-I$(top_srcdir)/modules/mexlib/includes/ \
-@UMFPACK_TRUE@			$(AM_CPPFLAGS)
+@UMFPACK_TRUE@libsciumfpack_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+@UMFPACK_TRUE@			  -Wp,-I$(srcdir)/src/c/ \
+@UMFPACK_TRUE@			  -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+@UMFPACK_TRUE@			  -Wp,-I$(top_srcdir)/libs/dynamiclibrary/includes/ \
+@UMFPACK_TRUE@			  -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+@UMFPACK_TRUE@			  -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+@UMFPACK_TRUE@			  -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+@UMFPACK_TRUE@			  -Wp,-I$(top_srcdir)/modules/mexlib/includes/ \
+@UMFPACK_TRUE@			  $(AM_CPPFLAGS)
 
 
 # Where all the Scilab stuff is installed (macros, help, ...)

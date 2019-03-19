@@ -215,7 +215,7 @@ C***END PROLOGUE  TWODQ
       double precision f,x(3,n),y(3,n),data(*),tol,result,error
       integer rndcnt
       logical full
-      double precision a,r,e,u(3),v(3),node(9),node1(9),node2(9),
+      double precision a,r,e,u(3),v(3),node(10),node1(10),node2(10),
      *  epsabs,EMACH,DLAMCH,ATOT,fadd,newres,newerr
       external f,GREATR
       common/iertwo/iero
@@ -262,6 +262,7 @@ c
         node(7)=x(3,i)
         node(8)=y(3,i)
         node(9)=a
+	node(10)=0.0
         call HPINS(maxtri,9,data,nd,iwork(maxtri+1),node,GREATR)
   20  continue
       end if
@@ -370,6 +371,7 @@ c
         call HPACC(maxtri,9,data,nd,iwork(maxtri+1),node,1)
         call HPDEL(maxtri,9,data,nd,iwork(maxtri+1),GREATR,1)
       end if
+c      Had to increase size of nodes from 9 to 10 to fix gfortran errors:
       call tridv(node,node1,node2,0.5d0,1)
       do 60 j=1,3
         u(j)=node1(2*j+1)

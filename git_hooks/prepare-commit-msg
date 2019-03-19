@@ -9,7 +9,8 @@ COMMIT="$3"
 
 case $SOURCE in
 '')
-    TMP=$(mktemp) && \
+    tempfoo=`basename $0`
+    TMP=$(mktemp -t ${tempfoo}) && \
     cat $FILE >$TMP && \
     git diff --cached scilab/CHANGES_* | sed -n '/^+/p' | sed -n '/^+++/!p' | sed 's/^.\{1\}//g' >$FILE && \
     cat $TMP >>$FILE && \

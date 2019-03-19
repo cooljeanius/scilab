@@ -14,7 +14,8 @@
 
 AUTOMAKE_OPTIONS = 1.11.6 dejagnu dist-zip dist-bzip2 foreign subdir-objects -Wall
 
-SUBDIRS = modules \
+SUBDIRS = libs \
+	modules \
 	contrib \
 	desktop \
         po

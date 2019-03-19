@@ -1196,30 +1196,30 @@ HELP_CHAPTERLANG = en_US fr_FR pt_BR
 @XCOS_TRUE@sci_gateway/fortran/sci_f_var2vec.f \
 @XCOS_TRUE@sci_gateway/fortran/sci_f_vec2var.f
 
-@XCOS_FALSE@libsciscicos_la_CPPFLAGS = -I$(top_srcdir)/modules/output_stream/includes/ \
-@XCOS_FALSE@-I$(top_srcdir)/modules/api_scilab/includes/ \
-@XCOS_FALSE@-I$(top_srcdir)/modules/scicos/includes/ \
+@XCOS_FALSE@libsciscicos_la_CPPFLAGS = -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+@XCOS_FALSE@-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+@XCOS_FALSE@-Wp,-I$(top_srcdir)/modules/scicos/includes/ \
 @XCOS_FALSE@$(AM_CPPFLAGS)
 
 
 #CLEANFILES=includes/blocks.h build/Cblocknames build/Fblocknames
-@XCOS_TRUE@libsciscicos_la_CPPFLAGS = -I$(srcdir)/includes/ \
-@XCOS_TRUE@			-I$(srcdir)/src/c/ \
-@XCOS_TRUE@			-I$(top_srcdir)/libs/MALLOC/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/output_stream/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/graphics/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/dynamic_link/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/string/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/localization/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/intersci/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/scicos_blocks/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/action_binding/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/time/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/api_scilab/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/sundials/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/ida/ \
+@XCOS_TRUE@libsciscicos_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+@XCOS_TRUE@			-Wp,-I$(srcdir)/src/c/ \
+@XCOS_TRUE@			-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+@XCOS_TRUE@			-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+@XCOS_TRUE@			-Wp,-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
+@XCOS_TRUE@			-Wp,-I$(top_srcdir)/modules/graphics/includes/ \
+@XCOS_TRUE@			-Wp,-I$(top_srcdir)/modules/dynamic_link/includes/ \
+@XCOS_TRUE@			-Wp,-I$(top_srcdir)/modules/string/includes/ \
+@XCOS_TRUE@			-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+@XCOS_TRUE@			-Wp,-I$(top_srcdir)/modules/intersci/includes/ \
+@XCOS_TRUE@			-Wp,-I$(top_srcdir)/modules/scicos_blocks/includes/ \
+@XCOS_TRUE@			-Wp,-I$(top_srcdir)/modules/action_binding/includes/ \
+@XCOS_TRUE@			-Wp,-I$(top_srcdir)/modules/time/includes/ \
+@XCOS_TRUE@			-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+@XCOS_TRUE@			-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/ \
+@XCOS_TRUE@			-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/sundials/ \
+@XCOS_TRUE@			-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/ida/ \
 @XCOS_TRUE@			$(AM_CPPFLAGS)
 
 @XCOS_TRUE@libsciscicos_algo_la_SOURCES = $(SCICOS_C_SOURCES) $(SCICOS_FORTRAN_SOURCES)
@@ -1304,17 +1304,17 @@ HELP_CHAPTERLANG = en_US fr_FR pt_BR
 @XCOS_TRUE@src/scicos_sundials/src/sundials/sundials_smalldense.c \
 @XCOS_TRUE@src/scicos_sundials/src/sundials/sundials_extension.c
 
-@XCOS_TRUE@libscisundials_la_CPPFLAGS = -I$(top_srcdir)/modules/scicos/src/scicos_sundials/include \
-@XCOS_TRUE@-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/cvode \
-@XCOS_TRUE@-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/ida \
-@XCOS_TRUE@-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/kinsol \
-@XCOS_TRUE@-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/nvec_ser \
-@XCOS_TRUE@-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/sundials \
-@XCOS_TRUE@-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/cvode \
-@XCOS_TRUE@-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/ida \
-@XCOS_TRUE@-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/kinsol \
-@XCOS_TRUE@-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/nvec_ser \
-@XCOS_TRUE@-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/sundials \
+@XCOS_TRUE@libscisundials_la_CPPFLAGS = -Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include \
+@XCOS_TRUE@-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/cvode \
+@XCOS_TRUE@-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/ida \
+@XCOS_TRUE@-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/kinsol \
+@XCOS_TRUE@-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/nvec_ser \
+@XCOS_TRUE@-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/sundials \
+@XCOS_TRUE@-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/cvode \
+@XCOS_TRUE@-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/ida \
+@XCOS_TRUE@-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/kinsol \
+@XCOS_TRUE@-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/nvec_ser \
+@XCOS_TRUE@-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/sundials \
 @XCOS_TRUE@$(AM_CPPFLAGS)
 
 @XCOS_TRUE@libscisundials_la_SOURCES = $(SUNDIALS_SOURCES)

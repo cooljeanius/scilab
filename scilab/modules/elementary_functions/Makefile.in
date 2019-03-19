@@ -193,59 +193,109 @@ am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
 libscielementary_functions_algo_la_LIBADD =
-am__objects_1 = src/fortran/slatec/zwrsk.lo \
-	src/fortran/slatec/d9b0mp.lo src/fortran/slatec/d9b1mp.lo \
-	src/fortran/slatec/d9knus.lo src/fortran/slatec/d9lgmc.lo \
-	src/fortran/slatec/dasyik.lo src/fortran/slatec/dasyjy.lo \
-	src/fortran/slatec/dbdiff.lo src/fortran/slatec/dbesi0.lo \
-	src/fortran/slatec/dbesi1.lo src/fortran/slatec/dbesi.lo \
-	src/fortran/slatec/dbesj0.lo src/fortran/slatec/dbesj1.lo \
-	src/fortran/slatec/dbesj.lo src/fortran/slatec/dbesk0.lo \
-	src/fortran/slatec/dbesk1.lo src/fortran/slatec/dbesk.lo \
-	src/fortran/slatec/dbesy0.lo src/fortran/slatec/dbesy1.lo \
-	src/fortran/slatec/dbesy.lo src/fortran/slatec/dbkias.lo \
-	src/fortran/slatec/dbkisr.lo src/fortran/slatec/dbsi0e.lo \
-	src/fortran/slatec/dbsi1e.lo src/fortran/slatec/dbsk0e.lo \
-	src/fortran/slatec/dbsk1e.lo src/fortran/slatec/dbskes.lo \
-	src/fortran/slatec/dbskin.lo src/fortran/slatec/dbsknu.lo \
-	src/fortran/slatec/dbsynu.lo src/fortran/slatec/dcsevl.lo \
-	src/fortran/slatec/dexint.lo src/fortran/slatec/dgamlm.lo \
-	src/fortran/slatec/dgamln.lo src/fortran/slatec/dgamma.lo \
-	src/fortran/slatec/dgamrn.lo src/fortran/slatec/dhkseq.lo \
-	src/fortran/slatec/djairy.lo src/fortran/slatec/dpsixn.lo \
-	src/fortran/slatec/dxlegf.lo src/fortran/slatec/dyairy.lo \
-	src/fortran/slatec/fdump.lo src/fortran/slatec/gamma.lo \
-	src/fortran/slatec/initds.lo src/fortran/slatec/j4save.lo \
-	src/fortran/slatec/xercnt.lo src/fortran/slatec/xermsg.lo \
-	src/fortran/slatec/xerprn.lo src/fortran/slatec/xersve.lo \
-	src/fortran/slatec/xgetua.lo src/fortran/slatec/zabs.lo \
-	src/fortran/slatec/zacai.lo src/fortran/slatec/zacon.lo \
-	src/fortran/slatec/zairy.lo src/fortran/slatec/zasyi.lo \
-	src/fortran/slatec/zbesh.lo src/fortran/slatec/zbesi.lo \
-	src/fortran/slatec/zbesj.lo src/fortran/slatec/zbesk.lo \
-	src/fortran/slatec/zbesy.lo src/fortran/slatec/zbinu.lo \
-	src/fortran/slatec/zbknu.lo src/fortran/slatec/zbuni.lo \
-	src/fortran/slatec/zbunk.lo src/fortran/slatec/zdiv.lo \
-	src/fortran/slatec/zexp.lo src/fortran/slatec/zkscl.lo \
-	src/fortran/slatec/zlog.lo src/fortran/slatec/zmlri.lo \
-	src/fortran/slatec/zmlt.lo src/fortran/slatec/zrati.lo \
-	src/fortran/slatec/zs1s2.lo src/fortran/slatec/zseri.lo \
-	src/fortran/slatec/zshch.lo src/fortran/slatec/zsqrt.lo \
-	src/fortran/slatec/zuchk.lo src/fortran/slatec/zunhj.lo \
-	src/fortran/slatec/zuni1.lo src/fortran/slatec/zuni2.lo \
-	src/fortran/slatec/zunik.lo src/fortran/slatec/zunk1.lo \
-	src/fortran/slatec/zunk2.lo src/fortran/slatec/zuoik.lo \
-	src/fortran/slatec/dlngam.lo src/fortran/slatec/balanc.lo \
-	src/fortran/slatec/dtensbs.lo src/fortran/slatec/pchim.lo
-am__objects_2 = src/fortran/linpack/dgesl.lo \
-	src/fortran/linpack/wpade.lo src/fortran/linpack/util.lo \
-	src/fortran/linpack/dgefa.lo src/fortran/linpack/dgbfa.lo \
-	src/fortran/linpack/dgeco.lo src/fortran/linpack/dgedi.lo \
-	src/fortran/linpack/dqrdc.lo src/fortran/linpack/dqrsl.lo \
-	src/fortran/linpack/dqrsm.lo src/fortran/linpack/hhdml.lo \
-	src/fortran/linpack/wgeco.lo src/fortran/linpack/wgefa.lo \
-	src/fortran/linpack/wgesl.lo src/fortran/linpack/dpofa.lo
-am__objects_3 = src/fortran/eispack/balbak.lo
+am__objects_1 = src/fortran/slatec/libscielementary_functions_algo_la-zwrsk.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-d9b0mp.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-d9b1mp.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-d9knus.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-d9lgmc.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dasyik.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dasyjy.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbdiff.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbesi0.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbesi1.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbesi.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbesj0.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbesj1.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbesj.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbesk0.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbesk1.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbesk.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbesy0.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbesy1.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbesy.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbkias.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbkisr.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbsi0e.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbsi1e.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbsk0e.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbsk1e.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbskes.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbskin.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbsknu.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dbsynu.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dcsevl.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dexint.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dgamlm.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dgamln.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dgamma.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dgamrn.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dhkseq.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-djairy.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dpsixn.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dxlegf.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dyairy.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-fdump.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-gamma.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-initds.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-j4save.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-xercnt.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-xermsg.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-xerprn.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-xersve.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-xgetua.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zabs.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zacai.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zacon.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zairy.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zasyi.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zbesh.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zbesi.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zbesj.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zbesk.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zbesy.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zbinu.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zbknu.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zbuni.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zbunk.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zdiv.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zexp.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zkscl.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zlog.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zmlri.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zmlt.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zrati.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zs1s2.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zseri.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zshch.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zsqrt.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zuchk.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zunhj.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zuni1.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zuni2.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zunik.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zunk1.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zunk2.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-zuoik.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dlngam.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-balanc.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-dtensbs.lo \
+	src/fortran/slatec/libscielementary_functions_algo_la-pchim.lo
+am__objects_2 = src/fortran/linpack/libscielementary_functions_algo_la-dgesl.lo \
+	src/fortran/linpack/libscielementary_functions_algo_la-wpade.lo \
+	src/fortran/linpack/libscielementary_functions_algo_la-util.lo \
+	src/fortran/linpack/libscielementary_functions_algo_la-dgefa.lo \
+	src/fortran/linpack/libscielementary_functions_algo_la-dgbfa.lo \
+	src/fortran/linpack/libscielementary_functions_algo_la-dgeco.lo \
+	src/fortran/linpack/libscielementary_functions_algo_la-dgedi.lo \
+	src/fortran/linpack/libscielementary_functions_algo_la-dqrdc.lo \
+	src/fortran/linpack/libscielementary_functions_algo_la-dqrsl.lo \
+	src/fortran/linpack/libscielementary_functions_algo_la-dqrsm.lo \
+	src/fortran/linpack/libscielementary_functions_algo_la-hhdml.lo \
+	src/fortran/linpack/libscielementary_functions_algo_la-wgeco.lo \
+	src/fortran/linpack/libscielementary_functions_algo_la-wgefa.lo \
+	src/fortran/linpack/libscielementary_functions_algo_la-wgesl.lo \
+	src/fortran/linpack/libscielementary_functions_algo_la-dpofa.lo
+am__objects_3 = src/fortran/eispack/libscielementary_functions_algo_la-balbak.lo
 am__objects_4 = src/c/libscielementary_functions_algo_la-sci_tools.lo \
 	src/c/libscielementary_functions_algo_la-finite.lo \
 	src/c/libscielementary_functions_algo_la-vfinite.lo \
@@ -268,63 +318,133 @@ am__objects_4 = src/c/libscielementary_functions_algo_la-sci_tools.lo \
 	src/c/libscielementary_functions_algo_la-qsort-string.lo \
 	src/c/libscielementary_functions_algo_la-IsEqualVar.lo \
 	src/c/libscielementary_functions_algo_la-convertbase.lo
-am__objects_5 = src/fortran/psi.lo src/fortran/wasum.lo \
-	src/fortran/dexpm1.lo src/fortran/wwdiv.lo \
-	src/fortran/wdotcr.lo src/fortran/iset.lo \
-	src/fortran/franck.lo src/fortran/dwpowe.lo \
-	src/fortran/rcsort.lo src/fortran/wddiv.lo \
-	src/fortran/lnblnk.lo src/fortran/entier.lo \
-	src/fortran/round.lo src/fortran/cortr.lo \
-	src/fortran/simple.lo src/fortran/split.lo \
-	src/fortran/wdrdiv.lo src/fortran/imcopy.lo \
-	src/fortran/cbal.lo src/fortran/cuproi.lo src/fortran/dsum.lo \
-	src/fortran/urand.lo src/fortran/intp.lo src/fortran/watan.lo \
-	src/fortran/wipowe.lo src/fortran/wacos.lo \
-	src/fortran/wdpow1.lo src/fortran/dmsum.lo \
-	src/fortran/dlgama.lo src/fortran/exch.lo src/fortran/wsign.lo \
-	src/fortran/kronr.lo src/fortran/wrscal.lo \
-	src/fortran/pythag.lo src/fortran/dmmul1.lo \
-	src/fortran/dwpow.lo src/fortran/wmmul.lo \
-	src/fortran/dsearch.lo src/fortran/ddif.lo src/fortran/wdiv.lo \
-	src/fortran/wtan.lo src/fortran/ddpow.lo src/fortran/magic.lo \
-	src/fortran/wcerr.lo src/fortran/ivimp.lo src/fortran/cupro.lo \
-	src/fortran/dadd.lo src/fortran/calerf.lo src/fortran/isort.lo \
-	src/fortran/hilber.lo src/fortran/wdpowe.lo \
-	src/fortran/wmprod.lo src/fortran/wscal.lo \
-	src/fortran/dlblks.lo src/fortran/kronc.lo \
-	src/fortran/ddrdiv.lo src/fortran/dipow.lo \
-	src/fortran/wshrsl.lo src/fortran/wwrdiv.lo \
-	src/fortran/coshin.lo src/fortran/iwamax.lo \
-	src/fortran/dipowe.lo src/fortran/getorient.lo \
-	src/fortran/cusum.lo src/fortran/d1mach.lo \
-	src/fortran/wbdiag.lo src/fortran/ddpow1.lo \
-	src/fortran/vpythag.lo src/fortran/isova0.lo \
-	src/fortran/wswap.lo src/fortran/wwpow1.lo \
-	src/fortran/getdimfromvar.lo src/fortran/gdcp2i.lo \
-	src/fortran/drdiv.lo src/fortran/wmsum.lo src/fortran/corth.lo \
-	src/fortran/mtran.lo src/fortran/wwpow.lo src/fortran/dvmul.lo \
-	src/fortran/wclmat.lo src/fortran/dsort.lo src/fortran/cerr.lo \
-	src/fortran/rcopy.lo src/fortran/wdpow.lo \
-	src/fortran/orthes.lo src/fortran/waxpy.lo src/fortran/coef.lo \
-	src/fortran/dwdiv.lo src/fortran/arcosh.lo \
-	src/fortran/wasin.lo src/fortran/wexpm1.lo \
-	src/fortran/ddpowe.lo src/fortran/nearfloat.lo \
-	src/fortran/dmprod.lo src/fortran/wwpowe.lo \
-	src/fortran/wdotci.lo src/fortran/dmcopy.lo \
-	src/fortran/wexchn.lo src/fortran/isoval.lo \
-	src/fortran/dwrdiv.lo src/fortran/wipow.lo src/fortran/wlog.lo \
-	src/fortran/infinity.lo src/fortran/dwpow1.lo \
-	src/fortran/wmul.lo src/fortran/dad.lo src/fortran/dset.lo \
-	src/fortran/dtild.lo src/fortran/i1mach.lo \
-	src/fortran/dclmat.lo src/fortran/ortran.lo \
-	src/fortran/bdiag.lo src/fortran/wvmul.lo src/fortran/dmmul.lo \
-	src/fortran/wsqrt.lo src/fortran/israt.lo src/fortran/rat.lo
+am__objects_5 = src/fortran/libscielementary_functions_algo_la-psi.lo \
+	src/fortran/libscielementary_functions_algo_la-wasum.lo \
+	src/fortran/libscielementary_functions_algo_la-dexpm1.lo \
+	src/fortran/libscielementary_functions_algo_la-wwdiv.lo \
+	src/fortran/libscielementary_functions_algo_la-wdotcr.lo \
+	src/fortran/libscielementary_functions_algo_la-iset.lo \
+	src/fortran/libscielementary_functions_algo_la-franck.lo \
+	src/fortran/libscielementary_functions_algo_la-dwpowe.lo \
+	src/fortran/libscielementary_functions_algo_la-rcsort.lo \
+	src/fortran/libscielementary_functions_algo_la-wddiv.lo \
+	src/fortran/libscielementary_functions_algo_la-lnblnk.lo \
+	src/fortran/libscielementary_functions_algo_la-entier.lo \
+	src/fortran/libscielementary_functions_algo_la-round.lo \
+	src/fortran/libscielementary_functions_algo_la-cortr.lo \
+	src/fortran/libscielementary_functions_algo_la-simple.lo \
+	src/fortran/libscielementary_functions_algo_la-split.lo \
+	src/fortran/libscielementary_functions_algo_la-wdrdiv.lo \
+	src/fortran/libscielementary_functions_algo_la-imcopy.lo \
+	src/fortran/libscielementary_functions_algo_la-cbal.lo \
+	src/fortran/libscielementary_functions_algo_la-cuproi.lo \
+	src/fortran/libscielementary_functions_algo_la-dsum.lo \
+	src/fortran/libscielementary_functions_algo_la-urand.lo \
+	src/fortran/libscielementary_functions_algo_la-intp.lo \
+	src/fortran/libscielementary_functions_algo_la-watan.lo \
+	src/fortran/libscielementary_functions_algo_la-wipowe.lo \
+	src/fortran/libscielementary_functions_algo_la-wacos.lo \
+	src/fortran/libscielementary_functions_algo_la-wdpow1.lo \
+	src/fortran/libscielementary_functions_algo_la-dmsum.lo \
+	src/fortran/libscielementary_functions_algo_la-dlgama.lo \
+	src/fortran/libscielementary_functions_algo_la-exch.lo \
+	src/fortran/libscielementary_functions_algo_la-wsign.lo \
+	src/fortran/libscielementary_functions_algo_la-kronr.lo \
+	src/fortran/libscielementary_functions_algo_la-wrscal.lo \
+	src/fortran/libscielementary_functions_algo_la-pythag.lo \
+	src/fortran/libscielementary_functions_algo_la-dmmul1.lo \
+	src/fortran/libscielementary_functions_algo_la-dwpow.lo \
+	src/fortran/libscielementary_functions_algo_la-wmmul.lo \
+	src/fortran/libscielementary_functions_algo_la-dsearch.lo \
+	src/fortran/libscielementary_functions_algo_la-ddif.lo \
+	src/fortran/libscielementary_functions_algo_la-wdiv.lo \
+	src/fortran/libscielementary_functions_algo_la-wtan.lo \
+	src/fortran/libscielementary_functions_algo_la-ddpow.lo \
+	src/fortran/libscielementary_functions_algo_la-magic.lo \
+	src/fortran/libscielementary_functions_algo_la-wcerr.lo \
+	src/fortran/libscielementary_functions_algo_la-ivimp.lo \
+	src/fortran/libscielementary_functions_algo_la-cupro.lo \
+	src/fortran/libscielementary_functions_algo_la-dadd.lo \
+	src/fortran/libscielementary_functions_algo_la-calerf.lo \
+	src/fortran/libscielementary_functions_algo_la-isort.lo \
+	src/fortran/libscielementary_functions_algo_la-hilber.lo \
+	src/fortran/libscielementary_functions_algo_la-wdpowe.lo \
+	src/fortran/libscielementary_functions_algo_la-wmprod.lo \
+	src/fortran/libscielementary_functions_algo_la-wscal.lo \
+	src/fortran/libscielementary_functions_algo_la-dlblks.lo \
+	src/fortran/libscielementary_functions_algo_la-kronc.lo \
+	src/fortran/libscielementary_functions_algo_la-ddrdiv.lo \
+	src/fortran/libscielementary_functions_algo_la-dipow.lo \
+	src/fortran/libscielementary_functions_algo_la-wshrsl.lo \
+	src/fortran/libscielementary_functions_algo_la-wwrdiv.lo \
+	src/fortran/libscielementary_functions_algo_la-coshin.lo \
+	src/fortran/libscielementary_functions_algo_la-iwamax.lo \
+	src/fortran/libscielementary_functions_algo_la-dipowe.lo \
+	src/fortran/libscielementary_functions_algo_la-getorient.lo \
+	src/fortran/libscielementary_functions_algo_la-cusum.lo \
+	src/fortran/libscielementary_functions_algo_la-d1mach.lo \
+	src/fortran/libscielementary_functions_algo_la-wbdiag.lo \
+	src/fortran/libscielementary_functions_algo_la-ddpow1.lo \
+	src/fortran/libscielementary_functions_algo_la-vpythag.lo \
+	src/fortran/libscielementary_functions_algo_la-isova0.lo \
+	src/fortran/libscielementary_functions_algo_la-wswap.lo \
+	src/fortran/libscielementary_functions_algo_la-wwpow1.lo \
+	src/fortran/libscielementary_functions_algo_la-getdimfromvar.lo \
+	src/fortran/libscielementary_functions_algo_la-gdcp2i.lo \
+	src/fortran/libscielementary_functions_algo_la-drdiv.lo \
+	src/fortran/libscielementary_functions_algo_la-wmsum.lo \
+	src/fortran/libscielementary_functions_algo_la-corth.lo \
+	src/fortran/libscielementary_functions_algo_la-mtran.lo \
+	src/fortran/libscielementary_functions_algo_la-wwpow.lo \
+	src/fortran/libscielementary_functions_algo_la-dvmul.lo \
+	src/fortran/libscielementary_functions_algo_la-wclmat.lo \
+	src/fortran/libscielementary_functions_algo_la-dsort.lo \
+	src/fortran/libscielementary_functions_algo_la-cerr.lo \
+	src/fortran/libscielementary_functions_algo_la-rcopy.lo \
+	src/fortran/libscielementary_functions_algo_la-wdpow.lo \
+	src/fortran/libscielementary_functions_algo_la-orthes.lo \
+	src/fortran/libscielementary_functions_algo_la-waxpy.lo \
+	src/fortran/libscielementary_functions_algo_la-coef.lo \
+	src/fortran/libscielementary_functions_algo_la-dwdiv.lo \
+	src/fortran/libscielementary_functions_algo_la-arcosh.lo \
+	src/fortran/libscielementary_functions_algo_la-wasin.lo \
+	src/fortran/libscielementary_functions_algo_la-wexpm1.lo \
+	src/fortran/libscielementary_functions_algo_la-ddpowe.lo \
+	src/fortran/libscielementary_functions_algo_la-nearfloat.lo \
+	src/fortran/libscielementary_functions_algo_la-dmprod.lo \
+	src/fortran/libscielementary_functions_algo_la-wwpowe.lo \
+	src/fortran/libscielementary_functions_algo_la-wdotci.lo \
+	src/fortran/libscielementary_functions_algo_la-dmcopy.lo \
+	src/fortran/libscielementary_functions_algo_la-wexchn.lo \
+	src/fortran/libscielementary_functions_algo_la-isoval.lo \
+	src/fortran/libscielementary_functions_algo_la-dwrdiv.lo \
+	src/fortran/libscielementary_functions_algo_la-wipow.lo \
+	src/fortran/libscielementary_functions_algo_la-wlog.lo \
+	src/fortran/libscielementary_functions_algo_la-infinity.lo \
+	src/fortran/libscielementary_functions_algo_la-dwpow1.lo \
+	src/fortran/libscielementary_functions_algo_la-wmul.lo \
+	src/fortran/libscielementary_functions_algo_la-dad.lo \
+	src/fortran/libscielementary_functions_algo_la-dset.lo \
+	src/fortran/libscielementary_functions_algo_la-dtild.lo \
+	src/fortran/libscielementary_functions_algo_la-i1mach.lo \
+	src/fortran/libscielementary_functions_algo_la-dclmat.lo \
+	src/fortran/libscielementary_functions_algo_la-ortran.lo \
+	src/fortran/libscielementary_functions_algo_la-bdiag.lo \
+	src/fortran/libscielementary_functions_algo_la-wvmul.lo \
+	src/fortran/libscielementary_functions_algo_la-dmmul.lo \
+	src/fortran/libscielementary_functions_algo_la-wsqrt.lo \
+	src/fortran/libscielementary_functions_algo_la-israt.lo \
+	src/fortran/libscielementary_functions_algo_la-rat.lo
 am__objects_6 =
 am_libscielementary_functions_algo_la_OBJECTS = $(am__objects_1) \
 	$(am__objects_2) $(am__objects_3) $(am__objects_4) \
 	$(am__objects_5) $(am__objects_6)
 libscielementary_functions_algo_la_OBJECTS =  \
 	$(am_libscielementary_functions_algo_la_OBJECTS)
+libscielementary_functions_algo_la_LINK = $(LIBTOOL) $(AM_V_lt) \
+	--tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link \
+	$(F77LD) $(libscielementary_functions_algo_la_FFLAGS) \
+	$(FFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 @MAINTAINER_MODE_FALSE@am_libscielementary_functions_algo_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libscielementary_functions_algo_la_rpath =
 libscielementary_functions_la_DEPENDENCIES =  \
@@ -383,57 +503,61 @@ am__objects_7 =  \
 	sci_gateway/c/libscielementary_functions_la-sci_isequalbitwise.lo \
 	sci_gateway/c/libscielementary_functions_la-sci_base2dec.lo \
 	sci_gateway/c/libscielementary_functions_la-sci_dec2base.lo
-am__objects_8 = sci_gateway/fortran/sci_f_isequal.lo \
-	sci_gateway/fortran/sci_f_maxi.lo \
-	sci_gateway/fortran/sci_f_testmatrix.lo \
-	sci_gateway/fortran/sci_f_prod.lo \
-	sci_gateway/fortran/sci_f_matrix.lo \
-	sci_gateway/fortran/sci_f_expm.lo \
-	sci_gateway/fortran/sci_f_size.lo \
-	sci_gateway/fortran/sci_f_tril.lo \
-	sci_gateway/fortran/sci_f_ceil.lo \
-	sci_gateway/fortran/sci_f_rat.lo \
-	sci_gateway/fortran/sci_f_imag.lo \
-	sci_gateway/fortran/sci_f_log.lo \
-	sci_gateway/fortran/sci_f_log1p.lo \
-	sci_gateway/fortran/sci_f_clean.lo \
-	sci_gateway/fortran/sci_f_eye.lo \
-	sci_gateway/fortran/sci_f_tan.lo \
-	sci_gateway/fortran/sci_f_atan.lo \
-	sci_gateway/fortran/sci_f_triu.lo \
-	sci_gateway/fortran/sci_f_frexp.lo \
-	sci_gateway/fortran/sci_f_cos.lo \
-	sci_gateway/fortran/sci_f_rand.lo \
-	sci_gateway/fortran/sci_f_acos.lo \
-	sci_gateway/fortran/sci_f_sin.lo \
-	sci_gateway/fortran/sci_f_sqrt.lo \
-	sci_gateway/fortran/sci_f_asin.lo \
-	sci_gateway/fortran/sci_f_sign.lo \
-	sci_gateway/fortran/sci_f_zeros.lo \
-	sci_gateway/fortran/sci_f_ones.lo \
-	sci_gateway/fortran/sci_f_diag.lo \
-	sci_gateway/fortran/sci_f_number_properties.lo \
-	sci_gateway/fortran/sci_f_sum.lo \
-	sci_gateway/fortran/sci_f_cumprod.lo \
-	sci_gateway/fortran/sci_f_abs.lo \
-	sci_gateway/fortran/sci_f_spones.lo \
-	sci_gateway/fortran/sci_f_kron.lo \
-	sci_gateway/fortran/sci_f_dsearch.lo \
-	sci_gateway/fortran/sci_f_cumsum.lo \
-	sci_gateway/fortran/sci_f_nearfloat.lo \
-	sci_gateway/fortran/sci_f_chinesehat.lo \
-	sci_gateway/fortran/sci_f_isreal.lo \
-	sci_gateway/fortran/sci_f_floor.lo \
-	sci_gateway/fortran/sci_f_real.lo \
-	sci_gateway/fortran/sci_f_round.lo \
-	sci_gateway/fortran/sci_f_conj.lo \
-	sci_gateway/fortran/sci_f_int.lo \
-	sci_gateway/fortran/sci_f_imult.lo \
-	sci_gateway/fortran/sci_f_exp.lo
+am__objects_8 = sci_gateway/fortran/libscielementary_functions_la-sci_f_isequal.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_maxi.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_testmatrix.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_prod.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_matrix.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_expm.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_size.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_tril.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_ceil.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_rat.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_imag.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_log.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_log1p.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_clean.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_eye.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_tan.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_atan.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_triu.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_frexp.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_cos.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_rand.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_acos.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_sin.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_sqrt.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_asin.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_sign.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_zeros.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_ones.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_diag.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_number_properties.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_sum.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_cumprod.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_abs.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_spones.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_kron.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_dsearch.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_cumsum.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_nearfloat.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_chinesehat.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_isreal.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_floor.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_real.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_round.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_conj.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_int.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_imult.lo \
+	sci_gateway/fortran/libscielementary_functions_la-sci_f_exp.lo
 am_libscielementary_functions_la_OBJECTS = $(am__objects_7) \
 	$(am__objects_8)
 libscielementary_functions_la_OBJECTS =  \
 	$(am_libscielementary_functions_la_OBJECTS)
+libscielementary_functions_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libscielementary_functions_la_FFLAGS) $(FFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 @MAINTAINER_MODE_FALSE@am_libscielementary_functions_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libscielementary_functions_la_rpath = -rpath \
 @MAINTAINER_MODE_TRUE@	$(pkglibdir)
@@ -1299,26 +1423,29 @@ libdummy_elementary_functions_la_SOURCES = src/fortran/eispack/hqror2.f \
 	src/c/unsfdcopy.c \
 	src/fortran/linpack/icopy.f
 
-libdummy_elementary_functions_la_CPPFLAGS = -I$(srcdir)/includes/ \
-    -I$(top_srcdir)/modules/core/includes/ \
+libdummy_elementary_functions_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+    -Wp,-I$(top_srcdir)/modules/core/includes/ \
     $(AM_CPPFLAGS)
 
 
 # Includes need for the compilation
-libscielementary_functions_la_CPPFLAGS = -I$(srcdir)/includes/ \
-	-I$(srcdir)/src/cpp/ \
-	-I$(srcdir)/src/c/ \
-	-I$(top_srcdir)/libs/MALLOC/includes/ \
-	-I$(top_srcdir)/modules/api_scilab/includes/ \
-	-I$(top_srcdir)/modules/core/src/c/ \
-	-I$(top_srcdir)/modules/localization/includes/ \
-	-I$(top_srcdir)/modules/output_stream/includes/ \
+libscielementary_functions_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+	-Wp,-I$(srcdir)/src/cpp/ \
+	-Wp,-I$(srcdir)/src/c/ \
+	-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+	-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+	-Wp,-I$(top_srcdir)/modules/core/includes/ \
+	-Wp,-I$(top_srcdir)/modules/core/src/c/ \
+	-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+	-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
 	$(AM_CPPFLAGS)
 
+libscielementary_functions_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 @MAINTAINER_MODE_TRUE@pkglib_LTLIBRARIES = libscielementary_functions.la
 libscielementary_functions_algo_la_SOURCES = $(SLATEC_SOURCES) $(LINPACK_SOURCES)  $(EISPACK_SOURCES) $(ELEMENTARIES_FUNCTIONS_C_SOURCES) $(ELEMENTARIES_FUNCTIONS_FORTRAN_SOURCES) $(ELEMENTARIES_FUNCTIONS_CXX_SOURCES)
 libscielementary_functions_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libscielementary_functions_algo_la_CPPFLAGS = $(libscielementary_functions_la_CPPFLAGS)
+libscielementary_functions_algo_la_FFLAGS = $(libscielementary_functions_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC = $(ELEMENTARIES_FUNCTIONS_C_SOURCES) $(GATEWAY_C_SOURCES)
@@ -1535,211 +1662,314 @@ src/fortran/slatec/$(am__dirstamp):
 src/fortran/slatec/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/fortran/slatec/$(DEPDIR)
 	@: > src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zwrsk.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zwrsk.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/d9b0mp.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-d9b0mp.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/d9b1mp.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-d9b1mp.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/d9knus.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-d9knus.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/d9lgmc.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-d9lgmc.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dasyik.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dasyik.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dasyjy.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dasyjy.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbdiff.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbdiff.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbesi0.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbesi0.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbesi1.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbesi1.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbesi.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbesi.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbesj0.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbesj0.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbesj1.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbesj1.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbesj.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbesj.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbesk0.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbesk0.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbesk1.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbesk1.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbesk.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbesk.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbesy0.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbesy0.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbesy1.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbesy1.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbesy.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbesy.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbkias.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbkias.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbkisr.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbkisr.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbsi0e.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbsi0e.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbsi1e.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbsi1e.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbsk0e.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbsk0e.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbsk1e.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbsk1e.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbskes.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbskes.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbskin.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbskin.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbsknu.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbsknu.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dbsynu.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dbsynu.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dcsevl.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dcsevl.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dexint.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dexint.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dgamlm.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dgamlm.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dgamln.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dgamln.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dgamma.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dgamma.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dgamrn.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dgamrn.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dhkseq.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dhkseq.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/djairy.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-djairy.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dpsixn.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dpsixn.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dxlegf.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dxlegf.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dyairy.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dyairy.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/fdump.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-fdump.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/gamma.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-gamma.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/initds.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-initds.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/j4save.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-j4save.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/xercnt.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-xercnt.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/xermsg.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-xermsg.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/xerprn.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-xerprn.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/xersve.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-xersve.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/xgetua.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-xgetua.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zabs.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zabs.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zacai.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zacai.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zacon.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zacon.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zairy.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zairy.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zasyi.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zasyi.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zbesh.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zbesh.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zbesi.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zbesi.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zbesj.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zbesj.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zbesk.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zbesk.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zbesy.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zbesy.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zbinu.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zbinu.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zbknu.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zbknu.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zbuni.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zbuni.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zbunk.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zbunk.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zdiv.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zdiv.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zexp.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zexp.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zkscl.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zkscl.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zlog.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zlog.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zmlri.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zmlri.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zmlt.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zmlt.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zrati.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zrati.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zs1s2.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zs1s2.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zseri.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zseri.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zshch.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zshch.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zsqrt.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zsqrt.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zuchk.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zuchk.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zunhj.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zunhj.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zuni1.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zuni1.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zuni2.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zuni2.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zunik.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zunik.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zunk1.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zunk1.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zunk2.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zunk2.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/zuoik.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-zuoik.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dlngam.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dlngam.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/balanc.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-balanc.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/dtensbs.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-dtensbs.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/slatec/pchim.lo: src/fortran/slatec/$(am__dirstamp) \
+src/fortran/slatec/libscielementary_functions_algo_la-pchim.lo:  \
+	src/fortran/slatec/$(am__dirstamp) \
 	src/fortran/slatec/$(DEPDIR)/$(am__dirstamp)
-src/fortran/linpack/dgesl.lo: src/fortran/linpack/$(am__dirstamp) \
+src/fortran/linpack/libscielementary_functions_algo_la-dgesl.lo:  \
+	src/fortran/linpack/$(am__dirstamp) \
 	src/fortran/linpack/$(DEPDIR)/$(am__dirstamp)
-src/fortran/linpack/wpade.lo: src/fortran/linpack/$(am__dirstamp) \
+src/fortran/linpack/libscielementary_functions_algo_la-wpade.lo:  \
+	src/fortran/linpack/$(am__dirstamp) \
 	src/fortran/linpack/$(DEPDIR)/$(am__dirstamp)
-src/fortran/linpack/util.lo: src/fortran/linpack/$(am__dirstamp) \
+src/fortran/linpack/libscielementary_functions_algo_la-util.lo:  \
+	src/fortran/linpack/$(am__dirstamp) \
 	src/fortran/linpack/$(DEPDIR)/$(am__dirstamp)
-src/fortran/linpack/dgefa.lo: src/fortran/linpack/$(am__dirstamp) \
+src/fortran/linpack/libscielementary_functions_algo_la-dgefa.lo:  \
+	src/fortran/linpack/$(am__dirstamp) \
 	src/fortran/linpack/$(DEPDIR)/$(am__dirstamp)
-src/fortran/linpack/dgbfa.lo: src/fortran/linpack/$(am__dirstamp) \
+src/fortran/linpack/libscielementary_functions_algo_la-dgbfa.lo:  \
+	src/fortran/linpack/$(am__dirstamp) \
 	src/fortran/linpack/$(DEPDIR)/$(am__dirstamp)
-src/fortran/linpack/dgeco.lo: src/fortran/linpack/$(am__dirstamp) \
+src/fortran/linpack/libscielementary_functions_algo_la-dgeco.lo:  \
+	src/fortran/linpack/$(am__dirstamp) \
 	src/fortran/linpack/$(DEPDIR)/$(am__dirstamp)
-src/fortran/linpack/dgedi.lo: src/fortran/linpack/$(am__dirstamp) \
+src/fortran/linpack/libscielementary_functions_algo_la-dgedi.lo:  \
+	src/fortran/linpack/$(am__dirstamp) \
 	src/fortran/linpack/$(DEPDIR)/$(am__dirstamp)
-src/fortran/linpack/dqrdc.lo: src/fortran/linpack/$(am__dirstamp) \
+src/fortran/linpack/libscielementary_functions_algo_la-dqrdc.lo:  \
+	src/fortran/linpack/$(am__dirstamp) \
 	src/fortran/linpack/$(DEPDIR)/$(am__dirstamp)
-src/fortran/linpack/dqrsl.lo: src/fortran/linpack/$(am__dirstamp) \
+src/fortran/linpack/libscielementary_functions_algo_la-dqrsl.lo:  \
+	src/fortran/linpack/$(am__dirstamp) \
 	src/fortran/linpack/$(DEPDIR)/$(am__dirstamp)
-src/fortran/linpack/dqrsm.lo: src/fortran/linpack/$(am__dirstamp) \
+src/fortran/linpack/libscielementary_functions_algo_la-dqrsm.lo:  \
+	src/fortran/linpack/$(am__dirstamp) \
 	src/fortran/linpack/$(DEPDIR)/$(am__dirstamp)
-src/fortran/linpack/hhdml.lo: src/fortran/linpack/$(am__dirstamp) \
+src/fortran/linpack/libscielementary_functions_algo_la-hhdml.lo:  \
+	src/fortran/linpack/$(am__dirstamp) \
 	src/fortran/linpack/$(DEPDIR)/$(am__dirstamp)
-src/fortran/linpack/wgeco.lo: src/fortran/linpack/$(am__dirstamp) \
+src/fortran/linpack/libscielementary_functions_algo_la-wgeco.lo:  \
+	src/fortran/linpack/$(am__dirstamp) \
 	src/fortran/linpack/$(DEPDIR)/$(am__dirstamp)
-src/fortran/linpack/wgefa.lo: src/fortran/linpack/$(am__dirstamp) \
+src/fortran/linpack/libscielementary_functions_algo_la-wgefa.lo:  \
+	src/fortran/linpack/$(am__dirstamp) \
 	src/fortran/linpack/$(DEPDIR)/$(am__dirstamp)
-src/fortran/linpack/wgesl.lo: src/fortran/linpack/$(am__dirstamp) \
+src/fortran/linpack/libscielementary_functions_algo_la-wgesl.lo:  \
+	src/fortran/linpack/$(am__dirstamp) \
 	src/fortran/linpack/$(DEPDIR)/$(am__dirstamp)
-src/fortran/linpack/dpofa.lo: src/fortran/linpack/$(am__dirstamp) \
+src/fortran/linpack/libscielementary_functions_algo_la-dpofa.lo:  \
+	src/fortran/linpack/$(am__dirstamp) \
 	src/fortran/linpack/$(DEPDIR)/$(am__dirstamp)
-src/fortran/eispack/balbak.lo: src/fortran/eispack/$(am__dirstamp) \
+src/fortran/eispack/libscielementary_functions_algo_la-balbak.lo:  \
+	src/fortran/eispack/$(am__dirstamp) \
 	src/fortran/eispack/$(DEPDIR)/$(am__dirstamp)
 src/c/libscielementary_functions_algo_la-sci_tools.lo:  \
 	src/c/$(am__dirstamp) src/c/$(DEPDIR)/$(am__dirstamp)
@@ -1785,243 +2015,360 @@ src/c/libscielementary_functions_algo_la-IsEqualVar.lo:  \
 	src/c/$(am__dirstamp) src/c/$(DEPDIR)/$(am__dirstamp)
 src/c/libscielementary_functions_algo_la-convertbase.lo:  \
 	src/c/$(am__dirstamp) src/c/$(DEPDIR)/$(am__dirstamp)
-src/fortran/psi.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-psi.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wasum.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wasum.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dexpm1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dexpm1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wwdiv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wwdiv.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wdotcr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wdotcr.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/iset.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-iset.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/franck.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-franck.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dwpowe.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dwpowe.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rcsort.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-rcsort.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wddiv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wddiv.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lnblnk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-lnblnk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/entier.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-entier.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/round.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-round.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/cortr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-cortr.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/simple.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-simple.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/split.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-split.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wdrdiv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wdrdiv.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/imcopy.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-imcopy.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/cbal.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-cbal.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/cuproi.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-cuproi.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dsum.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dsum.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/urand.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-urand.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/intp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-intp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/watan.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-watan.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wipowe.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wipowe.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wacos.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wacos.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wdpow1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wdpow1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmsum.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dmsum.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dlgama.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dlgama.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/exch.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-exch.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wsign.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wsign.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/kronr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-kronr.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wrscal.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wrscal.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/pythag.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-pythag.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmmul1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dmmul1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dwpow.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dwpow.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wmmul.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wmmul.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dsearch.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dsearch.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ddif.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-ddif.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wdiv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wdiv.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wtan.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wtan.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ddpow.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-ddpow.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/magic.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-magic.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wcerr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wcerr.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ivimp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-ivimp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/cupro.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-cupro.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dadd.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dadd.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/calerf.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-calerf.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/isort.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-isort.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/hilber.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-hilber.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wdpowe.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wdpowe.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wmprod.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wmprod.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wscal.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wscal.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dlblks.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dlblks.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/kronc.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-kronc.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ddrdiv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-ddrdiv.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dipow.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dipow.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wshrsl.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wshrsl.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wwrdiv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wwrdiv.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/coshin.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-coshin.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/iwamax.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-iwamax.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dipowe.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dipowe.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/getorient.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-getorient.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/cusum.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-cusum.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/d1mach.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-d1mach.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wbdiag.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wbdiag.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ddpow1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-ddpow1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/vpythag.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-vpythag.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/isova0.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-isova0.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wswap.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wswap.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wwpow1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wwpow1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/getdimfromvar.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-getdimfromvar.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/gdcp2i.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-gdcp2i.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/drdiv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-drdiv.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wmsum.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wmsum.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/corth.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-corth.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/mtran.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-mtran.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wwpow.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wwpow.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dvmul.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dvmul.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wclmat.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wclmat.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dsort.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dsort.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/cerr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-cerr.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rcopy.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-rcopy.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wdpow.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wdpow.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/orthes.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-orthes.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/waxpy.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-waxpy.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/coef.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-coef.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dwdiv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dwdiv.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/arcosh.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-arcosh.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wasin.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wasin.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wexpm1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wexpm1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ddpowe.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-ddpowe.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/nearfloat.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-nearfloat.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmprod.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dmprod.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wwpowe.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wwpowe.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wdotci.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wdotci.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmcopy.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dmcopy.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wexchn.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wexchn.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/isoval.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-isoval.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dwrdiv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dwrdiv.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wipow.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wipow.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wlog.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wlog.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/infinity.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-infinity.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dwpow1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dwpow1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wmul.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wmul.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dad.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dad.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dset.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dset.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dtild.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dtild.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/i1mach.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-i1mach.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dclmat.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dclmat.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ortran.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-ortran.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/bdiag.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-bdiag.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wvmul.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wvmul.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dmmul.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-dmmul.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/wsqrt.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-wsqrt.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/israt.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-israt.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rat.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscielementary_functions_algo_la-rat.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscielementary_functions-algo.la: $(libscielementary_functions_algo_la_OBJECTS) $(libscielementary_functions_algo_la_DEPENDENCIES) $(EXTRA_libscielementary_functions_algo_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libscielementary_functions_algo_la_rpath) $(libscielementary_functions_algo_la_OBJECTS) $(libscielementary_functions_algo_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscielementary_functions_algo_la_LINK) $(am_libscielementary_functions_algo_la_rpath) $(libscielementary_functions_algo_la_OBJECTS) $(libscielementary_functions_algo_la_LIBADD) $(LIBS)
 sci_gateway/c/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/c
 	@: > sci_gateway/c/$(am__dirstamp)
@@ -2190,140 +2537,150 @@ sci_gateway/fortran/$(am__dirstamp):
 sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran/$(DEPDIR)
 	@: > sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_isequal.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_isequal.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_maxi.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_maxi.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_testmatrix.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_testmatrix.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_prod.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_prod.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_matrix.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_matrix.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_expm.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_expm.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_size.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_size.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_tril.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_tril.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_ceil.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_ceil.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_rat.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_imag.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_rat.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_log.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_log1p.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_imag.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_clean.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_log.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_eye.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_tan.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_atan.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_log1p.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_triu.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_clean.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_frexp.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_eye.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_cos.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_rand.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_tan.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_acos.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_atan.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_sin.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_sqrt.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_triu.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_asin.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_frexp.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_sign.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_cos.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_zeros.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_rand.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_ones.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_acos.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_diag.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_sin.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_number_properties.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_sqrt.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_sum.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_cumprod.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_asin.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_abs.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_spones.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_sign.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_kron.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_zeros.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_dsearch.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_ones.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_cumsum.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_diag.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_nearfloat.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_number_properties.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_chinesehat.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_sum.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_isreal.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_cumprod.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_floor.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_abs.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_real.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_spones.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_round.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_kron.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_conj.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_dsearch.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_int.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_imult.lo:  \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_cumsum.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_exp.lo: sci_gateway/fortran/$(am__dirstamp) \
+sci_gateway/fortran/libscielementary_functions_la-sci_f_nearfloat.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscielementary_functions_la-sci_f_chinesehat.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscielementary_functions_la-sci_f_isreal.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscielementary_functions_la-sci_f_floor.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscielementary_functions_la-sci_f_real.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscielementary_functions_la-sci_f_round.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscielementary_functions_la-sci_f_conj.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscielementary_functions_la-sci_f_int.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscielementary_functions_la-sci_f_imult.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscielementary_functions_la-sci_f_exp.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscielementary_functions.la: $(libscielementary_functions_la_OBJECTS) $(libscielementary_functions_la_DEPENDENCIES) $(EXTRA_libscielementary_functions_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libscielementary_functions_la_rpath) $(libscielementary_functions_la_OBJECTS) $(libscielementary_functions_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscielementary_functions_la_LINK) $(am_libscielementary_functions_la_rpath) $(libscielementary_functions_la_OBJECTS) $(libscielementary_functions_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -2984,6 +3341,807 @@ sci_gateway/c/libscielementary_functions_la-sci_dec2base.lo: sci_gateway/c/sci_d
 
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
+
+src/fortran/slatec/libscielementary_functions_algo_la-zwrsk.lo: src/fortran/slatec/zwrsk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zwrsk.lo `test -f 'src/fortran/slatec/zwrsk.f' || echo '$(srcdir)/'`src/fortran/slatec/zwrsk.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-d9b0mp.lo: src/fortran/slatec/d9b0mp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-d9b0mp.lo `test -f 'src/fortran/slatec/d9b0mp.f' || echo '$(srcdir)/'`src/fortran/slatec/d9b0mp.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-d9b1mp.lo: src/fortran/slatec/d9b1mp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-d9b1mp.lo `test -f 'src/fortran/slatec/d9b1mp.f' || echo '$(srcdir)/'`src/fortran/slatec/d9b1mp.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-d9knus.lo: src/fortran/slatec/d9knus.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-d9knus.lo `test -f 'src/fortran/slatec/d9knus.f' || echo '$(srcdir)/'`src/fortran/slatec/d9knus.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-d9lgmc.lo: src/fortran/slatec/d9lgmc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-d9lgmc.lo `test -f 'src/fortran/slatec/d9lgmc.f' || echo '$(srcdir)/'`src/fortran/slatec/d9lgmc.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dasyik.lo: src/fortran/slatec/dasyik.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dasyik.lo `test -f 'src/fortran/slatec/dasyik.f' || echo '$(srcdir)/'`src/fortran/slatec/dasyik.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dasyjy.lo: src/fortran/slatec/dasyjy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dasyjy.lo `test -f 'src/fortran/slatec/dasyjy.f' || echo '$(srcdir)/'`src/fortran/slatec/dasyjy.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbdiff.lo: src/fortran/slatec/dbdiff.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbdiff.lo `test -f 'src/fortran/slatec/dbdiff.f' || echo '$(srcdir)/'`src/fortran/slatec/dbdiff.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbesi0.lo: src/fortran/slatec/dbesi0.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbesi0.lo `test -f 'src/fortran/slatec/dbesi0.f' || echo '$(srcdir)/'`src/fortran/slatec/dbesi0.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbesi1.lo: src/fortran/slatec/dbesi1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbesi1.lo `test -f 'src/fortran/slatec/dbesi1.f' || echo '$(srcdir)/'`src/fortran/slatec/dbesi1.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbesi.lo: src/fortran/slatec/dbesi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbesi.lo `test -f 'src/fortran/slatec/dbesi.f' || echo '$(srcdir)/'`src/fortran/slatec/dbesi.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbesj0.lo: src/fortran/slatec/dbesj0.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbesj0.lo `test -f 'src/fortran/slatec/dbesj0.f' || echo '$(srcdir)/'`src/fortran/slatec/dbesj0.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbesj1.lo: src/fortran/slatec/dbesj1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbesj1.lo `test -f 'src/fortran/slatec/dbesj1.f' || echo '$(srcdir)/'`src/fortran/slatec/dbesj1.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbesj.lo: src/fortran/slatec/dbesj.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbesj.lo `test -f 'src/fortran/slatec/dbesj.f' || echo '$(srcdir)/'`src/fortran/slatec/dbesj.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbesk0.lo: src/fortran/slatec/dbesk0.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbesk0.lo `test -f 'src/fortran/slatec/dbesk0.f' || echo '$(srcdir)/'`src/fortran/slatec/dbesk0.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbesk1.lo: src/fortran/slatec/dbesk1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbesk1.lo `test -f 'src/fortran/slatec/dbesk1.f' || echo '$(srcdir)/'`src/fortran/slatec/dbesk1.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbesk.lo: src/fortran/slatec/dbesk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbesk.lo `test -f 'src/fortran/slatec/dbesk.f' || echo '$(srcdir)/'`src/fortran/slatec/dbesk.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbesy0.lo: src/fortran/slatec/dbesy0.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbesy0.lo `test -f 'src/fortran/slatec/dbesy0.f' || echo '$(srcdir)/'`src/fortran/slatec/dbesy0.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbesy1.lo: src/fortran/slatec/dbesy1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbesy1.lo `test -f 'src/fortran/slatec/dbesy1.f' || echo '$(srcdir)/'`src/fortran/slatec/dbesy1.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbesy.lo: src/fortran/slatec/dbesy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbesy.lo `test -f 'src/fortran/slatec/dbesy.f' || echo '$(srcdir)/'`src/fortran/slatec/dbesy.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbkias.lo: src/fortran/slatec/dbkias.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbkias.lo `test -f 'src/fortran/slatec/dbkias.f' || echo '$(srcdir)/'`src/fortran/slatec/dbkias.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbkisr.lo: src/fortran/slatec/dbkisr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbkisr.lo `test -f 'src/fortran/slatec/dbkisr.f' || echo '$(srcdir)/'`src/fortran/slatec/dbkisr.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbsi0e.lo: src/fortran/slatec/dbsi0e.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbsi0e.lo `test -f 'src/fortran/slatec/dbsi0e.f' || echo '$(srcdir)/'`src/fortran/slatec/dbsi0e.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbsi1e.lo: src/fortran/slatec/dbsi1e.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbsi1e.lo `test -f 'src/fortran/slatec/dbsi1e.f' || echo '$(srcdir)/'`src/fortran/slatec/dbsi1e.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbsk0e.lo: src/fortran/slatec/dbsk0e.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbsk0e.lo `test -f 'src/fortran/slatec/dbsk0e.f' || echo '$(srcdir)/'`src/fortran/slatec/dbsk0e.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbsk1e.lo: src/fortran/slatec/dbsk1e.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbsk1e.lo `test -f 'src/fortran/slatec/dbsk1e.f' || echo '$(srcdir)/'`src/fortran/slatec/dbsk1e.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbskes.lo: src/fortran/slatec/dbskes.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbskes.lo `test -f 'src/fortran/slatec/dbskes.f' || echo '$(srcdir)/'`src/fortran/slatec/dbskes.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbskin.lo: src/fortran/slatec/dbskin.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbskin.lo `test -f 'src/fortran/slatec/dbskin.f' || echo '$(srcdir)/'`src/fortran/slatec/dbskin.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbsknu.lo: src/fortran/slatec/dbsknu.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbsknu.lo `test -f 'src/fortran/slatec/dbsknu.f' || echo '$(srcdir)/'`src/fortran/slatec/dbsknu.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dbsynu.lo: src/fortran/slatec/dbsynu.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dbsynu.lo `test -f 'src/fortran/slatec/dbsynu.f' || echo '$(srcdir)/'`src/fortran/slatec/dbsynu.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dcsevl.lo: src/fortran/slatec/dcsevl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dcsevl.lo `test -f 'src/fortran/slatec/dcsevl.f' || echo '$(srcdir)/'`src/fortran/slatec/dcsevl.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dexint.lo: src/fortran/slatec/dexint.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dexint.lo `test -f 'src/fortran/slatec/dexint.f' || echo '$(srcdir)/'`src/fortran/slatec/dexint.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dgamlm.lo: src/fortran/slatec/dgamlm.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dgamlm.lo `test -f 'src/fortran/slatec/dgamlm.f' || echo '$(srcdir)/'`src/fortran/slatec/dgamlm.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dgamln.lo: src/fortran/slatec/dgamln.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dgamln.lo `test -f 'src/fortran/slatec/dgamln.f' || echo '$(srcdir)/'`src/fortran/slatec/dgamln.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dgamma.lo: src/fortran/slatec/dgamma.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dgamma.lo `test -f 'src/fortran/slatec/dgamma.f' || echo '$(srcdir)/'`src/fortran/slatec/dgamma.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dgamrn.lo: src/fortran/slatec/dgamrn.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dgamrn.lo `test -f 'src/fortran/slatec/dgamrn.f' || echo '$(srcdir)/'`src/fortran/slatec/dgamrn.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dhkseq.lo: src/fortran/slatec/dhkseq.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dhkseq.lo `test -f 'src/fortran/slatec/dhkseq.f' || echo '$(srcdir)/'`src/fortran/slatec/dhkseq.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-djairy.lo: src/fortran/slatec/djairy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-djairy.lo `test -f 'src/fortran/slatec/djairy.f' || echo '$(srcdir)/'`src/fortran/slatec/djairy.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dpsixn.lo: src/fortran/slatec/dpsixn.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dpsixn.lo `test -f 'src/fortran/slatec/dpsixn.f' || echo '$(srcdir)/'`src/fortran/slatec/dpsixn.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dxlegf.lo: src/fortran/slatec/dxlegf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dxlegf.lo `test -f 'src/fortran/slatec/dxlegf.f' || echo '$(srcdir)/'`src/fortran/slatec/dxlegf.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dyairy.lo: src/fortran/slatec/dyairy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dyairy.lo `test -f 'src/fortran/slatec/dyairy.f' || echo '$(srcdir)/'`src/fortran/slatec/dyairy.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-fdump.lo: src/fortran/slatec/fdump.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-fdump.lo `test -f 'src/fortran/slatec/fdump.f' || echo '$(srcdir)/'`src/fortran/slatec/fdump.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-gamma.lo: src/fortran/slatec/gamma.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-gamma.lo `test -f 'src/fortran/slatec/gamma.f' || echo '$(srcdir)/'`src/fortran/slatec/gamma.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-initds.lo: src/fortran/slatec/initds.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-initds.lo `test -f 'src/fortran/slatec/initds.f' || echo '$(srcdir)/'`src/fortran/slatec/initds.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-j4save.lo: src/fortran/slatec/j4save.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-j4save.lo `test -f 'src/fortran/slatec/j4save.f' || echo '$(srcdir)/'`src/fortran/slatec/j4save.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-xercnt.lo: src/fortran/slatec/xercnt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-xercnt.lo `test -f 'src/fortran/slatec/xercnt.f' || echo '$(srcdir)/'`src/fortran/slatec/xercnt.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-xermsg.lo: src/fortran/slatec/xermsg.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-xermsg.lo `test -f 'src/fortran/slatec/xermsg.f' || echo '$(srcdir)/'`src/fortran/slatec/xermsg.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-xerprn.lo: src/fortran/slatec/xerprn.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-xerprn.lo `test -f 'src/fortran/slatec/xerprn.f' || echo '$(srcdir)/'`src/fortran/slatec/xerprn.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-xersve.lo: src/fortran/slatec/xersve.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-xersve.lo `test -f 'src/fortran/slatec/xersve.f' || echo '$(srcdir)/'`src/fortran/slatec/xersve.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-xgetua.lo: src/fortran/slatec/xgetua.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-xgetua.lo `test -f 'src/fortran/slatec/xgetua.f' || echo '$(srcdir)/'`src/fortran/slatec/xgetua.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zabs.lo: src/fortran/slatec/zabs.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zabs.lo `test -f 'src/fortran/slatec/zabs.f' || echo '$(srcdir)/'`src/fortran/slatec/zabs.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zacai.lo: src/fortran/slatec/zacai.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zacai.lo `test -f 'src/fortran/slatec/zacai.f' || echo '$(srcdir)/'`src/fortran/slatec/zacai.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zacon.lo: src/fortran/slatec/zacon.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zacon.lo `test -f 'src/fortran/slatec/zacon.f' || echo '$(srcdir)/'`src/fortran/slatec/zacon.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zairy.lo: src/fortran/slatec/zairy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zairy.lo `test -f 'src/fortran/slatec/zairy.f' || echo '$(srcdir)/'`src/fortran/slatec/zairy.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zasyi.lo: src/fortran/slatec/zasyi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zasyi.lo `test -f 'src/fortran/slatec/zasyi.f' || echo '$(srcdir)/'`src/fortran/slatec/zasyi.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zbesh.lo: src/fortran/slatec/zbesh.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zbesh.lo `test -f 'src/fortran/slatec/zbesh.f' || echo '$(srcdir)/'`src/fortran/slatec/zbesh.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zbesi.lo: src/fortran/slatec/zbesi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zbesi.lo `test -f 'src/fortran/slatec/zbesi.f' || echo '$(srcdir)/'`src/fortran/slatec/zbesi.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zbesj.lo: src/fortran/slatec/zbesj.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zbesj.lo `test -f 'src/fortran/slatec/zbesj.f' || echo '$(srcdir)/'`src/fortran/slatec/zbesj.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zbesk.lo: src/fortran/slatec/zbesk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zbesk.lo `test -f 'src/fortran/slatec/zbesk.f' || echo '$(srcdir)/'`src/fortran/slatec/zbesk.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zbesy.lo: src/fortran/slatec/zbesy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zbesy.lo `test -f 'src/fortran/slatec/zbesy.f' || echo '$(srcdir)/'`src/fortran/slatec/zbesy.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zbinu.lo: src/fortran/slatec/zbinu.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zbinu.lo `test -f 'src/fortran/slatec/zbinu.f' || echo '$(srcdir)/'`src/fortran/slatec/zbinu.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zbknu.lo: src/fortran/slatec/zbknu.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zbknu.lo `test -f 'src/fortran/slatec/zbknu.f' || echo '$(srcdir)/'`src/fortran/slatec/zbknu.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zbuni.lo: src/fortran/slatec/zbuni.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zbuni.lo `test -f 'src/fortran/slatec/zbuni.f' || echo '$(srcdir)/'`src/fortran/slatec/zbuni.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zbunk.lo: src/fortran/slatec/zbunk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zbunk.lo `test -f 'src/fortran/slatec/zbunk.f' || echo '$(srcdir)/'`src/fortran/slatec/zbunk.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zdiv.lo: src/fortran/slatec/zdiv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zdiv.lo `test -f 'src/fortran/slatec/zdiv.f' || echo '$(srcdir)/'`src/fortran/slatec/zdiv.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zexp.lo: src/fortran/slatec/zexp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zexp.lo `test -f 'src/fortran/slatec/zexp.f' || echo '$(srcdir)/'`src/fortran/slatec/zexp.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zkscl.lo: src/fortran/slatec/zkscl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zkscl.lo `test -f 'src/fortran/slatec/zkscl.f' || echo '$(srcdir)/'`src/fortran/slatec/zkscl.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zlog.lo: src/fortran/slatec/zlog.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zlog.lo `test -f 'src/fortran/slatec/zlog.f' || echo '$(srcdir)/'`src/fortran/slatec/zlog.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zmlri.lo: src/fortran/slatec/zmlri.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zmlri.lo `test -f 'src/fortran/slatec/zmlri.f' || echo '$(srcdir)/'`src/fortran/slatec/zmlri.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zmlt.lo: src/fortran/slatec/zmlt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zmlt.lo `test -f 'src/fortran/slatec/zmlt.f' || echo '$(srcdir)/'`src/fortran/slatec/zmlt.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zrati.lo: src/fortran/slatec/zrati.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zrati.lo `test -f 'src/fortran/slatec/zrati.f' || echo '$(srcdir)/'`src/fortran/slatec/zrati.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zs1s2.lo: src/fortran/slatec/zs1s2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zs1s2.lo `test -f 'src/fortran/slatec/zs1s2.f' || echo '$(srcdir)/'`src/fortran/slatec/zs1s2.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zseri.lo: src/fortran/slatec/zseri.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zseri.lo `test -f 'src/fortran/slatec/zseri.f' || echo '$(srcdir)/'`src/fortran/slatec/zseri.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zshch.lo: src/fortran/slatec/zshch.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zshch.lo `test -f 'src/fortran/slatec/zshch.f' || echo '$(srcdir)/'`src/fortran/slatec/zshch.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zsqrt.lo: src/fortran/slatec/zsqrt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zsqrt.lo `test -f 'src/fortran/slatec/zsqrt.f' || echo '$(srcdir)/'`src/fortran/slatec/zsqrt.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zuchk.lo: src/fortran/slatec/zuchk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zuchk.lo `test -f 'src/fortran/slatec/zuchk.f' || echo '$(srcdir)/'`src/fortran/slatec/zuchk.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zunhj.lo: src/fortran/slatec/zunhj.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zunhj.lo `test -f 'src/fortran/slatec/zunhj.f' || echo '$(srcdir)/'`src/fortran/slatec/zunhj.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zuni1.lo: src/fortran/slatec/zuni1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zuni1.lo `test -f 'src/fortran/slatec/zuni1.f' || echo '$(srcdir)/'`src/fortran/slatec/zuni1.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zuni2.lo: src/fortran/slatec/zuni2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zuni2.lo `test -f 'src/fortran/slatec/zuni2.f' || echo '$(srcdir)/'`src/fortran/slatec/zuni2.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zunik.lo: src/fortran/slatec/zunik.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zunik.lo `test -f 'src/fortran/slatec/zunik.f' || echo '$(srcdir)/'`src/fortran/slatec/zunik.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zunk1.lo: src/fortran/slatec/zunk1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zunk1.lo `test -f 'src/fortran/slatec/zunk1.f' || echo '$(srcdir)/'`src/fortran/slatec/zunk1.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zunk2.lo: src/fortran/slatec/zunk2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zunk2.lo `test -f 'src/fortran/slatec/zunk2.f' || echo '$(srcdir)/'`src/fortran/slatec/zunk2.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-zuoik.lo: src/fortran/slatec/zuoik.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-zuoik.lo `test -f 'src/fortran/slatec/zuoik.f' || echo '$(srcdir)/'`src/fortran/slatec/zuoik.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dlngam.lo: src/fortran/slatec/dlngam.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dlngam.lo `test -f 'src/fortran/slatec/dlngam.f' || echo '$(srcdir)/'`src/fortran/slatec/dlngam.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-balanc.lo: src/fortran/slatec/balanc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-balanc.lo `test -f 'src/fortran/slatec/balanc.f' || echo '$(srcdir)/'`src/fortran/slatec/balanc.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-dtensbs.lo: src/fortran/slatec/dtensbs.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-dtensbs.lo `test -f 'src/fortran/slatec/dtensbs.f' || echo '$(srcdir)/'`src/fortran/slatec/dtensbs.f
+
+src/fortran/slatec/libscielementary_functions_algo_la-pchim.lo: src/fortran/slatec/pchim.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/slatec/libscielementary_functions_algo_la-pchim.lo `test -f 'src/fortran/slatec/pchim.f' || echo '$(srcdir)/'`src/fortran/slatec/pchim.f
+
+src/fortran/linpack/libscielementary_functions_algo_la-dgesl.lo: src/fortran/linpack/dgesl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/linpack/libscielementary_functions_algo_la-dgesl.lo `test -f 'src/fortran/linpack/dgesl.f' || echo '$(srcdir)/'`src/fortran/linpack/dgesl.f
+
+src/fortran/linpack/libscielementary_functions_algo_la-wpade.lo: src/fortran/linpack/wpade.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/linpack/libscielementary_functions_algo_la-wpade.lo `test -f 'src/fortran/linpack/wpade.f' || echo '$(srcdir)/'`src/fortran/linpack/wpade.f
+
+src/fortran/linpack/libscielementary_functions_algo_la-util.lo: src/fortran/linpack/util.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/linpack/libscielementary_functions_algo_la-util.lo `test -f 'src/fortran/linpack/util.f' || echo '$(srcdir)/'`src/fortran/linpack/util.f
+
+src/fortran/linpack/libscielementary_functions_algo_la-dgefa.lo: src/fortran/linpack/dgefa.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/linpack/libscielementary_functions_algo_la-dgefa.lo `test -f 'src/fortran/linpack/dgefa.f' || echo '$(srcdir)/'`src/fortran/linpack/dgefa.f
+
+src/fortran/linpack/libscielementary_functions_algo_la-dgbfa.lo: src/fortran/linpack/dgbfa.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/linpack/libscielementary_functions_algo_la-dgbfa.lo `test -f 'src/fortran/linpack/dgbfa.f' || echo '$(srcdir)/'`src/fortran/linpack/dgbfa.f
+
+src/fortran/linpack/libscielementary_functions_algo_la-dgeco.lo: src/fortran/linpack/dgeco.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/linpack/libscielementary_functions_algo_la-dgeco.lo `test -f 'src/fortran/linpack/dgeco.f' || echo '$(srcdir)/'`src/fortran/linpack/dgeco.f
+
+src/fortran/linpack/libscielementary_functions_algo_la-dgedi.lo: src/fortran/linpack/dgedi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/linpack/libscielementary_functions_algo_la-dgedi.lo `test -f 'src/fortran/linpack/dgedi.f' || echo '$(srcdir)/'`src/fortran/linpack/dgedi.f
+
+src/fortran/linpack/libscielementary_functions_algo_la-dqrdc.lo: src/fortran/linpack/dqrdc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/linpack/libscielementary_functions_algo_la-dqrdc.lo `test -f 'src/fortran/linpack/dqrdc.f' || echo '$(srcdir)/'`src/fortran/linpack/dqrdc.f
+
+src/fortran/linpack/libscielementary_functions_algo_la-dqrsl.lo: src/fortran/linpack/dqrsl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/linpack/libscielementary_functions_algo_la-dqrsl.lo `test -f 'src/fortran/linpack/dqrsl.f' || echo '$(srcdir)/'`src/fortran/linpack/dqrsl.f
+
+src/fortran/linpack/libscielementary_functions_algo_la-dqrsm.lo: src/fortran/linpack/dqrsm.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/linpack/libscielementary_functions_algo_la-dqrsm.lo `test -f 'src/fortran/linpack/dqrsm.f' || echo '$(srcdir)/'`src/fortran/linpack/dqrsm.f
+
+src/fortran/linpack/libscielementary_functions_algo_la-hhdml.lo: src/fortran/linpack/hhdml.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/linpack/libscielementary_functions_algo_la-hhdml.lo `test -f 'src/fortran/linpack/hhdml.f' || echo '$(srcdir)/'`src/fortran/linpack/hhdml.f
+
+src/fortran/linpack/libscielementary_functions_algo_la-wgeco.lo: src/fortran/linpack/wgeco.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/linpack/libscielementary_functions_algo_la-wgeco.lo `test -f 'src/fortran/linpack/wgeco.f' || echo '$(srcdir)/'`src/fortran/linpack/wgeco.f
+
+src/fortran/linpack/libscielementary_functions_algo_la-wgefa.lo: src/fortran/linpack/wgefa.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/linpack/libscielementary_functions_algo_la-wgefa.lo `test -f 'src/fortran/linpack/wgefa.f' || echo '$(srcdir)/'`src/fortran/linpack/wgefa.f
+
+src/fortran/linpack/libscielementary_functions_algo_la-wgesl.lo: src/fortran/linpack/wgesl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/linpack/libscielementary_functions_algo_la-wgesl.lo `test -f 'src/fortran/linpack/wgesl.f' || echo '$(srcdir)/'`src/fortran/linpack/wgesl.f
+
+src/fortran/linpack/libscielementary_functions_algo_la-dpofa.lo: src/fortran/linpack/dpofa.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/linpack/libscielementary_functions_algo_la-dpofa.lo `test -f 'src/fortran/linpack/dpofa.f' || echo '$(srcdir)/'`src/fortran/linpack/dpofa.f
+
+src/fortran/eispack/libscielementary_functions_algo_la-balbak.lo: src/fortran/eispack/balbak.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/eispack/libscielementary_functions_algo_la-balbak.lo `test -f 'src/fortran/eispack/balbak.f' || echo '$(srcdir)/'`src/fortran/eispack/balbak.f
+
+src/fortran/libscielementary_functions_algo_la-psi.lo: src/fortran/psi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-psi.lo `test -f 'src/fortran/psi.f' || echo '$(srcdir)/'`src/fortran/psi.f
+
+src/fortran/libscielementary_functions_algo_la-wasum.lo: src/fortran/wasum.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wasum.lo `test -f 'src/fortran/wasum.f' || echo '$(srcdir)/'`src/fortran/wasum.f
+
+src/fortran/libscielementary_functions_algo_la-dexpm1.lo: src/fortran/dexpm1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dexpm1.lo `test -f 'src/fortran/dexpm1.f' || echo '$(srcdir)/'`src/fortran/dexpm1.f
+
+src/fortran/libscielementary_functions_algo_la-wwdiv.lo: src/fortran/wwdiv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wwdiv.lo `test -f 'src/fortran/wwdiv.f' || echo '$(srcdir)/'`src/fortran/wwdiv.f
+
+src/fortran/libscielementary_functions_algo_la-wdotcr.lo: src/fortran/wdotcr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wdotcr.lo `test -f 'src/fortran/wdotcr.f' || echo '$(srcdir)/'`src/fortran/wdotcr.f
+
+src/fortran/libscielementary_functions_algo_la-iset.lo: src/fortran/iset.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-iset.lo `test -f 'src/fortran/iset.f' || echo '$(srcdir)/'`src/fortran/iset.f
+
+src/fortran/libscielementary_functions_algo_la-franck.lo: src/fortran/franck.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-franck.lo `test -f 'src/fortran/franck.f' || echo '$(srcdir)/'`src/fortran/franck.f
+
+src/fortran/libscielementary_functions_algo_la-dwpowe.lo: src/fortran/dwpowe.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dwpowe.lo `test -f 'src/fortran/dwpowe.f' || echo '$(srcdir)/'`src/fortran/dwpowe.f
+
+src/fortran/libscielementary_functions_algo_la-rcsort.lo: src/fortran/rcsort.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-rcsort.lo `test -f 'src/fortran/rcsort.f' || echo '$(srcdir)/'`src/fortran/rcsort.f
+
+src/fortran/libscielementary_functions_algo_la-wddiv.lo: src/fortran/wddiv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wddiv.lo `test -f 'src/fortran/wddiv.f' || echo '$(srcdir)/'`src/fortran/wddiv.f
+
+src/fortran/libscielementary_functions_algo_la-lnblnk.lo: src/fortran/lnblnk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-lnblnk.lo `test -f 'src/fortran/lnblnk.f' || echo '$(srcdir)/'`src/fortran/lnblnk.f
+
+src/fortran/libscielementary_functions_algo_la-entier.lo: src/fortran/entier.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-entier.lo `test -f 'src/fortran/entier.f' || echo '$(srcdir)/'`src/fortran/entier.f
+
+src/fortran/libscielementary_functions_algo_la-round.lo: src/fortran/round.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-round.lo `test -f 'src/fortran/round.f' || echo '$(srcdir)/'`src/fortran/round.f
+
+src/fortran/libscielementary_functions_algo_la-cortr.lo: src/fortran/cortr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-cortr.lo `test -f 'src/fortran/cortr.f' || echo '$(srcdir)/'`src/fortran/cortr.f
+
+src/fortran/libscielementary_functions_algo_la-simple.lo: src/fortran/simple.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-simple.lo `test -f 'src/fortran/simple.f' || echo '$(srcdir)/'`src/fortran/simple.f
+
+src/fortran/libscielementary_functions_algo_la-split.lo: src/fortran/split.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-split.lo `test -f 'src/fortran/split.f' || echo '$(srcdir)/'`src/fortran/split.f
+
+src/fortran/libscielementary_functions_algo_la-wdrdiv.lo: src/fortran/wdrdiv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wdrdiv.lo `test -f 'src/fortran/wdrdiv.f' || echo '$(srcdir)/'`src/fortran/wdrdiv.f
+
+src/fortran/libscielementary_functions_algo_la-imcopy.lo: src/fortran/imcopy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-imcopy.lo `test -f 'src/fortran/imcopy.f' || echo '$(srcdir)/'`src/fortran/imcopy.f
+
+src/fortran/libscielementary_functions_algo_la-cbal.lo: src/fortran/cbal.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-cbal.lo `test -f 'src/fortran/cbal.f' || echo '$(srcdir)/'`src/fortran/cbal.f
+
+src/fortran/libscielementary_functions_algo_la-cuproi.lo: src/fortran/cuproi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-cuproi.lo `test -f 'src/fortran/cuproi.f' || echo '$(srcdir)/'`src/fortran/cuproi.f
+
+src/fortran/libscielementary_functions_algo_la-dsum.lo: src/fortran/dsum.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dsum.lo `test -f 'src/fortran/dsum.f' || echo '$(srcdir)/'`src/fortran/dsum.f
+
+src/fortran/libscielementary_functions_algo_la-urand.lo: src/fortran/urand.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-urand.lo `test -f 'src/fortran/urand.f' || echo '$(srcdir)/'`src/fortran/urand.f
+
+src/fortran/libscielementary_functions_algo_la-intp.lo: src/fortran/intp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-intp.lo `test -f 'src/fortran/intp.f' || echo '$(srcdir)/'`src/fortran/intp.f
+
+src/fortran/libscielementary_functions_algo_la-watan.lo: src/fortran/watan.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-watan.lo `test -f 'src/fortran/watan.f' || echo '$(srcdir)/'`src/fortran/watan.f
+
+src/fortran/libscielementary_functions_algo_la-wipowe.lo: src/fortran/wipowe.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wipowe.lo `test -f 'src/fortran/wipowe.f' || echo '$(srcdir)/'`src/fortran/wipowe.f
+
+src/fortran/libscielementary_functions_algo_la-wacos.lo: src/fortran/wacos.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wacos.lo `test -f 'src/fortran/wacos.f' || echo '$(srcdir)/'`src/fortran/wacos.f
+
+src/fortran/libscielementary_functions_algo_la-wdpow1.lo: src/fortran/wdpow1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wdpow1.lo `test -f 'src/fortran/wdpow1.f' || echo '$(srcdir)/'`src/fortran/wdpow1.f
+
+src/fortran/libscielementary_functions_algo_la-dmsum.lo: src/fortran/dmsum.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dmsum.lo `test -f 'src/fortran/dmsum.f' || echo '$(srcdir)/'`src/fortran/dmsum.f
+
+src/fortran/libscielementary_functions_algo_la-dlgama.lo: src/fortran/dlgama.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dlgama.lo `test -f 'src/fortran/dlgama.f' || echo '$(srcdir)/'`src/fortran/dlgama.f
+
+src/fortran/libscielementary_functions_algo_la-exch.lo: src/fortran/exch.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-exch.lo `test -f 'src/fortran/exch.f' || echo '$(srcdir)/'`src/fortran/exch.f
+
+src/fortran/libscielementary_functions_algo_la-wsign.lo: src/fortran/wsign.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wsign.lo `test -f 'src/fortran/wsign.f' || echo '$(srcdir)/'`src/fortran/wsign.f
+
+src/fortran/libscielementary_functions_algo_la-kronr.lo: src/fortran/kronr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-kronr.lo `test -f 'src/fortran/kronr.f' || echo '$(srcdir)/'`src/fortran/kronr.f
+
+src/fortran/libscielementary_functions_algo_la-wrscal.lo: src/fortran/wrscal.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wrscal.lo `test -f 'src/fortran/wrscal.f' || echo '$(srcdir)/'`src/fortran/wrscal.f
+
+src/fortran/libscielementary_functions_algo_la-pythag.lo: src/fortran/pythag.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-pythag.lo `test -f 'src/fortran/pythag.f' || echo '$(srcdir)/'`src/fortran/pythag.f
+
+src/fortran/libscielementary_functions_algo_la-dmmul1.lo: src/fortran/dmmul1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dmmul1.lo `test -f 'src/fortran/dmmul1.f' || echo '$(srcdir)/'`src/fortran/dmmul1.f
+
+src/fortran/libscielementary_functions_algo_la-dwpow.lo: src/fortran/dwpow.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dwpow.lo `test -f 'src/fortran/dwpow.f' || echo '$(srcdir)/'`src/fortran/dwpow.f
+
+src/fortran/libscielementary_functions_algo_la-wmmul.lo: src/fortran/wmmul.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wmmul.lo `test -f 'src/fortran/wmmul.f' || echo '$(srcdir)/'`src/fortran/wmmul.f
+
+src/fortran/libscielementary_functions_algo_la-dsearch.lo: src/fortran/dsearch.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dsearch.lo `test -f 'src/fortran/dsearch.f' || echo '$(srcdir)/'`src/fortran/dsearch.f
+
+src/fortran/libscielementary_functions_algo_la-ddif.lo: src/fortran/ddif.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-ddif.lo `test -f 'src/fortran/ddif.f' || echo '$(srcdir)/'`src/fortran/ddif.f
+
+src/fortran/libscielementary_functions_algo_la-wdiv.lo: src/fortran/wdiv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wdiv.lo `test -f 'src/fortran/wdiv.f' || echo '$(srcdir)/'`src/fortran/wdiv.f
+
+src/fortran/libscielementary_functions_algo_la-wtan.lo: src/fortran/wtan.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wtan.lo `test -f 'src/fortran/wtan.f' || echo '$(srcdir)/'`src/fortran/wtan.f
+
+src/fortran/libscielementary_functions_algo_la-ddpow.lo: src/fortran/ddpow.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-ddpow.lo `test -f 'src/fortran/ddpow.f' || echo '$(srcdir)/'`src/fortran/ddpow.f
+
+src/fortran/libscielementary_functions_algo_la-magic.lo: src/fortran/magic.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-magic.lo `test -f 'src/fortran/magic.f' || echo '$(srcdir)/'`src/fortran/magic.f
+
+src/fortran/libscielementary_functions_algo_la-wcerr.lo: src/fortran/wcerr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wcerr.lo `test -f 'src/fortran/wcerr.f' || echo '$(srcdir)/'`src/fortran/wcerr.f
+
+src/fortran/libscielementary_functions_algo_la-ivimp.lo: src/fortran/ivimp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-ivimp.lo `test -f 'src/fortran/ivimp.f' || echo '$(srcdir)/'`src/fortran/ivimp.f
+
+src/fortran/libscielementary_functions_algo_la-cupro.lo: src/fortran/cupro.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-cupro.lo `test -f 'src/fortran/cupro.f' || echo '$(srcdir)/'`src/fortran/cupro.f
+
+src/fortran/libscielementary_functions_algo_la-dadd.lo: src/fortran/dadd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dadd.lo `test -f 'src/fortran/dadd.f' || echo '$(srcdir)/'`src/fortran/dadd.f
+
+src/fortran/libscielementary_functions_algo_la-calerf.lo: src/fortran/calerf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-calerf.lo `test -f 'src/fortran/calerf.f' || echo '$(srcdir)/'`src/fortran/calerf.f
+
+src/fortran/libscielementary_functions_algo_la-isort.lo: src/fortran/isort.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-isort.lo `test -f 'src/fortran/isort.f' || echo '$(srcdir)/'`src/fortran/isort.f
+
+src/fortran/libscielementary_functions_algo_la-hilber.lo: src/fortran/hilber.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-hilber.lo `test -f 'src/fortran/hilber.f' || echo '$(srcdir)/'`src/fortran/hilber.f
+
+src/fortran/libscielementary_functions_algo_la-wdpowe.lo: src/fortran/wdpowe.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wdpowe.lo `test -f 'src/fortran/wdpowe.f' || echo '$(srcdir)/'`src/fortran/wdpowe.f
+
+src/fortran/libscielementary_functions_algo_la-wmprod.lo: src/fortran/wmprod.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wmprod.lo `test -f 'src/fortran/wmprod.f' || echo '$(srcdir)/'`src/fortran/wmprod.f
+
+src/fortran/libscielementary_functions_algo_la-wscal.lo: src/fortran/wscal.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wscal.lo `test -f 'src/fortran/wscal.f' || echo '$(srcdir)/'`src/fortran/wscal.f
+
+src/fortran/libscielementary_functions_algo_la-dlblks.lo: src/fortran/dlblks.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dlblks.lo `test -f 'src/fortran/dlblks.f' || echo '$(srcdir)/'`src/fortran/dlblks.f
+
+src/fortran/libscielementary_functions_algo_la-kronc.lo: src/fortran/kronc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-kronc.lo `test -f 'src/fortran/kronc.f' || echo '$(srcdir)/'`src/fortran/kronc.f
+
+src/fortran/libscielementary_functions_algo_la-ddrdiv.lo: src/fortran/ddrdiv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-ddrdiv.lo `test -f 'src/fortran/ddrdiv.f' || echo '$(srcdir)/'`src/fortran/ddrdiv.f
+
+src/fortran/libscielementary_functions_algo_la-dipow.lo: src/fortran/dipow.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dipow.lo `test -f 'src/fortran/dipow.f' || echo '$(srcdir)/'`src/fortran/dipow.f
+
+src/fortran/libscielementary_functions_algo_la-wshrsl.lo: src/fortran/wshrsl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wshrsl.lo `test -f 'src/fortran/wshrsl.f' || echo '$(srcdir)/'`src/fortran/wshrsl.f
+
+src/fortran/libscielementary_functions_algo_la-wwrdiv.lo: src/fortran/wwrdiv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wwrdiv.lo `test -f 'src/fortran/wwrdiv.f' || echo '$(srcdir)/'`src/fortran/wwrdiv.f
+
+src/fortran/libscielementary_functions_algo_la-coshin.lo: src/fortran/coshin.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-coshin.lo `test -f 'src/fortran/coshin.f' || echo '$(srcdir)/'`src/fortran/coshin.f
+
+src/fortran/libscielementary_functions_algo_la-iwamax.lo: src/fortran/iwamax.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-iwamax.lo `test -f 'src/fortran/iwamax.f' || echo '$(srcdir)/'`src/fortran/iwamax.f
+
+src/fortran/libscielementary_functions_algo_la-dipowe.lo: src/fortran/dipowe.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dipowe.lo `test -f 'src/fortran/dipowe.f' || echo '$(srcdir)/'`src/fortran/dipowe.f
+
+src/fortran/libscielementary_functions_algo_la-getorient.lo: src/fortran/getorient.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-getorient.lo `test -f 'src/fortran/getorient.f' || echo '$(srcdir)/'`src/fortran/getorient.f
+
+src/fortran/libscielementary_functions_algo_la-cusum.lo: src/fortran/cusum.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-cusum.lo `test -f 'src/fortran/cusum.f' || echo '$(srcdir)/'`src/fortran/cusum.f
+
+src/fortran/libscielementary_functions_algo_la-d1mach.lo: src/fortran/d1mach.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-d1mach.lo `test -f 'src/fortran/d1mach.f' || echo '$(srcdir)/'`src/fortran/d1mach.f
+
+src/fortran/libscielementary_functions_algo_la-wbdiag.lo: src/fortran/wbdiag.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wbdiag.lo `test -f 'src/fortran/wbdiag.f' || echo '$(srcdir)/'`src/fortran/wbdiag.f
+
+src/fortran/libscielementary_functions_algo_la-ddpow1.lo: src/fortran/ddpow1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-ddpow1.lo `test -f 'src/fortran/ddpow1.f' || echo '$(srcdir)/'`src/fortran/ddpow1.f
+
+src/fortran/libscielementary_functions_algo_la-vpythag.lo: src/fortran/vpythag.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-vpythag.lo `test -f 'src/fortran/vpythag.f' || echo '$(srcdir)/'`src/fortran/vpythag.f
+
+src/fortran/libscielementary_functions_algo_la-isova0.lo: src/fortran/isova0.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-isova0.lo `test -f 'src/fortran/isova0.f' || echo '$(srcdir)/'`src/fortran/isova0.f
+
+src/fortran/libscielementary_functions_algo_la-wswap.lo: src/fortran/wswap.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wswap.lo `test -f 'src/fortran/wswap.f' || echo '$(srcdir)/'`src/fortran/wswap.f
+
+src/fortran/libscielementary_functions_algo_la-wwpow1.lo: src/fortran/wwpow1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wwpow1.lo `test -f 'src/fortran/wwpow1.f' || echo '$(srcdir)/'`src/fortran/wwpow1.f
+
+src/fortran/libscielementary_functions_algo_la-getdimfromvar.lo: src/fortran/getdimfromvar.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-getdimfromvar.lo `test -f 'src/fortran/getdimfromvar.f' || echo '$(srcdir)/'`src/fortran/getdimfromvar.f
+
+src/fortran/libscielementary_functions_algo_la-gdcp2i.lo: src/fortran/gdcp2i.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-gdcp2i.lo `test -f 'src/fortran/gdcp2i.f' || echo '$(srcdir)/'`src/fortran/gdcp2i.f
+
+src/fortran/libscielementary_functions_algo_la-drdiv.lo: src/fortran/drdiv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-drdiv.lo `test -f 'src/fortran/drdiv.f' || echo '$(srcdir)/'`src/fortran/drdiv.f
+
+src/fortran/libscielementary_functions_algo_la-wmsum.lo: src/fortran/wmsum.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wmsum.lo `test -f 'src/fortran/wmsum.f' || echo '$(srcdir)/'`src/fortran/wmsum.f
+
+src/fortran/libscielementary_functions_algo_la-corth.lo: src/fortran/corth.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-corth.lo `test -f 'src/fortran/corth.f' || echo '$(srcdir)/'`src/fortran/corth.f
+
+src/fortran/libscielementary_functions_algo_la-mtran.lo: src/fortran/mtran.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-mtran.lo `test -f 'src/fortran/mtran.f' || echo '$(srcdir)/'`src/fortran/mtran.f
+
+src/fortran/libscielementary_functions_algo_la-wwpow.lo: src/fortran/wwpow.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wwpow.lo `test -f 'src/fortran/wwpow.f' || echo '$(srcdir)/'`src/fortran/wwpow.f
+
+src/fortran/libscielementary_functions_algo_la-dvmul.lo: src/fortran/dvmul.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dvmul.lo `test -f 'src/fortran/dvmul.f' || echo '$(srcdir)/'`src/fortran/dvmul.f
+
+src/fortran/libscielementary_functions_algo_la-wclmat.lo: src/fortran/wclmat.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wclmat.lo `test -f 'src/fortran/wclmat.f' || echo '$(srcdir)/'`src/fortran/wclmat.f
+
+src/fortran/libscielementary_functions_algo_la-dsort.lo: src/fortran/dsort.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dsort.lo `test -f 'src/fortran/dsort.f' || echo '$(srcdir)/'`src/fortran/dsort.f
+
+src/fortran/libscielementary_functions_algo_la-cerr.lo: src/fortran/cerr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-cerr.lo `test -f 'src/fortran/cerr.f' || echo '$(srcdir)/'`src/fortran/cerr.f
+
+src/fortran/libscielementary_functions_algo_la-rcopy.lo: src/fortran/rcopy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-rcopy.lo `test -f 'src/fortran/rcopy.f' || echo '$(srcdir)/'`src/fortran/rcopy.f
+
+src/fortran/libscielementary_functions_algo_la-wdpow.lo: src/fortran/wdpow.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wdpow.lo `test -f 'src/fortran/wdpow.f' || echo '$(srcdir)/'`src/fortran/wdpow.f
+
+src/fortran/libscielementary_functions_algo_la-orthes.lo: src/fortran/orthes.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-orthes.lo `test -f 'src/fortran/orthes.f' || echo '$(srcdir)/'`src/fortran/orthes.f
+
+src/fortran/libscielementary_functions_algo_la-waxpy.lo: src/fortran/waxpy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-waxpy.lo `test -f 'src/fortran/waxpy.f' || echo '$(srcdir)/'`src/fortran/waxpy.f
+
+src/fortran/libscielementary_functions_algo_la-coef.lo: src/fortran/coef.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-coef.lo `test -f 'src/fortran/coef.f' || echo '$(srcdir)/'`src/fortran/coef.f
+
+src/fortran/libscielementary_functions_algo_la-dwdiv.lo: src/fortran/dwdiv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dwdiv.lo `test -f 'src/fortran/dwdiv.f' || echo '$(srcdir)/'`src/fortran/dwdiv.f
+
+src/fortran/libscielementary_functions_algo_la-arcosh.lo: src/fortran/arcosh.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-arcosh.lo `test -f 'src/fortran/arcosh.f' || echo '$(srcdir)/'`src/fortran/arcosh.f
+
+src/fortran/libscielementary_functions_algo_la-wasin.lo: src/fortran/wasin.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wasin.lo `test -f 'src/fortran/wasin.f' || echo '$(srcdir)/'`src/fortran/wasin.f
+
+src/fortran/libscielementary_functions_algo_la-wexpm1.lo: src/fortran/wexpm1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wexpm1.lo `test -f 'src/fortran/wexpm1.f' || echo '$(srcdir)/'`src/fortran/wexpm1.f
+
+src/fortran/libscielementary_functions_algo_la-ddpowe.lo: src/fortran/ddpowe.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-ddpowe.lo `test -f 'src/fortran/ddpowe.f' || echo '$(srcdir)/'`src/fortran/ddpowe.f
+
+src/fortran/libscielementary_functions_algo_la-nearfloat.lo: src/fortran/nearfloat.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-nearfloat.lo `test -f 'src/fortran/nearfloat.f' || echo '$(srcdir)/'`src/fortran/nearfloat.f
+
+src/fortran/libscielementary_functions_algo_la-dmprod.lo: src/fortran/dmprod.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dmprod.lo `test -f 'src/fortran/dmprod.f' || echo '$(srcdir)/'`src/fortran/dmprod.f
+
+src/fortran/libscielementary_functions_algo_la-wwpowe.lo: src/fortran/wwpowe.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wwpowe.lo `test -f 'src/fortran/wwpowe.f' || echo '$(srcdir)/'`src/fortran/wwpowe.f
+
+src/fortran/libscielementary_functions_algo_la-wdotci.lo: src/fortran/wdotci.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wdotci.lo `test -f 'src/fortran/wdotci.f' || echo '$(srcdir)/'`src/fortran/wdotci.f
+
+src/fortran/libscielementary_functions_algo_la-dmcopy.lo: src/fortran/dmcopy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dmcopy.lo `test -f 'src/fortran/dmcopy.f' || echo '$(srcdir)/'`src/fortran/dmcopy.f
+
+src/fortran/libscielementary_functions_algo_la-wexchn.lo: src/fortran/wexchn.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wexchn.lo `test -f 'src/fortran/wexchn.f' || echo '$(srcdir)/'`src/fortran/wexchn.f
+
+src/fortran/libscielementary_functions_algo_la-isoval.lo: src/fortran/isoval.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-isoval.lo `test -f 'src/fortran/isoval.f' || echo '$(srcdir)/'`src/fortran/isoval.f
+
+src/fortran/libscielementary_functions_algo_la-dwrdiv.lo: src/fortran/dwrdiv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dwrdiv.lo `test -f 'src/fortran/dwrdiv.f' || echo '$(srcdir)/'`src/fortran/dwrdiv.f
+
+src/fortran/libscielementary_functions_algo_la-wipow.lo: src/fortran/wipow.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wipow.lo `test -f 'src/fortran/wipow.f' || echo '$(srcdir)/'`src/fortran/wipow.f
+
+src/fortran/libscielementary_functions_algo_la-wlog.lo: src/fortran/wlog.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wlog.lo `test -f 'src/fortran/wlog.f' || echo '$(srcdir)/'`src/fortran/wlog.f
+
+src/fortran/libscielementary_functions_algo_la-infinity.lo: src/fortran/infinity.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-infinity.lo `test -f 'src/fortran/infinity.f' || echo '$(srcdir)/'`src/fortran/infinity.f
+
+src/fortran/libscielementary_functions_algo_la-dwpow1.lo: src/fortran/dwpow1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dwpow1.lo `test -f 'src/fortran/dwpow1.f' || echo '$(srcdir)/'`src/fortran/dwpow1.f
+
+src/fortran/libscielementary_functions_algo_la-wmul.lo: src/fortran/wmul.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wmul.lo `test -f 'src/fortran/wmul.f' || echo '$(srcdir)/'`src/fortran/wmul.f
+
+src/fortran/libscielementary_functions_algo_la-dad.lo: src/fortran/dad.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dad.lo `test -f 'src/fortran/dad.f' || echo '$(srcdir)/'`src/fortran/dad.f
+
+src/fortran/libscielementary_functions_algo_la-dset.lo: src/fortran/dset.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dset.lo `test -f 'src/fortran/dset.f' || echo '$(srcdir)/'`src/fortran/dset.f
+
+src/fortran/libscielementary_functions_algo_la-dtild.lo: src/fortran/dtild.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dtild.lo `test -f 'src/fortran/dtild.f' || echo '$(srcdir)/'`src/fortran/dtild.f
+
+src/fortran/libscielementary_functions_algo_la-i1mach.lo: src/fortran/i1mach.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-i1mach.lo `test -f 'src/fortran/i1mach.f' || echo '$(srcdir)/'`src/fortran/i1mach.f
+
+src/fortran/libscielementary_functions_algo_la-dclmat.lo: src/fortran/dclmat.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dclmat.lo `test -f 'src/fortran/dclmat.f' || echo '$(srcdir)/'`src/fortran/dclmat.f
+
+src/fortran/libscielementary_functions_algo_la-ortran.lo: src/fortran/ortran.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-ortran.lo `test -f 'src/fortran/ortran.f' || echo '$(srcdir)/'`src/fortran/ortran.f
+
+src/fortran/libscielementary_functions_algo_la-bdiag.lo: src/fortran/bdiag.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-bdiag.lo `test -f 'src/fortran/bdiag.f' || echo '$(srcdir)/'`src/fortran/bdiag.f
+
+src/fortran/libscielementary_functions_algo_la-wvmul.lo: src/fortran/wvmul.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wvmul.lo `test -f 'src/fortran/wvmul.f' || echo '$(srcdir)/'`src/fortran/wvmul.f
+
+src/fortran/libscielementary_functions_algo_la-dmmul.lo: src/fortran/dmmul.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-dmmul.lo `test -f 'src/fortran/dmmul.f' || echo '$(srcdir)/'`src/fortran/dmmul.f
+
+src/fortran/libscielementary_functions_algo_la-wsqrt.lo: src/fortran/wsqrt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-wsqrt.lo `test -f 'src/fortran/wsqrt.f' || echo '$(srcdir)/'`src/fortran/wsqrt.f
+
+src/fortran/libscielementary_functions_algo_la-israt.lo: src/fortran/israt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-israt.lo `test -f 'src/fortran/israt.f' || echo '$(srcdir)/'`src/fortran/israt.f
+
+src/fortran/libscielementary_functions_algo_la-rat.lo: src/fortran/rat.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscielementary_functions_algo_la-rat.lo `test -f 'src/fortran/rat.f' || echo '$(srcdir)/'`src/fortran/rat.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_isequal.lo: sci_gateway/fortran/sci_f_isequal.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_isequal.lo `test -f 'sci_gateway/fortran/sci_f_isequal.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_isequal.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_maxi.lo: sci_gateway/fortran/sci_f_maxi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_maxi.lo `test -f 'sci_gateway/fortran/sci_f_maxi.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_maxi.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_testmatrix.lo: sci_gateway/fortran/sci_f_testmatrix.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_testmatrix.lo `test -f 'sci_gateway/fortran/sci_f_testmatrix.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_testmatrix.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_prod.lo: sci_gateway/fortran/sci_f_prod.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_prod.lo `test -f 'sci_gateway/fortran/sci_f_prod.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_prod.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_matrix.lo: sci_gateway/fortran/sci_f_matrix.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_matrix.lo `test -f 'sci_gateway/fortran/sci_f_matrix.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_matrix.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_expm.lo: sci_gateway/fortran/sci_f_expm.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_expm.lo `test -f 'sci_gateway/fortran/sci_f_expm.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_expm.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_size.lo: sci_gateway/fortran/sci_f_size.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_size.lo `test -f 'sci_gateway/fortran/sci_f_size.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_size.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_tril.lo: sci_gateway/fortran/sci_f_tril.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_tril.lo `test -f 'sci_gateway/fortran/sci_f_tril.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_tril.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_ceil.lo: sci_gateway/fortran/sci_f_ceil.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_ceil.lo `test -f 'sci_gateway/fortran/sci_f_ceil.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_ceil.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_rat.lo: sci_gateway/fortran/sci_f_rat.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_rat.lo `test -f 'sci_gateway/fortran/sci_f_rat.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_rat.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_imag.lo: sci_gateway/fortran/sci_f_imag.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_imag.lo `test -f 'sci_gateway/fortran/sci_f_imag.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_imag.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_log.lo: sci_gateway/fortran/sci_f_log.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_log.lo `test -f 'sci_gateway/fortran/sci_f_log.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_log.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_log1p.lo: sci_gateway/fortran/sci_f_log1p.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_log1p.lo `test -f 'sci_gateway/fortran/sci_f_log1p.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_log1p.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_clean.lo: sci_gateway/fortran/sci_f_clean.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_clean.lo `test -f 'sci_gateway/fortran/sci_f_clean.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_clean.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_eye.lo: sci_gateway/fortran/sci_f_eye.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_eye.lo `test -f 'sci_gateway/fortran/sci_f_eye.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_eye.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_tan.lo: sci_gateway/fortran/sci_f_tan.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_tan.lo `test -f 'sci_gateway/fortran/sci_f_tan.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_tan.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_atan.lo: sci_gateway/fortran/sci_f_atan.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_atan.lo `test -f 'sci_gateway/fortran/sci_f_atan.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_atan.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_triu.lo: sci_gateway/fortran/sci_f_triu.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_triu.lo `test -f 'sci_gateway/fortran/sci_f_triu.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_triu.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_frexp.lo: sci_gateway/fortran/sci_f_frexp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_frexp.lo `test -f 'sci_gateway/fortran/sci_f_frexp.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_frexp.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_cos.lo: sci_gateway/fortran/sci_f_cos.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_cos.lo `test -f 'sci_gateway/fortran/sci_f_cos.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_cos.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_rand.lo: sci_gateway/fortran/sci_f_rand.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_rand.lo `test -f 'sci_gateway/fortran/sci_f_rand.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_rand.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_acos.lo: sci_gateway/fortran/sci_f_acos.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_acos.lo `test -f 'sci_gateway/fortran/sci_f_acos.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_acos.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_sin.lo: sci_gateway/fortran/sci_f_sin.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_sin.lo `test -f 'sci_gateway/fortran/sci_f_sin.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_sin.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_sqrt.lo: sci_gateway/fortran/sci_f_sqrt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_sqrt.lo `test -f 'sci_gateway/fortran/sci_f_sqrt.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_sqrt.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_asin.lo: sci_gateway/fortran/sci_f_asin.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_asin.lo `test -f 'sci_gateway/fortran/sci_f_asin.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_asin.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_sign.lo: sci_gateway/fortran/sci_f_sign.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_sign.lo `test -f 'sci_gateway/fortran/sci_f_sign.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_sign.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_zeros.lo: sci_gateway/fortran/sci_f_zeros.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_zeros.lo `test -f 'sci_gateway/fortran/sci_f_zeros.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_zeros.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_ones.lo: sci_gateway/fortran/sci_f_ones.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_ones.lo `test -f 'sci_gateway/fortran/sci_f_ones.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_ones.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_diag.lo: sci_gateway/fortran/sci_f_diag.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_diag.lo `test -f 'sci_gateway/fortran/sci_f_diag.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_diag.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_number_properties.lo: sci_gateway/fortran/sci_f_number_properties.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_number_properties.lo `test -f 'sci_gateway/fortran/sci_f_number_properties.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_number_properties.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_sum.lo: sci_gateway/fortran/sci_f_sum.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_sum.lo `test -f 'sci_gateway/fortran/sci_f_sum.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_sum.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_cumprod.lo: sci_gateway/fortran/sci_f_cumprod.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_cumprod.lo `test -f 'sci_gateway/fortran/sci_f_cumprod.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_cumprod.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_abs.lo: sci_gateway/fortran/sci_f_abs.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_abs.lo `test -f 'sci_gateway/fortran/sci_f_abs.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_abs.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_spones.lo: sci_gateway/fortran/sci_f_spones.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_spones.lo `test -f 'sci_gateway/fortran/sci_f_spones.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_spones.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_kron.lo: sci_gateway/fortran/sci_f_kron.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_kron.lo `test -f 'sci_gateway/fortran/sci_f_kron.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_kron.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_dsearch.lo: sci_gateway/fortran/sci_f_dsearch.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_dsearch.lo `test -f 'sci_gateway/fortran/sci_f_dsearch.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_dsearch.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_cumsum.lo: sci_gateway/fortran/sci_f_cumsum.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_cumsum.lo `test -f 'sci_gateway/fortran/sci_f_cumsum.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_cumsum.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_nearfloat.lo: sci_gateway/fortran/sci_f_nearfloat.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_nearfloat.lo `test -f 'sci_gateway/fortran/sci_f_nearfloat.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_nearfloat.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_chinesehat.lo: sci_gateway/fortran/sci_f_chinesehat.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_chinesehat.lo `test -f 'sci_gateway/fortran/sci_f_chinesehat.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_chinesehat.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_isreal.lo: sci_gateway/fortran/sci_f_isreal.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_isreal.lo `test -f 'sci_gateway/fortran/sci_f_isreal.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_isreal.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_floor.lo: sci_gateway/fortran/sci_f_floor.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_floor.lo `test -f 'sci_gateway/fortran/sci_f_floor.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_floor.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_real.lo: sci_gateway/fortran/sci_f_real.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_real.lo `test -f 'sci_gateway/fortran/sci_f_real.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_real.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_round.lo: sci_gateway/fortran/sci_f_round.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_round.lo `test -f 'sci_gateway/fortran/sci_f_round.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_round.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_conj.lo: sci_gateway/fortran/sci_f_conj.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_conj.lo `test -f 'sci_gateway/fortran/sci_f_conj.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_conj.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_int.lo: sci_gateway/fortran/sci_f_int.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_int.lo `test -f 'sci_gateway/fortran/sci_f_int.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_int.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_imult.lo: sci_gateway/fortran/sci_f_imult.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_imult.lo `test -f 'sci_gateway/fortran/sci_f_imult.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_imult.f
+
+sci_gateway/fortran/libscielementary_functions_la-sci_f_exp.lo: sci_gateway/fortran/sci_f_exp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscielementary_functions_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscielementary_functions_la-sci_f_exp.lo `test -f 'sci_gateway/fortran/sci_f_exp.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_exp.f
 
 mostlyclean-libtool:
 	-rm -f *.lo

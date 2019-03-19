@@ -27,14 +27,14 @@ sci_gateway/c/sci_splin3d.c \
 sci_gateway/c/sci_bsplin3val.c \
 sci_gateway/c/sci_eval_cshep2d.c
 
-libsciinterpolation_la_CPPFLAGS = -I$(srcdir)/includes/ \
-				-I$(srcdir)/src/c/ \
-				-I$(top_srcdir)/libs/MALLOC/includes/ \
-				-I$(top_srcdir)/modules/output_stream/includes/ \
-				-I$(top_srcdir)/modules/api_scilab/includes/ \
-				-I$(top_srcdir)/modules/localization/includes/ \
-                -I$(top_srcdir)/modules/string/includes/ \
-                $(AM_CPPFLAGS)
+libsciinterpolation_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+		  -Wp,-I$(srcdir)/src/c/ \
+		  -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+		  -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+		  -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+		  -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+                  -Wp,-I$(top_srcdir)/modules/string/includes/ \
+                  $(AM_CPPFLAGS)
 
 pkglib_LTLIBRARIES = libsciinterpolation.la
 noinst_LTLIBRARIES = libsciinterpolation-algo.la

@@ -49,23 +49,23 @@ sci_gateway/cpp/sci_xend.cpp
 
 # Includes need for the compilation
 libscigraphic_export_la_CPPFLAGS = $(JAVA_JNI_INCLUDE) \
-				-I$(srcdir)/includes/ \
-				-I$(srcdir)/src/cpp/ \
-				-I$(srcdir)/src/jni/ \
-				-I$(srcdir)/src/c/ \
-				-I$(top_srcdir)/libs/MALLOC/includes/ \
-				-I$(top_srcdir)/modules/api_scilab/includes/ \
-				-I$(top_srcdir)/modules/localization/includes/ \
-				-I$(top_srcdir)/modules/jvm/includes/ \
-				-I$(top_srcdir)/modules/graphics/includes/ \
-				-I$(top_srcdir)/modules/renderer/includes/ \
-				-I$(top_srcdir)/modules/output_stream/includes/ \
-				-I$(top_srcdir)/modules/fileio/includes/ \
-				-I$(top_srcdir)/modules/commons/src/jni \
-				-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
-				-I$(top_srcdir)/modules/graphic_objects/includes/ \
-				-I$(top_srcdir)/modules/gui/src/jni/ \
-				$(AM_CPPFLAGS)
+		   -Wp,-I$(srcdir)/includes/ \
+		   -Wp,-I$(srcdir)/src/cpp/ \
+		   -Wp,-I$(srcdir)/src/jni/ \
+		   -Wp,-I$(srcdir)/src/c/ \
+		   -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/jvm/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/graphics/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/renderer/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/commons/src/jni \
+		   -Wp,-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/graphic_objects/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/gui/src/jni/ \
+		   $(AM_CPPFLAGS)
 
 # All the sources needed by libscigraphic_export.la
 libscigraphic_export_algo_la_SOURCES = $(GRAPHIC_EXPORT_C_SOURCES) $(GRAPHIC_EXPORT_CXX_SOURCES)
@@ -92,11 +92,11 @@ endif
 # All the sources needed by libscigraphic_export.la
 libscigraphic_export_disable_la_SOURCES = src/nographic_export/nographic_export.c
 
-libscigraphic_export_disable_la_CPPFLAGS = -I$(srcdir)/includes/ \
-	-I$(top_srcdir)/libs/MALLOC/includes/ \
-	-I$(top_srcdir)/modules/api_scilab/includes/ \
-	-I$(top_srcdir)/modules/localization/includes/ \
-	-I$(top_srcdir)/modules/output_stream/includes/ \
+libscigraphic_export_disable_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+	-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+	-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+	-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+	-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
 	$(AM_CPPFLAGS)
 
 # Name of the future library (.la will be replace by .so, .a, etc regarding

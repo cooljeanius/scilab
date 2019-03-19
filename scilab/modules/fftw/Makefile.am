@@ -68,16 +68,16 @@ INCLUDE_FLAGS = $(libscifftw_la_CPPFLAGS)
 
 libscifftw_la_LIBADD = libscifftw-algo.la
 
-libscifftw_la_CPPFLAGS = -I$(srcdir)/includes/ \
-			-I$(srcdir)/src/c/ \
-			-I$(top_srcdir)/libs/MALLOC/includes/ \
-			-I$(top_srcdir)/libs/dynamiclibrary/includes/ \
-			-I$(top_srcdir)/modules/fileio/includes/ \
-			-I$(top_srcdir)/modules/output_stream/includes/ \
-			-I$(top_srcdir)/modules/api_scilab/includes/ \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			$(FFTW3_CFLAGS) \
-			$(AM_CPPFLAGS)
+libscifftw_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+			 -Wp,-I$(srcdir)/src/c/ \
+			 -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			 -Wp,-I$(top_srcdir)/libs/dynamiclibrary/includes/ \
+			 -Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+			 -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			 -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			 -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			 $(FFTW3_CFLAGS) \
+			 $(AM_CPPFLAGS)
 
 else
 
@@ -85,12 +85,12 @@ FFTW_C_SOURCES = src/nofftw/nofftw.c
 
 libscifftw_la_SOURCES = $(FFTW_C_SOURCES)
 
-libscifftw_la_CPPFLAGS = -I$(srcdir)/includes/ \
-			-I$(srcdir)/src/c/ \
-			-I$(top_srcdir)/modules/api_scilab/includes/ \
-			-I$(top_srcdir)/modules/output_stream/includes/ \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			$(AM_CPPFLAGS)
+libscifftw_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+			 -Wp,-I$(srcdir)/src/c/ \
+			 -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			 -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			 -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			 $(AM_CPPFLAGS)
 endif
 
 include $(top_srcdir)/Makefile.incl.am

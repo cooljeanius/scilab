@@ -705,28 +705,28 @@ GATEWAY_C_SOURCES = sci_gateway/c/gw_ui_data.c
 GATEWAY_CXX_SOURCES = sci_gateway/cpp/sci_editvar.cpp \
 		      sci_gateway/cpp/sci_browsevar.cpp \
 		      sci_gateway/cpp/sci_filebrowser.cpp \
-			sci_gateway/cpp/sci_updatebrowsevar.cpp
+		      sci_gateway/cpp/sci_updatebrowsevar.cpp
 
 libsciui_data_la_CPPFLAGS = $(JAVA_JNI_INCLUDE) \
-			-I$(srcdir)/includes/ \
-			-I$(srcdir)/src/cpp/ \
-			-I$(srcdir)/src/c/ \
-			-I$(srcdir)/src/jni/ \
-			-I$(top_srcdir)/libs/MALLOC/includes/ \
-	 		-I$(top_srcdir)/modules/jvm/includes/ \
-			-I$(top_srcdir)/modules/output_stream/includes/ \
-			-I$(top_srcdir)/modules/commons/src/jni \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			-I$(top_srcdir)/modules/api_scilab/includes/ \
-			-I$(top_srcdir)/modules/fileio/includes/ \
-			-I$(top_srcdir)/modules/core/includes \
+			-Wp,-I$(srcdir)/includes/ \
+			-Wp,-I$(srcdir)/src/cpp/ \
+			-Wp,-I$(srcdir)/src/c/ \
+			-Wp,-I$(srcdir)/src/jni/ \
+			-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+	 		-Wp,-I$(top_srcdir)/modules/jvm/includes/ \
+			-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			-Wp,-I$(top_srcdir)/modules/commons/src/jni \
+			-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			-Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+			-Wp,-I$(top_srcdir)/modules/core/includes \
 			$(AM_CPPFLAGS)
 
 
 # Without the ui_data module 
-libsciui_data_disable_la_CPPFLAGS = -I$(srcdir)/includes/ \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			-I$(top_srcdir)/modules/output_stream/includes \
+libsciui_data_disable_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+			-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			-Wp,-I$(top_srcdir)/modules/output_stream/includes \
 			$(AM_CPPFLAGS)
 
 UI_DATA_DISABLE_C_SOURCES = src/noui_data/noui_data.c

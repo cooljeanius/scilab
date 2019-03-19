@@ -191,20 +191,31 @@ am__objects_1 = src/c/libscirandlib_algo_la-fsultra.lo \
 	src/c/libscirandlib_algo_la-ignpoi.lo \
 	src/c/libscirandlib_algo_la-sgamma.lo \
 	src/c/libscirandlib_algo_la-genbet.lo
-am__objects_2 = src/fortran/gennf.lo src/fortran/genchi.lo \
-	src/fortran/setgmn.lo src/fortran/gengam.lo \
-	src/fortran/snorm.lo src/fortran/gennch.lo \
-	src/fortran/genmn.lo src/fortran/phrtsd.lo \
-	src/fortran/ignnbn.lo src/fortran/genf.lo \
-	src/fortran/genunf.lo src/fortran/genexp.lo \
-	src/fortran/genmul.lo src/fortran/genprm.lo \
-	src/fortran/gennor.lo
+am__objects_2 = src/fortran/libscirandlib_algo_la-gennf.lo \
+	src/fortran/libscirandlib_algo_la-genchi.lo \
+	src/fortran/libscirandlib_algo_la-setgmn.lo \
+	src/fortran/libscirandlib_algo_la-gengam.lo \
+	src/fortran/libscirandlib_algo_la-snorm.lo \
+	src/fortran/libscirandlib_algo_la-gennch.lo \
+	src/fortran/libscirandlib_algo_la-genmn.lo \
+	src/fortran/libscirandlib_algo_la-phrtsd.lo \
+	src/fortran/libscirandlib_algo_la-ignnbn.lo \
+	src/fortran/libscirandlib_algo_la-genf.lo \
+	src/fortran/libscirandlib_algo_la-genunf.lo \
+	src/fortran/libscirandlib_algo_la-genexp.lo \
+	src/fortran/libscirandlib_algo_la-genmul.lo \
+	src/fortran/libscirandlib_algo_la-genprm.lo \
+	src/fortran/libscirandlib_algo_la-gennor.lo
 am_libscirandlib_algo_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 libscirandlib_algo_la_OBJECTS = $(am_libscirandlib_algo_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+libscirandlib_algo_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libscirandlib_algo_la_FFLAGS) $(FFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
 libscirandlib_la_DEPENDENCIES = libscirandlib-algo.la
 am__objects_3 = sci_gateway/c/libscirandlib_la-gw_randlib.lo \
 	sci_gateway/c/libscirandlib_la-sci_grand.lo
@@ -684,18 +695,21 @@ src/fortran/gennor.f
 GATEWAY_C_SOURCES = sci_gateway/c/gw_randlib.c \
 sci_gateway/c/sci_grand.c
 
-libscirandlib_la_CPPFLAGS = -I$(srcdir)/includes/ \
-				-I$(top_srcdir)/libs/MALLOC/includes/ \
-				-I$(top_srcdir)/modules/api_scilab/includes/ \
-				-I$(top_srcdir)/modules/localization/includes/ \
-				-I$(top_srcdir)/modules/output_stream/includes/ \
-				$(AM_CPPFLAGS)
+libscirandlib_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+			    -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			    -Wp,-I$(top_srcdir)/modules/core/includes/ \
+			    -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			    -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			    -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			    $(AM_CPPFLAGS)
 
+libscirandlib_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 pkglib_LTLIBRARIES = libscirandlib.la
 noinst_LTLIBRARIES = libscirandlib-algo.la
 libscirandlib_algo_la_SOURCES = $(RANDLIB_C_SOURCES) $(RANDLIB_FORTRAN_SOURCES)
 libscirandlib_la_SOURCES = $(GATEWAY_C_SOURCES) 
 libscirandlib_algo_la_CPPFLAGS = $(libscirandlib_la_CPPFLAGS)
+libscirandlib_algo_la_FFLAGS = $(libscirandlib_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC = $(RANDLIB_C_SOURCES) $(GATEWAY_C_SOURCES)
@@ -905,39 +919,54 @@ src/fortran/$(am__dirstamp):
 src/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/fortran/$(DEPDIR)
 	@: > src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/gennf.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscirandlib_algo_la-gennf.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/genchi.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscirandlib_algo_la-genchi.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/setgmn.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscirandlib_algo_la-setgmn.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/gengam.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscirandlib_algo_la-gengam.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/snorm.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscirandlib_algo_la-snorm.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/gennch.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscirandlib_algo_la-gennch.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/genmn.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscirandlib_algo_la-genmn.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/phrtsd.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscirandlib_algo_la-phrtsd.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ignnbn.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscirandlib_algo_la-ignnbn.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/genf.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscirandlib_algo_la-genf.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/genunf.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscirandlib_algo_la-genunf.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/genexp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscirandlib_algo_la-genexp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/genmul.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscirandlib_algo_la-genmul.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/genprm.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscirandlib_algo_la-genprm.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/gennor.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscirandlib_algo_la-gennor.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscirandlib-algo.la: $(libscirandlib_algo_la_OBJECTS) $(libscirandlib_algo_la_DEPENDENCIES) $(EXTRA_libscirandlib_algo_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK)  $(libscirandlib_algo_la_OBJECTS) $(libscirandlib_algo_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscirandlib_algo_la_LINK)  $(libscirandlib_algo_la_OBJECTS) $(libscirandlib_algo_la_LIBADD) $(LIBS)
 sci_gateway/c/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/c
 	@: > sci_gateway/c/$(am__dirstamp)
@@ -1117,6 +1146,51 @@ sci_gateway/c/libscirandlib_la-sci_grand.lo: sci_gateway/c/sci_grand.c
 
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
+
+src/fortran/libscirandlib_algo_la-gennf.lo: src/fortran/gennf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscirandlib_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscirandlib_algo_la-gennf.lo `test -f 'src/fortran/gennf.f' || echo '$(srcdir)/'`src/fortran/gennf.f
+
+src/fortran/libscirandlib_algo_la-genchi.lo: src/fortran/genchi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscirandlib_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscirandlib_algo_la-genchi.lo `test -f 'src/fortran/genchi.f' || echo '$(srcdir)/'`src/fortran/genchi.f
+
+src/fortran/libscirandlib_algo_la-setgmn.lo: src/fortran/setgmn.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscirandlib_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscirandlib_algo_la-setgmn.lo `test -f 'src/fortran/setgmn.f' || echo '$(srcdir)/'`src/fortran/setgmn.f
+
+src/fortran/libscirandlib_algo_la-gengam.lo: src/fortran/gengam.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscirandlib_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscirandlib_algo_la-gengam.lo `test -f 'src/fortran/gengam.f' || echo '$(srcdir)/'`src/fortran/gengam.f
+
+src/fortran/libscirandlib_algo_la-snorm.lo: src/fortran/snorm.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscirandlib_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscirandlib_algo_la-snorm.lo `test -f 'src/fortran/snorm.f' || echo '$(srcdir)/'`src/fortran/snorm.f
+
+src/fortran/libscirandlib_algo_la-gennch.lo: src/fortran/gennch.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscirandlib_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscirandlib_algo_la-gennch.lo `test -f 'src/fortran/gennch.f' || echo '$(srcdir)/'`src/fortran/gennch.f
+
+src/fortran/libscirandlib_algo_la-genmn.lo: src/fortran/genmn.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscirandlib_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscirandlib_algo_la-genmn.lo `test -f 'src/fortran/genmn.f' || echo '$(srcdir)/'`src/fortran/genmn.f
+
+src/fortran/libscirandlib_algo_la-phrtsd.lo: src/fortran/phrtsd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscirandlib_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscirandlib_algo_la-phrtsd.lo `test -f 'src/fortran/phrtsd.f' || echo '$(srcdir)/'`src/fortran/phrtsd.f
+
+src/fortran/libscirandlib_algo_la-ignnbn.lo: src/fortran/ignnbn.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscirandlib_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscirandlib_algo_la-ignnbn.lo `test -f 'src/fortran/ignnbn.f' || echo '$(srcdir)/'`src/fortran/ignnbn.f
+
+src/fortran/libscirandlib_algo_la-genf.lo: src/fortran/genf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscirandlib_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscirandlib_algo_la-genf.lo `test -f 'src/fortran/genf.f' || echo '$(srcdir)/'`src/fortran/genf.f
+
+src/fortran/libscirandlib_algo_la-genunf.lo: src/fortran/genunf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscirandlib_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscirandlib_algo_la-genunf.lo `test -f 'src/fortran/genunf.f' || echo '$(srcdir)/'`src/fortran/genunf.f
+
+src/fortran/libscirandlib_algo_la-genexp.lo: src/fortran/genexp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscirandlib_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscirandlib_algo_la-genexp.lo `test -f 'src/fortran/genexp.f' || echo '$(srcdir)/'`src/fortran/genexp.f
+
+src/fortran/libscirandlib_algo_la-genmul.lo: src/fortran/genmul.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscirandlib_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscirandlib_algo_la-genmul.lo `test -f 'src/fortran/genmul.f' || echo '$(srcdir)/'`src/fortran/genmul.f
+
+src/fortran/libscirandlib_algo_la-genprm.lo: src/fortran/genprm.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscirandlib_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscirandlib_algo_la-genprm.lo `test -f 'src/fortran/genprm.f' || echo '$(srcdir)/'`src/fortran/genprm.f
+
+src/fortran/libscirandlib_algo_la-gennor.lo: src/fortran/gennor.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscirandlib_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscirandlib_algo_la-gennor.lo `test -f 'src/fortran/gennor.f' || echo '$(srcdir)/'`src/fortran/gennor.f
 
 mostlyclean-libtool:
 	-rm -f *.lo

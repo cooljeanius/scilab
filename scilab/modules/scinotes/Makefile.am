@@ -41,26 +41,26 @@ GATEWAY_C_SOURCES = sci_gateway/c/gw_scinotes.c
 GATEWAY_CXX_SOURCES = sci_gateway/cpp/sci_scinotes.cpp \
 sci_gateway/cpp/sci_closeSciNotesFromScilab.cpp
 
-libsciscinotes_la_CPPFLAGS = -I$(srcdir)/includes/ \
-    -I$(srcdir)/src/cpp/ \
-    -I$(srcdir)/src/c/ \
-    -I$(srcdir)/src/jni/ \
-    -I$(top_srcdir)/libs/MALLOC/includes/ \
-    -I$(top_srcdir)/modules/api_scilab/includes/ \
-    -I$(top_srcdir)/modules/commons/src/jni/ \
-    -I$(top_srcdir)/modules/core/includes/ \
-    -I$(top_srcdir)/modules/fileio/includes/ \
-    -I$(top_srcdir)/modules/functions/includes/ \
-    -I$(top_srcdir)/modules/jvm/includes/ \
-    -I$(top_srcdir)/modules/localization/includes/ \
-    -I$(top_srcdir)/modules/output_stream/includes/ \
+libsciscinotes_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+    -Wp,-I$(srcdir)/src/cpp/ \
+    -Wp,-I$(srcdir)/src/c/ \
+    -Wp,-I$(srcdir)/src/jni/ \
+    -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+    -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+    -Wp,-I$(top_srcdir)/modules/commons/src/jni/ \
+    -Wp,-I$(top_srcdir)/modules/core/includes/ \
+    -Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+    -Wp,-I$(top_srcdir)/modules/functions/includes/ \
+    -Wp,-I$(top_srcdir)/modules/jvm/includes/ \
+    -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+    -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
     $(JAVA_JNI_INCLUDE) \
     $(AM_CPPFLAGS)
 
 # Without the scinotes module 
-libsciscinotes_disable_la_CPPFLAGS = -I$(srcdir)/includes/ \
-    -I$(top_srcdir)/modules/localization/includes/ \
-    -I$(top_srcdir)/modules/output_stream/includes/ \
+libsciscinotes_disable_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+    -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+    -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
     $(AM_CPPFLAGS)
 
 SCINOTES_DISABLE_C_SOURCES = src/noscinotes/noscinotes.c

@@ -36,12 +36,12 @@ endif
 COMMONS_FORTRAN_SOURCES = src/fortran/empty.f
 
 libscicommons_la_CPPFLAGS= $(JAVA_JNI_INCLUDE) \
-			-I$(srcdir)/includes/ \
-			-I$(srcdir)/src/jni/ \
-			-I$(top_srcdir)/libs/MALLOC/includes/ \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			-I$(top_srcdir)/modules/fileio/includes/ \
-			$(AM_CPPFLAGS)
+			   -Wp,-I$(srcdir)/includes/ \
+			   -Wp,-I$(srcdir)/src/jni/ \
+			   -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			   -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			   -Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+			   $(AM_CPPFLAGS)
 
 
 libscicommons_disable_la_SOURCES = $(COMMONS_DISABLE_C_SOURCES)

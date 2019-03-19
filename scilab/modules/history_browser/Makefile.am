@@ -41,17 +41,17 @@ HISTORY_BROWSER_C_SOURCES = src/nohistory_browser/CommandHistory_Wrap_Fake.c
 endif
 
 libscihistory_browser_la_CPPFLAGS = $(JAVA_JNI_INCLUDE) \
--I$(srcdir)/src/jni/ \
--I$(srcdir)/src/c/ \
--I$(srcdir)/includes/ \
--I$(top_srcdir)/libs/MALLOC/includes \
--I$(top_srcdir)/modules/api_scilab/includes/ \
--I$(top_srcdir)/modules/jvm/includes/ \
--I$(top_srcdir)/modules/commons/src/jni/ \
+-Wp,-I$(srcdir)/src/jni/ \
+-Wp,-I$(srcdir)/src/c/ \
+-Wp,-I$(srcdir)/includes/ \
+-Wp,-I$(top_srcdir)/libs/MALLOC/includes \
+-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+-Wp,-I$(top_srcdir)/modules/jvm/includes/ \
+-Wp,-I$(top_srcdir)/modules/commons/src/jni/ \
 $(AM_CPPFLAGS)
 
 # Without the history_browser module 
-libscihistory_browser_disable_la_CPPFLAGS = -I$(srcdir)/includes/ $(AM_CPPFLAGS)
+libscihistory_browser_disable_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ $(AM_CPPFLAGS)
 HISTORY_BROWSER_DISABLE_C_SOURCES =  src/nohistory_browser/CommandHistory_Wrap_Fake.c
 libscihistory_browser_disable_la_SOURCES = $(HISTORY_BROWSER_DISABLE_C_SOURCES)
 

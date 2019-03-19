@@ -88,15 +88,19 @@ sci_gateway/c/sci_zheev.c
 
 GATEWAY_FORTRAN_SOURCES =
 
-libscilinear_algebra_la_CPPFLAGS = -I$(srcdir)/includes/ \
--I$(srcdir)/src/c/ \
--I$(top_srcdir)/libs/MALLOC/includes/ \
--I$(top_srcdir)/modules/output_stream/includes/ \
--I$(top_srcdir)/modules/dynamic_link/includes/ \
--I$(top_srcdir)/modules/api_scilab/includes/ \
--I$(top_srcdir)/modules/elementary_functions/includes/ \
--I$(top_srcdir)/modules/localization/includes/ \
+libscilinear_algebra_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+-Wp,-I$(srcdir)/src/c/ \
+-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+-Wp,-I$(top_srcdir)/modules/core/includes/ \
+-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+-Wp,-I$(top_srcdir)/modules/dynamic_link/includes/ \
+-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+-Wp,-I$(top_srcdir)/modules/elementary_functions/includes/ \
+-Wp,-I$(top_srcdir)/modules/localization/includes/ \
 $(AM_CPPFLAGS)
+
+## Need to put this include in FFLAGS too, because fortran is different:
+libscilinear_algebra_la_FFLAGS= -I$(top_srcdir)/modules/core/includes/
 
 if MAINTAINER_MODE
 pkglib_LTLIBRARIES = libscilinear_algebra.la
@@ -110,6 +114,7 @@ endif
 libscilinear_algebra_algo_la_SOURCES = $(LINEAR_ALGEBRA_FORTRAN_SOURCES) $(LINEAR_ALGEBRA_C_SOURCES)
 libscilinear_algebra_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libscilinear_algebra_algo_la_CPPFLAGS = $(libscilinear_algebra_la_CPPFLAGS)
+libscilinear_algebra_algo_la_FFLAGS = $(libscilinear_algebra_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC= $(LINEAR_ALGEBRA_C_SOURCES) $(GATEWAY_C_SOURCES)

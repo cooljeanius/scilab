@@ -106,23 +106,23 @@ sci_gateway/fortran/sci_f_vec2var.f
 
 #CLEANFILES=includes/blocks.h build/Cblocknames build/Fblocknames
 
-libsciscicos_la_CPPFLAGS= -I$(srcdir)/includes/ \
-			-I$(srcdir)/src/c/ \
-			-I$(top_srcdir)/libs/MALLOC/includes/ \
-			-I$(top_srcdir)/modules/output_stream/includes/ \
-			-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
-			-I$(top_srcdir)/modules/graphics/includes/ \
-			-I$(top_srcdir)/modules/dynamic_link/includes/ \
-			-I$(top_srcdir)/modules/string/includes/ \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			-I$(top_srcdir)/modules/intersci/includes/ \
-			-I$(top_srcdir)/modules/scicos_blocks/includes/ \
-			-I$(top_srcdir)/modules/action_binding/includes/ \
-			-I$(top_srcdir)/modules/time/includes/ \
-			-I$(top_srcdir)/modules/api_scilab/includes/ \
-			-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/ \
-			-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/sundials/ \
-			-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/ida/ \
+libsciscicos_la_CPPFLAGS= -Wp,-I$(srcdir)/includes/ \
+			-Wp,-I$(srcdir)/src/c/ \
+			-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+			-Wp,-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
+			-Wp,-I$(top_srcdir)/modules/graphics/includes/ \
+			-Wp,-I$(top_srcdir)/modules/dynamic_link/includes/ \
+			-Wp,-I$(top_srcdir)/modules/string/includes/ \
+			-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			-Wp,-I$(top_srcdir)/modules/intersci/includes/ \
+			-Wp,-I$(top_srcdir)/modules/scicos_blocks/includes/ \
+			-Wp,-I$(top_srcdir)/modules/action_binding/includes/ \
+			-Wp,-I$(top_srcdir)/modules/time/includes/ \
+			-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/ \
+			-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/sundials/ \
+			-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/ida/ \
 			$(AM_CPPFLAGS)
 
 
@@ -208,17 +208,17 @@ src/scicos_sundials/src/sundials/sundials_nvector.c \
 src/scicos_sundials/src/sundials/sundials_smalldense.c \
 src/scicos_sundials/src/sundials/sundials_extension.c
 
-libscisundials_la_CPPFLAGS = -I$(top_srcdir)/modules/scicos/src/scicos_sundials/include \
--I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/cvode \
--I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/ida \
--I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/kinsol \
--I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/nvec_ser \
--I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/sundials \
--I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/cvode \
--I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/ida \
--I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/kinsol \
--I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/nvec_ser \
--I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/sundials \
+libscisundials_la_CPPFLAGS = -Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include \
+-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/cvode \
+-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/ida \
+-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/kinsol \
+-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/nvec_ser \
+-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/sundials \
+-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/cvode \
+-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/ida \
+-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/kinsol \
+-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/nvec_ser \
+-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/sundials \
 $(AM_CPPFLAGS)
 
 
@@ -231,9 +231,9 @@ NO_SCICOS_C_SOURCES = src/c/noscicos/noscicos.c
 
 libsciscicos_la_SOURCES = $(NO_SCICOS_C_SOURCES)
 
-libsciscicos_la_CPPFLAGS= -I$(top_srcdir)/modules/output_stream/includes/ \
--I$(top_srcdir)/modules/api_scilab/includes/ \
--I$(top_srcdir)/modules/scicos/includes/ \
+libsciscicos_la_CPPFLAGS= -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+-Wp,-I$(top_srcdir)/modules/scicos/includes/ \
 $(AM_CPPFLAGS)
 
 #### scicos : init scripts ####

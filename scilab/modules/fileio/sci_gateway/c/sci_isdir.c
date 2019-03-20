@@ -162,7 +162,8 @@ int sci_isdir(char *fname, unsigned long fname_len)
     }
     freeArrayOfWideString(pStVarOne, m1 * n1);
 
-    sciErr = createMatrixOfBoolean(pvApiCtx, Rhs + 1, m1, n1, results);
+    sciErr = createMatrixOfBoolean(pvApiCtx, Rhs + 1, m1, n1,
+                                   (const int *)results);
     if (sciErr.iErr)
     {
         printError(&sciErr, 0);

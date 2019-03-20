@@ -151,10 +151,17 @@ int sci_chdir(char *fname, unsigned long fname_len)
 
             int ierr = scichdirW(expandedPath);
 
-            if (ierr) bOutput[0] = FALSE;
-            else bOutput[0] = TRUE;
+            if (ierr)
+            {
+                bOutput[0] = FALSE;
+            }
+            else
+            {
+                bOutput[0] = TRUE;
+            }
 
-            sciErr = createMatrixOfBoolean(pvApiCtx, Rhs + 1, 1, 1, bOutput);
+            sciErr = createMatrixOfBoolean(pvApiCtx, Rhs + 1, 1, 1,
+                                           (const int *)bOutput);
             if (sciErr.iErr)
             {
                 printError(&sciErr, 0);
@@ -182,7 +189,8 @@ int sci_chdir(char *fname, unsigned long fname_len)
                 wchar_t *currentDir = scigetcwdW(&ierr);
                 if ( (ierr == 0) && currentDir)
                 {
-                    sciErr = createMatrixOfWideString(pvApiCtx, Rhs + 1, 1, 1, &currentDir);
+                    sciErr = createMatrixOfWideString(pvApiCtx, Rhs + 1, 1, 1,
+                                                      (const wchar_t *const *)&currentDir);
                 }
                 else
                 {

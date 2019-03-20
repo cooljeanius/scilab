@@ -363,7 +363,8 @@ int sci_pathconvert(char *fname, unsigned long fname_len)
             results[i] = pathconvertW(pStVarOne[i], flagtrail, flagexpand, PType);
         }
 
-        sciErr = createMatrixOfWideString(pvApiCtx, Rhs + 1, m1, n1, results);
+        sciErr = createMatrixOfWideString(pvApiCtx, Rhs + 1, m1, n1,
+                                          (const wchar_t *const *)results);
         if (sciErr.iErr)
         {
             printError(&sciErr, 0);

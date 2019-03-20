@@ -433,6 +433,7 @@ AC_PROG_FC_C_O
 
 # If this option is provided, enable the debug on C & C++
 if test "x${enable_stop_on_warning}" = "xyes"; then
+   AC_MSG_NOTICE([--enable-stop-on-warning implies --enable-debug-C and enable-debug-CXX])
    XORG_STRICT_OPTION dnl# from m4/xorg-macros.m4
    enable_debug_C=yes
    enable_debug_CXX=yes
@@ -464,6 +465,7 @@ fi
 
 if test "x${enable_debug_CXX}" = "xyes"; then
    CXXFLAGS="`echo "${CXXFLAGS}"| sed -e 's|-O[0-9+]|-O0|'`"
+   XORG_CXXWARNFLAGS dnl# from m4/xorg-macros.m4
 else
    enable_debug_CXX=no
 fi
@@ -2225,6 +2227,8 @@ AC_BACKTRACE([]) dnl# from m4/backtrace.m4
 ##########
 AC_PATH_PROG([SPLINT],[splint],[no])
 AC_PATH_PROG([ASTYLE],[astyle],[no])
+AC_PATH_PROGS([GNU_INDENT],[indent gindent],[no])
+AC_PATH_PROG([CPPI],[cppi],[no])
 XORG_WITH_LINT([]) dnl# from m4/xorg-macros.m4
 
 ##########

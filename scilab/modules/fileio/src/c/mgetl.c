@@ -182,7 +182,7 @@ char **mgetl(int fd, int nbLinesIn, int *nbLinesOut, int *ierr)
                             {
                                 *nbLinesOut = 0;
                                 *ierr = MGETL_MEMORY_ALLOCATION_ERROR;
-                                FREE(nbLines);
+                                /* nbLines is not a pointer; no need to FREE it */
                                 return NULL;
                             }
                         }
@@ -303,7 +303,10 @@ char *convertAnsiToUtf(char *_inString)
             int i = 0;
 
             outString = (char*)MALLOC(((len * 3) + 1) * sizeof(char));
-            if (outString == NULL) return NULL;
+            if (outString == NULL)
+            {
+                return NULL;
+            }
             strcpy(outString, EMPTYSTR);
 
             for (i = 0; i < len; i++)
@@ -311,8 +314,14 @@ char *convertAnsiToUtf(char *_inString)
                 unsigned char *outUtfChar = NULL;
                 unsigned char inAnsiChar = 0;
 
-                if (_inString[i] < 0) inAnsiChar = 256 + _inString[i];
-                else inAnsiChar = _inString[i];
+                if (_inString[i] < 0)
+                {
+                    inAnsiChar = 256 + _inString[i];
+                }
+                else
+                {
+                    inAnsiChar = _inString[i];
+                }
 
                 if (inAnsiChar < 128)
                 {

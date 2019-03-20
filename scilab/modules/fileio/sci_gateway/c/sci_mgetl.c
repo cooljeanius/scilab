@@ -253,7 +253,8 @@ int sci_mgetl(char *fname, unsigned long fname_len)
                     int m = numberOfLinesReaded;
                     int n = 1;
 
-                    sciErr = createMatrixOfString(pvApiCtx, Rhs + 1, m, n, wcReadedStrings);
+                    sciErr = createMatrixOfString(pvApiCtx, Rhs + 1, m, n,
+                                                  (const char *const *)wcReadedStrings);
                     if (sciErr.iErr)
                     {
                         printError(&sciErr, 0);
@@ -282,7 +283,8 @@ int sci_mgetl(char *fname, unsigned long fname_len)
                     int m = numberOfLinesReaded;
                     int n = 1;
 
-                    sciErr = createMatrixOfString(pvApiCtx, Rhs + 1, m, n, wcReadedStrings);
+                    sciErr = createMatrixOfString(pvApiCtx, Rhs + 1, m, n,
+                                                  (const char *const *)wcReadedStrings);
                     if (sciErr.iErr)
                     {
                         printError(&sciErr, 0);

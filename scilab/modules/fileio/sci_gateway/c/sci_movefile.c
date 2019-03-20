@@ -354,7 +354,8 @@ static int returnMoveFileResultOnStack(int ierr, char *fname)
 
     if (Lhs == 2)
     {
-        createMatrixOfWideString(pvApiCtx, Rhs + 2, m_out, n_out, sciError);
+        createMatrixOfWideString(pvApiCtx, Rhs + 2, m_out, n_out,
+                                 (const wchar_t *const *)sciError);
         LhsVar(2) = Rhs + 2;
     }
 

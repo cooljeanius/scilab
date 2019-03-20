@@ -1659,7 +1659,7 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=sequence-point])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=return-type], [-errwarn=E_FUNC_HAS_NO_RETURN_STMT])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=trigraphs])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=array-bounds])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=write-strings], [-Werror=discarded-qualifiers])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=write-strings])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=address])
 AC_REQUIRE([AC_TYPE_INTPTR_T])
 AC_REQUIRE([AC_TYPE_UINTPTR_T])
@@ -1677,7 +1677,6 @@ if test "x${ac_cv_type_intptr_t}" = "xyes" -a "x${ac_cv_type_uintptr_t}" = "xyes
 else
   AC_MSG_NOTICE([handling casts between pointers and integers and vice versa is easier when we have intptr_t and uintptr_t, so skipping erroring on such warnings due to missing types])
 fi
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=incompatible-pointer-types])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=pointer-compare])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=overflow])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=endif-labels])
@@ -1687,6 +1686,12 @@ AC_LANG_CASE([Fortran 77],[
 ],[C++],[
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=conversion-null])
 ])
+if test "x${xorg_cv_cc_flag__Werror_write_strings}" != "xyes"; then
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=incompatible-pointer-types])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=discarded-qualifiers])
+else
+  AC_MSG_NOTICE([skipping adding -Werror=incompatible-pointer-types and -Werror=discarded-qualifiers when -Werror=write-strings is already on])
+fi
 else
 AC_MSG_WARN([You have chosen not to turn some select compiler warnings into errors.  This should not be necessary.  Please report why you needed to do so in a bug report at $PACKAGE_BUGREPORT])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wimplicit])
@@ -1698,7 +1703,7 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wsequence-point])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wreturn-type])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wtrigraphs])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Warray-bounds])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wwrite-strings], [-Wdiscarded-qualifiers])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wwrite-strings])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Waddress])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wint-to-pointer-cast])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wpointer-to-int-cast])
@@ -1712,6 +1717,7 @@ AC_LANG_CASE([Fortran 77],[
 ],[C++],[
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wconversion-null])
 ])
+dnl# -Wdiscarded-qualifiers should already be on by default
 fi
 
 AC_SUBST([BASE_]PREFIX[FLAGS])

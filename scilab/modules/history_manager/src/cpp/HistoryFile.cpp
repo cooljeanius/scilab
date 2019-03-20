@@ -49,7 +49,10 @@ HistoryFile::~HistoryFile()
 /*------------------------------------------------------------------------*/
 std::string HistoryFile::getFilename(void)
 {
-    if (this->my_history_filename.empty()) this->setDefaultFilename();
+    if (this->my_history_filename.empty())
+    {
+        this->setDefaultFilename();
+    }
     return this->my_history_filename;
 }
 /*------------------------------------------------------------------------*/
@@ -106,25 +109,31 @@ BOOL HistoryFile::writeToFile(std::string filename)
 {
     BOOL bOK = FALSE;
 
-    if (this->Commands.empty()) return bOK;
+    if (this->Commands.empty())
+    {
+        return bOK;
+    }
     else
     {
         FILE *pFile = NULL;
 
-        if (filename.empty())  return bOK;
+        if (filename.empty())
+        {
+            return bOK;
+        }
 
         wcfopen(pFile , (char*)filename.c_str(), "wt");
 
         if (pFile)
         {
             list<CommandLine>::iterator it_commands;
-            for(it_commands=this->Commands.begin(); it_commands != this->Commands.end(); ++it_commands)
+            for (it_commands = this->Commands.begin(); it_commands != this->Commands.end(); ++it_commands)
             {
                 std::string line = (*it_commands).get();
                 if (!line.empty())
                 {
-                    fputs(line.c_str(),pFile);
-                    fputs("\n",pFile);
+                    fputs(line.c_str(), pFile);
+                    fputs("\n", pFile);
                 }
             }
             fclose(pFile);
@@ -137,7 +146,10 @@ BOOL HistoryFile::writeToFile(std::string filename)
 BOOL HistoryFile::writeToFile(void)
 {
     BOOL bOK = FALSE;
-    if (!this->my_history_filename.empty()) bOK = this->writeToFile(my_history_filename);
+    if (!this->my_history_filename.empty())
+    {
+        bOK = this->writeToFile(my_history_filename);
+    }
     return bOK;
 }
 /*------------------------------------------------------------------------*/
@@ -151,7 +163,8 @@ errorLoadHistoryCode HistoryFile::loadFromFile(std::string filename)
     double dErrClose = 0.;
 
 
-    C2F(mopen)(&fd, (char*)filename.c_str(), "rt", &f_swap, &res, &errMOPEN);
+    C2F(mopen)(&fd, (char*)filename.c_str(), const_cast<char *>("rt"),
+               &f_swap, &res, &errMOPEN);
     if (errMOPEN == MOPEN_NO_ERROR)
     {
         int errMGETL = MGETL_ERROR;
@@ -193,7 +206,10 @@ errorLoadHistoryCode HistoryFile::loadFromFile(std::string filename)
 errorLoadHistoryCode HistoryFile::loadFromFile(void)
 {
     errorLoadHistoryCode returnedError = ERROR_HISTORY_NOT_LOADED;
-    if (!this->my_history_filename.empty()) returnedError = this->loadFromFile(my_history_filename);
+    if (!this->my_history_filename.empty())
+    {
+        returnedError = this->loadFromFile(my_history_filename);
+    }
     return returnedError;
 }
 /*------------------------------------------------------------------------*/
@@ -208,9 +224,12 @@ BOOL HistoryFile::setHistory(list<CommandLine> commands)
     BOOL bOK = FALSE;
     list<CommandLine>::iterator it_commands;
 
-    if (!this->Commands.empty()) this->Commands.clear();
+    if (!this->Commands.empty())
+    {
+        this->Commands.clear();
+    }
 
-    for(it_commands=commands.begin(); it_commands != commands.end(); ++it_commands)
+    for (it_commands = commands.begin(); it_commands != commands.end(); ++it_commands)
     {
         std::string line = (*it_commands).get();
         if (!line.empty())
@@ -225,7 +244,7 @@ BOOL HistoryFile::setHistory(list<CommandLine> commands)
 BOOL HistoryFile::reset(void)
 {
     BOOL bOK = FALSE;
-    BOOL check1 = FALSE,check2 = FALSE;
+    BOOL check1 = FALSE, check2 = FALSE;
 
     if (!this->Commands.empty())
     {
@@ -239,7 +258,10 @@ BOOL HistoryFile::reset(void)
         check2 = TRUE;
     }
 
-    if (check1 && check2) bOK = TRUE;
+    if (check1 && check2)
+    {
+        bOK = TRUE;
+    }
 
     return bOK;
 }

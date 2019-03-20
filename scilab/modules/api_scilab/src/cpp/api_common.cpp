@@ -198,7 +198,7 @@ int checkOutputArgumentAtMost(void* _pvCtx, int _iMax)
 int callOverloadFunction(void* _pvCtx, int _iVar, char* _pstName, unsigned int _iNameLen)
 {
     int iVar = 0;
-    if(_iVar != 0)
+    if (_iVar != 0)
     {
         iVar = _iVar + Top - Rhs;
     }
@@ -574,7 +574,7 @@ SciErr getProcessMode(void *_pvCtx, int _iPos, int *_piAddRef, int *_piMode)
     else if (iType2 == sci_strings)
     {
         int iLen = 0;
-        char *pstMode[1] = { "" };
+        const char *pstMode[1] = { "" };
 
         sciErr = getVarDimension(_pvCtx, piAddr2, &iRows2, &iCols2);
         if (sciErr.iErr)
@@ -598,7 +598,8 @@ SciErr getProcessMode(void *_pvCtx, int _iPos, int *_piAddRef, int *_piMode)
         }
 
         pstMode[0] = (char *)MALLOC(sizeof(char) * (iLen + 1)); //+1 for null termination
-        sciErr = getMatrixOfString(_pvCtx, piAddr2, &iRows2, &iCols2, &iLen, pstMode);
+        sciErr = getMatrixOfString(_pvCtx, piAddr2, &iRows2, &iCols2, &iLen,
+                                   const_cast<char **>(pstMode));
         if (sciErr.iErr)
         {
             addErrorMessage(&sciErr, API_ERROR_GET_PROCESSMODE, _("%s: Unable to get argument data"), "getProcessMode");
@@ -606,7 +607,7 @@ SciErr getProcessMode(void *_pvCtx, int _iPos, int *_piAddRef, int *_piMode)
         }
 
         iMode = (int)pstMode[0][0];
-        FREE(pstMode[0]);
+        FREE((void *)pstMode[0]);
     }
     else
     {
@@ -616,18 +617,28 @@ SciErr getProcessMode(void *_pvCtx, int _iPos, int *_piAddRef, int *_piMode)
     }
 
     if (iMode == ROW_LETTER || iMode == BY_ROWS)
+    {
         *_piMode = BY_ROWS;
+    }
     else if (iMode == COL_LETTER || iMode == BY_COLS)
+    {
         *_piMode = BY_COLS;
+    }
     else if (iMode == STAR_LETTER || iMode == BY_ALL)
+    {
         *_piMode = BY_ALL;
+    }
     else if (iMode == MTLB_LETTER || iMode == BY_MTLB)
     {
         *_piMode = 0;
         if (iRows1 > 1)
+        {
             *_piMode = 1;
+        }
         else if (iCols1 > 1)
+        {
             *_piMode = 2;
+        }
     }
     else
     {
@@ -1316,21 +1327,36 @@ int checkNamedVarFormat(void* _pvCtx, const char *_pstName)
     int iRet = 1;
 
     // check pointer
-    if (_pstName == NULL) iRet = 0;
+    if (_pstName == NULL)
+    {
+        iRet = 0;
+    }
 
     // check length _pstName =< nlgh
-    if ((strlen(_pstName) == 0 || strlen(_pstName) > nlgh)) iRet = 0;
+    if ((strlen(_pstName) == 0 || strlen(_pstName) > nlgh))
+    {
+        iRet = 0;
+    }
 
     // forbidden characters
-    if (strpbrk(_pstName, FORBIDDEN_CHARS) != NULL) iRet = 0;
+    if (strpbrk(_pstName, FORBIDDEN_CHARS) != NULL)
+    {
+        iRet = 0;
+    }
 
     // variable does not begin by a digit
-    if (isdigit(_pstName[0])) iRet = 0;
+    if (isdigit(_pstName[0]))
+    {
+        iRet = 0;
+    }
 
     // check that we have only ascii characters
     for (int i = 0; i < (int)strlen(_pstName); i++)
     {
-        if (!isascii(_pstName[i])) iRet = 0;
+        if (!isascii(_pstName[i]))
+        {
+            iRet = 0;
+        }
         break;
     }
 

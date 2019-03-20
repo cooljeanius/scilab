@@ -298,12 +298,15 @@ libscicore_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
 	-Wp,-I$(top_srcdir)/modules/preferences/includes/ \
 	-Wp,-I$(top_srcdir)/modules/external_objects/includes/ \
 	$(XML_FLAGS) \
-    $(AM_CPPFLAGS)
+	$(AM_CPPFLAGS)
+
+## Need to put this include in FFLAGS too, because fortran is different:
+libscicore_la_FFLAGS= -I$(top_srcdir)/modules/core/includes/
 
 # Used by sci_getdebuginfo:
 if TCLTK
 libscicore_la_CPPFLAGS += $(TCL_INC_PATH) \
-		                  $(TK_INC_PATH)
+		          $(TK_INC_PATH)
 endif
 
 if MAINTAINER_MODE
@@ -324,6 +327,7 @@ INCLUDE_FLAGS = $(libscicore_la_CPPFLAGS)
 libscicore_algo_la_SOURCES = $(CORE_C_SOURCES) $(CORE_CXX_SOURCES) $(CORE_FORTRAN_SOURCES)
 libscicore_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libscicore_algo_la_CPPFLAGS = $(libscicore_la_CPPFLAGS)
+libscicore_algo_la_FFLAGS = $(libscicore_la_FFLAGS)
 
 # Commented because it is easier to comment first the core module
 libscicore_la_LIBADD = libscicore-algo.la

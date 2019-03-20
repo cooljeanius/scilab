@@ -1,31 +1,32 @@
-dnl xorg-macros.m4.  Generated from xorg-macros.m4.in xorgversion.m4 by configure.
-dnl
-dnl Copyright (c) 2005, 2006, Oracle and/or its affiliates. All rights reserved.
-dnl 
-dnl Permission is hereby granted, free of charge, to any person obtaining a
-dnl copy of this software and associated documentation files (the "Software"),
-dnl to deal in the Software without restriction, including without limitation
-dnl the rights to use, copy, modify, merge, publish, distribute, sublicense,
-dnl and/or sell copies of the Software, and to permit persons to whom the
-dnl Software is furnished to do so, subject to the following conditions:
-dnl
-dnl The above copyright notice and this permission notice (including the next
-dnl paragraph) shall be included in all copies or substantial portions of the
-dnl Software.
-dnl
-dnl THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-dnl IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-dnl FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
-dnl THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-dnl LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-dnl FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-dnl DEALINGS IN THE SOFTWARE.
+dnl# xorg-macros.m4 serial 110
+dnl# Originally generated from xorg-macros.m4.in xorgversion.m4 by configure.
+dnl#
+dnl# Copyright (c) 2005-2006, Oracle and/or its affiliates. All rights reserved.
+dnl#
+dnl# Permission is hereby granted, free of charge, to any person obtaining a
+dnl# copy of this software and associated documentation files (the "Software"),
+dnl# to deal in the Software without restriction, including without limitation
+dnl# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+dnl# and/or sell copies of the Software, and to permit persons to whom the
+dnl# Software is furnished to do so, subject to the following conditions:
+dnl#
+dnl# The above copyright notice and this permission notice (including the next
+dnl# paragraph) shall be included in all copies or substantial portions of the
+dnl# Software.
+dnl#
+dnl# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+dnl# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+dnl# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+dnl# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+dnl# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+dnl# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+dnl# DEALINGS IN THE SOFTWARE.
 
 # XORG_MACROS_VERSION(required-version)
 # -------------------------------------
 # Minimum version: 1.1.0
 #
-# If you're using a macro added in Version 1.1 or newer, include this in
+# If you are using a macro added in Version 1.1 or newer, include this in
 # your configure.ac with the minimum required version, such as:
 # XORG_MACROS_VERSION(1.1)
 #
@@ -1553,8 +1554,8 @@ m4_foreach([flag], m4_cdr($@), [
 
 		PREFIX[FLAGS]="$PREFIX[FLAGS] ]flag["
 
-dnl Some hackery here since AC_CACHE_VAL can't handle a non-literal varname
-		AC_MSG_CHECKING([if ]COMPILER[ supports]flag[])
+dnl Some hackery here since AC_CACHE_VAL cannot handle a non-literal varname
+		AC_MSG_CHECKING([if ]COMPILER[ supports ]flag[])
 		cacheid=AS_TR_SH([xorg_cv_]CACHE_PREFIX[_flag_]flag[])
 		AC_CACHE_VAL($cacheid,
 			     [AC_LINK_IFELSE([AC_LANG_PROGRAM([int i;])],
@@ -1588,9 +1589,9 @@ dnl Some hackery here since AC_CACHE_VAL can't handle a non-literal varname
 AC_DEFUN([XORG_COMPILER_FLAGS], [
 AC_REQUIRE([XORG_COMPILER_BRAND])
 
-AC_ARG_ENABLE(selective-werror,
-              AS_HELP_STRING([--disable-selective-werror],
-                             [Turn off selective compiler errors. (default: enabled)]),
+AC_ARG_ENABLE([selective-werror],
+              [AS_HELP_STRING([--disable-selective-werror],
+                              [Turn off selective compiler errors. (default: enabled)])],
               [SELECTIVE_WERROR=$enableval],
               [SELECTIVE_WERROR=yes])
 
@@ -1637,15 +1638,15 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wredundant-decls])
 
 # These are currently disabled because they are noisy.  They will be enabled
 # in the future once the codebase is sufficiently modernized to silence
-# them.  For now, I don't want them to drown out the other warnings.
-# XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wlogical-op])
-# XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wparentheses])
-# XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wcast-align])
+# them.  For now, I do NOT want them to drown out the other warnings.
+dnl# XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wlogical-op])
+dnl# XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wparentheses])
+dnl# XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wcast-align])
 
-# Turn some warnings into errors, so we don't accidently get successful builds
+# Turn some warnings into errors, so we do NOT accidently get successful builds
 # when there are problems that should be fixed.
 
-if test "x$SELECTIVE_WERROR" = "xyes" ; then
+if test "x${SELECTIVE_WERROR}" = "xyes"; then
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=implicit], [-errwarn=E_NO_EXPLICIT_TYPE_GIVEN -errwarn=E_NO_IMPLICIT_DECL_ALLOWED])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=nonnull])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=init-self])
@@ -1657,8 +1658,22 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=trigraphs])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=array-bounds])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=write-strings])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=address])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=int-to-pointer-cast], [-errwarn=E_BAD_PTR_INT_COMBINATION])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=pointer-to-int-cast]) # Also -errwarn=E_BAD_PTR_INT_COMBINATION
+AC_REQUIRE([AC_TYPE_INTPTR_T])
+AC_REQUIRE([AC_TYPE_UINTPTR_T])
+if test "x${ac_cv_type_intptr_t}" = "xyes" -a "x${ac_cv_type_uintptr_t}" = "xyes"; then
+  if test -n "${ac_cv_sizeof_int}" -a -n "${ac_cv_sizeof_void_p}"; then
+    if test "x${ac_cv_sizeof_int}" != "x${ac_cv_sizeof_void_p}"; then
+      XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=int-to-pointer-cast], [-errwarn=E_BAD_PTR_INT_COMBINATION])
+      XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=pointer-to-int-cast]) # Also -errwarn=E_BAD_PTR_INT_COMBINATION
+    else
+      AC_MSG_NOTICE([pointers and ints are the same size so it is safe to cast between them; skipping check to see if we can error on warnings about them])
+    fi
+  else
+    AC_MSG_NOTICE([we need to know how big ints and pointers are to decide whether to error on warnings about casts between them])
+  fi
+else
+  AC_MSG_NOTICE([handling casts between pointers and integers and vice versa is easier when we have intptr_t and uintptr_t, so skipping erroring on such warnings due to missing types])
+fi
 else
 AC_MSG_WARN([You have chosen not to turn some select compiler warnings into errors.  This should not be necessary.  Please report why you needed to do so in a bug report at $PACKAGE_BUGREPORT])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wimplicit])

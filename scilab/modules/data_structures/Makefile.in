@@ -197,16 +197,26 @@ libscidata_structures_algo_la_LIBADD =
 am__objects_1 = src/c/libscidata_structures_algo_la-stcreate.lo \
 	src/c/libscidata_structures_algo_la-hmops.lo \
 	src/c/libscidata_structures_algo_la-strpos.lo
-am__objects_2 = src/fortran/extractfields.lo src/fortran/forcerhs.lo \
-	src/fortran/intl_i.lo src/fortran/lsstyp.lo \
-	src/fortran/udptr.lo src/fortran/followpath.lo \
-	src/fortran/rattyp.lo src/fortran/lstops.lo \
-	src/fortran/gratyp.lo src/fortran/mlist.lo \
-	src/fortran/insertfield.lo
+am__objects_2 =  \
+	src/fortran/libscidata_structures_algo_la-extractfields.lo \
+	src/fortran/libscidata_structures_algo_la-forcerhs.lo \
+	src/fortran/libscidata_structures_algo_la-intl_i.lo \
+	src/fortran/libscidata_structures_algo_la-lsstyp.lo \
+	src/fortran/libscidata_structures_algo_la-udptr.lo \
+	src/fortran/libscidata_structures_algo_la-followpath.lo \
+	src/fortran/libscidata_structures_algo_la-rattyp.lo \
+	src/fortran/libscidata_structures_algo_la-lstops.lo \
+	src/fortran/libscidata_structures_algo_la-gratyp.lo \
+	src/fortran/libscidata_structures_algo_la-mlist.lo \
+	src/fortran/libscidata_structures_algo_la-insertfield.lo
 am_libscidata_structures_algo_la_OBJECTS = $(am__objects_1) \
 	$(am__objects_2)
 libscidata_structures_algo_la_OBJECTS =  \
 	$(am_libscidata_structures_algo_la_OBJECTS)
+libscidata_structures_algo_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libscidata_structures_algo_la_FFLAGS) $(FFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 @MAINTAINER_MODE_FALSE@am_libscidata_structures_algo_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libscidata_structures_algo_la_rpath =
 libscidata_structures_la_DEPENDENCIES = libscidata_structures-algo.la \
@@ -224,16 +234,20 @@ am__objects_3 = sci_gateway/c/libscidata_structures_la-sci_lsslist.lo \
 	sci_gateway/c/libscidata_structures_la-sci_lstsize.lo \
 	sci_gateway/c/libscidata_structures_la-sci_rlist.lo \
 	sci_gateway/c/libscidata_structures_la-sci_tlist.lo
-am__objects_4 = sci_gateway/fortran/sci_f_definedfields.lo \
-	sci_gateway/fortran/sci_f_lstsize.lo \
-	sci_gateway/fortran/sci_f_setfield.lo \
-	sci_gateway/fortran/sci_f_getfield.lo \
-	sci_gateway/fortran/sci_f_lstcat.lo \
-	sci_gateway/fortran/sci_f_list.lo
+am__objects_4 = sci_gateway/fortran/libscidata_structures_la-sci_f_definedfields.lo \
+	sci_gateway/fortran/libscidata_structures_la-sci_f_lstsize.lo \
+	sci_gateway/fortran/libscidata_structures_la-sci_f_setfield.lo \
+	sci_gateway/fortran/libscidata_structures_la-sci_f_getfield.lo \
+	sci_gateway/fortran/libscidata_structures_la-sci_f_lstcat.lo \
+	sci_gateway/fortran/libscidata_structures_la-sci_f_list.lo
 am_libscidata_structures_la_OBJECTS = $(am__objects_3) \
 	$(am__objects_4)
 libscidata_structures_la_OBJECTS =  \
 	$(am_libscidata_structures_la_OBJECTS)
+libscidata_structures_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
+	$(libscidata_structures_la_FFLAGS) $(FFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
 @MAINTAINER_MODE_FALSE@am_libscidata_structures_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libscidata_structures_la_rpath = -rpath \
 @MAINTAINER_MODE_TRUE@	$(pkglibdir)
@@ -344,6 +358,8 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/Makefile.incl.am \
 	$(top_srcdir)/config/mkinstalldirs
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
+ADMIN_MAN_DIR = @ADMIN_MAN_DIR@
+ADMIN_MAN_SUFFIX = @ADMIN_MAN_SUFFIX@
 ALLOCA = @ALLOCA@
 ALL_LINGUAS = @ALL_LINGUAS@
 ALL_LINGUAS_DOC = @ALL_LINGUAS_DOC@
@@ -351,6 +367,8 @@ AMTAR = @AMTAR@
 AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
 ANT = @ANT@
 ANTLR = @ANTLR@
+APP_MAN_DIR = @APP_MAN_DIR@
+APP_MAN_SUFFIX = @APP_MAN_SUFFIX@
 AR = @AR@
 ARPACK_LIBS = @ARPACK_LIBS@
 AS = @AS@
@@ -372,6 +390,7 @@ CCASFLAGS = @CCASFLAGS@
 CCDEPMODE = @CCDEPMODE@
 CC_C_O = @CC_C_O@
 CFLAGS = @CFLAGS@
+CHANGELOG_CMD = @CHANGELOG_CMD@
 CHECKSTYLE = @CHECKSTYLE@
 CMAKE_BINARY = @CMAKE_BINARY@
 COBERTURA = @COBERTURA@
@@ -396,7 +415,10 @@ DOCBOOKPDF = @DOCBOOKPDF@
 DOCBOOKPS = @DOCBOOKPS@
 DOCBOOKTXT = @DOCBOOKTXT@
 DOCBOOK_ROOT = @DOCBOOK_ROOT@
+DOXYGEN = @DOXYGEN@
 DOXYGEN_PROG = @DOXYGEN_PROG@
+DRIVER_MAN_DIR = @DRIVER_MAN_DIR@
+DRIVER_MAN_SUFFIX = @DRIVER_MAN_SUFFIX@
 DSYMUTIL = @DSYMUTIL@
 DUMPBIN = @DUMPBIN@
 ECHO_C = @ECHO_C@
@@ -411,6 +433,8 @@ FFLAGS = @FFLAGS@
 FFTW3_LIB = @FFTW3_LIB@
 FFTW_ENABLE = @FFTW_ENABLE@
 FGREP = @FGREP@
+FILE_MAN_DIR = @FILE_MAN_DIR@
+FILE_MAN_SUFFIX = @FILE_MAN_SUFFIX@
 FLEXDOCK = @FLEXDOCK@
 FLIBS = @FLIBS@
 FOP = @FOP@
@@ -431,6 +455,7 @@ HDF5_LIBS = @HDF5_LIBS@
 HELP_ENABLE = @HELP_ENABLE@
 IF_GNU_MAKE = @IF_GNU_MAKE@
 INSTALL = @INSTALL@
+INSTALL_CMD = @INSTALL_CMD@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -473,6 +498,8 @@ LIBM = @LIBM@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
+LIB_MAN_DIR = @LIB_MAN_DIR@
+LIB_MAN_SUFFIX = @LIB_MAN_SUFFIX@
 LINT = @LINT@
 LINT_FLAGS = @LINT_FLAGS@
 LIPO = @LIPO@
@@ -492,9 +519,12 @@ MAKE_PS = @MAKE_PS@
 MAKE_TEXT = @MAKE_TEXT@
 MALLOC_ZERO_CFLAGS = @MALLOC_ZERO_CFLAGS@
 MANIFEST_TOOL = @MANIFEST_TOOL@
+MAN_SUBSTS = @MAN_SUBSTS@
 MATIO_CFLAGS = @MATIO_CFLAGS@
 MATIO_ENABLE = @MATIO_ENABLE@
 MATIO_LIBS = @MATIO_LIBS@
+MISC_MAN_DIR = @MISC_MAN_DIR@
+MISC_MAN_SUFFIX = @MISC_MAN_SUFFIX@
 MKDIR_P = @MKDIR_P@
 MSGCAT = @MSGCAT@
 MSGFMT = @MSGFMT@
@@ -536,6 +566,8 @@ PCRE_CONFIG = @PCRE_CONFIG@
 PCRE_LIBS = @PCRE_LIBS@
 PCRE_VERSION = @PCRE_VERSION@
 PKG_CONFIG = @PKG_CONFIG@
+PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
+PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
 POSUB = @POSUB@
 POW_LIB = @POW_LIB@
 PRE_PKG_CONFIG_PCRE_CFLAGS = @PRE_PKG_CONFIG_PCRE_CFLAGS@
@@ -580,6 +612,7 @@ SWIG_RUNTIME_LIBS_DIR = @SWIG_RUNTIME_LIBS_DIR@
 SW_VERS = @SW_VERS@
 TCLTK_LIBS = @TCLTK_LIBS@
 TCL_INC_PATH = @TCL_INC_PATH@
+TCL_LDFLAGS = @TCL_LDFLAGS@
 TK_INC_PATH = @TK_INC_PATH@
 UMFPACK_ENABLE = @UMFPACK_ENABLE@
 UMFPACK_LIB = @UMFPACK_LIB@
@@ -606,6 +639,7 @@ XML_FLAGS = @XML_FLAGS@
 XML_LIBS = @XML_LIBS@
 XML_VERSION = @XML_VERSION@
 XORG_MALLOC_DEBUG_ENV = @XORG_MALLOC_DEBUG_ENV@
+XORG_MAN_PAGE = @XORG_MAN_PAGE@
 XORG_SGML_PATH = @XORG_SGML_PATH@
 XSL_STYLESHEET = @XSL_STYLESHEET@
 XTMALLOC_ZERO_CFLAGS = @XTMALLOC_ZERO_CFLAGS@
@@ -654,6 +688,7 @@ host_os = @host_os@
 host_vendor = @host_vendor@
 htmldir = @htmldir@
 ifGNUmake = @ifGNUmake@
+ifnGNUmake = @ifnGNUmake@
 includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
@@ -723,23 +758,28 @@ sci_gateway/fortran/sci_f_list.f
 
 libscidata_structures_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
 -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+-Wp,-I$(top_srcdir)/modules/core/includes/ \
 -Wp,-I$(top_srcdir)/modules/localization/includes/ \
 -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
 -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
 -Wp,-I$(top_srcdir)/modules/string/includes/ \
 $(AM_CPPFLAGS)
 
+libscidata_structures_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 
 # FIXME: why disabling optimisation ? Any bug reference ?
 # Disable optimisation of the file intl_e.f
 noinst_LTLIBRARIES = libdummy-data_structures.la $(am__append_1) \
 	$(am__append_2)
 libdummy_data_structures_la_SOURCES = src/fortran/intl_e.f
-libdummy_data_structures_la_FFLAGS = $(AM_FFLAGS) $(FFLAGS) -O0
+libdummy_data_structures_la_FFLAGS = $(AM_FFLAGS) $(FFLAGS) -O0 \
+-I$(top_srcdir)/modules/core/includes/
+
 @MAINTAINER_MODE_TRUE@pkglib_LTLIBRARIES = libscidata_structures.la
 libscidata_structures_algo_la_SOURCES = $(DATA_STRUCTURES_C_SOURCES) $(DATA_STRUCTURES_FORTRAN_SOURCES)
 libscidata_structures_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libscidata_structures_algo_la_CPPFLAGS = $(libscidata_structures_la_CPPFLAGS)
+libscidata_structures_algo_la_FFLAGS = $(libscidata_structures_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC = $(DATA_STRUCTURES_C_SOURCES) $(GATEWAY_C_SOURCES)
@@ -937,31 +977,42 @@ src/c/libscidata_structures_algo_la-hmops.lo: src/c/$(am__dirstamp) \
 	src/c/$(DEPDIR)/$(am__dirstamp)
 src/c/libscidata_structures_algo_la-strpos.lo: src/c/$(am__dirstamp) \
 	src/c/$(DEPDIR)/$(am__dirstamp)
-src/fortran/extractfields.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidata_structures_algo_la-extractfields.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/forcerhs.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidata_structures_algo_la-forcerhs.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/intl_i.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidata_structures_algo_la-intl_i.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lsstyp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidata_structures_algo_la-lsstyp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/udptr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidata_structures_algo_la-udptr.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/followpath.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidata_structures_algo_la-followpath.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rattyp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidata_structures_algo_la-rattyp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lstops.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidata_structures_algo_la-lstops.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/gratyp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidata_structures_algo_la-gratyp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/mlist.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidata_structures_algo_la-mlist.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/insertfield.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidata_structures_algo_la-insertfield.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscidata_structures-algo.la: $(libscidata_structures_algo_la_OBJECTS) $(libscidata_structures_algo_la_DEPENDENCIES) $(EXTRA_libscidata_structures_algo_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libscidata_structures_algo_la_rpath) $(libscidata_structures_algo_la_OBJECTS) $(libscidata_structures_algo_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscidata_structures_algo_la_LINK) $(am_libscidata_structures_algo_la_rpath) $(libscidata_structures_algo_la_OBJECTS) $(libscidata_structures_algo_la_LIBADD) $(LIBS)
 sci_gateway/c/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/c
 	@: > sci_gateway/c/$(am__dirstamp)
@@ -1013,27 +1064,27 @@ sci_gateway/fortran/$(am__dirstamp):
 sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran/$(DEPDIR)
 	@: > sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_definedfields.lo:  \
+sci_gateway/fortran/libscidata_structures_la-sci_f_definedfields.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_lstsize.lo:  \
+sci_gateway/fortran/libscidata_structures_la-sci_f_lstsize.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_setfield.lo:  \
+sci_gateway/fortran/libscidata_structures_la-sci_f_setfield.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_getfield.lo:  \
+sci_gateway/fortran/libscidata_structures_la-sci_f_getfield.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_lstcat.lo:  \
+sci_gateway/fortran/libscidata_structures_la-sci_f_lstcat.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_list.lo:  \
+sci_gateway/fortran/libscidata_structures_la-sci_f_list.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscidata_structures.la: $(libscidata_structures_la_OBJECTS) $(libscidata_structures_la_DEPENDENCIES) $(EXTRA_libscidata_structures_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libscidata_structures_la_rpath) $(libscidata_structures_la_OBJECTS) $(libscidata_structures_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscidata_structures_la_LINK) $(am_libscidata_structures_la_rpath) $(libscidata_structures_la_OBJECTS) $(libscidata_structures_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -1219,6 +1270,57 @@ sci_gateway/c/libscidata_structures_la-sci_tlist.lo: sci_gateway/c/sci_tlist.c
 
 src/fortran/libdummy_data_structures_la-intl_e.lo: src/fortran/intl_e.f
 	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libdummy_data_structures_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libdummy_data_structures_la-intl_e.lo `test -f 'src/fortran/intl_e.f' || echo '$(srcdir)/'`src/fortran/intl_e.f
+
+src/fortran/libscidata_structures_algo_la-extractfields.lo: src/fortran/extractfields.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidata_structures_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidata_structures_algo_la-extractfields.lo `test -f 'src/fortran/extractfields.f' || echo '$(srcdir)/'`src/fortran/extractfields.f
+
+src/fortran/libscidata_structures_algo_la-forcerhs.lo: src/fortran/forcerhs.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidata_structures_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidata_structures_algo_la-forcerhs.lo `test -f 'src/fortran/forcerhs.f' || echo '$(srcdir)/'`src/fortran/forcerhs.f
+
+src/fortran/libscidata_structures_algo_la-intl_i.lo: src/fortran/intl_i.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidata_structures_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidata_structures_algo_la-intl_i.lo `test -f 'src/fortran/intl_i.f' || echo '$(srcdir)/'`src/fortran/intl_i.f
+
+src/fortran/libscidata_structures_algo_la-lsstyp.lo: src/fortran/lsstyp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidata_structures_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidata_structures_algo_la-lsstyp.lo `test -f 'src/fortran/lsstyp.f' || echo '$(srcdir)/'`src/fortran/lsstyp.f
+
+src/fortran/libscidata_structures_algo_la-udptr.lo: src/fortran/udptr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidata_structures_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidata_structures_algo_la-udptr.lo `test -f 'src/fortran/udptr.f' || echo '$(srcdir)/'`src/fortran/udptr.f
+
+src/fortran/libscidata_structures_algo_la-followpath.lo: src/fortran/followpath.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidata_structures_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidata_structures_algo_la-followpath.lo `test -f 'src/fortran/followpath.f' || echo '$(srcdir)/'`src/fortran/followpath.f
+
+src/fortran/libscidata_structures_algo_la-rattyp.lo: src/fortran/rattyp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidata_structures_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidata_structures_algo_la-rattyp.lo `test -f 'src/fortran/rattyp.f' || echo '$(srcdir)/'`src/fortran/rattyp.f
+
+src/fortran/libscidata_structures_algo_la-lstops.lo: src/fortran/lstops.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidata_structures_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidata_structures_algo_la-lstops.lo `test -f 'src/fortran/lstops.f' || echo '$(srcdir)/'`src/fortran/lstops.f
+
+src/fortran/libscidata_structures_algo_la-gratyp.lo: src/fortran/gratyp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidata_structures_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidata_structures_algo_la-gratyp.lo `test -f 'src/fortran/gratyp.f' || echo '$(srcdir)/'`src/fortran/gratyp.f
+
+src/fortran/libscidata_structures_algo_la-mlist.lo: src/fortran/mlist.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidata_structures_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidata_structures_algo_la-mlist.lo `test -f 'src/fortran/mlist.f' || echo '$(srcdir)/'`src/fortran/mlist.f
+
+src/fortran/libscidata_structures_algo_la-insertfield.lo: src/fortran/insertfield.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidata_structures_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidata_structures_algo_la-insertfield.lo `test -f 'src/fortran/insertfield.f' || echo '$(srcdir)/'`src/fortran/insertfield.f
+
+sci_gateway/fortran/libscidata_structures_la-sci_f_definedfields.lo: sci_gateway/fortran/sci_f_definedfields.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidata_structures_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidata_structures_la-sci_f_definedfields.lo `test -f 'sci_gateway/fortran/sci_f_definedfields.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_definedfields.f
+
+sci_gateway/fortran/libscidata_structures_la-sci_f_lstsize.lo: sci_gateway/fortran/sci_f_lstsize.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidata_structures_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidata_structures_la-sci_f_lstsize.lo `test -f 'sci_gateway/fortran/sci_f_lstsize.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_lstsize.f
+
+sci_gateway/fortran/libscidata_structures_la-sci_f_setfield.lo: sci_gateway/fortran/sci_f_setfield.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidata_structures_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidata_structures_la-sci_f_setfield.lo `test -f 'sci_gateway/fortran/sci_f_setfield.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_setfield.f
+
+sci_gateway/fortran/libscidata_structures_la-sci_f_getfield.lo: sci_gateway/fortran/sci_f_getfield.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidata_structures_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidata_structures_la-sci_f_getfield.lo `test -f 'sci_gateway/fortran/sci_f_getfield.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_getfield.f
+
+sci_gateway/fortran/libscidata_structures_la-sci_f_lstcat.lo: sci_gateway/fortran/sci_f_lstcat.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidata_structures_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidata_structures_la-sci_f_lstcat.lo `test -f 'sci_gateway/fortran/sci_f_lstcat.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_lstcat.f
+
+sci_gateway/fortran/libscidata_structures_la-sci_f_list.lo: sci_gateway/fortran/sci_f_list.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidata_structures_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidata_structures_la-sci_f_list.lo `test -f 'sci_gateway/fortran/sci_f_list.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_list.f
 
 mostlyclean-libtool:
 	-rm -f *.lo

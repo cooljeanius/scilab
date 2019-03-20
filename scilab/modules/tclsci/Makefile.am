@@ -47,7 +47,7 @@ endif
 pkglib_LTLIBRARIES = libscitclsci.la
 noinst_LTLIBRARIES = libscitclsci-algo.la
 
-libscitclsci_la_LDFLAGS = $(TCLTK_LIBS) $(AM_LDFLAGS)
+libscitclsci_la_LDFLAGS = $(TCLTK_LIBS) $(AM_LDFLAGS) $(TCL_LDFLAGS)
 
 libscitclsci_la_CPPFLAGS= -Wp,-I$(srcdir)/includes/ \
 			  -Wp,-I$(srcdir)/src/c \

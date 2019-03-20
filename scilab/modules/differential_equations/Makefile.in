@@ -192,33 +192,63 @@ am__objects_1 = src/c/libscidifferential_equations_algo_la-dassl.lo \
 	src/c/libscidifferential_equations_algo_la-dassltable.lo \
 	src/c/libscidifferential_equations_algo_la-arnol.lo \
 	src/c/libscidifferential_equations_algo_la-rk4.lo
-am__objects_2 = src/fortran/rscar1.lo src/fortran/bcomp.lo \
-	src/fortran/lcomp.lo src/fortran/loren.lo src/fortran/prja.lo \
-	src/fortran/vnorm.lo src/fortran/lsoda.lo \
-	src/fortran/lsodar.lo src/fortran/ainvg.lo \
-	src/fortran/lsode.lo src/fortran/svcom1.lo \
-	src/fortran/quarul.lo src/fortran/solsy.lo \
-	src/fortran/lsodi.lo src/fortran/ddassl.lo \
-	src/fortran/order.lo src/fortran/epsalg.lo \
-	src/fortran/cfode.lo src/fortran/rscma1.lo \
-	src/fortran/colnew.lo src/fortran/dcutet.lo \
-	src/fortran/xsetf.lo src/fortran/dgbsl.lo src/fortran/rkf45.lo \
-	src/fortran/rchek.lo src/fortran/dqag0.lo \
-	src/fortran/xerrwv.lo src/fortran/twodq.lo \
-	src/fortran/dqags.lo src/fortran/greatr.lo \
-	src/fortran/hpdel.lo src/fortran/hpins.lo \
-	src/fortran/svcar1.lo src/fortran/rscom1.lo \
-	src/fortran/rksimp.lo src/fortran/roots.lo \
-	src/fortran/stoda.lo src/fortran/bnorm.lo \
-	src/fortran/rchek2.lo src/fortran/stode.lo \
-	src/fortran/vmnorm.lo src/fortran/prepj.lo \
-	src/fortran/lsdisc.lo src/fortran/fnorm.lo \
-	src/fortran/ddasrt.lo src/fortran/stodi.lo \
-	src/fortran/xsetun.lo src/fortran/intdy.lo \
-	src/fortran/ewset.lo src/fortran/roots2.lo \
-	src/fortran/prepji.lo src/fortran/svcma1.lo \
-	src/fortran/lsrgk.lo src/fortran/odeint.lo src/fortran/rkqc.lo \
-	src/fortran/writbufode.lo
+am__objects_2 =  \
+	src/fortran/libscidifferential_equations_algo_la-rscar1.lo \
+	src/fortran/libscidifferential_equations_algo_la-bcomp.lo \
+	src/fortran/libscidifferential_equations_algo_la-lcomp.lo \
+	src/fortran/libscidifferential_equations_algo_la-loren.lo \
+	src/fortran/libscidifferential_equations_algo_la-prja.lo \
+	src/fortran/libscidifferential_equations_algo_la-vnorm.lo \
+	src/fortran/libscidifferential_equations_algo_la-lsoda.lo \
+	src/fortran/libscidifferential_equations_algo_la-lsodar.lo \
+	src/fortran/libscidifferential_equations_algo_la-ainvg.lo \
+	src/fortran/libscidifferential_equations_algo_la-lsode.lo \
+	src/fortran/libscidifferential_equations_algo_la-svcom1.lo \
+	src/fortran/libscidifferential_equations_algo_la-quarul.lo \
+	src/fortran/libscidifferential_equations_algo_la-solsy.lo \
+	src/fortran/libscidifferential_equations_algo_la-lsodi.lo \
+	src/fortran/libscidifferential_equations_algo_la-ddassl.lo \
+	src/fortran/libscidifferential_equations_algo_la-order.lo \
+	src/fortran/libscidifferential_equations_algo_la-epsalg.lo \
+	src/fortran/libscidifferential_equations_algo_la-cfode.lo \
+	src/fortran/libscidifferential_equations_algo_la-rscma1.lo \
+	src/fortran/libscidifferential_equations_algo_la-colnew.lo \
+	src/fortran/libscidifferential_equations_algo_la-dcutet.lo \
+	src/fortran/libscidifferential_equations_algo_la-xsetf.lo \
+	src/fortran/libscidifferential_equations_algo_la-dgbsl.lo \
+	src/fortran/libscidifferential_equations_algo_la-rkf45.lo \
+	src/fortran/libscidifferential_equations_algo_la-rchek.lo \
+	src/fortran/libscidifferential_equations_algo_la-dqag0.lo \
+	src/fortran/libscidifferential_equations_algo_la-xerrwv.lo \
+	src/fortran/libscidifferential_equations_algo_la-twodq.lo \
+	src/fortran/libscidifferential_equations_algo_la-dqags.lo \
+	src/fortran/libscidifferential_equations_algo_la-greatr.lo \
+	src/fortran/libscidifferential_equations_algo_la-hpdel.lo \
+	src/fortran/libscidifferential_equations_algo_la-hpins.lo \
+	src/fortran/libscidifferential_equations_algo_la-svcar1.lo \
+	src/fortran/libscidifferential_equations_algo_la-rscom1.lo \
+	src/fortran/libscidifferential_equations_algo_la-rksimp.lo \
+	src/fortran/libscidifferential_equations_algo_la-roots.lo \
+	src/fortran/libscidifferential_equations_algo_la-stoda.lo \
+	src/fortran/libscidifferential_equations_algo_la-bnorm.lo \
+	src/fortran/libscidifferential_equations_algo_la-rchek2.lo \
+	src/fortran/libscidifferential_equations_algo_la-stode.lo \
+	src/fortran/libscidifferential_equations_algo_la-vmnorm.lo \
+	src/fortran/libscidifferential_equations_algo_la-prepj.lo \
+	src/fortran/libscidifferential_equations_algo_la-lsdisc.lo \
+	src/fortran/libscidifferential_equations_algo_la-fnorm.lo \
+	src/fortran/libscidifferential_equations_algo_la-ddasrt.lo \
+	src/fortran/libscidifferential_equations_algo_la-stodi.lo \
+	src/fortran/libscidifferential_equations_algo_la-xsetun.lo \
+	src/fortran/libscidifferential_equations_algo_la-intdy.lo \
+	src/fortran/libscidifferential_equations_algo_la-ewset.lo \
+	src/fortran/libscidifferential_equations_algo_la-roots2.lo \
+	src/fortran/libscidifferential_equations_algo_la-prepji.lo \
+	src/fortran/libscidifferential_equations_algo_la-svcma1.lo \
+	src/fortran/libscidifferential_equations_algo_la-lsrgk.lo \
+	src/fortran/libscidifferential_equations_algo_la-odeint.lo \
+	src/fortran/libscidifferential_equations_algo_la-rkqc.lo \
+	src/fortran/libscidifferential_equations_algo_la-writbufode.lo
 am_libscidifferential_equations_algo_la_OBJECTS = $(am__objects_1) \
 	$(am__objects_2)
 libscidifferential_equations_algo_la_OBJECTS =  \
@@ -227,6 +257,10 @@ AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+libscidifferential_equations_algo_la_LINK = $(LIBTOOL) $(AM_V_lt) \
+	--tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link \
+	$(F77LD) $(libscidifferential_equations_algo_la_FFLAGS) \
+	$(FFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 @MAINTAINER_MODE_FALSE@am_libscidifferential_equations_algo_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libscidifferential_equations_algo_la_rpath =
 libscidifferential_equations_la_DEPENDENCIES =  \
@@ -403,6 +437,8 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/Makefile.incl.am \
 	$(top_srcdir)/config/mkinstalldirs
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
+ADMIN_MAN_DIR = @ADMIN_MAN_DIR@
+ADMIN_MAN_SUFFIX = @ADMIN_MAN_SUFFIX@
 ALLOCA = @ALLOCA@
 ALL_LINGUAS = @ALL_LINGUAS@
 ALL_LINGUAS_DOC = @ALL_LINGUAS_DOC@
@@ -410,6 +446,8 @@ AMTAR = @AMTAR@
 AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
 ANT = @ANT@
 ANTLR = @ANTLR@
+APP_MAN_DIR = @APP_MAN_DIR@
+APP_MAN_SUFFIX = @APP_MAN_SUFFIX@
 AR = @AR@
 ARPACK_LIBS = @ARPACK_LIBS@
 AS = @AS@
@@ -431,6 +469,7 @@ CCASFLAGS = @CCASFLAGS@
 CCDEPMODE = @CCDEPMODE@
 CC_C_O = @CC_C_O@
 CFLAGS = @CFLAGS@
+CHANGELOG_CMD = @CHANGELOG_CMD@
 CHECKSTYLE = @CHECKSTYLE@
 CMAKE_BINARY = @CMAKE_BINARY@
 COBERTURA = @COBERTURA@
@@ -455,7 +494,10 @@ DOCBOOKPDF = @DOCBOOKPDF@
 DOCBOOKPS = @DOCBOOKPS@
 DOCBOOKTXT = @DOCBOOKTXT@
 DOCBOOK_ROOT = @DOCBOOK_ROOT@
+DOXYGEN = @DOXYGEN@
 DOXYGEN_PROG = @DOXYGEN_PROG@
+DRIVER_MAN_DIR = @DRIVER_MAN_DIR@
+DRIVER_MAN_SUFFIX = @DRIVER_MAN_SUFFIX@
 DSYMUTIL = @DSYMUTIL@
 DUMPBIN = @DUMPBIN@
 ECHO_C = @ECHO_C@
@@ -470,6 +512,8 @@ FFLAGS = @FFLAGS@
 FFTW3_LIB = @FFTW3_LIB@
 FFTW_ENABLE = @FFTW_ENABLE@
 FGREP = @FGREP@
+FILE_MAN_DIR = @FILE_MAN_DIR@
+FILE_MAN_SUFFIX = @FILE_MAN_SUFFIX@
 FLEXDOCK = @FLEXDOCK@
 FLIBS = @FLIBS@
 FOP = @FOP@
@@ -490,6 +534,7 @@ HDF5_LIBS = @HDF5_LIBS@
 HELP_ENABLE = @HELP_ENABLE@
 IF_GNU_MAKE = @IF_GNU_MAKE@
 INSTALL = @INSTALL@
+INSTALL_CMD = @INSTALL_CMD@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -532,6 +577,8 @@ LIBM = @LIBM@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
+LIB_MAN_DIR = @LIB_MAN_DIR@
+LIB_MAN_SUFFIX = @LIB_MAN_SUFFIX@
 LINT = @LINT@
 LINT_FLAGS = @LINT_FLAGS@
 LIPO = @LIPO@
@@ -551,9 +598,12 @@ MAKE_PS = @MAKE_PS@
 MAKE_TEXT = @MAKE_TEXT@
 MALLOC_ZERO_CFLAGS = @MALLOC_ZERO_CFLAGS@
 MANIFEST_TOOL = @MANIFEST_TOOL@
+MAN_SUBSTS = @MAN_SUBSTS@
 MATIO_CFLAGS = @MATIO_CFLAGS@
 MATIO_ENABLE = @MATIO_ENABLE@
 MATIO_LIBS = @MATIO_LIBS@
+MISC_MAN_DIR = @MISC_MAN_DIR@
+MISC_MAN_SUFFIX = @MISC_MAN_SUFFIX@
 MKDIR_P = @MKDIR_P@
 MSGCAT = @MSGCAT@
 MSGFMT = @MSGFMT@
@@ -595,6 +645,8 @@ PCRE_CONFIG = @PCRE_CONFIG@
 PCRE_LIBS = @PCRE_LIBS@
 PCRE_VERSION = @PCRE_VERSION@
 PKG_CONFIG = @PKG_CONFIG@
+PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
+PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
 POSUB = @POSUB@
 POW_LIB = @POW_LIB@
 PRE_PKG_CONFIG_PCRE_CFLAGS = @PRE_PKG_CONFIG_PCRE_CFLAGS@
@@ -639,6 +691,7 @@ SWIG_RUNTIME_LIBS_DIR = @SWIG_RUNTIME_LIBS_DIR@
 SW_VERS = @SW_VERS@
 TCLTK_LIBS = @TCLTK_LIBS@
 TCL_INC_PATH = @TCL_INC_PATH@
+TCL_LDFLAGS = @TCL_LDFLAGS@
 TK_INC_PATH = @TK_INC_PATH@
 UMFPACK_ENABLE = @UMFPACK_ENABLE@
 UMFPACK_LIB = @UMFPACK_LIB@
@@ -665,6 +718,7 @@ XML_FLAGS = @XML_FLAGS@
 XML_LIBS = @XML_LIBS@
 XML_VERSION = @XML_VERSION@
 XORG_MALLOC_DEBUG_ENV = @XORG_MALLOC_DEBUG_ENV@
+XORG_MAN_PAGE = @XORG_MAN_PAGE@
 XORG_SGML_PATH = @XORG_SGML_PATH@
 XSL_STYLESHEET = @XSL_STYLESHEET@
 XTMALLOC_ZERO_CFLAGS = @XTMALLOC_ZERO_CFLAGS@
@@ -713,6 +767,7 @@ host_os = @host_os@
 host_vendor = @host_vendor@
 htmldir = @htmldir@
 ifGNUmake = @ifGNUmake@
+ifnGNUmake = @ifnGNUmake@
 includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
@@ -881,6 +936,7 @@ libscidifferential_equations_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 libscidifferential_equations_algo_la_SOURCES = $(DIFFERENTIAL_EQUATIONS_C_SOURCES) $(DIFFERENTIAL_EQUATIONS_FORTRAN_SOURCES)
 libscidifferential_equations_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libscidifferential_equations_algo_la_CPPFLAGS = $(libscidifferential_equations_la_CPPFLAGS)
+libscidifferential_equations_algo_la_FFLAGS = $(libscidifferential_equations_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC = $(DIFFERENTIAL_EQUATIONS_C_SOURCES) $(GATEWAY_C_SOURCES)
@@ -1092,121 +1148,177 @@ src/fortran/$(am__dirstamp):
 src/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/fortran/$(DEPDIR)
 	@: > src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rscar1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-rscar1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/bcomp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-bcomp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lcomp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-lcomp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/loren.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-loren.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/prja.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-prja.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/vnorm.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-vnorm.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lsoda.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-lsoda.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lsodar.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-lsodar.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ainvg.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-ainvg.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lsode.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-lsode.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/svcom1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-svcom1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/quarul.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-quarul.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/solsy.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-solsy.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lsodi.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-lsodi.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ddassl.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-ddassl.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/order.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-order.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/epsalg.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-epsalg.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/cfode.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-cfode.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rscma1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-rscma1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/colnew.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-colnew.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dcutet.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-dcutet.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/xsetf.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-xsetf.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dgbsl.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-dgbsl.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rkf45.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-rkf45.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rchek.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-rchek.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dqag0.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-dqag0.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/xerrwv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-xerrwv.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/twodq.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-twodq.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dqags.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-dqags.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/greatr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-greatr.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/hpdel.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-hpdel.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/hpins.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-hpins.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/svcar1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-svcar1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rscom1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-rscom1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rksimp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-rksimp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/roots.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-roots.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/stoda.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-stoda.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/bnorm.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-bnorm.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rchek2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-rchek2.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/stode.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-stode.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/vmnorm.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-vmnorm.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/prepj.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-prepj.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lsdisc.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-lsdisc.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/fnorm.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-fnorm.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ddasrt.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-ddasrt.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/stodi.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-stodi.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/xsetun.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-xsetun.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/intdy.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-intdy.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ewset.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-ewset.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/roots2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-roots2.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/prepji.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-prepji.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/svcma1.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-svcma1.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lsrgk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-lsrgk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/odeint.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-odeint.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rkqc.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-rkqc.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/writbufode.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscidifferential_equations_algo_la-writbufode.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscidifferential_equations-algo.la: $(libscidifferential_equations_algo_la_OBJECTS) $(libscidifferential_equations_algo_la_DEPENDENCIES) $(EXTRA_libscidifferential_equations_algo_la_DEPENDENCIES) 
-	$(AM_V_F77LD)$(F77LINK) $(am_libscidifferential_equations_algo_la_rpath) $(libscidifferential_equations_algo_la_OBJECTS) $(libscidifferential_equations_algo_la_LIBADD) $(LIBS)
+	$(AM_V_F77LD)$(libscidifferential_equations_algo_la_LINK) $(am_libscidifferential_equations_algo_la_rpath) $(libscidifferential_equations_algo_la_OBJECTS) $(libscidifferential_equations_algo_la_LIBADD) $(LIBS)
 sci_gateway/c/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/c
 	@: > sci_gateway/c/$(am__dirstamp)
@@ -1614,6 +1726,174 @@ sci_gateway/c/libscidifferential_equations_la-gw_differential_equations6.lo: sci
 
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
+
+src/fortran/libscidifferential_equations_algo_la-rscar1.lo: src/fortran/rscar1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-rscar1.lo `test -f 'src/fortran/rscar1.f' || echo '$(srcdir)/'`src/fortran/rscar1.f
+
+src/fortran/libscidifferential_equations_algo_la-bcomp.lo: src/fortran/bcomp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-bcomp.lo `test -f 'src/fortran/bcomp.f' || echo '$(srcdir)/'`src/fortran/bcomp.f
+
+src/fortran/libscidifferential_equations_algo_la-lcomp.lo: src/fortran/lcomp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-lcomp.lo `test -f 'src/fortran/lcomp.f' || echo '$(srcdir)/'`src/fortran/lcomp.f
+
+src/fortran/libscidifferential_equations_algo_la-loren.lo: src/fortran/loren.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-loren.lo `test -f 'src/fortran/loren.f' || echo '$(srcdir)/'`src/fortran/loren.f
+
+src/fortran/libscidifferential_equations_algo_la-prja.lo: src/fortran/prja.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-prja.lo `test -f 'src/fortran/prja.f' || echo '$(srcdir)/'`src/fortran/prja.f
+
+src/fortran/libscidifferential_equations_algo_la-vnorm.lo: src/fortran/vnorm.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-vnorm.lo `test -f 'src/fortran/vnorm.f' || echo '$(srcdir)/'`src/fortran/vnorm.f
+
+src/fortran/libscidifferential_equations_algo_la-lsoda.lo: src/fortran/lsoda.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-lsoda.lo `test -f 'src/fortran/lsoda.f' || echo '$(srcdir)/'`src/fortran/lsoda.f
+
+src/fortran/libscidifferential_equations_algo_la-lsodar.lo: src/fortran/lsodar.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-lsodar.lo `test -f 'src/fortran/lsodar.f' || echo '$(srcdir)/'`src/fortran/lsodar.f
+
+src/fortran/libscidifferential_equations_algo_la-ainvg.lo: src/fortran/ainvg.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-ainvg.lo `test -f 'src/fortran/ainvg.f' || echo '$(srcdir)/'`src/fortran/ainvg.f
+
+src/fortran/libscidifferential_equations_algo_la-lsode.lo: src/fortran/lsode.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-lsode.lo `test -f 'src/fortran/lsode.f' || echo '$(srcdir)/'`src/fortran/lsode.f
+
+src/fortran/libscidifferential_equations_algo_la-svcom1.lo: src/fortran/svcom1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-svcom1.lo `test -f 'src/fortran/svcom1.f' || echo '$(srcdir)/'`src/fortran/svcom1.f
+
+src/fortran/libscidifferential_equations_algo_la-quarul.lo: src/fortran/quarul.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-quarul.lo `test -f 'src/fortran/quarul.f' || echo '$(srcdir)/'`src/fortran/quarul.f
+
+src/fortran/libscidifferential_equations_algo_la-solsy.lo: src/fortran/solsy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-solsy.lo `test -f 'src/fortran/solsy.f' || echo '$(srcdir)/'`src/fortran/solsy.f
+
+src/fortran/libscidifferential_equations_algo_la-lsodi.lo: src/fortran/lsodi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-lsodi.lo `test -f 'src/fortran/lsodi.f' || echo '$(srcdir)/'`src/fortran/lsodi.f
+
+src/fortran/libscidifferential_equations_algo_la-ddassl.lo: src/fortran/ddassl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-ddassl.lo `test -f 'src/fortran/ddassl.f' || echo '$(srcdir)/'`src/fortran/ddassl.f
+
+src/fortran/libscidifferential_equations_algo_la-order.lo: src/fortran/order.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-order.lo `test -f 'src/fortran/order.f' || echo '$(srcdir)/'`src/fortran/order.f
+
+src/fortran/libscidifferential_equations_algo_la-epsalg.lo: src/fortran/epsalg.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-epsalg.lo `test -f 'src/fortran/epsalg.f' || echo '$(srcdir)/'`src/fortran/epsalg.f
+
+src/fortran/libscidifferential_equations_algo_la-cfode.lo: src/fortran/cfode.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-cfode.lo `test -f 'src/fortran/cfode.f' || echo '$(srcdir)/'`src/fortran/cfode.f
+
+src/fortran/libscidifferential_equations_algo_la-rscma1.lo: src/fortran/rscma1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-rscma1.lo `test -f 'src/fortran/rscma1.f' || echo '$(srcdir)/'`src/fortran/rscma1.f
+
+src/fortran/libscidifferential_equations_algo_la-colnew.lo: src/fortran/colnew.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-colnew.lo `test -f 'src/fortran/colnew.f' || echo '$(srcdir)/'`src/fortran/colnew.f
+
+src/fortran/libscidifferential_equations_algo_la-dcutet.lo: src/fortran/dcutet.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-dcutet.lo `test -f 'src/fortran/dcutet.f' || echo '$(srcdir)/'`src/fortran/dcutet.f
+
+src/fortran/libscidifferential_equations_algo_la-xsetf.lo: src/fortran/xsetf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-xsetf.lo `test -f 'src/fortran/xsetf.f' || echo '$(srcdir)/'`src/fortran/xsetf.f
+
+src/fortran/libscidifferential_equations_algo_la-dgbsl.lo: src/fortran/dgbsl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-dgbsl.lo `test -f 'src/fortran/dgbsl.f' || echo '$(srcdir)/'`src/fortran/dgbsl.f
+
+src/fortran/libscidifferential_equations_algo_la-rkf45.lo: src/fortran/rkf45.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-rkf45.lo `test -f 'src/fortran/rkf45.f' || echo '$(srcdir)/'`src/fortran/rkf45.f
+
+src/fortran/libscidifferential_equations_algo_la-rchek.lo: src/fortran/rchek.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-rchek.lo `test -f 'src/fortran/rchek.f' || echo '$(srcdir)/'`src/fortran/rchek.f
+
+src/fortran/libscidifferential_equations_algo_la-dqag0.lo: src/fortran/dqag0.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-dqag0.lo `test -f 'src/fortran/dqag0.f' || echo '$(srcdir)/'`src/fortran/dqag0.f
+
+src/fortran/libscidifferential_equations_algo_la-xerrwv.lo: src/fortran/xerrwv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-xerrwv.lo `test -f 'src/fortran/xerrwv.f' || echo '$(srcdir)/'`src/fortran/xerrwv.f
+
+src/fortran/libscidifferential_equations_algo_la-twodq.lo: src/fortran/twodq.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-twodq.lo `test -f 'src/fortran/twodq.f' || echo '$(srcdir)/'`src/fortran/twodq.f
+
+src/fortran/libscidifferential_equations_algo_la-dqags.lo: src/fortran/dqags.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-dqags.lo `test -f 'src/fortran/dqags.f' || echo '$(srcdir)/'`src/fortran/dqags.f
+
+src/fortran/libscidifferential_equations_algo_la-greatr.lo: src/fortran/greatr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-greatr.lo `test -f 'src/fortran/greatr.f' || echo '$(srcdir)/'`src/fortran/greatr.f
+
+src/fortran/libscidifferential_equations_algo_la-hpdel.lo: src/fortran/hpdel.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-hpdel.lo `test -f 'src/fortran/hpdel.f' || echo '$(srcdir)/'`src/fortran/hpdel.f
+
+src/fortran/libscidifferential_equations_algo_la-hpins.lo: src/fortran/hpins.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-hpins.lo `test -f 'src/fortran/hpins.f' || echo '$(srcdir)/'`src/fortran/hpins.f
+
+src/fortran/libscidifferential_equations_algo_la-svcar1.lo: src/fortran/svcar1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-svcar1.lo `test -f 'src/fortran/svcar1.f' || echo '$(srcdir)/'`src/fortran/svcar1.f
+
+src/fortran/libscidifferential_equations_algo_la-rscom1.lo: src/fortran/rscom1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-rscom1.lo `test -f 'src/fortran/rscom1.f' || echo '$(srcdir)/'`src/fortran/rscom1.f
+
+src/fortran/libscidifferential_equations_algo_la-rksimp.lo: src/fortran/rksimp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-rksimp.lo `test -f 'src/fortran/rksimp.f' || echo '$(srcdir)/'`src/fortran/rksimp.f
+
+src/fortran/libscidifferential_equations_algo_la-roots.lo: src/fortran/roots.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-roots.lo `test -f 'src/fortran/roots.f' || echo '$(srcdir)/'`src/fortran/roots.f
+
+src/fortran/libscidifferential_equations_algo_la-stoda.lo: src/fortran/stoda.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-stoda.lo `test -f 'src/fortran/stoda.f' || echo '$(srcdir)/'`src/fortran/stoda.f
+
+src/fortran/libscidifferential_equations_algo_la-bnorm.lo: src/fortran/bnorm.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-bnorm.lo `test -f 'src/fortran/bnorm.f' || echo '$(srcdir)/'`src/fortran/bnorm.f
+
+src/fortran/libscidifferential_equations_algo_la-rchek2.lo: src/fortran/rchek2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-rchek2.lo `test -f 'src/fortran/rchek2.f' || echo '$(srcdir)/'`src/fortran/rchek2.f
+
+src/fortran/libscidifferential_equations_algo_la-stode.lo: src/fortran/stode.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-stode.lo `test -f 'src/fortran/stode.f' || echo '$(srcdir)/'`src/fortran/stode.f
+
+src/fortran/libscidifferential_equations_algo_la-vmnorm.lo: src/fortran/vmnorm.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-vmnorm.lo `test -f 'src/fortran/vmnorm.f' || echo '$(srcdir)/'`src/fortran/vmnorm.f
+
+src/fortran/libscidifferential_equations_algo_la-prepj.lo: src/fortran/prepj.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-prepj.lo `test -f 'src/fortran/prepj.f' || echo '$(srcdir)/'`src/fortran/prepj.f
+
+src/fortran/libscidifferential_equations_algo_la-lsdisc.lo: src/fortran/lsdisc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-lsdisc.lo `test -f 'src/fortran/lsdisc.f' || echo '$(srcdir)/'`src/fortran/lsdisc.f
+
+src/fortran/libscidifferential_equations_algo_la-fnorm.lo: src/fortran/fnorm.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-fnorm.lo `test -f 'src/fortran/fnorm.f' || echo '$(srcdir)/'`src/fortran/fnorm.f
+
+src/fortran/libscidifferential_equations_algo_la-ddasrt.lo: src/fortran/ddasrt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-ddasrt.lo `test -f 'src/fortran/ddasrt.f' || echo '$(srcdir)/'`src/fortran/ddasrt.f
+
+src/fortran/libscidifferential_equations_algo_la-stodi.lo: src/fortran/stodi.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-stodi.lo `test -f 'src/fortran/stodi.f' || echo '$(srcdir)/'`src/fortran/stodi.f
+
+src/fortran/libscidifferential_equations_algo_la-xsetun.lo: src/fortran/xsetun.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-xsetun.lo `test -f 'src/fortran/xsetun.f' || echo '$(srcdir)/'`src/fortran/xsetun.f
+
+src/fortran/libscidifferential_equations_algo_la-intdy.lo: src/fortran/intdy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-intdy.lo `test -f 'src/fortran/intdy.f' || echo '$(srcdir)/'`src/fortran/intdy.f
+
+src/fortran/libscidifferential_equations_algo_la-ewset.lo: src/fortran/ewset.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-ewset.lo `test -f 'src/fortran/ewset.f' || echo '$(srcdir)/'`src/fortran/ewset.f
+
+src/fortran/libscidifferential_equations_algo_la-roots2.lo: src/fortran/roots2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-roots2.lo `test -f 'src/fortran/roots2.f' || echo '$(srcdir)/'`src/fortran/roots2.f
+
+src/fortran/libscidifferential_equations_algo_la-prepji.lo: src/fortran/prepji.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-prepji.lo `test -f 'src/fortran/prepji.f' || echo '$(srcdir)/'`src/fortran/prepji.f
+
+src/fortran/libscidifferential_equations_algo_la-svcma1.lo: src/fortran/svcma1.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-svcma1.lo `test -f 'src/fortran/svcma1.f' || echo '$(srcdir)/'`src/fortran/svcma1.f
+
+src/fortran/libscidifferential_equations_algo_la-lsrgk.lo: src/fortran/lsrgk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-lsrgk.lo `test -f 'src/fortran/lsrgk.f' || echo '$(srcdir)/'`src/fortran/lsrgk.f
+
+src/fortran/libscidifferential_equations_algo_la-odeint.lo: src/fortran/odeint.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-odeint.lo `test -f 'src/fortran/odeint.f' || echo '$(srcdir)/'`src/fortran/odeint.f
+
+src/fortran/libscidifferential_equations_algo_la-rkqc.lo: src/fortran/rkqc.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-rkqc.lo `test -f 'src/fortran/rkqc.f' || echo '$(srcdir)/'`src/fortran/rkqc.f
+
+src/fortran/libscidifferential_equations_algo_la-writbufode.lo: src/fortran/writbufode.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscidifferential_equations_algo_la-writbufode.lo `test -f 'src/fortran/writbufode.f' || echo '$(srcdir)/'`src/fortran/writbufode.f
 
 sci_gateway/fortran/libscidifferential_equations_la-sci_f_dasrt.lo: sci_gateway/fortran/sci_f_dasrt.f
 	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscidifferential_equations_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscidifferential_equations_la-sci_f_dasrt.lo `test -f 'sci_gateway/fortran/sci_f_dasrt.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_dasrt.f

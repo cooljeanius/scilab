@@ -43,18 +43,23 @@ sci_gateway/fortran/sci_f_list.f
 
 libscidata_structures_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
 -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+-Wp,-I$(top_srcdir)/modules/core/includes/ \
 -Wp,-I$(top_srcdir)/modules/localization/includes/ \
 -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
 -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
 -Wp,-I$(top_srcdir)/modules/string/includes/ \
 $(AM_CPPFLAGS)
 
+## Need to put this include in FFLAGS too, because fortran is different:
+libscidata_structures_la_FFLAGS= -I$(top_srcdir)/modules/core/includes/
+
 # FIXME: why disabling optimisation ? Any bug reference ?
 # Disable optimisation of the file intl_e.f
 noinst_LTLIBRARIES = libdummy-data_structures.la
 
 libdummy_data_structures_la_SOURCES = src/fortran/intl_e.f
-libdummy_data_structures_la_FFLAGS = $(AM_FFLAGS) $(FFLAGS) -O0
+libdummy_data_structures_la_FFLAGS = $(AM_FFLAGS) $(FFLAGS) -O0 \
+-I$(top_srcdir)/modules/core/includes/
 
 
 if MAINTAINER_MODE
@@ -68,6 +73,7 @@ endif
 libscidata_structures_algo_la_SOURCES = $(DATA_STRUCTURES_C_SOURCES) $(DATA_STRUCTURES_FORTRAN_SOURCES)
 libscidata_structures_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libscidata_structures_algo_la_CPPFLAGS = $(libscidata_structures_la_CPPFLAGS)
+libscidata_structures_algo_la_FFLAGS = $(libscidata_structures_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC= $(DATA_STRUCTURES_C_SOURCES) $(GATEWAY_C_SOURCES)

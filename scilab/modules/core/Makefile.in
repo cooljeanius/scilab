@@ -121,7 +121,7 @@ target_triplet = @target@
 
 # Used by sci_getdebuginfo:
 @TCLTK_TRUE@am__append_3 = $(TCL_INC_PATH) \
-@TCLTK_TRUE@		                  $(TK_INC_PATH)
+@TCLTK_TRUE@		          $(TK_INC_PATH)
 
 @NEED_JAVA_TRUE@am__append_4 = java
 subdir = modules/core
@@ -361,50 +361,94 @@ am__objects_3 = src/cpp/libscicore_algo_la-hashtable_core.lo \
 	src/cpp/libscicore_algo_la-search_functions.lo \
 	src/cpp/libscicore_algo_la-demangle.lo \
 	src/cpp/libscicore_algo_la-backtrace_print.lo
-@USE_DYNAMIC_STACK_TRUE@am__objects_4 = src/fortran/relocstack.lo
-am__objects_5 = src/fortran/clunit.lo src/fortran/getlin.lo \
-	src/fortran/allowptr.lo src/fortran/isany.lo \
-	src/fortran/hmcreate.lo src/fortran/nextj.lo \
-	src/fortran/setgetmode.lo src/fortran/showstack.lo \
-	src/fortran/misops.lo src/fortran/iseye.lo \
-	src/fortran/setippty.lo src/fortran/compil.lo \
-	src/fortran/funnam.lo src/fortran/isnum.lo \
-	src/fortran/cmdstr.lo src/fortran/hndlops.lo \
-	src/fortran/cmplxt.lo src/fortran/skpins.lo \
-	src/fortran/folhp.lo src/fortran/cvname.lo src/fortran/funs.lo \
-	src/fortran/fact.lo src/fortran/typ2cod.lo \
-	src/fortran/prompt.lo src/fortran/intstr.lo \
-	src/fortran/createref.lo src/fortran/btof.lo \
-	src/fortran/getnum.lo src/fortran/btofm.lo \
-	src/fortran/getsym.lo src/fortran/findequal.lo \
-	src/fortran/stackg.lo src/fortran/find.lo \
-	src/fortran/setlnb.lo src/fortran/mrknmd.lo \
-	src/fortran/stackgl.lo src/fortran/allops.lo \
-	src/fortran/mname.lo src/fortran/command.lo \
-	src/fortran/ref2val.lo src/fortran/stack.lo \
-	src/fortran/isbrk.lo src/fortran/xerbla.lo \
-	src/fortran/dtosci.lo src/fortran/bexec.lo \
-	src/fortran/varfunptr.lo src/fortran/getfun.lo \
-	src/fortran/savlod.lo src/fortran/error.lo src/fortran/cvdm.lo \
-	src/fortran/tradsl.lo src/fortran/mkindx.lo \
-	src/fortran/whatln.lo src/fortran/errmgr.lo \
-	src/fortran/defmat.lo src/fortran/mklist.lo \
-	src/fortran/sigbas.lo src/fortran/indxg.lo \
-	src/fortran/istrue.lo src/fortran/inisci.lo \
-	src/fortran/ptover.lo src/fortran/getfunction.lo \
-	src/fortran/stackp.lo src/fortran/dbasin.lo \
-	src/fortran/macro.lo src/fortran/extlarg.lo \
-	src/fortran/getstr.lo src/fortran/cvwm.lo \
-	src/fortran/storeglobal.lo src/fortran/lst2vars.lo \
-	src/fortran/basnms.lo src/fortran/ptrback.lo \
-	src/fortran/getch.lo src/fortran/ftob.lo src/fortran/seteol.lo \
-	src/fortran/basin.lo src/fortran/clause.lo \
-	src/fortran/compcl.lo src/fortran/termf.lo \
-	src/fortran/expsum.lo src/fortran/copyvar.lo \
-	src/fortran/putid.lo src/fortran/itosci.lo \
-	src/fortran/stackr2d.lo src/fortran/stacki2d.lo \
-	src/fortran/stackc2i.lo src/fortran/isinstring.lo \
-	$(am__objects_4)
+@USE_DYNAMIC_STACK_TRUE@am__objects_4 = src/fortran/libscicore_algo_la-relocstack.lo
+am__objects_5 = src/fortran/libscicore_algo_la-clunit.lo \
+	src/fortran/libscicore_algo_la-getlin.lo \
+	src/fortran/libscicore_algo_la-allowptr.lo \
+	src/fortran/libscicore_algo_la-isany.lo \
+	src/fortran/libscicore_algo_la-hmcreate.lo \
+	src/fortran/libscicore_algo_la-nextj.lo \
+	src/fortran/libscicore_algo_la-setgetmode.lo \
+	src/fortran/libscicore_algo_la-showstack.lo \
+	src/fortran/libscicore_algo_la-misops.lo \
+	src/fortran/libscicore_algo_la-iseye.lo \
+	src/fortran/libscicore_algo_la-setippty.lo \
+	src/fortran/libscicore_algo_la-compil.lo \
+	src/fortran/libscicore_algo_la-funnam.lo \
+	src/fortran/libscicore_algo_la-isnum.lo \
+	src/fortran/libscicore_algo_la-cmdstr.lo \
+	src/fortran/libscicore_algo_la-hndlops.lo \
+	src/fortran/libscicore_algo_la-cmplxt.lo \
+	src/fortran/libscicore_algo_la-skpins.lo \
+	src/fortran/libscicore_algo_la-folhp.lo \
+	src/fortran/libscicore_algo_la-cvname.lo \
+	src/fortran/libscicore_algo_la-funs.lo \
+	src/fortran/libscicore_algo_la-fact.lo \
+	src/fortran/libscicore_algo_la-typ2cod.lo \
+	src/fortran/libscicore_algo_la-prompt.lo \
+	src/fortran/libscicore_algo_la-intstr.lo \
+	src/fortran/libscicore_algo_la-createref.lo \
+	src/fortran/libscicore_algo_la-btof.lo \
+	src/fortran/libscicore_algo_la-getnum.lo \
+	src/fortran/libscicore_algo_la-btofm.lo \
+	src/fortran/libscicore_algo_la-getsym.lo \
+	src/fortran/libscicore_algo_la-findequal.lo \
+	src/fortran/libscicore_algo_la-stackg.lo \
+	src/fortran/libscicore_algo_la-find.lo \
+	src/fortran/libscicore_algo_la-setlnb.lo \
+	src/fortran/libscicore_algo_la-mrknmd.lo \
+	src/fortran/libscicore_algo_la-stackgl.lo \
+	src/fortran/libscicore_algo_la-allops.lo \
+	src/fortran/libscicore_algo_la-mname.lo \
+	src/fortran/libscicore_algo_la-command.lo \
+	src/fortran/libscicore_algo_la-ref2val.lo \
+	src/fortran/libscicore_algo_la-stack.lo \
+	src/fortran/libscicore_algo_la-isbrk.lo \
+	src/fortran/libscicore_algo_la-xerbla.lo \
+	src/fortran/libscicore_algo_la-dtosci.lo \
+	src/fortran/libscicore_algo_la-bexec.lo \
+	src/fortran/libscicore_algo_la-varfunptr.lo \
+	src/fortran/libscicore_algo_la-getfun.lo \
+	src/fortran/libscicore_algo_la-savlod.lo \
+	src/fortran/libscicore_algo_la-error.lo \
+	src/fortran/libscicore_algo_la-cvdm.lo \
+	src/fortran/libscicore_algo_la-tradsl.lo \
+	src/fortran/libscicore_algo_la-mkindx.lo \
+	src/fortran/libscicore_algo_la-whatln.lo \
+	src/fortran/libscicore_algo_la-errmgr.lo \
+	src/fortran/libscicore_algo_la-defmat.lo \
+	src/fortran/libscicore_algo_la-mklist.lo \
+	src/fortran/libscicore_algo_la-sigbas.lo \
+	src/fortran/libscicore_algo_la-indxg.lo \
+	src/fortran/libscicore_algo_la-istrue.lo \
+	src/fortran/libscicore_algo_la-inisci.lo \
+	src/fortran/libscicore_algo_la-ptover.lo \
+	src/fortran/libscicore_algo_la-getfunction.lo \
+	src/fortran/libscicore_algo_la-stackp.lo \
+	src/fortran/libscicore_algo_la-dbasin.lo \
+	src/fortran/libscicore_algo_la-macro.lo \
+	src/fortran/libscicore_algo_la-extlarg.lo \
+	src/fortran/libscicore_algo_la-getstr.lo \
+	src/fortran/libscicore_algo_la-cvwm.lo \
+	src/fortran/libscicore_algo_la-storeglobal.lo \
+	src/fortran/libscicore_algo_la-lst2vars.lo \
+	src/fortran/libscicore_algo_la-basnms.lo \
+	src/fortran/libscicore_algo_la-ptrback.lo \
+	src/fortran/libscicore_algo_la-getch.lo \
+	src/fortran/libscicore_algo_la-ftob.lo \
+	src/fortran/libscicore_algo_la-seteol.lo \
+	src/fortran/libscicore_algo_la-basin.lo \
+	src/fortran/libscicore_algo_la-clause.lo \
+	src/fortran/libscicore_algo_la-compcl.lo \
+	src/fortran/libscicore_algo_la-termf.lo \
+	src/fortran/libscicore_algo_la-expsum.lo \
+	src/fortran/libscicore_algo_la-copyvar.lo \
+	src/fortran/libscicore_algo_la-putid.lo \
+	src/fortran/libscicore_algo_la-itosci.lo \
+	src/fortran/libscicore_algo_la-stackr2d.lo \
+	src/fortran/libscicore_algo_la-stacki2d.lo \
+	src/fortran/libscicore_algo_la-stackc2i.lo \
+	src/fortran/libscicore_algo_la-isinstring.lo $(am__objects_4)
 am_libscicore_algo_la_OBJECTS = $(am__objects_2) $(am__objects_3) \
 	$(am__objects_5)
 libscicore_algo_la_OBJECTS = $(am_libscicore_algo_la_OBJECTS)
@@ -471,30 +515,30 @@ am__objects_6 = sci_gateway/c/libscicore_la-sci_stacksize.lo \
 	sci_gateway/c/libscicore_la-sci_readgateway.lo \
 	sci_gateway/c/libscicore_la-sci_comp.lo \
 	sci_gateway/c/libscicore_la-sci_exit.lo
-am__objects_7 = sci_gateway/fortran/sci_f_global.lo \
-	sci_gateway/fortran/sci_f_mtlb_mode.lo \
-	sci_gateway/fortran/sci_f_resume.lo \
-	sci_gateway/fortran/sci_f_dispbpt.lo \
-	sci_gateway/fortran/sci_f_intppty.lo \
-	sci_gateway/fortran/sci_f_ieee.lo \
-	sci_gateway/fortran/sci_f_macrovar.lo \
-	sci_gateway/fortran/sci_f_exists.lo \
-	sci_gateway/fortran/sci_f_errcatch.lo \
-	sci_gateway/fortran/sci_f_clear.lo \
-	sci_gateway/fortran/sci_f_argn.lo \
-	sci_gateway/fortran/sci_f_setbpt.lo \
-	sci_gateway/fortran/sci_f_clearglobal.lo \
-	sci_gateway/fortran/sci_f_delbpt.lo \
-	sci_gateway/fortran/where.lo \
-	sci_gateway/fortran/sci_f_iserror.lo \
-	sci_gateway/fortran/sci_f_comp.lo \
-	sci_gateway/fortran/sci_f_isglobal.lo
+am__objects_7 = sci_gateway/fortran/libscicore_la-sci_f_global.lo \
+	sci_gateway/fortran/libscicore_la-sci_f_mtlb_mode.lo \
+	sci_gateway/fortran/libscicore_la-sci_f_resume.lo \
+	sci_gateway/fortran/libscicore_la-sci_f_dispbpt.lo \
+	sci_gateway/fortran/libscicore_la-sci_f_intppty.lo \
+	sci_gateway/fortran/libscicore_la-sci_f_ieee.lo \
+	sci_gateway/fortran/libscicore_la-sci_f_macrovar.lo \
+	sci_gateway/fortran/libscicore_la-sci_f_exists.lo \
+	sci_gateway/fortran/libscicore_la-sci_f_errcatch.lo \
+	sci_gateway/fortran/libscicore_la-sci_f_clear.lo \
+	sci_gateway/fortran/libscicore_la-sci_f_argn.lo \
+	sci_gateway/fortran/libscicore_la-sci_f_setbpt.lo \
+	sci_gateway/fortran/libscicore_la-sci_f_clearglobal.lo \
+	sci_gateway/fortran/libscicore_la-sci_f_delbpt.lo \
+	sci_gateway/fortran/libscicore_la-where.lo \
+	sci_gateway/fortran/libscicore_la-sci_f_iserror.lo \
+	sci_gateway/fortran/libscicore_la-sci_f_comp.lo \
+	sci_gateway/fortran/libscicore_la-sci_f_isglobal.lo
 am_libscicore_la_OBJECTS = $(am__objects_6) $(am__objects_7)
 libscicore_la_OBJECTS = $(am_libscicore_la_OBJECTS)
 libscicore_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=F77 \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(F77LD) \
-	$(AM_FFLAGS) $(FFLAGS) $(libscicore_la_LDFLAGS) $(LDFLAGS) -o \
-	$@
+	$(libscicore_la_FFLAGS) $(FFLAGS) $(libscicore_la_LDFLAGS) \
+	$(LDFLAGS) -o $@
 @MAINTAINER_MODE_FALSE@am_libscicore_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libscicore_la_rpath = -rpath $(pkglibdir)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -753,6 +797,8 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/Makefile.incl.am \
 	$(top_srcdir)/config/mkinstalldirs
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
+ADMIN_MAN_DIR = @ADMIN_MAN_DIR@
+ADMIN_MAN_SUFFIX = @ADMIN_MAN_SUFFIX@
 ALLOCA = @ALLOCA@
 ALL_LINGUAS = @ALL_LINGUAS@
 ALL_LINGUAS_DOC = @ALL_LINGUAS_DOC@
@@ -760,6 +806,8 @@ AMTAR = @AMTAR@
 AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
 ANT = @ANT@
 ANTLR = @ANTLR@
+APP_MAN_DIR = @APP_MAN_DIR@
+APP_MAN_SUFFIX = @APP_MAN_SUFFIX@
 AR = @AR@
 ARPACK_LIBS = @ARPACK_LIBS@
 AS = @AS@
@@ -781,6 +829,7 @@ CCASFLAGS = @CCASFLAGS@
 CCDEPMODE = @CCDEPMODE@
 CC_C_O = @CC_C_O@
 CFLAGS = @CFLAGS@
+CHANGELOG_CMD = @CHANGELOG_CMD@
 CHECKSTYLE = @CHECKSTYLE@
 CMAKE_BINARY = @CMAKE_BINARY@
 COBERTURA = @COBERTURA@
@@ -805,7 +854,10 @@ DOCBOOKPDF = @DOCBOOKPDF@
 DOCBOOKPS = @DOCBOOKPS@
 DOCBOOKTXT = @DOCBOOKTXT@
 DOCBOOK_ROOT = @DOCBOOK_ROOT@
+DOXYGEN = @DOXYGEN@
 DOXYGEN_PROG = @DOXYGEN_PROG@
+DRIVER_MAN_DIR = @DRIVER_MAN_DIR@
+DRIVER_MAN_SUFFIX = @DRIVER_MAN_SUFFIX@
 DSYMUTIL = @DSYMUTIL@
 DUMPBIN = @DUMPBIN@
 ECHO_C = @ECHO_C@
@@ -820,6 +872,8 @@ FFLAGS = @FFLAGS@
 FFTW3_LIB = @FFTW3_LIB@
 FFTW_ENABLE = @FFTW_ENABLE@
 FGREP = @FGREP@
+FILE_MAN_DIR = @FILE_MAN_DIR@
+FILE_MAN_SUFFIX = @FILE_MAN_SUFFIX@
 FLEXDOCK = @FLEXDOCK@
 FLIBS = @FLIBS@
 FOP = @FOP@
@@ -840,6 +894,7 @@ HDF5_LIBS = @HDF5_LIBS@
 HELP_ENABLE = @HELP_ENABLE@
 IF_GNU_MAKE = @IF_GNU_MAKE@
 INSTALL = @INSTALL@
+INSTALL_CMD = @INSTALL_CMD@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -882,6 +937,8 @@ LIBM = @LIBM@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
+LIB_MAN_DIR = @LIB_MAN_DIR@
+LIB_MAN_SUFFIX = @LIB_MAN_SUFFIX@
 LINT = @LINT@
 LINT_FLAGS = @LINT_FLAGS@
 LIPO = @LIPO@
@@ -901,9 +958,12 @@ MAKE_PS = @MAKE_PS@
 MAKE_TEXT = @MAKE_TEXT@
 MALLOC_ZERO_CFLAGS = @MALLOC_ZERO_CFLAGS@
 MANIFEST_TOOL = @MANIFEST_TOOL@
+MAN_SUBSTS = @MAN_SUBSTS@
 MATIO_CFLAGS = @MATIO_CFLAGS@
 MATIO_ENABLE = @MATIO_ENABLE@
 MATIO_LIBS = @MATIO_LIBS@
+MISC_MAN_DIR = @MISC_MAN_DIR@
+MISC_MAN_SUFFIX = @MISC_MAN_SUFFIX@
 MKDIR_P = @MKDIR_P@
 MSGCAT = @MSGCAT@
 MSGFMT = @MSGFMT@
@@ -945,6 +1005,8 @@ PCRE_CONFIG = @PCRE_CONFIG@
 PCRE_LIBS = @PCRE_LIBS@
 PCRE_VERSION = @PCRE_VERSION@
 PKG_CONFIG = @PKG_CONFIG@
+PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
+PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
 POSUB = @POSUB@
 POW_LIB = @POW_LIB@
 PRE_PKG_CONFIG_PCRE_CFLAGS = @PRE_PKG_CONFIG_PCRE_CFLAGS@
@@ -989,6 +1051,7 @@ SWIG_RUNTIME_LIBS_DIR = @SWIG_RUNTIME_LIBS_DIR@
 SW_VERS = @SW_VERS@
 TCLTK_LIBS = @TCLTK_LIBS@
 TCL_INC_PATH = @TCL_INC_PATH@
+TCL_LDFLAGS = @TCL_LDFLAGS@
 TK_INC_PATH = @TK_INC_PATH@
 UMFPACK_ENABLE = @UMFPACK_ENABLE@
 UMFPACK_LIB = @UMFPACK_LIB@
@@ -1015,6 +1078,7 @@ XML_FLAGS = @XML_FLAGS@
 XML_LIBS = @XML_LIBS@
 XML_VERSION = @XML_VERSION@
 XORG_MALLOC_DEBUG_ENV = @XORG_MALLOC_DEBUG_ENV@
+XORG_MAN_PAGE = @XORG_MAN_PAGE@
 XORG_SGML_PATH = @XORG_SGML_PATH@
 XSL_STYLESHEET = @XSL_STYLESHEET@
 XTMALLOC_ZERO_CFLAGS = @XTMALLOC_ZERO_CFLAGS@
@@ -1063,6 +1127,7 @@ host_os = @host_os@
 host_vendor = @host_vendor@
 htmldir = @htmldir@
 ifGNUmake = @ifGNUmake@
+ifnGNUmake = @ifnGNUmake@
 includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
@@ -1267,6 +1332,7 @@ libscicore_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
 	-Wp,-I$(top_srcdir)/modules/preferences/includes/ \
 	-Wp,-I$(top_srcdir)/modules/external_objects/includes/ \
 	$(XML_FLAGS) $(AM_CPPFLAGS) $(am__append_3)
+libscicore_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 @MAINTAINER_MODE_TRUE@pkglib_LTLIBRARIES = libscicore.la
 @MAINTAINER_MODE_FALSE@noinst_LTLIBRARIES = libscicore-algo.la libscicore.la
 @MAINTAINER_MODE_TRUE@noinst_LTLIBRARIES = libscicore-algo.la
@@ -1279,6 +1345,7 @@ INCLUDE_FLAGS = $(libscicore_la_CPPFLAGS)
 libscicore_algo_la_SOURCES = $(CORE_C_SOURCES) $(CORE_CXX_SOURCES) $(CORE_FORTRAN_SOURCES)
 libscicore_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libscicore_algo_la_CPPFLAGS = $(libscicore_la_CPPFLAGS)
+libscicore_algo_la_FFLAGS = $(libscicore_la_FFLAGS)
 
 # Commented because it is easier to comment first the core module
 libscicore_la_LIBADD = libscicore-algo.la
@@ -1694,181 +1761,205 @@ src/fortran/$(am__dirstamp):
 src/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/fortran/$(DEPDIR)
 	@: > src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/clunit.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-clunit.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/getlin.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-getlin.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/allowptr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-allowptr.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/isany.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-isany.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/hmcreate.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-hmcreate.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/nextj.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-nextj.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/setgetmode.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-setgetmode.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/showstack.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-showstack.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/misops.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-misops.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/iseye.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-iseye.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/setippty.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-setippty.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/compil.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-compil.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/funnam.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-funnam.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/isnum.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-isnum.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/cmdstr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-cmdstr.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/hndlops.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-hndlops.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/cmplxt.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-cmplxt.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/skpins.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-skpins.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/folhp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-folhp.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/cvname.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-cvname.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/funs.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-funs.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/fact.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-fact.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/typ2cod.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-typ2cod.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/prompt.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-prompt.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/intstr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-intstr.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/createref.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-createref.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/btof.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-btof.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/getnum.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-getnum.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/btofm.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-btofm.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/getsym.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-getsym.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/findequal.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-findequal.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/stackg.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-stackg.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/find.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-find.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/setlnb.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-setlnb.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/mrknmd.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-mrknmd.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/stackgl.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-stackgl.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/allops.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-allops.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/mname.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-mname.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/command.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-command.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ref2val.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-ref2val.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/stack.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-stack.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/isbrk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-isbrk.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/xerbla.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-xerbla.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dtosci.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-dtosci.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/bexec.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-bexec.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/varfunptr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-varfunptr.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/getfun.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-getfun.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/savlod.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-savlod.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/error.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-error.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/cvdm.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-cvdm.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/tradsl.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-tradsl.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/mkindx.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-mkindx.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/whatln.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-whatln.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/errmgr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-errmgr.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/defmat.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-defmat.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/mklist.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-mklist.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/sigbas.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-sigbas.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/indxg.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-indxg.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/istrue.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-istrue.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/inisci.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-inisci.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ptover.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-ptover.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/getfunction.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-getfunction.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/stackp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-stackp.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dbasin.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-dbasin.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/macro.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-macro.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/extlarg.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-extlarg.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/getstr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-getstr.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/cvwm.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-cvwm.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/storeglobal.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-storeglobal.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lst2vars.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-lst2vars.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/basnms.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-basnms.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ptrback.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-ptrback.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/getch.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-getch.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ftob.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-ftob.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/seteol.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-seteol.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/basin.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-basin.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/clause.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-clause.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/compcl.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-compcl.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/termf.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-termf.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/expsum.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-expsum.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/copyvar.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-copyvar.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/putid.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-putid.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/itosci.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-itosci.lo: src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/stackr2d.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-stackr2d.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/stacki2d.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-stacki2d.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/stackc2i.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-stackc2i.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/isinstring.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-isinstring.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/relocstack.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libscicore_algo_la-relocstack.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
 
 libscicore-algo.la: $(libscicore_algo_la_OBJECTS) $(libscicore_algo_la_DEPENDENCIES) $(EXTRA_libscicore_algo_la_DEPENDENCIES) 
@@ -2049,57 +2140,58 @@ sci_gateway/fortran/$(am__dirstamp):
 sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/fortran/$(DEPDIR)
 	@: > sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_global.lo:  \
+sci_gateway/fortran/libscicore_la-sci_f_global.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_mtlb_mode.lo:  \
+sci_gateway/fortran/libscicore_la-sci_f_mtlb_mode.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_resume.lo:  \
+sci_gateway/fortran/libscicore_la-sci_f_resume.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_dispbpt.lo:  \
+sci_gateway/fortran/libscicore_la-sci_f_dispbpt.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_intppty.lo:  \
+sci_gateway/fortran/libscicore_la-sci_f_intppty.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_ieee.lo:  \
+sci_gateway/fortran/libscicore_la-sci_f_ieee.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_macrovar.lo:  \
+sci_gateway/fortran/libscicore_la-sci_f_macrovar.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_exists.lo:  \
+sci_gateway/fortran/libscicore_la-sci_f_exists.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_errcatch.lo:  \
+sci_gateway/fortran/libscicore_la-sci_f_errcatch.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_clear.lo:  \
+sci_gateway/fortran/libscicore_la-sci_f_clear.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_argn.lo:  \
+sci_gateway/fortran/libscicore_la-sci_f_argn.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_setbpt.lo:  \
+sci_gateway/fortran/libscicore_la-sci_f_setbpt.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_clearglobal.lo:  \
+sci_gateway/fortran/libscicore_la-sci_f_clearglobal.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_delbpt.lo:  \
+sci_gateway/fortran/libscicore_la-sci_f_delbpt.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/where.lo: sci_gateway/fortran/$(am__dirstamp) \
-	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_iserror.lo:  \
+sci_gateway/fortran/libscicore_la-where.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_comp.lo:  \
+sci_gateway/fortran/libscicore_la-sci_f_iserror.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/fortran/sci_f_isglobal.lo:  \
+sci_gateway/fortran/libscicore_la-sci_f_comp.lo:  \
+	sci_gateway/fortran/$(am__dirstamp) \
+	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/fortran/libscicore_la-sci_f_isglobal.lo:  \
 	sci_gateway/fortran/$(am__dirstamp) \
 	sci_gateway/fortran/$(DEPDIR)/$(am__dirstamp)
 
@@ -3377,6 +3469,324 @@ src/cpp/libscicore_algo_la-backtrace_print.lo: src/cpp/backtrace_print.cpp
 
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
+
+src/fortran/libscicore_algo_la-clunit.lo: src/fortran/clunit.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-clunit.lo `test -f 'src/fortran/clunit.f' || echo '$(srcdir)/'`src/fortran/clunit.f
+
+src/fortran/libscicore_algo_la-getlin.lo: src/fortran/getlin.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-getlin.lo `test -f 'src/fortran/getlin.f' || echo '$(srcdir)/'`src/fortran/getlin.f
+
+src/fortran/libscicore_algo_la-allowptr.lo: src/fortran/allowptr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-allowptr.lo `test -f 'src/fortran/allowptr.f' || echo '$(srcdir)/'`src/fortran/allowptr.f
+
+src/fortran/libscicore_algo_la-isany.lo: src/fortran/isany.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-isany.lo `test -f 'src/fortran/isany.f' || echo '$(srcdir)/'`src/fortran/isany.f
+
+src/fortran/libscicore_algo_la-hmcreate.lo: src/fortran/hmcreate.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-hmcreate.lo `test -f 'src/fortran/hmcreate.f' || echo '$(srcdir)/'`src/fortran/hmcreate.f
+
+src/fortran/libscicore_algo_la-nextj.lo: src/fortran/nextj.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-nextj.lo `test -f 'src/fortran/nextj.f' || echo '$(srcdir)/'`src/fortran/nextj.f
+
+src/fortran/libscicore_algo_la-setgetmode.lo: src/fortran/setgetmode.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-setgetmode.lo `test -f 'src/fortran/setgetmode.f' || echo '$(srcdir)/'`src/fortran/setgetmode.f
+
+src/fortran/libscicore_algo_la-showstack.lo: src/fortran/showstack.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-showstack.lo `test -f 'src/fortran/showstack.f' || echo '$(srcdir)/'`src/fortran/showstack.f
+
+src/fortran/libscicore_algo_la-misops.lo: src/fortran/misops.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-misops.lo `test -f 'src/fortran/misops.f' || echo '$(srcdir)/'`src/fortran/misops.f
+
+src/fortran/libscicore_algo_la-iseye.lo: src/fortran/iseye.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-iseye.lo `test -f 'src/fortran/iseye.f' || echo '$(srcdir)/'`src/fortran/iseye.f
+
+src/fortran/libscicore_algo_la-setippty.lo: src/fortran/setippty.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-setippty.lo `test -f 'src/fortran/setippty.f' || echo '$(srcdir)/'`src/fortran/setippty.f
+
+src/fortran/libscicore_algo_la-compil.lo: src/fortran/compil.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-compil.lo `test -f 'src/fortran/compil.f' || echo '$(srcdir)/'`src/fortran/compil.f
+
+src/fortran/libscicore_algo_la-funnam.lo: src/fortran/funnam.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-funnam.lo `test -f 'src/fortran/funnam.f' || echo '$(srcdir)/'`src/fortran/funnam.f
+
+src/fortran/libscicore_algo_la-isnum.lo: src/fortran/isnum.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-isnum.lo `test -f 'src/fortran/isnum.f' || echo '$(srcdir)/'`src/fortran/isnum.f
+
+src/fortran/libscicore_algo_la-cmdstr.lo: src/fortran/cmdstr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-cmdstr.lo `test -f 'src/fortran/cmdstr.f' || echo '$(srcdir)/'`src/fortran/cmdstr.f
+
+src/fortran/libscicore_algo_la-hndlops.lo: src/fortran/hndlops.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-hndlops.lo `test -f 'src/fortran/hndlops.f' || echo '$(srcdir)/'`src/fortran/hndlops.f
+
+src/fortran/libscicore_algo_la-cmplxt.lo: src/fortran/cmplxt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-cmplxt.lo `test -f 'src/fortran/cmplxt.f' || echo '$(srcdir)/'`src/fortran/cmplxt.f
+
+src/fortran/libscicore_algo_la-skpins.lo: src/fortran/skpins.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-skpins.lo `test -f 'src/fortran/skpins.f' || echo '$(srcdir)/'`src/fortran/skpins.f
+
+src/fortran/libscicore_algo_la-folhp.lo: src/fortran/folhp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-folhp.lo `test -f 'src/fortran/folhp.f' || echo '$(srcdir)/'`src/fortran/folhp.f
+
+src/fortran/libscicore_algo_la-cvname.lo: src/fortran/cvname.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-cvname.lo `test -f 'src/fortran/cvname.f' || echo '$(srcdir)/'`src/fortran/cvname.f
+
+src/fortran/libscicore_algo_la-funs.lo: src/fortran/funs.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-funs.lo `test -f 'src/fortran/funs.f' || echo '$(srcdir)/'`src/fortran/funs.f
+
+src/fortran/libscicore_algo_la-fact.lo: src/fortran/fact.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-fact.lo `test -f 'src/fortran/fact.f' || echo '$(srcdir)/'`src/fortran/fact.f
+
+src/fortran/libscicore_algo_la-typ2cod.lo: src/fortran/typ2cod.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-typ2cod.lo `test -f 'src/fortran/typ2cod.f' || echo '$(srcdir)/'`src/fortran/typ2cod.f
+
+src/fortran/libscicore_algo_la-prompt.lo: src/fortran/prompt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-prompt.lo `test -f 'src/fortran/prompt.f' || echo '$(srcdir)/'`src/fortran/prompt.f
+
+src/fortran/libscicore_algo_la-intstr.lo: src/fortran/intstr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-intstr.lo `test -f 'src/fortran/intstr.f' || echo '$(srcdir)/'`src/fortran/intstr.f
+
+src/fortran/libscicore_algo_la-createref.lo: src/fortran/createref.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-createref.lo `test -f 'src/fortran/createref.f' || echo '$(srcdir)/'`src/fortran/createref.f
+
+src/fortran/libscicore_algo_la-btof.lo: src/fortran/btof.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-btof.lo `test -f 'src/fortran/btof.f' || echo '$(srcdir)/'`src/fortran/btof.f
+
+src/fortran/libscicore_algo_la-getnum.lo: src/fortran/getnum.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-getnum.lo `test -f 'src/fortran/getnum.f' || echo '$(srcdir)/'`src/fortran/getnum.f
+
+src/fortran/libscicore_algo_la-btofm.lo: src/fortran/btofm.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-btofm.lo `test -f 'src/fortran/btofm.f' || echo '$(srcdir)/'`src/fortran/btofm.f
+
+src/fortran/libscicore_algo_la-getsym.lo: src/fortran/getsym.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-getsym.lo `test -f 'src/fortran/getsym.f' || echo '$(srcdir)/'`src/fortran/getsym.f
+
+src/fortran/libscicore_algo_la-findequal.lo: src/fortran/findequal.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-findequal.lo `test -f 'src/fortran/findequal.f' || echo '$(srcdir)/'`src/fortran/findequal.f
+
+src/fortran/libscicore_algo_la-stackg.lo: src/fortran/stackg.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-stackg.lo `test -f 'src/fortran/stackg.f' || echo '$(srcdir)/'`src/fortran/stackg.f
+
+src/fortran/libscicore_algo_la-find.lo: src/fortran/find.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-find.lo `test -f 'src/fortran/find.f' || echo '$(srcdir)/'`src/fortran/find.f
+
+src/fortran/libscicore_algo_la-setlnb.lo: src/fortran/setlnb.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-setlnb.lo `test -f 'src/fortran/setlnb.f' || echo '$(srcdir)/'`src/fortran/setlnb.f
+
+src/fortran/libscicore_algo_la-mrknmd.lo: src/fortran/mrknmd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-mrknmd.lo `test -f 'src/fortran/mrknmd.f' || echo '$(srcdir)/'`src/fortran/mrknmd.f
+
+src/fortran/libscicore_algo_la-stackgl.lo: src/fortran/stackgl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-stackgl.lo `test -f 'src/fortran/stackgl.f' || echo '$(srcdir)/'`src/fortran/stackgl.f
+
+src/fortran/libscicore_algo_la-allops.lo: src/fortran/allops.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-allops.lo `test -f 'src/fortran/allops.f' || echo '$(srcdir)/'`src/fortran/allops.f
+
+src/fortran/libscicore_algo_la-mname.lo: src/fortran/mname.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-mname.lo `test -f 'src/fortran/mname.f' || echo '$(srcdir)/'`src/fortran/mname.f
+
+src/fortran/libscicore_algo_la-command.lo: src/fortran/command.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-command.lo `test -f 'src/fortran/command.f' || echo '$(srcdir)/'`src/fortran/command.f
+
+src/fortran/libscicore_algo_la-ref2val.lo: src/fortran/ref2val.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-ref2val.lo `test -f 'src/fortran/ref2val.f' || echo '$(srcdir)/'`src/fortran/ref2val.f
+
+src/fortran/libscicore_algo_la-stack.lo: src/fortran/stack.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-stack.lo `test -f 'src/fortran/stack.f' || echo '$(srcdir)/'`src/fortran/stack.f
+
+src/fortran/libscicore_algo_la-isbrk.lo: src/fortran/isbrk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-isbrk.lo `test -f 'src/fortran/isbrk.f' || echo '$(srcdir)/'`src/fortran/isbrk.f
+
+src/fortran/libscicore_algo_la-xerbla.lo: src/fortran/xerbla.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-xerbla.lo `test -f 'src/fortran/xerbla.f' || echo '$(srcdir)/'`src/fortran/xerbla.f
+
+src/fortran/libscicore_algo_la-dtosci.lo: src/fortran/dtosci.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-dtosci.lo `test -f 'src/fortran/dtosci.f' || echo '$(srcdir)/'`src/fortran/dtosci.f
+
+src/fortran/libscicore_algo_la-bexec.lo: src/fortran/bexec.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-bexec.lo `test -f 'src/fortran/bexec.f' || echo '$(srcdir)/'`src/fortran/bexec.f
+
+src/fortran/libscicore_algo_la-varfunptr.lo: src/fortran/varfunptr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-varfunptr.lo `test -f 'src/fortran/varfunptr.f' || echo '$(srcdir)/'`src/fortran/varfunptr.f
+
+src/fortran/libscicore_algo_la-getfun.lo: src/fortran/getfun.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-getfun.lo `test -f 'src/fortran/getfun.f' || echo '$(srcdir)/'`src/fortran/getfun.f
+
+src/fortran/libscicore_algo_la-savlod.lo: src/fortran/savlod.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-savlod.lo `test -f 'src/fortran/savlod.f' || echo '$(srcdir)/'`src/fortran/savlod.f
+
+src/fortran/libscicore_algo_la-error.lo: src/fortran/error.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-error.lo `test -f 'src/fortran/error.f' || echo '$(srcdir)/'`src/fortran/error.f
+
+src/fortran/libscicore_algo_la-cvdm.lo: src/fortran/cvdm.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-cvdm.lo `test -f 'src/fortran/cvdm.f' || echo '$(srcdir)/'`src/fortran/cvdm.f
+
+src/fortran/libscicore_algo_la-tradsl.lo: src/fortran/tradsl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-tradsl.lo `test -f 'src/fortran/tradsl.f' || echo '$(srcdir)/'`src/fortran/tradsl.f
+
+src/fortran/libscicore_algo_la-mkindx.lo: src/fortran/mkindx.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-mkindx.lo `test -f 'src/fortran/mkindx.f' || echo '$(srcdir)/'`src/fortran/mkindx.f
+
+src/fortran/libscicore_algo_la-whatln.lo: src/fortran/whatln.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-whatln.lo `test -f 'src/fortran/whatln.f' || echo '$(srcdir)/'`src/fortran/whatln.f
+
+src/fortran/libscicore_algo_la-errmgr.lo: src/fortran/errmgr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-errmgr.lo `test -f 'src/fortran/errmgr.f' || echo '$(srcdir)/'`src/fortran/errmgr.f
+
+src/fortran/libscicore_algo_la-defmat.lo: src/fortran/defmat.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-defmat.lo `test -f 'src/fortran/defmat.f' || echo '$(srcdir)/'`src/fortran/defmat.f
+
+src/fortran/libscicore_algo_la-mklist.lo: src/fortran/mklist.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-mklist.lo `test -f 'src/fortran/mklist.f' || echo '$(srcdir)/'`src/fortran/mklist.f
+
+src/fortran/libscicore_algo_la-sigbas.lo: src/fortran/sigbas.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-sigbas.lo `test -f 'src/fortran/sigbas.f' || echo '$(srcdir)/'`src/fortran/sigbas.f
+
+src/fortran/libscicore_algo_la-indxg.lo: src/fortran/indxg.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-indxg.lo `test -f 'src/fortran/indxg.f' || echo '$(srcdir)/'`src/fortran/indxg.f
+
+src/fortran/libscicore_algo_la-istrue.lo: src/fortran/istrue.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-istrue.lo `test -f 'src/fortran/istrue.f' || echo '$(srcdir)/'`src/fortran/istrue.f
+
+src/fortran/libscicore_algo_la-inisci.lo: src/fortran/inisci.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-inisci.lo `test -f 'src/fortran/inisci.f' || echo '$(srcdir)/'`src/fortran/inisci.f
+
+src/fortran/libscicore_algo_la-ptover.lo: src/fortran/ptover.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-ptover.lo `test -f 'src/fortran/ptover.f' || echo '$(srcdir)/'`src/fortran/ptover.f
+
+src/fortran/libscicore_algo_la-getfunction.lo: src/fortran/getfunction.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-getfunction.lo `test -f 'src/fortran/getfunction.f' || echo '$(srcdir)/'`src/fortran/getfunction.f
+
+src/fortran/libscicore_algo_la-stackp.lo: src/fortran/stackp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-stackp.lo `test -f 'src/fortran/stackp.f' || echo '$(srcdir)/'`src/fortran/stackp.f
+
+src/fortran/libscicore_algo_la-dbasin.lo: src/fortran/dbasin.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-dbasin.lo `test -f 'src/fortran/dbasin.f' || echo '$(srcdir)/'`src/fortran/dbasin.f
+
+src/fortran/libscicore_algo_la-macro.lo: src/fortran/macro.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-macro.lo `test -f 'src/fortran/macro.f' || echo '$(srcdir)/'`src/fortran/macro.f
+
+src/fortran/libscicore_algo_la-extlarg.lo: src/fortran/extlarg.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-extlarg.lo `test -f 'src/fortran/extlarg.f' || echo '$(srcdir)/'`src/fortran/extlarg.f
+
+src/fortran/libscicore_algo_la-getstr.lo: src/fortran/getstr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-getstr.lo `test -f 'src/fortran/getstr.f' || echo '$(srcdir)/'`src/fortran/getstr.f
+
+src/fortran/libscicore_algo_la-cvwm.lo: src/fortran/cvwm.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-cvwm.lo `test -f 'src/fortran/cvwm.f' || echo '$(srcdir)/'`src/fortran/cvwm.f
+
+src/fortran/libscicore_algo_la-storeglobal.lo: src/fortran/storeglobal.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-storeglobal.lo `test -f 'src/fortran/storeglobal.f' || echo '$(srcdir)/'`src/fortran/storeglobal.f
+
+src/fortran/libscicore_algo_la-lst2vars.lo: src/fortran/lst2vars.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-lst2vars.lo `test -f 'src/fortran/lst2vars.f' || echo '$(srcdir)/'`src/fortran/lst2vars.f
+
+src/fortran/libscicore_algo_la-basnms.lo: src/fortran/basnms.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-basnms.lo `test -f 'src/fortran/basnms.f' || echo '$(srcdir)/'`src/fortran/basnms.f
+
+src/fortran/libscicore_algo_la-ptrback.lo: src/fortran/ptrback.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-ptrback.lo `test -f 'src/fortran/ptrback.f' || echo '$(srcdir)/'`src/fortran/ptrback.f
+
+src/fortran/libscicore_algo_la-getch.lo: src/fortran/getch.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-getch.lo `test -f 'src/fortran/getch.f' || echo '$(srcdir)/'`src/fortran/getch.f
+
+src/fortran/libscicore_algo_la-ftob.lo: src/fortran/ftob.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-ftob.lo `test -f 'src/fortran/ftob.f' || echo '$(srcdir)/'`src/fortran/ftob.f
+
+src/fortran/libscicore_algo_la-seteol.lo: src/fortran/seteol.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-seteol.lo `test -f 'src/fortran/seteol.f' || echo '$(srcdir)/'`src/fortran/seteol.f
+
+src/fortran/libscicore_algo_la-basin.lo: src/fortran/basin.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-basin.lo `test -f 'src/fortran/basin.f' || echo '$(srcdir)/'`src/fortran/basin.f
+
+src/fortran/libscicore_algo_la-clause.lo: src/fortran/clause.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-clause.lo `test -f 'src/fortran/clause.f' || echo '$(srcdir)/'`src/fortran/clause.f
+
+src/fortran/libscicore_algo_la-compcl.lo: src/fortran/compcl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-compcl.lo `test -f 'src/fortran/compcl.f' || echo '$(srcdir)/'`src/fortran/compcl.f
+
+src/fortran/libscicore_algo_la-termf.lo: src/fortran/termf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-termf.lo `test -f 'src/fortran/termf.f' || echo '$(srcdir)/'`src/fortran/termf.f
+
+src/fortran/libscicore_algo_la-expsum.lo: src/fortran/expsum.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-expsum.lo `test -f 'src/fortran/expsum.f' || echo '$(srcdir)/'`src/fortran/expsum.f
+
+src/fortran/libscicore_algo_la-copyvar.lo: src/fortran/copyvar.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-copyvar.lo `test -f 'src/fortran/copyvar.f' || echo '$(srcdir)/'`src/fortran/copyvar.f
+
+src/fortran/libscicore_algo_la-putid.lo: src/fortran/putid.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-putid.lo `test -f 'src/fortran/putid.f' || echo '$(srcdir)/'`src/fortran/putid.f
+
+src/fortran/libscicore_algo_la-itosci.lo: src/fortran/itosci.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-itosci.lo `test -f 'src/fortran/itosci.f' || echo '$(srcdir)/'`src/fortran/itosci.f
+
+src/fortran/libscicore_algo_la-stackr2d.lo: src/fortran/stackr2d.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-stackr2d.lo `test -f 'src/fortran/stackr2d.f' || echo '$(srcdir)/'`src/fortran/stackr2d.f
+
+src/fortran/libscicore_algo_la-stacki2d.lo: src/fortran/stacki2d.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-stacki2d.lo `test -f 'src/fortran/stacki2d.f' || echo '$(srcdir)/'`src/fortran/stacki2d.f
+
+src/fortran/libscicore_algo_la-stackc2i.lo: src/fortran/stackc2i.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-stackc2i.lo `test -f 'src/fortran/stackc2i.f' || echo '$(srcdir)/'`src/fortran/stackc2i.f
+
+src/fortran/libscicore_algo_la-isinstring.lo: src/fortran/isinstring.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-isinstring.lo `test -f 'src/fortran/isinstring.f' || echo '$(srcdir)/'`src/fortran/isinstring.f
+
+src/fortran/libscicore_algo_la-relocstack.lo: src/fortran/relocstack.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_algo_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libscicore_algo_la-relocstack.lo `test -f 'src/fortran/relocstack.f' || echo '$(srcdir)/'`src/fortran/relocstack.f
+
+sci_gateway/fortran/libscicore_la-sci_f_global.lo: sci_gateway/fortran/sci_f_global.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-sci_f_global.lo `test -f 'sci_gateway/fortran/sci_f_global.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_global.f
+
+sci_gateway/fortran/libscicore_la-sci_f_mtlb_mode.lo: sci_gateway/fortran/sci_f_mtlb_mode.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-sci_f_mtlb_mode.lo `test -f 'sci_gateway/fortran/sci_f_mtlb_mode.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_mtlb_mode.f
+
+sci_gateway/fortran/libscicore_la-sci_f_resume.lo: sci_gateway/fortran/sci_f_resume.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-sci_f_resume.lo `test -f 'sci_gateway/fortran/sci_f_resume.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_resume.f
+
+sci_gateway/fortran/libscicore_la-sci_f_dispbpt.lo: sci_gateway/fortran/sci_f_dispbpt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-sci_f_dispbpt.lo `test -f 'sci_gateway/fortran/sci_f_dispbpt.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_dispbpt.f
+
+sci_gateway/fortran/libscicore_la-sci_f_intppty.lo: sci_gateway/fortran/sci_f_intppty.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-sci_f_intppty.lo `test -f 'sci_gateway/fortran/sci_f_intppty.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_intppty.f
+
+sci_gateway/fortran/libscicore_la-sci_f_ieee.lo: sci_gateway/fortran/sci_f_ieee.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-sci_f_ieee.lo `test -f 'sci_gateway/fortran/sci_f_ieee.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_ieee.f
+
+sci_gateway/fortran/libscicore_la-sci_f_macrovar.lo: sci_gateway/fortran/sci_f_macrovar.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-sci_f_macrovar.lo `test -f 'sci_gateway/fortran/sci_f_macrovar.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_macrovar.f
+
+sci_gateway/fortran/libscicore_la-sci_f_exists.lo: sci_gateway/fortran/sci_f_exists.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-sci_f_exists.lo `test -f 'sci_gateway/fortran/sci_f_exists.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_exists.f
+
+sci_gateway/fortran/libscicore_la-sci_f_errcatch.lo: sci_gateway/fortran/sci_f_errcatch.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-sci_f_errcatch.lo `test -f 'sci_gateway/fortran/sci_f_errcatch.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_errcatch.f
+
+sci_gateway/fortran/libscicore_la-sci_f_clear.lo: sci_gateway/fortran/sci_f_clear.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-sci_f_clear.lo `test -f 'sci_gateway/fortran/sci_f_clear.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_clear.f
+
+sci_gateway/fortran/libscicore_la-sci_f_argn.lo: sci_gateway/fortran/sci_f_argn.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-sci_f_argn.lo `test -f 'sci_gateway/fortran/sci_f_argn.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_argn.f
+
+sci_gateway/fortran/libscicore_la-sci_f_setbpt.lo: sci_gateway/fortran/sci_f_setbpt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-sci_f_setbpt.lo `test -f 'sci_gateway/fortran/sci_f_setbpt.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_setbpt.f
+
+sci_gateway/fortran/libscicore_la-sci_f_clearglobal.lo: sci_gateway/fortran/sci_f_clearglobal.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-sci_f_clearglobal.lo `test -f 'sci_gateway/fortran/sci_f_clearglobal.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_clearglobal.f
+
+sci_gateway/fortran/libscicore_la-sci_f_delbpt.lo: sci_gateway/fortran/sci_f_delbpt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-sci_f_delbpt.lo `test -f 'sci_gateway/fortran/sci_f_delbpt.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_delbpt.f
+
+sci_gateway/fortran/libscicore_la-where.lo: sci_gateway/fortran/where.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-where.lo `test -f 'sci_gateway/fortran/where.f' || echo '$(srcdir)/'`sci_gateway/fortran/where.f
+
+sci_gateway/fortran/libscicore_la-sci_f_iserror.lo: sci_gateway/fortran/sci_f_iserror.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-sci_f_iserror.lo `test -f 'sci_gateway/fortran/sci_f_iserror.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_iserror.f
+
+sci_gateway/fortran/libscicore_la-sci_f_comp.lo: sci_gateway/fortran/sci_f_comp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-sci_f_comp.lo `test -f 'sci_gateway/fortran/sci_f_comp.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_comp.f
+
+sci_gateway/fortran/libscicore_la-sci_f_isglobal.lo: sci_gateway/fortran/sci_f_isglobal.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libscicore_la_FFLAGS) $(FFLAGS) -c -o sci_gateway/fortran/libscicore_la-sci_f_isglobal.lo `test -f 'sci_gateway/fortran/sci_f_isglobal.f' || echo '$(srcdir)/'`sci_gateway/fortran/sci_f_isglobal.f
 
 mostlyclean-libtool:
 	-rm -f *.lo

@@ -20,7 +20,7 @@ SUBDIRS = libs \
 	desktop \
         po
 
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS = -I m4 --install
 
 # Set AM_* SCI detected settings
 AM_CPPFLAGS = $(SCI_CPPFLAGS)

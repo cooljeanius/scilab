@@ -386,6 +386,8 @@ fi
 
 AC_CHECK_SIZEOF([int])
 AC_CHECK_ALIGNOF([int])
+AC_CHECK_SIZEOF([void *])
+AC_CHECK_ALIGNOF([void *])
 AC_CHECK_SIZEOF([long])
 AC_CHECK_ALIGNOF([long])dnl
 
@@ -654,6 +656,10 @@ esac
 
 ##########"
 
+AC_DEFUN([XORG_REQUIRE_COMPILER_FLAGS],[
+  AC_REQUIRE([XORG_COMPILER_FLAGS])dnl# from m4/xorg-macros.m4
+])dnl
+
 case "${CC}" in
    gcc-* | gcc | ccache*gcc | ccache*gcc-* )
    ## With GNU Compiler
@@ -676,6 +682,7 @@ case "${CC}" in
         DEBUG_CFLAGS="${DEBUG_CFLAGS} -fdiagnostics-show-option -Werror=format-security"
         ;;
       esac
+      XORG_REQUIRE_COMPILER_FLAGS dnl# from above
    else
       DEBUG_CFLAGS="-DNDEBUG"
    fi
@@ -1537,11 +1544,19 @@ AC_TYPE_INT8_T
 AC_TYPE_INT16_T
 AC_TYPE_INT32_T
 AC_TYPE_INT64_T
+if test "x${ac_cv_type_intptr_t}" = "x"; then
+  test -z "${ac_cv_type_intptr_t}"
+  AC_TYPE_INTPTR_T
+fi
 AC_TYPE_SSIZE_T
 AC_TYPE_UINT8_T
 AC_TYPE_UINT16_T
 AC_TYPE_UINT32_T
 AC_TYPE_UINT64_T
+if test "x${ac_cv_type_uintptr_t}" = "x"; then
+  test -z "${ac_cv_type_uintptr_t}"
+  AC_TYPE_UINTPTR_T
+fi
 AC_CHECK_TYPES([ptrdiff_t])
 AC_CHECK_TYPES([lt_dlsymlist])dnl
 
@@ -1830,10 +1845,30 @@ AC_PCRE([]) dnl# from m4/pcre.m4
 ## Tcl/Tk library
 #################
 
+AC_DEFUN([XORG_REQUIRE_DEFAULT_OPTIONS],[
+  AC_REQUIRE([XORG_DEFAULT_OPTIONS])dnl# from m4/xorg-macros.m4
+])dnl
+
 WITH_TKSCI=no
 if test "x${with_tk}" != "xno"; then
    if test "$MACOSX" = "1"; then
-      AC_MSG_ERROR([Due to technical constraints, Tcl/Tk must be disabled under Mac OS X (--without-tk)])
+      AC_MSG_WARN([Due to technical constraints, Tcl/Tk ought to be disabled under Mac OS X (--without-tk)])
+      AC_MSG_NOTICE([(this ought to be an error, but continuing anyways just for fun)])
+      if test "x${enable_debug_linker}" = "xyes"; then
+        m_d_treatment="warning"
+      else
+        m_d_treatment="suppress"
+      fi
+      if test "x${enable_stop_on_warning}" != "xyes"; then
+        if test "x${TCL_LDFLAGS}" = "x"; then
+          test -z "${TCL_LDFLAGS}" && export TCL_LDFLAGS="-Wl,-multiply_defined,${m_d_treatment}"
+        else
+          test -n "${TCL_LDFLAGS}" && export TCL_LDFLAGS="${TCL_LDFLAGS} -Wl,-multiply_defined,${m_d_treatment}"
+        fi
+      else
+        AC_MSG_WARN([will probably error out when linking])
+      fi
+      AC_SUBST([TCL_LDFLAGS])
    fi
 
     # check user arguments
@@ -1842,27 +1877,27 @@ if test "x${with_tk}" != "xno"; then
     AC_ARG_WITH([tcl-library],
         [AS_HELP_STRING([--with-tcl-library=DIR],
                         [Set the path to the TCL library])],
-        [USER_TCL_LIB_PATH=$withval
+        [USER_TCL_LIB_PATH=${withval}
     ])
     AC_ARG_WITH([tcl-include],
         [AS_HELP_STRING([--with-tcl-include=DIR],
                         [Set the path to the TCL headers])],
-        [USER_TCL_INC_PATH=$withval
+        [USER_TCL_INC_PATH=${withval}
     ])dnl
 
-    USER_TK_LIB_PATH=$USER_TCL_LIB_PATH
-    USER_TK_INC_PATH=$USER_TCL_INC_PATH
+    USER_TK_LIB_PATH=${USER_TCL_LIB_PATH}
+    USER_TK_INC_PATH=${USER_TCL_INC_PATH}
 
     AC_ARG_WITH([tk-library],
         [AS_HELP_STRING([--with-tk-library=DIR],
                         [Set the path to the TK library])],
-        [USER_TK_LIB_PATH=$withval
+        [USER_TK_LIB_PATH=${withval}
     ])dnl
 
     AC_ARG_WITH([tk-include],
         [AS_HELP_STRING([--with-tk-include=DIR],
                         [Set the path to the TK headers])],
-        [USER_TK_INC_PATH=$withval
+        [USER_TK_INC_PATH=${withval}
     ])dnl
 
     ###########################
@@ -1874,9 +1909,13 @@ if test "x${with_tk}" != "xno"; then
     AC_CHECK_HEADERS_ONCE([X.h Xlib.h X11/X.h])dnl
     ##
 
-    saved_cflags="$CFLAGS"
-    saved_ldflags="$LDFLAGS"
-    saved_cppflags="$CXXFLAGS"
+    if test -z "${SELECTIVE_WERROR}"; then
+      XORG_REQUIRE_DEFAULT_OPTIONS dnl# from above
+    fi
+
+    saved_cflags="${CFLAGS}"
+    saved_ldflags="${LDFLAGS}"
+    saved_cppflags="${CXXFLAGS}"
 
     AC_CHECK_LIB([dl],[main],[TCLTK_LIBS=" -ldl"])
     AC_CHECK_TCLTK dnl# from m4/tcltk.m4
@@ -2021,7 +2060,7 @@ if test "x${with_install_help_xml}" != "xno" -a "x${with_install_help_xml}" != "
    AC_PATH_PROG([XMLINDENT],[xmlindent],[no])
    HELP_INSTALL_ENABLE=yes
 else
-   test -z "$XMLINDENT"
+   test -z "${XMLINDENT}"
    AM_MISSING_PROG([XMLINDENT],[xmlindent])
 fi
 AM_CONDITIONAL([INSTALL_HELP_XML],
@@ -2034,9 +2073,14 @@ AC_ARG_ENABLE([build-doxygen],
 
 DOXYGEN_ENABLE=yes
 if test "x${enable_build_doxygen}" != "xno" -a "x${enable_build_doxygen}" != "x"; then
-    AC_MSG_WARN([autoconf macro for doxygen has gone missing; skipping checking for it])
+    XORG_WITH_DOXYGEN dnl# from m4/xorg-macros.m4
     AM_MISSING_PROG([DOXYGEN_PROG],[doxygen])
-    DOXYGEN_ENABLE="FIXME"
+    dnl# ${have_doxygen} comes from the xorg macro for it:
+    if test "x${have_doxygen}" = "xyes"; then
+        DOXYGEN_ENABLE=yes
+    else
+        DOXYGEN_ENABLE="FIXME"
+    fi
 else
     DOXYGEN_ENABLE=no
 fi
@@ -2061,6 +2105,15 @@ AC_SUBST([JAVASCI_ENABLE])dnl
 COMPILATION_TESTS=no
 if test "x${enable_compilation_tests}" != "xno" -a "x${enable_compilation_tests}" != "x"; then
    COMPILATION_TESTS=yes
+fi
+
+AC_DEFUN([XORG_REQUIRE_TESTS],[
+   AC_REQUIRE([XORG_ENABLE_UNIT_TESTS])dnl# from m4/xorg-macros.m4
+   AC_REQUIRE([XORG_ENABLE_INTEGRATION_TESTS])dnl# from m4/xorg-macros.m4
+])dnl
+
+if test "x${COMPILATION_TESTS}" = "xyes"; then
+    XORG_REQUIRE_TESTS dnl# from above
 fi
 
 if test "x${COMPILATION_TESTS}" = "xyes" -a "x${JUNIT4}" = "x"; then
@@ -2228,10 +2281,25 @@ AC_DEFINE_UNQUOTED([SHARED_LIB_EXT],["$shrext_cmds"],
 #
 dnl# @TODO : -O0 is only to bypass stack stercus... Must be removed.
 if test "x${enable_stop_on_warning}" = "xyes"; then
-    CHECK_COMPILER_ARG([C],[-Werror=all],[CFLAGS],[WERROR_CFLAGS])
-    WARNING_CFLAGS="-Werror=implicit-function-declaration -O0 ${WERROR_CFLAGS}"
-    CHECK_COMPILER_ARG([C++],[-Werror=all],[CXXFLAGS],[WERROR_CXXFLAGS])
-    WARNING_CXXFLAGS="-Werror=implicit-function-declaration -O0 ${WERROR_CXXFLAGS}"
+    if test "x${enable_debug}" = "xyes"; then
+        sowsaved_CFLAGS="${CFLAGS}"
+        CFLAGS="${CFLAGS} -Wformat"
+        CHECK_COMPILER_ARG([C],[-Werror=format-security],[CFLAGS],
+                           [WERROR_CFLAGS])
+        CFLAGS="${sowsaved_CFLAGS}"
+        WARNING_CFLAGS="-Werror=implicit-function-declaration -O0 ${WERROR_CFLAGS}"
+        sowsaved_CXXFLAGS="${CXXFLAGS}"
+        CXXFLAGS="${CXXFLAGS} -Wformat"
+        CHECK_COMPILER_ARG([C++],[-Werror=format-security],[CXXFLAGS],
+                           [WERROR_CXXFLAGS])
+        CXXFLAGS="${sowsaved_CXXFLAGS}"
+        WARNING_CXXFLAGS="-Werror=implicit-function-declaration -O0 ${WERROR_CXXFLAGS}"
+    else
+        WERROR_CFLAGS=""
+        WARNING_CFLAGS="-Werror=implicit-function-declaration -O0"
+        WERROR_CXXFLAGS=""
+        WARNING_CXXFLAGS="-Werror=implicit-function-declaration -O0"
+    fi
 fi
 
 AC_SUBST([WARNING_CFLAGS])dnl
@@ -2242,8 +2310,8 @@ AC_SUBST([WERROR_CXXFLAGS])dnl
 # SCI_*FLAGS contains all defaults values detected on configure.
 # The point of all the calls to echo here is to strip excess spaces between
 # the flags, so leave the set of variables unquoted:
-SCI_CFLAGS=$(echo ${LARGEFILE_CFLAGS} ${CODECOVERAGE_CFLAGS} ${DEBUG_CFLAGS} ${ARCH_CFLAGS} ${COMPILER_CFLAGS} ${SCILIBS_CFLAGS} ${SSE_CFLAGS} ${BACKTRACE_CFLAGS} ${WARNING_CFLAGS})
-SCI_CXXFLAGS=$(echo ${LARGEFILE_CXXFLAGS} ${CODECOVERAGE_CXXFLAGS} ${DEBUG_CXXFLAGS} ${ARCH_CXXFLAGS} ${COMPILER_CXXFLAGS} ${SCILIBS_CXXFLAGS} ${SSE_CXXFLAGS} ${BACKTRACE_CXXFLAGS} ${WARNING_CXXFLAGS})
+SCI_CFLAGS=$(echo ${LARGEFILE_CFLAGS} ${CODECOVERAGE_CFLAGS} ${DEBUG_CFLAGS} ${ARCH_CFLAGS} ${COMPILER_CFLAGS} ${SCILIBS_CFLAGS} ${SSE_CFLAGS} ${BACKTRACE_CFLAGS} ${WARNING_CFLAGS} ${BASE_CFLAGS})
+SCI_CXXFLAGS=$(echo ${LARGEFILE_CXXFLAGS} ${CODECOVERAGE_CXXFLAGS} ${DEBUG_CXXFLAGS} ${ARCH_CXXFLAGS} ${COMPILER_CXXFLAGS} ${SCILIBS_CXXFLAGS} ${SSE_CXXFLAGS} ${BACKTRACE_CXXFLAGS} ${WARNING_CXXFLAGS} ${BASE_CXXFLAGS})
 SCI_FFLAGS=$(echo ${LARGEFILE_FFLAGS} ${CODECOVERAGE_FFLAGS} ${DEBUG_FFLAGS} ${ARCH_FFLAGS} ${COMPILER_FFLAGS} ${SCILIBS_FFLAGS} ${SSE_FFLAGS} ${BACKTRACE_FFLAGS} ${WARNING_FFLAGS})
 SCI_LDFLAGS=$(echo ${LARGEFILE_LDFLAGS} ${CODECOVERAGE_LDFLAGS} ${DEBUG_LDFLAGS} ${ARCH_LDFLAGS} ${COMPILER_LDFLAGS} ${SCILIBS_LDFLAGS} ${SSE_LDFLAGS} ${BACKTRACE_LDFLAGS} ${WARNING_LDFLAGS})
 AC_SUBST([SCI_CFLAGS])dnl

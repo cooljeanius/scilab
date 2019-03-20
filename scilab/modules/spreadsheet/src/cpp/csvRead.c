@@ -392,9 +392,18 @@ static char **getStringsFromLines(const char **lines, int sizelines,
 {
     char **results = NULL;
 
-    if (lines == NULL) return NULL;
-    if (separator == NULL) return NULL;
-    if (m == 0 || n == 0) return NULL;
+    if (lines == NULL)
+    {
+        return NULL;
+    }
+    if (separator == NULL)
+    {
+        return NULL;
+    }
+    if (m == 0 || n == 0)
+    {
+        return NULL;
+    }
 
     results = (char**) MALLOC(sizeof(char*) * (m * n));
     if (results)
@@ -597,7 +606,7 @@ static char **replaceStrings(const char **lines, int nbLines, const char **torep
                 replacedStrings[j] = strdup(lines[j]);
             }
             // Make replacements within the target replacedStrings.
-            for (i = 0; i < nr; i = i++)
+            for (i = 0; i < nr; i++)
             {
                 for (j = 0; j < nbLines; j++)
                 {

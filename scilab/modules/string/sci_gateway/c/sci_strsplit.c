@@ -183,7 +183,8 @@ int sci_strsplit(char *fname, unsigned long fname_len)
                             m_out = (m2 * n2) + 1;
                             n_out = 1;
 
-                            sciErr = createMatrixOfWideString(pvApiCtx, Rhs + 1, m_out, n_out, results);
+                            sciErr = createMatrixOfWideString(pvApiCtx, Rhs + 1, m_out, n_out,
+                                                              (const wchar_t *const *)results);
 
                             freeArrayOfWideString(results, m_out);
                             results = NULL;

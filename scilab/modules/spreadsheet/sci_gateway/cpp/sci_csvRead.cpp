@@ -67,7 +67,10 @@ int sci_csvRead(char *fname)
         int m7 = 0, n7 = 0;
 
         iRange = csv_getArgumentAsMatrixofIntFromDouble(pvApiCtx, 7, fname, &m7, &n7, &iErr);
-        if (iErr) return 0;
+        if (iErr)
+        {
+            return 0;
+        }
 
         if ((m7 * n7 != SIZE_RANGE_SUPPORTED) )
         {
@@ -119,7 +122,10 @@ int sci_csvRead(char *fname)
                 regexp = NULL;
             }
         }
-        if (iErr) return 0;
+        if (iErr)
+        {
+            return 0;
+        }
     }
     else
     {
@@ -212,7 +218,7 @@ int sci_csvRead(char *fname)
            a 'double' conversion */
         if (strcmp(fname, "read_csv") == 0)
         {
-            conversion = (char*)MALLOC((strlen("string") + 1) * sizeof(char));
+            conversion = static_cast<char *>(MALLOC((strlen("string") + 1) * sizeof(char)));
             strcpy(conversion, "string");
         }
         else
@@ -324,7 +330,9 @@ int sci_csvRead(char *fname)
         return 0;
     }
 
-    result = csvRead(filename, separator, decimal, (const char**)toreplace, nbElementsToReplace * 2, regexp);
+    result = csvRead(filename, separator, decimal,
+                     const_cast<const char **>(toreplace),
+                     nbElementsToReplace * 2, regexp);
     if (regexp)
     {
         FREE(regexp);
@@ -371,7 +379,8 @@ int sci_csvRead(char *fname)
                         int newM = 0;
                         int newN = 0;
 
-                        char **pStrRange = getRangeAsString((const char**)result->pstrValues, result->m, result->n, iRange, &newM, &newN);
+                        char **pStrRange = getRangeAsString(const_cast<const char **>(result->pstrValues),
+                                                            result->m, result->n, iRange, &newM, &newN);
                         if (pStrRange)
                         {
                             sciErr = createMatrixOfString(pvApiCtx, Rhs + 1, newM, newN, pStrRange);
@@ -390,7 +399,8 @@ int sci_csvRead(char *fname)
                 else /* to double */
                 {
                     stringToComplexError ierr = STRINGTOCOMPLEX_ERROR;
-                    csv_complexArray *ptrCsvComplexArray = stringsToCsvComplexArray((const char**)result->pstrValues, result->m * result->n, decimal, TRUE, &ierr);
+                    csv_complexArray *ptrCsvComplexArray = stringsToCsvComplexArray(const_cast<const char **>(result->pstrValues),
+                                                           result->m * result->n, decimal, TRUE, &ierr);
 
                     if (ptrCsvComplexArray == NULL)
                     {

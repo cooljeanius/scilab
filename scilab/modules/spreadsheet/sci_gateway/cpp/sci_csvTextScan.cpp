@@ -67,7 +67,10 @@ int sci_csvTextScan(char *fname)
         int m5 = 0, n5 = 0;
 
         iRange = csv_getArgumentAsMatrixofIntFromDouble(pvApiCtx, 5, fname, &m5, &n5, &iErr);
-        if (iErr) return 0;
+        if (iErr)
+        {
+            return 0;
+        }
 
         if ((m5 * n5 != SIZE_RANGE_SUPPORTED) )
         {
@@ -248,7 +251,8 @@ int sci_csvTextScan(char *fname)
     }
 
     nbLines = m1 * n1;
-    result = csvTextScan((const char**)text, nbLines, separator, decimal);
+    result = csvTextScan(const_cast<const char **>(text), nbLines, separator,
+                         decimal);
 
     if (text)
     {
@@ -286,7 +290,8 @@ int sci_csvTextScan(char *fname)
                         int newM = 0;
                         int newN = 0;
 
-                        char **pStrRange = getRangeAsString((const char**)result->pstrValues, result->m, result->n, iRange, &newM, &newN);
+                        char **pStrRange = getRangeAsString(const_cast<const char **>(result->pstrValues),
+                                                            result->m, result->n, iRange, &newM, &newN);
                         if (pStrRange)
                         {
                             sciErr = createMatrixOfString(pvApiCtx, Rhs + 1, newM, newN, pStrRange);
@@ -306,7 +311,8 @@ int sci_csvTextScan(char *fname)
                 else /* to double */
                 {
                     stringToComplexError ierr = STRINGTOCOMPLEX_ERROR;
-                    csv_complexArray *ptrCsvComplexArray = stringsToCsvComplexArray((const char**)result->pstrValues, result->m * result->n, decimal, TRUE, &ierr);
+                    csv_complexArray *ptrCsvComplexArray = stringsToCsvComplexArray(const_cast<const char **>(result->pstrValues),
+                                                           result->m * result->n, decimal, TRUE, &ierr);
                     if (ptrCsvComplexArray == NULL)
                     {
                         freeCsvResult(result);

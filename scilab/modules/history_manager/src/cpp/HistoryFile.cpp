@@ -122,7 +122,7 @@ BOOL HistoryFile::writeToFile(std::string filename)
             return bOK;
         }
 
-        wcfopen(pFile , (char*)filename.c_str(), "wt");
+        wcfopen(pFile, const_cast<char *>(filename.c_str()), "wt");
 
         if (pFile)
         {
@@ -163,7 +163,7 @@ errorLoadHistoryCode HistoryFile::loadFromFile(std::string filename)
     double dErrClose = 0.;
 
 
-    C2F(mopen)(&fd, (char*)filename.c_str(), const_cast<char *>("rt"),
+    C2F(mopen)(&fd, const_cast<char *>(filename.c_str()), const_cast<char *>("rt"),
                &f_swap, &res, &errMOPEN);
     if (errMOPEN == MOPEN_NO_ERROR)
     {

@@ -131,7 +131,7 @@ BOOL appendLineToScilabHistory(char *line)
         cleanedline = strdup(line);
 
         /* remove carriage return at the end of line */
-        for (i = (int)strlen(cleanedline); i > 0; i--)
+        for (i = static_cast<int>(strlen(cleanedline)); i > 0; i--)
         {
             if (cleanedline[i] == '\n')
             {
@@ -141,7 +141,7 @@ BOOL appendLineToScilabHistory(char *line)
         }
 
         /* remove spaces at the end of line */
-        i = (int)strlen(cleanedline) - 1;
+        i = static_cast<int>(strlen(cleanedline)) - 1;
         while (i >= 0)
         {
             if (cleanedline[i] == ' ')
@@ -272,7 +272,9 @@ BOOL setDefaultFilenameScilabHistory(void)
 void resetScilabHistory(void)
 {
     if (ScilabHistory)
+    {
         ScilabHistory->reset();
+    }
 }
 
 /*------------------------------------------------------------------------*/
@@ -287,7 +289,7 @@ char **getAllLinesOfScilabHistory(void)
         /* SWIG need array finish with NULL */
         if (lines)
         {
-            lines = (char **)REALLOC(lines, sizeof(char *) * (nbElements + 1));
+            lines = static_cast<char **>(REALLOC(lines, sizeof(char *) * (nbElements + 1)));
             lines[nbElements] = NULL;
         }
     }
@@ -301,7 +303,9 @@ int getSizeAllLinesOfScilabHistory(void)
     char **lines = NULL;
 
     if (ScilabHistory)
+    {
         lines = ScilabHistory->getAllLines(&nbElements);
+    }
 
     freeArrayOfString(lines, nbElements);
 
@@ -314,7 +318,9 @@ char *getLastLineInScilabHistory(void)
     char *line = NULL;
 
     if (ScilabHistory)
+    {
         line = ScilabHistory->getLastLine();
+    }
     return line;
 }
 
@@ -324,7 +330,9 @@ char *getPreviousLineInScilabHistory(void)
     char *line = NULL;
 
     if (ScilabHistory)
+    {
         line = ScilabHistory->getPreviousLine();
+    }
     return line;
 }
 
@@ -334,7 +342,9 @@ char *getNextLineInScilabHistory(void)
     char *line = NULL;
 
     if (ScilabHistory)
+    {
         line = ScilabHistory->getNextLine();
+    }
     return line;
 }
 
@@ -344,7 +354,9 @@ int getNumberOfLinesInScilabHistory(void)
     int val = 0;
 
     if (ScilabHistory)
+    {
         val = ScilabHistory->getNumberOfLines();
+    }
     return val;
 }
 
@@ -352,14 +364,18 @@ int getNumberOfLinesInScilabHistory(void)
 void setSaveConsecutiveDuplicateLinesInScilabHistory(BOOL doit)
 {
     if (ScilabHistory)
+    {
         ScilabHistory->setSaveConsecutiveDuplicateLines(doit);
+    }
 }
 
 /*------------------------------------------------------------------------*/
 BOOL getSaveConsecutiveDuplicateLinesInScilabHistory(void)
 {
     if (ScilabHistory)
+    {
         return ScilabHistory->getSaveConsecutiveDuplicateLines();
+    }
     return FALSE;
 }
 
@@ -367,7 +383,9 @@ BOOL getSaveConsecutiveDuplicateLinesInScilabHistory(void)
 void setAfterHowManyLinesScilabHistoryIsSaved(int num)
 {
     if (ScilabHistory)
+    {
         ScilabHistory->setAfterHowManyLinesHistoryIsSaved(num);
+    }
 }
 
 /*------------------------------------------------------------------------*/
@@ -376,7 +394,9 @@ int getAfterHowManyLinesScilabHistoryIsSaved(void)
     int val = 0;
 
     if (ScilabHistory)
+    {
         val = ScilabHistory->getAfterHowManyLinesHistoryIsSaved();
+    }
     return val;
 }
 
@@ -384,7 +404,9 @@ int getAfterHowManyLinesScilabHistoryIsSaved(void)
 char *getNthLineInScilabHistory(int N)
 {
     if (ScilabHistory)
+    {
         return ScilabHistory->getNthLine(N);
+    }
     return NULL;
 }
 
@@ -404,7 +426,9 @@ int getSizeScilabHistory(void)
     int val = 0;
 
     if (ScilabHistory)
+    {
         val = ScilabHistory->getNumberOfLines() - 1;
+    }
     return val;
 }
 
@@ -412,14 +436,20 @@ int getSizeScilabHistory(void)
 BOOL setSizeMaxScilabHistory(int nbLinesMax)
 {
     BOOL bOK = FALSE;
-    if (ScilabHistory) bOK = ScilabHistory->setNumberOfLinesMax(nbLinesMax);
+    if (ScilabHistory)
+    {
+        bOK = ScilabHistory->setNumberOfLinesMax(nbLinesMax);
+    }
     return bOK;
 }
 /*------------------------------------------------------------------------*/
 int getSizeMaxScilabHistory(void)
 {
     int val = 0;
-    if (ScilabHistory) val = ScilabHistory->getNumberOfLinesMax();
+    if (ScilabHistory)
+    {
+        val = ScilabHistory->getNumberOfLinesMax();
+    }
     return val;
 }
 /*------------------------------------------------------------------------*/
@@ -510,7 +540,9 @@ BOOL HistoryManager::appendLines(char **lines, int nbrlines)
     for (i = 0; i < nbrlines; i++)
     {
         if ((lines[i] == NULL) || (!appendLine(lines[i])))
+        {
             bOK = FALSE;
+        }
     }
     return bOK;
 }
@@ -659,13 +691,15 @@ char **HistoryManager::getAllLines(int *numberoflines)
     *numberoflines = 0;
 
     if (CommandsList.empty())
+    {
         return lines;
+    }
     else
     {
         list < CommandLine >::iterator it_commands;
         int i = 0;
 
-        lines = (char **)MALLOC((int)CommandsList.size() * (sizeof(char *)));
+        lines = static_cast<char **>(MALLOC(CommandsList.size() * (sizeof(char *))));
         for (it_commands = CommandsList.begin(); it_commands != CommandsList.end(); ++it_commands)
         {
             string line = (*it_commands).get();
@@ -721,7 +755,7 @@ char *HistoryManager::getLastLine(void)
 /*--------------------------------------------------------------------------*/
 int HistoryManager::getNumberOfLines(void)
 {
-    return (int)CommandsList.size();
+    return static_cast<int>(CommandsList.size());
 }
 
 /*--------------------------------------------------------------------------*/
@@ -730,7 +764,9 @@ char *HistoryManager::getNthLine(int N)
     char *line = NULL;
 
     if (N < 0)
+    {
         N = getNumberOfLines() + N;
+    }
 
     if ((N >= 0) && (N <= getNumberOfLines()))
     {
@@ -850,7 +886,9 @@ BOOL HistoryManager::setToken(char *token)
 {
     std::string Token;
     if (token)
+    {
         Token.assign(token);
+    }
     my_search.setHistory(CommandsList);
     return my_search.setToken(Token);
 }
@@ -886,8 +924,9 @@ BOOL HistoryManager::isBeginningSessionLine(char *line)
             char str_start[STR_LEN_MAX];
             char str_end[STR_LEN_MAX];
 
-            strncpy(str_start, line, (int)strlen(SESSION_PRAGMA_BEGIN));
-            strncpy(str_end, &line[strlen(line) - strlen(SESSION_PRAGMA_END)], (int)strlen(SESSION_PRAGMA_END));
+            strncpy(str_start, line, strlen(SESSION_PRAGMA_BEGIN));
+            strncpy(str_end, &line[strlen(line) - strlen(SESSION_PRAGMA_END)],
+                    strlen(SESSION_PRAGMA_END));
             if ((strcmp(str_start, SESSION_PRAGMA_BEGIN) == 0) && (strcmp(str_end, SESSION_PRAGMA_END) == 0))
             {
                 return TRUE;

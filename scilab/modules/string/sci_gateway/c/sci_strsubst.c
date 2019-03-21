@@ -367,12 +367,13 @@ int sci_strsubst(char *fname, unsigned long fname_len)
                         pStVarTwo = NULL;
                         freeArrayOfString(pStVarOne, mOne * nOne);
 
-                        sciErr = createMatrixOfString(pvApiCtx, Rhs + 1, mOne, nOne, Output_StringMatrix);
+                        sciErr = createMatrixOfString(pvApiCtx, Rhs + 1, mOne, nOne,
+                                                      (const char *const *)Output_StringMatrix);
                         freeArrayOfString(Output_StringMatrix, mOne * nOne);
                         if (sciErr.iErr)
                         {
                             printError(&sciErr, 0);
-                            Scierror(999,_("%s: Memory allocation error.\n"), fname);
+                            Scierror(999, _("%s: Memory allocation error.\n"), fname);
                             return 0;
                         }
 
@@ -432,7 +433,7 @@ int sci_strsubst(char *fname, unsigned long fname_len)
             if (sciErr.iErr)
             {
                 printError(&sciErr, 0);
-                Scierror(999,_("%s: Memory allocation error.\n"), fname);
+                Scierror(999, _("%s: Memory allocation error.\n"), fname);
                 return 0;
             }
 

@@ -383,7 +383,10 @@ int sci_msprintf(char *fname, unsigned long fname_len)
         {
             cat_to_last = 1;
         }
-        if (Rhs == 1) break;
+        if (Rhs == 1)
+        {
+            break;
+        }
 
     }
 
@@ -393,11 +396,15 @@ int sci_msprintf(char *fname, unsigned long fname_len)
         ptrFormat = NULL;
     }
 
-    if (rval == RET_BUG) return 0;
+    if (rval == RET_BUG)
+    {
+        return 0;
+    }
 
     /* Create a Scilab String */
     nOut = 1;
-    sciErr = createMatrixOfString(pvApiCtx, Rhs + 1 , mOut, nOut, pOutputStrings);
+    sciErr = createMatrixOfString(pvApiCtx, Rhs + 1 , mOut, nOut,
+                                  (const char *const *)pOutputStrings);
 
     /* lstr must not be freed */
     freeArrayOfString(pOutputStrings, mOut * nOut);

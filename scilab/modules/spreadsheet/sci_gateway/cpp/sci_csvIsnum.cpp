@@ -49,7 +49,7 @@ int sci_csvIsnum(char *fname)
         return 0;
     }
 
-    bRESULT = csv_isNumMatrix((const char**)pStrs, mOne, nOne);
+    bRESULT = csv_isNumMatrix(const_cast<const char **>(pStrs), mOne, nOne);
 
     freeAllocatedMatrixOfString(mOne, nOne, pStrs);
     pStrs = NULL;
@@ -60,7 +60,8 @@ int sci_csvIsnum(char *fname)
         return 0;
     }
 
-    sciErr = createMatrixOfBoolean(pvApiCtx, Rhs + 1, mOne, nOne, (const int*)bRESULT);
+    sciErr = createMatrixOfBoolean(pvApiCtx, Rhs + 1, mOne, nOne,
+                                   reinterpret_cast<const int *>(bRESULT));
     FREE(bRESULT);
     bRESULT = NULL;
 

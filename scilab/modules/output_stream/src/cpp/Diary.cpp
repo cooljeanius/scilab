@@ -2,11 +2,11 @@
 /*
 * ( http://www.scilab.org/ ) - This file is part of Scilab
 * Copyright (C) DIGITEO - 2009 - Allan CORNET
-* 
+*
 * This file must be used under the terms of the CeCILL.
 * This source file is licensed as described in the file COPYING, which
 * you should have received as part of this distribution.  The terms
-* are also available at    
+* are also available at
 * http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
 *
 */
@@ -55,7 +55,7 @@ Diary::Diary(std::wstring _wfilename, int _mode, int ID, bool autorename)
 #ifdef _MSC_VER
     std::wofstream fileDiary(fullfilename.c_str(), wofstream_mode);
 #else
-    wchar_t *wcfile = (wchar_t *) fullfilename.c_str();
+    wchar_t *wcfile = const_cast<wchar_t *>(fullfilename.c_str());
     char *filename = wide_string_to_UTF8(wcfile);
 
     std::ofstream fileDiary(filename, wofstream_mode);
@@ -106,7 +106,7 @@ void Diary::write(std::wstring _wstr, bool bInput)
 #ifdef _MSC_VER
         std::wofstream fileDiary(wfilename.c_str(), wofstream_mode);
 #else
-        wchar_t *wcfile = (wchar_t *) wfilename.c_str();
+        wchar_t *wcfile = const_cast<wchar_t *>(wfilename.c_str());
         char *filename = wide_string_to_UTF8(wcfile);
 
         std::ofstream fileDiary(filename, wofstream_mode);
@@ -126,7 +126,7 @@ void Diary::write(std::wstring _wstr, bool bInput)
             _wstr = replace(_wstr, std::wstring(L"\n"), std::wstring(L"\r\n"));
             _wstr = replace(_wstr, std::wstring(L"\r\r"), std::wstring(L"\r"));
 #endif
-            line = wide_string_to_UTF8((wchar_t *) _wstr.c_str());
+            line = wide_string_to_UTF8(const_cast<wchar_t *>(_wstr.c_str()));
 
             if (bInput)         // input
             {
@@ -134,7 +134,7 @@ void Diary::write(std::wstring _wstr, bool bInput)
                 {
                     if ((PrefixIoModeFilter == PREFIX_FILTER_INPUT_AND_OUTPUT) || (PrefixIoModeFilter == PREFIX_FILTER_ONLY_INPUT))
                     {
-                        char *timeInfo = wide_string_to_UTF8((wchar_t *) getDiaryDate(PrefixTimeFormat).c_str());
+                        char *timeInfo = wide_string_to_UTF8(const_cast<wchar_t *>(getDiaryDate(PrefixTimeFormat).c_str()));
 
                         if (timeInfo)
                         {
@@ -144,7 +144,9 @@ void Diary::write(std::wstring _wstr, bool bInput)
                         }
                     }
                     if (line)
+                    {
                         fileDiary << line;
+                    }
                 }
             }
             else                // output
@@ -153,7 +155,7 @@ void Diary::write(std::wstring _wstr, bool bInput)
                 {
                     if ((PrefixIoModeFilter == PREFIX_FILTER_INPUT_AND_OUTPUT) || (PrefixIoModeFilter == PREFIX_FILTER_ONLY_OUTPUT))
                     {
-                        char *timeInfo = wide_string_to_UTF8((wchar_t *) getDiaryDate(PrefixTimeFormat).c_str());
+                        char *timeInfo = wide_string_to_UTF8(const_cast<wchar_t *>(getDiaryDate(PrefixTimeFormat).c_str()));
 
                         if (timeInfo)
                         {
@@ -163,7 +165,9 @@ void Diary::write(std::wstring _wstr, bool bInput)
                         }
                     }
                     if (line)
+                    {
                         fileDiary << line;
+                    }
                 }
             }
 
@@ -221,7 +225,9 @@ std::wstring Diary::replace(std::wstring text, std::wstring s, std::wstring repl
         pos = text.find(s, pos);
         if (pos == std::wstring::npos)
             // no more 's' in '*this'
+        {
             break;
+        }
 
         text.replace(pos, s.length(), replacement);
         pos += replacement.length();
@@ -269,9 +275,13 @@ diary_prefix_time_filter Diary::getPrefixIoModeFilter(void)
 bool compareDiary(Diary first, Diary second)
 {
     if (first.getID() < second.getID())
+    {
         return true;
+    }
     else
+    {
         return false;
+    }
 }
 
 /*--------------------------------------------------------------------------*/

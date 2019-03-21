@@ -51,14 +51,21 @@ int sci_csvStringToDouble(char *fname)
     }
     else /* Rhs == 2 */
     {
-        bConvertToNan = (BOOL)csv_getArgumentAsScalarBoolean(pvApiCtx, 2, fname, &iErr);
-        if (iErr) return 0;
+        bConvertToNan = static_cast<BOOL>(csv_getArgumentAsScalarBoolean(pvApiCtx, 2, fname, &iErr));
+        if (iErr)
+        {
+            return 0;
+        }
     }
 
     pStringValues = csv_getArgumentAsMatrixOfString(pvApiCtx, 1, fname, &m1, &n1, &iErr);
-    if (iErr) return 0;
+    if (iErr)
+    {
+        return 0;
+    }
 
-    ptrCsvComplexArray = stringsToCsvComplexArray((const char**)pStringValues, m1 * n1, getCsvDefaultDecimal(), bConvertToNan, &ierr);
+    ptrCsvComplexArray = stringsToCsvComplexArray(const_cast<const char **>(pStringValues),
+                         m1 * n1, getCsvDefaultDecimal(), bConvertToNan, &ierr);
 
     freeArrayOfString(pStringValues, m1 * n1);
     pStringValues = NULL;

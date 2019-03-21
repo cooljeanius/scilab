@@ -41,7 +41,7 @@ int csignal(void)
     struct sigaction act_controlC;
 
     memset(&act_controlC, 0, sizeof(act_controlC));
-    act_controlC.sa_sigaction = controlC_handler;
+    act_controlC.sa_sigaction = (void (*)(int, siginfo_t *, void *))controlC_handler;
     if (sigaction(SIGINT, &act_controlC, NULL) != 0)
     {
         fprintf(stderr, "Could not set the signal SIGINT to the handler.\n");

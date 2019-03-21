@@ -542,10 +542,10 @@ private:
                             }
                             break;
                         }
-                        default :
+                        default:
                         {
-                            Scierror(999, _("%s: Wrong size of input argument #%d: Number of columns are incompatible ")
-                                     , currentFname, std::distance(begin, resBegin));
+                            Scierror(999, _("%s: Wrong size of input argument #%d: Number of columns are incompatible "),
+                                     currentFname, std::distance(begin, resBegin));
                         }
                     }
                 }

@@ -64,7 +64,7 @@ int C2F(sci_stacksize) (char *fname, unsigned long fname_len)
     {
         return sci_stacksizeNoRhs(fname);
     }
-    return dynParallelConcurrency()? dynParallelForbidden(fname) : sci_stacksizeOneRhs(fname);
+    return dynParallelConcurrency() ? dynParallelForbidden(fname) : sci_stacksizeOneRhs(fname);
 }
 
 /*--------------------------------------------------------------------------*/
@@ -108,7 +108,7 @@ static int sci_stacksizeOneRhs(char *fname)
         GetRhsVar(1, MATRIX_OF_DOUBLE_DATATYPE, &m1, &n1, &l1);
         if ((m1 == 1) && (n1 == 1))
         {
-            unsigned long NEWMEMSTACKSIZE = (unsigned long)*stk(l1);
+            unsigned long NEWMEMSTACKSIZE = (unsigned long) * stk(l1);
 
             /* add 1 for alignment problems */
             if (is_a_valid_size_for_scilab_stack(NEWMEMSTACKSIZE + 1))
@@ -281,7 +281,7 @@ static int setStacksizeMax(char *fname)
 /*--------------------------------------------------------------------------*/
 /*
  *
- * @return 0 if success 
+ * @return 0 if success
  *         -1 if cannot allocate this quantity of memory
  *         -2 if the requested size is smaller than the minimal one
  *         -3 unable to create (or resize) the stack (probably a malloc error
@@ -296,7 +296,7 @@ static int setStacksize(unsigned long newsize)
             {
                 unsigned long ptr = 0;
 
-                C2F(scimem) (&newsize, &ptr);
+                C2F(scimem)((int *)&newsize, (int *)&ptr);
                 if (ptr)
                 {
                     LhsVar(1) = 0;
@@ -323,7 +323,7 @@ static unsigned long getCurrentStacksize(void)
     unsigned long memstacktotal = 0;
     unsigned long memstackused = 0;
 
-    C2F(getstackinfo) (&memstacktotal, &memstackused);
+    C2F(getstackinfo)((int *)&memstacktotal, (int *)&memstackused);
 
     return memstacktotal;
 }
@@ -334,7 +334,7 @@ static unsigned long getUsedStacksize(void)
     unsigned long memstacktotal = 0;
     unsigned long memstackused = 0;
 
-    C2F(getstackinfo) (&memstacktotal, &memstackused);
+    C2F(getstackinfo)((int *)&memstacktotal, (int *)&memstackused);
 
     return memstackused;
 }
@@ -345,15 +345,15 @@ static char *getStackCreationErrorMessage(int errCode)
 {
     switch (errCode)
     {
-    case -1:
-        return _("%s: Cannot allocate this quantity of memory.\n");
-        break;
-    case -2:
-        return _("%s: The requested size is smaller than the minimal one.\n");
-        break;
-    case -3:
-        return _("%s: Unable to create (or resize) the stack (probably a malloc error).\n");
-        break;
+        case -1:
+            return _("%s: Cannot allocate this quantity of memory.\n");
+            break;
+        case -2:
+            return _("%s: The requested size is smaller than the minimal one.\n");
+            break;
+        case -3:
+            return _("%s: Unable to create (or resize) the stack (probably a malloc error).\n");
+            break;
     }
     return _("%s: Unknown error.\n");
 }

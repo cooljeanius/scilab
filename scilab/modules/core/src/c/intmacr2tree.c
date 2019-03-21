@@ -148,7 +148,7 @@ int C2F(macr2tree)(char *fname, unsigned long fname_len)
     Top--;
 
     /* Write 'program' tlist first element on stack */
-    str2sci(pgrm_tlist, m_pgrm_tlist, n_pgrm_tlist);
+    str2sci((char **)pgrm_tlist, m_pgrm_tlist, n_pgrm_tlist);
 
 
     /* Write function name on stack */
@@ -810,7 +810,7 @@ static int GetControlInstruction(int *data, int *index2, int *nblines)
     if (data[*index2] == 7)
     {
         /* Write list items */
-        str2sci(for_tlist, m_for_tlist, n_for_tlist);
+        str2sci((char **)for_tlist, m_for_tlist, n_for_tlist);
         (*index2)++;
         codelgth = data[*index2];
         endindex2 = *index2 + codelgth;
@@ -874,7 +874,7 @@ static int GetControlInstruction(int *data, int *index2, int *nblines)
     {
         index20 = *index2;
 
-        str2sci(trycatch_tlist, m_trycatch_tlist, n_trycatch_tlist);
+        str2sci((char **)trycatch_tlist, m_trycatch_tlist, n_trycatch_tlist);
 
         /* index2 now point to first code to use as an instruction code */
         *index2 += 3;
@@ -937,15 +937,15 @@ static int GetControlInstruction(int *data, int *index2, int *nblines)
             /* Write first tlist item (tlist fields) */
             if (data[index20] == 8)
             {
-                str2sci(if_tlist, m_if_tlist, n_if_tlist);
+                str2sci((char **)if_tlist, m_if_tlist, n_if_tlist);
             }
             else if (data[index20] == 9)
             {
-                str2sci(while_tlist, m_while_tlist, n_while_tlist);
+                str2sci((char **)while_tlist, m_while_tlist, n_while_tlist);
             }
             else if (data[index20] == 10)
             {
-                str2sci(select_tlist, m_select_tlist, n_select_tlist);
+                str2sci((char **)select_tlist, m_select_tlist, n_select_tlist);
             }
 
             /* index2 now point to first code to use as an instruction code */
@@ -989,13 +989,13 @@ static int GetControlInstruction(int *data, int *index2, int *nblines)
                 if (icase < ncase && data[index20] == 8) /* For a if (if loop already executed one time): found a elseif */
                 {
                     /* Write tlist items */
-                    str2sci(elseif_tlist, m_elseif_tlist, n_elseif_tlist);
+                    str2sci((char **)elseif_tlist, m_elseif_tlist, n_elseif_tlist);
                 }
 
                 if (data[index20] == 10) /* For a select: found a case */
                 {
                     /* Write tlist items */
-                    str2sci(case_tlist, m_case_tlist, n_case_tlist);
+                    str2sci((char **)case_tlist, m_case_tlist, n_case_tlist);
                 }
 
                 codelgth = data[*index2];
@@ -1764,7 +1764,7 @@ static int CreateFuncallTList(char *fromwhat, int *data, int *index2)
     }
 
     /* Add tlist items names to stack */
-    str2sci(fun_tlist, m_fun_tlist, n_fun_tlist);
+    str2sci((char **)fun_tlist, m_fun_tlist, n_fun_tlist);
 
     /* Copy rhs list */
     orig = Top - 1;
@@ -1864,7 +1864,7 @@ static int CreateEqualTList(char *fromwhat, int *data, int *index2)
     (operator[0])[3] = '\0';
 
     /* Add tlist items names to stack */
-    str2sci(eq_tlist, m_eq_tlist, n_eq_tlist);
+    str2sci((char **)eq_tlist, m_eq_tlist, n_eq_tlist);
 
     if (!strncmp(fromwhat, "code29", 6)) /* A code 29 was found in data */
     {

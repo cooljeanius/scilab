@@ -40,7 +40,7 @@ XMLNodeList::~XMLNodeList()
 
 void *XMLNodeList::getRealXMLPointer() const
 {
-    return static_cast < void *>(parent->children);
+    return static_cast<void *>(parent->children);
 }
 
 const char **XMLNodeList::getContentFromList() const
@@ -107,9 +107,11 @@ const std::string XMLNodeList::dump() const
     for (xmlNode * cur = parent->children; cur; cur = cur->next)
     {
         xmlNodeDump(buffer, doc.getRealDocument(), cur, 0, 1);
-        xmlBufferAdd(buffer, (xmlChar *) "\n", (int)strlen("\n"));
+        xmlBufferAdd(buffer,
+                     reinterpret_cast<xmlChar *>(const_cast<char *>("\n")),
+                     static_cast<int>(strlen("\n")));
     }
-    std::string str = std::string((const char *)buffer->content);
+    std::string str = std::string(reinterpret_cast<const char *>(buffer->content));
 
     xmlBufferFree(buffer);
 
@@ -126,7 +128,7 @@ const XMLObject *XMLNodeList::getListElement(int index)
 
         if (obj)
         {
-            return static_cast < XMLElement * >(obj);
+            return static_cast<XMLElement *>(obj);
         }
 
         return new XMLElement(doc, n);
@@ -219,7 +221,7 @@ void XMLNodeList::setElementAtPosition(double index, const std::string & xmlCode
     }
     else
     {
-        xmlNode *n = xmlNewText((xmlChar *) xmlCode.c_str());
+        xmlNode *n = xmlNewText(reinterpret_cast<xmlChar *>(const_cast<char *>(xmlCode.c_str())));
 
         setElementAtPosition(index, XMLElement(doc, n));
     }
@@ -229,9 +231,9 @@ void XMLNodeList::setElementAtPosition(double index, const XMLNodeList & list)
 {
     if (list.getSize() && list.getRealNode() != parent)
     {
-        xmlNode * node = 0;
-        xmlNode * snode = 0;
-        int pos = (int)index;
+        xmlNode *node = NULL;
+        xmlNode *snode = NULL;
+        int pos = static_cast<int>(index);
 
         if (index < 1)
         {
@@ -241,7 +243,7 @@ void XMLNodeList::setElementAtPosition(double index, const XMLNodeList & list)
         {
             pos = size + 1;
         }
-        else if ((int)index != index)
+        else if (static_cast<int>(index) != index)
         {
             pos++;
         }
@@ -264,7 +266,7 @@ void XMLNodeList::setElementAtPosition(double index, const XMLNodeList & list)
         setElementAtPosition(index, XMLElement(doc, node));
         for (xmlNode * cur = node->next; cur; cur = cur->next)
         {
-            setElementAtPosition((double)(pos++) + 0.5, XMLElement(doc, cur));
+            setElementAtPosition(static_cast<double>(pos++) + 0.5, XMLElement(doc, cur));
         }
     }
 }

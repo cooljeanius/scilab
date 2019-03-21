@@ -70,7 +70,10 @@ int sci_csvWrite(char *fname)
         int m6 = 0;
         int n6 = 0;
         pHeadersLines = csv_getArgumentAsMatrixOfString(pvApiCtx, 6, fname, &m6, &n6, &iErr);
-        if (iErr) return 0;
+        if (iErr)
+        {
+            return 0;
+        }
         isOnlyRowOrCol = ((m6 > 1) && (n6 == 1)) || ((m6 == 1) && (n6 > 1)) || ((m6 == 1) && (n6 == 1));
         if (!isOnlyRowOrCol)
         {
@@ -90,7 +93,7 @@ int sci_csvWrite(char *fname)
         if (csv_isDoubleScalar(pvApiCtx, 5))
         {
 #define FORMAT_FIELDVALUESTR "%%.%dlg"
-            int iFormatValue = (int) csv_getArgumentAsScalarDouble(pvApiCtx, 5, fname, &iErr);
+            int iFormatValue = static_cast<int>(csv_getArgumentAsScalarDouble(pvApiCtx, 5, fname, &iErr));
             if (iErr)
             {
                 if (pHeadersLines)
@@ -112,7 +115,7 @@ int sci_csvWrite(char *fname)
                 return 0;
             }
 
-            precisionFormat = (char*)MALLOC(sizeof(char) * ((int)strlen(FORMAT_FIELDVALUESTR) + 1));
+            precisionFormat = static_cast<char *>(MALLOC(sizeof(char) * (strlen(FORMAT_FIELDVALUESTR) + 1)));
             if (precisionFormat == NULL)
             {
                 Scierror(999, _("%s: Memory allocation error.\n"), fname);
@@ -128,7 +131,10 @@ int sci_csvWrite(char *fname)
         else
         {
             precisionFormat = csv_getArgumentAsStringWithEmptyManagement(pvApiCtx, 5, fname, getCsvDefaultPrecision(), &iErr);
-            if (iErr) return 0;
+            if (iErr)
+            {
+                return 0;
+            }
             if (checkCsvWriteFormat(precisionFormat))
             {
                 Scierror(999, _("%s: Not supported format %s.\n"), fname, precisionFormat);
@@ -411,10 +417,10 @@ int sci_csvWrite(char *fname)
     if (pStringValues)
     {
         csvError = csvWrite_string(filename,
-                                   (const char**)pStringValues, m1, n1,
-                                   separator,
-                                   decimal,
-                                   (const char**)pHeadersLines, nbHeadersLines);
+                                   const_cast<const char **>(pStringValues),
+                                   m1, n1, separator, decimal,
+                                   const_cast<const char **>(pHeadersLines),
+                                   nbHeadersLines);
     }
     else
     {
@@ -427,7 +433,8 @@ int sci_csvWrite(char *fname)
                                         separator,
                                         decimal,
                                         precisionFormat,
-                                        (const char**)pHeadersLines, nbHeadersLines);
+                                        const_cast<const char **>(pHeadersLines),
+                                        nbHeadersLines);
         }
         else
         {
@@ -436,7 +443,8 @@ int sci_csvWrite(char *fname)
                                        separator,
                                        decimal,
                                        precisionFormat,
-                                       (const char**)pHeadersLines, nbHeadersLines);
+                                       const_cast<const char **>(pHeadersLines),
+                                       nbHeadersLines);
         }
     }
 

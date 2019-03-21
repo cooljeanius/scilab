@@ -68,7 +68,7 @@ int C2F(sci_gstacksize) (char *fname, unsigned long fname_len)
     }
 
     /* setting the stack size moves the memory, which is not allowed in concurernt context */
-    return dynParallelConcurrency()? dynParallelForbidden(fname) : sci_gstacksizeOneRhs(fname);
+    return dynParallelConcurrency() ? dynParallelForbidden(fname) : sci_gstacksizeOneRhs(fname);
 }
 
 /*--------------------------------------------------------------------------*/
@@ -83,7 +83,9 @@ static int sci_gstacksizeNoRhs(char *fname)
 
     C2F(getgstackinfo) (&total, &used);
     if (total == (MIN_GSTACKSIZE - 1))
+    {
         total = MIN_GSTACKSIZE;
+    }
     paramoutINT[0] = total;
     paramoutINT[1] = used;
 
@@ -113,7 +115,7 @@ static int sci_gstacksizeOneRhs(char *fname)
         GetRhsVar(1, MATRIX_OF_DOUBLE_DATATYPE, &m1, &n1, &l1);
         if ((m1 == 1) && (n1 == 1))
         {
-            unsigned long NEWMEMSTACKSIZE = (unsigned long)*stk(l1);
+            unsigned long NEWMEMSTACKSIZE = (unsigned long) * stk(l1);
 
             /* add 1 for alignment problems */
             if (is_a_valid_size_for_scilab_stack(NEWMEMSTACKSIZE + 1))
@@ -295,7 +297,7 @@ static int setGStacksize(unsigned long newsize)
             unsigned long ptr = 0;
             int l = 0;
 
-            C2F(scigmem) (&newsize, &ptr);
+            C2F(scigmem)((int *)&newsize, (int *)&ptr);
             l = C2F(vstk).lstk[C2F(vstk).gtop] - C2F(vstk).lstk[C2F(vstk).isiz + 1];
 
             if (ptr)
@@ -318,7 +320,7 @@ static unsigned long getCurrentGStacksize(void)
     unsigned long memstacktotal = 0;
     unsigned long memstackused = 0;
 
-    C2F(getgstackinfo) (&memstacktotal, &memstackused);
+    C2F(getgstackinfo)((int *)&memstacktotal, (int *)&memstackused);
 
     return memstacktotal;
 }
@@ -329,7 +331,7 @@ static unsigned long getUsedGStacksize(void)
     unsigned long memstacktotal = 0;
     unsigned long memstackused = 0;
 
-    C2F(getgstackinfo) (&memstacktotal, &memstackused);
+    C2F(getgstackinfo)((int *)&memstacktotal, (int *)&memstackused);
 
     return memstackused;
 }

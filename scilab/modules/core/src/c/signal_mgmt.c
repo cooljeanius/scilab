@@ -408,8 +408,8 @@ static void sig_fatal(int signum, siginfo_t * info, void *p)
              ("Oups. A fatal error has been detected by Scilab.\nYour instance will probably crash soon.\nPlease report a bug on %s with:\n* a sample code which reproduces the issue\n* the result of [a, b] = getdebuginfo()\n* the following information:\n%s %s\n"),
              PACKAGE_BUGREPORT, print_buffer, bt);
 
-    free(bt);
-    longjmp(&jmp_env, 1);
+    free((void *)bt);
+    longjmp((int *)&jmp_env, 1);
 }
 
 void base_error_init(void)

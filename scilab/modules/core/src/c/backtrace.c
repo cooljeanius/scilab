@@ -32,8 +32,8 @@
 #include <execinfo.h>
 #endif
 
-#if defined(HAVE_GLIBC_BACKTRACE) && defined(__GNUC__)
-#define _GNU_SOURCE
+#if defined(HAVE_GLIBC_BACKTRACE) && defined(__GNUC__) && !defined(_GNU_SOURCE)
+# define _GNU_SOURCE
 #endif
 
 #define __USE_GNU

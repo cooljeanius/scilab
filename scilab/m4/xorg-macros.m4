@@ -1598,9 +1598,11 @@ AC_ARG_ENABLE([selective-werror],
 AC_LANG_CASE(
         [C], [
                 define([PREFIX], [C])
+                define([WERROR_WRITE_STRINGS_CV], [xorg_cv_cc_flag__Werror_write_strings])
         ],
         [C++], [
                 define([PREFIX], [CXX])
+                define([WERROR_WRITE_STRINGS_CV], [xorg_cv_cxx_flag__Werror_write_strings])
         ],
         [Fortran 77], [
                 define([PREFIX], [F])
@@ -1678,7 +1680,6 @@ else
   AC_MSG_NOTICE([handling casts between pointers and integers and vice versa is easier when we have intptr_t and uintptr_t, so skipping erroring on such warnings due to missing types])
 fi
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=pointer-compare])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=overflow])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=endif-labels])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=int-conversion])
 AC_LANG_CASE([Fortran 77],[
@@ -1686,7 +1687,7 @@ AC_LANG_CASE([Fortran 77],[
 ],[C++],[
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=conversion-null])
 ])
-if test "x${xorg_cv_cc_flag__Werror_write_strings}" != "xyes"; then
+if test "[x${]WERROR_WRITE_STRINGS_CV[}]" != "xyes"; then
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=incompatible-pointer-types])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=discarded-qualifiers])
 else
@@ -1709,7 +1710,6 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wint-to-pointer-cast])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wpointer-to-int-cast])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wincompatible-pointer-types])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wpointer-compare])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Woverflow])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wendif-labels])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wint-conversion])
 AC_LANG_CASE([Fortran 77],[

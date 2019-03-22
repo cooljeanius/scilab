@@ -96,14 +96,14 @@ int sci_percent_s_i_XMLList(char *fname, unsigned long fname_len)
 
     if (row == 0 && col == 0)
     {
-        a->removeElementAtPosition((int)index);
+        a->removeElementAtPosition(static_cast<int>(index));
         a->createOnStack(Rhs + 1, pvApiCtx);
         LhsVar(1) = Rhs + 1;
     }
     else if (isNamedVarExist(pvApiCtx, "%s_xmlFormat"))
     {
         Nbvars = Max(Nbvars, Lhs + Rhs);
-        SciString(&iBegin, (char *)"%s_xmlFormat", &mlhs, &mrhs);
+        SciString(&iBegin, const_cast<char *>("%s_xmlFormat"), &mlhs, &mrhs);
         Nbvars = Max(Nbvars, Lhs + Rhs + mlhs + mrhs);
 
         err = getVarAddressFromPosition(pvApiCtx, iBegin, &retaddr);

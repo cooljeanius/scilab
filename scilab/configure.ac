@@ -453,6 +453,7 @@ fi
 if test "x${enable_debug_fortran}" = "xyes"; then
    FFLAGS="`echo "${FFLAGS}"| sed -e 's|-O[0-9+]|-O0|'`"
 else
+   FFLAGS="-O3"
    enable_debug_fortran=no
 fi
 
@@ -460,6 +461,7 @@ if test "x${enable_debug_C}" = "xyes"; then
    CFLAGS="`echo "${CFLAGS}"| sed -e 's|-O[0-9+]|-O0|'`"
    XORG_CWARNFLAGS dnl# from m4/xorg-macros.m4
 else
+   CFLAGS="-O2"
    enable_debug_C=no
 fi
 
@@ -467,6 +469,7 @@ if test "x${enable_debug_CXX}" = "xyes"; then
    CXXFLAGS="`echo "${CXXFLAGS}"| sed -e 's|-O[0-9+]|-O0|'`"
    XORG_CXXWARNFLAGS dnl# from m4/xorg-macros.m4
 else
+   CXXFLAGS="-O2"
    enable_debug_CXX=no
 fi
 
@@ -749,6 +752,86 @@ case "${CC}" in
             LDFLAGS="${LDFLAGS} -Wl,-warn_compact_unwind -Wl,-warn_weak_exports -Wl,-warn_stabs -Wl,-warn_commons"
         fi
 
+        dnl# FIXME: turn this block into a macro that can be re-used:
+        CHECK_COMPILER_ARG([C],[-Qunused-arguments],[CFLAGS],[QUIET_CFLAGS])
+        if test -z "${QUIET_CFLAGS}"; then
+            CHECK_COMPILER_ARG([C],[-Wa,-Qunused-arguments],[CFLAGS],
+                               [QUIET_CFLAGS])
+        fi
+        if test -n "${QUIET_CFLAGS}"; then
+            if test -n "${ARCH_CFLAGS}"; then
+                ARCH_CFLAGS="${ARCH_CFLAGS} ${QUIET_CFLAGS}"
+            elif test -n "${DEBUG_CFLAGS}"; then
+                DEBUG_CFLAGS="${DEBUG_CFLAGS} ${QUIET_CFLAGS}"
+            elif test -n "${COMPILER_CFLAGS}"; then
+                COMPILER_CFLAGS="${COMPILER_CFLAGS} ${QUIET_CFLAGS}"
+            elif test -n "${WARNING_CFLAGS}"; then
+                WARNING_CFLAGS="${WARNING_CFLAGS} ${QUIET_CFLAGS}"
+            elif test -n "${WERROR_CFLAGS}"; then
+                WERROR_CFLAGS="${WERROR_CFLAGS} ${QUIET_CFLAGS}"
+            fi
+        fi
+        AC_SUBST([QUIET_CFLAGS])
+        CHECK_COMPILER_ARG([C++],[-Qunused-arguments],[CXXFLAGS],
+                           [QUIET_CXXFLAGS])
+        if test -z "${QUIET_CXXFLAGS}"; then
+            CHECK_COMPILER_ARG([C++],[-Wa,-Qunused-arguments],[CXXFLAGS],
+                               [QUIET_CXXFLAGS])
+        fi
+        if test -n "${QUIET_CXXFLAGS}"; then
+            if test -n "${ARCH_CXXFLAGS}"; then
+                ARCH_CXXFLAGS="${ARCH_CXXFLAGS} ${QUIET_CXXFLAGS}"
+            elif test -n "${DEBUG_CXXFLAGS}"; then
+                DEBUG_CXXFLAGS="${DEBUG_CXXFLAGS} ${QUIET_CXXFLAGS}"
+            elif test -n "${COMPILER_CXXFLAGS}"; then
+                COMPILER_CXXFLAGS="${COMPILER_CXXFLAGS} ${QUIET_CXXFLAGS}"
+            elif test -n "${WARNING_CXXFLAGS}"; then
+                WARNING_CXXFLAGS="${WARNING_CXXFLAGS} ${QUIET_CXXFLAGS}"
+            elif test -n "${WERROR_CXXFLAGS}"; then
+                WERROR_CXXFLAGS="${WERROR_CXXFLAGS} ${QUIET_CXXFLAGS}"
+            fi
+        fi
+        AC_SUBST([QUIET_CXXFLAGS])
+        CHECK_COMPILER_ARG([Fortran 77],[-Qunused-arguments],[FFLAGS],
+                           [QUIET_FFLAGS])
+        if test -z "${QUIET_FFLAGS}"; then
+            CHECK_COMPILER_ARG([Fortran 77],[-Wa,-Qunused-arguments],[FFLAGS],
+                               [QUIET_FFLAGS])
+        fi
+        if test -n "${QUIET_FFLAGS}"; then
+            if test -n "${ARCH_FFLAGS}"; then
+                ARCH_FFLAGS="${ARCH_FFLAGS} ${QUIET_FFLAGS}"
+            elif test -n "${DEBUG_FFLAGS}"; then
+                DEBUG_FFLAGS="${DEBUG_FFLAGS} ${QUIET_FFLAGS}"
+            elif test -n "${COMPILER_FFLAGS}"; then
+                COMPILER_FFLAGS="${COMPILER_FFLAGS} ${QUIET_FFLAGS}"
+            elif test -n "${WARNING_FFLAGS}"; then
+                WARNING_FFLAGS="${WARNING_FFLAGS} ${QUIET_FFLAGS}"
+            elif test -n "${WERROR_FFLAGS}"; then
+                WERROR_FFLAGS="${WERROR_FFLAGS} ${QUIET_FFLAGS}"
+            fi
+        fi
+        AC_SUBST([QUIET_FFLAGS])dnl
+
+        case "${F77}" in
+             gfortran-*|gfortran)
+                 # Extract from gfortran -v the version it has been built for
+                 MAC_DETECTED_ARCH="`${F77} -v 2>&1 | grep "Target:" | sed -e "s/Target: \([[a-z0-9A-Z_]]*\).*/\1/g"`"
+             ;;
+             *)
+                 AC_MSG_WARN([gfortran not used. Could not detect the architecture. Switch to the default case: x86_64])
+                 MAC_DETECTED_ARCH="x86_64"
+             ;;
+        esac
+        CC="${CC} -arch ${MAC_DETECTED_ARCH}"
+        CXX="${CXX} -arch ${MAC_DETECTED_ARCH}"
+        ;;
+   esac
+   ;; # end of the gcc case on the ${CC}
+   clang-* | clang | ccache*clang | ccache*clang-*)
+        if test "x${enable_debug_C}" != "xyes"; then
+             ARCH_CFLAGS="-DNDEBUG"
+        fi
         CHECK_COMPILER_ARG([C],[-Qunused-arguments],[CFLAGS],[QUIET_CFLAGS])
         if test -z "${QUIET_CFLAGS}"; then
             CHECK_COMPILER_ARG([C],[-Wa,-Qunused-arguments],[CFLAGS],
@@ -788,22 +871,8 @@ case "${CC}" in
             fi
         fi
         AC_SUBST([QUIET_CXXFLAGS])dnl
-
-        case "${F77}" in
-             gfortran-*|gfortran)
-                 # Extract from gfortran -v the version it has been built for
-                 MAC_DETECTED_ARCH="`${F77} -v 2>&1 | grep "Target:" | sed -e "s/Target: \([[a-z0-9A-Z_]]*\).*/\1/g"`"
-             ;;
-             *)
-                 AC_MSG_WARN([gfortran not used. Could not detect the architecture. Switch to the default case: x86_64])
-                 MAC_DETECTED_ARCH="x86_64"
-             ;;
-        esac
-        CC="${CC} -arch ${MAC_DETECTED_ARCH}"
-        CXX="${CXX} -arch ${MAC_DETECTED_ARCH}"
-        ;;
-   esac
-   ;; # end of the gcc case on the ${CC}
+   
+   ;; # end of the clang case on the ${CC}
    *)
         ## CC compiler (not GCC)
         if test "x${enable_debug_C}" != "xyes"; then
@@ -1702,7 +1771,7 @@ if test "x${with_openmp}" != "xno"; then
     OPENMP_LIBS="-lgomp"
 
     AC_CHECK_HEADERS([omp.h],[],
-     [AC_MSG_ERROR([Could not find omp.h])])dnl
+     [AC_MSG_ERROR([Could not find omp.h; try disabling OpenMP with --without-openmp])])dnl
 
     OPENMP_ENABLE=yes
 else

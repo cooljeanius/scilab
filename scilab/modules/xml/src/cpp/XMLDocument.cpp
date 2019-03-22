@@ -76,21 +76,21 @@ XMLDocument::XMLDocument(char *uri, char *version): XMLObject()
 
     if (!version)
     {
-        version = const_cast < char *>("1.0");
+        version = const_cast<char *>("1.0");
     }
-    document = xmlNewDoc((xmlChar *) version);
+    document = xmlNewDoc(reinterpret_cast<xmlChar *>(version));
     openDocs.push_back(this);
     scope->registerPointers(document, this);
     id = scope->getVariableId(*this);
     scilabType = XMLDOCUMENT;
 
-    expandedPath = expandPathVariable(const_cast < char *>(uri));
+    expandedPath = expandPathVariable(const_cast<char *>(uri));
 
     if (expandedPath)
     {
-        newUri = (char *)xmlMalloc(sizeof(char *) * (strlen(expandedPath) + 1));
+        newUri = static_cast<char *>(xmlMalloc(sizeof(char *) * (strlen(expandedPath) + 1)));
         memcpy(newUri, expandedPath, sizeof(char) * (strlen(expandedPath) + 1));
-        document->URL = (xmlChar *) newUri;
+        document->URL = reinterpret_cast<xmlChar *>(newUri);
         FREE(expandedPath);
     }
 }
@@ -144,19 +144,21 @@ const XMLXPath *XMLDocument::makeXPathQuery(const char *query, char **namespaces
 
     if (e)
     {
-        ctxt->node = (xmlNode *) e->getRealXMLPointer();
+        ctxt->node = static_cast<xmlNode *>(e->getRealXMLPointer());
     }
 
     if (namespaces)
     {
         for (int i = 0; i < length; i++)
         {
-            xmlXPathRegisterNs(ctxt, (const xmlChar *)namespaces[i], (const xmlChar *)namespaces[i + length]);
+            xmlXPathRegisterNs(ctxt, reinterpret_cast<const xmlChar *>(namespaces[i]),
+                               reinterpret_cast<const xmlChar *>(namespaces[i + length]));
         }
     }
 
     xmlSetStructuredErrorFunc(ctxt, XMLDocument::errorXPathFunction);
-    xmlXPathCompExpr *expr = xmlXPathCtxtCompile(ctxt, (const xmlChar *)query);
+    xmlXPathCompExpr *expr =
+        xmlXPathCtxtCompile(ctxt, reinterpret_cast<const xmlChar *>(query));
 
     if (!expr)
     {

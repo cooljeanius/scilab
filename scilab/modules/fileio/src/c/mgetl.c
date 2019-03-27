@@ -325,7 +325,7 @@ char *convertAnsiToUtf(char *_inString)
 
                 if (inAnsiChar < 128)
                 {
-                    outUtfChar = (char *)CALLOC(2, sizeof(char));
+                    outUtfChar = (unsigned char *)CALLOC(2, sizeof(unsigned char));
                     if (outUtfChar)
                     {
                         outUtfChar[0] = inAnsiChar;
@@ -334,7 +334,7 @@ char *convertAnsiToUtf(char *_inString)
                 }
                 else
                 {
-                    outUtfChar = (char *)CALLOC(3, sizeof(char));
+                    outUtfChar = (unsigned char *)CALLOC(3, sizeof(unsigned char));
                     if (outUtfChar)
                     {
                         outUtfChar[0] = (inAnsiChar >> 6) | 0xC0;
@@ -345,7 +345,7 @@ char *convertAnsiToUtf(char *_inString)
 
                 if (outUtfChar)
                 {
-                    strcat(outString, outUtfChar);
+                    strcat(outString, (const char *)outUtfChar);
                     FREE(outUtfChar);
                     outUtfChar = NULL;
                 }

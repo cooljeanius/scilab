@@ -140,7 +140,8 @@ int sci_export_to_hdf5(char *fname, unsigned long fname_len)
     {
         int iVersion = getSODFormatAttribute(iH5File);
         if (iVersion != -1 && iVersion != SOD_FILE_VERSION)
-        {//to update version must be the same
+        {
+            //to update version must be the same
             Scierror(999, _("%s: Wrong SOD file format version. Expected: %d Found: %d\n"), fname, SOD_FILE_VERSION, iVersion);
             return 1;
         }
@@ -264,88 +265,88 @@ static bool export_data(int _iH5File, int* _piVar, char* _pstName)
     switch (iType)
     {
         case sci_matrix :
-            {
-                bReturn = export_double(_iH5File, _piVar, _pstName);
-                break;
-            }
+        {
+            bReturn = export_double(_iH5File, _piVar, _pstName);
+            break;
+        }
         case sci_poly :
-            {
-                bReturn = export_poly(_iH5File, _piVar, _pstName);
-                break;
-            }
+        {
+            bReturn = export_poly(_iH5File, _piVar, _pstName);
+            break;
+        }
         case sci_boolean :
-            {
-                bReturn = export_boolean(_iH5File, _piVar, _pstName);
-                break;
-            }
+        {
+            bReturn = export_boolean(_iH5File, _piVar, _pstName);
+            break;
+        }
         case sci_sparse :
-            {
-                bReturn = export_sparse(_iH5File, _piVar, _pstName);
-                break;
-            }
+        {
+            bReturn = export_sparse(_iH5File, _piVar, _pstName);
+            break;
+        }
         case sci_boolean_sparse :
-            {
-                bReturn = export_boolean_sparse(_iH5File, _piVar, _pstName);
-                break;
-            }
+        {
+            bReturn = export_boolean_sparse(_iH5File, _piVar, _pstName);
+            break;
+        }
         case sci_matlab_sparse :
-            {
-                bReturn = export_matlab_sparse(_piVar, _pstName);
-                break;
-            }
+        {
+            bReturn = export_matlab_sparse(_piVar, _pstName);
+            break;
+        }
         case sci_ints :
-            {
-                bReturn = export_ints(_iH5File, _piVar, _pstName);
-                break;
-            }
+        {
+            bReturn = export_ints(_iH5File, _piVar, _pstName);
+            break;
+        }
         case sci_handles :
-            {
-                bReturn = export_handles(_piVar, _pstName);
-                break;
-            }
+        {
+            bReturn = export_handles(_piVar, _pstName);
+            break;
+        }
         case sci_strings :
-            {
-                bReturn = export_strings(_iH5File, _piVar, _pstName);
-                break;
-            }
+        {
+            bReturn = export_strings(_iH5File, _piVar, _pstName);
+            break;
+        }
         case sci_u_function :
-            {
-                bReturn = export_u_function(_piVar, _pstName);
-                break;
-            }
+        {
+            bReturn = export_u_function(_piVar, _pstName);
+            break;
+        }
         case sci_c_function :
-            {
-                bReturn = export_c_function(_piVar, _pstName);
-                break;
-            }
+        {
+            bReturn = export_c_function(_piVar, _pstName);
+            break;
+        }
         case sci_lib :
-            {
-                bReturn = export_lib(_piVar, _pstName);
-                break;
-            }
+        {
+            bReturn = export_lib(_piVar, _pstName);
+            break;
+        }
         case sci_list :
         case sci_tlist :
         case sci_mlist :
-            {
-                bReturn = export_list(_iH5File, _piVar, _pstName, iType);
-                break;
-            }
+        {
+            bReturn = export_list(_iH5File, _piVar, _pstName, iType);
+            break;
+        }
         case sci_lufact_pointer :
-            {
-                bReturn = export_lufact_pointer(_piVar, _pstName);
-                break;
-            }
+        {
+            bReturn = export_lufact_pointer(_piVar, _pstName);
+            break;
+        }
         case 0 : //void case to "null" items in list
-            {
-                bReturn = export_void(_iH5File, _piVar, _pstName);
-                break;
-            }
+        {
+            bReturn = export_void(_iH5File, _piVar, _pstName);
+            break;
+        }
 
         default :
-            {
-                bReturn = false;
-                break;
-            }
+        {
+            bReturn = false;
+            break;
+        }
     }
     return bReturn;
 }
@@ -418,7 +419,9 @@ static bool export_list(int _iH5File, int *_piVar, char* _pstName, int _iVarType
         iRet = addItemInList(_iH5File, pvList, i, pstPathName);
         FREE(pstPathName);
         if (bReturn == false || iRet)
+        {
             return false;
+        }
     }
     iLevel--;
     closeList(_iH5File, pvList, _pstName, iItemNumber, _iVarType);
@@ -773,23 +776,23 @@ static bool export_ints(int _iH5File, int *_piVar, char* _pstName)
             iRet = writeUnsignedInteger32Matrix(_iH5File, _pstName, 2, piDims, (unsigned int*)piData);
             break;
         case SCI_INT64 :
-            //sciErr = getMatrixOfInteger64(_piVar, &piDims[0], &piDims[1], (long long**)&piData);
-            //if(sciErr.iErr)
-            //{
-            //	printError(&sciErr, 0);
-            //	return false;
-            //}
-            //iRet = writeInteger64Matrix(_iH5File, _pstName, 2, piDims, (long long*)piData);
-            //break;
+        //sciErr = getMatrixOfInteger64(_piVar, &piDims[0], &piDims[1], (long long**)&piData);
+        //if(sciErr.iErr)
+        //{
+        //	printError(&sciErr, 0);
+        //	return false;
+        //}
+        //iRet = writeInteger64Matrix(_iH5File, _pstName, 2, piDims, (long long*)piData);
+        //break;
         case SCI_UINT64 :
-            //sciErr = getMatrixOfUnsignedInteger64(_piVar, &piDims[0], &piDims[1], (unsigned long long**)&piData);
-            //if(sciErr.iErr)
-            //{
-            //	printError(&sciErr, 0);
-            //	return false;
-            //}
-            //iRet = writeUnsignedInteger64Matrix(_iH5File, _pstName, 2, piDims, (unsigned long long*)piData);
-            //break;
+        //sciErr = getMatrixOfUnsignedInteger64(_piVar, &piDims[0], &piDims[1], (unsigned long long**)&piData);
+        //if(sciErr.iErr)
+        //{
+        //	printError(&sciErr, 0);
+        //	return false;
+        //}
+        //iRet = writeUnsignedInteger64Matrix(_iH5File, _pstName, 2, piDims, (unsigned long long*)piData);
+        //break;
         default :
             return 1;
             break;
@@ -901,10 +904,9 @@ int extractVarNameList(int _iStart, int _iEnd, char** _pstNameList)
 {
     int iCount = 0;
 
-    for (int i = _iStart ; i <= _iEnd ; i++)
+    for (int i = _iStart; i <= _iEnd; i++)
     {
         int* piAddr = NULL;
-        int iType   = 0;
 
         SciErr sciErr = getVarAddressFromPosition(pvApiCtx, i, &piAddr);
         if (sciErr.iErr)

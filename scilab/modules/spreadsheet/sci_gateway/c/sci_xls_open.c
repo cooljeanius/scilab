@@ -77,16 +77,19 @@ int sci_xls_open(char *fname, unsigned long fname_len)
         /* bug 5615 */
         /* remove blank characters @ the end */
         int len = (int)strlen(filename_IN);
-        int i = 0;
 
         if (len >= 1)
         {
             for (i = len - 1; i >= 0; i--)
             {
                 if (filename_IN[i] == ' ')
+                {
                     filename_IN[i] = '\0';
+                }
                 else
+                {
                     break;
+                }
             }
         }
 
@@ -170,32 +173,32 @@ int sci_xls_open(char *fname, unsigned long fname_len)
      */
     switch (ierr)
     {
-    case 0:
-        /* OK */
-        break;
+        case 0:
+            /* OK */
+            break;
 
-    case 1:
-        Scierror(999, _("%s: Not an ole2 file.\n"), fname);
-        return 0;
+        case 1:
+            Scierror(999, _("%s: Not an ole2 file.\n"), fname);
+            return 0;
 
-    case 2:
-        Scierror(999, _("%s: The file has no Workbook directory.\n"), fname);
-        return 0;
+        case 2:
+            Scierror(999, _("%s: The file has no Workbook directory.\n"), fname);
+            return 0;
 
-    case 3:
-        Scierror(999, _("%s: No more memory.\n"), fname);
-        return 0;
+        case 3:
+            Scierror(999, _("%s: No more memory.\n"), fname);
+            return 0;
 
-    case 4:
-        Scierror(990, _("%s: Incorrect or corrupted file.\n"), fname);
-        return 0;
+        case 4:
+            Scierror(990, _("%s: Incorrect or corrupted file.\n"), fname);
+            return 0;
 
-    case 5:
-        Scierror(999, _("%s: Only BIFF8 file format is handled.\n"), fname);
-        return 0;
+        case 5:
+            Scierror(999, _("%s: Only BIFF8 file format is handled.\n"), fname);
+            return 0;
 
-    default:
-        break;
+        default:
+            break;
 
     }
 
@@ -206,7 +209,9 @@ int sci_xls_open(char *fname, unsigned long fname_len)
         freeArrayOfString(sst, ns);
     }
     else
+    {
         CreateVar(Rhs + 2, MATRIX_OF_DOUBLE_DATATYPE, &ns, &ns, &l2);
+    }
 
     if (nsheets != 0)
     {
@@ -216,7 +221,9 @@ int sci_xls_open(char *fname, unsigned long fname_len)
 
         CreateVar(Rhs + 4, MATRIX_OF_DOUBLE_DATATYPE, &one, &nsheets, &l2);
         for (i = 0; i < nsheets; i++)
+        {
             *stk(l2 + i) = Abspos[i];
+        }
         if (Abspos)
         {
             FREE(Abspos);

@@ -41,7 +41,7 @@ extern "C" {
 int sci_csvRead(char *fname)
 {
     SciErr sciErr;
-    int iErr = 0;
+    int iErr_outer = 0;
 
     char *filename = NULL;
     char *separator = NULL;
@@ -57,8 +57,6 @@ int sci_csvRead(char *fname)
 
     csvResult *result = NULL;
 
-    double *dRealValues = NULL;
-
     CheckRhs(1, 7);
     CheckLhs(1, 2);
 
@@ -66,8 +64,8 @@ int sci_csvRead(char *fname)
     {
         int m7 = 0, n7 = 0;
 
-        iRange = csv_getArgumentAsMatrixofIntFromDouble(pvApiCtx, 7, fname, &m7, &n7, &iErr);
-        if (iErr)
+        iRange = csv_getArgumentAsMatrixofIntFromDouble(pvApiCtx, 7, fname, &m7, &n7, &iErr_outer);
+        if (iErr_outer)
         {
             return 0;
         }
@@ -113,7 +111,8 @@ int sci_csvRead(char *fname)
 
     if (Rhs >= 6)
     {
-        regexp = csv_getArgumentAsStringWithEmptyManagement(pvApiCtx, 6, fname, getCsvDefaultCommentsRegExp(), &iErr);
+        regexp = csv_getArgumentAsStringWithEmptyManagement(pvApiCtx, 6, fname, getCsvDefaultCommentsRegExp(),
+                 &iErr_outer);
         if (regexp)
         {
             if (strcmp(regexp, "") == 0)
@@ -122,7 +121,7 @@ int sci_csvRead(char *fname)
                 regexp = NULL;
             }
         }
-        if (iErr)
+        if (iErr_outer)
         {
             return 0;
         }
@@ -150,8 +149,9 @@ int sci_csvRead(char *fname)
         else
         {
             int m5 = 0, n5 = 0;
-            toreplace = csv_getArgumentAsMatrixOfString(pvApiCtx, 5, fname, &m5, &n5, &iErr);
-            if (iErr)
+            toreplace = csv_getArgumentAsMatrixOfString(pvApiCtx, 5, fname,
+                        &m5, &n5, &iErr_outer);
+            if (iErr_outer)
             {
                 if (regexp)
                 {
@@ -184,9 +184,10 @@ int sci_csvRead(char *fname)
 
     if (Rhs >= 4)
     {
-        int iErr = 0;
-        conversion = csv_getArgumentAsStringWithEmptyManagement(pvApiCtx, 4, fname, getCsvDefaultConversion(), &iErr);
-        if (iErr)
+        int iErr_inner1 = 0;
+        conversion = csv_getArgumentAsStringWithEmptyManagement(pvApiCtx, 4, fname, getCsvDefaultConversion(),
+                     &iErr_inner1);
+        if (iErr_inner1)
         {
             FREE(regexp);
             return 0;
@@ -229,9 +230,10 @@ int sci_csvRead(char *fname)
 
     if (Rhs >= 3)
     {
-        int iErr = 0;
-        decimal = csv_getArgumentAsStringWithEmptyManagement(pvApiCtx, 3, fname, getCsvDefaultDecimal(), &iErr);
-        if (iErr)
+        int iErr_inner2 = 0;
+        decimal = csv_getArgumentAsStringWithEmptyManagement(pvApiCtx, 3, fname, getCsvDefaultDecimal(),
+                  &iErr_inner2);
+        if (iErr_inner2)
         {
             if (regexp)
             {
@@ -258,9 +260,10 @@ int sci_csvRead(char *fname)
 
     if (Rhs >= 2)
     {
-        int iErr = 0;
-        separator = csv_getArgumentAsStringWithEmptyManagement(pvApiCtx, 2, fname, getCsvDefaultSeparator(), &iErr);
-        if (iErr)
+        int iErr_inner3 = 0;
+        separator = csv_getArgumentAsStringWithEmptyManagement(pvApiCtx, 2, fname, getCsvDefaultSeparator(),
+                    &iErr_inner3);
+        if (iErr_inner3)
         {
             if (regexp)
             {
@@ -299,8 +302,8 @@ int sci_csvRead(char *fname)
     }
 
 
-    filename = csv_getArgumentAsString(pvApiCtx, 1, fname, &iErr);
-    if (iErr)
+    filename = csv_getArgumentAsString(pvApiCtx, 1, fname, &iErr_outer);
+    if (iErr_outer)
     {
         if (regexp)
         {

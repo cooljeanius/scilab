@@ -64,10 +64,10 @@ HDF5_SCILAB_IMPEXP int readUnsignedInteger16Matrix(int _iDatasetId, unsigned sho
 HDF5_SCILAB_IMPEXP int readUnsignedInteger32Matrix(int _iDatasetId, unsigned int* _puiData);
 HDF5_SCILAB_IMPEXP int readUnsignedInteger64Matrix(int _iDatasetId, unsigned long long* _pullData);
 
-HDF5_SCILAB_IMPEXP int readSparseComplexMatrix(int _iDatasetId, int _iRows, int _iCols, int _iNbItem, int* _piNbItemRow,	int* _piColPos, double *_pdblReal, double *_pdblImg);
-HDF5_SCILAB_IMPEXP int readSparseMatrix(int _iDatasetId, int _iRows, int _iCols, int _iNbItem, int* _piNbItemRow,	int* _piColPos, double *_pdblReal);
+HDF5_SCILAB_IMPEXP int readSparseComplexMatrix(int _iDatasetId, int _iRows, int _iCols, int _iNbItem, int* _piNbItemRow, int* _piColPos, double *_pdblReal, double *_pdblImg);
+HDF5_SCILAB_IMPEXP int readSparseMatrix(int _iDatasetId, int _iRows, int _iCols, int _iNbItem, int* _piNbItemRow, int* _piColPos, double *_pdblReal);
 
-HDF5_SCILAB_IMPEXP int readBooleanSparseMatrix(int _iDatasetId, int _iRows, int _iCols, int _iNbItem, int* _piNbItemRow,	int* _piColPos);
+HDF5_SCILAB_IMPEXP int readBooleanSparseMatrix(int _iDatasetId, int _iRows, int _iCols, int _iNbItem, int* _piNbItemRow, int* _piColPos);
 
 HDF5_SCILAB_IMPEXP int getListItemReferences(int _iDatasetId, hobj_ref_t** _piItemRef);
 
@@ -75,5 +75,5 @@ HDF5_SCILAB_IMPEXP int getListItemDataset(int _iDatasetId, void* _piItemRef, int
 
 HDF5_SCILAB_IMPEXP int deleteListItemReferences(int _iDatasetId, void* _piItemRef);
 
-HDF5_SCILAB_IMPEXP  void reset_item_count();
+HDF5_SCILAB_IMPEXP  void reset_item_count(void);
 #endif /* !__H5_READDATATOFILE_H__ */

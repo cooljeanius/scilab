@@ -24,7 +24,8 @@
 #endif
 #include "freeArrayOfString.h"
 // =============================================================================
-char *csv_getArgumentAsStringWithEmptyManagement(void* _pvCtx, int _iVar, const char *fname,
+char *csv_getArgumentAsStringWithEmptyManagement(void* _pvCtx, int _iVar,
+        const char *fname,
         const char *defaultValue,
         int *iErr)
 {
@@ -32,7 +33,6 @@ char *csv_getArgumentAsStringWithEmptyManagement(void* _pvCtx, int _iVar, const 
     char *returnedValue = NULL;
     int *piAddressVar = NULL;
     int iType = 0;
-    int m = 0, n = 0;
 
     sciErr = getVarAddressFromPosition(pvApiCtx, _iVar, &piAddressVar);
     if (sciErr.iErr)
@@ -101,7 +101,6 @@ char *csv_getArgumentAsString(void* _pvCtx, int _iVar,
     SciErr sciErr;
 
     int *piAddressVar = NULL;
-    int m = 0, n = 0;
     int iType = 0;
 
     char *returnedValue = NULL;
@@ -153,7 +152,6 @@ double csv_getArgumentAsScalarDouble(void* _pvCtx, int _iVar,
     SciErr sciErr;
     double dValue = 0.;
     int *piAddressVar = NULL;
-    int m = 0, n = 0;
     int iType = 0;
 
     sciErr = getVarAddressFromPosition(pvApiCtx, _iVar, &piAddressVar);
@@ -198,7 +196,6 @@ int csv_getArgumentAsScalarBoolean(void* _pvCtx, int _iVar,
     SciErr sciErr;
     int bValue = 0;
     int *piAddressVar = NULL;
-    int m = 0, n = 0;
     int iType = 0;
 
     sciErr = getVarAddressFromPosition(pvApiCtx, _iVar, &piAddressVar);
@@ -246,8 +243,6 @@ char **csv_getArgumentAsMatrixOfString(void* _pvCtx, int _iVar,
     int *piAddressVar = NULL;
     int m_ = 0, n_ = 0;
     int iType = 0;
-    int *lengthStringValues = NULL;
-    int i = 0;
 
     *m = 0;
     *n = 0;
@@ -293,7 +288,10 @@ int csv_isRowVector(void* _pvCtx, int _iVar)
     SciErr sciErr;
     int *piAddressVar = NULL;
     sciErr = getVarAddressFromPosition(pvApiCtx, _iVar, &piAddressVar);
-    if (sciErr.iErr) return 0;
+    if (sciErr.iErr)
+    {
+        return 0;
+    }
     return isRowVector(pvApiCtx, piAddressVar);
 }
 // =============================================================================
@@ -302,7 +300,10 @@ int csv_isColumnVector(void* _pvCtx, int _iVar)
     SciErr sciErr;
     int *piAddressVar = NULL;
     sciErr = getVarAddressFromPosition(pvApiCtx, _iVar, &piAddressVar);
-    if (sciErr.iErr) return 0;
+    if (sciErr.iErr)
+    {
+        return 0;
+    }
     return isColumnVector(pvApiCtx, piAddressVar);
 }
 // =============================================================================
@@ -311,7 +312,10 @@ int csv_isScalar(void* _pvCtx, int _iVar)
     SciErr sciErr;
     int *piAddressVar = NULL;
     sciErr = getVarAddressFromPosition(pvApiCtx, _iVar, &piAddressVar);
-    if (sciErr.iErr) return 0;
+    if (sciErr.iErr)
+    {
+        return 0;
+    }
     return isScalar(pvApiCtx, piAddressVar);
 }
 // =============================================================================
@@ -321,13 +325,19 @@ int csv_isDoubleScalar(void* _pvCtx, int _iVar)
     int *piAddressVar = NULL;
 
     sciErr = getVarAddressFromPosition(pvApiCtx, _iVar, &piAddressVar);
-    if (sciErr.iErr) return 0;
+    if (sciErr.iErr)
+    {
+        return 0;
+    }
 
     if (csv_isScalar(_pvCtx, _iVar))
     {
         int iType = 0;
         sciErr = getVarType(pvApiCtx, piAddressVar, &iType);
-        if (sciErr.iErr) return 0;
+        if (sciErr.iErr)
+        {
+            return 0;
+        }
 
         if (isVarComplex(pvApiCtx, piAddressVar) == 0)
         {
@@ -346,7 +356,10 @@ int csv_isEmpty(void* _pvCtx, int _iVar)
     if (sciErr.iErr)
     {
         printError(&sciErr, 0);
-        if (sciErr.iErr) return 0;
+        if (sciErr.iErr)
+        {
+            return 0;
+        }
     }
 
     return isEmptyMatrix(pvApiCtx, piAddressVar);
@@ -363,7 +376,6 @@ int *csv_getArgumentAsMatrixofIntFromDouble(void* _pvCtx, int _iVar,
     int iType = 0;
     int m_ = 0;
     int n_ = 0;
-    int i = 0;
     int j = 0;
 
     sciErr = getVarAddressFromPosition(pvApiCtx, _iVar, &piAddressVar);

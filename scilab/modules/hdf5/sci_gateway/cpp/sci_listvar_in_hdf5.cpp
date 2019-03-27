@@ -96,16 +96,18 @@ int sci_listvar_in_hdf5(char *fname, unsigned long fname_len)
 
     //manage version information
     int iVersion = getSODFormatAttribute(iFile);
-    if(iVersion != SOD_FILE_VERSION)
+    if (iVersion != SOD_FILE_VERSION)
     {
         if (iVersion > SOD_FILE_VERSION)
-        {//can't read file with version newer that me !
+        {
+            //can't read file with version newer that me !
             Scierror(999, _("%s: Wrong SOD file format version. Max Expected: %d Found: %d\n"), fname, SOD_FILE_VERSION, iVersion);
             return 1;
         }
         else
-        {//call older import functions and exit or ... EXIT !
-            if(iVersion == 1 || iVersion == -1)
+        {
+            //call older import functions and exit or ... EXIT !
+            if (iVersion == 1 || iVersion == -1)
             {
                 //sciprint("old sci_listvar_in_hdf5_v1\n");
                 return sci_listvar_in_hdf5_v1(fname, fname_len);
@@ -356,7 +358,6 @@ static bool read_boolean(int _iDatasetId, int _iItemPos, int *_piAddress, VarInf
 
 static bool read_integer(int _iDatasetId, int _iItemPos, int *_piAddress, VarInfo* _pInfo)
 {
-    int iRet = 0;
     int iPrec = 0;
     int iSize = 0;
     int iComplex = 0;
@@ -401,7 +402,6 @@ static bool read_boolean_sparse(int _iDatasetId, int _iItemPos, int *_piAddress,
     int iRows = 0;
     int iCols = 0;
     int iNbItem = 0;
-    int iComplex = 0;
 
     iRet = getSparseDimension(_iDatasetId, &iRows, &iCols, &iNbItem);
     if (iRet)

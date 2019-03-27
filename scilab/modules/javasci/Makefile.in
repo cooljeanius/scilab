@@ -39,7 +39,8 @@
 
 ##########
 ### Makefile included stuff
-### Target, variable, suffixes which are supposed to be useful in every makefile.am
+### Target, variable, suffixes which are supposed to be useful in every
+### Makefile.am
 ##########
 
 
@@ -1459,6 +1460,9 @@ uninstall-am: uninstall-libjavasci2_la_etcDATA \
 
 @JAVASCI_TRUE@distclean-local:
 @JAVASCI_TRUE@	rm -f $(builddir)/help/*/.last_successful_build_javaHelp $(builddir)/help/*/.list_*
+@JAVASCI_TRUE@	-rm -rfv .deps/* || rmdir .deps
+@JAVASCI_TRUE@	-rm -rfv src/.deps/* || rmdir src/.deps
+@JAVASCI_TRUE@	-rm -rfv src/*/.deps/* || rmdir src/*/.deps
 
 @JAVASCI_TRUE@.PHONY: macros java swig giws
 

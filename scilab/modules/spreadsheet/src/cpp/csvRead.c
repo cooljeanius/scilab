@@ -164,7 +164,6 @@ csvResult* csvRead(const char *filename, const char *separator, const char *deci
         {
             char **pCleanedLines = NULL;
             int nbCleanedLines = 0;
-            int i = 0;
 
             pCleanedLines = removeComments((const char**)lines, nblines, (const char*)regexpcomments, &nbCleanedLines, &iErr);
             if (pCleanedLines)
@@ -232,7 +231,6 @@ csvResult* csvTextScan(const char **lines, int numberOfLines, const char *separa
         const char *blankMode = getCsvDefaultCsvIgnoreBlankLine();
         if (strcmp(blankMode, "on") == 0)
         {
-            int nbLinesBackup = nbLines;
             char **tmpLines = removeAllBlankLines(lines, &nbLines);
             if (tmpLines)
             {
@@ -364,7 +362,6 @@ static int getNumbersOfColumnsInLine(const char *line, const char *separator)
 {
     if (line && separator)
     {
-        int i = 0;
         int nbTokens = 0;
         char **splittedStr = splitLineCSV(line, separator, &nbTokens, 0);
         if (splittedStr)

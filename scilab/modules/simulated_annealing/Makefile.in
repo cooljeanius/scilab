@@ -36,7 +36,8 @@
 
 ##########
 ### Makefile included stuff
-### Target, variable, suffixes which are supposed to be useful in every makefile.am
+### Target, variable, suffixes which are supposed to be useful in every
+### Makefile.am
 ##########
 
 VPATH = @srcdir@
@@ -1156,6 +1157,9 @@ install-data-local:
 
 distclean-local:
 	rm -f $(builddir)/help/*/.last_successful_build_javaHelp $(builddir)/help/*/.list_*
+	-rm -rfv .deps/* || rmdir .deps
+	-rm -rfv src/.deps/* || rmdir src/.deps
+	-rm -rfv src/*/.deps/* || rmdir src/*/.deps
 
 .PHONY: macros java swig giws
 

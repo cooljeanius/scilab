@@ -37,8 +37,10 @@ int setTokenInteruptExecution(int token);
  * Get the token to know if the line must be edited.
  * @return token saved.
  */
+#ifdef __cplusplus
 int getTokenInteruptExecution();
-
+#else
 int getTokenInteruptExecution(void);
+#endif /* __cplusplus */
 
 #endif /* !GET_KEY_H_ */

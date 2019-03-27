@@ -22,7 +22,7 @@
 static const char *supportedFormat[NB_FORMAT_SUPPORTED] =
 {"lf", "lg", "d", "i", "e", "f", "g"};
 // =============================================================================
-static char *replaceInFormat(const char *format);
+char *replaceInFormat(const char *format);
 static char *getCleanedFormat(const char *format);
 // =============================================================================
 int checkCsvWriteFormat(const char *format)
@@ -45,7 +45,7 @@ int checkCsvWriteFormat(const char *format)
     return 1;
 }
 // =============================================================================
-static char *replaceInFormat(const char *format)
+char *replaceInFormat(const char *format)
 {
     char *newFormat = NULL;
     if (format)

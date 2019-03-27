@@ -34,7 +34,6 @@ void getSubIndices(const int *iRange, int * R1, int * R2, int * C1, int * C2 )
 // =============================================================================
 int isValidRange(const int *iRange, int sizeArray)
 {
-    int i = 0;
     int R1 = 0, C1 = 0, R2 = 0, C2 = 0;
 
     if (iRange == NULL)

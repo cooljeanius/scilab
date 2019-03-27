@@ -19,3 +19,6 @@ libscilibst_la_LIBADD =
 modulename=libst
 
 include $(top_srcdir)/Makefile.incl.am
+
+distclean-local-1:
+	-rm -rfv .deps/* || rmdir .deps

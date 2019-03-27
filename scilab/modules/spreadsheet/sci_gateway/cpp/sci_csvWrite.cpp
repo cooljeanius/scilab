@@ -50,12 +50,6 @@ int sci_csvWrite(char *fname)
     double *pDoubleValuesReal = NULL;
     double *pDoubleValuesImag = NULL;
     int bIsComplex = 0;
-    int mValues = 0;
-    int nValues = 0;
-
-    int *piAddressVarTwo = NULL;
-    int m2 = 0, n2 = 0;
-    int iType2 = 0;
 
     int *piAddressVarOne = NULL;
     int m1 = 0, n1 = 0;

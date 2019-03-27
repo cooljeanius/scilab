@@ -1033,6 +1033,8 @@ SUBDIRS = libs \
 	desktop \
         po
 
+DISTCLEANFILES = *~
+MAINTAINERCLEANFILES = aclocal.m4 configure config.h.in configure.scan Makefile.in 
 ACLOCAL_AMFLAGS = -I m4 --install
 
 # Set AM_* SCI detected settings
@@ -2298,6 +2300,7 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
+	-test -z "$(DISTCLEANFILES)" || rm -f $(DISTCLEANFILES)
 	-test -z "$(top_builddir)/modules/call_scilab/examples/basicExamples/$(DEPDIR)/$(am__dirstamp)" || rm -f $(top_builddir)/modules/call_scilab/examples/basicExamples/$(DEPDIR)/$(am__dirstamp)
 	-test -z "$(top_builddir)/modules/call_scilab/examples/basicExamples/$(am__dirstamp)" || rm -f $(top_builddir)/modules/call_scilab/examples/basicExamples/$(am__dirstamp)
 	-test -z "$(top_builddir)/modules/call_scilab/examples/call_scilab/c/common/$(DEPDIR)/$(am__dirstamp)" || rm -f $(top_builddir)/modules/call_scilab/examples/call_scilab/c/common/$(DEPDIR)/$(am__dirstamp)
@@ -2308,6 +2311,7 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
+	-test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
 @GENERATE_LOCALIZATION_FILES_FALSE@install-data-local:
 clean: clean-recursive
 
@@ -2330,7 +2334,7 @@ distclean: distclean-recursive
 	-rm -f Makefile
 distclean-am: clean-am distclean-DEJAGNU distclean-compile \
 	distclean-generic distclean-hdr distclean-libtool \
-	distclean-tags
+	distclean-local distclean-tags
 
 dvi: dvi-recursive
 
@@ -2416,9 +2420,9 @@ uninstall-am: uninstall-binPROGRAMS uninstall-binSCRIPTS \
 	ctags ctags-am dist dist-all dist-bzip2 dist-gzip dist-lzip \
 	dist-shar dist-tarZ dist-xz dist-zip distcheck distclean \
 	distclean-DEJAGNU distclean-compile distclean-generic \
-	distclean-hdr distclean-libtool distclean-tags distcleancheck \
-	distdir distuninstallcheck dvi dvi-am html html-am info \
-	info-am install install-am install-binPROGRAMS \
+	distclean-hdr distclean-libtool distclean-local distclean-tags \
+	distcleancheck distdir distuninstallcheck dvi dvi-am html \
+	html-am info info-am install install-am install-binPROGRAMS \
 	install-binSCRIPTS install-data install-data-am \
 	install-data-local install-dvi install-dvi-am install-exec \
 	install-exec-am install-html install-html-am install-info \
@@ -2626,6 +2630,10 @@ clean-generated:
 
 distclean-generated:
 	rm -f $(top_builddir)/modules/core/includes/stack.h 2>/dev/null
+
+distclean-local:
+	-find . -name .DS_Store -delete
+	-rm -rfv autom4te.cache || rmdir autom4te.cache
 
 clean-reports:
 	rm -f $(top_builddir)/scilab-bin

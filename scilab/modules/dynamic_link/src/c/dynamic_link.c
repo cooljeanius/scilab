@@ -65,7 +65,7 @@ __declspec (dllexport) CINTER_struct C2F(ibfu);
 /*---------------------------------------------------------------------------*/
 typedef char Name[MAXNAME];   /* could be changed to dynamic structure */
 
-typedef void (*function) ();
+typedef void (*function)(void);
 
 typedef struct
 {
@@ -278,7 +278,7 @@ void initializeLink(void)
 /*---------------------------------------------------------------------------*/
 BOOL c_link(char *routinename, int *ilib)
 {
-    void (*loc)();
+    void (*loc)(void);
     if ( *ilib != -1 )
     {
         *ilib = SearchFandS(routinename, *ilib);
@@ -300,7 +300,7 @@ void C2F(iislink)(char *routinename, int *ilib)
     c_link(routinename, ilib);
 }
 /*---------------------------------------------------------------------------*/
-void GetDynFunc(int ii, void (**realop) ())
+void GetDynFunc(int ii, void (**realop)(void))
 {
     if ( EP[ii].Nshared != -1 )
     {
@@ -312,7 +312,7 @@ void GetDynFunc(int ii, void (**realop) ())
     }
 }
 /*---------------------------------------------------------------------------*/
-int SearchInDynLinks(char *op, void (**realop) ())
+int SearchInDynLinks(char *op, void (**realop)(void))
 {
     int i = 0;
     for ( i = NEpoints - 1 ; i >= 0 ; i--)

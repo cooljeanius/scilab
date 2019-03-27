@@ -13289,14 +13289,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wall." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wall." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wall." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wall." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -13408,14 +13406,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wpointer-arith." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wpointer-arith." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wpointer-arith." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wpointer-arith." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -13527,14 +13523,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wmissing-declarations." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wmissing-declarations." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wmissing-declarations." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wmissing-declarations." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -13646,14 +13640,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wformat=2." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wformat=2." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wformat=2." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wformat=2." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -13698,14 +13690,12 @@ $as_echo "$supported" >&6; }
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wformat." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wformat." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wformat." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wformat." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -13818,14 +13808,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wstrict-prototypes." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wstrict-prototypes." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wstrict-prototypes." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wstrict-prototypes." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -13937,14 +13925,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wmissing-prototypes." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wmissing-prototypes." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wmissing-prototypes." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wmissing-prototypes." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -14056,14 +14042,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wnested-externs." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wnested-externs." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wnested-externs." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wnested-externs." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -14175,14 +14159,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wbad-function-cast." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wbad-function-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wbad-function-cast." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wbad-function-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -14294,14 +14276,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wold-style-definition." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wold-style-definition." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wold-style-definition." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wold-style-definition." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -14413,14 +14393,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wdeclaration-after-statement." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wdeclaration-after-statement." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wdeclaration-after-statement." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wdeclaration-after-statement." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -14534,14 +14512,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wunused." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wunused." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wunused." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wunused." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -14653,14 +14629,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wuninitialized." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wuninitialized." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wuninitialized." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wuninitialized." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -14772,14 +14746,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wshadow." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wshadow." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wshadow." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wshadow." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -14891,14 +14863,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wparentheses." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wparentheses." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wparentheses." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wparentheses." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -15010,14 +14980,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wmissing-noreturn." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wmissing-noreturn." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wmissing-noreturn." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wmissing-noreturn." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -15129,14 +15097,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wmissing-format-attribute." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wmissing-format-attribute." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wmissing-format-attribute." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wmissing-format-attribute." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -15248,14 +15214,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wredundant-decls." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wredundant-decls." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wredundant-decls." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wredundant-decls." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -15376,14 +15340,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=implicit." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=implicit." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=implicit." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=implicit." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -15428,14 +15390,12 @@ $as_echo "$supported" >&6; }
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -errwarn=E_NO_EXPLICIT_TYPE_GIVEN -errwarn=E_NO_IMPLICIT_DECL_ALLOWED." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -errwarn=E_NO_EXPLICIT_TYPE_GIVEN -errwarn=E_NO_IMPLICIT_DECL_ALLOWED." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -errwarn=E_NO_EXPLICIT_TYPE_GIVEN -errwarn=E_NO_IMPLICIT_DECL_ALLOWED." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -errwarn=E_NO_EXPLICIT_TYPE_GIVEN -errwarn=E_NO_IMPLICIT_DECL_ALLOWED." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -15547,14 +15507,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=nonnull." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=nonnull." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=nonnull." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=nonnull." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -15666,14 +15624,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=init-self." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=init-self." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=init-self." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=init-self." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -15785,14 +15741,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=main." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=main." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=main." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=main." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -15904,14 +15858,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=missing-braces." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=missing-braces." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=missing-braces." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=missing-braces." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -16023,14 +15975,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=sequence-point." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=sequence-point." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=sequence-point." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=sequence-point." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -16142,14 +16092,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=return-type." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=return-type." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=return-type." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=return-type." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -16194,14 +16142,12 @@ $as_echo "$supported" >&6; }
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -errwarn=E_FUNC_HAS_NO_RETURN_STMT." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -errwarn=E_FUNC_HAS_NO_RETURN_STMT." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -errwarn=E_FUNC_HAS_NO_RETURN_STMT." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -errwarn=E_FUNC_HAS_NO_RETURN_STMT." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -16313,14 +16259,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=trigraphs." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=trigraphs." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=trigraphs." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=trigraphs." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -16432,14 +16376,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=array-bounds." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=array-bounds." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=array-bounds." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=array-bounds." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -16551,14 +16493,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=write-strings." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=write-strings." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=write-strings." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=write-strings." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -16670,14 +16610,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=address." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=address." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=address." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=address." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -16794,14 +16732,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=int-to-pointer-cast." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=int-to-pointer-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=int-to-pointer-cast." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=int-to-pointer-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -16846,14 +16782,12 @@ $as_echo "$supported" >&6; }
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -errwarn=E_BAD_PTR_INT_COMBINATION." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -errwarn=E_BAD_PTR_INT_COMBINATION." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -errwarn=E_BAD_PTR_INT_COMBINATION." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -errwarn=E_BAD_PTR_INT_COMBINATION." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -16965,14 +16899,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=pointer-to-int-cast." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=pointer-to-int-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=pointer-to-int-cast." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=pointer-to-int-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -17096,14 +17028,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=pointer-compare." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=pointer-compare." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=pointer-compare." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=pointer-compare." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -17215,14 +17145,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=endif-labels." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=endif-labels." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=endif-labels." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=endif-labels." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -17334,14 +17262,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=int-conversion." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=int-conversion." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=int-conversion." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=int-conversion." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -17453,14 +17379,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=comment." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=comment." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=comment." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=comment." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -17574,14 +17498,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=incompatible-pointer-types." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=incompatible-pointer-types." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=incompatible-pointer-types." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=incompatible-pointer-types." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -17693,14 +17615,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=discarded-qualifiers." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=discarded-qualifiers." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=discarded-qualifiers." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=discarded-qualifiers." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -17819,14 +17739,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wimplicit." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wimplicit." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wimplicit." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wimplicit." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -17938,14 +17856,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wnonnull." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wnonnull." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wnonnull." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wnonnull." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -18057,14 +17973,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Winit-self." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Winit-self." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Winit-self." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Winit-self." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -18176,14 +18090,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wmain." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wmain." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wmain." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wmain." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -18295,14 +18207,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wmissing-braces." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wmissing-braces." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wmissing-braces." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wmissing-braces." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -18414,14 +18324,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wsequence-point." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wsequence-point." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wsequence-point." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wsequence-point." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -18533,14 +18441,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wreturn-type." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wreturn-type." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wreturn-type." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wreturn-type." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -18652,14 +18558,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wtrigraphs." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wtrigraphs." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wtrigraphs." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wtrigraphs." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -18771,14 +18675,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Warray-bounds." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Warray-bounds." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Warray-bounds." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Warray-bounds." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -18890,14 +18792,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wwrite-strings." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wwrite-strings." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wwrite-strings." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wwrite-strings." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -19009,14 +18909,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Waddress." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Waddress." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Waddress." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Waddress." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -19128,14 +19026,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wint-to-pointer-cast." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wint-to-pointer-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wint-to-pointer-cast." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wint-to-pointer-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -19247,14 +19143,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wpointer-to-int-cast." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wpointer-to-int-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wpointer-to-int-cast." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wpointer-to-int-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -19366,14 +19260,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wincompatible-pointer-types." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wincompatible-pointer-types." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wincompatible-pointer-types." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wincompatible-pointer-types." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -19485,14 +19377,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wpointer-compare." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wpointer-compare." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wpointer-compare." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wpointer-compare." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -19604,14 +19494,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wendif-labels." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wendif-labels." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wendif-labels." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wendif-labels." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -19723,14 +19611,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wint-conversion." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wint-conversion." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wint-conversion." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wint-conversion." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -19775,6 +19661,8 @@ $as_echo "$supported" >&6; }
 
 
 fi
+
+
 
 
 
@@ -19876,14 +19764,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -pedantic." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -pedantic." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -pedantic." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -pedantic." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -19995,14 +19881,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -20047,14 +19931,12 @@ $as_echo "$supported" >&6; }
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -errwarn." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -errwarn." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -errwarn." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -errwarn." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -20169,14 +20051,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=attributes." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=attributes." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=attributes." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=attributes." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -20322,6 +20202,8 @@ if test "x${enable_debug_C}" = "xyes"; then
 
 
 
+
+
 		CWARNFLAGS="$BASE_CFLAGS"
 		if  test "x$GCC" = xyes ; then
 		    CWARNFLAGS="$CWARNFLAGS -fno-strict-aliasing"
@@ -20336,6 +20218,8 @@ fi
 
 if test "x${enable_debug_CXX}" = "xyes"; then
    CXXFLAGS="`echo "${CXXFLAGS}"| sed -e 's|-O0-9+|-O0|'`"
+
+
 
 
 
@@ -20436,14 +20320,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wall." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wall." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wall." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wall." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -20554,14 +20436,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wpointer-arith." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wpointer-arith." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wpointer-arith." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wpointer-arith." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -20672,14 +20552,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wmissing-declarations." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wmissing-declarations." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wmissing-declarations." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wmissing-declarations." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -20790,14 +20668,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wformat=2." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wformat=2." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wformat=2." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wformat=2." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -20842,14 +20718,12 @@ $as_echo "$supported" >&6; }
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wformat." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wformat." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wformat." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wformat." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -20961,14 +20835,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wnarrowing." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wnarrowing." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wnarrowing." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wnarrowing." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -21079,14 +20951,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wstrict-null-sentinel." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wstrict-null-sentinel." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wstrict-null-sentinel." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wstrict-null-sentinel." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -21197,14 +21067,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wsign-promo." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wsign-promo." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wsign-promo." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wsign-promo." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -21315,14 +21183,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wuseless-cast." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wuseless-cast." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wuseless-cast." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wuseless-cast." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -21435,14 +21301,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wunused." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wunused." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wunused." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wunused." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -21553,14 +21417,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wuninitialized." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wuninitialized." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wuninitialized." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wuninitialized." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -21671,14 +21533,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wshadow." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wshadow." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wshadow." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wshadow." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -21789,14 +21649,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wparentheses." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wparentheses." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wparentheses." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wparentheses." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -21907,14 +21765,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wmissing-noreturn." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wmissing-noreturn." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wmissing-noreturn." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wmissing-noreturn." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -22025,14 +21881,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wmissing-format-attribute." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wmissing-format-attribute." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wmissing-format-attribute." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wmissing-format-attribute." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -22143,14 +21997,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wredundant-decls." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wredundant-decls." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wredundant-decls." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wredundant-decls." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -22270,14 +22122,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=implicit." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=implicit." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=implicit." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=implicit." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -22322,14 +22172,12 @@ $as_echo "$supported" >&6; }
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -errwarn=E_NO_EXPLICIT_TYPE_GIVEN -errwarn=E_NO_IMPLICIT_DECL_ALLOWED." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -errwarn=E_NO_EXPLICIT_TYPE_GIVEN -errwarn=E_NO_IMPLICIT_DECL_ALLOWED." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -errwarn=E_NO_EXPLICIT_TYPE_GIVEN -errwarn=E_NO_IMPLICIT_DECL_ALLOWED." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -errwarn=E_NO_EXPLICIT_TYPE_GIVEN -errwarn=E_NO_IMPLICIT_DECL_ALLOWED." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -22440,14 +22288,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=nonnull." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=nonnull." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=nonnull." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=nonnull." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -22558,14 +22404,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=init-self." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=init-self." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=init-self." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=init-self." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -22676,14 +22520,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=main." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=main." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=main." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=main." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -22794,14 +22636,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=missing-braces." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=missing-braces." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=missing-braces." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=missing-braces." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -22912,14 +22752,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=sequence-point." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=sequence-point." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=sequence-point." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=sequence-point." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -23030,14 +22868,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=return-type." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=return-type." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=return-type." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=return-type." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -23082,14 +22918,12 @@ $as_echo "$supported" >&6; }
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -errwarn=E_FUNC_HAS_NO_RETURN_STMT." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -errwarn=E_FUNC_HAS_NO_RETURN_STMT." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -errwarn=E_FUNC_HAS_NO_RETURN_STMT." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -errwarn=E_FUNC_HAS_NO_RETURN_STMT." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -23200,14 +23034,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=trigraphs." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=trigraphs." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=trigraphs." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=trigraphs." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -23318,14 +23150,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=array-bounds." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=array-bounds." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=array-bounds." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=array-bounds." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -23436,14 +23266,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=write-strings." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=write-strings." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=write-strings." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=write-strings." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -23554,14 +23382,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=address." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=address." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=address." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=address." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -23677,14 +23503,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=int-to-pointer-cast." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=int-to-pointer-cast." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=int-to-pointer-cast." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=int-to-pointer-cast." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -23729,14 +23553,12 @@ $as_echo "$supported" >&6; }
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -errwarn=E_BAD_PTR_INT_COMBINATION." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -errwarn=E_BAD_PTR_INT_COMBINATION." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -errwarn=E_BAD_PTR_INT_COMBINATION." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -errwarn=E_BAD_PTR_INT_COMBINATION." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -23847,14 +23669,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=pointer-to-int-cast." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=pointer-to-int-cast." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=pointer-to-int-cast." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=pointer-to-int-cast." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -23977,14 +23797,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=pointer-compare." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=pointer-compare." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=pointer-compare." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=pointer-compare." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -24095,14 +23913,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=endif-labels." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=endif-labels." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=endif-labels." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=endif-labels." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -24213,14 +24029,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=int-conversion." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=int-conversion." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=int-conversion." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=int-conversion." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -24331,14 +24145,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=comment." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=comment." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=comment." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=comment." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -24450,14 +24262,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=conversion-null." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=conversion-null." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=conversion-null." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=conversion-null." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -24570,14 +24380,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=incompatible-pointer-types." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=incompatible-pointer-types." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=incompatible-pointer-types." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=incompatible-pointer-types." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -24688,14 +24496,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=discarded-qualifiers." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=discarded-qualifiers." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=discarded-qualifiers." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=discarded-qualifiers." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -24813,14 +24619,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wimplicit." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wimplicit." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wimplicit." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wimplicit." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -24931,14 +24735,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wnonnull." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wnonnull." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wnonnull." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wnonnull." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -25049,14 +24851,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Winit-self." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Winit-self." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Winit-self." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Winit-self." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -25167,14 +24967,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wmain." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wmain." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wmain." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wmain." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -25285,14 +25083,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wmissing-braces." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wmissing-braces." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wmissing-braces." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wmissing-braces." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -25403,14 +25199,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wsequence-point." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wsequence-point." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wsequence-point." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wsequence-point." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -25521,14 +25315,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wreturn-type." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wreturn-type." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wreturn-type." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wreturn-type." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -25639,14 +25431,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wtrigraphs." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wtrigraphs." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wtrigraphs." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wtrigraphs." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -25757,14 +25547,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Warray-bounds." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Warray-bounds." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Warray-bounds." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Warray-bounds." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -25875,14 +25663,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wwrite-strings." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wwrite-strings." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wwrite-strings." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wwrite-strings." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -25993,14 +25779,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Waddress." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Waddress." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Waddress." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Waddress." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -26111,14 +25895,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wint-to-pointer-cast." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wint-to-pointer-cast." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wint-to-pointer-cast." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wint-to-pointer-cast." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -26229,14 +26011,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wpointer-to-int-cast." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wpointer-to-int-cast." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wpointer-to-int-cast." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wpointer-to-int-cast." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -26347,14 +26127,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wincompatible-pointer-types." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wincompatible-pointer-types." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wincompatible-pointer-types." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wincompatible-pointer-types." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -26465,14 +26243,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wpointer-compare." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wpointer-compare." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wpointer-compare." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wpointer-compare." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -26583,14 +26359,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wendif-labels." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wendif-labels." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wendif-labels." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wendif-labels." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -26701,14 +26475,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wint-conversion." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wint-conversion." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wint-conversion." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wint-conversion." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -26820,14 +26592,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wconversion-null." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wconversion-null." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wconversion-null." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wconversion-null." >&6;}
+			## for clang
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -28961,7 +28731,7 @@ $as_echo "$ac_java_classpath" >&6; }
 $as_echo_n "checking to see if the java compiler works... " >&6; }
 
     cat << \EOF > conftest.java
-// #line 28964 "configure"
+// #line 28734 "configure"
 import java.util.regex.Pattern;
 
 
@@ -29048,7 +28818,7 @@ $as_echo_n "checking type of jvm... " >&6; }
     if test "x$ac_java_jvm_name" = "x" ; then
 
     cat << \EOF > conftest.java
-// #line 29051 "configure"
+// #line 28821 "configure"
 import java.util.regex.Pattern;
 
 import gnu.java.io.EncodingManager;
@@ -29132,7 +28902,7 @@ $as_echo_n "checking java API version... " >&6; }
     # The class java.nio.charset.Charset is new to 1.4
 
     cat << \EOF > conftest.java
-// #line 29135 "configure"
+// #line 28905 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.charset.Charset;
@@ -29197,7 +28967,7 @@ EOF
     # The class java.lang.StringBuilder is new to 1.5
 
     cat << \EOF > conftest.java
-// #line 29200 "configure"
+// #line 28970 "configure"
 import java.util.regex.Pattern;
 
 import java.lang.StringBuilder;
@@ -29262,7 +29032,7 @@ EOF
     # The class java.util.ArrayDeque is new to 1.6
 
     cat << \EOF > conftest.java
-// #line 29265 "configure"
+// #line 29035 "configure"
 import java.util.regex.Pattern;
 
 import java.util.ArrayDeque;
@@ -29327,7 +29097,7 @@ EOF
     # The class java.nio.file.Path is new to 1.7
 
     cat << \EOF > conftest.java
-// #line 29330 "configure"
+// #line 29100 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.file.Path;
@@ -31265,7 +31035,7 @@ $as_echo_n "checking jgraphx... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 31268 "configure"
+// #line 31038 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.model.mxCell;
@@ -31371,7 +31141,7 @@ $as_echo_n "checking minimal version (1.8.0.0) of jgraphx... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 31374 "configure"
+// #line 31144 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.view.mxGraph;
@@ -31442,7 +31212,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 31445 "configure"
+// #line 31215 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.view.mxGraph;
@@ -31533,7 +31303,7 @@ $as_echo_n "checking scirenderer... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 31536 "configure"
+// #line 31306 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -31639,7 +31409,7 @@ $as_echo_n "checking minimal version (1.0.2) of scirenderer... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 31642 "configure"
+// #line 31412 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -31710,7 +31480,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 31713 "configure"
+// #line 31483 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -31799,7 +31569,7 @@ $as_echo_n "checking flexdock... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 31802 "configure"
+// #line 31572 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.docking.DockingManager;
@@ -31905,7 +31675,7 @@ $as_echo_n "checking minimal version (1.2.0) of flexdock... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 31908 "configure"
+// #line 31678 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.util.Utilities;
@@ -31976,7 +31746,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 31979 "configure"
+// #line 31749 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.util.Utilities;
@@ -32065,7 +31835,7 @@ $as_echo_n "checking looks... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 32068 "configure"
+// #line 31838 "configure"
 import java.util.regex.Pattern;
 
 import com.jgoodies.looks.common.MenuItemRenderer;
@@ -32182,7 +31952,7 @@ $as_echo_n "checking jgoodies-looks... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 32185 "configure"
+// #line 31955 "configure"
 import java.util.regex.Pattern;
 
 import com.jgoodies.looks.common.MenuItemRenderer;
@@ -32299,7 +32069,7 @@ $as_echo_n "checking skinlf... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 32302 "configure"
+// #line 32072 "configure"
 import java.util.regex.Pattern;
 
 import com.l2fprod.util.AccessUtils;
@@ -32415,7 +32185,7 @@ $as_echo_n "checking jogl2... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 32418 "configure"
+// #line 32188 "configure"
 import java.util.regex.Pattern;
 
 import javax.media.opengl.glu.GLUnurbs;
@@ -32637,7 +32407,7 @@ $as_echo_n "checking gluegen2-rt... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 32640 "configure"
+// #line 32410 "configure"
 import java.util.regex.Pattern;
 
 import jogamp.common.os.MachineDescriptionRuntime;
@@ -32810,7 +32580,7 @@ $as_echo_n "checking jhall... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 32813 "configure"
+// #line 32583 "configure"
 import java.util.regex.Pattern;
 
 import javax.help.JHelp;
@@ -32927,7 +32697,7 @@ $as_echo_n "checking javahelp2... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 32930 "configure"
+// #line 32700 "configure"
 import java.util.regex.Pattern;
 
 import javax.help.JHelp;
@@ -33044,7 +32814,7 @@ $as_echo_n "checking jrosetta-API... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 33047 "configure"
+// #line 32817 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.interfaces.core.ConsoleConfiguration;
@@ -33159,7 +32929,7 @@ $as_echo_n "checking jrosetta-api... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 33162 "configure"
+// #line 32932 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.interfaces.core.ConsoleConfiguration;
@@ -33276,7 +33046,7 @@ $as_echo_n "checking jrosetta-engine... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 33279 "configure"
+// #line 33049 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.core.action.AbstractConsoleAction;
@@ -33382,7 +33152,7 @@ $as_echo_n "checking minimal version (1.0.4) of jrosetta-engine... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 33385 "configure"
+// #line 33155 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.util.ConfigurationBuilder;
@@ -33453,7 +33223,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 33456 "configure"
+// #line 33226 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.util.ConfigurationBuilder;
@@ -33543,7 +33313,7 @@ $as_echo_n "checking jeuclid-core... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 33546 "configure"
+// #line 33316 "configure"
 import java.util.regex.Pattern;
 
 import net.sourceforge.jeuclid.LayoutContext;
@@ -33660,7 +33430,7 @@ $as_echo_n "checking fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 33663 "configure"
+// #line 33433 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.fop.pdf.PDFInfo;
@@ -33909,7 +33679,7 @@ $as_echo_n "checking batik-all... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 33912 "configure"
+// #line 33682 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.parser.Parser;
@@ -34026,7 +33796,7 @@ $as_echo_n "checking batik... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 34029 "configure"
+// #line 33799 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.parser.Parser;
@@ -34133,7 +33903,7 @@ $as_echo_n "checking minimal version (1.7) of batik... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 34136 "configure"
+// #line 33906 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.Version;
@@ -34204,7 +33974,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 34207 "configure"
+// #line 33977 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.Version;
@@ -34293,7 +34063,7 @@ $as_echo_n "checking commons-io... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 34296 "configure"
+// #line 34066 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.output.CountingOutputStream;
@@ -34409,7 +34179,7 @@ $as_echo_n "checking xmlgraphics-commons... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 34412 "configure"
+// #line 34182 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.xmlgraphics.util.Service;
@@ -34525,7 +34295,7 @@ $as_echo_n "checking avalon-framework... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 34528 "configure"
+// #line 34298 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.avalon.framework.configuration.ConfigurationException;
@@ -34641,7 +34411,7 @@ $as_echo_n "checking xml-apis-ext... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 34644 "configure"
+// #line 34414 "configure"
 import java.util.regex.Pattern;
 
 import org.w3c.dom.svg.SVGDocument;
@@ -34758,7 +34528,7 @@ $as_echo_n "checking xml-commons-apis-ext... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 34761 "configure"
+// #line 34531 "configure"
 import java.util.regex.Pattern;
 
 import org.w3c.dom.svg.SVGDocument;
@@ -34877,7 +34647,7 @@ $as_echo_n "checking commons-logging... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 34880 "configure"
+// #line 34650 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.logging.LogFactory;
@@ -34993,7 +34763,7 @@ $as_echo_n "checking jlatexmath... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 34996 "configure"
+// #line 34766 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -35099,7 +34869,7 @@ $as_echo_n "checking minimal version (1.0.0) of jlatexmath... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 35102 "configure"
+// #line 34872 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -35170,7 +34940,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 35173 "configure"
+// #line 34943 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -35264,7 +35034,7 @@ $as_echo_n "checking checkstyle... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 35267 "configure"
+// #line 35037 "configure"
 import java.util.regex.Pattern;
 
 import com.puppycrawl.tools.checkstyle.CheckStyleTask;
@@ -35380,7 +35150,7 @@ $as_echo_n "checking commons-beanutils... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 35383 "configure"
+// #line 35153 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.beanutils.Converter;
@@ -35496,7 +35266,7 @@ $as_echo_n "checking antlr... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 35499 "configure"
+// #line 35269 "configure"
 import java.util.regex.Pattern;
 
 import antlr.TokenStreamException;
@@ -35612,7 +35382,7 @@ $as_echo_n "checking junit4... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 35615 "configure"
+// #line 35385 "configure"
 import java.util.regex.Pattern;
 
 import org.junit.Assert;
@@ -35728,7 +35498,7 @@ $as_echo_n "checking cobertura... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 35731 "configure"
+// #line 35501 "configure"
 import java.util.regex.Pattern;
 
 import net.sourceforge.cobertura.merge.Main;
@@ -35844,7 +35614,7 @@ $as_echo_n "checking asm3... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 35847 "configure"
+// #line 35617 "configure"
 import java.util.regex.Pattern;
 
 import org.objectweb.asm.Type;
@@ -35960,7 +35730,7 @@ $as_echo_n "checking asm... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 35963 "configure"
+// #line 35733 "configure"
 import java.util.regex.Pattern;
 
 import org.objectweb.asm.Type;
@@ -44842,7 +44612,7 @@ UMFPACK_ENABLE=no
 if test "x${with_umfpack}" != "xno"; then
 
 
-BLAS_LIBS="$BLAS_LIBS"
+BLAS_LIBS="${BLAS_LIBS}"
 
 UMFPACK_OK=no
 SUITESPARSE=no
@@ -44850,7 +44620,7 @@ SUITESPARSE=no
 
 # Check whether --with-umfpack_library was given.
 if test "${with_umfpack_library+set}" = set; then :
-  withval=$with_umfpack_library; with_umfpack_library=$withval
+  withval=$with_umfpack_library; with_umfpack_library=${withval}
 else
   with_umfpack_library='yes'
 fi
@@ -44858,26 +44628,25 @@ fi
 
 # Check whether --with-umfpack_include was given.
 if test "${with_umfpack_include+set}" = set; then :
-  withval=$with_umfpack_include; with_umfpack_include=$withval
+  withval=$with_umfpack_include; with_umfpack_include=${withval}
 else
   with_umfpack_include='yes'
 fi
 
-
 # Include provided... check if you set it as -Wp,-I/path/ if it can find the
 # header
-if test "x$with_umfpack_include" != "xyes"; then
-	save_CFLAGS="$CFLAGS"
+if test "x${with_umfpack_include}" != "xyes"; then
+	save_CFLAGS="${CFLAGS}"
 	CFLAGS="-Wp,-I${with_umfpack_include}"
 	ac_fn_c_check_header_mongrel "$LINENO" "suitesparse/umfpack.h" "ac_cv_header_suitesparse_umfpack_h" "$ac_includes_default"
 if test "x$ac_cv_header_suitesparse_umfpack_h" = xyes; then :
-  UMFPACK_CFLAGS="$CFLAGS"; SUITESPARSE=yes
+  UMFPACK_CFLAGS="${CFLAGS}"; SUITESPARSE=yes
 else
   ac_fn_c_check_header_mongrel "$LINENO" "umfpack.h" "ac_cv_header_umfpack_h" "$ac_includes_default"
 if test "x$ac_cv_header_umfpack_h" = xyes; then :
-  UMFPACK_CFLAGS="$CFLAGS"; SUITESPARSE=no
+  UMFPACK_CFLAGS="${CFLAGS}"; SUITESPARSE=no
 else
-  as_fn_error $? "Cannot find headers (umfpack.h) of the library UMFPACK. Please install the dev package (Debian : libsuitesparse-dev)" "$LINENO" 5
+  as_fn_error $? "Cannot find headers (umfpack.h) of the library UMFPACK. Please install the dev package (Debian : libsuitesparse-dev), or try configuring with --without-umfpack" "$LINENO" 5
 
 fi
 
@@ -44886,11 +44655,11 @@ fi
 fi
 
 
-	CFLAGS="$save_CFLAGS"
+	CFLAGS="${save_CFLAGS}"
 fi
 
 # Look in the default paths
-if test "x$UMFPACK_INCLUDE" = "x" ; then
+if test "x${UMFPACK_INCLUDE}" = "x"; then
 ac_fn_c_check_header_mongrel "$LINENO" "suitesparse/umfpack.h" "ac_cv_header_suitesparse_umfpack_h" "$ac_includes_default"
 if test "x$ac_cv_header_suitesparse_umfpack_h" = xyes; then :
   SUITESPARSE=yes
@@ -44899,7 +44668,7 @@ else
 if test "x$ac_cv_header_umfpack_h" = xyes; then :
   SUITESPARSE=no
 else
-  as_fn_error $? "Cannot find headers (umfpack.h) of the library UMFPACK. Please install the dev package (Debian : libsuitesparse-dev)" "$LINENO" 5
+  as_fn_error $? "Cannot find headers (umfpack.h) of the library UMFPACK. Please install the dev package (Debian : libsuitesparse-dev), or try configuring with --without-umfpack" "$LINENO" 5
 
 fi
 
@@ -44911,9 +44680,9 @@ fi
 fi
 
 # --with-umfpack-library set then check in this dir
-if test "x$with_umfpack_library" != "xyes"; then
-	save_LIBS="$LIBS"
-	LIBS="$BLAS_LIBS -L$with_umfpack_library -lm $LIBS"
+if test "x${with_umfpack_library}" != "xyes"; then
+	save_LIBS="${LIBS}"
+	LIBS="${BLAS_LIBS} -L${with_umfpack_library} -lm ${LIBS}"
 	# We need -lm because sometime (ubuntu 7.10 for example) does not link libamd against lib math
 
 	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for amd_info in -lamd" >&5
@@ -44963,7 +44732,7 @@ $as_echo "$ac_cv_lib_amd_amd_info" >&6; }
 if test "x$ac_cv_lib_amd_amd_info" = xyes; then :
   UMFPACK_LIB="-lamd"
 else
-  as_fn_error $? "libamd: Library missing (Cannot find symbol amd_info). Check if libamd (sparse matrix minimum degree ordering) is installed and if the version is correct" "$LINENO" 5
+  as_fn_error $? "libamd: Library missing (Cannot find symbol amd_info). Check if libamd (sparse matrix minimum degree ordering) is installed and if the version is correct, or try configuring with --without-umfpack" "$LINENO" 5
 fi
 
 
@@ -45012,14 +44781,14 @@ fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_umfpack_umf_divcomplex" >&5
 $as_echo "$ac_cv_lib_umfpack_umf_divcomplex" >&6; }
 if test "x$ac_cv_lib_umfpack_umf_divcomplex" = xyes; then :
-  UMFPACK_LIB="-L$with_umfpack_library -lumfpack $UMFPACK_LIB"; UMFPACK_OK=yes
+  UMFPACK_LIB="-L${with_umfpack_library} -lumfpack ${UMFPACK_LIB}"; UMFPACK_OK=yes
 else
-  as_fn_error $? "libumfpack : Library missing. (Cannot find umf_divcomplex). Check if libumfpack is installed and if the version is correct (also called lib suitesparse)" "$LINENO" 5
+  as_fn_error $? "libumfpack : Library missing. (Cannot find umf_divcomplex). Check if libumfpack is installed and if the version is correct (also called lib suitesparse), or try configuring with --without-umfpack" "$LINENO" 5
 fi
 
 
-	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for umf_divcomplex in $with_umfpack_library" >&5
-$as_echo_n "checking for umf_divcomplex in $with_umfpack_library... " >&6; }
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for umf_divcomplex in ${with_umfpack_library}" >&5
+$as_echo_n "checking for umf_divcomplex in ${with_umfpack_library}... " >&6; }
 	cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
 
@@ -45053,15 +44822,15 @@ else
 fi
 rm -f core conftest.err conftest.$ac_objext \
     conftest$ac_exeext conftest.$ac_ext
-	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $UMFPACK_OK" >&5
-$as_echo "$UMFPACK_OK" >&6; }
-	LIBS="$save_LIBS"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: ${UMFPACK_OK}" >&5
+$as_echo "${UMFPACK_OK}" >&6; }
+	LIBS="${save_LIBS}"
 fi
 
 # check in the default path
-if test $UMFPACK_OK = no; then
-	save_LIBS="$LIBS"
-	LIBS="$BLAS_LIBS $LIBS -lm" # libamd* is mandatory to link umfpack
+if test ${UMFPACK_OK} = no; then
+	save_LIBS="${LIBS}"
+	LIBS="${BLAS_LIBS} ${LIBS} -lm" # libamd* is mandatory to link umfpack
 	# We need -lm because sometime (ubuntu 7.10 for example) does not link libamd against lib math
 
 	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for amd_info in -lamd" >&5
@@ -45111,11 +44880,11 @@ $as_echo "$ac_cv_lib_amd_amd_info" >&6; }
 if test "x$ac_cv_lib_amd_amd_info" = xyes; then :
   UMFPACK_LIB="-lamd"
 else
-  as_fn_error $? "libamd: Library missing (Cannot find symbol amd_info). Check if libamd (sparse matrix minimum degree ordering) is installed and if the version is correct" "$LINENO" 5
+  as_fn_error $? "libamd: Library missing (Cannot find symbol amd_info). Check if libamd (sparse matrix minimum degree ordering) is installed and if the version is correct, or try configuring with --without-umfpack" "$LINENO" 5
 fi
 
 
-	LIBS="$UMFPACK_LIB $LIBS"
+	LIBS="${UMFPACK_LIB} ${LIBS}"
 	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for umf_divcomplex in -lumfpack" >&5
 $as_echo_n "checking for umf_divcomplex in -lumfpack... " >&6; }
 if ${ac_cv_lib_umfpack_umf_divcomplex+:} false; then :
@@ -45161,16 +44930,16 @@ fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_umfpack_umf_divcomplex" >&5
 $as_echo "$ac_cv_lib_umfpack_umf_divcomplex" >&6; }
 if test "x$ac_cv_lib_umfpack_umf_divcomplex" = xyes; then :
-  UMFPACK_LIB="-lumfpack $UMFPACK_LIB"; UMFPACK_OK=yes
+  UMFPACK_LIB="-lumfpack ${UMFPACK_LIB}"; UMFPACK_OK=yes
 else
-  as_fn_error $? "libumfpack: Library missing. (Cannot find symbol umf_divcomplex). Check if libumfpack is installed and if the version is correct (also called lib suitesparse)" "$LINENO" 5
+  as_fn_error $? "libumfpack: Library missing. (Cannot find symbol umf_divcomplex). Check if libumfpack is installed and if the version is correct (also called lib suitesparse), or try configuring with --without-umfpack" "$LINENO" 5
 fi
 
-	LIBS="$save_LIBS"
+	LIBS="${save_LIBS}"
 fi
 
 
-if test $SUITESPARSE = yes; then
+if test ${SUITESPARSE} = yes; then
 
 cat >>confdefs.h <<_ACEOF
 #define UMFPACK_SUITESPARSE /**/
@@ -46538,14 +46307,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wall." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wall." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wall." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wall." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -46665,14 +46432,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wpointer-arith." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wpointer-arith." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wpointer-arith." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wpointer-arith." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -46792,14 +46557,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wmissing-declarations." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wmissing-declarations." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wmissing-declarations." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wmissing-declarations." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -46919,14 +46682,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wformat=2." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wformat=2." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wformat=2." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wformat=2." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -46979,14 +46740,12 @@ $as_echo "$supported" >&6; }
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wformat." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wformat." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wformat." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wformat." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -47107,14 +46866,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wstrict-prototypes." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wstrict-prototypes." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wstrict-prototypes." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wstrict-prototypes." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -47234,14 +46991,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wmissing-prototypes." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wmissing-prototypes." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wmissing-prototypes." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wmissing-prototypes." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -47361,14 +47116,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wnested-externs." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wnested-externs." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wnested-externs." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wnested-externs." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -47488,14 +47241,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wbad-function-cast." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wbad-function-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wbad-function-cast." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wbad-function-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -47615,14 +47366,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wold-style-definition." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wold-style-definition." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wold-style-definition." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wold-style-definition." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -47742,14 +47491,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wdeclaration-after-statement." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wdeclaration-after-statement." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wdeclaration-after-statement." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wdeclaration-after-statement." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -47871,14 +47618,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wunused." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wunused." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wunused." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wunused." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -47998,14 +47743,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wuninitialized." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wuninitialized." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wuninitialized." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wuninitialized." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -48125,14 +47868,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wshadow." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wshadow." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wshadow." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wshadow." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -48252,14 +47993,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wparentheses." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wparentheses." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wparentheses." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wparentheses." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -48379,14 +48118,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wmissing-noreturn." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wmissing-noreturn." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wmissing-noreturn." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wmissing-noreturn." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -48506,14 +48243,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wmissing-format-attribute." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wmissing-format-attribute." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wmissing-format-attribute." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wmissing-format-attribute." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -48633,14 +48368,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wredundant-decls." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wredundant-decls." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wredundant-decls." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wredundant-decls." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -48769,14 +48502,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=implicit." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=implicit." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=implicit." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=implicit." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -48829,14 +48560,12 @@ $as_echo "$supported" >&6; }
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -errwarn=E_NO_EXPLICIT_TYPE_GIVEN -errwarn=E_NO_IMPLICIT_DECL_ALLOWED." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -errwarn=E_NO_EXPLICIT_TYPE_GIVEN -errwarn=E_NO_IMPLICIT_DECL_ALLOWED." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -errwarn=E_NO_EXPLICIT_TYPE_GIVEN -errwarn=E_NO_IMPLICIT_DECL_ALLOWED." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -errwarn=E_NO_EXPLICIT_TYPE_GIVEN -errwarn=E_NO_IMPLICIT_DECL_ALLOWED." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -48956,14 +48685,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=nonnull." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=nonnull." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=nonnull." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=nonnull." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -49083,14 +48810,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=init-self." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=init-self." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=init-self." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=init-self." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -49210,14 +48935,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=main." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=main." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=main." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=main." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -49337,14 +49060,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=missing-braces." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=missing-braces." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=missing-braces." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=missing-braces." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -49464,14 +49185,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=sequence-point." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=sequence-point." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=sequence-point." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=sequence-point." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -49591,14 +49310,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=return-type." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=return-type." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=return-type." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=return-type." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -49651,14 +49368,12 @@ $as_echo "$supported" >&6; }
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -errwarn=E_FUNC_HAS_NO_RETURN_STMT." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -errwarn=E_FUNC_HAS_NO_RETURN_STMT." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -errwarn=E_FUNC_HAS_NO_RETURN_STMT." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -errwarn=E_FUNC_HAS_NO_RETURN_STMT." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -49778,14 +49493,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=trigraphs." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=trigraphs." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=trigraphs." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=trigraphs." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -49905,14 +49618,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=array-bounds." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=array-bounds." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=array-bounds." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=array-bounds." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -50032,14 +49743,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=write-strings." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=write-strings." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=write-strings." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=write-strings." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -50159,14 +49868,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=address." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=address." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=address." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=address." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -50291,14 +49998,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=int-to-pointer-cast." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=int-to-pointer-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=int-to-pointer-cast." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=int-to-pointer-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -50351,14 +50056,12 @@ $as_echo "$supported" >&6; }
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -errwarn=E_BAD_PTR_INT_COMBINATION." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -errwarn=E_BAD_PTR_INT_COMBINATION." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -errwarn=E_BAD_PTR_INT_COMBINATION." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -errwarn=E_BAD_PTR_INT_COMBINATION." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -50478,14 +50181,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=pointer-to-int-cast." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=pointer-to-int-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=pointer-to-int-cast." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=pointer-to-int-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -50617,14 +50318,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=pointer-compare." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=pointer-compare." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=pointer-compare." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=pointer-compare." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -50744,14 +50443,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=endif-labels." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=endif-labels." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=endif-labels." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=endif-labels." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -50871,14 +50568,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=int-conversion." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=int-conversion." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=int-conversion." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=int-conversion." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -50998,14 +50693,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=comment." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=comment." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=comment." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=comment." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -51127,14 +50820,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=incompatible-pointer-types." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=incompatible-pointer-types." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=incompatible-pointer-types." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=incompatible-pointer-types." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -51254,14 +50945,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=discarded-qualifiers." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=discarded-qualifiers." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=discarded-qualifiers." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=discarded-qualifiers." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -51388,14 +51077,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wimplicit." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wimplicit." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wimplicit." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wimplicit." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -51515,14 +51202,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wnonnull." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wnonnull." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wnonnull." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wnonnull." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -51642,14 +51327,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Winit-self." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Winit-self." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Winit-self." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Winit-self." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -51769,14 +51452,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wmain." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wmain." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wmain." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wmain." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -51896,14 +51577,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wmissing-braces." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wmissing-braces." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wmissing-braces." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wmissing-braces." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -52023,14 +51702,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wsequence-point." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wsequence-point." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wsequence-point." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wsequence-point." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -52150,14 +51827,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wreturn-type." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wreturn-type." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wreturn-type." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wreturn-type." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -52277,14 +51952,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wtrigraphs." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wtrigraphs." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wtrigraphs." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wtrigraphs." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -52404,14 +52077,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Warray-bounds." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Warray-bounds." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Warray-bounds." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Warray-bounds." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -52531,14 +52202,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wwrite-strings." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wwrite-strings." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wwrite-strings." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wwrite-strings." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -52658,14 +52327,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Waddress." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Waddress." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Waddress." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Waddress." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -52785,14 +52452,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wint-to-pointer-cast." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wint-to-pointer-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wint-to-pointer-cast." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wint-to-pointer-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -52912,14 +52577,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wpointer-to-int-cast." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wpointer-to-int-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wpointer-to-int-cast." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wpointer-to-int-cast." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -53039,14 +52702,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wincompatible-pointer-types." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wincompatible-pointer-types." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wincompatible-pointer-types." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wincompatible-pointer-types." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -53166,14 +52827,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wpointer-compare." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wpointer-compare." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wpointer-compare." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wpointer-compare." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -53293,14 +52952,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wendif-labels." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wendif-labels." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wendif-labels." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wendif-labels." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -53420,14 +53077,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Wint-conversion." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Wint-conversion." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Wint-conversion." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Wint-conversion." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -53480,6 +53135,8 @@ $as_echo "$supported" >&6; }
 
 
 fi
+
+
 
 
 
@@ -53581,14 +53238,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -pedantic." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -pedantic." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -pedantic." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -pedantic." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -53708,14 +53363,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -53768,14 +53421,12 @@ $as_echo "$supported" >&6; }
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -errwarn." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -errwarn." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -errwarn." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -errwarn." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -53898,14 +53549,12 @@ found="no"
 
 	if test $found = "no" ; then
 		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unknown-warning-option when testing for -Werror=attributes." >&5
-$as_echo "$as_me: using -Werror=unknown-warning-option when testing for -Werror=attributes." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
 		fi
 
 		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: using -Werror=unused-command-line-argument when testing for -Werror=attributes." >&5
-$as_echo "$as_me: using -Werror=unused-command-line-argument when testing for -Werror=attributes." >&6;}
+			## for clang
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
@@ -54225,7 +53874,7 @@ $as_echo_n "checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later...
 
 
 cat > conftest.$ac_ext <<EOF
-#line 54228 "configure"
+#line 53877 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TCL_INCLUDE_PATH/$CHK_TCL_INC_NAME"
@@ -54540,7 +54189,7 @@ $as_echo_n "checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later... " 
 
 
 cat > conftest.$ac_ext <<EOF
-#line 54543 "configure"
+#line 54192 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TK_INCLUDE_PATH/$CHK_TK_INC_NAME"
@@ -55158,7 +54807,7 @@ $as_echo_n "checking saxon... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 55161 "configure"
+// #line 54810 "configure"
 import java.util.regex.Pattern;
 
 import com.icl.saxon.Loader;
@@ -55274,7 +54923,7 @@ $as_echo_n "checking jlatexmath-fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 55277 "configure"
+// #line 54926 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.fop.JLaTeXMathObj;

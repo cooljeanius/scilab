@@ -20,6 +20,9 @@ SUBDIRS = libs \
 	desktop \
         po
 
+DISTCLEANFILES = *~
+MAINTAINERCLEANFILES = aclocal.m4 configure config.h.in configure.scan Makefile.in 
+
 ACLOCAL_AMFLAGS = -I m4 --install
 
 # Set AM_* SCI detected settings
@@ -346,6 +349,9 @@ clean-generated:
 distclean-generated:
 	rm -f $(top_builddir)/modules/core/includes/stack.h 2>/dev/null
 
+distclean-local:
+	-find . -name .DS_Store -delete
+	-rm -rfv autom4te.cache || rmdir autom4te.cache
 
 if IS_MACOSX
 # Used for Mac OS X because it needs to remove the charset=UTF-8

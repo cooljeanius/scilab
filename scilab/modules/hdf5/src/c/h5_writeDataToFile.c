@@ -454,7 +454,6 @@ int writeDoubleMatrix(int _iFile, char *_pstDatasetName, int _iDims, int* _piDim
     herr_t status = 0;
     hsize_t *piDims = NULL;
     hid_t iCompress = 0;
-    int i = 0;
     int iSize = 0;
 
     piDims = convertDims(&_iDims, _piDims, &iSize);
@@ -1544,7 +1543,7 @@ int writeBooleanSparseMatrix(int _iFile, char *_pstDatasetName, int _iRows, int 
     }
 
     pstColPath = createPathName(pstGroupName, 1);
-    if(_iNbItem != 0)
+    if (_iNbItem != 0)
     {
         status = writeInteger32Matrix(_iFile, pstColPath, 1, &_iNbItem, _piColPos);
         if (status < 0)

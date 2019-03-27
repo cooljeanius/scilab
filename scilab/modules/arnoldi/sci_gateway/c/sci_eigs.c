@@ -56,7 +56,6 @@ int sci_eigs(char *fname, unsigned long fname_len)
     int iTypeVarFour		= 0;
     int iRowsFour			= 0;
     int iColsFour			= 0;
-    int iLen				= 0;
     char* pstData			= NULL;
     doublecomplex* SIGMA	= NULL;
 
@@ -95,7 +94,7 @@ int sci_eigs(char *fname, unsigned long fname_len)
     int error						= 0;
 
     SciErr sciErr;
-    int iErr				= 0;
+    int iErr_outer				= 0;
     int i					= 0;
     int j					= 0;
 
@@ -227,8 +226,8 @@ int sci_eigs(char *fname, unsigned long fname_len)
         return 0;
     }
 
-    iErr = getScalarDouble(pvApiCtx, piAddressVarThree, &dblNEV);
-    if (iErr)
+    iErr_outer = getScalarDouble(pvApiCtx, piAddressVarThree, &dblNEV);
+    if (iErr_outer)
     {
         Scierror(999, _("%s: Wrong type for input argument #%d: A scalar expected.\n"), "eigs", 3);
         return 0;
@@ -269,8 +268,8 @@ int sci_eigs(char *fname, unsigned long fname_len)
 
     if (iTypeVarFour == sci_strings)
     {
-        int iErr = getAllocatedSingleString(pvApiCtx, piAddressVarFour, &pstData);
-        if (iErr)
+        int iErr_inner = getAllocatedSingleString(pvApiCtx, piAddressVarFour, &pstData);
+        if (iErr_inner)
         {
             return 0;
         }
@@ -281,13 +280,13 @@ int sci_eigs(char *fname, unsigned long fname_len)
             if (!Acomplex && Asym)
             {
                 Scierror(999, _("%s: Wrong value for input argument #%d: Unrecognized sigma value.\n Sigma must be one of '%s', '%s', '%s', '%s' or '%s'.\n" ),
-                    "eigs", 4, "LM", "SM", "LA", "SA", "BE");
+                         "eigs", 4, "LM", "SM", "LA", "SA", "BE");
                 return 0;
             }
             else
             {
-                Scierror(999, _("%s: Wrong value for input argument #%d: Unrecognized sigma value.\n Sigma must be one of '%s', '%s', '%s', '%s', '%s' or '%s'.\n " ), 
-                    "eigs", 4, "LM", "SM", "LR", "SR", "LI", "SI");
+                Scierror(999, _("%s: Wrong value for input argument #%d: Unrecognized sigma value.\n Sigma must be one of '%s', '%s', '%s', '%s', '%s' or '%s'.\n " ),
+                         "eigs", 4, "LM", "SM", "LR", "SR", "LI", "SI");
                 return 0;
             }
         }
@@ -348,8 +347,8 @@ int sci_eigs(char *fname, unsigned long fname_len)
         return 0;
     }
 
-    iErr = getScalarDouble(pvApiCtx, piAddressVarFive, &dblMAXITER);
-    if (iErr)
+    iErr_outer = getScalarDouble(pvApiCtx, piAddressVarFive, &dblMAXITER);
+    if (iErr_outer)
     {
         Scierror(999, _("%s: Wrong type for input argument #%d: %s must be a scalar.\n"), "eigs", 5, "opts.maxiter");
         return 0;
@@ -372,8 +371,8 @@ int sci_eigs(char *fname, unsigned long fname_len)
         return 0;
     }
 
-    iErr = getScalarDouble(pvApiCtx, piAddressVarSix, &dblTOL);
-    if (iErr)
+    iErr_outer = getScalarDouble(pvApiCtx, piAddressVarSix, &dblTOL);
+    if (iErr_outer)
     {
         Scierror(999, _("%s: Wrong type for input argument #%d: %s must be a real scalar.\n"), "eigs", 6, "opts.tol");
         return 0;
@@ -408,7 +407,7 @@ int sci_eigs(char *fname, unsigned long fname_len)
         if (isVarComplex(pvApiCtx, piAddressVarSeven))
         {
             Scierror(999, _("%s: Wrong type for input argument #%d: %s must be an integer scalar.\n"), "eigs", 7, "opts.ncv");
-            0;
+            return 0;
         }
         else
         {
@@ -456,35 +455,35 @@ int sci_eigs(char *fname, unsigned long fname_len)
         return 0;
     }
 
-    if(iTypeVarEight == sci_boolean)
+    if (iTypeVarEight == sci_boolean)
     {
-        iErr = getScalarBoolean(pvApiCtx, piAddressVarEight, &iCHOLB);
-        if (iErr)
+        iErr_outer = getScalarBoolean(pvApiCtx, piAddressVarEight, &iCHOLB);
+        if (iErr_outer)
         {
             Scierror(999, _("%s: Wrong type for input argument #%d: %s must be an integer scalar or a boolean.\n"), "eigs", 8, "opts.cholB");
             return 0;
         }
 
-        if(iCHOLB != 1 && iCHOLB != 0)
+        if (iCHOLB != 1 && iCHOLB != 0)
         {
-            Scierror(999, _("%s: Wrong value for input argument #%d: %s must be %s or %s.\n"), "eigs", 8, "opts.cholB","%f","%t");
+            Scierror(999, _("%s: Wrong value for input argument #%d: %s must be %s or %s.\n"), "eigs", 8, "opts.cholB", "%f", "%t");
             return 0;
         }
         dblCHOLB = (double) iCHOLB;
     }
-    
-    if(iTypeVarEight == sci_matrix)
+
+    if (iTypeVarEight == sci_matrix)
     {
-        iErr = getScalarDouble(pvApiCtx, piAddressVarEight, &dblCHOLB);
-        if (iErr)
+        iErr_outer = getScalarDouble(pvApiCtx, piAddressVarEight, &dblCHOLB);
+        if (iErr_outer)
         {
             Scierror(999, _("%s: Wrong type for input argument #%d: %s must be an integer scalar or a boolean.\n"), "eigs", 8, "opts.cholB");
             return 0;
         }
-        
-        if(dblCHOLB != 1 && dblCHOLB != 0)
+
+        if (dblCHOLB != 1 && dblCHOLB != 0)
         {
-            Scierror(999, _("%s: Wrong value for input argument #%d: %s must be %s or %s.\n"), "eigs", 8, "opts.cholB","%f","%t");
+            Scierror(999, _("%s: Wrong value for input argument #%d: %s must be %s or %s.\n"), "eigs", 8, "opts.cholB", "%f", "%t");
             return 0;
         }
     }
@@ -510,7 +509,7 @@ int sci_eigs(char *fname, unsigned long fname_len)
     else
     {
         sciErr = getVarDimension(pvApiCtx, piAddressVarNine, &iRowsNine, &iColsNine);
-        if (iRowsNine*iColsNine == 1 || iRowsNine*iColsNine != N)
+        if (iRowsNine * iColsNine == 1 || iRowsNine * iColsNine != N)
         {
             Scierror(999, _("%s: Wrong dimension for input argument #%d: Start vector %s must be N by 1.\n"), "eigs", 9, "opts.resid");
             return 0;
@@ -557,8 +556,8 @@ int sci_eigs(char *fname, unsigned long fname_len)
         return 0;
     }
 
-    iErr = getScalarInteger32(pvApiCtx, piAddressVarTen, &iINFO);
-    if (iErr)
+    iErr_outer = getScalarInteger32(pvApiCtx, piAddressVarTen, &iINFO);
+    if (iErr_outer)
     {
         Scierror(999, _("%s: Wrong type for input argument #%d: An integer expected.\n"), "eigs", 1);
         return 0;

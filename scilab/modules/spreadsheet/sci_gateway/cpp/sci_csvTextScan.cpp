@@ -38,21 +38,15 @@ int sci_csvTextScan(char *fname)
 {
     SciErr sciErr;
     int iErr = 0;
-    int i = 0;
 
-    int *piAddressVarOne = NULL;
     int m1 = 0, n1 = 0;
-    int iType1 = 0;
 
     char **text = NULL;
-    int *lengthText = NULL;
     int nbLines = 0;
 
     char *separator = NULL;
     char *decimal = NULL;
     char *conversion = NULL;
-
-    double * dRealValues = NULL;
 
     int *iRange = NULL;
     int haveRange = 0;
@@ -446,6 +440,9 @@ int sci_csvTextScan(char *fname)
                 Scierror(999, _("%s: can not read text.\n"), fname);
             }
             break;
+
+            default:
+                break;
         }
     }
     else

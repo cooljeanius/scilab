@@ -36,3 +36,6 @@ libscimalloc_la_LIBADD =
 modulename=malloc
 
 include $(top_srcdir)/Makefile.incl.am
+
+distclean-local-1:
+	-rm -rfv src/.deps/* || rmdir src/.deps

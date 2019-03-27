@@ -1810,7 +1810,7 @@ AC_ARG_WITH([umfpack],
 
 UMFPACK_ENABLE=no
 if test "x${with_umfpack}" != "xno"; then
-   AC_UMFPACK([$BLAS_LIBS]) dnl# from m4/umfpack.m4
+   AC_UMFPACK([${BLAS_LIBS}]) dnl# from m4/umfpack.m4
    UMFPACK_ENABLE=yes
 else
    AC_MSG_NOTICE([skipping checks for umfpack])

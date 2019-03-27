@@ -118,13 +118,9 @@ int eigs(double *AR, doublecomplex *AC, int N, int Acomplex, int Asym, double* B
          char* which, double* maxiter, double* tol, double* NCV, double* RESID, doublecomplex* RESIDC,
          int* INFO, double* cholB, int INFO_EUPD, doublecomplex* eigenvalue, doublecomplex* eigenvector)
 {
-
-    int index = 0;
     // GENERAL VARIABLES
     int i			= 0;
     int j			= 0;
-    int	k			= 0;
-    int	l			= 0;
     int INFO_CHOL	= 0;
     int INFO_LU		= 0;
     int k1			= 1;

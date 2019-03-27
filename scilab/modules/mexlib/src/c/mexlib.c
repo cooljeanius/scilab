@@ -67,6 +67,7 @@
 #include "localization.h"
 #include "Scierror.h"
 #include "call_scilab.h"
+#include "api_scilab.h" /* for ATTRIBUTE_NORETURN */
 
 static char *the_current_mex_name;
 
@@ -2710,13 +2711,13 @@ int mexPutVariable(const char *workspace, char *var_name, mxArray *array_ptr)
     return 0;  /* CHECK THIS !!!!!! */
 }
 
-void mxSetName(mxArray *array_ptr, const char *name)
+ATTRIBUTE_NORETURN void mxSetName(mxArray *array_ptr, const char *name)
 {
     mexErrMsgTxt(_("Routine mxSetName not implemented !\n"));
     exit(1);  /* TO BE DONE */
 }
 
-void mxSetData(mxArray *array_ptr, void *data_ptr)
+ATTRIBUTE_NORETURN void mxSetData(mxArray *array_ptr, void *data_ptr)
 {
     mexErrMsgTxt(_("Routine mxSetData not implemented.\n"));
     exit(1);  /* TO BE DONE */

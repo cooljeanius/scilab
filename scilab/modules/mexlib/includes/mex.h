@@ -27,6 +27,22 @@ extern "C" {
 #include "stack-c.h"
 #undef __MEX_INCLUDE__
 
+#ifndef ATTRIBUTE_NORETURN
+# if defined(__cplusplus) && defined(__cpp_attributes)
+#  if (__cplusplus >= 201402L) || (__cpp_attributes >= 200809) || __has_cpp_attribute(noreturn)
+#   define ATTRIBUTE_NORETURN [[noreturn]]
+#  endif /* have [[noreturn]] */
+# else
+#  if defined(__GNUC__) && defined(__GNUC_MINOR__)
+#   define ATTRIBUTE_NORETURN __attribute__((noreturn))
+#  else
+#   if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201710L)
+#    define ATTRIBUTE_NORETURN _Noreturn
+#   endif /* C11 */
+#  endif /* GCC */
+# endif /* C++ */
+#endif /* !ATTRIBUTE_NORETURN */
+
 typedef int Matrix;
 typedef unsigned long int vraiptrst;
 #ifndef __DEF_MXARRAY__

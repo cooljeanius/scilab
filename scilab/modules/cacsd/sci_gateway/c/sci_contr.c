@@ -21,7 +21,7 @@
 #include "stack3.h"
 /*--------------------------------------------------------------------------*/
 extern double C2F(dlamch)(char *CMACH, unsigned long int);
-extern int C2F(ab01od)();
+extern int C2F(ab01od)(); /* 21 args, I am too lazy for them all */
 /*--------------------------------------------------------------------------*/
 int intab01od(char* fname)
 {
@@ -123,9 +123,15 @@ int intab01od(char* fname)
 
     /*     other parameters of AB01OD   */
     JOBU = "N";
-    if (Lhs >= 2)  JOBU = "I";
+    if (Lhs >= 2)
+    {
+        JOBU = "I";
+    }
     JOBV = "N";
-    if (Lhs >= 4)  JOBV = "I";
+    if (Lhs >= 4)
+    {
+        JOBV = "I";
+    }
 
     /*     creating NCONT,U,KSTAIR,V,IWORK,DWORK   */
     un = 1;

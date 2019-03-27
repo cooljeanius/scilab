@@ -67,16 +67,15 @@
 #include "localization.h"
 #include "Scierror.h"
 #include "call_scilab.h"
-#include "api_scilab.h" /* for ATTRIBUTE_NORETURN */
 
 static char *the_current_mex_name;
 
 extern int  C2F(hmcreate)(int *lw, int *nz, int *sz, int *typv, int *iflag, int *retval);
 extern int  C2F(stcreate)(int *lw1, int *ndim, int *dims, int *nfields, char **field_names, int *retval);
 extern double C2F(dlamch)(char *CMACH, unsigned long int);
-extern int arr2num( mxArray  *ptr );
-extern int arr2numcst(const mxArray  *ptr );
-extern int IsReference  (mxArray *array_ptr);
+extern int arr2num(mxArray  *ptr);
+extern int arr2numcst(const mxArray  *ptr);
+extern int IsReference(mxArray *array_ptr);
 
 #define DOUBLEMATRIX sci_matrix
 #define INTMATRIX sci_ints
@@ -103,7 +102,7 @@ vraiptrst stkptr(long int ptr_lstk)
 int *Header(const mxArray *ptr)
 {
     /* Retuns an int pointer to the header of a mxArray */
-    int *header = (int *) stkptr((long int)ptr);
+    int *header = (int *)(uintptr_t)stkptr((long int)ptr);
     if (header[0] < 0)
     {
         header = (int *) stk(header[1]);
@@ -115,7 +114,8 @@ int *Header(const mxArray *ptr)
 mxArray *header2ptr(int *header)
 {
     mxArray ptr;
-    ptr = (mxArray) ((double *)header - (double *)stkptr(C2F(vstk).lstk[0]) + C2F(vstk).lstk[0]) ;
+    ptr = (mxArray)((double *)header - (double *)(uintptr_t)stkptr(C2F(vstk).lstk[0])
+                    + C2F(vstk).lstk[0]);
     return (mxArray *)(intptr_t)ptr;
 }
 
@@ -436,7 +436,7 @@ int *RawHeader(const mxArray *ptr)
     /* Utility function : return an int pointer to   *
      * a Scilab variable. The variable can be            *
      * a reference (header[0] < 0)                       */
-    int *header = (int *) stkptr((long int)ptr);
+    int *header = (int *)(uintptr_t)stkptr((long int)ptr);
     return header;
 }
 
@@ -708,7 +708,7 @@ void mxSetM(mxArray *ptr, int M)
             /* make ptr a reference */
             size = 2 + M * header[2] * (header[3] + 1); /*  oldN=header[2] */
             mxNew = mxCreateData(size);   /* performs Nbvars++ */
-            headernew = (int *) stkptr((long int) mxNew);
+            headernew = (int *)(uintptr_t)stkptr((long int) mxNew);
             headernew[0] = header[0];
             headernew[1] = M;
             headernew[2] = header[2];
@@ -786,7 +786,7 @@ void mxSetNzmax(mxArray *array_ptr, int nzmax)
     Prold = mxGetPr(array_ptr);
     isize = 5 + (Nold + 1) + nzmax + (ITold + 1) * 2 * nzmax;
     mxNew = mxCreateData( sadr(isize));   /* performs Nbvars++ */
-    headernew = (int *) stkptr((long int) mxNew);
+    headernew = (int *)(uintptr_t)stkptr((long int) mxNew);
     headernew[0] = header[0];
     headernew[1] = Mold;
     headernew[2] = Nold;
@@ -872,7 +872,7 @@ void mxSetN(mxArray *ptr, int N)
             /* make ptr a reference */
             size = 2 + header[1] * N * (header[3] + 1); /*  oldM=header[1] */
             mxNew = mxCreateData(size);
-            headernew = (int *) stkptr((long int) mxNew);
+            headernew = (int *)(uintptr_t)stkptr((long int) mxNew);
             headernew[0] = header[0];
             headernew[1] = header[1];
             headernew[2] = N;
@@ -2371,7 +2371,7 @@ mxArray *mxCreateLogicalScalar(mxLOGICAL *value)
     mxArray *pa;
     int *header;
     pa = mxCreateLogicalMatrix(1, 1);
-    header = (int *) stkptr((long int) pa);
+    header = (int *)(uintptr_t)stkptr((long int) pa);
     header[3] = (int)(intptr_t)value;
     return (mxArray *) pa;
 }
@@ -2395,13 +2395,13 @@ bool mxIsLogicalScalar(mxArray *pa)
   in Scilab window
 */
 
-void mexPrintf (const char *fmt, ...)
+void mexPrintf(const char *const fmt, ...)
 {
     va_list args;
     char buf[2048];
 
     va_start(args, fmt);
-    (void ) vsprintf(buf, fmt, args );
+    (void)vsprintf(buf, fmt, args );
     sciprint("%s", buf);
     va_end(args);
 }
@@ -2943,7 +2943,7 @@ int C2F(initmex)(int *nlhs, mxArray **plhs, int *nrhs, mxArray **prhs)
         RhsVar = k  + Top - Rhs;
         prhs[k - 1] = (mxArray *)(intptr_t)C2F(vstk).lstk[RhsVar - 1];
         C2F(intersci).ntypes[k - 1] = AsIs;
-        header = (int *) stkptr((long int)prhs[k - 1]);
+        header = (int *)(uintptr_t)stkptr((long int)prhs[k - 1]);
         /*
         Indirect
               */
@@ -3111,7 +3111,7 @@ double * C2F(mxgetpr)(mxArray *ptr)
 {
     /*  double *value = (double *) stkptr(*ptr); */
     double *value;
-    int *header = (int *) stkptr(*ptr);
+    int *header = (int *)(uintptr_t)stkptr(*ptr);
     if (header[0] < 0)
     {
         header = (int *) stk(header[1]);
@@ -3137,7 +3137,7 @@ double * C2F(mxgetpi)(mxArray *ptr)
 {
     /*  double *value = (double *) stkptr(*ptr); */
     double *value;
-    int *header = (int *) stkptr(*ptr);
+    int *header = (int *)(uintptr_t)stkptr(*ptr);
     if (header[0] < 0)
     {
         header = (int *) stk(header[1]);
@@ -3148,7 +3148,7 @@ double * C2F(mxgetpi)(mxArray *ptr)
 
 int  C2F(mxgetm)(mxArray *ptr)
 {
-    int *header = (int *) stkptr(*ptr);
+    int *header = (int *)(uintptr_t)stkptr(*ptr);
     if (header[0] < 0)
     {
         header = (int *) stk(header[1]);
@@ -3158,7 +3158,7 @@ int  C2F(mxgetm)(mxArray *ptr)
 
 int  C2F(mxgetn)(mxArray *ptr)
 {
-    int *header = (int *) stkptr(*ptr);
+    int *header = (int *)(uintptr_t)stkptr(*ptr);
     if (header[0] < 0)
     {
         header = (int *) stk(header[1]);
@@ -3172,7 +3172,7 @@ int  C2F(mxgetn)(mxArray *ptr)
 
 int  C2F(mxisstring)(mxArray *ptr)
 {
-    int *header = (int *) stkptr(*ptr);
+    int *header = (int *)(uintptr_t)stkptr(*ptr);
     if (header[0] < 0)
     {
         header = (int *) stk(header[1]);
@@ -3189,7 +3189,7 @@ int  C2F(mxisstring)(mxArray *ptr)
 
 int  C2F(mxisnumeric)(mxArray *ptr)
 {
-    int *header = (int *) stkptr(*ptr);
+    int *header = (int *)(uintptr_t)stkptr(*ptr);
     if (header[0] < 0)
     {
         header = (int *) stk(header[1]);
@@ -3206,7 +3206,7 @@ int  C2F(mxisnumeric)(mxArray *ptr)
 
 int  C2F(mxisfull)(mxArray *ptr)
 {
-    int *header = (int *) stkptr(*ptr);
+    int *header = (int *)(uintptr_t)stkptr(*ptr);
     if (header[0] < 0)
     {
         header = (int *) stk(header[1]);
@@ -3220,7 +3220,7 @@ int  C2F(mxisfull)(mxArray *ptr)
 
 int  C2F(mxissparse)(mxArray *ptr)
 {
-    int *header = (int *) stkptr(*ptr);
+    int *header = (int *)(uintptr_t)stkptr(*ptr);
     if (header[0] < 0)
     {
         header = (int *) stk(header[1]);
@@ -3235,7 +3235,7 @@ int  C2F(mxissparse)(mxArray *ptr)
 
 int  C2F(mxiscomplex)(mxArray *ptr)
 {
-    int *header = (int *) stkptr(*ptr);
+    int *header = (int *)(uintptr_t)stkptr(*ptr);
     if (header[0] < 0)
     {
         header = (int *) stk(header[1]);
@@ -3251,7 +3251,7 @@ double  C2F(mxgetscalar)(mxArray *ptr)
 {
     static int N, nnz;
     double *value;
-    int *header = (int *) stkptr(*ptr);
+    int *header = (int *)(uintptr_t)stkptr(*ptr);
     if (header[0] < 0)
     {
         header = (int *) stk(header[1]);
@@ -3326,7 +3326,7 @@ int  C2F(mxgetstring)(mxArray *ptr, char *str, int *strl)
 {
     int commonlength;
     int nrows;
-    int *header = (int *) stkptr(*ptr);
+    int *header = (int *)(uintptr_t)stkptr(*ptr);
     if (header[0] < 0)
     {
         header = (int *) stk(header[1]);

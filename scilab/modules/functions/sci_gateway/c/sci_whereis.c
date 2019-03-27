@@ -18,7 +18,7 @@
 #include "searchmacroinlibraries.h"
 #include "freeArrayOfString.h"
 /*--------------------------------------------------------------------------*/
-extern int C2F(whereismacro)();
+extern int C2F(whereismacro)(void);
 /*--------------------------------------------------------------------------*/
 int sci_whereis(char *fname, unsigned long fname_len)
 {
@@ -54,22 +54,22 @@ int sci_whereis(char *fname, unsigned long fname_len)
         /* bug 5507 */
         /* getVarDimension does not (yet) manage theses scilab types. */
 
-        /*
+#ifdef BUG_5507_IS_FIXED
         int m = 0, n = 0;
 
         sciErr = getVarDimension(pvApiCtx, piAddressVarOne, &m, &n);
-        if(sciErr.iErr)
+        if (sciErr.iErr)
         {
-        	printError(&sciErr, 0);
-        	return 0;
+            printError(&sciErr, 0);
+            return 0;
         }
 
         if ( (m != n) && (n != 1) )
         {
-        	Scierror(999,_("%s: Wrong size for input argument #%d: A function-name expected.\n"),fname,1);
-        	return 0;
+            Scierror(999, _("%s: Wrong size for input argument #%d: A function-name expected.\n"), fname, 1);
+            return 0;
         }
-        */
+#endif /* BUG_5507_IS_FIXED */
 
         /* to rewrite with new API when it will be possible */
         C2F(whereismacro)();

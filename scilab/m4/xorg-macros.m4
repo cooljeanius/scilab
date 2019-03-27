@@ -1522,7 +1522,7 @@ if test "x$[xorg_testset_]CACHE_PREFIX[_unknown_warning_option]" = "x"; then
 fi
 
 if test "x$[xorg_testset_]CACHE_PREFIX[_unused_command_line_argument]" = "x"; then
-	if test "x$[xorg_testset_]CACHE_PREFIX[_unknown_warning_option]" = "xyes" ; then
+	if test "x$[xorg_testset_]CACHE_PREFIX[_unknown_warning_option]" = "xyes"; then
 		PREFIX[FLAGS]="$PREFIX[FLAGS] -Werror=unknown-warning-option"
 	fi
 	PREFIX[FLAGS]="$PREFIX[FLAGS] -Werror=unused-command-line-argument"
@@ -1538,11 +1538,13 @@ fi
 found="no"
 m4_foreach([flag], m4_cdr($@), [
 	if test $found = "no" ; then
-		if test "x$xorg_testset_unknown_warning_option" = "xyes" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$[xorg_testset_]CACHE_PREFIX[_unknown_warning_option]" = "xyes"; then
+			AC_MSG_NOTICE([using -Werror=unknown-warning-option when testing for ]flag[.])
 			PREFIX[FLAGS]="$PREFIX[FLAGS] -Werror=unknown-warning-option"
 		fi
 
-		if test "x$xorg_testset_unused_command_line_argument" = "xyes" ; then
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$[xorg_testset_]CACHE_PREFIX[_unused_command_line_argument]" = "xyes"; then
+			AC_MSG_NOTICE([using -Werror=unused-command-line-argument when testing for ]flag[.])
 			PREFIX[FLAGS]="$PREFIX[FLAGS] -Werror=unused-command-line-argument"
 		fi
 

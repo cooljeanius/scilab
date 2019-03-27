@@ -40,7 +40,8 @@ class ScilabStackAllocator
 
 public:
 
-    ScilabStackAllocator(void * _pvApiCtx, int _position) : pvApiCtx(_pvApiCtx), position(_position) { }
+    /* pvApiCtx after position for -Wreorder: */
+    ScilabStackAllocator(void * _pvApiCtx, int _position) : position(_position), pvApiCtx(_pvApiCtx) { }
 
     ~ScilabStackAllocator() { }
 
@@ -64,7 +65,7 @@ protected:
         return _ptr;
     }
 
-    inline static void create(void * pvApiCtx, const int position, const int rows, const int cols, float * ptr)
+    inline static ATTRIBUTE_NORETURN void create(void * pvApiCtx, const int position, const int rows, const int cols, float * ptr)
     {
         throw ScilabAbstractEnvironmentException(__LINE__, __FILE__, "Invalid operation: cannot create a matrix of floats");
     }

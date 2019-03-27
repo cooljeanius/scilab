@@ -50,4 +50,24 @@
 #include "core_math.h"
 #include "sci_types.h"
 
+#ifndef __has_cpp_attribute
+# define __has_cpp_attribute(foo) 0
+#endif /* !__has_cpp_attribute */
+
+#ifndef ATTRIBUTE_NORETURN
+# if defined(__cplusplus) && defined(__cpp_attributes)
+#  if (__cplusplus >= 201402L) || (__cpp_attributes >= 200809) || __has_cpp_attribute(noreturn)
+#   define ATTRIBUTE_NORETURN [[noreturn]]
+#  endif /* have [[noreturn]] */
+# else
+#  if defined(__GNUC__) && defined(__GNUC_MINOR__)
+#   define ATTRIBUTE_NORETURN __attribute__((noreturn))
+#  else
+#   if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201710L)
+#    define ATTRIBUTE_NORETURN _Noreturn
+#   endif /* C11 */
+#  endif /* GCC */
+# endif /* C++ */
+#endif /* !ATTRIBUTE_NORETURN */
+
 #endif /* __VARIABLE_API__ */

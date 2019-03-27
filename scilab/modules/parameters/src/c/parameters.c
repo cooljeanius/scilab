@@ -259,6 +259,8 @@ SciErr getIntInPList(void* _pvCtx, int * _piAddress, const char * _pstLabel, int
 
                 va_end(vl);
                 break;
+            default:
+                break;
         }
     }
     return _SciErr;
@@ -407,6 +409,8 @@ SciErr getDoubleInPList(void* _pvCtx, int * _piAddress, const char * _pstLabel, 
 
                 va_end(vl);
                 break;
+            default:
+                break;
         }
     }
 
@@ -529,6 +533,8 @@ SciErr getStringInPList(void* _pvCtx, int * _piAddress, const char * _pstLabel, 
                 }
 
                 va_end(vl);
+                break;
+            default:
                 break;
         }
     }
@@ -701,6 +707,8 @@ SciErr getColVectorOfIntInPList(void* _pvCtx, int * _piAddress, const char * _ps
                 }
 
                 va_end(vl);
+                break;
+            default:
                 break;
         }
     }
@@ -905,6 +913,8 @@ SciErr getColVectorOfDoubleInPList(void* _pvCtx, int * _piAddress, const char * 
                     return _SciErr;
                 }
                 va_end(vl);
+                break;
+            default:
                 break;
         }
     }

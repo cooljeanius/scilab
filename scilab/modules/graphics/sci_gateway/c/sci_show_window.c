@@ -54,7 +54,7 @@ int sci_show_window( char *fname, unsigned long fname_len )
         int type = -1;
         int *piType = &type;
 
-        if ( ( paramType == sci_handles ) )
+        if (paramType == sci_handles)
         {
             /* by tis handle */
             GetRhsVar( 1, GRAPHICAL_HANDLE_DATATYPE, &nbRow, &nbCol, &stackPointer );
@@ -81,7 +81,7 @@ int sci_show_window( char *fname, unsigned long fname_len )
             }
 
         }
-        else if ( ( paramType == sci_matrix ) )
+        else if (paramType == sci_matrix)
         {
             /* by its number */
             int winNum = 0;
@@ -100,7 +100,8 @@ int sci_show_window( char *fname, unsigned long fname_len )
                 setGraphicObjectProperty(pFigureUID, __GO_ID__, &winNum, jni_int, 1);
                 setCurrentFigure(pFigureUID);
 
-                getGraphicObjectProperty(pFigureUID, __GO_SELECTED_CHILD__, jni_string,  &pstrAxesUID);
+                getGraphicObjectProperty(pFigureUID, __GO_SELECTED_CHILD__, jni_string,
+                                         (void **)&pstrAxesUID);
                 setCurrentSubWin(pstrAxesUID);
             }
         }

@@ -252,8 +252,8 @@ case "${host}" in
 
             # Macports does not have an init.sh like Fink does, so we can
             # remove that part
-        elif test -x `which port`; then
-        	if test -L `which port`; then
+        elif test -x "`which port`"; then
+        	if test -L "`which port`"; then
         	    REAL_PORT=$(readlink `which port`)
         	    AC_MSG_WARN([`which port` is a symlink to ${REAL_PORT}.])
         	    export MACPORTS_PREFIX=$(dirname $(dirname ${REAL_PORT}))
@@ -277,6 +277,7 @@ AC_ARG_WITH([min_macosx_version],
                 [Force compilers to generate binaries compatible with MacOSX minimal version.])])
 case "${host}" in
     *darwin*)
+    dnl# FIXME: verify that we actually have a valid version number here:
     if test -n "${with_min_macosx_version}"; then
        MIN_MACOSX_VERSION=${with_min_macosx_version}
        # Append to the default flags on Apple machines
@@ -300,7 +301,7 @@ PKG_PROG_PKG_CONFIG dnl# from m4/pkg.m4
 #####################################################
 
 if test "x${with_intelcompilers}" = "xyes" -a "x${with_gcc}" = "xyes"; then
-    AC_MSG_ERROR([Conflicting options : you specified two compiler series])
+    AC_MSG_ERROR([Conflicting options: you specified two different compiler series (i.e. both Intel and gcc)])
 fi
 
 ######## fortran ########
@@ -320,10 +321,11 @@ if test "x${with_intelcompilers}" = "xyes"; then
 fi
 
 if test -z "${F77}"; then
-## No Fortran compiler specified... Prefer gfortran and intel compilers
+   AC_MSG_NOTICE([No Fortran compiler specified; trying to find one (preferring gfortran and intel compilers)])
    AC_PROG_F77([gfortran ifc ifort])
    if test -z "${F77}"; then
         # Best effort to find a compiler (might be g77)
+        AC_MSG_NOTICE([Still no Fortran compiler found; getting desperate now...])
 	AC_PROG_F77
    fi
 fi
@@ -375,7 +377,7 @@ if test "x${with_intelcompilers}" = "xyes"; then
 fi
 
 if test -z "${CC}"; then
-# No C compiler specified... We rely on Autoconf to find the best
+   AC_MSG_NOTICE([No C compiler specified... relying on Autoconf to find the best])
    AC_PROG_CC
    XORG_COMPILER_BRAND dnl# from m4/xorg-macros.m4
 fi
@@ -440,6 +442,7 @@ if test "x${enable_stop_on_warning}" = "xyes"; then
 fi
 
 if test "x${enable_debug}" = "xyes"; then
+   AC_MSG_NOTICE([--enable-debug implies the rest of the --enable-debug flags])
    XORG_MEMORY_CHECK_FLAGS dnl# from m4/xorg-macros.m4
    enable_debug_fortran=yes
    enable_debug_C=yes
@@ -458,6 +461,7 @@ else
 fi
 
 if test "x${enable_debug_C}" = "xyes"; then
+   AC_MSG_NOTICE([hacking CFLAGS for --enable-debug-C])
    CFLAGS="`echo "${CFLAGS}"| sed -e 's|-O[0-9+]|-O0|'`"
    XORG_CWARNFLAGS dnl# from m4/xorg-macros.m4
 else
@@ -466,6 +470,7 @@ else
 fi
 
 if test "x${enable_debug_CXX}" = "xyes"; then
+   AC_MSG_NOTICE([hacking CXXFLAGS for --enable-debug-CXX])
    CXXFLAGS="`echo "${CXXFLAGS}"| sed -e 's|-O[0-9+]|-O0|'`"
    XORG_CXXWARNFLAGS dnl# from m4/xorg-macros.m4
 else
@@ -728,7 +733,7 @@ case "${CC}" in
         ARCH_CFLAGS="-Dnetbsd"
      ;;
      *-*-darwin*)
-        if test -x ${SW_VERS} -o -x `which sw_vers`; then 
+        if test -x ${SW_VERS} -o -x "`which sw_vers`"; then 
           if test "`sw_vers -productVersion | cut -d\. -f2`" -lt "7"; then
             dnl# FIXME: this is the wrong way to go about checking for this
             dnl# linker flag; it should be based on linker version rather than
@@ -923,6 +928,8 @@ if test "x${with_xcos}" != "xno" -a "x${with_gui}" != "xno"; then
    #################
    if test "x${with_modelica}" != "xno"; then
       AC_CHECK_PROG_OCAML([]) dnl# from m4/ocaml.m4
+   else
+      AC_MSG_NOTICE([modelica is disabled; skipping checks for ocaml])
    fi
    XCOS_ENABLE=yes
 else
@@ -951,16 +958,16 @@ if test "x${with_javasci}" != "xno" -o "x${with_gui}" != "xno" -o "x${enable_bui
         1.6 | 1.7)
         ;;
         *)
-            AC_MSG_ERROR([Wrong version of Java. Expected at least 1.6. Found $ac_java_jvm_version])
+            AC_MSG_ERROR([Wrong version of Java. Expected at least 1.6. Found ${ac_java_jvm_version}])
         ;;
      esac
 
    if test "x${ac_java_jvm_name}" = "xjdk"; then
-        JAVA_HOME=$ac_java_jvm_dir
-        JAVA_VERSION=$ac_java_jvm_version
+        JAVA_HOME=${ac_java_jvm_dir}
+        JAVA_VERSION=${ac_java_jvm_version}
         AC_JAVA_TOOLS
         AC_JAVA_JNI_INCLUDE
-        JAVA_JNI_INCLUDE=$ac_java_jvm_jni_include_flags
+        JAVA_JNI_INCLUDE=${ac_java_jvm_jni_include_flags}
 
         case "$host_os" in
              *Darwin* | *darwin*)
@@ -1142,8 +1149,8 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 # MathML rendering solution
                 # Used in both graphic & help
                 AC_JAVA_CHECK_PACKAGE([jeuclid-core],
-                                      [net.sourceforge.jeuclid.LayoutContext],
-                                      [MathML rendering solution (at least version 3.1.X)])
+                          [net.sourceforge.jeuclid.LayoutContext],
+                          [MathML rendering solution (at least version 3.1.X)])
                 JEUCLID_CORE=${PACKAGE_JAR_FILE}
                 AC_SUBST([JEUCLID_CORE])dnl
 
@@ -1288,9 +1295,9 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
         AC_SUBST([ASM3])
         if test -z "$ASM3"; then
                 AC_JAVA_CHECK_PACKAGE([asm],
-                                      [org.objectweb.asm.Type],
-                                      [Java bytecode manipulation (dep of cobertura)],
-                                      ["yes"])
+                              [org.objectweb.asm.Type],
+                              [Java bytecode manipulation (dep of cobertura)],
+                              ["yes"])
                 ASM3=${PACKAGE_JAR_FILE}
         fi
 
@@ -1328,6 +1335,7 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
         AC_SUBST([SWIG_JAVA])dnl
         ## that should be enough
     else
+        AC_MSG_NOTICE([skipping checks for swig])
         if test -z "${SWIG_BIN}"; then
           ## need a dummy to keep the variable from being empty, just in case:
           SWIG_BIN=true
@@ -1345,6 +1353,7 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
         enable_build_giws=no
     fi
 else
+    AC_MSG_NOTICE([skipping checks for java stuff, including fop and swig])
     dnl# none of these can be turned on if Java is not turned on
     enable_build_swig=no
     enable_build_giws=no
@@ -1362,7 +1371,7 @@ fi
 JAVA_ENABLE=yes
 
 if test -z "${JAVAC}"; then
-   dnl# Turn off Java if no java compiler was found
+   AC_MSG_NOTICE([no java compiler was found; turning off java])
    JAVA_ENABLE=no
 fi
 
@@ -1791,7 +1800,7 @@ ACX_ARPACK([AC_MSG_RESULT([ARPACK-NG library found])],
         ])dnl
 
 CHECK_ARPACK_OK([AC_MSG_RESULT([Working ARPACK-NG library found (probably ARPACK-NG or a patched version of ARPACK)])],
-[AC_MSG_ERROR([ARPACK library found, but seems not to work properly. Please make sure you are using arpack-ng.])
+[AC_MSG_ERROR([ARPACK library found, but seems not to work properly. Please make sure you are using arpack-ng, or use the --without-arpack-ng flag to disable this error.])
 ])
 else
    AC_MSG_CHECKING([... actually nope, not checking this (skip ARPACK-NG detection)])
@@ -1956,11 +1965,11 @@ if test "x${with_matio}" != "xno"; then
 
    AC_CHECK_HEADERS([matio.h matioConfig.h],[],
      [AC_CHECK_HEADERS([matio_pubconf.h],[],
-        [AC_MSG_ERROR([Invalid MATIO_CFLAGS returned by pkg-config. Try to define MATIO_CFLAGS.])
+        [AC_MSG_ERROR([Invalid MATIO_CFLAGS returned by pkg-config. Try to define MATIO_CFLAGS, or use --without-matio to disable Matio interface.])
      ])
    ])
    AC_CHECK_LIB([matio],[Mat_Open],[],
-     [AC_MSG_ERROR([Invalid MATIO_LIBS returned by pkg-config. Try to define MATIO_LIBS.])])dnl
+     [AC_MSG_ERROR([Invalid MATIO_LIBS returned by pkg-config. Try to define MATIO_LIBS, or use --without-matio to disable Matio interface.])])dnl
 
    AC_CHECK_TYPES([mat_t],[],[],[
 #ifdef HAVE_MATIO_H

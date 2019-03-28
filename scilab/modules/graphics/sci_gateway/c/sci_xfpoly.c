@@ -28,14 +28,13 @@
 #include "setGraphicObjectProperty.h"
 
 /*--------------------------------------------------------------------------*/
-int sci_xfpoly(char *fname,unsigned long fname_len)
+int sci_xfpoly(char *fname, unsigned long fname_len)
 {
     char* psubwinUID = (char*)getOrCreateDefaultSubwin();
     int iStyle = 0;
     int m1 = 0, n1 = 0, l1 = 0;
     int m2 = 0, n2 = 0, l2 = 0;
     int m3 = 0, n3 = 0, l3 = 0;
-    int mn1 = 0;
 
     long hdl = 0; /* NG */
 
@@ -49,10 +48,10 @@ int sci_xfpoly(char *fname,unsigned long fname_len)
     {
         GetRhsVar(3, MATRIX_OF_DOUBLE_DATATYPE, &m3, &n3, &l3);
         CheckScalar(3, m3, n3);
-        iStyle = (int) *stk(l3);
+        iStyle = (int) * stk(l3);
     }
 
-    if(iStyle == 0)
+    if (iStyle == 0)
     {
         int iColorMapSize = 0;
         int* piColorMapSize = &iColorMapSize;
@@ -67,11 +66,11 @@ int sci_xfpoly(char *fname,unsigned long fname_len)
         //get current foreground color
         getGraphicObjectProperty(psubwinUID, __GO_LINE_COLOR__, jni_int, (void**)&piForeGround);
 
-        if(iForeGround == -1)
+        if (iForeGround == -1)
         {
             iStyle = iColorMapSize + 1;
         }
-        else if(iForeGround == -2)
+        else if (iForeGround == -2)
         {
             iStyle = iColorMapSize + 2;
         }

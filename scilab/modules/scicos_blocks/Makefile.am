@@ -407,26 +407,30 @@ src/fortran/writef.f \
 src/fortran/zcross.f
 
 
-libsciscicos_blocks_la_CPPFLAGS= -I$(srcdir)/includes/ \
-			-I$(srcdir)/src/c/ \
-			-I$(srcdir)/src/cpp/ \
-			-I$(srcdir)/src/jni/ \
-			-I$(top_srcdir)/libs/MALLOC/includes/ \
-			-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
-			-I$(top_srcdir)/modules/api_scilab/includes/ \
-	 		-I$(top_srcdir)/modules/commons/src/jni/ \
-			-I$(top_srcdir)/modules/elementary_functions/includes/ \
-			-I$(top_srcdir)/modules/fileio/includes/ \
-			-I$(top_srcdir)/modules/graphics/includes/ \
-			-I$(top_srcdir)/modules/graphic_objects/includes/ \
-	 		-I$(top_srcdir)/modules/jvm/includes/ \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			-I$(top_srcdir)/modules/output_stream/includes/ \
-			-I$(top_srcdir)/modules/renderer/includes/ \
-	 		-I$(top_srcdir)/modules/scicos/includes/ \
-			-I$(top_srcdir)/modules/string/includes/ \
-			$(JAVA_JNI_INCLUDE) \
-			$(AM_CPPFLAGS)
+libsciscicos_blocks_la_CPPFLAGS= -Wp,-I$(srcdir)/includes/ \
+		-Wp,-I$(srcdir)/src/c/ \
+		-Wp,-I$(srcdir)/src/cpp/ \
+		-Wp,-I$(srcdir)/src/jni/ \
+		-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+		-Wp,-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
+		-Wp,-I$(top_srcdir)/modules/core/includes/ \
+		-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+	 	-Wp,-I$(top_srcdir)/modules/commons/src/jni/ \
+		-Wp,-I$(top_srcdir)/modules/elementary_functions/includes/ \
+		-Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+		-Wp,-I$(top_srcdir)/modules/graphics/includes/ \
+		-Wp,-I$(top_srcdir)/modules/graphic_objects/includes/ \
+	 	-Wp,-I$(top_srcdir)/modules/jvm/includes/ \
+		-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+		-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+		-Wp,-I$(top_srcdir)/modules/renderer/includes/ \
+	 	-Wp,-I$(top_srcdir)/modules/scicos/includes/ \
+		-Wp,-I$(top_srcdir)/modules/string/includes/ \
+		$(JAVA_JNI_INCLUDE) \
+		$(AM_CPPFLAGS)
+
+## Need to put this include in FFLAGS too, because fortran is different:
+libsciscicos_blocks_la_FFLAGS= -I$(top_srcdir)/modules/core/includes/
 
 libsciscicos_blocks_la_SOURCES = $(SCICOS_BLOCKS_C_SOURCES) \
 $(SCICOS_BLOCKS_FORTRAN_SOURCES) \
@@ -447,30 +451,46 @@ if GIWS
 BUILT_SOURCES+=giws
 endif
 
-$(top_builddir)/modules/scicos_blocks/build/Cblocknames:Makefile.am $(SCICOS_BLOCKS_C_SOURCES)
-	@echo "-- Generates build/Cblocknames --"
-	@if test ! -d build; then mkdir $(top_builddir)/modules/scicos_blocks/build; fi
-# Get the filename, strip the extension and put into a file
-	@for file in $(SCICOS_BLOCKS_C_SOURCES); do echo $$file |sed  's|.*/\([0-9A-Za-z_-]*\)\.c|\1|' ;done > $(top_builddir)/modules/scicos_blocks/build/Cblocknames
+## hacks to extend the verbosity control:
+AM_V_redir = $(am__v_redir_@AM_V@)
+am__v_redir_ = $(am__v_redir_@AM_DEFAULT_V@)
+am__v_redir_0 = >
+am__v_redir_1 = | tee
 
-$(top_builddir)/modules/scicos_blocks/build/CPPblocknames:Makefile.am $(SCICOS_BLOCKS_CXX_SOURCES)
-	@echo "-- Generates build/CPPblocknames --"
-	@if test ! -d build; then mkdir $(top_builddir)/modules/scicos_blocks/build; fi
+AM_V_redir_a = $(am__v_redir_a_@AM_V@)
+am__v_redir_a_ = $(am__v_redir_a_@AM_DEFAULT_V@)
+am__v_redir_a_0 = >>
+am__v_redir_a_1 = | tee -a
+
+AM_V_v = $(am__v_v_@AM_V@)
+am__v_v_ = $(am__v_v_@AM_DEFAULT_V@)
+am__v_v_0 =
+am__v_v_1 = -v
+
+$(top_builddir)/modules/scicos_blocks/build/Cblocknames: Makefile.am $(SCICOS_BLOCKS_C_SOURCES)
+	@echo "-- Generates build/Cblocknames --"
+	$(AM_V_at)if test ! -d build; then mkdir $(AM_V_v) $(top_builddir)/modules/scicos_blocks/build; fi
 # Get the filename, strip the extension and put into a file
-	@for file in $(SCICOS_BLOCKS_CXX_SOURCES); do echo $$file |sed  's|.*/\([0-9A-Za-z_-]*\)\.cpp|\1|' ;done > $(top_builddir)/modules/scicos_blocks/build/CPPblocknames
+	$(AM_V_GEN)for file in $(SCICOS_BLOCKS_C_SOURCES); do echo $$file | $(SED) 's|.*/\([0-9A-Za-z_-]*\)\.c|\1|'; done $(AM_V_redir) $(top_builddir)/modules/scicos_blocks/build/Cblocknames
+
+$(top_builddir)/modules/scicos_blocks/build/CPPblocknames: Makefile.am $(SCICOS_BLOCKS_CXX_SOURCES)
+	@echo "-- Generates build/CPPblocknames --"
+	$(AM_V_at)if test ! -d build; then mkdir $(AM_V_v) $(top_builddir)/modules/scicos_blocks/build; fi
+# Get the filename, strip the extension and put into a file
+	$(AM_V_GEN)for file in $(SCICOS_BLOCKS_CXX_SOURCES); do echo $$file | $(SED) 's|.*/\([0-9A-Za-z_-]*\)\.cpp|\1|'; done $(AM_V_redir) $(top_builddir)/modules/scicos_blocks/build/CPPblocknames
 
 $(top_builddir)/modules/scicos_blocks/build/Fblocknames: Makefile.am $(SCICOS_BLOCKS_FORTRAN_SOURCES)
 	@echo "-- Generates build/Fblocknames --"
-	@if test ! -d build; then mkdir $(top_builddir)/modules/scicos_blocks/build; fi
+	$(AM_V_at)if test ! -d build; then mkdir $(AM_V_v) $(top_builddir)/modules/scicos_blocks/build; fi
 # Get the filename, strip the extension and put into a file
-	@for file in $(SCICOS_BLOCKS_FORTRAN_SOURCES); do echo $$file |sed  's|.*/\([0-9A-Za-z_-]*\)\.f|\1|';done > $(top_builddir)/modules/scicos_blocks/build/Fblocknames
+	$(AM_V_GEN)for file in $(SCICOS_BLOCKS_FORTRAN_SOURCES); do echo $$file | $(SED) 's|.*/\([0-9A-Za-z_-]*\)\.f|\1|'; done $(AM_V_redir) $(top_builddir)/modules/scicos_blocks/build/Fblocknames
 
-includes/blocks.h: $(top_builddir)/modules/scicos_blocks/build/Cblocknames $(top_builddir)/modules/scicos_blocks/build/Fblocknames $(top_builddir)/modules/scicos_blocks/build/CPPblocknames
+includes/blocks.h: $(top_srcdir)/modules/scicos_blocks/src/scripts/GenBlocks.sh $(top_builddir)/modules/scicos_blocks/build/Cblocknames $(top_builddir)/modules/scicos_blocks/build/Fblocknames $(top_builddir)/modules/scicos_blocks/build/CPPblocknames
 	@echo "-- Building includes/blocks.h --"
-	@if test ! -d $(top_builddir)/modules/scicos_blocks/includes/; then \
-		mkdir $(top_builddir)/modules/scicos_blocks/includes/; \
+	$(AM_V_at)if test ! -d $(top_builddir)/modules/scicos_blocks/includes/; then \
+		mkdir $(AM_V_v) $(top_builddir)/modules/scicos_blocks/includes/; \
 	fi
-	@$(top_srcdir)/modules/scicos_blocks/src/scripts/GenBlocks.sh $(top_builddir)/modules/scicos_blocks/build/Fblocknames $(top_builddir)/modules/scicos_blocks/build/Cblocknames $(top_builddir)/modules/scicos_blocks/build/CPPblocknames $(top_builddir)/modules/scicos_blocks/includes/blocks.h
+	$(AM_V_GEN)$(top_srcdir)/modules/scicos_blocks/src/scripts/GenBlocks.sh $(top_builddir)/modules/scicos_blocks/build/Fblocknames $(top_builddir)/modules/scicos_blocks/build/Cblocknames $(top_builddir)/modules/scicos_blocks/build/CPPblocknames $(top_builddir)/modules/scicos_blocks/includes/blocks.h
 
 CLEANFILES=$(top_srcdir)/modules/scicos_blocks/includes/blocks.h \
 	$(top_srcdir)/modules/scicos_blocks/build/Cblocknames \

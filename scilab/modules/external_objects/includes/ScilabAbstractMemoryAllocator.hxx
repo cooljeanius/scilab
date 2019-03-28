@@ -65,7 +65,7 @@ protected:
         return _ptr;
     }
 
-    inline static ATTRIBUTE_NORETURN void create(void * pvApiCtx, const int position, const int rows, const int cols, float * ptr)
+    ATTRIBUTE_NORETURN inline static void create(void * pvApiCtx, const int position, const int rows, const int cols, float * ptr)
     {
         throw ScilabAbstractEnvironmentException(__LINE__, __FILE__, "Invalid operation: cannot create a matrix of floats");
     }

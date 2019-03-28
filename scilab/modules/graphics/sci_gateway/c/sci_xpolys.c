@@ -61,8 +61,8 @@ int sci_xpolys(char *fname, unsigned long fname_len)
         PutLhsVar();
         return 0;
     }
-    pstSubWinUID = getOrCreateDefaultSubwin();
-    pstFigureUID = getCurrentFigure();
+    pstSubWinUID = (char *)getOrCreateDefaultSubwin();
+    pstFigureUID = (char *)getCurrentFigure();
     // Create compound.
     pstCompoundUID = createGraphicObject(__GO_COMPOUND__);
     setGraphicObjectProperty(pstCompoundUID, __GO_VISIBLE__, &iFalse, jni_bool, 1);

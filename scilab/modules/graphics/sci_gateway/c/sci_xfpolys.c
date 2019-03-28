@@ -48,7 +48,6 @@ int sci_xfpolys(char *fname, unsigned long fname_len)
     char *pstFigureUID = NULL;
     char *pstCompoundUID = NULL;
     int iSubWinForeground = 0;
-    int *piSubWinForeground = &iSubWinForeground;
 
     int iImmediateDrawing = 0;
     int *piImmediateDrawing = &iImmediateDrawing;

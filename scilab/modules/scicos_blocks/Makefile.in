@@ -638,35 +638,64 @@ am__dirstamp = $(am__leading_dot)dirstamp
 @XCOS_TRUE@	src/c/libsciscicos_blocks_la-writeau.lo \
 @XCOS_TRUE@	src/c/libsciscicos_blocks_la-writec.lo \
 @XCOS_TRUE@	src/c/libsciscicos_blocks_la-zcross2.lo
-@XCOS_TRUE@am__objects_2 = src/fortran/csslti.lo src/fortran/cstblk.lo \
-@XCOS_TRUE@	src/fortran/delay.lo src/fortran/delayv.lo \
-@XCOS_TRUE@	src/fortran/demux.lo src/fortran/diffblk.lo \
-@XCOS_TRUE@	src/fortran/dlradp.lo src/fortran/dollar.lo \
-@XCOS_TRUE@	src/fortran/dsslti.lo src/fortran/eselect.lo \
-@XCOS_TRUE@	src/fortran/evtdly.lo src/fortran/expblk.lo \
-@XCOS_TRUE@	src/fortran/forblk.lo src/fortran/fsv.lo \
-@XCOS_TRUE@	src/fortran/gensin.lo src/fortran/gensqr.lo \
-@XCOS_TRUE@	src/fortran/hltblk.lo src/fortran/ifthel.lo \
-@XCOS_TRUE@	src/fortran/integr.lo src/fortran/intplt.lo \
-@XCOS_TRUE@	src/fortran/intpol.lo src/fortran/intrp2.lo \
-@XCOS_TRUE@	src/fortran/intrpl.lo src/fortran/invblk.lo \
-@XCOS_TRUE@	src/fortran/iocopy.lo src/fortran/logblk.lo \
-@XCOS_TRUE@	src/fortran/lookup.lo src/fortran/lsplit.lo \
-@XCOS_TRUE@	src/fortran/lusat.lo src/fortran/maxblk.lo \
-@XCOS_TRUE@	src/fortran/memo.lo src/fortran/mfclck.lo \
-@XCOS_TRUE@	src/fortran/minblk.lo src/fortran/mux.lo \
-@XCOS_TRUE@	src/fortran/pload.lo src/fortran/powblk.lo \
-@XCOS_TRUE@	src/fortran/qzcel.lo src/fortran/qzflr.lo \
-@XCOS_TRUE@	src/fortran/qzrnd.lo src/fortran/qztrn.lo \
-@XCOS_TRUE@	src/fortran/readf.lo src/fortran/rndblk.lo \
-@XCOS_TRUE@	src/fortran/samphold.lo src/fortran/sawtth.lo \
-@XCOS_TRUE@	src/fortran/sciblk.lo src/fortran/selblk.lo \
-@XCOS_TRUE@	src/fortran/sinblk.lo src/fortran/sqrblk.lo \
-@XCOS_TRUE@	src/fortran/sum2.lo src/fortran/sum3.lo \
-@XCOS_TRUE@	src/fortran/tanblk.lo src/fortran/tcslti.lo \
-@XCOS_TRUE@	src/fortran/tcsltj.lo src/fortran/timblk.lo \
-@XCOS_TRUE@	src/fortran/trash.lo src/fortran/writef.lo \
-@XCOS_TRUE@	src/fortran/zcross.lo
+@XCOS_TRUE@am__objects_2 =  \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-csslti.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-cstblk.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-delay.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-delayv.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-demux.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-diffblk.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-dlradp.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-dollar.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-dsslti.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-eselect.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-evtdly.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-expblk.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-forblk.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-fsv.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-gensin.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-gensqr.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-hltblk.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-ifthel.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-integr.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-intplt.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-intpol.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-intrp2.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-intrpl.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-invblk.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-iocopy.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-logblk.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-lookup.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-lsplit.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-lusat.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-maxblk.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-memo.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-mfclck.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-minblk.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-mux.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-pload.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-powblk.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-qzcel.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-qzflr.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-qzrnd.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-qztrn.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-readf.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-rndblk.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-samphold.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-sawtth.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-sciblk.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-selblk.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-sinblk.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-sqrblk.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-sum2.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-sum3.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-tanblk.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-tcslti.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-tcsltj.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-timblk.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-trash.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-writef.lo \
+@XCOS_TRUE@	src/fortran/libsciscicos_blocks_la-zcross.lo
 @XCOS_TRUE@am__objects_3 =  \
 @XCOS_TRUE@	src/c/libsciscicos_blocks_la-scicos_evalhermite.lo \
 @XCOS_TRUE@	src/c/libsciscicos_blocks_la-scicos_indexfinder.lo
@@ -1944,27 +1973,29 @@ HELP_CHAPTERLANG = en_US fr_FR pt_BR
 @XCOS_TRUE@src/fortran/writef.f \
 @XCOS_TRUE@src/fortran/zcross.f
 
-@XCOS_TRUE@libsciscicos_blocks_la_CPPFLAGS = -I$(srcdir)/includes/ \
-@XCOS_TRUE@			-I$(srcdir)/src/c/ \
-@XCOS_TRUE@			-I$(srcdir)/src/cpp/ \
-@XCOS_TRUE@			-I$(srcdir)/src/jni/ \
-@XCOS_TRUE@			-I$(top_srcdir)/libs/MALLOC/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/api_scilab/includes/ \
-@XCOS_TRUE@	 		-I$(top_srcdir)/modules/commons/src/jni/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/elementary_functions/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/fileio/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/graphics/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/graphic_objects/includes/ \
-@XCOS_TRUE@	 		-I$(top_srcdir)/modules/jvm/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/localization/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/output_stream/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/renderer/includes/ \
-@XCOS_TRUE@	 		-I$(top_srcdir)/modules/scicos/includes/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/string/includes/ \
-@XCOS_TRUE@			$(JAVA_JNI_INCLUDE) \
-@XCOS_TRUE@			$(AM_CPPFLAGS)
+@XCOS_TRUE@libsciscicos_blocks_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+@XCOS_TRUE@		-Wp,-I$(srcdir)/src/c/ \
+@XCOS_TRUE@		-Wp,-I$(srcdir)/src/cpp/ \
+@XCOS_TRUE@		-Wp,-I$(srcdir)/src/jni/ \
+@XCOS_TRUE@		-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+@XCOS_TRUE@		-Wp,-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
+@XCOS_TRUE@		-Wp,-I$(top_srcdir)/modules/core/includes/ \
+@XCOS_TRUE@		-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+@XCOS_TRUE@	 	-Wp,-I$(top_srcdir)/modules/commons/src/jni/ \
+@XCOS_TRUE@		-Wp,-I$(top_srcdir)/modules/elementary_functions/includes/ \
+@XCOS_TRUE@		-Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+@XCOS_TRUE@		-Wp,-I$(top_srcdir)/modules/graphics/includes/ \
+@XCOS_TRUE@		-Wp,-I$(top_srcdir)/modules/graphic_objects/includes/ \
+@XCOS_TRUE@	 	-Wp,-I$(top_srcdir)/modules/jvm/includes/ \
+@XCOS_TRUE@		-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+@XCOS_TRUE@		-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+@XCOS_TRUE@		-Wp,-I$(top_srcdir)/modules/renderer/includes/ \
+@XCOS_TRUE@	 	-Wp,-I$(top_srcdir)/modules/scicos/includes/ \
+@XCOS_TRUE@		-Wp,-I$(top_srcdir)/modules/string/includes/ \
+@XCOS_TRUE@		$(JAVA_JNI_INCLUDE) \
+@XCOS_TRUE@		$(AM_CPPFLAGS)
 
+@XCOS_TRUE@libsciscicos_blocks_la_FFLAGS = -I$(top_srcdir)/modules/core/includes/
 @XCOS_FALSE@libsciscicos_blocks_la_SOURCES = 
 @XCOS_TRUE@libsciscicos_blocks_la_SOURCES = $(SCICOS_BLOCKS_C_SOURCES) \
 @XCOS_TRUE@$(SCICOS_BLOCKS_FORTRAN_SOURCES) \
@@ -1979,6 +2010,18 @@ HELP_CHAPTERLANG = en_US fr_FR pt_BR
 
 #### scicos_blocks : Generation of the  includes/blocks.h Files ####
 @XCOS_TRUE@BUILT_SOURCES = includes/blocks.h $(am__append_2)
+@XCOS_TRUE@AM_V_redir = $(am__v_redir_@AM_V@)
+@XCOS_TRUE@am__v_redir_ = $(am__v_redir_@AM_DEFAULT_V@)
+@XCOS_TRUE@am__v_redir_0 = >
+@XCOS_TRUE@am__v_redir_1 = | tee
+@XCOS_TRUE@AM_V_redir_a = $(am__v_redir_a_@AM_V@)
+@XCOS_TRUE@am__v_redir_a_ = $(am__v_redir_a_@AM_DEFAULT_V@)
+@XCOS_TRUE@am__v_redir_a_0 = >>
+@XCOS_TRUE@am__v_redir_a_1 = | tee -a
+@XCOS_TRUE@AM_V_v = $(am__v_v_@AM_V@)
+@XCOS_TRUE@am__v_v_ = $(am__v_v_@AM_DEFAULT_V@)
+@XCOS_TRUE@am__v_v_0 = 
+@XCOS_TRUE@am__v_v_1 = -v
 @XCOS_TRUE@CLEANFILES = $(top_srcdir)/modules/scicos_blocks/includes/blocks.h \
 @XCOS_TRUE@	$(top_srcdir)/modules/scicos_blocks/build/Cblocknames \
 @XCOS_TRUE@	$(top_srcdir)/modules/scicos_blocks/build/Fblocknames \
@@ -2727,119 +2770,176 @@ src/fortran/$(am__dirstamp):
 src/fortran/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/fortran/$(DEPDIR)
 	@: > src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/csslti.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-csslti.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/cstblk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-cstblk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/delay.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-delay.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/delayv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-delayv.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/demux.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-demux.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/diffblk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-diffblk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dlradp.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-dlradp.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dollar.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-dollar.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/dsslti.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-dsslti.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/eselect.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-eselect.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/evtdly.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-evtdly.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/expblk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-expblk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/forblk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-forblk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/fsv.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-fsv.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/gensin.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-gensin.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/gensqr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-gensqr.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/hltblk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-hltblk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/ifthel.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-ifthel.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/integr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-integr.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/intplt.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-intplt.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/intpol.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-intpol.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/intrp2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-intrp2.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/intrpl.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-intrpl.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/invblk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-invblk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/iocopy.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-iocopy.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/logblk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-logblk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lookup.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-lookup.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lsplit.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-lsplit.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/lusat.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-lusat.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/maxblk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-maxblk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/memo.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-memo.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/mfclck.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-mfclck.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/minblk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-minblk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/mux.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-mux.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/pload.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-pload.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/powblk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-powblk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/qzcel.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-qzcel.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/qzflr.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-qzflr.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/qzrnd.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-qzrnd.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/qztrn.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-qztrn.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/readf.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-readf.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/rndblk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-rndblk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/samphold.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-samphold.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/sawtth.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-sawtth.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/sciblk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-sciblk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/selblk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-selblk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/sinblk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-sinblk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/sqrblk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-sqrblk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/sum2.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-sum2.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/sum3.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-sum3.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/tanblk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-tanblk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/tcslti.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-tcslti.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/tcsltj.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-tcsltj.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/timblk.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-timblk.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/trash.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-trash.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/writef.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-writef.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
-src/fortran/zcross.lo: src/fortran/$(am__dirstamp) \
+src/fortran/libsciscicos_blocks_la-zcross.lo:  \
+	src/fortran/$(am__dirstamp) \
 	src/fortran/$(DEPDIR)/$(am__dirstamp)
 src/c/libsciscicos_blocks_la-scicos_evalhermite.lo:  \
 	src/c/$(am__dirstamp) src/c/$(DEPDIR)/$(am__dirstamp)
@@ -5473,6 +5573,177 @@ src/cpp/libsciscicos_blocks_la-affich2.lo: src/cpp/affich2.cpp
 .f.lo:
 	$(AM_V_F77)$(LTF77COMPILE) -c -o $@ $<
 
+src/fortran/libsciscicos_blocks_la-csslti.lo: src/fortran/csslti.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-csslti.lo `test -f 'src/fortran/csslti.f' || echo '$(srcdir)/'`src/fortran/csslti.f
+
+src/fortran/libsciscicos_blocks_la-cstblk.lo: src/fortran/cstblk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-cstblk.lo `test -f 'src/fortran/cstblk.f' || echo '$(srcdir)/'`src/fortran/cstblk.f
+
+src/fortran/libsciscicos_blocks_la-delay.lo: src/fortran/delay.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-delay.lo `test -f 'src/fortran/delay.f' || echo '$(srcdir)/'`src/fortran/delay.f
+
+src/fortran/libsciscicos_blocks_la-delayv.lo: src/fortran/delayv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-delayv.lo `test -f 'src/fortran/delayv.f' || echo '$(srcdir)/'`src/fortran/delayv.f
+
+src/fortran/libsciscicos_blocks_la-demux.lo: src/fortran/demux.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-demux.lo `test -f 'src/fortran/demux.f' || echo '$(srcdir)/'`src/fortran/demux.f
+
+src/fortran/libsciscicos_blocks_la-diffblk.lo: src/fortran/diffblk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-diffblk.lo `test -f 'src/fortran/diffblk.f' || echo '$(srcdir)/'`src/fortran/diffblk.f
+
+src/fortran/libsciscicos_blocks_la-dlradp.lo: src/fortran/dlradp.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-dlradp.lo `test -f 'src/fortran/dlradp.f' || echo '$(srcdir)/'`src/fortran/dlradp.f
+
+src/fortran/libsciscicos_blocks_la-dollar.lo: src/fortran/dollar.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-dollar.lo `test -f 'src/fortran/dollar.f' || echo '$(srcdir)/'`src/fortran/dollar.f
+
+src/fortran/libsciscicos_blocks_la-dsslti.lo: src/fortran/dsslti.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-dsslti.lo `test -f 'src/fortran/dsslti.f' || echo '$(srcdir)/'`src/fortran/dsslti.f
+
+src/fortran/libsciscicos_blocks_la-eselect.lo: src/fortran/eselect.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-eselect.lo `test -f 'src/fortran/eselect.f' || echo '$(srcdir)/'`src/fortran/eselect.f
+
+src/fortran/libsciscicos_blocks_la-evtdly.lo: src/fortran/evtdly.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-evtdly.lo `test -f 'src/fortran/evtdly.f' || echo '$(srcdir)/'`src/fortran/evtdly.f
+
+src/fortran/libsciscicos_blocks_la-expblk.lo: src/fortran/expblk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-expblk.lo `test -f 'src/fortran/expblk.f' || echo '$(srcdir)/'`src/fortran/expblk.f
+
+src/fortran/libsciscicos_blocks_la-forblk.lo: src/fortran/forblk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-forblk.lo `test -f 'src/fortran/forblk.f' || echo '$(srcdir)/'`src/fortran/forblk.f
+
+src/fortran/libsciscicos_blocks_la-fsv.lo: src/fortran/fsv.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-fsv.lo `test -f 'src/fortran/fsv.f' || echo '$(srcdir)/'`src/fortran/fsv.f
+
+src/fortran/libsciscicos_blocks_la-gensin.lo: src/fortran/gensin.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-gensin.lo `test -f 'src/fortran/gensin.f' || echo '$(srcdir)/'`src/fortran/gensin.f
+
+src/fortran/libsciscicos_blocks_la-gensqr.lo: src/fortran/gensqr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-gensqr.lo `test -f 'src/fortran/gensqr.f' || echo '$(srcdir)/'`src/fortran/gensqr.f
+
+src/fortran/libsciscicos_blocks_la-hltblk.lo: src/fortran/hltblk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-hltblk.lo `test -f 'src/fortran/hltblk.f' || echo '$(srcdir)/'`src/fortran/hltblk.f
+
+src/fortran/libsciscicos_blocks_la-ifthel.lo: src/fortran/ifthel.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-ifthel.lo `test -f 'src/fortran/ifthel.f' || echo '$(srcdir)/'`src/fortran/ifthel.f
+
+src/fortran/libsciscicos_blocks_la-integr.lo: src/fortran/integr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-integr.lo `test -f 'src/fortran/integr.f' || echo '$(srcdir)/'`src/fortran/integr.f
+
+src/fortran/libsciscicos_blocks_la-intplt.lo: src/fortran/intplt.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-intplt.lo `test -f 'src/fortran/intplt.f' || echo '$(srcdir)/'`src/fortran/intplt.f
+
+src/fortran/libsciscicos_blocks_la-intpol.lo: src/fortran/intpol.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-intpol.lo `test -f 'src/fortran/intpol.f' || echo '$(srcdir)/'`src/fortran/intpol.f
+
+src/fortran/libsciscicos_blocks_la-intrp2.lo: src/fortran/intrp2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-intrp2.lo `test -f 'src/fortran/intrp2.f' || echo '$(srcdir)/'`src/fortran/intrp2.f
+
+src/fortran/libsciscicos_blocks_la-intrpl.lo: src/fortran/intrpl.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-intrpl.lo `test -f 'src/fortran/intrpl.f' || echo '$(srcdir)/'`src/fortran/intrpl.f
+
+src/fortran/libsciscicos_blocks_la-invblk.lo: src/fortran/invblk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-invblk.lo `test -f 'src/fortran/invblk.f' || echo '$(srcdir)/'`src/fortran/invblk.f
+
+src/fortran/libsciscicos_blocks_la-iocopy.lo: src/fortran/iocopy.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-iocopy.lo `test -f 'src/fortran/iocopy.f' || echo '$(srcdir)/'`src/fortran/iocopy.f
+
+src/fortran/libsciscicos_blocks_la-logblk.lo: src/fortran/logblk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-logblk.lo `test -f 'src/fortran/logblk.f' || echo '$(srcdir)/'`src/fortran/logblk.f
+
+src/fortran/libsciscicos_blocks_la-lookup.lo: src/fortran/lookup.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-lookup.lo `test -f 'src/fortran/lookup.f' || echo '$(srcdir)/'`src/fortran/lookup.f
+
+src/fortran/libsciscicos_blocks_la-lsplit.lo: src/fortran/lsplit.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-lsplit.lo `test -f 'src/fortran/lsplit.f' || echo '$(srcdir)/'`src/fortran/lsplit.f
+
+src/fortran/libsciscicos_blocks_la-lusat.lo: src/fortran/lusat.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-lusat.lo `test -f 'src/fortran/lusat.f' || echo '$(srcdir)/'`src/fortran/lusat.f
+
+src/fortran/libsciscicos_blocks_la-maxblk.lo: src/fortran/maxblk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-maxblk.lo `test -f 'src/fortran/maxblk.f' || echo '$(srcdir)/'`src/fortran/maxblk.f
+
+src/fortran/libsciscicos_blocks_la-memo.lo: src/fortran/memo.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-memo.lo `test -f 'src/fortran/memo.f' || echo '$(srcdir)/'`src/fortran/memo.f
+
+src/fortran/libsciscicos_blocks_la-mfclck.lo: src/fortran/mfclck.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-mfclck.lo `test -f 'src/fortran/mfclck.f' || echo '$(srcdir)/'`src/fortran/mfclck.f
+
+src/fortran/libsciscicos_blocks_la-minblk.lo: src/fortran/minblk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-minblk.lo `test -f 'src/fortran/minblk.f' || echo '$(srcdir)/'`src/fortran/minblk.f
+
+src/fortran/libsciscicos_blocks_la-mux.lo: src/fortran/mux.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-mux.lo `test -f 'src/fortran/mux.f' || echo '$(srcdir)/'`src/fortran/mux.f
+
+src/fortran/libsciscicos_blocks_la-pload.lo: src/fortran/pload.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-pload.lo `test -f 'src/fortran/pload.f' || echo '$(srcdir)/'`src/fortran/pload.f
+
+src/fortran/libsciscicos_blocks_la-powblk.lo: src/fortran/powblk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-powblk.lo `test -f 'src/fortran/powblk.f' || echo '$(srcdir)/'`src/fortran/powblk.f
+
+src/fortran/libsciscicos_blocks_la-qzcel.lo: src/fortran/qzcel.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-qzcel.lo `test -f 'src/fortran/qzcel.f' || echo '$(srcdir)/'`src/fortran/qzcel.f
+
+src/fortran/libsciscicos_blocks_la-qzflr.lo: src/fortran/qzflr.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-qzflr.lo `test -f 'src/fortran/qzflr.f' || echo '$(srcdir)/'`src/fortran/qzflr.f
+
+src/fortran/libsciscicos_blocks_la-qzrnd.lo: src/fortran/qzrnd.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-qzrnd.lo `test -f 'src/fortran/qzrnd.f' || echo '$(srcdir)/'`src/fortran/qzrnd.f
+
+src/fortran/libsciscicos_blocks_la-qztrn.lo: src/fortran/qztrn.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-qztrn.lo `test -f 'src/fortran/qztrn.f' || echo '$(srcdir)/'`src/fortran/qztrn.f
+
+src/fortran/libsciscicos_blocks_la-readf.lo: src/fortran/readf.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-readf.lo `test -f 'src/fortran/readf.f' || echo '$(srcdir)/'`src/fortran/readf.f
+
+src/fortran/libsciscicos_blocks_la-rndblk.lo: src/fortran/rndblk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-rndblk.lo `test -f 'src/fortran/rndblk.f' || echo '$(srcdir)/'`src/fortran/rndblk.f
+
+src/fortran/libsciscicos_blocks_la-samphold.lo: src/fortran/samphold.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-samphold.lo `test -f 'src/fortran/samphold.f' || echo '$(srcdir)/'`src/fortran/samphold.f
+
+src/fortran/libsciscicos_blocks_la-sawtth.lo: src/fortran/sawtth.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-sawtth.lo `test -f 'src/fortran/sawtth.f' || echo '$(srcdir)/'`src/fortran/sawtth.f
+
+src/fortran/libsciscicos_blocks_la-sciblk.lo: src/fortran/sciblk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-sciblk.lo `test -f 'src/fortran/sciblk.f' || echo '$(srcdir)/'`src/fortran/sciblk.f
+
+src/fortran/libsciscicos_blocks_la-selblk.lo: src/fortran/selblk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-selblk.lo `test -f 'src/fortran/selblk.f' || echo '$(srcdir)/'`src/fortran/selblk.f
+
+src/fortran/libsciscicos_blocks_la-sinblk.lo: src/fortran/sinblk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-sinblk.lo `test -f 'src/fortran/sinblk.f' || echo '$(srcdir)/'`src/fortran/sinblk.f
+
+src/fortran/libsciscicos_blocks_la-sqrblk.lo: src/fortran/sqrblk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-sqrblk.lo `test -f 'src/fortran/sqrblk.f' || echo '$(srcdir)/'`src/fortran/sqrblk.f
+
+src/fortran/libsciscicos_blocks_la-sum2.lo: src/fortran/sum2.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-sum2.lo `test -f 'src/fortran/sum2.f' || echo '$(srcdir)/'`src/fortran/sum2.f
+
+src/fortran/libsciscicos_blocks_la-sum3.lo: src/fortran/sum3.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-sum3.lo `test -f 'src/fortran/sum3.f' || echo '$(srcdir)/'`src/fortran/sum3.f
+
+src/fortran/libsciscicos_blocks_la-tanblk.lo: src/fortran/tanblk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-tanblk.lo `test -f 'src/fortran/tanblk.f' || echo '$(srcdir)/'`src/fortran/tanblk.f
+
+src/fortran/libsciscicos_blocks_la-tcslti.lo: src/fortran/tcslti.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-tcslti.lo `test -f 'src/fortran/tcslti.f' || echo '$(srcdir)/'`src/fortran/tcslti.f
+
+src/fortran/libsciscicos_blocks_la-tcsltj.lo: src/fortran/tcsltj.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-tcsltj.lo `test -f 'src/fortran/tcsltj.f' || echo '$(srcdir)/'`src/fortran/tcsltj.f
+
+src/fortran/libsciscicos_blocks_la-timblk.lo: src/fortran/timblk.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-timblk.lo `test -f 'src/fortran/timblk.f' || echo '$(srcdir)/'`src/fortran/timblk.f
+
+src/fortran/libsciscicos_blocks_la-trash.lo: src/fortran/trash.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-trash.lo `test -f 'src/fortran/trash.f' || echo '$(srcdir)/'`src/fortran/trash.f
+
+src/fortran/libsciscicos_blocks_la-writef.lo: src/fortran/writef.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-writef.lo `test -f 'src/fortran/writef.f' || echo '$(srcdir)/'`src/fortran/writef.f
+
+src/fortran/libsciscicos_blocks_la-zcross.lo: src/fortran/zcross.f
+	$(AM_V_F77)$(LIBTOOL) $(AM_V_lt) --tag=F77 $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(F77) $(libsciscicos_blocks_la_FFLAGS) $(FFLAGS) -c -o src/fortran/libsciscicos_blocks_la-zcross.lo `test -f 'src/fortran/zcross.f' || echo '$(srcdir)/'`src/fortran/zcross.f
+
 mostlyclean-libtool:
 	-rm -f *.lo
 
@@ -6669,30 +6940,30 @@ distclean-local:
 
 .PHONY: macros java swig giws
 
-@XCOS_TRUE@$(top_builddir)/modules/scicos_blocks/build/Cblocknames:Makefile.am $(SCICOS_BLOCKS_C_SOURCES)
+@XCOS_TRUE@$(top_builddir)/modules/scicos_blocks/build/Cblocknames: Makefile.am $(SCICOS_BLOCKS_C_SOURCES)
 @XCOS_TRUE@	@echo "-- Generates build/Cblocknames --"
-@XCOS_TRUE@	@if test ! -d build; then mkdir $(top_builddir)/modules/scicos_blocks/build; fi
+@XCOS_TRUE@	$(AM_V_at)if test ! -d build; then mkdir $(AM_V_v) $(top_builddir)/modules/scicos_blocks/build; fi
 # Get the filename, strip the extension and put into a file
-@XCOS_TRUE@	@for file in $(SCICOS_BLOCKS_C_SOURCES); do echo $$file |sed  's|.*/\([0-9A-Za-z_-]*\)\.c|\1|' ;done > $(top_builddir)/modules/scicos_blocks/build/Cblocknames
+@XCOS_TRUE@	$(AM_V_GEN)for file in $(SCICOS_BLOCKS_C_SOURCES); do echo $$file | $(SED) 's|.*/\([0-9A-Za-z_-]*\)\.c|\1|'; done $(AM_V_redir) $(top_builddir)/modules/scicos_blocks/build/Cblocknames
 
-@XCOS_TRUE@$(top_builddir)/modules/scicos_blocks/build/CPPblocknames:Makefile.am $(SCICOS_BLOCKS_CXX_SOURCES)
+@XCOS_TRUE@$(top_builddir)/modules/scicos_blocks/build/CPPblocknames: Makefile.am $(SCICOS_BLOCKS_CXX_SOURCES)
 @XCOS_TRUE@	@echo "-- Generates build/CPPblocknames --"
-@XCOS_TRUE@	@if test ! -d build; then mkdir $(top_builddir)/modules/scicos_blocks/build; fi
+@XCOS_TRUE@	$(AM_V_at)if test ! -d build; then mkdir $(AM_V_v) $(top_builddir)/modules/scicos_blocks/build; fi
 # Get the filename, strip the extension and put into a file
-@XCOS_TRUE@	@for file in $(SCICOS_BLOCKS_CXX_SOURCES); do echo $$file |sed  's|.*/\([0-9A-Za-z_-]*\)\.cpp|\1|' ;done > $(top_builddir)/modules/scicos_blocks/build/CPPblocknames
+@XCOS_TRUE@	$(AM_V_GEN)for file in $(SCICOS_BLOCKS_CXX_SOURCES); do echo $$file | $(SED) 's|.*/\([0-9A-Za-z_-]*\)\.cpp|\1|'; done $(AM_V_redir) $(top_builddir)/modules/scicos_blocks/build/CPPblocknames
 
 @XCOS_TRUE@$(top_builddir)/modules/scicos_blocks/build/Fblocknames: Makefile.am $(SCICOS_BLOCKS_FORTRAN_SOURCES)
 @XCOS_TRUE@	@echo "-- Generates build/Fblocknames --"
-@XCOS_TRUE@	@if test ! -d build; then mkdir $(top_builddir)/modules/scicos_blocks/build; fi
+@XCOS_TRUE@	$(AM_V_at)if test ! -d build; then mkdir $(AM_V_v) $(top_builddir)/modules/scicos_blocks/build; fi
 # Get the filename, strip the extension and put into a file
-@XCOS_TRUE@	@for file in $(SCICOS_BLOCKS_FORTRAN_SOURCES); do echo $$file |sed  's|.*/\([0-9A-Za-z_-]*\)\.f|\1|';done > $(top_builddir)/modules/scicos_blocks/build/Fblocknames
+@XCOS_TRUE@	$(AM_V_GEN)for file in $(SCICOS_BLOCKS_FORTRAN_SOURCES); do echo $$file | $(SED) 's|.*/\([0-9A-Za-z_-]*\)\.f|\1|'; done $(AM_V_redir) $(top_builddir)/modules/scicos_blocks/build/Fblocknames
 
-@XCOS_TRUE@includes/blocks.h: $(top_builddir)/modules/scicos_blocks/build/Cblocknames $(top_builddir)/modules/scicos_blocks/build/Fblocknames $(top_builddir)/modules/scicos_blocks/build/CPPblocknames
+@XCOS_TRUE@includes/blocks.h: $(top_srcdir)/modules/scicos_blocks/src/scripts/GenBlocks.sh $(top_builddir)/modules/scicos_blocks/build/Cblocknames $(top_builddir)/modules/scicos_blocks/build/Fblocknames $(top_builddir)/modules/scicos_blocks/build/CPPblocknames
 @XCOS_TRUE@	@echo "-- Building includes/blocks.h --"
-@XCOS_TRUE@	@if test ! -d $(top_builddir)/modules/scicos_blocks/includes/; then \
-@XCOS_TRUE@		mkdir $(top_builddir)/modules/scicos_blocks/includes/; \
+@XCOS_TRUE@	$(AM_V_at)if test ! -d $(top_builddir)/modules/scicos_blocks/includes/; then \
+@XCOS_TRUE@		mkdir $(AM_V_v) $(top_builddir)/modules/scicos_blocks/includes/; \
 @XCOS_TRUE@	fi
-@XCOS_TRUE@	@$(top_srcdir)/modules/scicos_blocks/src/scripts/GenBlocks.sh $(top_builddir)/modules/scicos_blocks/build/Fblocknames $(top_builddir)/modules/scicos_blocks/build/Cblocknames $(top_builddir)/modules/scicos_blocks/build/CPPblocknames $(top_builddir)/modules/scicos_blocks/includes/blocks.h
+@XCOS_TRUE@	$(AM_V_GEN)$(top_srcdir)/modules/scicos_blocks/src/scripts/GenBlocks.sh $(top_builddir)/modules/scicos_blocks/build/Fblocknames $(top_builddir)/modules/scicos_blocks/build/Cblocknames $(top_builddir)/modules/scicos_blocks/build/CPPblocknames $(top_builddir)/modules/scicos_blocks/includes/blocks.h
 
 .NOTPARALLEL: build/Fblocknames build/Cblocknames
 

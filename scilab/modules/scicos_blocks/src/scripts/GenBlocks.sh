@@ -20,9 +20,14 @@
 # See the file ./license.txt
 #
 # Generates block.h file given file Fblocknames and Cblocknames
-# Fblocknames  contains list of Fortran Blocks 
-# Cblocknames  contains list of C Blocks 
+# Fblocknames  contains list of Fortran Blocks
+# Cblocknames  contains list of C Blocks
 # Copyright INRIA
+
+if [ ${V} -ge 1]; then
+  set -ex;
+fi
+
 if [ $# -ne 4 ]; then
 	echo "Wrong syntax. Syntax is : $0 Fortran_Block_Names C_Block_Names CPP_Block_Names Outputfile_h"
 	exit 1
@@ -32,11 +37,11 @@ Cin=$2
 CPPin=$3
 fout=$4
 
-echo "#ifndef __SCICOS_BLOCKS__ " > $fout 
-echo "#define __SCICOS_BLOCKS__ " >> $fout 
+echo "#ifndef __SCICOS_BLOCKS__ " > $fout
+echo "#define __SCICOS_BLOCKS__ " >> $fout
 echo "#include \"scicos.h\" " >> $fout
-echo "/******* Copyright INRIA *************/" >> $fout 
-echo "/******* Please do not edit (file automatically generated) *************/" >> $fout 
+echo "/******* Copyright INRIA *************/" >> $fout
+echo "/******* Please do not edit (file automatically generated) *************/" >> $fout
 
 links=`cat $Fin`
 for i in $links
@@ -50,7 +55,7 @@ links=`cat $CPPin`
 for i in $links
 	do ( echo "extern void $i (ARGS_scicos);"  >> $fout ;); done
 
-echo " " >> $fout 
+echo " " >> $fout
 echo "OpTab tabsim[] ={" >> $fout
 rm -f $fout-temp$$
 
@@ -63,16 +68,17 @@ for i in $links
 	do  (  echo "{\"$i\",(ScicosF) $i}," >> $fout-temp$$ ;); done ;
 
 links=`cat $CPPin`
+## Had (ScicosF4) here before but that led to errors:
 for i in $links
-	do  (  echo "{\"$i\",(ScicosF4) $i}," >> $fout-temp$$ ;); done ;
+	do  (  echo "{\"$i\",(ScicosF) $i}," >> $fout-temp$$ ;); done ;
 
-sort $fout-temp$$ >> $fout; 
+sort $fout-temp$$ >> $fout;
 echo "{(char *) 0, (ScicosF) 0}};" >> $fout ;
 
 x=`cat $Fin $Cin $CPPin | wc -l `;
-echo " " >> $fout 
+echo " " >> $fout
 echo "int ntabsim=" $x ";" >> $fout ;
 echo "#endif " >> $fout;
 rm -f $fout-temp$$
-echo "/***********************************/" >> $fout 
+echo "/***********************************/" >> $fout
 

@@ -17,7 +17,7 @@
 #include "Scierror.h"
 #ifdef _MSC_VER
 #include "strdup_windows.h"
-#endif 
+#endif
 
 
 void putScilabVariable(char * name, char ** lines, int rows, int cols)
@@ -26,7 +26,8 @@ void putScilabVariable(char * name, char ** lines, int rows, int cols)
 
     if (rows != 0 && cols != 0)
     {
-        sciErr = createNamedMatrixOfString(pvApiCtx, name, rows, cols, lines);
+        sciErr = createNamedMatrixOfString(pvApiCtx, name, rows, cols,
+                                           (const char *const *)lines);
     }
     else
     {

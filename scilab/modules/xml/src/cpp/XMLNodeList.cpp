@@ -101,7 +101,8 @@ const XMLObject *XMLNodeList::getXMLObjectParent() const
     return &doc;
 }
 
-const std::string XMLNodeList::dump() const
+/* unused paramater is for -Woverloaded-virtual: */
+const std::string XMLNodeList::dump(bool indent) const
 {
     xmlBufferPtr buffer = xmlBufferCreate();
     for (xmlNode * cur = parent->children; cur; cur = cur->next)

@@ -37,7 +37,6 @@ int sci_addModulePreferences(char * fname, unsigned long fname_len)
     char * tbxPrefFile = 0;
     char * expTbxPrefFile = 0;
     char ** array[] = {&tbxName, &tbxPath, &tbxPrefFile};
-    bool error = false;
 
     CheckLhs(1, 1);
     CheckRhs(3, 3);

@@ -42,7 +42,7 @@ int xgetg( char * str, char * str1, int * len, int  lx0, int lx1);
 /*--------------------------------------------------------------------------*/
 int sci_xget(char *fname, unsigned long fname_len)
 {
-    int x2 = 0, m1 = 0, n1 = 0, l1 = 0, m2 = 0, n2 = 0, l2 = 0, l3 = 0, i = 0;
+    int m1 = 0, n1 = 0, l1 = 0, m2 = 0, n2 = 0, l2 = 0, l3 = 0, i = 0;
     int one = 1;
 
     BOOL keyFound = FALSE;

@@ -54,7 +54,7 @@ int sci_xcosPalLoad(char *fname, unsigned long fname_len)
     {
         // FIXME #7266 workaround
         // check category emptyness
-        if (category == NULL || (lenCategory == 1 && *category == '\0'))
+        if ((category == NULL) || ((lenCategory == 1) && (**category == '\0')))
         {
             Palette::loadPal(getScilabJavaVM(), name);
         }

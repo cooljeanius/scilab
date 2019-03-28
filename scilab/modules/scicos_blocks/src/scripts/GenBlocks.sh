@@ -24,7 +24,7 @@
 # Cblocknames  contains list of C Blocks
 # Copyright INRIA
 
-if [ ${V} -ge 1]; then
+if [ ${V} -ge 1 ]; then
   set -ex;
 fi
 

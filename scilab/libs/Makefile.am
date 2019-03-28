@@ -11,4 +11,10 @@ SUBDIRS = \
 	dynamiclibrary \
 	doublylinkedlist
 
+check-local: check-code
+check-code:
+	for mydir in $(SUBDIRS); do \
+	  $(MAKE) -C $${mydir} check-code; \
+	done
 
+.PHONY: check-local check-code

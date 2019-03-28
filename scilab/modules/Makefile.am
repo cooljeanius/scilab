@@ -231,3 +231,13 @@ libscilab_cli_la_LDFLAGS = $(LAPACK_LIBS) $(BLAS_LIBS) -lstdc++ $(AM_LDFLAGS)
 libscilab_cli_la_LIBADD = $(ENGINE_LIBS) $(NO_GUI_LIBS) $(OTHER_LIBS) $(EXTERNAL_LIBS)
 
 .NOTPARALLEL: libscilab-cli.la libscilab.la
+
+################## other  ##########################
+
+check-local: check-code
+check-code:
+	for mydir in $(SUBDIRS); do \
+	  $(MAKE) -C $${mydir} check-code; \
+	done
+
+.PHONY: check-local check-code

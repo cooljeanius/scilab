@@ -20,7 +20,7 @@ libscidoublylinkedlist_la_SOURCES = $(DOUBLYLINKEDLIST_C_SOURCES)
 
 # For the code check (splint)
 CHECK_SRC= $(DOUBLYLINKEDLIST_C_SOURCES)
-INCLUDE_FLAGS = $(libscidoublylinkedlist_la_CPPFLAGS)
+INCLUDE_FLAGS = `echo $(libscidoublylinkedlist_la_CPPFLAGS) | $(SED) "s/-Wp,//g"`
 
 libscidoublylinkedlist_la_LIBADD = 
 

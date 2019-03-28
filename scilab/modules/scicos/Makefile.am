@@ -107,28 +107,32 @@ sci_gateway/fortran/sci_f_vec2var.f
 #CLEANFILES=includes/blocks.h build/Cblocknames build/Fblocknames
 
 libsciscicos_la_CPPFLAGS= -Wp,-I$(srcdir)/includes/ \
-			-Wp,-I$(srcdir)/src/c/ \
-			-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
-			-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
-			-Wp,-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
-			-Wp,-I$(top_srcdir)/modules/graphics/includes/ \
-			-Wp,-I$(top_srcdir)/modules/dynamic_link/includes/ \
-			-Wp,-I$(top_srcdir)/modules/string/includes/ \
-			-Wp,-I$(top_srcdir)/modules/localization/includes/ \
-			-Wp,-I$(top_srcdir)/modules/intersci/includes/ \
-			-Wp,-I$(top_srcdir)/modules/scicos_blocks/includes/ \
-			-Wp,-I$(top_srcdir)/modules/action_binding/includes/ \
-			-Wp,-I$(top_srcdir)/modules/time/includes/ \
-			-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
-			-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/ \
-			-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/sundials/ \
-			-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/ida/ \
-			$(AM_CPPFLAGS)
+-Wp,-I$(srcdir)/src/c/ \
+-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+-Wp,-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
+-Wp,-I$(top_srcdir)/modules/graphics/includes/ \
+-Wp,-I$(top_srcdir)/modules/dynamic_link/includes/ \
+-Wp,-I$(top_srcdir)/modules/string/includes/ \
+-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+-Wp,-I$(top_srcdir)/modules/intersci/includes/ \
+-Wp,-I$(top_srcdir)/modules/scicos_blocks/includes/ \
+-Wp,-I$(top_srcdir)/modules/action_binding/includes/ \
+-Wp,-I$(top_srcdir)/modules/time/includes/ \
+-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+-Wp,-I$(top_srcdir)/modules/core/includes/ \
+-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/ \
+-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/include/sundials/ \
+-Wp,-I$(top_srcdir)/modules/scicos/src/scicos_sundials/src/ida/ \
+$(AM_CPPFLAGS)
 
+## Need to put this include in FFLAGS too, because fortran is different:
+libsciscicos_la_FFLAGS= -I$(top_srcdir)/modules/core/includes/
 
 libsciscicos_algo_la_SOURCES = $(SCICOS_C_SOURCES) $(SCICOS_FORTRAN_SOURCES)
 libsciscicos_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libsciscicos_algo_la_CPPFLAGS = $(libsciscicos_la_CPPFLAGS)
+libsciscicos_algo_la_FFLAGS = $(libsciscicos_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC= $(SCICOS_C_SOURCES) $(GATEWAY_C_SOURCES)

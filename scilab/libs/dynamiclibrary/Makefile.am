@@ -18,7 +18,7 @@ libscidynamiclibrary_la_SOURCES = $(DYNAMICLIBRARY_C_SOURCES)
 
 # For the code check (splint)
 CHECK_SRC= $(DYNAMICLIBRARY_C_SOURCES)
-INCLUDE_FLAGS = $(libscidynamiclibrary_la_CPPFLAGS)
+INCLUDE_FLAGS = `echo $(libscidynamiclibrary_la_CPPFLAGS) | $(SED) "s/-Wp,//g"`
 
 libscidynamiclibrary_la_LIBADD = 
 

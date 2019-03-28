@@ -156,7 +156,8 @@ BOOL *getBoolean(char *variableName, int *nbRow, int *nbCol)
     matrixOfBoolean = (BOOL *) malloc(((*nbRow) * (*nbCol)) * sizeof(BOOL));
 
     /* Load the matrix */
-    sciErr = readNamedMatrixOfBoolean(pvApiCtx, variableName, nbRow, nbCol, matrixOfBoolean);
+    sciErr = readNamedMatrixOfBoolean(pvApiCtx, variableName, nbRow, nbCol,
+                                      (int *)matrixOfBoolean);
 
     if (sciErr.iErr)
     {
@@ -167,11 +168,12 @@ BOOL *getBoolean(char *variableName, int *nbRow, int *nbCol)
 
 }
 
-int putBoolean(char *variableName, BOOL * variable, int nbRow, int nbCol)
+int putBoolean(char *variableName, BOOL *variable, int nbRow, int nbCol)
 {
     SciErr sciErr;
 
-    sciErr = createNamedMatrixOfBoolean(pvApiCtx, variableName, nbRow, nbCol, variable);
+    sciErr = createNamedMatrixOfBoolean(pvApiCtx, variableName, nbRow, nbCol,
+                                        (const int *)variable);
     if (sciErr.iErr)
     {
         printError(&sciErr, 0);
@@ -540,7 +542,8 @@ int putString(char *variableName, char **variable, int nbRow, int nbCol)
 {
     SciErr sciErr;
 
-    sciErr = createNamedMatrixOfString(pvApiCtx, variableName, nbRow, nbCol, variable);
+    sciErr = createNamedMatrixOfString(pvApiCtx, variableName, nbRow, nbCol,
+                                       (const char *const *)variable);
     if (sciErr.iErr)
     {
         printError(&sciErr, 0);
@@ -588,11 +591,14 @@ int putBooleanSparse(char * variableName, int nbRow, int nbCol, int * nbRowItem,
     return 0;
 }
 
-int putPolynomial(char * variableName, char * polyVarName, double ** data, int nbRow, int nbCol, int * nbCoef)
+int putPolynomial(char *variableName, char *polyVarName, double **data,
+                  int nbRow, int nbCol, int *nbCoef)
 {
     SciErr sciErr;
 
-    sciErr = createNamedMatrixOfPoly(pvApiCtx, variableName, polyVarName, nbRow, nbCol, nbCoef, data);
+    sciErr = createNamedMatrixOfPoly(pvApiCtx, variableName, polyVarName,
+                                     nbRow, nbCol, nbCoef,
+                                     (const double * const *)data);
     if (sciErr.iErr)
     {
         printError(&sciErr, 0);
@@ -601,11 +607,16 @@ int putPolynomial(char * variableName, char * polyVarName, double ** data, int n
     return 0;
 }
 
-int putComplexPolynomial(char * variableName, char * polyVarName, double ** data, int nbRow, int nbCol, int * nbCoef, double ** imag, int nbRowI, int nbColI, int * nbCoefI)
+int putComplexPolynomial(char *variableName, char *polyVarName, double **data,
+                         int nbRow, int nbCol, int *nbCoef, double **imag,
+                         int nbRowI, int nbColI, int *nbCoefI)
 {
     SciErr sciErr;
 
-    sciErr = createNamedComplexMatrixOfPoly(pvApiCtx, variableName, polyVarName, nbRow, nbCol, nbCoef, data, imag);
+    sciErr = createNamedComplexMatrixOfPoly(pvApiCtx, variableName,
+                                            polyVarName, nbRow, nbCol, nbCoef,
+                                            (const double * const *)data,
+                                            (const double * const *)imag);
     if (sciErr.iErr)
     {
         printError(&sciErr, 0);

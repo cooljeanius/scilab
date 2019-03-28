@@ -31,11 +31,16 @@ AM_LDFLAGS += -version-number $(SCILAB_LIBRARY_VERSION)
 # append includes to AM_FFLAGS to manage fortran includes
 AM_FFLAGS  += -Wp,-I$(top_srcdir)/modules/core/includes/
 
-## hack to extend the verbosity control:
+## hacks to extend the verbosity control:
 AM_V_v = $(am__v_v_@AM_V@)
 am__v_v_ = $(am__v_v_@AM_DEFAULT_V@)
 am__v_v_0 =
 am__v_v_1 = -v
+
+AM_V_q = $(am__v_q_@AM_V@)
+am__v_q_ = $(am__v_q_@AM_DEFAULT_V@)
+am__v_q_0 = -q
+am__v_q_1 =
 
 # This target enables tests for Scilab
 check-local: $(top_builddir)/scilab-bin test
@@ -44,7 +49,7 @@ check-local: $(top_builddir)/scilab-bin test
 	fi
 
 # splint options
-SPLINT_OPTIONS=-weak -booltype BOOL
+SPLINT_OPTIONS=-weak -booltype BOOL -boolfalse FALSE -booltrue TRUE
 ## OK to leave "-I" un-prefixed here, since splint is different from the
 ## compiler
 check-code:
@@ -66,15 +71,15 @@ if NEED_JAVA
 TARGETS_ALL+=java
 java:
 # Some configurations needs to export JAVA_HOME in the current env
-	@if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \
+	$(AM_V_at)if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \
 	if test -z "$(USEANT)"; then USEANT=0; else USEANT=1; fi; \
 	if test -f build.xml -a $$USEANT -eq 1; then \
-		$(ANT) $(AM_V_v); \
+		$(ANT) $(AM_V_q); \
 	fi
 
 clean-java:
 # Some configurations needs to export JAVA_HOME in the current env
-	@if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \
+	$(AM_V_at)if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \
 	if test -z "$(USEANT)"; then USEANT=0; else USEANT=1; fi; \
 	if test -f build.xml -a $$USEANT -eq 1; then \
 		$(ANT) clean; \
@@ -115,7 +120,7 @@ giws: $(GIWS_WRAPPERS)
 
 ## build GIWS Exception
 giws-exception:
-	@GIWS_OUTPUTDIR=src/jni/;\
+	$(AM_V_at)GIWS_OUTPUTDIR=src/jni/;\
 	echo "GIWS: Generation of exception class ..."; \
 	$(GIWS_BIN) --generate-exception-class --output-dir $$GIWS_OUTPUTDIR 
 
@@ -134,14 +139,14 @@ macros:
 # Removes the macros
 clean-macros:
 # Removes macros (*.bin generated from .sci)
-	@for dir in $(MACRODIRS) $(MACROSDIRSEXT) ; do \
+	$(AM_V_at)for dir in $(MACRODIRS) $(MACROSDIRSEXT) ; do \
 		echo "rm -f $(builddir)/$$dir/$(MACROBINMASK)"; \
 		rm -f $(builddir)/$$dir/$(MACROBINMASK); \
 	done
 
 test:
 # More tests could be added here
-	@if test -z "$(USEANT)"; then USEANT=0; else USEANT=1; fi; \
+	$(AM_V_at)if test -z "$(USEANT)"; then USEANT=0; else USEANT=1; fi; \
 	if test -f build.xml -a $$USEANT -eq 1; then \
 		$(ANT) test; \
 	fi
@@ -183,7 +188,7 @@ install-html-local:
 
 install-data-local-local:
 # Mainly for javasci
-	@if test -d $(srcdir)/javadoc; then \
+	$(AM_V_at)if test -d $(srcdir)/javadoc; then \
 		cp -R $(srcdir)/javadoc $(DESTDIR)/$(mydatadir)/; \
 	fi
 if INSTALL_HELP_XML
@@ -242,7 +247,7 @@ HELP_CHAPTERFILE=addchapter.sce
 HELP_CHAPTERLANG = en_US fr_FR pt_BR
 install-data-local:
 # Install the tests
-	@echo "-------- Install tests (if any) --------"; \
+	$(AM_V_at)echo "-------- Install tests (if any) --------"; \
 	for dir in $(TESTS_DIR) $(TESTS_DIREXT) ; do \
 	  if test -d $(srcdir)/$$dir/; then \
 	    $(mkinstalldirs) $(DESTDIR)$(pkgmacrosdir)/$$dir && \
@@ -258,7 +263,7 @@ install-data-local:
 	  fi; \
 	done
 # Install the help chapter
-	@echo "-------- Install the help chapter (if any) --------"; \
+	$(AM_V_at)echo "-------- Install the help chapter (if any) --------"; \
 	for lang in $(HELP_CHAPTERLANG); do \
 		HELPFILE=$(srcdir)/$(HELP_CHAPTERDIR)$$lang/$(HELP_CHAPTERFILE); \
 		if test -f $$HELPFILE; then \
@@ -269,7 +274,7 @@ install-data-local:
 		fi; \
 	done
 # Install the demos & examples
-	@echo "-------- Install demos & examples (if any) --------"; \
+	$(AM_V_at)echo "-------- Install demos & examples (if any) --------"; \
 	for dir in $(DEMOS_DIR) $(DEMOS_DIREXT) $(EXAMPLES_DIR) $(EXAMPLES_DIREXT) ; do \
 	  if test -d $(srcdir)/$$dir/; then \
 	    $(mkinstalldirs) $(DESTDIR)$(pkgdocdir)/$$dir && \
@@ -285,7 +290,7 @@ install-data-local:
 	  fi; \
 	done
 # Install the macros
-	@echo "-------- Install macros (if any) --------"; \
+	$(AM_V_at)echo "-------- Install macros (if any) --------"; \
 	for dir in $(MACRODIRS) $(MACROSDIRSEXT) ; do \
 	  $(mkinstalldirs) $(DESTDIR)$(pkgmacrosdir)/$$dir && \
 		if test -d $(srcdir)/$$dir/; then \
@@ -304,7 +309,7 @@ install-data-local:
 		fi; \
 	done
 # Install java files (.jar)
-	@if ls -lLd $(srcdir)/$(JARDIR)$(JARMASK) >/dev/null 2>&1; then \
+	$(AM_V_at)if ls -lLd $(srcdir)/$(JARDIR)$(JARMASK) >/dev/null 2>&1; then \
 	echo "-------- Install jar files --------"; \
     $(mkinstalldirs) $(DESTDIR)$(pkgdocdir)/$(JARDIR); \
 	  for file in $(srcdir)/$(JARDIR)$(JARMASK); do\

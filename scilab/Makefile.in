@@ -2263,7 +2263,7 @@ distcleancheck: distclean
 	       exit 1; } >&2
 check-am: all-am
 	$(MAKE) $(AM_MAKEFLAGS) $(check_PROGRAMS)
-	$(MAKE) $(AM_MAKEFLAGS) check-DEJAGNU check-TESTS
+	$(MAKE) $(AM_MAKEFLAGS) check-DEJAGNU check-TESTS check-local
 check: check-recursive
 all-am: Makefile $(PROGRAMS) $(SCRIPTS) $(DATA) config.h all-local
 installdirs: installdirs-recursive
@@ -2415,19 +2415,20 @@ uninstall-am: uninstall-binPROGRAMS uninstall-binSCRIPTS \
 
 .PHONY: $(am__recursive_targets) CTAGS GTAGS TAGS all all-am all-local \
 	am--depfiles am--refresh check check-DEJAGNU check-TESTS \
-	check-am clean clean-binPROGRAMS clean-checkPROGRAMS \
-	clean-cscope clean-generic clean-libtool cscope cscopelist-am \
-	ctags ctags-am dist dist-all dist-bzip2 dist-gzip dist-lzip \
-	dist-shar dist-tarZ dist-xz dist-zip distcheck distclean \
-	distclean-DEJAGNU distclean-compile distclean-generic \
-	distclean-hdr distclean-libtool distclean-local distclean-tags \
-	distcleancheck distdir distuninstallcheck dvi dvi-am html \
-	html-am info info-am install install-am install-binPROGRAMS \
-	install-binSCRIPTS install-data install-data-am \
-	install-data-local install-dvi install-dvi-am install-exec \
-	install-exec-am install-html install-html-am install-info \
-	install-info-am install-infofilesDATA install-man install-pdf \
-	install-pdf-am install-pkgconfigDATA install-ps install-ps-am \
+	check-am check-local clean clean-binPROGRAMS \
+	clean-checkPROGRAMS clean-cscope clean-generic clean-libtool \
+	cscope cscopelist-am ctags ctags-am dist dist-all dist-bzip2 \
+	dist-gzip dist-lzip dist-shar dist-tarZ dist-xz dist-zip \
+	distcheck distclean distclean-DEJAGNU distclean-compile \
+	distclean-generic distclean-hdr distclean-libtool \
+	distclean-local distclean-tags distcleancheck distdir \
+	distuninstallcheck dvi dvi-am html html-am info info-am \
+	install install-am install-binPROGRAMS install-binSCRIPTS \
+	install-data install-data-am install-data-local install-dvi \
+	install-dvi-am install-exec install-exec-am install-html \
+	install-html-am install-info install-info-am \
+	install-infofilesDATA install-man install-pdf install-pdf-am \
+	install-pkgconfigDATA install-ps install-ps-am \
 	install-rootDATA install-strip install-valgrindDATA \
 	installcheck installcheck-am installcheck-binPROGRAMS \
 	installcheck-binSCRIPTS installdirs installdirs-am \
@@ -2741,7 +2742,12 @@ codecoverage-java: clean-reports
 @BUILD_HELP_TRUE@	done; \
 @BUILD_HELP_TRUE@	fi
 
-.PHONY: macros localization doc
+check-local: check-code
+check-code:
+	$(MAKE) -C libs check-code
+	$(MAKE) -C modules check-code
+
+.PHONY: macros localization doc check-local check-code
 
 .NOTPARALLEL: macros doc
 

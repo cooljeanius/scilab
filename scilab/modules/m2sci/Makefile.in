@@ -596,6 +596,10 @@ AM_FFLAGS = $(SCI_FFLAGS) -Wp,-I$(top_srcdir)/modules/core/includes/
 
 # Tag shared libraries with the Scilab version
 AM_LDFLAGS = $(SCI_LDFLAGS) -version-number $(SCILAB_LIBRARY_VERSION)
+AM_V_v = $(am__v_v_@AM_V@)
+am__v_v_ = $(am__v_v_@AM_DEFAULT_V@)
+am__v_v_0 = 
+am__v_v_1 = -v
 
 # splint options
 SPLINT_OPTIONS = -weak -booltype BOOL
@@ -967,7 +971,7 @@ check-code:
 @NEED_JAVA_TRUE@	@if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \
 @NEED_JAVA_TRUE@	if test -z "$(USEANT)"; then USEANT=0; else USEANT=1; fi; \
 @NEED_JAVA_TRUE@	if test -f build.xml -a $$USEANT -eq 1; then \
-@NEED_JAVA_TRUE@		$(ANT); \
+@NEED_JAVA_TRUE@		$(ANT) $(AM_V_v); \
 @NEED_JAVA_TRUE@	fi
 
 @NEED_JAVA_TRUE@clean-java:
@@ -982,12 +986,12 @@ check-code:
 # We call the target swig-build on the variable SWIG_WRAPPERS
 
 @SWIG_TRUE@swig: $(SWIG_WRAPPERS)
-@SWIG_TRUE@	@SWIG_PACKAGENAME=org.scilab.modules.$(modulename); \
+@SWIG_TRUE@	$(AM_V_at)SWIG_PACKAGENAME=org.scilab.modules.$(modulename); \
 @SWIG_TRUE@	SWIG_OUTDIR=src/java/org/scilab/modules/$(modulename)/; \
 @SWIG_TRUE@	if test -n "$(SWIG_WRAPPERS)"; then \
 @SWIG_TRUE@		for file in $(SWIG_WRAPPERS) ; do \
 @SWIG_TRUE@			echo "Swig process of $$file ..."; \
-@SWIG_TRUE@			$(SWIG_BIN) $(SWIG_JAVA) -package $$SWIG_PACKAGENAME  -outdir $$SWIG_OUTDIR $$file; \
+@SWIG_TRUE@			$(SWIG_BIN) $(SWIG_JAVA) $(AM_V_v) -package $$SWIG_PACKAGENAME -outdir $$SWIG_OUTDIR $$file; \
 @SWIG_TRUE@		done; \
 @SWIG_TRUE@	fi
 
@@ -995,7 +999,7 @@ check-code:
 # We call the target swig-build on the variable SWIG_WRAPPERS
 
 @GIWS_TRUE@giws: $(GIWS_WRAPPERS)
-@GIWS_TRUE@	@GIWS_OUTPUTDIR=src/jni/;\
+@GIWS_TRUE@	$(AM_V_at)GIWS_OUTPUTDIR=src/jni/;\
 @GIWS_TRUE@	if test -n "$(GIWS_WRAPPERS)"; then \
 @GIWS_TRUE@		for file in $(GIWS_WRAPPERS) ; do \
 @GIWS_TRUE@			echo "GIWS process of $$file ..."; \

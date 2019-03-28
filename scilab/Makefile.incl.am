@@ -31,6 +31,12 @@ AM_LDFLAGS += -version-number $(SCILAB_LIBRARY_VERSION)
 # append includes to AM_FFLAGS to manage fortran includes
 AM_FFLAGS  += -Wp,-I$(top_srcdir)/modules/core/includes/
 
+## hack to extend the verbosity control:
+AM_V_v = $(am__v_v_@AM_V@)
+am__v_v_ = $(am__v_v_@AM_DEFAULT_V@)
+am__v_v_0 =
+am__v_v_1 = -v
+
 # This target enables tests for Scilab
 check-local: $(top_builddir)/scilab-bin test
 	if test -d $(mydatadir)/tests; then \
@@ -63,7 +69,7 @@ java:
 	@if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \
 	if test -z "$(USEANT)"; then USEANT=0; else USEANT=1; fi; \
 	if test -f build.xml -a $$USEANT -eq 1; then \
-		$(ANT); \
+		$(ANT) $(AM_V_v); \
 	fi
 
 clean-java:
@@ -87,7 +93,7 @@ swig: $(SWIG_WRAPPERS)
 	if test -n "$(SWIG_WRAPPERS)"; then \
 		for file in $(SWIG_WRAPPERS) ; do \
 			echo "Swig process of $$file ..."; \
-			$(SWIG_BIN) $(SWIG_JAVA) -package $$SWIG_PACKAGENAME  -outdir $$SWIG_OUTDIR $$file; \
+			$(SWIG_BIN) $(SWIG_JAVA) $(AM_V_v) -package $$SWIG_PACKAGENAME -outdir $$SWIG_OUTDIR $$file; \
 		done; \
 	fi
 

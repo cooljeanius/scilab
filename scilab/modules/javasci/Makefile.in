@@ -709,6 +709,10 @@ libjavasci2_la_etc_DATA = etc/javasci.quit etc/javasci.start
 # Tag shared libraries with the Scilab version
 @JAVASCI_TRUE@AM_LDFLAGS = $(SCI_LDFLAGS) -version-number \
 @JAVASCI_TRUE@	$(SCILAB_LIBRARY_VERSION)
+@JAVASCI_TRUE@AM_V_v = $(am__v_v_@AM_V@)
+@JAVASCI_TRUE@am__v_v_ = $(am__v_v_@AM_DEFAULT_V@)
+@JAVASCI_TRUE@am__v_v_0 = 
+@JAVASCI_TRUE@am__v_v_1 = -v
 
 # splint options
 @JAVASCI_TRUE@SPLINT_OPTIONS = -weak -booltype BOOL
@@ -1275,7 +1279,7 @@ uninstall-am: uninstall-libjavasci2_la_etcDATA \
 @JAVASCI_TRUE@@NEED_JAVA_TRUE@	@if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \
 @JAVASCI_TRUE@@NEED_JAVA_TRUE@	if test -z "$(USEANT)"; then USEANT=0; else USEANT=1; fi; \
 @JAVASCI_TRUE@@NEED_JAVA_TRUE@	if test -f build.xml -a $$USEANT -eq 1; then \
-@JAVASCI_TRUE@@NEED_JAVA_TRUE@		$(ANT); \
+@JAVASCI_TRUE@@NEED_JAVA_TRUE@		$(ANT) $(AM_V_v); \
 @JAVASCI_TRUE@@NEED_JAVA_TRUE@	fi
 
 @JAVASCI_TRUE@@NEED_JAVA_TRUE@clean-java:
@@ -1290,12 +1294,12 @@ uninstall-am: uninstall-libjavasci2_la_etcDATA \
 # We call the target swig-build on the variable SWIG_WRAPPERS
 
 @JAVASCI_TRUE@@SWIG_TRUE@swig: $(SWIG_WRAPPERS)
-@JAVASCI_TRUE@@SWIG_TRUE@	@SWIG_PACKAGENAME=org.scilab.modules.$(modulename); \
+@JAVASCI_TRUE@@SWIG_TRUE@	$(AM_V_at)SWIG_PACKAGENAME=org.scilab.modules.$(modulename); \
 @JAVASCI_TRUE@@SWIG_TRUE@	SWIG_OUTDIR=src/java/org/scilab/modules/$(modulename)/; \
 @JAVASCI_TRUE@@SWIG_TRUE@	if test -n "$(SWIG_WRAPPERS)"; then \
 @JAVASCI_TRUE@@SWIG_TRUE@		for file in $(SWIG_WRAPPERS) ; do \
 @JAVASCI_TRUE@@SWIG_TRUE@			echo "Swig process of $$file ..."; \
-@JAVASCI_TRUE@@SWIG_TRUE@			$(SWIG_BIN) $(SWIG_JAVA) -package $$SWIG_PACKAGENAME  -outdir $$SWIG_OUTDIR $$file; \
+@JAVASCI_TRUE@@SWIG_TRUE@			$(SWIG_BIN) $(SWIG_JAVA) $(AM_V_v) -package $$SWIG_PACKAGENAME -outdir $$SWIG_OUTDIR $$file; \
 @JAVASCI_TRUE@@SWIG_TRUE@		done; \
 @JAVASCI_TRUE@@SWIG_TRUE@	fi
 
@@ -1303,7 +1307,7 @@ uninstall-am: uninstall-libjavasci2_la_etcDATA \
 # We call the target swig-build on the variable SWIG_WRAPPERS
 
 @GIWS_TRUE@@JAVASCI_TRUE@giws: $(GIWS_WRAPPERS)
-@GIWS_TRUE@@JAVASCI_TRUE@	@GIWS_OUTPUTDIR=src/jni/;\
+@GIWS_TRUE@@JAVASCI_TRUE@	$(AM_V_at)GIWS_OUTPUTDIR=src/jni/;\
 @GIWS_TRUE@@JAVASCI_TRUE@	if test -n "$(GIWS_WRAPPERS)"; then \
 @GIWS_TRUE@@JAVASCI_TRUE@		for file in $(GIWS_WRAPPERS) ; do \
 @GIWS_TRUE@@JAVASCI_TRUE@			echo "GIWS process of $$file ..."; \

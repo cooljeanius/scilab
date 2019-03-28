@@ -462,10 +462,7 @@ am__v_redir_a_ = $(am__v_redir_a_@AM_DEFAULT_V@)
 am__v_redir_a_0 = >>
 am__v_redir_a_1 = | tee -a
 
-AM_V_v = $(am__v_v_@AM_V@)
-am__v_v_ = $(am__v_v_@AM_DEFAULT_V@)
-am__v_v_0 =
-am__v_v_1 = -v
+## definition of $(AM_V_v) moved to Makefile.incl.am
 
 $(top_builddir)/modules/scicos_blocks/build/Cblocknames: Makefile.am $(SCICOS_BLOCKS_C_SOURCES)
 	@echo "-- Generates build/Cblocknames --"

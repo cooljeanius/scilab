@@ -32,7 +32,7 @@ class NgonPolylineData : public NgonGeneralData
 private :
 
     /** Specifies whether zCoordinates have been set */
-    int zCoordinatesSet;
+    int zCoordinatesSet_f;
 
     /** The x-shift coordinates array */
     double* xShift;
@@ -44,13 +44,13 @@ private :
     double* zShift;
 
     /** Specifies whether xShift coordinates have been set */
-    int xShiftSet;
+    int xShiftSet_f;
 
     /** Specifies whether yShift coordinates have been set */
-    int yShiftSet;
+    int yShiftSet_f;
 
     /** Specifies whether zShift coordinates have been set */
-    int zShiftSet;
+    int zShiftSet_f;
 
     /** The coordinates shift array */
     double* coordinatesShift;

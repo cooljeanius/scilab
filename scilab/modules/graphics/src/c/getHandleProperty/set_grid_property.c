@@ -37,11 +37,11 @@ int set_grid_property(void* _pvCtx, char* pobjUID, size_t stackPointer, int valu
     BOOL status[3];
     int i = 0;
     int iGridColor = 0;
-    int* piGridColor = &iGridColor;
+    int *piGridColor = &iGridColor;
     int gridStyles[3];
-    char* gridColorPropertiesNames[3] = {__GO_X_AXIS_GRID_COLOR__, __GO_Y_AXIS_GRID_COLOR__, __GO_Z_AXIS_GRID_COLOR__};
+    int gridColorPropertiesNames[3] = {__GO_X_AXIS_GRID_COLOR__, __GO_Y_AXIS_GRID_COLOR__, __GO_Z_AXIS_GRID_COLOR__};
 
-    double * values = stk( stackPointer );
+    double *values = stk(stackPointer);
 
     if ( !( valueType == sci_matrix ) )
     {

@@ -100,7 +100,7 @@
 typedef struct
 {
     int  (*fonc)(void);
-} OpTab ;
+} OpTab;
 
 /**
  * call the apropriate interface according to the value of k
@@ -112,7 +112,7 @@ int C2F(callinterf) (int *k);
 /**
  * long jump to stop interface computation
  */
-void errjump ();
+ATTRIBUTE_NORETURN void errjump(void);
 
 
 #endif /*__CALLINTERF__*/

@@ -32,10 +32,10 @@ class NgonData : public Data3D
 protected :
 
     /** The total number of n-gons */
-    int numGons;
+    int numGons_f;
 
     /** The number of vertices making up a single n-gon */
-    int numVerticesPerGon;
+    int numVerticesPerGon_f;
 
 public :
     /**

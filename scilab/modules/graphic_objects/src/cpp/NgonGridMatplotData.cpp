@@ -33,16 +33,16 @@ int NgonGridMatplotData::getPropertyFromName(int propertyName)
 {
     switch (propertyName)
     {
-    case __GO_DATA_MODEL_GRID_SIZE__ :
-        return GRID_SIZE;
-    case __GO_DATA_MODEL_MATPLOT_BOUNDS__ :
-        return MATPLOT_BOUNDS;
-    case __GO_DATA_MODEL_MATPLOT_TYPE__ :
-        return MATPLOT_TYPE;
-    case __GO_DATA_MODEL_Z__ :
-        return Z_COORDINATES;
-    default :
-        return NgonGridData::getPropertyFromName(propertyName);
+        case __GO_DATA_MODEL_GRID_SIZE__ :
+            return GRID_SIZE;
+        case __GO_DATA_MODEL_MATPLOT_BOUNDS__ :
+            return MATPLOT_BOUNDS;
+        case __GO_DATA_MODEL_MATPLOT_TYPE__ :
+            return MATPLOT_TYPE;
+        case __GO_DATA_MODEL_Z__ :
+            return Z_COORDINATES;
+        default :
+            return NgonGridData::getPropertyFromName(propertyName);
     }
 
 }
@@ -219,7 +219,7 @@ int NgonGridMatplotData::setGridSize(int const* gridSize)
 
             zCoordinates = newZCoordinates;
 
-            numGons = (xSize - 1) * (ySize - 1);
+            numGons_f = (xSize - 1) * (ySize - 1);
 
         }
 

@@ -81,8 +81,6 @@ int C2F(fec)(double *x, double *y, double *triangles, double *func, int *Nnode, 
     int n1 = 1;
 
     /* Fec code */
-
-    char * pptabofpointobjUID = NULL;
     char * psubwinUID = NULL;
     char * pFecUID = NULL;
     char * parentCompoundUID = NULL;
@@ -247,7 +245,7 @@ int C2F(fec)(double *x, double *y, double *triangles, double *func, int *Nnode, 
     setCurrentObject(parentCompoundUID);  /** construct Compound **/
     releaseGraphicObjectProperty(__GO_PARENT__, parentCompoundUID, jni_string, 1);
 
-    return(0);
+    return (0);
 
 }
 /*--------------------------------------------------------------------------*/

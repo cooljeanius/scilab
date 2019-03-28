@@ -37,15 +37,15 @@
 int set_axes_reverse_property(void* _pvCtx, char* pobjUID, size_t stackPointer, int valueType, int nbRow, int nbCol )
 {
     BOOL status[3];
-    char* axesReversePropertiesNames[3] = {__GO_X_AXIS_REVERSE__, __GO_Y_AXIS_REVERSE__, __GO_Z_AXIS_REVERSE__};
+    int axesReversePropertiesNames[3] = {__GO_X_AXIS_REVERSE__, __GO_Y_AXIS_REVERSE__, __GO_Z_AXIS_REVERSE__};
     BOOL reverse = FALSE;
 
-    char ** values = getStringMatrixFromStack( stackPointer );
+    char **values = getStringMatrixFromStack(stackPointer);
 
-    if ( !( valueType == sci_strings ) )
+    if (!(valueType == sci_strings))
     {
         Scierror(999, _("Wrong type for '%s' property: String matrix expected.\n"), "axes_reverse");
-        return SET_PROPERTY_ERROR ;
+        return SET_PROPERTY_ERROR;
     }
 
     if ( nbCol == 1 )

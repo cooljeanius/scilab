@@ -33,15 +33,16 @@ endif
 
 
 bin_PROGRAMS = intersci
+CLEANFILES = *.dSYM
 intersci_SOURCES = $(INTERSCI_EXE_C_SOURCES)
 
 libsciintersci_la_SOURCES = $(INTERSCI_LIB_C_SOURCES)
 
-libsciintersci_la_CPPFLAGS = -I$(top_srcdir)/libs/MALLOC/includes/ \
-				-I$(top_srcdir)/modules/output_stream/includes/ \
-				-I$(srcdir)/includes/ \
-                -I$(top_srcdir)/modules/string/includes/ \
-                $(AM_CPPFLAGS)
+libsciintersci_la_CPPFLAGS = -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+		     -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+		     -Wp,-I$(srcdir)/includes/ \
+                     -Wp,-I$(top_srcdir)/modules/string/includes/ \
+                     $(AM_CPPFLAGS)
 
 # For the code check (splint)
 CHECK_SRC= $(libsciintersci_la_SOURCES)
@@ -61,4 +62,7 @@ libsciintersci_la_etcdir = $(mydatadir)/etc
 libsciintersci_la_etc_DATA = etc/intersci.quit etc/intersci.start
 
 include $(top_srcdir)/Makefile.incl.am
+
+maintainer-clean-local:
+	-rm -rfv *.dSYM || rmdir *.dSYM
 

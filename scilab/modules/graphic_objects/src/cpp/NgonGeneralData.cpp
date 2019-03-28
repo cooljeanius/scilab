@@ -25,8 +25,8 @@ extern "C" {
 
 NgonGeneralData::NgonGeneralData(void)
 {
-    numGons = 0;
-    numVerticesPerGon = 0;
+    numGons_f = 0;
+    numVerticesPerGon_f = 0;
 
     coordinates = NULL;
 
@@ -36,7 +36,7 @@ NgonGeneralData::NgonGeneralData(void)
 
 NgonGeneralData::~NgonGeneralData(void)
 {
-    if (numGons * numVerticesPerGon > 0)
+    if (numGons_f * numVerticesPerGon_f > 0)
     {
         delete [] coordinates;
     }
@@ -51,22 +51,22 @@ int NgonGeneralData::getPropertyFromName(int propertyName)
 {
     switch (propertyName)
     {
-    case __GO_DATA_MODEL_NUM_ELEMENTS_ARRAY__ :
-        return NUM_ELEMENTS_ARRAY;
-    case __GO_DATA_MODEL_COORDINATES__ :
-        return COORDINATES;
-    case __GO_DATA_MODEL_X__ :
-        return X_COORDINATES;
-    case __GO_DATA_MODEL_Y__ :
-        return Y_COORDINATES;
-    case __GO_DATA_MODEL_Z__ :
-        return Z_COORDINATES;
-    case __GO_DATA_MODEL_COLORS__ :
-        return COLORS;
-    case __GO_DATA_MODEL_NUM_COLORS__ :
-        return NUM_COLORS;
-    default :
-        return NgonData::getPropertyFromName(propertyName);
+        case __GO_DATA_MODEL_NUM_ELEMENTS_ARRAY__ :
+            return NUM_ELEMENTS_ARRAY;
+        case __GO_DATA_MODEL_COORDINATES__ :
+            return COORDINATES;
+        case __GO_DATA_MODEL_X__ :
+            return X_COORDINATES;
+        case __GO_DATA_MODEL_Y__ :
+            return Y_COORDINATES;
+        case __GO_DATA_MODEL_Z__ :
+            return Z_COORDINATES;
+        case __GO_DATA_MODEL_COLORS__ :
+            return COLORS;
+        case __GO_DATA_MODEL_NUM_COLORS__ :
+            return NUM_COLORS;
+        default :
+            return NgonData::getPropertyFromName(propertyName);
     }
 }
 
@@ -155,12 +155,12 @@ double* NgonGeneralData::getDataX(void)
 
 double* NgonGeneralData::getDataY(void)
 {
-    return &coordinates[numGons * numVerticesPerGon];
+    return &coordinates[numGons_f * numVerticesPerGon_f];
 }
 
 double* NgonGeneralData::getDataZ(void)
 {
-    return &coordinates[2 * numGons * numVerticesPerGon];
+    return &coordinates[2 * numGons_f * numVerticesPerGon_f];
 }
 
 /*
@@ -169,7 +169,7 @@ double* NgonGeneralData::getDataZ(void)
  */
 void NgonGeneralData::setData(double const* data, int numElements)
 {
-    if (numElements != numGons * numVerticesPerGon)
+    if (numElements != numGons_f * numVerticesPerGon_f)
     {
         delete [] coordinates;
 
@@ -191,7 +191,7 @@ void NgonGeneralData::setDataY(double const* data, int numElements)
 {
     double* yCoordinates;
 
-    yCoordinates = &coordinates[numGons * numVerticesPerGon];
+    yCoordinates = &coordinates[numGons_f * numVerticesPerGon_f];
     memcpy(yCoordinates, data, numElements * sizeof(double));
 }
 
@@ -199,13 +199,13 @@ void NgonGeneralData::setDataZ(double const* data, int numElements)
 {
     double* zCoordinates = NULL;
 
-    zCoordinates = &coordinates[2 * numGons * numVerticesPerGon];
+    zCoordinates = &coordinates[2 * numGons_f * numVerticesPerGon_f];
     memcpy(zCoordinates, data, numElements * sizeof(double));
 }
 
 int NgonGeneralData::getNumElements(void)
 {
-    return numGons;
+    return numGons_f;
 }
 
 int NgonGeneralData::setNumElementsArray(int const* numElementsArray)
@@ -222,7 +222,7 @@ int NgonGeneralData::setNumElementsArray(int const* numElementsArray)
         return 0;
     }
 
-    if (numGons*numVerticesPerGon != numElementsArray[0]*numElementsArray[1])
+    if (numGons_f * numVerticesPerGon_f != numElementsArray[0]*numElementsArray[1])
     {
         try
         {
@@ -258,15 +258,15 @@ int NgonGeneralData::setNumElementsArray(int const* numElementsArray)
     {
         if (newCoordinates != NULL)
         {
-            if (numGons * numVerticesPerGon > 0)
+            if (numGons_f * numVerticesPerGon_f > 0)
             {
                 delete [] coordinates;
             }
 
             coordinates = newCoordinates;
 
-            numGons = numElementsArray[0];
-            numVerticesPerGon = numElementsArray[1];
+            numGons_f = numElementsArray[0];
+            numVerticesPerGon_f = numElementsArray[1];
         }
 
         if (newColorValues != NULL || numElementsArray[2] == 0)

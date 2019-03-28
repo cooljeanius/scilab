@@ -36,17 +36,17 @@ std::wstring getFullFilename(std::wstring _wfilename)
     wchar_t wcdrive[PATH_MAX];
     wchar_t wcdirectory[PATH_MAX];
     wchar_t wcname[PATH_MAX];
-    wchar_t wcext [PATH_MAX];
+    wchar_t wcext[PATH_MAX];
 
     std::wstring wfullfilename(L"");
     std::wstring tmpWstr;
 
-    size_t found = _wfilename.rfind(L"\\");
+    size_t found1 = _wfilename.rfind(L"\\");
 
-    while (found != std::wstring::npos)
+    while (found1 != std::wstring::npos)
     {
-        _wfilename.replace (found, 1, L"/");
-        found = _wfilename.rfind(L"\\");
+        _wfilename.replace(found1, 1, L"/");
+        found1 = _wfilename.rfind(L"\\");
     }
     wcsplitpath(_wfilename.c_str(), wcdrive, wcdirectory, wcname, wcext);
     wfullfilename.append(tmpWstr.assign(wcdrive));
@@ -56,7 +56,7 @@ std::wstring getFullFilename(std::wstring _wfilename)
         /* to get current directory as wide characters */
 #if _MSC_VER
         wchar_t wcCurrentDir[PATH_MAX];
-        if ( _wgetcwd(wcCurrentDir, PATH_MAX) != NULL)
+        if (_wgetcwd(wcCurrentDir, PATH_MAX) != NULL)
         {
             wfullfilename = tmpWstr.assign(wcCurrentDir);
 #else
@@ -68,11 +68,11 @@ std::wstring getFullFilename(std::wstring _wfilename)
             FREE(wcCurrentDir);
 #endif
             /* replaces separator */
-            size_t found = wfullfilename.rfind(L"\\");
-            while (found != std::wstring::npos)
+            size_t found2 = wfullfilename.rfind(L"\\");
+            while (found2 != std::wstring::npos)
             {
-                wfullfilename.replace (found, 1, L"/");
-                found = wfullfilename.rfind(L"\\");
+                wfullfilename.replace(found2, 1, L"/");
+                found2 = wfullfilename.rfind(L"\\");
             }
             wfullfilename.append(L"/");
 

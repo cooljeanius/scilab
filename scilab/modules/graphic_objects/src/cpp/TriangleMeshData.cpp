@@ -22,8 +22,8 @@ extern "C" {
 
 TriangleMeshData::TriangleMeshData(void)
 {
-    vertices = NULL;
-    indices = NULL;
+    vertices_f = NULL;
+    indices_f = NULL;
     values = NULL;
 
     numberVertices = 0;
@@ -33,9 +33,9 @@ TriangleMeshData::TriangleMeshData(void)
 /* To be correctly implemented */
 TriangleMeshData::TriangleMeshData(unsigned int numberVertices, unsigned int numberTriangles)
 {
-    vertices = new double[3 * numberVertices];
+    vertices_f = new double[3 * numberVertices];
 
-    indices = new unsigned int[3 * numberTriangles];
+    indices_f = new unsigned int[3 * numberTriangles];
 
     this->numberVertices = numberVertices;
     this->numberTriangles = numberTriangles;
@@ -46,13 +46,13 @@ TriangleMeshData::~TriangleMeshData(void)
 {
     if (numberVertices > 0)
     {
-        delete [] vertices;
+        delete [] vertices_f;
         delete [] values;
     }
 
     if (numberTriangles > 0)
     {
-        delete [] indices;
+        delete [] indices_f;
     }
 
 }
@@ -61,24 +61,24 @@ int TriangleMeshData::getPropertyFromName(int propertyName)
 {
     switch (propertyName)
     {
-    case __GO_DATA_MODEL_NUM_VERTICES__ :
-        return NUM_VERTICES;
-    case __GO_DATA_MODEL_NUM_INDICES__ :
-        return NUM_INDICES;
-    case __GO_DATA_MODEL_X__ :
-        return X_COORDINATES;
-    case __GO_DATA_MODEL_Y__ :
-        return Y_COORDINATES;
-    case __GO_DATA_MODEL_Z__ :
-        return Z_COORDINATES;
-    case __GO_DATA_MODEL_COORDINATES__ :
-        return COORDINATES;
-    case __GO_DATA_MODEL_INDICES__ :
-        return INDICES;
-    case __GO_DATA_MODEL_VALUES__ :
-        return VALUES;
-    default :
-        return Data3D::getPropertyFromName(propertyName);
+        case __GO_DATA_MODEL_NUM_VERTICES__ :
+            return NUM_VERTICES;
+        case __GO_DATA_MODEL_NUM_INDICES__ :
+            return NUM_INDICES;
+        case __GO_DATA_MODEL_X__ :
+            return X_COORDINATES;
+        case __GO_DATA_MODEL_Y__ :
+            return Y_COORDINATES;
+        case __GO_DATA_MODEL_Z__ :
+            return Z_COORDINATES;
+        case __GO_DATA_MODEL_COORDINATES__ :
+            return COORDINATES;
+        case __GO_DATA_MODEL_INDICES__ :
+            return INDICES;
+        case __GO_DATA_MODEL_VALUES__ :
+            return VALUES;
+        default :
+            return Data3D::getPropertyFromName(propertyName);
     }
 
 }
@@ -171,7 +171,7 @@ int TriangleMeshData::setNumVertices(unsigned int numVertices)
     {
         numberVertices = 0;
 
-        delete [] vertices;
+        delete [] vertices_f;
         delete [] values;
 
         return 1;
@@ -206,11 +206,11 @@ int TriangleMeshData::setNumVertices(unsigned int numVertices)
         {
             if (this->numberVertices > 0)
             {
-                delete [] vertices;
+                delete [] vertices_f;
                 delete [] values;
             }
 
-            vertices = newVertices;
+            vertices_f = newVertices;
             values = newValues;
 
             this->numberVertices =  numVertices;
@@ -263,10 +263,10 @@ int TriangleMeshData::setNumIndices(unsigned int numIndices)
         {
             if (this->numberTriangles > 0)
             {
-                delete [] indices;
+                delete [] indices_f;
             }
 
-            indices = newIndices;
+            indices_f = newIndices;
 
             this->numberTriangles =  numIndices;
         }
@@ -286,27 +286,29 @@ int TriangleMeshData::setNumIndices(unsigned int numIndices)
 
 double* TriangleMeshData::getVertices(void)
 {
-    return vertices;
+    return vertices_f;
 }
 
-void TriangleMeshData::setVertices(double const* vertices, unsigned int numElements)
+void TriangleMeshData::setVertices(const double *vertices_param, unsigned int numElements)
 {
     if (numElements <= numberVertices)
     {
-        memcpy(this->vertices, vertices, numElements * 3 * sizeof(double));
+        memcpy(this->vertices_f, vertices_param,
+               numElements * 3UL * sizeof(double));
     }
 }
 
 unsigned int* TriangleMeshData::getIndices(void)
 {
-    return indices;
+    return indices_f;
 }
 
-void TriangleMeshData::setIndices(unsigned int const* indices, unsigned int numElements)
+void TriangleMeshData::setIndices(const unsigned int *indices_param, unsigned int numElements)
 {
     if (numElements <= numberTriangles)
     {
-        memcpy(this->indices, indices, numElements * 3 * sizeof(unsigned int));
+        memcpy(this->indices_f, indices_param,
+               numElements * 3UL * sizeof(unsigned int));
     }
 }
 
@@ -316,7 +318,7 @@ void TriangleMeshData::setDataX(double const* data, unsigned int numElements)
     {
         for (unsigned int i = 0 ; i < numElements ; i++)
         {
-            vertices[3 * i] = data[i];
+            vertices_f[3 * i] = data[i];
         }
     }
 }
@@ -327,7 +329,7 @@ void TriangleMeshData::setDataY(double const* data, unsigned int numElements)
     {
         for (unsigned int i = 0 ; i < numElements ; i++)
         {
-            vertices[3 * i + 1] = data[i];
+            vertices_f[3 * i + 1] = data[i];
         }
     }
 }
@@ -338,7 +340,7 @@ void TriangleMeshData::setDataZ(double const* data, unsigned int numElements)
     {
         for (unsigned int i = 0; i < numElements; i++)
         {
-            vertices[3 * i + 2] = data[i];
+            vertices_f[3 * i + 2] = data[i];
         }
     }
 }
@@ -365,9 +367,9 @@ void TriangleMeshData::resetCoordinates(void)
 {
     for (unsigned int i = 0; i < numberVertices; i++)
     {
-        vertices[3 * i] = 0.0;
-        vertices[3 * i + 1] = 0.0;
-        vertices[3 * i + 2] = 0.0;
+        vertices_f[3 * i] = 0.0;
+        vertices_f[3 * i + 1] = 0.0;
+        vertices_f[3 * i + 2] = 0.0;
     }
 }
 

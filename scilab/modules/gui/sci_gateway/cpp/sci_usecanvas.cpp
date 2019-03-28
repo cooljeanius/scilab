@@ -43,7 +43,8 @@ int sci_usecanvas(char *fname, unsigned long fname_len)
             return FALSE;
         }
 
-        GetRhsVar(1, MATRIX_OF_BOOLEAN_DATATYPE, &m1, &n1, &l1);
+        GetRhsVar(1, const_cast<char *>(MATRIX_OF_BOOLEAN_DATATYPE), &m1, &n1,
+                  &l1);
 
         if (m1 * n1 != 1)
         {
@@ -55,7 +56,7 @@ int sci_usecanvas(char *fname, unsigned long fname_len)
         {
             CallScilabBridge::useCanvasForDisplay(getScilabJavaVM(), BOOLtobool(*istk(l1)));
         }
-        catch(const GiwsException::JniException & e)
+        catch (const GiwsException::JniException & e)
         {
             Scierror(999, _("%s: A Java exception arisen:\n%s"), fname, e.whatStr().c_str());
             return FALSE;
@@ -73,7 +74,7 @@ int sci_usecanvas(char *fname, unsigned long fname_len)
     {
         status[0] = booltoBOOL(CallScilabBridge::useCanvasForDisplay(getScilabJavaVM()));
     }
-    catch(const GiwsException::JniException & e)
+    catch (const GiwsException::JniException & e)
     {
         Scierror(999, _("%s: A Java exception arisen:\n%s"), fname, e.whatStr().c_str());
         return FALSE;
@@ -81,7 +82,8 @@ int sci_usecanvas(char *fname, unsigned long fname_len)
 
     m1 = 1;
     n1 = 1;
-    CreateVarFromPtr(1, MATRIX_OF_BOOLEAN_DATATYPE, &m1, &n1, &status);
+    CreateVarFromPtr(1, const_cast<char *>(MATRIX_OF_BOOLEAN_DATATYPE),
+                     &m1, &n1, &status);
 
     FREE(status);
 

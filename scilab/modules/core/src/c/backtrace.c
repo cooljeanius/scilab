@@ -79,7 +79,7 @@ sci_backtrace_t *sci_backtrace_create(void)
 {
 #if defined(HAVE_GLIBC_BACKTRACE)
 
-    int i, j, l;
+    int i;
 
     sci_backtrace_t *bt = NULL;
 
@@ -89,8 +89,7 @@ sci_backtrace_t *sci_backtrace_create(void)
 
     if (bt != NULL)
     {
-
-        void * tr_array[200];
+        void *tr_array[200];
         int tr_size = backtrace(tr_array, 200);
 
         /* Create arrays; we use malloc() here instead of BFT_MALLOC, as a
@@ -137,7 +136,7 @@ sci_backtrace_t *sci_backtrace_create(void)
         for (i = 0; i < bt->size; i++)
         {
             char buffer[32];
-            void * p = tr_array[i];
+            void *p = tr_array[i];
 
             bt->s_file[i] = NULL;
             bt->s_func[i] = NULL;
@@ -149,7 +148,8 @@ sci_backtrace_t *sci_backtrace_create(void)
                 bt->s_file[i] = infos->dli_fname ? strdup(infos->dli_fname) : strdup(" ");
 
                 // we calculate the relative address in the library
-                snprintf(buffer, 32, "%p", p - infos->dli_fbase);
+                snprintf(buffer, 32, "%p",
+                         (void *)((char *)p - (char *)infos->dli_fbase));
                 bt->s_addr[i] = strdup(buffer);
             }
         }

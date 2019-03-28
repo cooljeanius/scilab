@@ -34,7 +34,7 @@ int sci_exportUI(char * fname, unsigned long fname_len)
 
     if (GetType(1) == sci_handles) // exportUI(figHandle)
     {
-        char *pstFigureUID = NULL;
+        const char *pstFigureUID = NULL;
         int iHandleType = -1;
         int *piHandleType = &iHandleType;
         int *piFigureId = &iFigureId;

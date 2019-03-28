@@ -11,7 +11,7 @@
  *
  */
 
-#ifndef __SET_UICONTROL_FOTNANGLE_H__
+#ifndef __SET_UICONTROL_FONTANGLE_H__
 #define __SET_UICONTROL_FONTANGLE_H__
 #include "dynlib_gui.h"
 
@@ -27,4 +27,4 @@
  */
 GUI_IMPEXP int SetUicontrolFontAngle(void* _pvCtx, char* pobjUID, size_t stackPointer, int valueType, int nbRow, int nbCol);
 
-#endif /* __SET_UICONTROL_FOTNANGLE_H__ */
+#endif /* __SET_UICONTROL_FONTANGLE_H__ */

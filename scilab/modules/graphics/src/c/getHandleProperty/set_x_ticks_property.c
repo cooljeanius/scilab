@@ -94,7 +94,7 @@ int set_x_ticks_property(void* _pvCtx, char* pobjUID, size_t stackPointer, int v
     {
         userLabels = getCurrentStringMatrixFromList( tlist, &nbTicsRow, &nbTicsCol );
         /* Check if we should load LaTex / MathML Java libraries */
-        loadTextRenderingAPI(userLabels, nbTicsCol, nbTicsRow);
+        loadTextRenderingAPI((const char *const *)userLabels, nbTicsCol, nbTicsRow);
 
         setGraphicObjectProperty(pobjUID, __GO_X_AXIS_TICKS_LABELS__, userLabels, jni_string_vector, nbTicsRow * nbTicsCol);
     }

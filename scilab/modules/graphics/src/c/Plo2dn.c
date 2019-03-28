@@ -93,11 +93,11 @@
  * lstr* : unused ( but used by Fortran )
  *--------------------------------------------------------------------------*/
 
-int plot2dn(int ptype, char *logflags, double *x, double *y, int *n1, int *n2, int *style, char *strflag, char *legend, double *brect, int *aaint,
+int plot2dn(int ptype, char *logflags, double *x, double *y, int *n1, int *n2,
+            int *style, char *strflag, char *legend, double *brect, int *aaint,
             BOOL flagNax, int lstr1, int lstr2)
 {
     char *psubwinUID = NULL;
-    char *curFigureUID = NULL;
     int closeflag = 0;
     int jj = 0;
     long long *tabofhandles = NULL;
@@ -179,9 +179,13 @@ int plot2dn(int ptype, char *logflags, double *x, double *y, int *n1, int *n2, i
             case '9':
                 /* Force data bounds to the x and y bounds */
                 if ((int)strlen(logflags) < 1)
+                {
                     dataflag = 'g';
+                }
                 else
+                {
                     dataflag = logflags[0];
+                }
 
                 getGraphicObjectProperty(psubwinUID, __GO_X_AXIS_LOG_FLAG__, jni_bool, (void **)&piTmp);
                 logFlags[0] = iTmp;

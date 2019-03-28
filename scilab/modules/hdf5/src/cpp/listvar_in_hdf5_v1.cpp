@@ -399,7 +399,6 @@ static bool read_boolean_sparse_v1(int _iDatasetId, int _iItemPos, int *_piAddre
     int iRows = 0;
     int iCols = 0;
     int iNbItem = 0;
-    int iComplex = 0;
 
     iRet = getSparseDimension_v1(_iDatasetId, &iRows, &iCols, &iNbItem);
     if (iRet)

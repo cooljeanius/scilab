@@ -44,8 +44,7 @@
 /*------------------------------------------------------------------------*/
 int set_current_figure_property(void* _pvCtx, char* pobjUID, size_t stackPointer, int valueType, int nbRow, int nbCol )
 {
-    int figNum = -1 ;
-    int res = -1 ;
+    int figNum = -1;
     char* pFigureUID = NULL;
     char* curFigUID = NULL;
     char* pstrAxesUID = NULL;
@@ -63,25 +62,26 @@ int set_current_figure_property(void* _pvCtx, char* pobjUID, size_t stackPointer
         return SET_PROPERTY_ERROR ;
     }
 
-    if ( ( valueType == sci_handles ) )
+    if (valueType == sci_handles)
     {
+        curFigUID = (char *)getObjectFromHandle(getHandleFromStack(stackPointer));
 
-        curFigUID = (char*)getObjectFromHandle( getHandleFromStack( stackPointer ) ) ;
-
-        if ( curFigUID == NULL )
+        if (curFigUID == NULL)
         {
-            Scierror(999, _("'%s' handle does not or no longer exists.\n"), "Figure");
+            Scierror(999, _("'%s' handle does not or no longer exists.\n"),
+                     "Figure");
             return SET_PROPERTY_ERROR ;
         }
         setCurrentFigure(curFigUID);
-        getGraphicObjectProperty(curFigUID, __GO_SELECTED_CHILD__, jni_string,  &pstrAxesUID);
+        getGraphicObjectProperty(curFigUID, __GO_SELECTED_CHILD__, jni_string,
+                                 (void **)&pstrAxesUID);
         setCurrentSubWin(pstrAxesUID);
 
         return 0;
     }
-    else if ( ( valueType == sci_matrix ) )
+    else if (valueType == sci_matrix)
     {
-        figNum = (int) getDoubleFromStack( stackPointer ) ;
+        figNum = (int) getDoubleFromStack(stackPointer);
     }
     else
     {
@@ -100,7 +100,8 @@ int set_current_figure_property(void* _pvCtx, char* pobjUID, size_t stackPointer
     }
     setCurrentFigure(pFigureUID);
 
-    getGraphicObjectProperty(pFigureUID, __GO_SELECTED_CHILD__, jni_string,  &pstrAxesUID);
+    getGraphicObjectProperty(pFigureUID, __GO_SELECTED_CHILD__, jni_string,
+                             (void **)&pstrAxesUID);
     setCurrentSubWin(pstrAxesUID);
 
     return 0;

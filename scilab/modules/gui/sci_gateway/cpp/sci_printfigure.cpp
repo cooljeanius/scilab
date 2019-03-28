@@ -42,7 +42,8 @@ int sci_printfigure(char *fname, unsigned long l)
     {
         if (Rhs == 1)
         {
-            GetRhsVar(1, MATRIX_OF_DOUBLE_DATATYPE, &m1, &n1, &l1);
+            GetRhsVar(1, const_cast<char *>(MATRIX_OF_DOUBLE_DATATYPE),
+                      &m1, &n1, &l1);
 
             if (!IsAScalar(1))
             {
@@ -60,7 +61,7 @@ int sci_printfigure(char *fname, unsigned long l)
                 {
                     status[0] = (int)CallScilabBridge::printFigure(getScilabJavaVM(), getFigureFromIndex(num_win), true, true); /* postscript mode and display dialog */
                 }
-                catch(const GiwsException::JniException & e)
+                catch (const GiwsException::JniException & e)
                 {
                     Scierror(999, _("%s: A Java exception arisen:\n%s"), fname, e.whatStr().c_str());
                     return FALSE;
@@ -68,7 +69,9 @@ int sci_printfigure(char *fname, unsigned long l)
 
                 m1 = 1;
                 n1 = 1;
-                CreateVarFromPtr(Rhs + 1, MATRIX_OF_BOOLEAN_DATATYPE, &m1, &n1, &status);
+                CreateVarFromPtr(Rhs + 1,
+                                 const_cast<char *>(MATRIX_OF_BOOLEAN_DATATYPE),
+                                 &m1, &n1, &status);
                 LhsVar(1) = Rhs + 1;
                 delete[]status;
                 PutLhsVar();

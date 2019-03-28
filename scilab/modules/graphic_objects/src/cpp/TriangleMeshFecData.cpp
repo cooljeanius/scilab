@@ -23,8 +23,8 @@ extern "C" {
 
 TriangleMeshFecData::TriangleMeshFecData(void)
 {
-    vertices = NULL;
-    indices = NULL;
+    vertices_f = NULL;
+    indices_f = NULL;
     values = NULL;
     fecValues = NULL;
 
@@ -35,9 +35,9 @@ TriangleMeshFecData::TriangleMeshFecData(void)
 /* To be correctly implemented */
 TriangleMeshFecData::TriangleMeshFecData(unsigned int numberVertices, unsigned int numberTriangles)
 {
-    vertices = new double[3 * numberVertices];
+    vertices_f = new double[3 * numberVertices];
 
-    indices = new unsigned int[3 * numberTriangles];
+    indices_f = new unsigned int[3 * numberTriangles];
 
     fecValues = new double[5 * numberTriangles];
 
@@ -50,13 +50,13 @@ TriangleMeshFecData::~TriangleMeshFecData(void)
 {
     if (numberVertices > 0)
     {
-        delete [] vertices;
+        delete [] vertices_f;
         delete [] values;
     }
 
     if (numberTriangles > 0)
     {
-        delete [] indices;
+        delete [] indices_f;
         delete [] fecValues;
     }
 
@@ -68,12 +68,12 @@ int TriangleMeshFecData::getPropertyFromName(int propertyName)
 {
     switch (propertyName)
     {
-    case __GO_DATA_MODEL_NUM_INDICES__ :
-        return NUM_INDICES;
-    case __GO_DATA_MODEL_FEC_TRIANGLES__ :
-        return FEC_TRIANGLES;
-    default :
-        return TriangleMeshData::getPropertyFromName(propertyName);
+        case __GO_DATA_MODEL_NUM_INDICES__ :
+            return NUM_INDICES;
+        case __GO_DATA_MODEL_FEC_TRIANGLES__ :
+            return FEC_TRIANGLES;
+        default :
+            return TriangleMeshData::getPropertyFromName(propertyName);
     }
 }
 
@@ -152,11 +152,11 @@ int TriangleMeshFecData::setNumIndices(unsigned int numIndices)
         {
             if (this->numberTriangles > 0)
             {
-                delete [] indices;
+                delete [] indices_f;
                 delete [] fecValues;
             }
 
-            indices = newIndices;
+            indices_f = newIndices;
             fecValues = newFecValues;
 
             this->numberTriangles =  numIndices;
@@ -189,9 +189,9 @@ void TriangleMeshFecData::setFecTriangles(double const* data, int numElements)
 
     for (int i = 0; i < numElements; i++)
     {
-        indices[3 * i] =  scilabIndexToIndex((unsigned int) data[numElements + i]);
-        indices[3 * i + 1] = scilabIndexToIndex((unsigned int) data[2 * numElements + i]);
-        indices[3 * i + 2] = scilabIndexToIndex((unsigned int) data[3 * numElements + i]);
+        indices_f[3 * i] =  scilabIndexToIndex((unsigned int) data[numElements + i]);
+        indices_f[3 * i + 1] = scilabIndexToIndex((unsigned int) data[2 * numElements + i]);
+        indices_f[3 * i + 2] = scilabIndexToIndex((unsigned int) data[3 * numElements + i]);
 
         /* Triangle number */
         fecValues[i] = data[i];

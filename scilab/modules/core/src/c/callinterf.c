@@ -154,7 +154,7 @@ int C2F(callinterf) (int *k)
 /**
 * long jump to stop interface computation
 */
-void errjump()
+ATTRIBUTE_NORETURN void errjump(void)
 {
     longjmp(jmp_env, -1);
 }

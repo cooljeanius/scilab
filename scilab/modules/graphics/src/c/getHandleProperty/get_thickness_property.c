@@ -37,11 +37,12 @@ int get_thickness_property(void* _pvCtx, char* pobjUID)
     double lineThickness = 0.0;
     double *pdblLineThickness = &lineThickness;
 
-    getGraphicObjectProperty(pobjUID, __GO_LINE_THICKNESS__, jni_double,  &pdblLineThickness);
+    getGraphicObjectProperty(pobjUID, __GO_LINE_THICKNESS__, jni_double,
+                             (void **)&pdblLineThickness);
 
     if (pdblLineThickness == NULL)
     {
-        Scierror(999, _("'%s' property does not exist for this handle.\n"),"thickness");
+        Scierror(999, _("'%s' property does not exist for this handle.\n"), "thickness");
         return -1;
     }
 

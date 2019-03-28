@@ -1265,11 +1265,12 @@ const char *mxGetFieldNameByNumber(const mxArray *array_ptr, int field_number)
     return str;
 }
 
-/*
+#ifdef MXGETCHARS_IMPLEMENTED
 mxCHAR *mxGetChars(mxArray *array_ptr)
 {
-  mexPrintf("%Not yet implemented\n");
-}  */
+    mexPrintf("%Not yet implemented\n");
+}
+#endif /* MXGETCHARS_IMPLEMENTED */
 
 
 int IsReference(mxArray *array_ptr)

@@ -48,7 +48,7 @@ extern jmp_buf jmp_env;
  * Handle a fatal signal (such as SIGFPE or SIGSEGV)
  *----------------------------------------------------------------------------*/
 #define HOSTFORMAT "[%s:%05d] "
-static void sig_fatal(int signum, siginfo_t * info, void *p)
+static void sig_fatal(int signum, siginfo_t *info, void *p)
 {
     char *si_code_str = "";
 
@@ -416,7 +416,7 @@ void base_error_init(void)
 {
     struct sigaction act;
 
-    int sig, j;
+    int j;
 
     struct sigaction ToSuspend;
 

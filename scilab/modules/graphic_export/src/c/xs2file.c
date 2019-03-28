@@ -58,7 +58,7 @@ int xs2file(char * fname, ExportFileType fileType )
         return 0;
     }
 
-    if ( (GetType(2) == sci_strings) )
+    if ((GetType(2) == sci_strings))
     {
         char **fileName = NULL;
         char *real_filename = NULL;
@@ -66,14 +66,14 @@ int xs2file(char * fname, ExportFileType fileType )
         ExportOrientation orientation = EXPORT_PORTRAIT; /* default orientation */
         int m1 = 0, n1 = 0, l1 = 0;
         int figurenum = -1;
-        char* figureUID = NULL;
+        const char *figureUID = NULL;
         char *status = NULL;
 
         /* get handle by figure number */
         if (GetType(1) == sci_matrix)
         {
             GetRhsVar(1, MATRIX_OF_INTEGER_DATATYPE, &m1, &n1, &l1);
-            if (m1*n1 != 1)
+            if ((m1 * n1) != 1)
             {
                 Scierror(999, _("%s: Wrong size for input argument #%d: A scalar expected.\n"), fname, 1);
                 return 0;
@@ -93,7 +93,7 @@ int xs2file(char * fname, ExportFileType fileType )
             int iHandleType = -1;
             int* piHandleType = &iHandleType;
             GetRhsVar(1, GRAPHICAL_HANDLE_DATATYPE, &m1, &n1, &l1);
-            if (m1*n1 != 1)
+            if (m1 * n1 != 1)
             {
                 Scierror(999, _("%s: Wrong size for input argument #%d: A graphic handle expected.\n"), fname, 1);
                 return 0;
@@ -117,7 +117,7 @@ int xs2file(char * fname, ExportFileType fileType )
 
         /* get file name */
         GetRhsVar(2, MATRIX_OF_STRING_DATATYPE, &m1, &n1, &fileName);
-        if (m1*n1 == 1)
+        if (m1 * n1 == 1)
         {
             if (Rhs == 3)
             {
@@ -137,7 +137,7 @@ int xs2file(char * fname, ExportFileType fileType )
                     }
 
                     GetRhsVar(3, MATRIX_OF_STRING_DATATYPE, &nbRow, &nbCol, &sciOrientation);
-                    if (nbRow*nbCol == 1)
+                    if (nbRow * nbCol == 1)
                     {
                         /* Value should be 'landscape' or 'portrait' but check only the first character */
                         /* for compatibility with Scilab 4*/
@@ -185,7 +185,8 @@ int xs2file(char * fname, ExportFileType fileType )
             real_filename = expandPathVariable(fileName[0]);
 
             /* Call the function for exporting file */
-            status = exportToFile(figureUID, real_filename, fileType, jpegCompressionQuality, orientation);
+            status = exportToFile((char *)figureUID, real_filename, fileType,
+                                  jpegCompressionQuality, orientation);
 
             /* free pointers no more used */
             if (real_filename)

@@ -51,7 +51,8 @@ int sci_uigetdir(char *fname, unsigned long l)
         /* First argument is initial directory */
         if (VarType(1) == sci_strings)
         {
-            GetRhsVar(1, STRING_DATATYPE, &nbRow, &nbCol, &initialDirectoryAdr);
+            GetRhsVar(1, const_cast<char *>(STRING_DATATYPE), &nbRow, &nbCol,
+                      &initialDirectoryAdr);
             if (nbCol != 1)
             {
                 Scierror(999, _("%s: Wrong size for input argument #%d: A string expected.\n"), fname, 1);
@@ -80,7 +81,8 @@ int sci_uigetdir(char *fname, unsigned long l)
         /* Second argument is title */
         if (VarType(2) == sci_strings)
         {
-            GetRhsVar(2, STRING_DATATYPE, &nbRow, &nbCol, &titleAdr);
+            GetRhsVar(2, const_cast<char *>(STRING_DATATYPE), &nbRow, &nbCol,
+                      &titleAdr);
             if (nbCol != 1)
             {
                 Scierror(999, _("%s: Wrong size for input argument #%d: A string expected.\n"), fname, 2);
@@ -110,17 +112,17 @@ int sci_uigetdir(char *fname, unsigned long l)
         switch (Rhs)
         {
             /* Initial path is given */
-        case 1:
-            CallJuigetfileForDirectoryWithInitialdirectory(expandedpath);
-            break;
+            case 1:
+                CallJuigetfileForDirectoryWithInitialdirectory(expandedpath);
+                break;
             /* Initial path and title are given */
-        case 2:
-            CallJuigetfileForDirectoryWithInitialdirectoryAndTitle(expandedpath, title);
-            break;
+            case 2:
+                CallJuigetfileForDirectoryWithInitialdirectoryAndTitle(expandedpath, title);
+                break;
             /* Default call with default path and title */
-        default:
-            CallJuigetfileForDirectoryWithoutInput();
-            break;
+            default:
+                CallJuigetfileForDirectoryWithoutInput();
+                break;
         }
 
         /* Read the size of the selection, if 0 then no file selected */
@@ -128,12 +130,12 @@ int sci_uigetdir(char *fname, unsigned long l)
         /* Read the selection */
         userSelection = getJuigetfileSelection();
     }
-    catch(const GiwsException::JniCallMethodException & exception)
+    catch (const GiwsException::JniCallMethodException & exception)
     {
         Scierror(999, "%s: %s\n", fname, exception.getJavaDescription().c_str());
         return 0;
     }
-    catch(const GiwsException::JniException & e)
+    catch (const GiwsException::JniException & e)
     {
         Scierror(999, _("%s: A Java exception arisen:\n%s"), fname, e.whatStr().c_str());
         return FALSE;
@@ -144,7 +146,8 @@ int sci_uigetdir(char *fname, unsigned long l)
         /* The user selected a file --> returns the files names */
         nbCol = 1;
 
-        CreateVarFromPtr(Rhs + 1, MATRIX_OF_STRING_DATATYPE, &nbRow, &nbCol, userSelection);
+        CreateVarFromPtr(Rhs + 1, const_cast<char *>(MATRIX_OF_STRING_DATATYPE),
+                         &nbRow, &nbCol, userSelection);
         if (userSelection)
         {
             for (int i = 0; i < nbRow; i++)
@@ -165,7 +168,8 @@ int sci_uigetdir(char *fname, unsigned long l)
         /* The user canceled the selection --> returns an empty matrix */
         nbRow = 1;
         nbCol = 1;
-        CreateVarFromPtr(Rhs + 1, MATRIX_OF_STRING_DATATYPE, &nbRow, &nbCol, NULL);
+        CreateVarFromPtr(Rhs + 1, const_cast<char *>(MATRIX_OF_STRING_DATATYPE),
+                         &nbRow, &nbCol, NULL);
     }
 
     LhsVar(1) = Rhs + 1;

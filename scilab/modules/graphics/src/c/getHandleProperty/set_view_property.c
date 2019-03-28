@@ -58,7 +58,7 @@ int set_view_property(void* _pvCtx, char* pobjUID, size_t stackPointer, int valu
 
     status = setGraphicObjectProperty(pobjUID, __GO_VIEW__, &viewType, jni_int, 1);
 
-    if (status = TRUE)
+    if (status == TRUE)
     {
         return SET_PROPERTY_SUCCEED;
     }

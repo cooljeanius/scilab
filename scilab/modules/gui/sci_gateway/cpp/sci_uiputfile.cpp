@@ -74,7 +74,8 @@ int sci_uiputfile(char *fname, unsigned long fname_len)
             return 0;
         }
 
-        GetRhsVar(1, MATRIX_OF_STRING_DATATYPE, &nbRow, &nbCol, &mask);
+        GetRhsVar(1, const_cast<char *>(MATRIX_OF_STRING_DATATYPE),
+                  &nbRow, &nbCol, &mask);
 
         if (nbCol == 1)
         {
@@ -110,7 +111,8 @@ int sci_uiputfile(char *fname, unsigned long fname_len)
             return 0;
         }
 
-        GetRhsVar(2, MATRIX_OF_STRING_DATATYPE, &nbRow2, &nbCol2, &initialDirectory);
+        GetRhsVar(2, const_cast<char *>(MATRIX_OF_STRING_DATATYPE),
+                  &nbRow2, &nbCol2, &initialDirectory);
 
         if (nbCol2 != 1 || nbRow2 != 1)
         {
@@ -132,7 +134,8 @@ int sci_uiputfile(char *fname, unsigned long fname_len)
             return 0;
         }
 
-        GetRhsVar(3, MATRIX_OF_STRING_DATATYPE, &nbRow3, &nbCol3, &titleBox);
+        GetRhsVar(3, const_cast<char *>(MATRIX_OF_STRING_DATATYPE),
+                  &nbRow3, &nbCol3, &titleBox);
 
         if (nbCol3 != 1 || nbRow3 != 1)
         {
@@ -198,13 +201,16 @@ int sci_uiputfile(char *fname, unsigned long fname_len)
         nbColOutSelection = 1;
 
         // "" is returned as filename
-        CreateVarFromPtr(Rhs + 1, MATRIX_OF_STRING_DATATYPE, &nbRowOutSelection, &nbColOutSelection, selection);
+        CreateVarFromPtr(Rhs + 1, const_cast<char *>(MATRIX_OF_STRING_DATATYPE),
+                         &nbRowOutSelection, &nbColOutSelection, selection);
         LhsVar(1) = Rhs + 1;
 
         if (Lhs > 1)
         {
             // "" is returned as pathname
-            CreateVarFromPtr(Rhs + 2, MATRIX_OF_STRING_DATATYPE, &nbRowOutSelection, &nbColOutSelection, selection);
+            CreateVarFromPtr(Rhs + 2,
+                             const_cast<char *>(MATRIX_OF_STRING_DATATYPE),
+                             &nbRowOutSelection, &nbColOutSelection, selection);
             LhsVar(2) = Rhs + 2;
         }
 
@@ -219,7 +225,9 @@ int sci_uiputfile(char *fname, unsigned long fname_len)
                 return 0;
             }
             tmp[0] = 0;
-            CreateVarFromPtr(Rhs + 3, MATRIX_OF_DOUBLE_DATATYPE, &nbRowOutSelection, &nbColOutSelection, &tmp);
+            CreateVarFromPtr(Rhs + 3,
+                             const_cast<char *>(MATRIX_OF_DOUBLE_DATATYPE),
+                             &nbRowOutSelection, &nbColOutSelection, &tmp);
             FREE(tmp);
             tmp = NULL;
             LhsVar(3) = Rhs + 3;
@@ -231,17 +239,21 @@ int sci_uiputfile(char *fname, unsigned long fname_len)
     // Only one output then it contains path+filenames
     if (Lhs == 1)
     {
-        CreateVarFromPtr(Rhs + 1, MATRIX_OF_STRING_DATATYPE, &nbRowOutSelection, &nbColOutSelection, selection);
+        CreateVarFromPtr(Rhs + 1, const_cast<char *>(MATRIX_OF_STRING_DATATYPE),
+                         &nbRowOutSelection, &nbColOutSelection, selection);
         LhsVar(1) = Rhs + 1;
         PutLhsVar();
         return 0;
     }
 
     // More than one output
-    CreateVarFromPtr(Rhs + 1, MATRIX_OF_STRING_DATATYPE, &nbRowOutSelection, &nbColOutSelection, selectionFileNames);
+    CreateVarFromPtr(Rhs + 1, const_cast<char *>(MATRIX_OF_STRING_DATATYPE),
+                     &nbRowOutSelection, &nbColOutSelection,
+                     selectionFileNames);
 
     nbColOutPath = (int)strlen(selectionPathName);
-    CreateVarFromPtr(Rhs + 2, STRING_DATATYPE, &nbColOutPath, &nbRowOutPath, &selectionPathName);
+    CreateVarFromPtr(Rhs + 2, const_cast<char *>(STRING_DATATYPE),
+                     &nbColOutPath, &nbRowOutPath, &selectionPathName);
 
     LhsVar(1) = Rhs + 1;
     LhsVar(2) = Rhs + 2;
@@ -255,7 +267,8 @@ int sci_uiputfile(char *fname, unsigned long fname_len)
             return 0;
         }
         tmp[0] = filterIndex;
-        CreateVarFromPtr(Rhs + 3, MATRIX_OF_DOUBLE_DATATYPE, &nbRowOutFilterIndex, &nbColOutFilterIndex, &tmp);
+        CreateVarFromPtr(Rhs + 3, const_cast<char *>(MATRIX_OF_DOUBLE_DATATYPE),
+                         &nbRowOutFilterIndex, &nbColOutFilterIndex, &tmp);
         FREE(tmp);
         tmp = NULL;
         LhsVar(3) = Rhs + 3;

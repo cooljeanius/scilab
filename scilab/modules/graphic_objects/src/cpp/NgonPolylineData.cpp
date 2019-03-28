@@ -29,28 +29,28 @@ NgonPolylineData::NgonPolylineData(void)
     yShift = NULL;
     zShift = NULL;
 
-    xShiftSet = 0;
-    yShiftSet = 0;
-    zShiftSet = 0;
+    xShiftSet_f = 0;
+    yShiftSet_f = 0;
+    zShiftSet_f = 0;
 
     coordinatesShift = NULL;
 
-    zCoordinatesSet = 0;
+    zCoordinatesSet_f = 0;
 }
 
 NgonPolylineData::~NgonPolylineData(void)
 {
-    if (xShiftSet)
+    if (xShiftSet_f)
     {
         delete [] xShift;
     }
 
-    if (yShiftSet)
+    if (yShiftSet_f)
     {
         delete [] yShift;
     }
 
-    if (zShiftSet)
+    if (zShiftSet_f)
     {
         delete [] zShift;
     }
@@ -60,26 +60,26 @@ int NgonPolylineData::getPropertyFromName(int propertyName)
 {
     switch (propertyName)
     {
-    case __GO_DATA_MODEL_NUM_ELEMENTS_ARRAY__ :
-        return NUM_ELEMENTS_ARRAY;
-    case __GO_DATA_MODEL_X_COORDINATES_SHIFT__ :
-        return X_COORDINATES_SHIFT;
-    case __GO_DATA_MODEL_Y_COORDINATES_SHIFT__ :
-        return Y_COORDINATES_SHIFT;
-    case __GO_DATA_MODEL_Z_COORDINATES_SHIFT__ :
-        return Z_COORDINATES_SHIFT;
-    case __GO_DATA_MODEL_NUM_ELEMENTS__ :
-        return NUM_ELEMENTS;
-    case __GO_DATA_MODEL_X_COORDINATES_SHIFT_SET__ :
-        return X_COORDINATES_SHIFT_SET;
-    case __GO_DATA_MODEL_Y_COORDINATES_SHIFT_SET__ :
-        return Y_COORDINATES_SHIFT_SET;
-    case __GO_DATA_MODEL_Z_COORDINATES_SHIFT_SET__ :
-        return Z_COORDINATES_SHIFT_SET;
-    case __GO_DATA_MODEL_Z_COORDINATES_SET__ :
-        return Z_COORDINATES_SET;
-    default :
-        return NgonGeneralData::getPropertyFromName(propertyName);
+        case __GO_DATA_MODEL_NUM_ELEMENTS_ARRAY__ :
+            return NUM_ELEMENTS_ARRAY;
+        case __GO_DATA_MODEL_X_COORDINATES_SHIFT__ :
+            return X_COORDINATES_SHIFT;
+        case __GO_DATA_MODEL_Y_COORDINATES_SHIFT__ :
+            return Y_COORDINATES_SHIFT;
+        case __GO_DATA_MODEL_Z_COORDINATES_SHIFT__ :
+            return Z_COORDINATES_SHIFT;
+        case __GO_DATA_MODEL_NUM_ELEMENTS__ :
+            return NUM_ELEMENTS;
+        case __GO_DATA_MODEL_X_COORDINATES_SHIFT_SET__ :
+            return X_COORDINATES_SHIFT_SET;
+        case __GO_DATA_MODEL_Y_COORDINATES_SHIFT_SET__ :
+            return Y_COORDINATES_SHIFT_SET;
+        case __GO_DATA_MODEL_Z_COORDINATES_SHIFT_SET__ :
+            return Z_COORDINATES_SHIFT_SET;
+        case __GO_DATA_MODEL_Z_COORDINATES_SET__ :
+            return Z_COORDINATES_SET;
+        default :
+            return NgonGeneralData::getPropertyFromName(propertyName);
     }
 
 }
@@ -170,17 +170,17 @@ void NgonPolylineData::getDataProperty(int property, void **_pvData)
 
 int NgonPolylineData::getNumElements(void)
 {
-    return numVerticesPerGon;
+    return numVerticesPerGon_f;
 }
 
-void NgonPolylineData::setZCoordinatesSet(int zCoordinatesSet)
+void NgonPolylineData::setZCoordinatesSet(int zCoordinatesSet_param)
 {
-    this->zCoordinatesSet = zCoordinatesSet;
+    this->zCoordinatesSet_f = zCoordinatesSet_param;
 }
 
 int NgonPolylineData::getZCoordinatesSet(void)
 {
-    return this->zCoordinatesSet;
+    return this->zCoordinatesSet_f;
 }
 
 double* NgonPolylineData::getXCoordinatesShift(void)
@@ -190,12 +190,12 @@ double* NgonPolylineData::getXCoordinatesShift(void)
 
 int NgonPolylineData::setXCoordinatesShift(double const* data, int numElements)
 {
-    if (xShiftSet == 0)
+    if (xShiftSet_f == 0)
     {
 
         try
         {
-            xShift = new double[numVerticesPerGon];
+            xShift = new double[numVerticesPerGon_f];
         }
         catch (const std::exception& e)
         {
@@ -203,10 +203,10 @@ int NgonPolylineData::setXCoordinatesShift(double const* data, int numElements)
             return 0;
         }
 
-        xShiftSet = 1;
+        xShiftSet_f = 1;
     }
 
-    for (int i = 0; i < numVerticesPerGon; i++)
+    for (int i = 0; i < numVerticesPerGon_f; i++)
     {
         xShift[i] = data[i];
     }
@@ -221,12 +221,12 @@ double* NgonPolylineData::getYCoordinatesShift()
 
 int NgonPolylineData::setYCoordinatesShift(double const* data, int numElements)
 {
-    if (yShiftSet == 0)
+    if (yShiftSet_f == 0)
     {
 
         try
         {
-            yShift = new double[numVerticesPerGon];
+            yShift = new double[numVerticesPerGon_f];
         }
         catch (const std::exception& e)
         {
@@ -234,10 +234,10 @@ int NgonPolylineData::setYCoordinatesShift(double const* data, int numElements)
             return 0;
         }
 
-        yShiftSet = 1;
+        yShiftSet_f = 1;
     }
 
-    for (int i = 0; i < numVerticesPerGon; i++)
+    for (int i = 0; i < numVerticesPerGon_f; i++)
     {
         yShift[i] = data[i];
     }
@@ -252,60 +252,60 @@ double* NgonPolylineData::getZCoordinatesShift()
 
 int NgonPolylineData::getXCoordinatesShiftSet(void)
 {
-    return xShiftSet;
+    return xShiftSet_f;
 }
 
-void NgonPolylineData::setXCoordinatesShiftSet(int xShiftSet)
+void NgonPolylineData::setXCoordinatesShiftSet(int xShiftSet_param)
 {
-    if (xShiftSet == 0 && this->xShiftSet == 1)
+    if (xShiftSet_param == 0 && this->xShiftSet_f == 1)
     {
         delete [] xShift;
         xShift = NULL;
     }
 
-    this->xShiftSet = xShiftSet;
+    this->xShiftSet_f = xShiftSet_param;
 }
 
 int NgonPolylineData::getYCoordinatesShiftSet(void)
 {
-    return yShiftSet;
+    return yShiftSet_f;
 }
 
-void NgonPolylineData::setYCoordinatesShiftSet(int yShiftSet)
+void NgonPolylineData::setYCoordinatesShiftSet(int yShiftSet_param)
 {
-    if (yShiftSet == 0 && this->yShiftSet == 1)
+    if (yShiftSet_param == 0 && this->yShiftSet_f == 1)
     {
         delete [] yShift;
         yShift = NULL;
     }
 
-    this->yShiftSet = yShiftSet;
+    this->yShiftSet_f = yShiftSet_param;
 }
 
 int NgonPolylineData::getZCoordinatesShiftSet(void)
 {
-    return zShiftSet;
+    return zShiftSet_f;
 }
 
-void NgonPolylineData::setZCoordinatesShiftSet(int zShiftSet)
+void NgonPolylineData::setZCoordinatesShiftSet(int zShiftSet_param)
 {
-    if (zShiftSet == 0 && this->zShiftSet == 1)
+    if (zShiftSet_param == 0 && this->zShiftSet_f == 1)
     {
         delete [] zShift;
         zShift = NULL;
     }
 
-    this->zShiftSet = zShiftSet;
+    this->zShiftSet_f = zShiftSet_param;
 }
 
 int NgonPolylineData::setZCoordinatesShift(double const* data, int numElements)
 {
-    if (zShiftSet == 0)
+    if (zShiftSet_f == 0)
     {
 
         try
         {
-            zShift = new double[numVerticesPerGon];
+            zShift = new double[numVerticesPerGon_f];
         }
         catch (const std::exception& e)
         {
@@ -313,10 +313,10 @@ int NgonPolylineData::setZCoordinatesShift(double const* data, int numElements)
             return 0;
         }
 
-        zShiftSet = 1;
+        zShiftSet_f = 1;
     }
 
-    for (int i = 0; i < numVerticesPerGon; i++)
+    for (int i = 0; i < numVerticesPerGon_f; i++)
     {
         zShift[i] = data[i];
     }
@@ -336,18 +336,18 @@ int NgonPolylineData::setNumElementsArray(int const* numElementsArray)
     }
 
     newNumElements = numElementsArray[0] * numElementsArray[1];
-    previousNumElements = numGons * numVerticesPerGon;
+    previousNumElements = numGons_f * numVerticesPerGon_f;
 
     if (newNumElements == 0 && previousNumElements > 0)
     {
-        numVerticesPerGon = 0;
+        numVerticesPerGon_f = 0;
 
         deleteCoordinatesArrays();
 
         return 1;
     }
 
-    if (numGons*numVerticesPerGon != newNumElements)
+    if (numGons_f * numVerticesPerGon_f != newNumElements)
     {
         double* newCoordinates = NULL;
         double* xShiftNew = NULL;
@@ -366,7 +366,7 @@ int NgonPolylineData::setNumElementsArray(int const* numElementsArray)
             return 0;
         }
 
-        if (xShiftSet)
+        if (xShiftSet_f)
         {
             try
             {
@@ -379,7 +379,7 @@ int NgonPolylineData::setNumElementsArray(int const* numElementsArray)
             }
         }
 
-        if (yShiftSet)
+        if (yShiftSet_f)
         {
             try
             {
@@ -392,7 +392,7 @@ int NgonPolylineData::setNumElementsArray(int const* numElementsArray)
             }
         }
 
-        if (zShiftSet)
+        if (zShiftSet_f)
         {
             try
             {
@@ -407,7 +407,7 @@ int NgonPolylineData::setNumElementsArray(int const* numElementsArray)
 
         if (result)
         {
-            if (numGons * numVerticesPerGon > 0)
+            if (numGons_f * numVerticesPerGon_f > 0)
             {
                 delete [] coordinates;
             }
@@ -423,29 +423,29 @@ int NgonPolylineData::setNumElementsArray(int const* numElementsArray)
 
             coordinates = newCoordinates;
 
-            if (xShiftSet)
+            if (xShiftSet_f)
             {
                 copyShiftCoordinatesArray(xShiftNew, xShift, newNumElements);
                 delete [] xShift;
                 xShift = xShiftNew;
             }
 
-            if (yShiftSet)
+            if (yShiftSet_f)
             {
                 copyShiftCoordinatesArray(yShiftNew, yShift, newNumElements);
                 delete [] yShift;
                 yShift = yShiftNew;
             }
 
-            if (zShiftSet)
+            if (zShiftSet_f)
             {
                 copyShiftCoordinatesArray(zShiftNew, zShift, newNumElements);
                 delete [] zShift;
                 zShift = zShiftNew;
             }
 
-            numGons = numElementsArray[0];
-            numVerticesPerGon = numElementsArray[1];
+            numGons_f = numElementsArray[0];
+            numVerticesPerGon_f = numElementsArray[1];
         }
         else
         {
@@ -481,13 +481,13 @@ void NgonPolylineData::copyShiftCoordinatesArray(double * newShift, double const
 {
     int numElementsCopied = 0;
 
-    if (numElementsNew < numVerticesPerGon)
+    if (numElementsNew < numVerticesPerGon_f)
     {
         numElementsCopied = numElementsNew;
     }
     else
     {
-        numElementsCopied = numVerticesPerGon;
+        numElementsCopied = numVerticesPerGon_f;
     }
 
     for (int i = 0; i < numElementsCopied; i++)
@@ -509,25 +509,25 @@ void NgonPolylineData::deleteCoordinatesArrays(void)
         coordinates = NULL;
     }
 
-    if (xShiftSet)
+    if (xShiftSet_f)
     {
         delete [] xShift;
         xShift = NULL;
-        xShiftSet = 0;
+        xShiftSet_f = 0;
     }
 
-    if (yShiftSet)
+    if (yShiftSet_f)
     {
         delete [] yShift;
         yShift = NULL;
-        yShiftSet = 0;
+        yShiftSet_f = 0;
     }
 
-    if (zShiftSet)
+    if (zShiftSet_f)
     {
         delete [] zShift;
         zShift = NULL;
-        zShiftSet = 0;
+        zShiftSet_f = 0;
     }
 }
 

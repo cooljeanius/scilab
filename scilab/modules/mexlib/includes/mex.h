@@ -57,7 +57,9 @@ typedef int (*FGatefuncH) (int *nlhs, mxArray *plhs[], int *nrhs, mxArray *prhs[
 
 typedef int (*Myinterfun) (char *, GatefuncH F);
 
-typedef int (*GT)(void);
+/* GT needs to be allowed to match function pointers with different numbers of
+ * parameters: */
+typedef int (*GT)();
 
 #ifndef __DEF_TABLE_STRUCT__
 #define __DEF_TABLE_STRUCT__
@@ -93,7 +95,7 @@ typedef struct table_struct
 /* mexGetArray : NOT IN MATLAB API - V6.4 compatible*/
 #define mexGetArrayPtr(name,type) mexGetArray(name,type)
 
-void mexPrintf(const char *fmt, ...);
+void mexPrintf(const char *const fmt, ...);
 void C2F(mexprintf)(char *error_msg, int len);
 
 /* mexPutFull: NOT IN MATLAB API - V4 compatible */

@@ -670,13 +670,14 @@ libsciintersci_la_includedir = $(pkgincludedir)
 libsciintersci_la_include_HEADERS = includes/libinter.h
 @MAINTAINER_MODE_TRUE@pkglib_LTLIBRARIES = libsciintersci.la
 @MAINTAINER_MODE_FALSE@noinst_LTLIBRARIES = libsciintersci.la
+CLEANFILES = *.dSYM
 intersci_SOURCES = $(INTERSCI_EXE_C_SOURCES)
 libsciintersci_la_SOURCES = $(INTERSCI_LIB_C_SOURCES)
-libsciintersci_la_CPPFLAGS = -I$(top_srcdir)/libs/MALLOC/includes/ \
-				-I$(top_srcdir)/modules/output_stream/includes/ \
-				-I$(srcdir)/includes/ \
-                -I$(top_srcdir)/modules/string/includes/ \
-                $(AM_CPPFLAGS)
+libsciintersci_la_CPPFLAGS = -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+		     -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+		     -Wp,-I$(srcdir)/includes/ \
+                     -Wp,-I$(top_srcdir)/modules/string/includes/ \
+                     $(AM_CPPFLAGS)
 
 
 # For the code check (splint)
@@ -1254,6 +1255,7 @@ install-strip:
 mostlyclean-generic:
 
 clean-generic:
+	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
 
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
@@ -1346,7 +1348,8 @@ maintainer-clean: maintainer-clean-am
 	-rm -f src/lib/$(DEPDIR)/libsciintersci_la-libinter.Plo
 	-rm -f src/lib/$(DEPDIR)/libsciintersci_la-out.Plo
 	-rm -f Makefile
-maintainer-clean-am: distclean-am maintainer-clean-generic
+maintainer-clean-am: distclean-am maintainer-clean-generic \
+	maintainer-clean-local
 
 mostlyclean: mostlyclean-am
 
@@ -1386,10 +1389,10 @@ uninstall-am: uninstall-binPROGRAMS \
 	install-pdf-am install-pkglibLTLIBRARIES install-ps \
 	install-ps-am install-strip installcheck installcheck-am \
 	installcheck-binPROGRAMS installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags tags-am uninstall uninstall-am uninstall-binPROGRAMS \
-	uninstall-libsciintersci_la_etcDATA \
+	maintainer-clean-generic maintainer-clean-local mostlyclean \
+	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
+	pdf pdf-am ps ps-am tags tags-am uninstall uninstall-am \
+	uninstall-binPROGRAMS uninstall-libsciintersci_la_etcDATA \
 	uninstall-libsciintersci_la_includeHEADERS \
 	uninstall-libsciintersci_la_rootDATA \
 	uninstall-pkglibLTLIBRARIES
@@ -1604,6 +1607,9 @@ distclean-local:
 	-rm -rfv src/*/.deps/* || rmdir src/*/.deps
 
 .PHONY: macros java swig giws
+
+maintainer-clean-local:
+	-rm -rfv *.dSYM || rmdir *.dSYM
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

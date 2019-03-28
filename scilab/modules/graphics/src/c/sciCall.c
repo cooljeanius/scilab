@@ -134,14 +134,8 @@ void Objarc( double * angle1    ,
  * Objpoly :
  *-----------------------------------------------*/
 
-void Objpoly ( double  * x     ,
-               double  * y     ,
-               int   n     ,
-               int   closed,
-               int       mark  ,
-               long    * hdl    )
+void Objpoly(double * x, double * y, int n, int closed, int mark, long * hdl)
 {
-    char * pfigureUID = NULL;
     char * psubwinUID = NULL;
     char * pobjUID = NULL;
 
@@ -645,27 +639,27 @@ void Objplot3d ( char    * fname ,
         /* compute and merge new specified bounds with data bounds */
         switch (iflag[1])
         {
-        case 0:  /* do not change data bounds */
-            break;
-        case 1 :
-        case 3 :
-        case 5 :
-        case 7 : /* Force data bounds=ebox */
-            drect[0] = ebox[0]; /*xmin*/
-            drect[2] = ebox[2]; /*ymin*/
-            drect[1] = ebox[1]; /*xmax*/
-            drect[3] = ebox[3]; /*ymax*/
-            drect[4] = ebox[4]; /*zmin*/
-            drect[5] = ebox[5]; /*zmax*/
-            break;
-        case 2 :
-        case 4 :
-        case 6 :
-        case 8:/* Force data bounds to the x and y bounds */
-            getDrect(x, (*m1) * (*n1), &drect[0], &drect[1], dataBounds[0], dataBounds[1]);
-            getDrect(y, (*m2) * (*n2), &drect[2], &drect[3], dataBounds[2], dataBounds[3]);
-            getDrect(z, (*m3) * (*n3), &drect[4], &drect[5], dataBounds[4], dataBounds[5]);
-            break;
+            case 0:  /* do not change data bounds */
+                break;
+            case 1 :
+            case 3 :
+            case 5 :
+            case 7 : /* Force data bounds=ebox */
+                drect[0] = ebox[0]; /*xmin*/
+                drect[2] = ebox[2]; /*ymin*/
+                drect[1] = ebox[1]; /*xmax*/
+                drect[3] = ebox[3]; /*ymax*/
+                drect[4] = ebox[4]; /*zmin*/
+                drect[5] = ebox[5]; /*zmax*/
+                break;
+            case 2 :
+            case 4 :
+            case 6 :
+            case 8:/* Force data bounds to the x and y bounds */
+                getDrect(x, (*m1) * (*n1), &drect[0], &drect[1], dataBounds[0], dataBounds[1]);
+                getDrect(y, (*m2) * (*n2), &drect[2], &drect[3], dataBounds[2], dataBounds[3]);
+                getDrect(z, (*m3) * (*n3), &drect[4], &drect[5], dataBounds[4], dataBounds[5]);
+                break;
         }
 
         /* merge data bounds and drect */
@@ -854,17 +848,17 @@ void Objplot3d ( char    * fname ,
                 {
                     int intzcol = (int) zcol[i];
                     pNewPolylineUID = ConstructPolyline
-                        (currentSubwinUID,
-                         &(x[*m * i]), &(y[*m * i]), &(z[*m * i]), 0, *m, 1,
-                         &intzcol, NULL, NULL, NULL, NULL, TRUE, FALSE, FALSE, FALSE);
+                                      (currentSubwinUID,
+                                       &(x[*m * i]), &(y[*m * i]), &(z[*m * i]), 0, *m, 1,
+                                       &intzcol, NULL, NULL, NULL, NULL, TRUE, FALSE, FALSE, FALSE);
                 }
                 else
                 {
                     int intzcol = (int) - zcol[i];
                     pNewPolylineUID = ConstructPolyline
-                        (currentSubwinUID,
-                         &(x[*m * i]), &(y[*m * i]), &(z[*m * i]), 0, *m, 1,
-                         NULL, NULL, &intzcol, NULL, NULL, FALSE, FALSE, TRUE, FALSE);
+                                      (currentSubwinUID,
+                                       &(x[*m * i]), &(y[*m * i]), &(z[*m * i]), 0, *m, 1,
+                                       NULL, NULL, &intzcol, NULL, NULL, FALSE, FALSE, TRUE, FALSE);
                 }
             }
             else
@@ -952,8 +946,8 @@ void Objdrawaxis ( char     dir    ,
     checkRedrawing();
 
     pobjUID = ConstructAxis(
-        psubwinUID,
-        dir, tics, x, *nx, y, *ny, val, subint, format, font, textcol, ticscol, flag, seg, nb_tics_labels);
+                  psubwinUID,
+                  dir, tics, x, *nx, y, *ny, val, subint, format, font, textcol, ticscol, flag, seg, nb_tics_labels);
 
     if (pobjUID == NULL)
     {

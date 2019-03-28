@@ -32,12 +32,12 @@ protected:
      * Vertex coordinates array
      * Contiguous (x, y, z) triplets
      */
-    double* vertices;
+    double* vertices_f;
 
     /** Triangle indices array
      * Contiguous (v0, v1, v2) triplets
      */
-    unsigned int* indices;
+    unsigned int* indices_f;
 
     /**
      * Per-vertex or per-facet scalar values

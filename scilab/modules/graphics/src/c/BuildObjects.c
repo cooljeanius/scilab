@@ -275,7 +275,7 @@ char * allocateText(char * pparentsubwinUID,
     releaseGraphicObjectProperty(__GO_CLIP_STATE__, piClipState, jni_int, 1);
 
     /* Check if we should load LaTex / MathML Java libraries */
-    loadTextRenderingAPI(text, nbRow, nbCol);
+    loadTextRenderingAPI((const char *const *)text, nbRow, nbCol);
 
     /* Allocates the String array */
     textDimensions[0] = nbRow;
@@ -428,7 +428,9 @@ char * ConstructLegend(char * pparentsubwinUID, char **text, long long tabofhand
     if (parentType != __GO_AXES__)
     {
         Scierror(999, _("The parent has to be a SUBWIN\n"));
-        releaseGraphicObjectProperty(__GO_PARENT__, parentType, jni_string, 1);
+        releaseGraphicObjectProperty(__GO_PARENT__,
+                                     (void *)(intptr_t)parentType,
+                                     jni_string, 1);
         return (char *)NULL;
     }
 
@@ -524,7 +526,6 @@ char * allocatePolyline(char * pparentsubwinUID, double *pvecx, double *pvecy, d
     char *pobjUID = NULL;
     int i = 0;
     BOOL result = FALSE;
-    char *type = NULL;
     char *polylineID = NULL;
     double barWidth = 0.;
     double arrowSizeFactor = 0.;
@@ -856,11 +857,11 @@ char * ConstructArc(char * pparentsubwinUID, double x, double y,
 /**ConstructRectangle
  * This function creates Rectangle structure and only this to destroy all sons use DelGraphicsSon
  */
-char * ConstructRectangle(char * pparentsubwinUID, double x, double y,
-                          double height, double width, int *foreground, int *background, int isfilled, int isline)
+char *ConstructRectangle(char *pparentsubwinUID, double x, double y,
+                         double height, double width, int *foreground,
+                         int *background, int isfilled, int isline)
 {
     char *pobjUID = NULL;
-    char *type = NULL;
     double upperLeftPoint[3];
     double *clipRegion = NULL;
     int visible = 0;
@@ -957,7 +958,7 @@ char *ConstructSurface(char *pparentsubwinUID, sciTypeOf3D typeof3d,
     char *pobjUID = NULL;
     int parentType = -1;
     int *piParentType = &parentType;
-    char const* surfaceTypes[2] = { __GO_PLOT3D__, __GO_FAC3D__ };
+    int surfaceTypes[2] = { __GO_PLOT3D__, __GO_FAC3D__ };
 
     double *clipRegion = NULL;
 
@@ -1148,7 +1149,7 @@ char *ConstructGrayplot(char *pparentsubwinUID, double *pvecx, double *pvecy, do
 {
     char *pobjUID = NULL;
 
-    char const* objectTypes[3] = { __GO_GRAYPLOT__, __GO_MATPLOT__, __GO_MATPLOT__ };
+    int objectTypes[3] = { __GO_GRAYPLOT__, __GO_MATPLOT__, __GO_MATPLOT__ };
 
     int typeParent = -1;
     int *piTypeParent = &typeParent;
@@ -1872,10 +1873,10 @@ char *ConstructCompoundSeq(int number)
  */
 void ConstructLabel(char * pparentsubwinUID, char const* text, int type)
 {
-    char const* labelProperties[] = { __GO_X_AXIS_LABEL__, __GO_Y_AXIS_LABEL__, __GO_Z_AXIS_LABEL__, __GO_TITLE__ };
+    int labelProperties[] = { __GO_X_AXIS_LABEL__, __GO_Y_AXIS_LABEL__, __GO_Z_AXIS_LABEL__, __GO_TITLE__ };
     int parentType = -1;
     int *piParentType = &parentType;
-    char *labelType = NULL;
+    int labelType = 0;
     char *modelLabelUID = NULL;
     char *pobjUID = NULL;
     int autoPosition = 0;
@@ -1895,7 +1896,7 @@ void ConstructLabel(char * pparentsubwinUID, char const* text, int type)
         return;
     }
 
-    labelType = (char*)labelProperties[type - 1];
+    labelType = labelProperties[type - 1];
 
     getGraphicObjectProperty(getAxesModel(), labelType, jni_string, (void **)&modelLabelUID);
 

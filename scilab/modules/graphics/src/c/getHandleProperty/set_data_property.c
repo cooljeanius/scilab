@@ -182,9 +182,6 @@ int set3ddata(void* _pvCtx, char* pobjUID, AssignedList * tlist )
     double* inputColors;
     int nbInputColors;
 
-    // number of specified colors
-    int nc = 0;
-
     int izcol;
 
     /* no copy now we just perform tests on the matrices */

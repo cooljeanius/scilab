@@ -63,7 +63,7 @@ int set_tics_labels_property(void* _pvCtx, char* pobjUID, size_t stackPointer, i
     stringVector = createCopyStringMatrixFromStack( stackPointer, nbRow * nbCol );
 
     /* Check if we should load LaTex / MathML Java libraries */
-    loadTextRenderingAPI(stringVector, nbRow * nbCol, 1);
+    loadTextRenderingAPI((const char *const *)stringVector, nbRow * nbCol, 1);
 
     status = setGraphicObjectProperty(pobjUID, __GO_TICKS_LABELS__, stringVector, jni_string_vector, nbRow * nbCol);
 

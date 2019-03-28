@@ -24,26 +24,26 @@ extern "C" {
 
 NgonData::NgonData(void)
 {
-    numGons = 0;
-    numVerticesPerGon = 0;
+    numGons_f = 0;
+    numVerticesPerGon_f = 0;
 }
 
 /* To be implemented */
 NgonData::~NgonData(void)
 {
-
+    return;
 }
 
 int NgonData::getPropertyFromName(int propertyName)
 {
     switch (propertyName)
     {
-    case __GO_DATA_MODEL_NUM_GONS__ :
-        return NUM_GONS;
-    case __GO_DATA_MODEL_NUM_VERTICES_PER_GON__ :
-        return NUM_VERTICES_PER_GON;
-    default :
-        return Data3D::getPropertyFromName(propertyName);
+        case __GO_DATA_MODEL_NUM_GONS__ :
+            return NUM_GONS;
+        case __GO_DATA_MODEL_NUM_VERTICES_PER_GON__ :
+            return NUM_VERTICES_PER_GON;
+        default :
+            return Data3D::getPropertyFromName(propertyName);
     }
 
 }
@@ -84,23 +84,23 @@ void NgonData::getDataProperty(int property, void **_pvData)
 
 }
 
-void NgonData::setNumGons(int numGons)
+void NgonData::setNumGons(int numGons_param)
 {
-    this->numGons = numGons;
+    this->numGons_f = numGons_param;
 }
 
 int NgonData::getNumGons(void)
 {
-    return numGons;
+    return numGons_f;
 }
 
-void NgonData::setNumVerticesPerGon(int numVerticesPerGon)
+void NgonData::setNumVerticesPerGon(int numVerticesPerGon_param)
 {
-    this->numVerticesPerGon = numVerticesPerGon;
+    this->numVerticesPerGon_f = numVerticesPerGon_param;
 }
 
 int NgonData::getNumVerticesPerGon(void)
 {
-    return numVerticesPerGon;
+    return numVerticesPerGon_f;
 }
 

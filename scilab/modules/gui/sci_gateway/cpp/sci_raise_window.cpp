@@ -33,13 +33,13 @@ int sci_raise_window(char *fname, unsigned long fname_len)
 
     CheckLhs(1, 1);
 
-    GetRhsVar(1, MATRIX_OF_DOUBLE_DATATYPE, &m1, &n1, &l1);
+    GetRhsVar(1, const_cast<char *>(MATRIX_OF_DOUBLE_DATATYPE), &m1, &n1, &l1);
 
     try
     {
         CallScilabBridge::raiseWindow(getScilabJavaVM(), (int)(*stk(l1)));
     }
-    catch(const GiwsException::JniException & e)
+    catch (const GiwsException::JniException & e)
     {
         Scierror(999, _("%s: A Java exception arisen:\n%s"), fname, e.whatStr().c_str());
         return FALSE;

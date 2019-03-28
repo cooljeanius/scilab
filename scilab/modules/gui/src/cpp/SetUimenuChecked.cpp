@@ -17,7 +17,8 @@ int SetUimenuChecked(void* _pvCtx, char *pobjUID, size_t stackPointer, int value
     int b = (int)FALSE;
     BOOL status = FALSE;
 
-    b = tryGetBooleanValueFromStack(stackPointer, valueType, nbRow, nbCol, "Checked");
+    b = tryGetBooleanValueFromStack(stackPointer, valueType, nbRow, nbCol,
+                                    const_cast<char *>("Checked"));
     if (b == NOT_A_BOOLEAN_VALUE)
     {
         return SET_PROPERTY_ERROR;

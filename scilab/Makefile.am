@@ -498,8 +498,8 @@ pkgconfig_DATA = scilab.pc
 
 check-local: check-code
 check-code:
-	$(MAKE) -C libs check-code
-	$(MAKE) -C modules check-code
+	$(MAKE) -S -C libs check-code
+	$(MAKE) -S -C modules check-code
 
 .PHONY: macros localization doc check-local check-code
 

@@ -148,7 +148,7 @@ void wblong(ft_t ft, long unsigned int ul)
 unsigned short rshort(ft_t ft)
 {
     unsigned short us;
-    fread(&us, 2, 1, ft->fp);
+    (void)fread(&us, 2, 1, ft->fp);
     if (ft->swap)
     {
         us = swapw(us);
@@ -174,7 +174,7 @@ void wshort(ft_t ft, short unsigned int us)
 unsigned long rlong(ft_t ft)
 {
     unsigned long ul;
-    fread(&ul, sizeof(long), 1, ft->fp);
+    (void)fread(&ul, sizeof(long), 1, ft->fp);
     if (ft->swap)
     {
         ul = swapl(ul);
@@ -200,7 +200,7 @@ void wlong(ft_t ft, long unsigned int ul)
 float rfloat(ft_t ft)
 {
     float f;
-    fread(&f, sizeof(float), 1, ft->fp);
+    (void)fread(&f, sizeof(float), 1, ft->fp);
     if (ft->swap)
     {
         f = swapf(f);
@@ -226,7 +226,7 @@ void wfloat(ft_t ft, float f)
 double rdouble(ft_t ft)
 {
     double d;
-    fread(&d, sizeof(double), 1, ft->fp);
+    (void)fread(&d, sizeof(double), 1, ft->fp);
     if (ft->swap)
     {
         d = swapd(d);

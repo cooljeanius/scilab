@@ -212,3 +212,10 @@ modules/*/*.plist
 
 modules/pvm/
 
+# other
+
+*/stamp-checkstyle
+*/stamp-splint
+*/*/stamp-checkstyle
+*/*/stamp-splint
+

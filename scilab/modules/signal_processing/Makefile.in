@@ -897,7 +897,8 @@ am__v_q_0 = -q
 am__v_q_1 = 
 
 # splint options
-SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE
+SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals
+SPLINT_INCLUDE_FLAGS = `echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
 
 ########################### JAVA ######################################
 #### We are delegating java compilation to ant... Thanks to that
@@ -2052,13 +2053,21 @@ check-local: $(top_builddir)/scilab-bin test
 	if test -d $(mydatadir)/tests; then \
 	  @COMMAND="try test_run('$(modulename)');catch exit(-1);end;exit(0)"; export LANG=C; $(top_builddir)/bin/scilab -nwni -nb -e "$$COMMAND"; \
 	fi
-check-code:
-	if test -f build.xml; then \
-		$(ANT) checkstyle; \
-	fi
-	if test -x "$(SPLINT)"; then \
-		$(SPLINT) $(SPLINT_OPTIONS) -I$(top_srcdir)/modules/core/includes/ -I$(top_srcdir)/libs/MALLOC/includes/ -I$(top_srcdir)/modules/localization/includes/ $(INCLUDE_FLAGS) $(CHECK_SRC); \
-	fi
+check-code: stamp-checkstyle stamp-splint
+.PHONY: check-code
+stamp-checkstyle:
+# Some configurations needs to export JAVA_HOME in the current env
+	$(AM_V_at)if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \
+	if test -z "$(USEANT)"; then USEANT=0; else USEANT=1; fi; \
+	if test -f build.xml -a $$USEANT -eq 1; then \
+		$(ANT) $(AM_V_q) checkstyle; \
+	fi; \
+	touch $@
+stamp-splint: $(CHECK_SRC)
+	set -e; if test -x "$(SPLINT)"; then \
+		$(SPLINT) $(SPLINT_OPTIONS) -I$(top_srcdir)/modules/core/includes/ -I$(top_srcdir)/libs/MALLOC/includes/ -I$(top_srcdir)/modules/localization/includes/ $(SPLINT_INCLUDE_FLAGS) $(CHECK_SRC); \
+	fi; \
+	touch $@
 @NEED_JAVA_TRUE@java:
 # Some configurations needs to export JAVA_HOME in the current env
 @NEED_JAVA_TRUE@	$(AM_V_at)if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \

@@ -236,8 +236,12 @@ libscilab_cli_la_LIBADD = $(ENGINE_LIBS) $(NO_GUI_LIBS) $(OTHER_LIBS) $(EXTERNAL
 
 check-local: check-code
 check-code:
-	for mydir in $(SUBDIRS); do \
-	  $(MAKE) -C $${mydir} check-code; \
+	set -e; for mydir in $(SUBDIRS); do \
+	  if test -e $${mydir}/Makefile -a ! -e $${mydir}/stamp-checkstyle -a ! -e $${mydir}/stamp-splint; then \
+	    $(MAKE) -S -C $${mydir} check-code; \
+	  else \
+	    echo "Skipping checking code in $${mydir}"; \
+	  fi; \
 	done
 
 .PHONY: check-local check-code

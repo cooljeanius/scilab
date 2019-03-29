@@ -719,7 +719,8 @@ libjavasci2_la_etc_DATA = etc/javasci.quit etc/javasci.start
 @JAVASCI_TRUE@am__v_q_1 = 
 
 # splint options
-@JAVASCI_TRUE@SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE
+@JAVASCI_TRUE@SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals
+@JAVASCI_TRUE@SPLINT_INCLUDE_FLAGS = `echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
 
 ########################### JAVA ######################################
 #### We are delegating java compilation to ant... Thanks to that
@@ -1271,13 +1272,21 @@ uninstall-am: uninstall-libjavasci2_la_etcDATA \
 @JAVASCI_TRUE@	if test -d $(mydatadir)/tests; then \
 @JAVASCI_TRUE@	  @COMMAND="try test_run('$(modulename)');catch exit(-1);end;exit(0)"; export LANG=C; $(top_builddir)/bin/scilab -nwni -nb -e "$$COMMAND"; \
 @JAVASCI_TRUE@	fi
-@JAVASCI_TRUE@check-code:
-@JAVASCI_TRUE@	if test -f build.xml; then \
-@JAVASCI_TRUE@		$(ANT) checkstyle; \
-@JAVASCI_TRUE@	fi
-@JAVASCI_TRUE@	if test -x "$(SPLINT)"; then \
-@JAVASCI_TRUE@		$(SPLINT) $(SPLINT_OPTIONS) -I$(top_srcdir)/modules/core/includes/ -I$(top_srcdir)/libs/MALLOC/includes/ -I$(top_srcdir)/modules/localization/includes/ $(INCLUDE_FLAGS) $(CHECK_SRC); \
-@JAVASCI_TRUE@	fi
+@JAVASCI_TRUE@check-code: stamp-checkstyle stamp-splint
+@JAVASCI_TRUE@.PHONY: check-code
+@JAVASCI_TRUE@stamp-checkstyle:
+# Some configurations needs to export JAVA_HOME in the current env
+@JAVASCI_TRUE@	$(AM_V_at)if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \
+@JAVASCI_TRUE@	if test -z "$(USEANT)"; then USEANT=0; else USEANT=1; fi; \
+@JAVASCI_TRUE@	if test -f build.xml -a $$USEANT -eq 1; then \
+@JAVASCI_TRUE@		$(ANT) $(AM_V_q) checkstyle; \
+@JAVASCI_TRUE@	fi; \
+@JAVASCI_TRUE@	touch $@
+@JAVASCI_TRUE@stamp-splint: $(CHECK_SRC)
+@JAVASCI_TRUE@	set -e; if test -x "$(SPLINT)"; then \
+@JAVASCI_TRUE@		$(SPLINT) $(SPLINT_OPTIONS) -I$(top_srcdir)/modules/core/includes/ -I$(top_srcdir)/libs/MALLOC/includes/ -I$(top_srcdir)/modules/localization/includes/ $(SPLINT_INCLUDE_FLAGS) $(CHECK_SRC); \
+@JAVASCI_TRUE@	fi; \
+@JAVASCI_TRUE@	touch $@
 @JAVASCI_TRUE@@NEED_JAVA_TRUE@java:
 # Some configurations needs to export JAVA_HOME in the current env
 @JAVASCI_TRUE@@NEED_JAVA_TRUE@	$(AM_V_at)if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \

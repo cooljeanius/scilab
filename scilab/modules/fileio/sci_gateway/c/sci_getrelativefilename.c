@@ -20,11 +20,12 @@
 #include "localization.h"
 #include "freeArrayOfString.h"
 /*--------------------------------------------------------------------------*/
-/* ================================================================================== */
-// sci_getrelativefilename
-//
-// scilab interface to getrelativefilename
-/* ================================================================================== */
+/* ========================================================================== */
+/* sci_getrelativefilename
+ *
+ * scilab interface to getrelativefilename
+ */
+/* ========================================================================== */
 int sci_getrelativefilename(char *fname, unsigned long l)
 {
     static int n1 = 0, m1 = 0, n2 = 0, m2 = 0;
@@ -56,8 +57,7 @@ int sci_getrelativefilename(char *fname, unsigned long l)
             return 0;
         }
 
-        // make sure the names are not too long
-
+        /* make sure the names are not too long: */
         if ( strlen(param1[0]) > PATH_MAX )
         {
             Scierror(999, _("%s: Wrong size for input argument #%d: Must be less than %d characters.\n"), fname, 1, PATH_MAX);

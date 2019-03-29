@@ -197,7 +197,7 @@ SciErr getIntInPList(void* _pvCtx, int * _piAddress, const char * _pstLabel, int
                 }
                 break;
             case CHECK_BOTH:
-                // First value is the min bound
+                /* First value is the min bound: */
                 value_to_check = va_arg(vl, int);
                 if (value_to_check > *_piValue)
                 {
@@ -210,7 +210,7 @@ SciErr getIntInPList(void* _pvCtx, int * _piAddress, const char * _pstLabel, int
                     addErrorMessage(&_SciErr, 999, _("%s: wrong min bound for parameter %s: min bound %d, value %d\n"), "getIntInPList", _pstLabel, value_to_check, *_piValue);
                     return _SciErr;
                 }
-                // Second value is the max bound
+                /* Second value is the max bound: */
                 value_to_check = va_arg(vl, int);
                 va_end(vl);
                 if (value_to_check < *_piValue)
@@ -225,7 +225,7 @@ SciErr getIntInPList(void* _pvCtx, int * _piAddress, const char * _pstLabel, int
                 }
                 break;
             case CHECK_VALUES:
-                // First parameters is int and contains the number of values to check
+                /* 1st parameter is int & contains the no. of values to check */
                 nb_value_to_check = va_arg(vl, int);
                 check_res = 0;
                 for (i = 0; i < nb_value_to_check; i++)
@@ -716,15 +716,17 @@ SciErr getColVectorOfIntInPList(void* _pvCtx, int * _piAddress, const char * _ps
     return _SciErr;
 }
 
-SciErr getColVectorOfDoubleInPList(void* _pvCtx, int * _piAddress, const char * _pstLabel, double * _pdblValue, int * _piFound,
-                                   double _dblDefaultValue, int _iDefaultSize, int * _piSize, int _iLog, enum type_check _eCheck, ...)
+SciErr getColVectorOfDoubleInPList(void *_pvCtx, int *_piAddress, const char *_pstLabel,
+                                   double *_pdblValue, int *_piFound, double _dblDefaultValue,
+                                   int _iDefaultSize, int *_piSize, int _iLog,
+                                   enum type_check _eCheck, ...)
 {
     int pos_label = 0, i = 0;
     int m_label = 0, n_label = 0;
     int m_tmp = 0, n_tmp = 0;
-    int * len_label = NULL;
-    double * tmp_values = NULL;
-    char ** label_list = NULL;
+    int *len_label = NULL;
+    double *tmp_values = NULL;
+    char **label_list = NULL;
     SciErr _SciErr;
 
     _SciErr.iErr = 0;
@@ -747,9 +749,9 @@ SciErr getColVectorOfDoubleInPList(void* _pvCtx, int * _piAddress, const char * 
         _SciErr = getMatrixOfDoubleInList(_pvCtx, _piAddress, pos_label + 1, &m_tmp, &n_tmp, &tmp_values);
         if (!_SciErr.iErr)
         {
-            *_piSize  = m_tmp * n_tmp;
+            *_piSize = m_tmp * n_tmp;
 
-            memcpy( _pdblValue,  tmp_values, sizeof(double) * (*_piSize));
+            memcpy(_pdblValue,  tmp_values, sizeof(double) * (*_piSize));
         }
         else
         {
@@ -777,7 +779,7 @@ SciErr getColVectorOfDoubleInPList(void* _pvCtx, int * _piAddress, const char * 
     {
         va_list vl;
         int nb_value_to_check = 0;
-        double value_to_check = 0;
+        double value_to_check = 0.0;
         int check_res = 0;
 
         va_start(vl, _eCheck);
@@ -787,7 +789,7 @@ SciErr getColVectorOfDoubleInPList(void* _pvCtx, int * _piAddress, const char * 
             case CHECK_SIZE:
                 value_to_check = va_arg(vl, double);
                 va_end(vl);
-                if (value_to_check != *_piSize)
+                if (value_to_check != (double)(*_piSize))
                 {
                     if ((*_piFound != -1) && (_iLog))
                     {
@@ -1184,7 +1186,7 @@ static int commonFindLabel(void* _pvCtx, int * _piAddress, char const * const _p
     return Pos;
 }
 /*--------------------------------------------------------------------------*/
-// c versions of std::fill_n
+/* c versions of std::fill_n */
 void int_fill_n(int* dst, size_t n, int v)
 {
     for (; n; --n, ++dst)
@@ -1197,7 +1199,7 @@ void double_fill_n(double* dst, size_t n, int v)
 {
     for (; n; --n, ++dst)
     {
-        *dst = v;
+        *dst = (double)v;
     }
 }
 /*--------------------------------------------------------------------------*/

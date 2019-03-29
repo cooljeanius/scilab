@@ -103,9 +103,9 @@ int sci_newest(char *fname, unsigned long fname_len)
             Str = (char**)MALLOC(sizeof(char*) * RhsBackup);
             if (Str)
             {
-                // Fake call to CheckRhs to initialize gateway name returned by Get_Iname()
-                // And used in error messages in GetRhsVar
-                // See bug #11398
+                /* Fake call to CheckRhs to initialize gateway name returned by Get_Iname()
+                 * And used in error messages in GetRhsVar
+                 * See bug #11398 */
                 CheckRhs(Rhs, Rhs);
                 for (i = 1; i <= RhsBackup; i++)
                 {

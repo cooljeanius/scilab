@@ -934,14 +934,15 @@ sci_gateway/c/sci_mputl.c \
 sci_gateway/c/sci_tempname.c
 
 libscifileio_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
-			   -Wp,-I$(srcdir)/src/c/ \
-			   -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
-			   -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
-			   -Wp,-I$(top_srcdir)/modules/io/includes/ \
-			   -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
-			   -Wp,-I$(top_srcdir)/modules/string/includes/ \
-			   -Wp,-I$(top_srcdir)/modules/localization/includes/ \
-			   $(AM_CPPFLAGS)
+		   -Wp,-I$(srcdir)/src/c/ \
+		   -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/io/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/string/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+		   -Wp,-I$(top_srcdir)/modules/elementary_functions/includes/ \
+		   $(AM_CPPFLAGS)
 
 @MAINTAINER_MODE_TRUE@pkglib_LTLIBRARIES = libscifileio.la
 @MAINTAINER_MODE_FALSE@noinst_LTLIBRARIES = libscifileio-algo.la libscifileio.la
@@ -1000,7 +1001,7 @@ am__v_q_0 = -q
 am__v_q_1 = 
 
 # splint options
-SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog
+SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr
 SPLINT_INCLUDE_FLAGS = `echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
 
 ########################### JAVA ######################################

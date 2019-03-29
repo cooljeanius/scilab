@@ -1678,7 +1678,17 @@ typedef struct _rec_calloc
 } rec_calloc;
 
 #define rec_size 512
-static rec_calloc calloc_table[rec_size] = {{0, 0}};
+#define tbl_init1 {NULL, 0}
+#define tbl_init2 tbl_init1, tbl_init1
+#define tbl_init4 tbl_init2, tbl_init2
+#define tbl_init8 tbl_init4, tbl_init4
+#define tbl_init16 tbl_init8, tbl_init8
+#define tbl_init32 tbl_init16, tbl_init16
+#define tbl_init64 tbl_init32, tbl_init32
+#define tbl_init128 tbl_init64, tbl_init64
+#define tbl_init256 tbl_init128, tbl_init128
+#define tbl_init512 tbl_init256, tbl_init256
+static rec_calloc calloc_table[rec_size] = {tbl_init512};
 
 
 void *mxCalloc_m(unsigned int n, unsigned int size)
@@ -2402,7 +2412,7 @@ void mexPrintf(const char *const fmt, ...)
     char buf[2048];
 
     va_start(args, fmt);
-    (void)vsprintf(buf, fmt, args );
+    (void)vsnprintf(buf, sizeof(buf), fmt, args );
     sciprint("%s", buf);
     va_end(args);
 }

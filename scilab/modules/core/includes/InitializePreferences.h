@@ -15,4 +15,4 @@
 
 void InitializePreferences(void);
 
-#endif // __INITIALIZEPREFERENCES_H__
+#endif /* __INITIALIZEPREFERENCES_H__ */

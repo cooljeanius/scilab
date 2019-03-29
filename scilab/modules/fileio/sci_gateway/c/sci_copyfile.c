@@ -168,7 +168,7 @@ int sci_copyfile(char *fname, unsigned long fname_len)
                         }
 
                         destFullFilename = (wchar_t *) MALLOC(sizeof(wchar_t) * ((int)wcslen(pStVarTwoExpanded) +
-                            (int)wcslen(filename) + (int)wcslen(L"/") + 1));
+                                                              (int)wcslen(filename) + (int)wcslen(L"/") + 1));
                         wcscpy(destFullFilename, pStVarTwoExpanded);
                         wcscat(destFullFilename, L"/");
                         wcscat(destFullFilename, filename);
@@ -321,13 +321,15 @@ static int returnCopyFileResultOnStack(int ierr, char *fname)
         wchar_t buffer[BUFFER_SIZE];
 
         if (FormatMessageW(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, NULL,
-            dw, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, BUFFER_SIZE, NULL) == 0)
+                           dw, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, BUFFER_SIZE, NULL) == 0)
         {
             wcscpy(buffer, L"Unknown Error");
         }
 
-        // Compatibility with previous version , we return 0
-        //dError = (double) dw;
+        /* Compatibility with previous version, we return 0: */
+#if 0
+        dError = (double)dw;
+#endif /* 0 */
         dError = (double)0.;
 
         sciError = (wchar_t *) MALLOC(sizeof(wchar_t) * ((int)wcslen(buffer) + 1));
@@ -353,9 +355,11 @@ static int returnCopyFileResultOnStack(int ierr, char *fname)
 #else
     if (ierr)
     {
-        // Compatibility with previous version , we return 0
-        //dError = (double) ierr;
-        //dError = (double) 0.;
+        /* Compatibility with previous version, we return 0: */
+#if 0
+        dError = (double)ierr;
+        dError = (double)0.;
+#endif /* 0 */
         sciError = to_wide_string(strerror(errno));
         if (sciError == NULL)
         {

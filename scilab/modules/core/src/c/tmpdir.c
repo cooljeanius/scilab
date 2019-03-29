@@ -112,6 +112,7 @@ void createScilabTMPDIR(void)
     if ( alreadyCreated == 0 )
     {
         static char bufenv[PATH_MAX + 16];
+        char *tmp_dir_strdup;
         alreadyCreated++;
         /* If the env variable TMPDIR is set, honor this preference */
         if ((tmpdir = getenv("TMPDIR")) != NULL &&
@@ -125,12 +126,12 @@ void createScilabTMPDIR(void)
             /* Two cases where we can be here:
              *  - When TMPDIR is not set (all cases)
              *  - If SCI_TMP_* is in the TMPDIR variable, switch to the default
-            */
+             */
             strcpy(tmp_dir, "/tmp");
         }
 
-        /* XXXXXX will be randomized by mkdtemp */
-        char *tmp_dir_strdup = realpath(tmp_dir, NULL); /* Copy to avoid to have the same buffer as input and output for sprintf */
+        /* the "XXXXXX" will be randomized by mkdtemp */
+        tmp_dir_strdup = realpath(tmp_dir, NULL); /* Copy to avoid to have the same buffer as input and output for sprintf */
         sprintf(tmp_dir, "%s/SCI_TMP_%d_XXXXXX", tmp_dir_strdup, (int) getpid());
         free(tmp_dir_strdup);
 

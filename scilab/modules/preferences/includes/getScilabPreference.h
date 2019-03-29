@@ -48,4 +48,4 @@ PREFERENCES_SCILAB_IMPEXP const ScilabPreferences * getScilabPreferences(void);
 PREFERENCES_SCILAB_IMPEXP void reloadScilabPreferences(void);
 PREFERENCES_SCILAB_IMPEXP void clearScilabPreferences(void);
 
-#endif // __GETSCILABPREFERENCES_H__
+#endif /* __GETSCILABPREFERENCES_H__ */

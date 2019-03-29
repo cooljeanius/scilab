@@ -58,7 +58,6 @@ BOOL isdirW(const wchar_t * wcpath)
 {
     BOOL bOK = FALSE;
 #ifndef _MSC_VER
-    /*@unused@*/ struct stat buf;
     char *path = wide_string_to_UTF8(wcpath);
     if (path == NULL)
     {

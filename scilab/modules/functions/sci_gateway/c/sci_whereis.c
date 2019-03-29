@@ -116,7 +116,7 @@ int sci_whereis(char *fname, unsigned long fname_len)
 
         if ( (librariesResultSize == 0) || (librariesResult == NULL) )
         {
-            // return []
+            /* return [] */
             sciErr = createMatrixOfDouble(pvApiCtx, Rhs + 1, 0, 0, NULL);
             if (sciErr.iErr)
             {

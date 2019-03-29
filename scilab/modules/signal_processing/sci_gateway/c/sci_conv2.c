@@ -105,7 +105,7 @@ int sci_conv2(char *fname, unsigned long fname_len)
             return 0;
         }
 
-        //check type
+        /*check type */
         sciErr = getVarType(pvApiCtx, piAddr, &iType);
         if (sciErr.iErr)
         {
@@ -121,7 +121,7 @@ int sci_conv2(char *fname, unsigned long fname_len)
             return 0;
         }
 
-        //get complexity
+        /* get complexity */
         if (isVarComplex(pvApiCtx, piAddr))
         {
             sciErr = getComplexMatrixOfDouble(pvApiCtx, piAddr, &mC, &nC, &Cr, &Ci);
@@ -162,7 +162,7 @@ int sci_conv2(char *fname, unsigned long fname_len)
             return 0;
         }
 
-        //check type
+        /* check type */
         sciErr = getVarType(pvApiCtx, piAddr, &iType);
         if (sciErr.iErr)
         {
@@ -178,7 +178,7 @@ int sci_conv2(char *fname, unsigned long fname_len)
             return 0;
         }
 
-        //get complexity
+        /* get complexity */
         if (isVarComplex(pvApiCtx, piAddr))
         {
             sciErr = getComplexMatrixOfDouble(pvApiCtx, piAddr, &mR, &nR, &Rr, &Ri);
@@ -220,7 +220,7 @@ int sci_conv2(char *fname, unsigned long fname_len)
             return 0;
         }
 
-        //check type
+        /* check type */
         sciErr = getVarType(pvApiCtx, piAddr, &iType);
         if (sciErr.iErr)
         {
@@ -236,7 +236,7 @@ int sci_conv2(char *fname, unsigned long fname_len)
             return 0;
         }
 
-        //get complexity
+        /* get complexity */
         if (isVarComplex(pvApiCtx, piAddr))
         {
             sciErr = getComplexMatrixOfDouble(pvApiCtx, piAddr, &mA, &nA, &Ar, &Ai);
@@ -260,7 +260,7 @@ int sci_conv2(char *fname, unsigned long fname_len)
 
         }
 
-        //Compute result sizes
+        /* Compute result sizes */
         if (iopt == 1 )
         {
             if (mC == 0 || nR == 0)
@@ -300,9 +300,9 @@ int sci_conv2(char *fname, unsigned long fname_len)
 
         if (Ri == NULL && Ci == NULL && Ai == NULL)
         {
-            //real case
+            /* real case */
             double *Tr = NULL;
-            //Allocate result
+            /* Allocate result */
             sciErr = allocMatrixOfDouble(pvApiCtx, Rhs + 1, mOut, nOut, &Outr);
             if (sciErr.iErr)
             {
@@ -323,7 +323,7 @@ int sci_conv2(char *fname, unsigned long fname_len)
         else
         {
             double *Tr = NULL, *Ti = NULL;
-            //Allocate result
+            /* Allocate result */
             sciErr = allocComplexMatrixOfDouble(pvApiCtx, Rhs + 1, mOut, nOut, &Outr, &Outi);
             if (sciErr.iErr)
             {
@@ -359,7 +359,7 @@ int sci_conv2(char *fname, unsigned long fname_len)
             return 0;
         }
 
-        //check type
+        /* check type */
         sciErr = getVarType(pvApiCtx, piAddr, &iType);
         if (sciErr.iErr)
         {
@@ -375,7 +375,7 @@ int sci_conv2(char *fname, unsigned long fname_len)
             return 0;
         }
 
-        //get complexity
+        /* get complexity */
         if (isVarComplex(pvApiCtx, piAddr))
         {
             sciErr = getComplexMatrixOfDouble(pvApiCtx, piAddr, &mA, &nA, &Ar, &Ai);
@@ -408,7 +408,7 @@ int sci_conv2(char *fname, unsigned long fname_len)
             return 0;
         }
 
-        //check type
+        /* check type */
         sciErr = getVarType(pvApiCtx, piAddr, &iType);
         if (sciErr.iErr)
         {
@@ -424,7 +424,7 @@ int sci_conv2(char *fname, unsigned long fname_len)
             return 0;
         }
 
-        //get complexity
+        /* get complexity */
         if (isVarComplex(pvApiCtx, piAddr))
         {
             sciErr = getComplexMatrixOfDouble(pvApiCtx, piAddr, &mB, &nB, &Br, &Bi);
@@ -492,8 +492,8 @@ int sci_conv2(char *fname, unsigned long fname_len)
 
         if (Ai == NULL && Bi == NULL)
         {
-            //real case
-            //Allocate result
+            /* real case */
+            /* Allocate result */
             sciErr = allocMatrixOfDouble(pvApiCtx, Rhs + 1, mOut, nOut, &Outr);
             if (sciErr.iErr)
             {
@@ -506,7 +506,7 @@ int sci_conv2(char *fname, unsigned long fname_len)
         }
         else
         {
-            //Allocate result
+            /* Allocate result */
             sciErr = allocComplexMatrixOfDouble(pvApiCtx, Rhs + 1, mOut, nOut, &Outr, &Outi);
             if (sciErr.iErr)
             {

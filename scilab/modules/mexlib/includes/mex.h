@@ -38,6 +38,8 @@ extern "C" {
 #  else
 #   if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201710L)
 #    define ATTRIBUTE_NORETURN _Noreturn
+#   else
+#    define ATTRIBUTE_NORETURN /* (nothing) */
 #   endif /* C11 */
 #  endif /* GCC */
 # endif /* C++ */
@@ -78,16 +80,20 @@ typedef struct table_struct
 #define COMPLEX 1
 
 #ifndef NULL
-#define NULL 0
+#define NULL (void *)0
 #endif
 
 #define mxCreateFull mxCreateDoubleMatrix
 
 #ifndef __cplusplus
-#ifndef bool
-#define bool int
-#endif
-#endif
+# if !defined(bool) && !defined(_STDBOOL_H_) && !defined(__bool_true_false_are_defined)
+#  if defined(S_SPLINT_S)
+typedef int bool;
+#  else
+#   define bool int
+#  endif /* S_SPLINT_S */
+# endif /* bool not already defined */
+#endif /* !__cplusplus */
 
 /* mexGetMatrixPtr - mexGetArrayPtr : NOT IN MATLAB API - V6.4 compatible*/
 #define mexGetMatrixPtr(name) mexGetArrayPtr(name, "caller")

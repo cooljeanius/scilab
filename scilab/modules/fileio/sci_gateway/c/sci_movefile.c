@@ -297,8 +297,10 @@ static int returnMoveFileResultOnStack(int ierr, char *fname)
             wcscpy(buffer, L"Unknown Error");
         }
 
-        // for compatibilty with copyfile, we return 0 (error)
-        //dError = (double) dw;
+        /* for compatibilty with copyfile, we return 0 (error) */
+#if 0
+        dError = (double)dw;
+#endif /* 0 */
         dError = (double)0;
 
         sciError[0] = (wchar_t *) MALLOC(sizeof(wchar_t) * ((int)wcslen(buffer) + 1));
@@ -324,8 +326,10 @@ static int returnMoveFileResultOnStack(int ierr, char *fname)
 #else
     if (ierr)
     {
-        // for compatibilty with copyfile, we return 0 (error)
-        //dError = (double) ierr;
+        /* for compatibilty with copyfile, we return 0 (error) */
+#if 0
+        dError = (double)ierr;
+#endif /* 0 */
         dError = (double)0.;
 
         sciError[0] = to_wide_string(strerror(errno));

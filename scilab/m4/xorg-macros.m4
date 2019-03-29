@@ -1635,6 +1635,8 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wparentheses])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wmissing-noreturn])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wmissing-format-attribute])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wredundant-decls])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wshorten-64-to-32])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wdouble-promotion])
 
 # These are currently disabled because they are noisy.  They will be enabled
 # in the future once the codebase is sufficiently modernized to silence
@@ -1675,13 +1677,19 @@ else
   AC_MSG_NOTICE([handling casts between pointers and integers and vice versa is easier when we have intptr_t and uintptr_t, so skipping erroring on such warnings due to missing types])
 fi
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=pointer-compare])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=endif-labels])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=endif-labels], [-Werror=extra-tokens])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=int-conversion])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=comment])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=newline-eof])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=float-conversion])
 AC_LANG_CASE([Fortran 77],[
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=argument-mismatch])
 ],[C++],[
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=conversion-null])
+],[C],[
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=declaration-after-statement])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=missing-field-initializers])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=redundant-decls])
 ])
 if test "[x${]WERROR_WRITE_STRINGS_CV[}]" != "xyes"; then
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=incompatible-pointer-types])
@@ -1706,8 +1714,9 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wint-to-pointer-cast])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wpointer-to-int-cast])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wincompatible-pointer-types])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wpointer-compare])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wendif-labels])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wendif-labels], [-Wextra-tokens])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wint-conversion])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wfloat-conversion])
 AC_LANG_CASE([Fortran 77],[
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wargument-mismatch])
 ],[C++],[

@@ -36794,7 +36794,7 @@ esac
 # Provided by math.h
 
 LDFLAGS="${LDFLAGS} ${LIBM}"
-for ac_func in pow sqrt finite floor exp10
+for ac_func in ceil ceilf pow sqrt finite floor exp10 log10
 do :
   as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
 ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"
@@ -38035,7 +38035,8 @@ fi
 
 for ac_func in __argz_count __argz_next __argz_stringify dlopen \
 dyld_stub_binding_helper localeconv lt_dlopen mblen mbrlen memchr \
-mempcpy nl_langinfo realpath stpcpy strcspn strspn strtoul wcwidth
+mempcpy nl_langinfo realpath stpcpy strcspn strncasecmp strspn strtoul \
+wcwidth
 do :
   as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
 ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"
@@ -38122,7 +38123,7 @@ netinet/in.h nlist.h param.h pwd.h regex.h select.h sgtty.h \
 signal.h socket.h stddef.h stdio.h stdio_ext.h sys/file.h \
 sys/ioctl.h sys/param.h sys/socket.h sys/time.h sys/timeb.h \
 sys/utsname.h syslog.h term.h termcap.h termio.h termios.h \
-time.h types.h utime.h utsname.h wchar.h wctype.h wtloop.c
+time.h types.h utime.h utsname.h wchar.h wctype.h wtloop.c xlocale.h
 do :
   as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
 ac_fn_c_check_header_mongrel "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default"
@@ -53893,7 +53894,7 @@ $as_echo_n "checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later...
 
 
 cat > conftest.$ac_ext <<EOF
-#line 53896 "configure"
+#line 53897 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TCL_INCLUDE_PATH/$CHK_TCL_INC_NAME"
@@ -54208,7 +54209,7 @@ $as_echo_n "checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later... " 
 
 
 cat > conftest.$ac_ext <<EOF
-#line 54211 "configure"
+#line 54212 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TK_INCLUDE_PATH/$CHK_TK_INC_NAME"
@@ -54826,7 +54827,7 @@ $as_echo_n "checking saxon... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 54829 "configure"
+// #line 54830 "configure"
 import java.util.regex.Pattern;
 
 import com.icl.saxon.Loader;
@@ -54942,7 +54943,7 @@ $as_echo_n "checking jlatexmath-fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 54945 "configure"
+// #line 54946 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.fop.JLaTeXMathObj;

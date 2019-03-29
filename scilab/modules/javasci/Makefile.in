@@ -719,7 +719,7 @@ libjavasci2_la_etc_DATA = etc/javasci.quit etc/javasci.start
 @JAVASCI_TRUE@am__v_q_1 = 
 
 # splint options
-@JAVASCI_TRUE@SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals
+@JAVASCI_TRUE@SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog
 @JAVASCI_TRUE@SPLINT_INCLUDE_FLAGS = `echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
 
 ########################### JAVA ######################################
@@ -1477,6 +1477,8 @@ uninstall-am: uninstall-libjavasci2_la_etcDATA \
 
 @JAVASCI_TRUE@distclean-local:
 @JAVASCI_TRUE@	rm -f $(builddir)/help/*/.last_successful_build_javaHelp $(builddir)/help/*/.list_*
+@JAVASCI_TRUE@	if test -e stamp-checkstyle; then rm -f stamp-checkstyle; fi
+@JAVASCI_TRUE@	if test -e stamp-splint; then rm -f stamp-splint; fi
 @JAVASCI_TRUE@	-rm -rfv .deps/* || rmdir .deps
 @JAVASCI_TRUE@	-rm -rfv src/.deps/* || rmdir src/.deps
 @JAVASCI_TRUE@	-rm -rfv src/*/.deps/* || rmdir src/*/.deps

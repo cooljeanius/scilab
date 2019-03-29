@@ -12,7 +12,7 @@
  */
 /*--------------------------------------------------------------------------*/
 #if defined(__linux__)
-#define _GNU_SOURCE             /* Bug 5673 fix: avoid dependency on GLIBC_2.7 */
+#define _GNU_SOURCE            /* Bug 5673 fix: avoid dependency on GLIBC_2.7 */
 #endif
 
 #include <stdio.h>
@@ -39,7 +39,7 @@ static void set_xxscanf(FILE * fp, XXSCANF * xxscanf, char **target, char **strv
     }
     else
     {
-        *target = (char *)fp; /*@access <FILE *>@*/
+        /*@access FILE@*/ *target = (char *)fp;
         *xxscanf = (XXSCANF) fscanf;
     }
 }
@@ -359,7 +359,8 @@ int do_xxscanf(char *fname, FILE * fp, char *format, int *nargs, char *strv, int
 
             if (*(f1 - 1) == '%' && (*(f1) == 's' || *(f1) == '['))
             {
-                n = sprintf(f2, "%d", MAX_STR - 1);
+                /* FIXME: dunno about the size argument here: */
+                n = snprintf(f2, MAX_STR, "%d", MAX_STR - 1);
                 f2 += n;
                 *f2++ = *f1++;
             }

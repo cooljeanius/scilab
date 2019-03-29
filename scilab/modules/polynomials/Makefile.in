@@ -922,7 +922,7 @@ am__v_q_0 = -q
 am__v_q_1 = 
 
 # splint options
-SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals
+SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog
 SPLINT_INCLUDE_FLAGS = `echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
 
 ########################### JAVA ######################################
@@ -2368,6 +2368,8 @@ install-data-local:
 
 distclean-local:
 	rm -f $(builddir)/help/*/.last_successful_build_javaHelp $(builddir)/help/*/.list_*
+	if test -e stamp-checkstyle; then rm -f stamp-checkstyle; fi
+	if test -e stamp-splint; then rm -f stamp-splint; fi
 	-rm -rfv .deps/* || rmdir .deps
 	-rm -rfv src/.deps/* || rmdir src/.deps
 	-rm -rfv src/*/.deps/* || rmdir src/*/.deps

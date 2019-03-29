@@ -1459,7 +1459,7 @@ LT_LIB_M([])dnl
 # Provided by math.h
 
 LDFLAGS="${LDFLAGS} ${LIBM}"
-AC_CHECK_FUNCS([pow sqrt finite floor exp10])dnl
+AC_CHECK_FUNCS([ceil ceilf pow sqrt finite floor exp10 log10])dnl
 
 ### If isinf exists or not (used to not be the case under Solaris)
 ### See bug #4164
@@ -1503,7 +1503,8 @@ AC_FUNC_MMAP
 AC_FUNC_REALLOC
 AC_CHECK_FUNCS([__argz_count __argz_next __argz_stringify dlopen \
 dyld_stub_binding_helper localeconv lt_dlopen mblen mbrlen memchr \
-mempcpy nl_langinfo realpath stpcpy strcspn strspn strtoul wcwidth])dnl
+mempcpy nl_langinfo realpath stpcpy strcspn strncasecmp strspn strtoul \
+wcwidth])dnl
 
 ########################
 ## test for header files
@@ -1520,7 +1521,7 @@ netinet/in.h nlist.h param.h pwd.h regex.h select.h sgtty.h \
 signal.h socket.h stddef.h stdio.h stdio_ext.h sys/file.h \
 sys/ioctl.h sys/param.h sys/socket.h sys/time.h sys/timeb.h \
 sys/utsname.h syslog.h term.h termcap.h termio.h termios.h \
-time.h types.h utime.h utsname.h wchar.h wctype.h wtloop.c])dnl
+time.h types.h utime.h utsname.h wchar.h wctype.h wtloop.c xlocale.h])dnl
 
 # check header dirent
 AC_HEADER_DIRENT

@@ -2,11 +2,11 @@
  * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) 2007 - INRIA
  * ...
- * 
+ *
  * This file must be used under the terms of the CeCILL.
  * This source file is licensed as described in the file COPYING, which
  * you should have received as part of this distribution.  The terms
- * are also available at    
+ * are also available at
  * http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
  *
  */
@@ -30,7 +30,7 @@ int swap = 0;
 
 /*--------------------------------------------------------------------------*/
 /* =================================================
-* reads data and store them without type conversion 
+* reads data and store them without type conversion
 * =================================================*/
 /*--------------------------------------------------------------------------*/
 #define MGET_CHAR_NC(Type)				        \
@@ -89,64 +89,64 @@ void C2F(mgetnc) (int *fd, void *res, int *n1, char *type, int *ierr)
     c2 = (strlen(type) > 2) ? type[2] : ' ';
     switch (type[0])
     {
-    case 'i':
-        MGET_GEN_NC(int, c1);
-
-        break;
-    case 'l':
-        MGET_GEN_NC(int32_t, c1);
-        break;
-    case 's':
-        MGET_GEN_NC(short, c1);
-
-        break;
-    case 'c':
-        MGET_CHAR_NC(char);
-
-        break;
-    case 'd':
-        MGET_GEN_NC(double, c1);
-
-        break;
-    case 'f':
-        MGET_GEN_NC(float, c1);
-
-        break;
-    case 'u':
-        switch (c1)
-        {
         case 'i':
-            MGET_GEN_NC(unsigned int, c2);
+            MGET_GEN_NC(int, c1);
 
             break;
         case 'l':
-            MGET_GEN_NC(uint32_t, c2);
+            MGET_GEN_NC(int32_t, c1);
             break;
         case 's':
-            MGET_GEN_NC(unsigned short, c2);
-
-            break;
-        case ' ':
-            MGET_GEN_NC(unsigned int, ' ');
+            MGET_GEN_NC(short, c1);
 
             break;
         case 'c':
-            MGET_CHAR_NC(unsigned char);
+            MGET_CHAR_NC(char);
 
+            break;
+        case 'd':
+            MGET_GEN_NC(double, c1);
+
+            break;
+        case 'f':
+            MGET_GEN_NC(float, c1);
+
+            break;
+        case 'u':
+            switch (c1)
+            {
+                case 'i':
+                    MGET_GEN_NC(unsigned int, c2);
+
+                    break;
+                case 'l':
+                    MGET_GEN_NC(uint32_t, c2);
+                    break;
+                case 's':
+                    MGET_GEN_NC(unsigned short, c2);
+
+                    break;
+                case ' ':
+                    MGET_GEN_NC(unsigned int, ' ');
+
+                    break;
+                case 'c':
+                    MGET_CHAR_NC(unsigned char);
+
+                    break;
+                default:
+                    *ierr = 1;
+                    return;
+            }
             break;
         default:
             *ierr = 1;
             return;
-        }
-        break;
-    default:
-        *ierr = 1;
-        return;
     }
     if (items != n)
     {
         *ierr = -(items) - 1;
-      /** sciprint("Read %d out of\n",items,n); **/
+        /** sciprint("Read %d out of\n",items,n); **/
     }
     return;
 }
@@ -159,9 +159,9 @@ void C2F(mgetnc) (int *fd, void *res, int *n1, char *type, int *ierr)
 /* conversion macro  */
 #define CONVGD(Type)				\
   {						\
-    Type *val = (Type *) res ;			\
-    for ( i = items-1 ; i >=0 ; i--)		\
-      res[i] = val[i];				\
+    Type *val = (Type *)res;			\
+    for (i = items-1 ; i >=0 ; i--)		\
+      res[i] = (double)val[i];			\
   }
 /*--------------------------------------------------------------------------*/
 #define MGET_GEN(NumType,cf)  MGET_GEN_NC(NumType,cf); CONVGD(NumType);
@@ -180,59 +180,59 @@ void mget2(FILE * fa, int swap2, double *res, int n, char *type, int *ierr)
     c2 = (strlen(type) > 2) ? type[2] : ' ';
     switch (type[0])
     {
-    case 'i':
-        MGET_GEN(int, c1);
-
-        break;
-    case 'l':
-        MGET_GEN(int32_t, c1);
-        break;
-    case 's':
-        MGET_GEN(short, c1);
-
-        break;
-    case 'c':
-        MGET_CHAR(char);
-
-        break;
-    case 'd':
-        MGET_GEN(double, c1);
-
-        break;
-    case 'f':
-        MGET_GEN(float, c1);
-
-        break;
-    case 'u':
-        switch (c1)
-        {
         case 'i':
-            MGET_GEN(unsigned int, c2);
+            MGET_GEN(int, c1);
 
             break;
         case 'l':
-            MGET_GEN(uint32_t, c2);
+            MGET_GEN(int32_t, c1);
             break;
         case 's':
-            MGET_GEN(unsigned short, c2);
-
-            break;
-        case ' ':
-            MGET_GEN(unsigned int, ' ');
+            MGET_GEN(short, c1);
 
             break;
         case 'c':
-            MGET_CHAR(unsigned char);
+            MGET_CHAR(char);
 
+            break;
+        case 'd':
+            MGET_GEN(double, c1);
+
+            break;
+        case 'f':
+            MGET_GEN(float, c1);
+
+            break;
+        case 'u':
+            switch (c1)
+            {
+                case 'i':
+                    MGET_GEN(unsigned int, c2);
+
+                    break;
+                case 'l':
+                    MGET_GEN(uint32_t, c2);
+                    break;
+                case 's':
+                    MGET_GEN(unsigned short, c2);
+
+                    break;
+                case ' ':
+                    MGET_GEN(unsigned int, ' ');
+
+                    break;
+                case 'c':
+                    MGET_CHAR(unsigned char);
+
+                    break;
+                default:
+                    *ierr = 1;
+                    return;
+            }
             break;
         default:
             *ierr = 1;
             return;
-        }
-        break;
-    default:
-        *ierr = 1;
-        return;
     }
     if (items != n)
     {
@@ -262,7 +262,9 @@ void C2F(mget) (int *fd, double *res, int *n, char *type, int *ierr)
         swap2 = GetSwapStatus(*fd);
         mget2(fa, swap2, res, *n, type, ierr);
         if (*ierr > 0)
+        {
             sciprint(_("%s: Wrong value for input argument #%d: Format not recognized.\n"), "mget", 4);
+        }
     }
     else
     {

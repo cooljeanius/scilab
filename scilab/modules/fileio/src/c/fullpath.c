@@ -61,7 +61,9 @@ char *get_full_path(char *_FullPath, const char *_Path, size_t _SizeInBytes)
     char *rp = NULL;
     int lenPath = (int)strlen(_Path);
 
+# if defined(HAVE_REALPATH) && !defined(S_SPLINT_S)
     rp = realpath(_Path, _FullPath);
+# endif /* HAVE_REALPATH && !S_SPLINT_S */
     int lenFullPath = 0;
     int haveFileSep = ((lenPath > 1) && isDirSeparator(_Path[lenPath - 1]));
     int addFileSep = 0;
@@ -75,11 +77,12 @@ char *get_full_path(char *_FullPath, const char *_Path, size_t _SizeInBytes)
     addFileSep = ((lenFullPath > 1) && (!isDirSeparator(_FullPath[lenFullPath - 1])) && haveFileSep);
     if (addFileSep)
     {
-        char *bufTmp = (char *)MALLOC(sizeof(char) * (lenFullPath + strlen(DIR_SEPARATOR) + 1));
+        const size_t bufTmp_len = (sizeof(char) * (lenFullPath + strlen(DIR_SEPARATOR) + 1UL));
+        char *bufTmp = (char *)MALLOC(bufTmp_len);
 
         if (bufTmp)
         {
-            sprintf(bufTmp, "%s%s", _FullPath, DIR_SEPARATOR);
+            snprintf(bufTmp, bufTmp_len, "%s%s", _FullPath, DIR_SEPARATOR);
             strcpy(_FullPath, bufTmp);
             FREE(bufTmp);
             bufTmp = NULL;
@@ -117,7 +120,9 @@ wchar_t *get_full_pathW(wchar_t * _wcFullPath, const wchar_t * _wcPath, size_t _
             {
                 char *rp = NULL;
 
+# ifdef HAVE_REALPATH
                 rp = realpath(_Path, _FullPath);
+# endif /* HAVE_REALPATH */
                 if (!rp)
                 {
                     strcpy(_FullPath, _Path);

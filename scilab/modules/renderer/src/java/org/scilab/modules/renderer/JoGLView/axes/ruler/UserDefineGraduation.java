@@ -20,10 +20,10 @@ import java.util.List;
 
 /**
  * @author Pierre Lando
- * "abstract" is to fix:
- * error: UserDefineGraduation is not abstract and does not override abstract method getSubGraduations(int) in Graduations
+ * making this "abstract" to fix an error only leads to further errors, so
+ * time to try a different way...
  */
-abstract class UserDefineGraduation implements Graduations {
+class UserDefineGraduation implements Graduations {
     private final AxisProperty axisProperty;
     private final double lowerBound;
     private final double upperBound;
@@ -108,4 +108,9 @@ abstract class UserDefineGraduation implements Graduations {
         return axisProperty.getSubticks() + 1;
     }
 
+    @Override
+    public List<Double> getSubGraduations(int unused) {
+        // TODO
+        return null;
+    }
 }

@@ -14,10 +14,14 @@ SUBDIRS = \
 check-local: check-code
 check-code:
 	set -e; for mydir in $(SUBDIRS); do \
-	  if test -e $${mydir}/Makefile -a ! -e $${mydir}/stamp-splint; then \
-	    $(MAKE) -S -C $${mydir} check-code; \
+	  if test -e $${mydir}/Makefile; then \
+	    if test ! -e $${mydir}/stamp-splint -o $${mydir}/stamp-splint -ot $${mydir}/Makefile; then \
+	      $(MAKE) -S -C $${mydir} check-code; \
+	    else \
+	      echo "Already checked code in $${mydir}"; \
+	    fi; \
 	  else \
-	    echo "Skipping checking code in $${mydir}"; \
+	    echo "Cannot check code in $${mydir} without a Makefile"; \
 	  fi; \
 	done
 

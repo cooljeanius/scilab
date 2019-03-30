@@ -112,11 +112,13 @@ void C2F(mexprintf)(char *error_msg, int len);
 
 /* prototypes */
 
+#ifndef SCILAB_MEXLIB_C_MEXLIB_H
 /* mexInfo: NOT IN MATLAB API - SCILAB SPECIFIC ?*/
-void mexInfo (char *);
+void mexInfo(char *);
+#endif /* !SCILAB_MEXLIB_C_MEXLIB_H */
 
 /* mexCheck: NOT IN MATLAB API - SCILAB SPECIFIC ?*/
-int mexCheck (char *, int );
+int mexCheck(char *, int );
 
 mxArray *mxCreateCharMatrixFromStrings (int m, const char **str);
 mxArray *mxCreateString (const char *string);

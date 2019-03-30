@@ -33,15 +33,17 @@
 #ifdef _MSC_VER
 # define finite(x) _finite(x)
 #else
-# include "finite.h"
-#endif
+# if (!defined(finite) || !defined(HAVE_FINITE) || !defined(HAVE_DECL_FINITE)) || defined(S_SPLINT_S)
+#  include "finite.h"
+# endif /* missing finite, or using splint */
+#endif /* _MSC_VER */
 #define EOL "\n"
 #define NanString "Nan"
 #define InfString "Inf"
 #define NegInfString "-Inf"
 /*--------------------------------------------------------------------------*/
 #define NB_FORMAT_SUPPORTED 7
-static char *supportedFormat[NB_FORMAT_SUPPORTED] =
+static const char *supportedFormat[NB_FORMAT_SUPPORTED] =
 {"lf", "lg", "d", "i", "e", "f", "g"};
 /*--------------------------------------------------------------------------*/
 static BOOL checkFprintfMatFormat(char *format);

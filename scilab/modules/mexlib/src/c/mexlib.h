@@ -10,6 +10,9 @@
  *
  */
 
+#ifndef SCILAB_MEXLIB_C_MEXLIB_H
+#define SCILAB_MEXLIB_C_MEXLIB_H 1
+
 /*
  * Local declaration file for mexlib
  *
@@ -108,15 +111,17 @@ int IsstOrce(mxArray *ptr);
  */
 void  numberandsize(const mxArray  *ptr, int *number, int *size);
 
+#ifndef SCI_MEX
 /**
  * TODO : comment
  * @param ptr
  * @return
  */
 bool mexIsGlobal(const mxArray *ptr);
+#endif /* !SCI_MEX */
 
 /**
- * Unreference objects in a struct or cell 
+ * Unreference objects in a struct or cell
  * @param ptr
  * @return
  */
@@ -209,3 +214,5 @@ int C2F(mxcopycomplex16toptr)(double *y, mxArray *ptr, mxArray *pti, int *n);
  * @return
  */
 int C2F(mxcopyptrtocomplex16)(mxArray *ptr, mxArray *pti, double *y, int *n);
+
+#endif /* SCILAB_MEXLIB_C_MEXLIB_H */

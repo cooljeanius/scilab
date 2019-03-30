@@ -121,6 +121,7 @@ char *wide_string_to_UTF8(const wchar_t *_wide)
     size_t iCharLen = 0;
     wchar_t *pwstr = (wchar_t *)_wide;
     char* pchar = NULL;
+    int iMaxLen;
 
     if (_wide == NULL)
     {
@@ -129,14 +130,14 @@ char *wide_string_to_UTF8(const wchar_t *_wide)
 
     /* The value of MB_CUR_MAX is the maximum number of bytes
        in a multibyte character for the current locale. */
-    int iMaxLen = (int)wcslen(_wide) * MB_CUR_MAX ;
-    pchar = (char*) MALLOC(( iMaxLen + 1) * sizeof(char));
+    iMaxLen = (int)wcslen(_wide) * MB_CUR_MAX;
+    pchar = (char *)MALLOC((iMaxLen + 1) * sizeof(char));
     if (pchar == NULL)
     {
         return NULL;
     }
-    iCharLen = wcstombs (pchar, pwstr, iMaxLen);
-    if ( iCharLen == (size_t)(-1) )
+    iCharLen = wcstombs(pchar, pwstr, iMaxLen);
+    if (iCharLen == (size_t)(-1))
     {
         if (pchar)
         {

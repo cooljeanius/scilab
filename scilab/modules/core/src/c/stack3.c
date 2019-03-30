@@ -32,7 +32,9 @@
 #include "freeArrayOfString.h"
 
 extern int C2F(stackp)(int *id, int *macmod);
-extern int C2F(dcopy)();
+#ifndef STACK1_H
+extern int C2F(dcopy)(int *, double *, int *, double *, int *);
+#endif /* !STACK1_H */
 
 /*------------------------------------------------------*/
 void *Name2ptr(char *namex);

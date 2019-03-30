@@ -1689,7 +1689,6 @@ AC_LANG_CASE([Fortran 77],[
 ],[C],[
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=declaration-after-statement])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=missing-field-initializers])
-  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=redundant-decls])
 ])
 if test "[x${]WERROR_WRITE_STRINGS_CV[}]" != "xyes"; then
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=incompatible-pointer-types])

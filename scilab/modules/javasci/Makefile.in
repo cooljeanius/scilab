@@ -719,7 +719,7 @@ libjavasci2_la_etc_DATA = etc/javasci.quit etc/javasci.start
 @JAVASCI_TRUE@am__v_q_1 = 
 
 # splint options
-@JAVASCI_TRUE@SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr
+@JAVASCI_TRUE@SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements
 @JAVASCI_TRUE@SPLINT_INCLUDE_FLAGS = `echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
 
 ########################### JAVA ######################################

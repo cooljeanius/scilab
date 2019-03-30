@@ -40,19 +40,20 @@ int sci_drawaxis(char *fname, unsigned long fname_len)
     /** XXXXX : un point en suspens c'est le "S" ou une adresse est
      *  stockees ds un unsigned long : est ce sufisant ?
      */
-    static rhs_opts opts[] = {
-        {-1, "dir", "c", 0, 0, 0},
-        {-1, "fontsize", "i", 0, 0, 0},
-        {-1, "format_n", "c", 0, 0, 0},
-        {-1, "seg", "i", 0, 0, 0},
-        {-1, "sub_int", "i", 0, 0, 0},
-        {-1, "textcolor", "i", 0, 0, 0},
-        {-1, "tics", "c", 0, 0, 0},
-        {-1, "ticscolor", "i", 0, 0, 0},
-        {-1, "val", "S", 0, 0, 0},
-        {-1, "x", "d", 0, 0, 0},
-        {-1, "y", "d", 0, 0, 0},
-        {-1, NULL, NULL, 0, 0}
+    static rhs_opts opts[] =
+    {
+        { -1, "dir", "c", 0, 0, 0},
+        { -1, "fontsize", "i", 0, 0, 0},
+        { -1, "format_n", "c", 0, 0, 0},
+        { -1, "seg", "i", 0, 0, 0},
+        { -1, "sub_int", "i", 0, 0, 0},
+        { -1, "textcolor", "i", 0, 0, 0},
+        { -1, "tics", "c", 0, 0, 0},
+        { -1, "ticscolor", "i", 0, 0, 0},
+        { -1, "val", "S", 0, 0, 0},
+        { -1, "x", "d", 0, 0, 0},
+        { -1, "y", "d", 0, 0, 0},
+        { -1, NULL, NULL, 0, 0, 0}
     };
 
     char *psubwinUID = NULL;
@@ -142,9 +143,13 @@ int sci_drawaxis(char *fname, unsigned long fname_len)
         nx = 1;
         x = x_def;
         if (dir == 'l')
-            x_def[0] = bounds[0];   /* xMin */
+        {
+            x_def[0] = bounds[0];    /* xMin */
+        }
         else if (dir == 'r')
-            x_def[0] = bounds[1];   /* xMax */
+        {
+            x_def[0] = bounds[1];    /* xMax */
+        }
     }
 
     if (opts[10].position != -1)
@@ -162,41 +167,45 @@ int sci_drawaxis(char *fname, unsigned long fname_len)
         ny = 1;
         y = y_def;
         if (dir == 'd')
-            y_def[0] = bounds[2];   /* yMin */
+        {
+            y_def[0] = bounds[2];    /* yMin */
+        }
         else if (dir == 'u')
-            y_def[0] = bounds[3];   /* yMax */
+        {
+            y_def[0] = bounds[3];    /* yMax */
+        }
     }
 
     /* compatibility test */
     switch (tics)
     {
-    case 'r':
-        if (check_xy(fname, dir, 3, opts[9].position, opts[9].m, opts[9].n, opts[9].l,
-                     opts[10].position, opts[10].m, opts[10].n, opts[10].l, &ntics) == 0)
-        {
-            PutLhsVar();
+        case 'r':
+            if (check_xy(fname, dir, 3, opts[9].position, opts[9].m, opts[9].n, opts[9].l,
+                         opts[10].position, opts[10].m, opts[10].n, opts[10].l, &ntics) == 0)
+            {
+                PutLhsVar();
+                return 0;
+            }
+            break;
+        case 'i':
+            if (check_xy(fname, dir, 4, opts[9].position, opts[9].m, opts[9].n, opts[9].l,
+                         opts[10].position, opts[10].m, opts[10].n, opts[10].l, &ntics) == 0)
+            {
+                PutLhsVar();
+                return 0;
+            }
+            break;
+        case 'v':
+            if (check_xy(fname, dir, -1, opts[9].position, opts[9].m, opts[9].n, opts[9].l,
+                         opts[10].position, opts[10].m, opts[10].n, opts[10].l, &ntics) == 0)
+            {
+                PutLhsVar();
+                return 0;
+            }
+            break;
+        default:
+            Scierror(999, _("%: Wrong value for %s '%c': '%s', '%s' and '%s' expected.\n"), fname, "tics", dir, "r", "v", "i");
             return 0;
-        }
-        break;
-    case 'i':
-        if (check_xy(fname, dir, 4, opts[9].position, opts[9].m, opts[9].n, opts[9].l,
-                     opts[10].position, opts[10].m, opts[10].n, opts[10].l, &ntics) == 0)
-        {
-            PutLhsVar();
-            return 0;
-        }
-        break;
-    case 'v':
-        if (check_xy(fname, dir, -1, opts[9].position, opts[9].m, opts[9].n, opts[9].l,
-                     opts[10].position, opts[10].m, opts[10].n, opts[10].l, &ntics) == 0)
-        {
-            PutLhsVar();
-            return 0;
-        }
-        break;
-    default:
-        Scierror(999, _("%: Wrong value for %s '%c': '%s', '%s' and '%s' expected.\n"), fname, "tics", dir, "r", "v", "i");
-        return 0;
     }
 
     if (val != NULL)
@@ -218,51 +227,59 @@ static int check_xy(char *fname, char dir, int mn, int xpos, int xm, int xn,
 {
     switch (dir)
     {
-    case 'l':
-    case 'r':
-        /* x must be scalar */
-        if (xpos != -1)
-            CheckScalar(xpos, xm, xn);
-        /* y must be of size mn */
-        if (mn != -1)
-            CheckDims(ypos, yRow, yCol, 1, mn);
-        switch (mn)
-        {
-        case 3:
-            *ntics = (int)*stk(yl + 2) + 1;
+        case 'l':
+        case 'r':
+            /* x must be scalar */
+            if (xpos != -1)
+            {
+                CheckScalar(xpos, xm, xn);
+            }
+            /* y must be of size mn */
+            if (mn != -1)
+            {
+                CheckDims(ypos, yRow, yCol, 1, mn);
+            }
+            switch (mn)
+            {
+                case 3:
+                    *ntics = (int) * stk(yl + 2) + 1;
+                    break;
+                case 4:
+                    *ntics = (int) * stk(yl + 3) + 1;
+                    break;
+                case -1:
+                    *ntics = yRow * yCol;
+                    break;
+            }
             break;
-        case 4:
-            *ntics = (int)*stk(yl + 3) + 1;
+        case 'u':
+        case 'd':
+            /* y must be scalar */
+            if (ypos != -1)
+            {
+                CheckScalar(ypos, yRow, yCol);
+            }
+            /* x must be of size mn */
+            if (mn != -1)
+            {
+                CheckDims(xpos, xm, xn, 1, mn);
+            }
+            switch (mn)
+            {
+                case 3:
+                    *ntics = (int) * stk(xl + 2) + 1;
+                    break;
+                case 4:
+                    *ntics = (int) * stk(xl + 3) + 1;
+                    break;
+                case -1:
+                    *ntics = xm * xn;
+                    break;
+            }
             break;
-        case -1:
-            *ntics = yRow * yCol;
-            break;
-        }
-        break;
-    case 'u':
-    case 'd':
-        /* y must be scalar */
-        if (ypos != -1)
-            CheckScalar(ypos, yRow, yCol);
-        /* x must be of size mn */
-        if (mn != -1)
-            CheckDims(xpos, xm, xn, 1, mn);
-        switch (mn)
-        {
-        case 3:
-            *ntics = (int)*stk(xl + 2) + 1;
-            break;
-        case 4:
-            *ntics = (int)*stk(xl + 3) + 1;
-            break;
-        case -1:
-            *ntics = xm * xn;
-            break;
-        }
-        break;
-    default:
-        Scierror(999, "%s: Wrong value for %s '%c': '%s','%s','%s' and '%s' expected.\n", fname, "dir", dir, "u", "d", "r", "l");
-        return 0;
+        default:
+            Scierror(999, "%s: Wrong value for %s '%c': '%s','%s','%s' and '%s' expected.\n", fname, "dir", dir, "u", "d", "r", "l");
+            return 0;
     }
     return 1;
 }

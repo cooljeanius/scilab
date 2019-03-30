@@ -49,7 +49,7 @@ check-local: $(top_builddir)/scilab-bin test
 	fi
 
 # splint options
-SPLINT_OPTIONS=-weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr
+SPLINT_OPTIONS=-weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements
 SPLINT_INCLUDE_FLAGS=`echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
 ## OK to leave "-I" un-prefixed here, since splint is different from the
 ## compiler

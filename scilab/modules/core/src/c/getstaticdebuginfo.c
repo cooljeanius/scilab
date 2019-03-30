@@ -115,23 +115,33 @@ char **getStaticDebugInfo(int *sizeArray)
     for (i = 0; i < NB_DEBUG_ELEMENT; i++)
     {
         debug_message msg = staticDebug[i];
+        size_t osl_len;
+        size_t osl_i_len;
 
         if (msg.description == NULL)    /* We reach the end of the static list */
+        {
             break;
+        }
 
         if (outputStaticList)
         {
             /* Alloc the big list */
-            outputStaticList = (char **)REALLOC(outputStaticList, sizeof(char *) * (i + 1));
+            osl_len = (sizeof(char *) * (i + 1UL));
+            outputStaticList = (char **)REALLOC(outputStaticList, osl_len);
         }
         else
         {
-            outputStaticList = (char **)MALLOC(sizeof(char *) * (i + 1));
+            osl_len = (sizeof(char *) * (i + 1UL));
+            outputStaticList = (char **)MALLOC(osl_len);
         }
 
         /* Create the element in the array */
-        outputStaticList[i] = (char *)MALLOC((strlen(msg.description) + strlen(msg.value) + 3) * sizeof(char)); /* 3 for :, space and \0 */
-        sprintf(outputStaticList[i], "%s: %s", msg.description, msg.value);
+        /* 3 for :, space and \0 */
+        osl_i_len = ((strlen(msg.description) + strlen(msg.value) + 3UL)
+                     * sizeof(char));
+        outputStaticList[i] = (char *)MALLOC(osl_i_len);
+        snprintf(outputStaticList[i], osl_i_len, "%s: %s", msg.description,
+                 msg.value);
     }
     *sizeArray = i;
     return outputStaticList;

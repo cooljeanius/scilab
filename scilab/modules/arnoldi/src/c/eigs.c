@@ -288,13 +288,13 @@ int eigs(double *AR, doublecomplex *AC, int N, int Acomplex, int Asym, double* B
     // B must be symmetric (hermitian) positive (semi-) positive
     if (matB != 0)
     {
-        if (cholB[0]) // Comparison between B and upper triangular matrix
+        if (fpclassify(cholB[0]) != FP_ZERO) // Comparison between B and upper triangular matrix
         {
             if (!Bcomplex) // B is real
             {
-                for (i = 0 ; i < N ; i++)
+                for (i = 0; i < N; i++)
                 {
-                    for (j = i + 1 ; j < N ; j++)
+                    for (j = i + 1; j < N; j++)
                     {
                         if (B[j + i * N] != 0)
                         {
@@ -362,7 +362,7 @@ int eigs(double *AR, doublecomplex *AC, int N, int Acomplex, int Asym, double* B
         }
     }
 
-    if (!cholB[0] && IPARAM[6] == 1 && matB != 0)
+    if (!(fpclassify(cholB[0]) != FP_ZERO) && (IPARAM[6] == 1) && (matB != 0))
     {
         if (!Bcomplex) // B is real
         {
@@ -471,7 +471,7 @@ int eigs(double *AR, doublecomplex *AC, int N, int Acomplex, int Asym, double* B
             }
             else	// generalized eigenvalue problem
             {
-                if (cholB[0])
+                if (fpclassify(cholB[0]) != FP_ZERO)
                 {
                     if (R_Rprime == NULL)
                     {
@@ -644,7 +644,7 @@ int eigs(double *AR, doublecomplex *AC, int N, int Acomplex, int Asym, double* B
                         {
                             if (IDO == 2)
                             {
-                                if (cholB[0]) // workd[ipntr[1]-1:ipntr[1]+N-1] = R * Rprime * workd[ipntr[0]-1:ipntr[0]+N-1]
+                                if (fpclassify(cholB[0]) != FP_ZERO) // workd[ipntr[1]-1:ipntr[1]+N-1] = R * Rprime * workd[ipntr[0]-1:ipntr[0]+N-1]
                                 {
                                     if (R_Rprime == NULL)
                                     {
@@ -663,7 +663,7 @@ int eigs(double *AR, doublecomplex *AC, int N, int Acomplex, int Asym, double* B
                             {
                                 if (IDO == -1)
                                 {
-                                    if (cholB[0])  // workd[ipntr[1]-1:ipntr[1]+N-1] = R * Rprime * workd[ipntr[0]-1:ipntr[0]+N-1]
+                                    if (fpclassify(cholB[0]) != FP_ZERO)  // workd[ipntr[1]-1:ipntr[1]+N-1] = R * Rprime * workd[ipntr[0]-1:ipntr[0]+N-1]
                                     {
                                         if (R_Rprime == NULL)
                                         {
@@ -885,7 +885,7 @@ int eigs(double *AR, doublecomplex *AC, int N, int Acomplex, int Asym, double* B
             }
             else	// generalized eigenvalue problem
             {
-                if (cholB[0])
+                if (fpclassify(cholB[0]) != FP_ZERO)
                 {
                     if (RC_RCprime == NULL)
                     {
@@ -1054,7 +1054,7 @@ int eigs(double *AR, doublecomplex *AC, int N, int Acomplex, int Asym, double* B
                         {
                             if (IDO == 2)
                             {
-                                if (cholB[0]) // workd[ipntr[1]-1:ipntr[1]+N-1] = RC * RCprime * workd[ipntr[0]-1:ipntr[0]+N-1]
+                                if (fpclassify(cholB[0]) != FP_ZERO) // workd[ipntr[1]-1:ipntr[1]+N-1] = RC * RCprime * workd[ipntr[0]-1:ipntr[0]+N-1]
                                 {
                                     if (RC_RCprime == NULL)
                                     {
@@ -1073,7 +1073,7 @@ int eigs(double *AR, doublecomplex *AC, int N, int Acomplex, int Asym, double* B
                             {
                                 if (IDO == -1)
                                 {
-                                    if (cholB[0])  // workd[ipntr[1]-1:ipntr[1]+N-1] = RC*RCprime*workd[ipntr[0]-1:ipntr[0]+N-1]
+                                    if (fpclassify(cholB[0]) != FP_ZERO)  // workd[ipntr[1]-1:ipntr[1]+N-1] = RC*RCprime*workd[ipntr[0]-1:ipntr[0]+N-1]
                                     {
                                         if (RC_RCprime == NULL)
                                         {

@@ -127,9 +127,9 @@ int StoreCommandWithFlag (char *command, int flag)
         q->next = p;
     }
     __UnLock(getCommandQueueSingleAccess());
-    //**
-    //** We have something to do, awake Scilab !!!!!!
-    //**
+    /**
+     ** We have something to do, awake Scilab !!!!!!
+     **/
     __Signal(&LaunchScilab);
     return (0);
 }
@@ -168,9 +168,9 @@ int StorePrioritaryCommandWithFlag (char *command, int flag)
         commandQueue = p;
     }
     __UnLock(getCommandQueueSingleAccess());
-    //**
-    //** We have something to do, awake Scilab !!!!!!
-    //**
+    /**
+     ** We have something to do, awake Scilab !!!!!!
+     **/
     __Signal(&LaunchScilab);
     return (0);
 }

@@ -66,6 +66,8 @@
 #  else
 #   if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201710L)
 #    define ATTRIBUTE_NORETURN _Noreturn
+#   else
+#    define ATTRIBUTE_NORETURN /* (nothing) */
 #   endif /* C11 */
 #  endif /* GCC */
 # endif /* C++ */

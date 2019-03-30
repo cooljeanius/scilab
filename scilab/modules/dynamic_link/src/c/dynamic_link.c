@@ -223,8 +223,7 @@ char **getNamesOfFunctionsInSharedLibraries(int *sizearray)
         {
             for (i = NEpoints - 1; i >= 0; i--)
             {
-                /* FIXME: -Werror=pointer-bool-conversion: */
-                if (EP[i].name)
+                if (*EP[i].name)
                 {
                     char *EntryName = (char *)MALLOC(((int)strlen(EP[i].name) + 1) * sizeof(char));
 

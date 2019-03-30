@@ -61,7 +61,7 @@ static double width[18] = {1, 2, 2, 5, 2, 2, 2, 5, 5, 5, 5, 5, 5, 10, 10, 10, 10
 
 /* end here */
 
-extern double C2F(dlamch)  (char *CMACH, unsigned long int);
+extern double C2F(dlamch)(char *CMACH, unsigned long int);
 
 static void FormatPrec (char *fmt, int *desres, double xmin, double xmax,
                         double xpas);
@@ -1186,15 +1186,15 @@ int ComputeXIntervals( char * pobjUID, char xy_type, double ** vector, int * N, 
  * @return a string matrix containing the labels.
  *         Actually it is a row vector.
  */
-StringMatrix * computeDefaultTicsLabels( char * pobjUID )
+StringMatrix *computeDefaultTicsLabels(char *pobjUID)
 {
-    StringMatrix * ticsLabels = NULL   ;
-    int            nbTics     = 0      ;
-    char           tempFormat[5]       ;
-    char         * c_format   = NULL   ;
-    double       * vector     = NULL   ; /* position of labels */
-    char           curLabelBuffer[257] ;
-    int            i = 0;
+    StringMatrix *ticsLabels = NULL;
+    int           nbTics     = 0;
+    char          tempFormat[5];
+    char         *c_format   = NULL;
+    double       *vector     = NULL; /* position of labels */
+    char          curLabelBuffer[257];
+    int           i = 0;
 
     int tmp = 0;
     int* piTmp = &tmp;
@@ -1235,17 +1235,20 @@ StringMatrix * computeDefaultTicsLabels( char * pobjUID )
     }
 
     /* create a vector of strings */
-    ticsLabels = newMatrix( 1, nbTics );
+    ticsLabels = newMatrix(1, nbTics);
 
-    if ( curLabelBuffer == NULL )
+#ifndef __clang__
+    /* FIXME: -Wtautological-pointer-compare: */
+    if (curLabelBuffer == NULL)
     {
         Scierror(999, _("%s: No more memory.\n"), "computeDefaultTicsLabels");
-        return NULL ;
+        return NULL;
     }
+#endif /* !__clang__ */
 
-    for ( i = 0 ; i < nbTics ; i++ )
+    for (i = 0; i < nbTics; i++)
     {
-        sprintf(curLabelBuffer, c_format, vector[i]) ; /* we can't know for sure the size of the label */
+        sprintf(curLabelBuffer, c_format, vector[i]); /* we cannot know for sure the size of the label */
         /* That's why it is first stored in a big array */
         copyStrMatElement(ticsLabels, 0, i, curLabelBuffer);
     }

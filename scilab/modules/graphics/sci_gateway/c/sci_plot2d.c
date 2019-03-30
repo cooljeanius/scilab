@@ -61,7 +61,7 @@ int sci_plot2d( char * fname, unsigned long fname_len )
         { -1, "rect", "?", 0, 0, 0},
         { -1, "strf", "?", 0, 0, 0},
         { -1, "style", "?", 0, 0, 0},
-        { -1, NULL, NULL, 0, 0}
+        { -1, NULL, NULL, 0, 0, 0}
     };
 
     if (Rhs == 0)
@@ -116,13 +116,13 @@ int sci_plot2d( char * fname, unsigned long fname_len )
         /* y */
         GetRhsVar(2 + iskip, MATRIX_OF_DOUBLE_DATATYPE, &m2, &n2, &l2);
 
-        test = (m1*n1 == 0) ||
-               ((m1 == 1 || n1 == 1) && (m2 == 1 || n2 == 1) && (m1*n1 == m2 * n2))  ||
+        test = (m1 * n1 == 0) ||
+               ((m1 == 1 || n1 == 1) && (m2 == 1 || n2 == 1) && (m1 * n1 == m2 * n2))  ||
                ((m1 == m2) && (n1 == n2)) ||
                ((m1 == 1 && n1 == m2) || (n1 == 1 && m1 == m2));
         CheckDimProp(1 + iskip, 2 + iskip, !test);
 
-        if (m1*n1 == 0)
+        if (m1 * n1 == 0)
         {
             /* default x=1:n */
             CreateVar(Rhs + 1, MATRIX_OF_DOUBLE_DATATYPE,  &m2, &n2, &lt);

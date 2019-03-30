@@ -62,7 +62,12 @@ static void sig_fatal(int signum, siginfo_t *info, void *p)
 
     char stacktrace_hostname[64];
 
-    const char * bt;
+    const char *bt;
+
+    /* same condition as where it is used: */
+#ifdef HAVE_STRSIGNAL
+    char *str;
+#endif /* HAVE_STRSIGNAL */
 
     gethostname(stacktrace_hostname, sizeof(stacktrace_hostname));
     stacktrace_hostname[sizeof(stacktrace_hostname) - 1] = '\0';
@@ -82,7 +87,6 @@ static void sig_fatal(int signum, siginfo_t *info, void *p)
     /* This list comes from OpenMPI sources */
 #ifdef HAVE_STRSIGNAL
     /* On segfault, avoid calling strsignal which may allocate some memory (through gettext) */
-    char* str;
     if (signum == 11)
     {
         str = "Segmentation fault";
@@ -409,7 +413,7 @@ static void sig_fatal(int signum, siginfo_t *info, void *p)
              PACKAGE_BUGREPORT, print_buffer, bt);
 
     free((void *)bt);
-    longjmp((int *)&jmp_env, 1);
+    /*@access jmp_buf@*/ longjmp((int *)&jmp_env, 1);
 }
 
 void base_error_init(void)
@@ -421,6 +425,32 @@ void base_error_init(void)
     struct sigaction ToSuspend;
 
     struct sigaction ToContinue;
+
+    int signals[] =
+    {
+#ifdef SIGABRT
+        SIGABRT,
+#endif /* SIGABRT */
+#ifdef SIGBUS
+        SIGBUS,
+#endif /* SIGBUS */
+#ifdef SIGFPE
+        SIGFPE,
+#endif /* SIGFPE */
+#ifdef SIGFPE2
+        SIGFPE,
+#endif /* SIGFPE2 */
+#ifdef SIGILL
+        SIGILL,
+#endif /* SIGILL */
+#ifdef SIGSEGV
+        SIGSEGV,
+#endif /* SIGSEGV */
+#ifdef SIGPOLL
+        SIGPOLL,
+#endif /* SIGPOLL */
+        -1
+    };
 
     /* Initialise Suspend Signal (CTRL-Z) */
     ToSuspend.sa_handler = suspendProcess;
@@ -444,31 +474,6 @@ void base_error_init(void)
 #endif
     sigemptyset(&act.sa_mask);
 
-    int signals[] =
-    {
-#ifdef SIGABRT
-        SIGABRT,
-#endif
-#ifdef SIGBUS
-        SIGBUS,
-#endif
-#ifdef SIGFPE
-        SIGFPE,
-#endif
-#ifdef SIGFPE2
-        SIGFPE,
-#endif
-#ifdef SIGILL
-        SIGILL,
-#endif
-#ifdef SIGSEGV
-        SIGSEGV,
-#endif
-#ifdef SIGPOLL
-        SIGPOLL,
-#endif
-        -1
-    };
     for (j = 0; signals[j] != -1; ++j)
     {
         if (0 != sigaction(signals[j], &act, NULL))

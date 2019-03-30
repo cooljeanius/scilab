@@ -561,7 +561,8 @@ short ezxml_internal_dtd(ezxml_root_t root, char *s, size_t len)
             }
             for (i = 0; root->attr[i] && strcmp(n, root->attr[i][0]); i++);
 
-            while (*(n = (++s) + (strspn(s, EZXML_WS))) && *n != '>')
+            /* FIXME: check if workaround for -Wunsequenced was correct: */
+            while (*(n = (1 + s) + (strspn(s, EZXML_WS))) && *n != '>')
             {
                 if (*(s = n + strcspn(n, EZXML_WS)))
                 {

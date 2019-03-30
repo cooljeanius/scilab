@@ -24,12 +24,6 @@
 # Cblocknames  contains list of C Blocks
 # Copyright INRIA
 
-if [ -n ${V} ]; then
-  if [ ${V} -ge 1 ]; then
-    set -ex;
-  fi
-fi
-
 if [ $# -ne 4 ]; then
 	echo "Wrong syntax. Syntax is : $0 Fortran_Block_Names C_Block_Names CPP_Block_Names Outputfile_h"
 	exit 1

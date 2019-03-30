@@ -176,7 +176,7 @@ int intsplin(char *fname, unsigned long fname_len)
             {
                 CreateVar(Rhs + 5, MATRIX_OF_DOUBLE_DATATYPE, &mwk4,  &nwk4,   &lwk4);
             }
-            C2F(splinecub) (x, y, d, &n, &spline_type, stk(lwk1), stk(lwk2), stk(lwk3), stk(lwk4));
+            C2F(splinecub)(x, y, d, &n, &spline_type, stk(lwk1), stk(lwk2), stk(lwk3), stk(lwk4));
             break;
     }
     LhsVar(1) = Rhs + 1;

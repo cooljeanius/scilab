@@ -720,6 +720,9 @@
    <sysmacros.h>. */
 #undef MAJOR_IN_SYSMACROS
 
+/* Minimum MacOSX version with which binaries will be compatible. */
+#undef MIN_MACOSX_VERSION
+
 /* Define to 0 if your system does not have the O_LARGEFILE flag */
 #undef O_LARGEFILE
 

@@ -287,6 +287,8 @@ case "${host}" in
        ARCH_LDFLAGS="-mmacosx-version-min=${MIN_MACOSX_VERSION}"
        # We need this to be passed to all linker commands:
        LDFLAGS="${LDFLAGS} -mmacosx-version-min=${MIN_MACOSX_VERSION}"
+       AC_DEFINE([MIN_MACOSX_VERSION],[${MIN_MACOSX_VERSION}],
+             [Minimum MacOSX version with which binaries will be compatible.])
     fi
 ;;
 esac

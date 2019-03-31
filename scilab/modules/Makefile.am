@@ -111,7 +111,7 @@ libscilab_la_rootdir = $(mydatadir)
 # libscilab is the full library with the GUI
 # libscilab-cli is for scilab-cli (without GUI)
 pkglib_LTLIBRARIES = libscilab-cli.la libscilab.la
-libscilab_la_SOURCES =
+libscilab_la_SOURCES = dummy.c
 ## libscilab_cli_la_SOURCES moved further below
 
 libscilab_la_LDFLAGS = $(LAPACK_LIBS) $(BLAS_LIBS) $(AM_LDFLAGS)

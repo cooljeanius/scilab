@@ -15399,6 +15399,8 @@
 		A583D068224CB5D00045B983 /* test-level.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "test-level.vcxproj.filters"; sourceTree = "<group>"; };
 		A583D43A225030E90045B983 /* notypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = notypes.h; sourceTree = "<group>"; };
 		A583D43B225030E90045B983 /* notypes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = notypes.c; sourceTree = "<group>"; };
+		A583D46E225067EB0045B983 /* dummy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dummy.h; sourceTree = "<group>"; };
+		A583D46F225067EB0045B983 /* dummy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dummy.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -16635,6 +16637,8 @@
 				A583BEAE224B30680045B983 /* windows_tools */,
 				A583BFA2224B30690045B983 /* xcos */,
 				A583CC2D224B307A0045B983 /* xml */,
+				A583D46E225067EB0045B983 /* dummy.h */,
+				A583D46F225067EB0045B983 /* dummy.c */,
 			);
 			indentWidth = 4;
 			name = modules;

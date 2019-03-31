@@ -31,11 +31,13 @@ char *ConsoleRead(void)
     return NULL;
 }
 /*--------------------------------------------------------------------------*/
+#ifdef NOCONSOLE
 int ConsolePrintf(char *line)
 {
     int len = 0;
     return len;
 }
+#endif /* NOCONSOLE */
 /*--------------------------------------------------------------------------*/
 BOOL ClearConsolePart(int nbLines)
 {
@@ -49,7 +51,7 @@ BOOL ClearConsole(void)
 /*--------------------------------------------------------------------------*/
 int GetCharWithoutOutput()
 {
-  return 0;
+    return 0;
 }
 /*--------------------------------------------------------------------------*/
 BOOL PromptToHome(void)
@@ -75,6 +77,6 @@ BOOL ConsoleIsWaitingForInput(void)
 /*--------------------------------------------------------------------------*/
 BOOL ScilabLinesUpdate(void)
 {
-  return FALSE;
+    return FALSE;
 }
 /*--------------------------------------------------------------------------*/

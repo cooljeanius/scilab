@@ -1620,6 +1620,8 @@ AC_LANG_CASE([C],[
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wbad-function-cast])
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wold-style-definition])
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wdeclaration-after-statement])
+	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wtraditional-conversion])
+	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wc90-c99-compat])
 ],[C++],[
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wnarrowing])
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wstrict-null-sentinel])

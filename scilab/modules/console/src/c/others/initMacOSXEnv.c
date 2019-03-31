@@ -117,37 +117,44 @@ static int launchMacOSXEnv(thread_parm_t *param)
         TransformProcessType(&psn, kProcessTransformToForegroundApplication);
         /* End of the workaround */
 
-        // Look for the JavaVM bundle using its identifier
+        /* Look for the JavaVM bundle using its identifier */
         JavaVMBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.apple.JavaVM") );
 
         if (JavaVMBundle != NULL)
         {
-            // Get a path for the JavaVM bundle
+            /* Get a path for the JavaVM bundle */
             JavaVMBundleURL = CFBundleCopyBundleURL(JavaVMBundle);
             CFRelease(JavaVMBundle);
 
             if (JavaVMBundleURL != NULL)
             {
-                // Append to the path the Versions Component
+                /* Append to the path the Versions Component */
                 JavaVMBundlerVersionsDirURL = CFURLCreateCopyAppendingPathComponent(kCFAllocatorDefault, JavaVMBundleURL, CFSTR("Versions"), true);
                 CFRelease(JavaVMBundleURL);
 
                 if (JavaVMBundlerVersionsDirURL != NULL)
                 {
-                    // Append to the path the target JVM's Version
+                    /* Append to the path the target JVM's Version */
                     TargetJavaVM = CFURLCreateCopyAppendingPathComponent(kCFAllocatorDefault, JavaVMBundlerVersionsDirURL, targetJVM, true);
                     CFRelease(JavaVMBundlerVersionsDirURL);
                     if (TargetJavaVM != NULL)
                     {
-                        if (CFURLGetFileSystemRepresentation (TargetJavaVM, true, pathToTargetJVM, PATH_MAX ))
+                        if (CFURLGetFileSystemRepresentation(TargetJavaVM, true, pathToTargetJVM,
+                                                             (CFIndex)PATH_MAX))
                         {
-                            // Check to see if the directory, or a sym link for the target JVM directory exists, and if so set the
-                            // environment variable JAVA_JVM_VERSION to the target JVM.
+                            /* Check to see if the directory, or a symlink for
+                            * the target JVM directory exists, and if so set
+                            	     * the environment variable JAVA_JVM_VERSION to the
+                            	     * target JVM: */
                             if (stat((char*)pathToTargetJVM, &sbuf) == 0)
                             {
-                                // Ok, the directory exists, so now we need to set the environment var JAVA_JVM_VERSION to the CFSTR targetJVM
-                                // We can reuse the pathToTargetJVM buffer to set the environement var.
-                                if (CFStringGetCString(targetJVM, (char*)pathToTargetJVM, PATH_MAX, kCFStringEncodingUTF8))
+                                /* Ok, the directory exists, so now we need
+                                * to set the environment var JAVA_JVM_VERSION
+                                		 * to the CFSTR targetJVM.
+                                                            * We can reuse the pathToTargetJVM buffer
+                                		 * to set the environement var: */
+                                if (CFStringGetCString(targetJVM, (char*)pathToTargetJVM,
+                                                       (CFIndex)PATH_MAX, kCFStringEncodingUTF8))
                                 {
                                     setenv("JAVA_JVM_VERSION", (char*)pathToTargetJVM, 1);
                                     ret = 0;
@@ -210,14 +217,19 @@ static void sourceCallBack (  void *info  ) {}
  */
 int initMacOSXEnv(int no_startup_flag_l, char *initial_script, InitScriptType initial_script_type, int memory)
 {
-
     CFRunLoopSourceContext sourceContext;
     /* Start the thread that runs the VM. */
     pthread_t vmthread;
+    thread_parm_t *param;
+    struct rlimit limit;
+    size_t stack_size;
+    int rc;
+    pthread_attr_t thread_attr;
+    CFRunLoopSourceRef sourceRef;
     setAppName("Scilab");
 
     /* Create the structure which is going to be giving to the function inside the thread */
-    thread_parm_t         *param = NULL;
+    param = NULL;
     param = malloc(sizeof(thread_parm_t));
     param->no_startup_flag_l = no_startup_flag_l;
     param->initial_script = initial_script;
@@ -225,9 +237,8 @@ int initMacOSXEnv(int no_startup_flag_l, char *initial_script, InitScriptType in
     param->memory = memory;
 
     /* create a new pthread copying the stack size of the primordial pthread */
-    struct rlimit limit;
-    size_t stack_size = 0;
-    int rc = getrlimit(RLIMIT_STACK, &limit);
+    stack_size = 0UL;
+    rc = getrlimit(RLIMIT_STACK, &limit);
     if (rc == 0)
     {
         if (limit.rlim_cur != 0LL)
@@ -235,7 +246,6 @@ int initMacOSXEnv(int no_startup_flag_l, char *initial_script, InitScriptType in
             stack_size = (size_t)limit.rlim_cur;
         }
     }
-    pthread_attr_t thread_attr;
     pthread_attr_init(&thread_attr);
     pthread_attr_setscope(&thread_attr, PTHREAD_SCOPE_SYSTEM);
     pthread_attr_setdetachstate(&thread_attr, PTHREAD_CREATE_DETACHED);
@@ -263,15 +273,16 @@ int initMacOSXEnv(int no_startup_flag_l, char *initial_script, InitScriptType in
     sourceContext.perform = &sourceCallBack;
 
     /* Create the Source from the sourceContext */
-    CFRunLoopSourceRef sourceRef = CFRunLoopSourceCreate (NULL, 0, &sourceContext);
+    sourceRef = CFRunLoopSourceCreate(NULL, (CFIndex)0,
+                                      &sourceContext);
 
     /* Use the constant kCFRunLoopCommonModes to add the source to the set of objects */
     /* monitored by all the common modes */
-    CFRunLoopAddSource (CFRunLoopGetCurrent(), sourceRef, kCFRunLoopCommonModes);
+    CFRunLoopAddSource(CFRunLoopGetCurrent(), sourceRef, kCFRunLoopCommonModes);
 
     /* Park this thread in the runloop */
     CFRunLoopRun();
 
     return 0;
 }
-#endif
+#endif /* __APPLE__ && !WITHOUT_GUI */

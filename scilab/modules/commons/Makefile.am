@@ -44,7 +44,7 @@ libscicommons_la_CPPFLAGS= $(JAVA_JNI_INCLUDE) \
 			   $(AM_CPPFLAGS)
 
 
-libscicommons_disable_la_SOURCES = $(COMMONS_DISABLE_C_SOURCES)
+libscicommons_disable_la_SOURCES = $(COMMONS_DISABLE_C_SOURCES) $(COMMONS_FORTRAN_SOURCES)
 
 pkglib_LTLIBRARIES = libscicommons-disable.la
 

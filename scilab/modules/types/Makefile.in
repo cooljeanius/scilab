@@ -204,18 +204,19 @@ am__v_lt_0 = --silent
 am__v_lt_1 = 
 @GUI_TRUE@am_libscitypes_algo_la_rpath =
 libscitypes_disable_la_LIBADD =
-am_libscitypes_disable_la_OBJECTS = $(am__objects_2)
+am__objects_4 = src/notypes/libscitypes_disable_la-notypes.lo
+am_libscitypes_disable_la_OBJECTS = $(am__objects_4)
 libscitypes_disable_la_OBJECTS = $(am_libscitypes_disable_la_OBJECTS)
 libscitypes_la_DEPENDENCIES =  \
 	$(top_builddir)/modules/commons/libscicommons.la \
 	$(top_builddir)/modules/jvm/libscijvm.la
-am__objects_4 = src/jni/libscitypes_la-getScilabVariable_wrap.lo
-am__objects_5 = src/cpp/libscitypes_la-ScilabToJava.lo \
+am__objects_5 = src/jni/libscitypes_la-getScilabVariable_wrap.lo
+am__objects_6 = src/cpp/libscitypes_la-ScilabToJava.lo \
 	src/jni/libscitypes_la-ScilabVariables.lo \
 	src/jni/libscitypes_la-ScilabVariablesRefresh.lo \
 	src/jni/libscitypes_la-ScilabPolynomialToJava.lo
-am_libscitypes_la_OBJECTS = $(am__objects_4) $(am__objects_2) \
-	$(am__objects_5)
+am_libscitypes_la_OBJECTS = $(am__objects_5) $(am__objects_2) \
+	$(am__objects_6)
 libscitypes_la_OBJECTS = $(am_libscitypes_la_OBJECTS)
 @GUI_TRUE@am_libscitypes_la_rpath = -rpath $(pkglibdir)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -243,7 +244,8 @@ am__depfiles_remade =  \
 	src/jni/$(DEPDIR)/libscitypes_la-ScilabPolynomialToJava.Plo \
 	src/jni/$(DEPDIR)/libscitypes_la-ScilabVariables.Plo \
 	src/jni/$(DEPDIR)/libscitypes_la-ScilabVariablesRefresh.Plo \
-	src/jni/$(DEPDIR)/libscitypes_la-getScilabVariable_wrap.Plo
+	src/jni/$(DEPDIR)/libscitypes_la-getScilabVariable_wrap.Plo \
+	src/notypes/$(DEPDIR)/libscitypes_disable_la-notypes.Plo
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -783,6 +785,7 @@ HELP_CHAPTERFILE = addchapter.sce
 HELP_CHAPTERLANG = en_US fr_FR pt_BR
 TYPES_JNI_SOURCES = 
 TYPES_C_SOURCES = src/jni/getScilabVariable_wrap.c
+TYPES_DISABLE_C_SOURCES = src/notypes/notypes.c
 TYPES_CXX_SOURCES = src/cpp/ScilabToJava.cpp \
 	            src/jni/ScilabVariables.cpp \
 	            src/jni/ScilabVariablesRefresh.cpp \
@@ -805,10 +808,12 @@ libscitypes_la_CPPFLAGS = $(JAVA_JNI_INCLUDE) \
 			  -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
 			  $(AM_CPPFLAGS)
 
-TYPES_DISABLE_C_SOURCES = 
 libscitypes_disable_la_SOURCES = $(TYPES_DISABLE_C_SOURCES)
 libscitypes_algo_la_SOURCES = $(TYPES_C_SOURCES) $(TYPES_JNI_SOURCES) $(TYPES_CXX_SOURCES)
 libscitypes_algo_la_CPPFLAGS = $(libscitypes_la_CPPFLAGS)
+libscitypes_disable_la_CPPFLAGS = $(libscitypes_la_CPPFLAGS) \
+		          -Wp,-I$(top_srcdir)/modules/localization/includes
+
 libscitypes_la_LIBADD = $(top_builddir)/modules/commons/libscicommons.la \
 			$(top_builddir)/modules/jvm/libscijvm.la
 
@@ -936,6 +941,15 @@ src/jni/libscitypes_algo_la-ScilabPolynomialToJava.lo:  \
 
 libscitypes-algo.la: $(libscitypes_algo_la_OBJECTS) $(libscitypes_algo_la_DEPENDENCIES) $(EXTRA_libscitypes_algo_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) $(am_libscitypes_algo_la_rpath) $(libscitypes_algo_la_OBJECTS) $(libscitypes_algo_la_LIBADD) $(LIBS)
+src/notypes/$(am__dirstamp):
+	@$(MKDIR_P) src/notypes
+	@: > src/notypes/$(am__dirstamp)
+src/notypes/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/notypes/$(DEPDIR)
+	@: > src/notypes/$(DEPDIR)/$(am__dirstamp)
+src/notypes/libscitypes_disable_la-notypes.lo:  \
+	src/notypes/$(am__dirstamp) \
+	src/notypes/$(DEPDIR)/$(am__dirstamp)
 
 libscitypes-disable.la: $(libscitypes_disable_la_OBJECTS) $(libscitypes_disable_la_DEPENDENCIES) $(EXTRA_libscitypes_disable_la_DEPENDENCIES) 
 	$(AM_V_CCLD)$(LINK) -rpath $(pkglibdir) $(libscitypes_disable_la_OBJECTS) $(libscitypes_disable_la_LIBADD) $(LIBS)
@@ -959,6 +973,8 @@ mostlyclean-compile:
 	-rm -f src/cpp/*.lo
 	-rm -f src/jni/*.$(OBJEXT)
 	-rm -f src/jni/*.lo
+	-rm -f src/notypes/*.$(OBJEXT)
+	-rm -f src/notypes/*.lo
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -973,6 +989,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/jni/$(DEPDIR)/libscitypes_la-ScilabVariables.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/jni/$(DEPDIR)/libscitypes_la-ScilabVariablesRefresh.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/jni/$(DEPDIR)/libscitypes_la-getScilabVariable_wrap.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/notypes/$(DEPDIR)/libscitypes_disable_la-notypes.Plo@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -1010,6 +1027,13 @@ src/jni/libscitypes_algo_la-getScilabVariable_wrap.lo: src/jni/getScilabVariable
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/jni/getScilabVariable_wrap.c' object='src/jni/libscitypes_algo_la-getScilabVariable_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscitypes_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/jni/libscitypes_algo_la-getScilabVariable_wrap.lo `test -f 'src/jni/getScilabVariable_wrap.c' || echo '$(srcdir)/'`src/jni/getScilabVariable_wrap.c
+
+src/notypes/libscitypes_disable_la-notypes.lo: src/notypes/notypes.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscitypes_disable_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/notypes/libscitypes_disable_la-notypes.lo -MD -MP -MF src/notypes/$(DEPDIR)/libscitypes_disable_la-notypes.Tpo -c -o src/notypes/libscitypes_disable_la-notypes.lo `test -f 'src/notypes/notypes.c' || echo '$(srcdir)/'`src/notypes/notypes.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/notypes/$(DEPDIR)/libscitypes_disable_la-notypes.Tpo src/notypes/$(DEPDIR)/libscitypes_disable_la-notypes.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/notypes/notypes.c' object='src/notypes/libscitypes_disable_la-notypes.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscitypes_disable_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/notypes/libscitypes_disable_la-notypes.lo `test -f 'src/notypes/notypes.c' || echo '$(srcdir)/'`src/notypes/notypes.c
 
 src/jni/libscitypes_la-getScilabVariable_wrap.lo: src/jni/getScilabVariable_wrap.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscitypes_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/jni/libscitypes_la-getScilabVariable_wrap.lo -MD -MP -MF src/jni/$(DEPDIR)/libscitypes_la-getScilabVariable_wrap.Tpo -c -o src/jni/libscitypes_la-getScilabVariable_wrap.lo `test -f 'src/jni/getScilabVariable_wrap.c' || echo '$(srcdir)/'`src/jni/getScilabVariable_wrap.c
@@ -1105,6 +1129,7 @@ clean-libtool:
 	-rm -rf .libs _libs
 	-rm -rf src/cpp/.libs src/cpp/_libs
 	-rm -rf src/jni/.libs src/jni/_libs
+	-rm -rf src/notypes/.libs src/notypes/_libs
 install-libscitypes_la_etcDATA: $(libscitypes_la_etc_DATA)
 	@$(NORMAL_INSTALL)
 	@list='$(libscitypes_la_etc_DATA)'; test -n "$(libscitypes_la_etcdir)" || list=; \
@@ -1338,6 +1363,8 @@ distclean-generic:
 	-rm -f src/cpp/$(am__dirstamp)
 	-rm -f src/jni/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/jni/$(am__dirstamp)
+	-rm -f src/notypes/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/notypes/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -1359,6 +1386,7 @@ distclean: distclean-am
 	-rm -f src/jni/$(DEPDIR)/libscitypes_la-ScilabVariables.Plo
 	-rm -f src/jni/$(DEPDIR)/libscitypes_la-ScilabVariablesRefresh.Plo
 	-rm -f src/jni/$(DEPDIR)/libscitypes_la-getScilabVariable_wrap.Plo
+	-rm -f src/notypes/$(DEPDIR)/libscitypes_disable_la-notypes.Plo
 	-rm -f Makefile
 distclean-am: clean-am distclean-DEJAGNU distclean-compile \
 	distclean-generic distclean-local distclean-tags
@@ -1416,6 +1444,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f src/jni/$(DEPDIR)/libscitypes_la-ScilabVariables.Plo
 	-rm -f src/jni/$(DEPDIR)/libscitypes_la-ScilabVariablesRefresh.Plo
 	-rm -f src/jni/$(DEPDIR)/libscitypes_la-getScilabVariable_wrap.Plo
+	-rm -f src/notypes/$(DEPDIR)/libscitypes_disable_la-notypes.Plo
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

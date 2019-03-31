@@ -30,6 +30,8 @@ TYPES_JNI_SOURCES =
 
 TYPES_C_SOURCES = src/jni/getScilabVariable_wrap.c
 
+TYPES_DISABLE_C_SOURCES = src/notypes/notypes.c
+
 TYPES_CXX_SOURCES = src/cpp/ScilabToJava.cpp \
 	            src/jni/ScilabVariables.cpp \
 	            src/jni/ScilabVariablesRefresh.cpp \
@@ -57,10 +59,12 @@ libscitypes_la_CPPFLAGS = $(JAVA_JNI_INCLUDE) \
 			  -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
 			  $(AM_CPPFLAGS)
 
-TYPES_DISABLE_C_SOURCES =
+## TYPES_DISABLE_C_SOURCES is above
 libscitypes_disable_la_SOURCES = $(TYPES_DISABLE_C_SOURCES)
 libscitypes_algo_la_SOURCES = $(TYPES_C_SOURCES) $(TYPES_JNI_SOURCES) $(TYPES_CXX_SOURCES)
 libscitypes_algo_la_CPPFLAGS = $(libscitypes_la_CPPFLAGS)
+libscitypes_disable_la_CPPFLAGS = $(libscitypes_la_CPPFLAGS) \
+		          -Wp,-I$(top_srcdir)/modules/localization/includes
 
 libscitypes_la_LIBADD = $(top_builddir)/modules/commons/libscicommons.la \
 			$(top_builddir)/modules/jvm/libscijvm.la

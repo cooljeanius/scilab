@@ -38,8 +38,8 @@ int sci_diffobjs(char *fname, unsigned long fname_len)
     header1 = GetData(1);
     header2 = GetData(2);
 
-    /* FIXME: -Wunsequenced: */
-    CreateVar(3, MATRIX_OF_DOUBLE_DATATYPE, (one = 1, &one),
+    /* FIXME: -Wunsequenced/-Wsequence-point: */
+    CreateVar(3, (char *)MATRIX_OF_DOUBLE_DATATYPE, (one = 1, &one),
               (one = 1, &one), &l3);
 
     LhsVar(1) = 3;

@@ -15397,6 +15397,8 @@
 		A583D065224CB5D00045B983 /* test-all.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "test-all.vcxproj.filters"; sourceTree = "<group>"; };
 		A583D067224CB5D00045B983 /* test-level.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "test-level.vcxproj"; sourceTree = "<group>"; };
 		A583D068224CB5D00045B983 /* test-level.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "test-level.vcxproj.filters"; sourceTree = "<group>"; };
+		A583D43A225030E90045B983 /* notypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = notypes.h; sourceTree = "<group>"; };
+		A583D43B225030E90045B983 /* notypes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = notypes.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -40834,6 +40836,7 @@
 				A583BCAB224B30650045B983 /* cpp */,
 				A583BCAE224B30650045B983 /* java */,
 				A583BCCA224B30650045B983 /* jni */,
+				A583D439225030B90045B983 /* notypes */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -46726,6 +46729,15 @@
 				A583D068224CB5D00045B983 /* test-level.vcxproj.filters */,
 			);
 			path = "test-level";
+			sourceTree = "<group>";
+		};
+		A583D439225030B90045B983 /* notypes */ = {
+			isa = PBXGroup;
+			children = (
+				A583D43A225030E90045B983 /* notypes.h */,
+				A583D43B225030E90045B983 /* notypes.c */,
+			);
+			path = notypes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

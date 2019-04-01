@@ -516,7 +516,8 @@ fi
 ######################
 if test -n "${F77}"; then
    case "${F77}" in
-     gfortran*)
+     gfortran* | */gfortran )
+        AC_MSG_NOTICE([enabling gfortran-specific flags])
         ## With GNU Compiler enable the code coverage
         if test "x${enable_code_coverage}" = "xyes"; then
             CODE_COVERAGE_FFLAGS="-fprofile-arcs -ftest-coverage"
@@ -628,8 +629,10 @@ if test -z "${CXX}"; then
 fi
 
 case "${CXX}" in
-    g++-* | g++ | ccache*g++ | ccache*g++-* )
+    g++-* | g++ | ccache*g++ | ccache*g++-* | */g++ )
         ## With GNU C++ Compiler
+
+        AC_MSG_NOTICE([enabling g++-specific flags])dnl
 
         # enable the code coverage
         if test "x${enable_code_coverage}" = "xyes"; then
@@ -651,10 +654,17 @@ case "${CXX}" in
         COMPILER_LDFLAGS="-lstdc++"
     ;;
 
-    clang-* | clang)
+    clang-* | clang | clang++-* | clang++ | */clang | */clang++ )
+        AC_MSG_NOTICE([enabling clang++-specific flags])
         # clang linker expect an explict declaration
         # until the http://libcxx.llvm.org/ release, we select the GNU one.
         COMPILER_LDFLAGS="-lstdc++"
+        if test -n "${MACPORTS_PREFIX}" -a -d "${MACPORTS_PREFIX}"; then
+          CHECK_COMPILER_ARG([C++],[-stdlib=macports-libstdc++],[CXXFLAGS],
+                             [COMPILER_CXXLDFLAGS])
+          AC_SUBST([COMPILER_CXXLDFLAGS])dnl
+          ##TODO: use ${COMPILER_CXXLDFLAGS} somewhere
+        fi
     ;;
 esac
 
@@ -673,8 +683,10 @@ AC_DEFUN([XORG_REQUIRE_COMPILER_FLAGS],[
 ])dnl
 
 case "${CC}" in
-   gcc-* | gcc | ccache*gcc | ccache*gcc-* )
+   gcc-* | gcc | ccache*gcc | ccache*gcc-* | */gcc )
    ## With GNU Compiler
+
+   AC_MSG_NOTICE([enabling gcc-specific flags])dnl
 
    # enable the code coverage
    if test "x${enable_code_coverage}" = "xyes"; then
@@ -695,6 +707,9 @@ case "${CC}" in
         ;;
       esac
       XORG_REQUIRE_COMPILER_FLAGS dnl# from above
+      CHECK_COMPILER_ARG([C],[-Wc++-compat],[CFLAGS],[WCXX_COMPAT_CFLAGS])
+      AC_SUBST([WCXX_COMPAT_CFLAGS])dnl
+      ## only used conditionally
    else
       DEBUG_CFLAGS="-DNDEBUG"
    fi
@@ -778,7 +793,8 @@ case "${CC}" in
         ;;
    esac
    ;; # end of the gcc case on the ${CC}
-   clang-* | clang | ccache*clang | ccache*clang-*)
+   clang-* | clang | ccache*clang | ccache*clang-* | */clang )
+        AC_MSG_NOTICE([enabling clang-specific flags])
         if test "x${enable_debug_C}" != "xyes"; then
              ARCH_CFLAGS="-DNDEBUG"
         fi
@@ -795,6 +811,7 @@ case "${CC}" in
    ;; # end of the clang case on the ${CC}
    *)
         ## CC compiler (not GCC)
+        AC_MSG_NOTICE([enabling flags for unknown C compiler])
         if test "x${enable_debug_C}" != "xyes"; then
              ARCH_CFLAGS="-DNDEBUG"
         fi

@@ -1639,6 +1639,10 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wmissing-format-attribute])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wredundant-decls])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wshorten-64-to-32])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wdouble-promotion])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wformat-overflow=2], [-Wformat-overflow], [-Wformat-length=2], [-Wformat-length])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wformat-truncation=2], [-Wformat-truncation])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wstringop-overflow=2], [-Wstringop-overflow])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wstringop-truncation=2], [-Wstringop-truncation])
 
 # These are currently disabled because they are noisy.  They will be enabled
 # in the future once the codebase is sufficiently modernized to silence

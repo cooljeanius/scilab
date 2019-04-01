@@ -506,6 +506,7 @@ COBERTURA = @COBERTURA@
 COMMONS_BEANUTILS = @COMMONS_BEANUTILS@
 COMMONS_IO = @COMMONS_IO@
 COMMONS_LOGGING = @COMMONS_LOGGING@
+COMPILER_CXXLDFLAGS = @COMPILER_CXXLDFLAGS@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CPPI = @CPPI@
@@ -734,6 +735,7 @@ USE_NLS = @USE_NLS@
 VERSION = @VERSION@
 WARNING_CFLAGS = @WARNING_CFLAGS@
 WARNING_CXXFLAGS = @WARNING_CXXFLAGS@
+WCXX_COMPAT_CFLAGS = @WCXX_COMPAT_CFLAGS@
 WERROR_CFLAGS = @WERROR_CFLAGS@
 WERROR_CXXFLAGS = @WERROR_CXXFLAGS@
 WITH_OCAML = @WITH_OCAML@
@@ -984,7 +986,7 @@ mydatadir = $(pkgdatadir)/modules/$(modulename)
 
 # Set AM_* SCI detected settings
 AM_CPPFLAGS = $(SCI_CPPFLAGS)
-AM_CFLAGS = $(SCI_CFLAGS)
+AM_CFLAGS = $(SCI_CFLAGS) `if test -d src/cpp; then echo $(WCXX_COMPAT_CFLAGS); fi`
 AM_CXXFLAGS = $(SCI_CXXFLAGS)
 # append includes to AM_FFLAGS to manage fortran includes
 AM_FFLAGS = $(SCI_FFLAGS) -Wp,-I$(top_srcdir)/modules/core/includes/
@@ -1001,7 +1003,7 @@ am__v_q_0 = -q
 am__v_q_1 = 
 
 # splint options
-SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements
+SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements +showscan +forcehints
 SPLINT_INCLUDE_FLAGS = `echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
 
 ########################### JAVA ######################################

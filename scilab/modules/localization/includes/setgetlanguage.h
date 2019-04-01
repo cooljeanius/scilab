@@ -97,7 +97,7 @@ void setdefaultlanguage(char * lang);
  * Get the default language from the registry (Windows)
  * @return the default language
  */
-char * getdefaultlanguage();
+char *getdefaultlanguage(void);
 
 
 #endif /* __SETGETLANGUAGE_H__ */

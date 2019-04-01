@@ -914,6 +914,8 @@ QUIET_FFLAGS
 QUIET_CXXFLAGS
 QUIET_CFLAGS
 LD_CLASSIC_FLAGS
+WCXX_COMPAT_CFLAGS
+COMPILER_CXXLDFLAGS
 IS_MIPS_SGI_IRIX_FALSE
 IS_MIPS_SGI_IRIX_TRUE
 IS_SOLARIS_FALSE
@@ -15738,6 +15740,774 @@ $as_echo "$supported" >&6; }
 	fi
 
 
+
+
+
+
+
+
+
+
+
+
+
+xorg_testset_save_CFLAGS="$CFLAGS"
+
+if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
+	CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Werror=unknown-warning-option" >&5
+$as_echo_n "checking if $CC supports -Werror=unknown-warning-option... " >&6; }
+if ${xorg_cv_cc_flag_unknown_warning_option+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  xorg_cv_cc_flag_unknown_warning_option=yes
+else
+  xorg_cv_cc_flag_unknown_warning_option=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unknown_warning_option" >&5
+$as_echo "$xorg_cv_cc_flag_unknown_warning_option" >&6; }
+	xorg_testset_cc_unknown_warning_option=$xorg_cv_cc_flag_unknown_warning_option
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+if test "x$xorg_testset_cc_unused_command_line_argument" = "x"; then
+	if test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+		CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	fi
+	CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Werror=unused-command-line-argument" >&5
+$as_echo_n "checking if $CC supports -Werror=unused-command-line-argument... " >&6; }
+if ${xorg_cv_cc_flag_unused_command_line_argument+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  xorg_cv_cc_flag_unused_command_line_argument=yes
+else
+  xorg_cv_cc_flag_unused_command_line_argument=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unused_command_line_argument" >&5
+$as_echo "$xorg_cv_cc_flag_unused_command_line_argument" >&6; }
+	xorg_testset_cc_unused_command_line_argument=$xorg_cv_cc_flag_unused_command_line_argument
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+found="no"
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wformat-overflow=2"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wformat-overflow=2" >&5
+$as_echo_n "checking if $CC supports -Wformat-overflow=2... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wformat_overflow_2
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wformat-overflow=2"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wformat-overflow"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wformat-overflow" >&5
+$as_echo_n "checking if $CC supports -Wformat-overflow... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wformat_overflow
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wformat-overflow"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wformat-length=2"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wformat-length=2" >&5
+$as_echo_n "checking if $CC supports -Wformat-length=2... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wformat_length_2
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wformat-length=2"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wformat-length"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wformat-length" >&5
+$as_echo_n "checking if $CC supports -Wformat-length... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wformat_length
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wformat-length"
+			found="yes"
+		fi
+	fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+xorg_testset_save_CFLAGS="$CFLAGS"
+
+if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
+	CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Werror=unknown-warning-option" >&5
+$as_echo_n "checking if $CC supports -Werror=unknown-warning-option... " >&6; }
+if ${xorg_cv_cc_flag_unknown_warning_option+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  xorg_cv_cc_flag_unknown_warning_option=yes
+else
+  xorg_cv_cc_flag_unknown_warning_option=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unknown_warning_option" >&5
+$as_echo "$xorg_cv_cc_flag_unknown_warning_option" >&6; }
+	xorg_testset_cc_unknown_warning_option=$xorg_cv_cc_flag_unknown_warning_option
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+if test "x$xorg_testset_cc_unused_command_line_argument" = "x"; then
+	if test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+		CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	fi
+	CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Werror=unused-command-line-argument" >&5
+$as_echo_n "checking if $CC supports -Werror=unused-command-line-argument... " >&6; }
+if ${xorg_cv_cc_flag_unused_command_line_argument+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  xorg_cv_cc_flag_unused_command_line_argument=yes
+else
+  xorg_cv_cc_flag_unused_command_line_argument=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unused_command_line_argument" >&5
+$as_echo "$xorg_cv_cc_flag_unused_command_line_argument" >&6; }
+	xorg_testset_cc_unused_command_line_argument=$xorg_cv_cc_flag_unused_command_line_argument
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+found="no"
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wformat-truncation=2"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wformat-truncation=2" >&5
+$as_echo_n "checking if $CC supports -Wformat-truncation=2... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wformat_truncation_2
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wformat-truncation=2"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wformat-truncation"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wformat-truncation" >&5
+$as_echo_n "checking if $CC supports -Wformat-truncation... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wformat_truncation
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wformat-truncation"
+			found="yes"
+		fi
+	fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+xorg_testset_save_CFLAGS="$CFLAGS"
+
+if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
+	CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Werror=unknown-warning-option" >&5
+$as_echo_n "checking if $CC supports -Werror=unknown-warning-option... " >&6; }
+if ${xorg_cv_cc_flag_unknown_warning_option+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  xorg_cv_cc_flag_unknown_warning_option=yes
+else
+  xorg_cv_cc_flag_unknown_warning_option=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unknown_warning_option" >&5
+$as_echo "$xorg_cv_cc_flag_unknown_warning_option" >&6; }
+	xorg_testset_cc_unknown_warning_option=$xorg_cv_cc_flag_unknown_warning_option
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+if test "x$xorg_testset_cc_unused_command_line_argument" = "x"; then
+	if test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+		CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	fi
+	CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Werror=unused-command-line-argument" >&5
+$as_echo_n "checking if $CC supports -Werror=unused-command-line-argument... " >&6; }
+if ${xorg_cv_cc_flag_unused_command_line_argument+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  xorg_cv_cc_flag_unused_command_line_argument=yes
+else
+  xorg_cv_cc_flag_unused_command_line_argument=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unused_command_line_argument" >&5
+$as_echo "$xorg_cv_cc_flag_unused_command_line_argument" >&6; }
+	xorg_testset_cc_unused_command_line_argument=$xorg_cv_cc_flag_unused_command_line_argument
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+found="no"
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wstringop-overflow=2"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wstringop-overflow=2" >&5
+$as_echo_n "checking if $CC supports -Wstringop-overflow=2... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wstringop_overflow_2
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wstringop-overflow=2"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wstringop-overflow"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wstringop-overflow" >&5
+$as_echo_n "checking if $CC supports -Wstringop-overflow... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wstringop_overflow
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wstringop-overflow"
+			found="yes"
+		fi
+	fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+xorg_testset_save_CFLAGS="$CFLAGS"
+
+if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
+	CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Werror=unknown-warning-option" >&5
+$as_echo_n "checking if $CC supports -Werror=unknown-warning-option... " >&6; }
+if ${xorg_cv_cc_flag_unknown_warning_option+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  xorg_cv_cc_flag_unknown_warning_option=yes
+else
+  xorg_cv_cc_flag_unknown_warning_option=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unknown_warning_option" >&5
+$as_echo "$xorg_cv_cc_flag_unknown_warning_option" >&6; }
+	xorg_testset_cc_unknown_warning_option=$xorg_cv_cc_flag_unknown_warning_option
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+if test "x$xorg_testset_cc_unused_command_line_argument" = "x"; then
+	if test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+		CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	fi
+	CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Werror=unused-command-line-argument" >&5
+$as_echo_n "checking if $CC supports -Werror=unused-command-line-argument... " >&6; }
+if ${xorg_cv_cc_flag_unused_command_line_argument+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  xorg_cv_cc_flag_unused_command_line_argument=yes
+else
+  xorg_cv_cc_flag_unused_command_line_argument=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unused_command_line_argument" >&5
+$as_echo "$xorg_cv_cc_flag_unused_command_line_argument" >&6; }
+	xorg_testset_cc_unused_command_line_argument=$xorg_cv_cc_flag_unused_command_line_argument
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+found="no"
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wstringop-truncation=2"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wstringop-truncation=2" >&5
+$as_echo_n "checking if $CC supports -Wstringop-truncation=2... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wstringop_truncation_2
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wstringop-truncation=2"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wstringop-truncation"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wstringop-truncation" >&5
+$as_echo_n "checking if $CC supports -Wstringop-truncation... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wstringop_truncation
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wstringop-truncation"
+			found="yes"
+		fi
+	fi
+
+
 # These are currently disabled because they are noisy.  They will be enabled
 # in the future once the codebase is sufficiently modernized to silence
 # them.  For now, I do NOT want them to drown out the other warnings.
@@ -23445,6 +24215,770 @@ $as_echo "$supported" >&6; }
 	fi
 
 
+
+
+
+
+
+
+
+
+
+
+xorg_testset_save_CXXFLAGS="$CXXFLAGS"
+
+if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
+	CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Werror=unknown-warning-option" >&5
+$as_echo_n "checking if $CXX supports -Werror=unknown-warning-option... " >&6; }
+if ${xorg_cv_cxx_flag_unknown_warning_option+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_cxx_try_compile "$LINENO"; then :
+  xorg_cv_cxx_flag_unknown_warning_option=yes
+else
+  xorg_cv_cxx_flag_unknown_warning_option=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cxx_flag_unknown_warning_option" >&5
+$as_echo "$xorg_cv_cxx_flag_unknown_warning_option" >&6; }
+	xorg_testset_cxx_unknown_warning_option=$xorg_cv_cxx_flag_unknown_warning_option
+	CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+fi
+
+if test "x$xorg_testset_cxx_unused_command_line_argument" = "x"; then
+	if test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
+		CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+	fi
+	CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Werror=unused-command-line-argument" >&5
+$as_echo_n "checking if $CXX supports -Werror=unused-command-line-argument... " >&6; }
+if ${xorg_cv_cxx_flag_unused_command_line_argument+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_cxx_try_compile "$LINENO"; then :
+  xorg_cv_cxx_flag_unused_command_line_argument=yes
+else
+  xorg_cv_cxx_flag_unused_command_line_argument=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cxx_flag_unused_command_line_argument" >&5
+$as_echo "$xorg_cv_cxx_flag_unused_command_line_argument" >&6; }
+	xorg_testset_cxx_unused_command_line_argument=$xorg_cv_cxx_flag_unused_command_line_argument
+	CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+fi
+
+found="no"
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CXXFLAGS="$CXXFLAGS -Wformat-overflow=2"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Wformat-overflow=2" >&5
+$as_echo_n "checking if $CXX supports -Wformat-overflow=2... " >&6; }
+		cacheid=xorg_cv_cxx_flag__Wformat_overflow_2
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CXXFLAGS="$BASE_CXXFLAGS -Wformat-overflow=2"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CXXFLAGS="$CXXFLAGS -Wformat-overflow"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Wformat-overflow" >&5
+$as_echo_n "checking if $CXX supports -Wformat-overflow... " >&6; }
+		cacheid=xorg_cv_cxx_flag__Wformat_overflow
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CXXFLAGS="$BASE_CXXFLAGS -Wformat-overflow"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CXXFLAGS="$CXXFLAGS -Wformat-length=2"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Wformat-length=2" >&5
+$as_echo_n "checking if $CXX supports -Wformat-length=2... " >&6; }
+		cacheid=xorg_cv_cxx_flag__Wformat_length_2
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CXXFLAGS="$BASE_CXXFLAGS -Wformat-length=2"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CXXFLAGS="$CXXFLAGS -Wformat-length"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Wformat-length" >&5
+$as_echo_n "checking if $CXX supports -Wformat-length... " >&6; }
+		cacheid=xorg_cv_cxx_flag__Wformat_length
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CXXFLAGS="$BASE_CXXFLAGS -Wformat-length"
+			found="yes"
+		fi
+	fi
+
+
+
+
+
+
+
+
+
+
+
+
+xorg_testset_save_CXXFLAGS="$CXXFLAGS"
+
+if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
+	CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Werror=unknown-warning-option" >&5
+$as_echo_n "checking if $CXX supports -Werror=unknown-warning-option... " >&6; }
+if ${xorg_cv_cxx_flag_unknown_warning_option+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_cxx_try_compile "$LINENO"; then :
+  xorg_cv_cxx_flag_unknown_warning_option=yes
+else
+  xorg_cv_cxx_flag_unknown_warning_option=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cxx_flag_unknown_warning_option" >&5
+$as_echo "$xorg_cv_cxx_flag_unknown_warning_option" >&6; }
+	xorg_testset_cxx_unknown_warning_option=$xorg_cv_cxx_flag_unknown_warning_option
+	CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+fi
+
+if test "x$xorg_testset_cxx_unused_command_line_argument" = "x"; then
+	if test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
+		CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+	fi
+	CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Werror=unused-command-line-argument" >&5
+$as_echo_n "checking if $CXX supports -Werror=unused-command-line-argument... " >&6; }
+if ${xorg_cv_cxx_flag_unused_command_line_argument+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_cxx_try_compile "$LINENO"; then :
+  xorg_cv_cxx_flag_unused_command_line_argument=yes
+else
+  xorg_cv_cxx_flag_unused_command_line_argument=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cxx_flag_unused_command_line_argument" >&5
+$as_echo "$xorg_cv_cxx_flag_unused_command_line_argument" >&6; }
+	xorg_testset_cxx_unused_command_line_argument=$xorg_cv_cxx_flag_unused_command_line_argument
+	CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+fi
+
+found="no"
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CXXFLAGS="$CXXFLAGS -Wformat-truncation=2"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Wformat-truncation=2" >&5
+$as_echo_n "checking if $CXX supports -Wformat-truncation=2... " >&6; }
+		cacheid=xorg_cv_cxx_flag__Wformat_truncation_2
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CXXFLAGS="$BASE_CXXFLAGS -Wformat-truncation=2"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CXXFLAGS="$CXXFLAGS -Wformat-truncation"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Wformat-truncation" >&5
+$as_echo_n "checking if $CXX supports -Wformat-truncation... " >&6; }
+		cacheid=xorg_cv_cxx_flag__Wformat_truncation
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CXXFLAGS="$BASE_CXXFLAGS -Wformat-truncation"
+			found="yes"
+		fi
+	fi
+
+
+
+
+
+
+
+
+
+
+
+
+xorg_testset_save_CXXFLAGS="$CXXFLAGS"
+
+if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
+	CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Werror=unknown-warning-option" >&5
+$as_echo_n "checking if $CXX supports -Werror=unknown-warning-option... " >&6; }
+if ${xorg_cv_cxx_flag_unknown_warning_option+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_cxx_try_compile "$LINENO"; then :
+  xorg_cv_cxx_flag_unknown_warning_option=yes
+else
+  xorg_cv_cxx_flag_unknown_warning_option=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cxx_flag_unknown_warning_option" >&5
+$as_echo "$xorg_cv_cxx_flag_unknown_warning_option" >&6; }
+	xorg_testset_cxx_unknown_warning_option=$xorg_cv_cxx_flag_unknown_warning_option
+	CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+fi
+
+if test "x$xorg_testset_cxx_unused_command_line_argument" = "x"; then
+	if test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
+		CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+	fi
+	CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Werror=unused-command-line-argument" >&5
+$as_echo_n "checking if $CXX supports -Werror=unused-command-line-argument... " >&6; }
+if ${xorg_cv_cxx_flag_unused_command_line_argument+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_cxx_try_compile "$LINENO"; then :
+  xorg_cv_cxx_flag_unused_command_line_argument=yes
+else
+  xorg_cv_cxx_flag_unused_command_line_argument=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cxx_flag_unused_command_line_argument" >&5
+$as_echo "$xorg_cv_cxx_flag_unused_command_line_argument" >&6; }
+	xorg_testset_cxx_unused_command_line_argument=$xorg_cv_cxx_flag_unused_command_line_argument
+	CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+fi
+
+found="no"
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CXXFLAGS="$CXXFLAGS -Wstringop-overflow=2"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Wstringop-overflow=2" >&5
+$as_echo_n "checking if $CXX supports -Wstringop-overflow=2... " >&6; }
+		cacheid=xorg_cv_cxx_flag__Wstringop_overflow_2
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CXXFLAGS="$BASE_CXXFLAGS -Wstringop-overflow=2"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CXXFLAGS="$CXXFLAGS -Wstringop-overflow"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Wstringop-overflow" >&5
+$as_echo_n "checking if $CXX supports -Wstringop-overflow... " >&6; }
+		cacheid=xorg_cv_cxx_flag__Wstringop_overflow
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CXXFLAGS="$BASE_CXXFLAGS -Wstringop-overflow"
+			found="yes"
+		fi
+	fi
+
+
+
+
+
+
+
+
+
+
+
+
+xorg_testset_save_CXXFLAGS="$CXXFLAGS"
+
+if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
+	CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Werror=unknown-warning-option" >&5
+$as_echo_n "checking if $CXX supports -Werror=unknown-warning-option... " >&6; }
+if ${xorg_cv_cxx_flag_unknown_warning_option+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_cxx_try_compile "$LINENO"; then :
+  xorg_cv_cxx_flag_unknown_warning_option=yes
+else
+  xorg_cv_cxx_flag_unknown_warning_option=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cxx_flag_unknown_warning_option" >&5
+$as_echo "$xorg_cv_cxx_flag_unknown_warning_option" >&6; }
+	xorg_testset_cxx_unknown_warning_option=$xorg_cv_cxx_flag_unknown_warning_option
+	CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+fi
+
+if test "x$xorg_testset_cxx_unused_command_line_argument" = "x"; then
+	if test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
+		CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+	fi
+	CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Werror=unused-command-line-argument" >&5
+$as_echo_n "checking if $CXX supports -Werror=unused-command-line-argument... " >&6; }
+if ${xorg_cv_cxx_flag_unused_command_line_argument+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_cxx_try_compile "$LINENO"; then :
+  xorg_cv_cxx_flag_unused_command_line_argument=yes
+else
+  xorg_cv_cxx_flag_unused_command_line_argument=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cxx_flag_unused_command_line_argument" >&5
+$as_echo "$xorg_cv_cxx_flag_unused_command_line_argument" >&6; }
+	xorg_testset_cxx_unused_command_line_argument=$xorg_cv_cxx_flag_unused_command_line_argument
+	CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+fi
+
+found="no"
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CXXFLAGS="$CXXFLAGS -Wstringop-truncation=2"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Wstringop-truncation=2" >&5
+$as_echo_n "checking if $CXX supports -Wstringop-truncation=2... " >&6; }
+		cacheid=xorg_cv_cxx_flag__Wstringop_truncation_2
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CXXFLAGS="$BASE_CXXFLAGS -Wstringop-truncation=2"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CXXFLAGS="$CXXFLAGS -Wstringop-truncation"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Wstringop-truncation" >&5
+$as_echo_n "checking if $CXX supports -Wstringop-truncation... " >&6; }
+		cacheid=xorg_cv_cxx_flag__Wstringop_truncation
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CXXFLAGS="$BASE_CXXFLAGS -Wstringop-truncation"
+			found="yes"
+		fi
+	fi
+
+
 # These are currently disabled because they are noisy.  They will be enabled
 # in the future once the codebase is sufficiently modernized to silence
 # them.  For now, I do NOT want them to drown out the other warnings.
@@ -28567,7 +30101,9 @@ if test "x${with_intelcompilers}" = "xyes"; then
 ######################
 if test -n "${F77}"; then
    case "${F77}" in
-     gfortran*)
+     gfortran* | */gfortran )
+        { $as_echo "$as_me:${as_lineno-$LINENO}: enabling gfortran-specific flags" >&5
+$as_echo "$as_me: enabling gfortran-specific flags" >&6;}
         ## With GNU Compiler enable the code coverage
         if test "x${enable_code_coverage}" = "xyes"; then
             CODE_COVERAGE_FFLAGS="-fprofile-arcs -ftest-coverage"
@@ -28731,9 +30267,11 @@ if test -z "${CXX}"; then
 fi
 
 case "${CXX}" in
-    g++-* | g++ | ccache*g++ | ccache*g++-* )
+    g++-* | g++ | ccache*g++ | ccache*g++-* | */g++ )
         ## With GNU C++ Compiler
 
+        { $as_echo "$as_me:${as_lineno-$LINENO}: enabling g++-specific flags" >&5
+$as_echo "$as_me: enabling g++-specific flags" >&6;}
         # enable the code coverage
         if test "x${enable_code_coverage}" = "xyes"; then
             CODE_COVERAGE_CXXFLAGS="-fprofile-arcs -ftest-coverage"
@@ -28754,10 +30292,56 @@ case "${CXX}" in
         COMPILER_LDFLAGS="-lstdc++"
     ;;
 
-    clang-* | clang)
+    clang-* | clang | clang++-* | clang++ | */clang | */clang++ )
+        { $as_echo "$as_me:${as_lineno-$LINENO}: enabling clang++-specific flags" >&5
+$as_echo "$as_me: enabling clang++-specific flags" >&6;}
         # clang linker expect an explict declaration
         # until the http://libcxx.llvm.org/ release, we select the GNU one.
         COMPILER_LDFLAGS="-lstdc++"
+        if test -n "${MACPORTS_PREFIX}" -a -d "${MACPORTS_PREFIX}"; then
+
+        ac_ext=cpp
+ac_cpp='$CXXCPP $CPPFLAGS'
+ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CXX -o conftest$ac_exeext $CXXFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
+
+    { $as_echo "$as_me:${as_lineno-$LINENO}: checking if the C++ compiler accepts -stdlib=macports-libstdc++" >&5
+$as_echo_n "checking if the C++ compiler accepts -stdlib=macports-libstdc++... " >&6; }
+    ac_save_CXXFLAGS="$CXXFLAGS"
+    CXXFLAGS="$CXXFLAGS -stdlib=macports-libstdc++"
+
+    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_compile "$LINENO"; then :
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+$as_echo "yes" >&6; }
+       COMPILER_CXXLDFLAGS="-stdlib=macports-libstdc++"
+
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+    CXXFLAGS="$ac_save_CXXFLAGS";
+    ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+
+                    ##TODO: use ${COMPILER_CXXLDFLAGS} somewhere
+        fi
     ;;
 esac
 
@@ -28773,9 +30357,11 @@ esac
 
 
 case "${CC}" in
-   gcc-* | gcc | ccache*gcc | ccache*gcc-* )
+   gcc-* | gcc | ccache*gcc | ccache*gcc-* | */gcc )
    ## With GNU Compiler
 
+   { $as_echo "$as_me:${as_lineno-$LINENO}: enabling gcc-specific flags" >&5
+$as_echo "$as_me: enabling gcc-specific flags" >&6;}
    # enable the code coverage
    if test "x${enable_code_coverage}" = "xyes"; then
     CODE_COVERAGE_CFLAGS="-fprofile-arcs -ftest-coverage"
@@ -28795,7 +30381,49 @@ case "${CC}" in
         ;;
       esac
 
-      else
+
+        ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+    { $as_echo "$as_me:${as_lineno-$LINENO}: checking if the C compiler accepts -Wc++-compat" >&5
+$as_echo_n "checking if the C compiler accepts -Wc++-compat... " >&6; }
+    ac_save_CFLAGS="$CFLAGS"
+    CFLAGS="$CFLAGS -Wc++-compat"
+
+    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+$as_echo "yes" >&6; }
+       WCXX_COMPAT_CFLAGS="-Wc++-compat"
+
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+    CFLAGS="$ac_save_CFLAGS";
+    ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+
+            ## only used conditionally
+   else
       DEBUG_CFLAGS="-DNDEBUG"
    fi
 
@@ -29155,7 +30783,9 @@ $as_echo "$as_me: WARNING: gfortran not used. Could not detect the architecture.
         ;;
    esac
    ;; # end of the gcc case on the ${CC}
-   clang-* | clang | ccache*clang | ccache*clang-*)
+   clang-* | clang | ccache*clang | ccache*clang-* | */clang )
+        { $as_echo "$as_me:${as_lineno-$LINENO}: enabling clang-specific flags" >&5
+$as_echo "$as_me: enabling clang-specific flags" >&6;}
         if test "x${enable_debug_C}" != "xyes"; then
              ARCH_CFLAGS="-DNDEBUG"
         fi
@@ -29451,6 +31081,8 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
    ;; # end of the clang case on the ${CC}
    *)
         ## CC compiler (not GCC)
+        { $as_echo "$as_me:${as_lineno-$LINENO}: enabling flags for unknown C compiler" >&5
+$as_echo "$as_me: enabling flags for unknown C compiler" >&6;}
         if test "x${enable_debug_C}" != "xyes"; then
              ARCH_CFLAGS="-DNDEBUG"
         fi
@@ -30581,7 +32213,7 @@ $as_echo "$ac_java_classpath" >&6; }
 $as_echo_n "checking to see if the java compiler works... " >&6; }
 
     cat << \EOF > conftest.java
-// #line 30584 "configure"
+// #line 32216 "configure"
 import java.util.regex.Pattern;
 
 
@@ -30668,7 +32300,7 @@ $as_echo_n "checking type of jvm... " >&6; }
     if test "x$ac_java_jvm_name" = "x" ; then
 
     cat << \EOF > conftest.java
-// #line 30671 "configure"
+// #line 32303 "configure"
 import java.util.regex.Pattern;
 
 import gnu.java.io.EncodingManager;
@@ -30752,7 +32384,7 @@ $as_echo_n "checking java API version... " >&6; }
     # The class java.nio.charset.Charset is new to 1.4
 
     cat << \EOF > conftest.java
-// #line 30755 "configure"
+// #line 32387 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.charset.Charset;
@@ -30817,7 +32449,7 @@ EOF
     # The class java.lang.StringBuilder is new to 1.5
 
     cat << \EOF > conftest.java
-// #line 30820 "configure"
+// #line 32452 "configure"
 import java.util.regex.Pattern;
 
 import java.lang.StringBuilder;
@@ -30882,7 +32514,7 @@ EOF
     # The class java.util.ArrayDeque is new to 1.6
 
     cat << \EOF > conftest.java
-// #line 30885 "configure"
+// #line 32517 "configure"
 import java.util.regex.Pattern;
 
 import java.util.ArrayDeque;
@@ -30947,7 +32579,7 @@ EOF
     # The class java.nio.file.Path is new to 1.7
 
     cat << \EOF > conftest.java
-// #line 30950 "configure"
+// #line 32582 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.file.Path;
@@ -32885,7 +34517,7 @@ $as_echo_n "checking jgraphx... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 32888 "configure"
+// #line 34520 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.model.mxCell;
@@ -32991,7 +34623,7 @@ $as_echo_n "checking minimal version (1.8.0.0) of jgraphx... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 32994 "configure"
+// #line 34626 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.view.mxGraph;
@@ -33062,7 +34694,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 33065 "configure"
+// #line 34697 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.view.mxGraph;
@@ -33153,7 +34785,7 @@ $as_echo_n "checking scirenderer... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 33156 "configure"
+// #line 34788 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -33259,7 +34891,7 @@ $as_echo_n "checking minimal version (1.0.2) of scirenderer... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 33262 "configure"
+// #line 34894 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -33330,7 +34962,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 33333 "configure"
+// #line 34965 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -33419,7 +35051,7 @@ $as_echo_n "checking flexdock... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 33422 "configure"
+// #line 35054 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.docking.DockingManager;
@@ -33525,7 +35157,7 @@ $as_echo_n "checking minimal version (1.2.0) of flexdock... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 33528 "configure"
+// #line 35160 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.util.Utilities;
@@ -33596,7 +35228,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 33599 "configure"
+// #line 35231 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.util.Utilities;
@@ -33685,7 +35317,7 @@ $as_echo_n "checking looks... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 33688 "configure"
+// #line 35320 "configure"
 import java.util.regex.Pattern;
 
 import com.jgoodies.looks.common.MenuItemRenderer;
@@ -33802,7 +35434,7 @@ $as_echo_n "checking jgoodies-looks... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 33805 "configure"
+// #line 35437 "configure"
 import java.util.regex.Pattern;
 
 import com.jgoodies.looks.common.MenuItemRenderer;
@@ -33919,7 +35551,7 @@ $as_echo_n "checking skinlf... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 33922 "configure"
+// #line 35554 "configure"
 import java.util.regex.Pattern;
 
 import com.l2fprod.util.AccessUtils;
@@ -34035,7 +35667,7 @@ $as_echo_n "checking jogl2... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 34038 "configure"
+// #line 35670 "configure"
 import java.util.regex.Pattern;
 
 import javax.media.opengl.glu.GLUnurbs;
@@ -34257,7 +35889,7 @@ $as_echo_n "checking gluegen2-rt... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 34260 "configure"
+// #line 35892 "configure"
 import java.util.regex.Pattern;
 
 import jogamp.common.os.MachineDescriptionRuntime;
@@ -34430,7 +36062,7 @@ $as_echo_n "checking jhall... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 34433 "configure"
+// #line 36065 "configure"
 import java.util.regex.Pattern;
 
 import javax.help.JHelp;
@@ -34547,7 +36179,7 @@ $as_echo_n "checking javahelp2... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 34550 "configure"
+// #line 36182 "configure"
 import java.util.regex.Pattern;
 
 import javax.help.JHelp;
@@ -34664,7 +36296,7 @@ $as_echo_n "checking jrosetta-API... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 34667 "configure"
+// #line 36299 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.interfaces.core.ConsoleConfiguration;
@@ -34779,7 +36411,7 @@ $as_echo_n "checking jrosetta-api... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 34782 "configure"
+// #line 36414 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.interfaces.core.ConsoleConfiguration;
@@ -34896,7 +36528,7 @@ $as_echo_n "checking jrosetta-engine... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 34899 "configure"
+// #line 36531 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.core.action.AbstractConsoleAction;
@@ -35002,7 +36634,7 @@ $as_echo_n "checking minimal version (1.0.4) of jrosetta-engine... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 35005 "configure"
+// #line 36637 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.util.ConfigurationBuilder;
@@ -35073,7 +36705,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 35076 "configure"
+// #line 36708 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.util.ConfigurationBuilder;
@@ -35163,7 +36795,7 @@ $as_echo_n "checking jeuclid-core... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 35166 "configure"
+// #line 36798 "configure"
 import java.util.regex.Pattern;
 
 import net.sourceforge.jeuclid.LayoutContext;
@@ -35280,7 +36912,7 @@ $as_echo_n "checking fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 35283 "configure"
+// #line 36915 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.fop.pdf.PDFInfo;
@@ -35529,7 +37161,7 @@ $as_echo_n "checking batik-all... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 35532 "configure"
+// #line 37164 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.parser.Parser;
@@ -35646,7 +37278,7 @@ $as_echo_n "checking batik... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 35649 "configure"
+// #line 37281 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.parser.Parser;
@@ -35753,7 +37385,7 @@ $as_echo_n "checking minimal version (1.7) of batik... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 35756 "configure"
+// #line 37388 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.Version;
@@ -35824,7 +37456,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 35827 "configure"
+// #line 37459 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.Version;
@@ -35913,7 +37545,7 @@ $as_echo_n "checking commons-io... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 35916 "configure"
+// #line 37548 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.output.CountingOutputStream;
@@ -36029,7 +37661,7 @@ $as_echo_n "checking xmlgraphics-commons... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 36032 "configure"
+// #line 37664 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.xmlgraphics.util.Service;
@@ -36145,7 +37777,7 @@ $as_echo_n "checking avalon-framework... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 36148 "configure"
+// #line 37780 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.avalon.framework.configuration.ConfigurationException;
@@ -36261,7 +37893,7 @@ $as_echo_n "checking xml-apis-ext... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 36264 "configure"
+// #line 37896 "configure"
 import java.util.regex.Pattern;
 
 import org.w3c.dom.svg.SVGDocument;
@@ -36378,7 +38010,7 @@ $as_echo_n "checking xml-commons-apis-ext... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 36381 "configure"
+// #line 38013 "configure"
 import java.util.regex.Pattern;
 
 import org.w3c.dom.svg.SVGDocument;
@@ -36497,7 +38129,7 @@ $as_echo_n "checking commons-logging... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 36500 "configure"
+// #line 38132 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.logging.LogFactory;
@@ -36613,7 +38245,7 @@ $as_echo_n "checking jlatexmath... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 36616 "configure"
+// #line 38248 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -36719,7 +38351,7 @@ $as_echo_n "checking minimal version (1.0.0) of jlatexmath... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 36722 "configure"
+// #line 38354 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -36790,7 +38422,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 36793 "configure"
+// #line 38425 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -36884,7 +38516,7 @@ $as_echo_n "checking checkstyle... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 36887 "configure"
+// #line 38519 "configure"
 import java.util.regex.Pattern;
 
 import com.puppycrawl.tools.checkstyle.CheckStyleTask;
@@ -37000,7 +38632,7 @@ $as_echo_n "checking commons-beanutils... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 37003 "configure"
+// #line 38635 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.beanutils.Converter;
@@ -37116,7 +38748,7 @@ $as_echo_n "checking antlr... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 37119 "configure"
+// #line 38751 "configure"
 import java.util.regex.Pattern;
 
 import antlr.TokenStreamException;
@@ -37232,7 +38864,7 @@ $as_echo_n "checking junit4... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 37235 "configure"
+// #line 38867 "configure"
 import java.util.regex.Pattern;
 
 import org.junit.Assert;
@@ -37348,7 +38980,7 @@ $as_echo_n "checking cobertura... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 37351 "configure"
+// #line 38983 "configure"
 import java.util.regex.Pattern;
 
 import net.sourceforge.cobertura.merge.Main;
@@ -37464,7 +39096,7 @@ $as_echo_n "checking asm3... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 37467 "configure"
+// #line 39099 "configure"
 import java.util.regex.Pattern;
 
 import org.objectweb.asm.Type;
@@ -37580,7 +39212,7 @@ $as_echo_n "checking asm... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 37583 "configure"
+// #line 39215 "configure"
 import java.util.regex.Pattern;
 
 import org.objectweb.asm.Type;
@@ -50793,6 +52425,854 @@ $as_echo "$supported" >&6; }
 	fi
 
 
+
+
+
+
+
+
+
+
+
+
+
+xorg_testset_save_CFLAGS="$CFLAGS"
+
+if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
+	CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Werror=unknown-warning-option" >&5
+$as_echo_n "checking if $CC supports -Werror=unknown-warning-option... " >&6; }
+if ${xorg_cv_cc_flag_unknown_warning_option+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  xorg_cv_cc_flag_unknown_warning_option=yes
+else
+  xorg_cv_cc_flag_unknown_warning_option=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unknown_warning_option" >&5
+$as_echo "$xorg_cv_cc_flag_unknown_warning_option" >&6; }
+	xorg_testset_cc_unknown_warning_option=$xorg_cv_cc_flag_unknown_warning_option
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+if test "x$xorg_testset_cc_unused_command_line_argument" = "x"; then
+	if test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+		CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	fi
+	CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Werror=unused-command-line-argument" >&5
+$as_echo_n "checking if $CC supports -Werror=unused-command-line-argument... " >&6; }
+if ${xorg_cv_cc_flag_unused_command_line_argument+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  xorg_cv_cc_flag_unused_command_line_argument=yes
+else
+  xorg_cv_cc_flag_unused_command_line_argument=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unused_command_line_argument" >&5
+$as_echo "$xorg_cv_cc_flag_unused_command_line_argument" >&6; }
+	xorg_testset_cc_unused_command_line_argument=$xorg_cv_cc_flag_unused_command_line_argument
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+found="no"
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wformat-overflow=2"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wformat-overflow=2" >&5
+$as_echo_n "checking if $CC supports -Wformat-overflow=2... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wformat_overflow_2
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+#ifdef F77_DUMMY_MAIN
+
+#  ifdef __cplusplus
+     extern "C"
+#  endif
+   int F77_DUMMY_MAIN() { return 1; }
+
+#endif
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wformat-overflow=2"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wformat-overflow"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wformat-overflow" >&5
+$as_echo_n "checking if $CC supports -Wformat-overflow... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wformat_overflow
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+#ifdef F77_DUMMY_MAIN
+
+#  ifdef __cplusplus
+     extern "C"
+#  endif
+   int F77_DUMMY_MAIN() { return 1; }
+
+#endif
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wformat-overflow"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wformat-length=2"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wformat-length=2" >&5
+$as_echo_n "checking if $CC supports -Wformat-length=2... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wformat_length_2
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+#ifdef F77_DUMMY_MAIN
+
+#  ifdef __cplusplus
+     extern "C"
+#  endif
+   int F77_DUMMY_MAIN() { return 1; }
+
+#endif
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wformat-length=2"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wformat-length"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wformat-length" >&5
+$as_echo_n "checking if $CC supports -Wformat-length... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wformat_length
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+#ifdef F77_DUMMY_MAIN
+
+#  ifdef __cplusplus
+     extern "C"
+#  endif
+   int F77_DUMMY_MAIN() { return 1; }
+
+#endif
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wformat-length"
+			found="yes"
+		fi
+	fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+xorg_testset_save_CFLAGS="$CFLAGS"
+
+if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
+	CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Werror=unknown-warning-option" >&5
+$as_echo_n "checking if $CC supports -Werror=unknown-warning-option... " >&6; }
+if ${xorg_cv_cc_flag_unknown_warning_option+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  xorg_cv_cc_flag_unknown_warning_option=yes
+else
+  xorg_cv_cc_flag_unknown_warning_option=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unknown_warning_option" >&5
+$as_echo "$xorg_cv_cc_flag_unknown_warning_option" >&6; }
+	xorg_testset_cc_unknown_warning_option=$xorg_cv_cc_flag_unknown_warning_option
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+if test "x$xorg_testset_cc_unused_command_line_argument" = "x"; then
+	if test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+		CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	fi
+	CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Werror=unused-command-line-argument" >&5
+$as_echo_n "checking if $CC supports -Werror=unused-command-line-argument... " >&6; }
+if ${xorg_cv_cc_flag_unused_command_line_argument+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  xorg_cv_cc_flag_unused_command_line_argument=yes
+else
+  xorg_cv_cc_flag_unused_command_line_argument=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unused_command_line_argument" >&5
+$as_echo "$xorg_cv_cc_flag_unused_command_line_argument" >&6; }
+	xorg_testset_cc_unused_command_line_argument=$xorg_cv_cc_flag_unused_command_line_argument
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+found="no"
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wformat-truncation=2"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wformat-truncation=2" >&5
+$as_echo_n "checking if $CC supports -Wformat-truncation=2... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wformat_truncation_2
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+#ifdef F77_DUMMY_MAIN
+
+#  ifdef __cplusplus
+     extern "C"
+#  endif
+   int F77_DUMMY_MAIN() { return 1; }
+
+#endif
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wformat-truncation=2"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wformat-truncation"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wformat-truncation" >&5
+$as_echo_n "checking if $CC supports -Wformat-truncation... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wformat_truncation
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+#ifdef F77_DUMMY_MAIN
+
+#  ifdef __cplusplus
+     extern "C"
+#  endif
+   int F77_DUMMY_MAIN() { return 1; }
+
+#endif
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wformat-truncation"
+			found="yes"
+		fi
+	fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+xorg_testset_save_CFLAGS="$CFLAGS"
+
+if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
+	CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Werror=unknown-warning-option" >&5
+$as_echo_n "checking if $CC supports -Werror=unknown-warning-option... " >&6; }
+if ${xorg_cv_cc_flag_unknown_warning_option+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  xorg_cv_cc_flag_unknown_warning_option=yes
+else
+  xorg_cv_cc_flag_unknown_warning_option=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unknown_warning_option" >&5
+$as_echo "$xorg_cv_cc_flag_unknown_warning_option" >&6; }
+	xorg_testset_cc_unknown_warning_option=$xorg_cv_cc_flag_unknown_warning_option
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+if test "x$xorg_testset_cc_unused_command_line_argument" = "x"; then
+	if test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+		CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	fi
+	CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Werror=unused-command-line-argument" >&5
+$as_echo_n "checking if $CC supports -Werror=unused-command-line-argument... " >&6; }
+if ${xorg_cv_cc_flag_unused_command_line_argument+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  xorg_cv_cc_flag_unused_command_line_argument=yes
+else
+  xorg_cv_cc_flag_unused_command_line_argument=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unused_command_line_argument" >&5
+$as_echo "$xorg_cv_cc_flag_unused_command_line_argument" >&6; }
+	xorg_testset_cc_unused_command_line_argument=$xorg_cv_cc_flag_unused_command_line_argument
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+found="no"
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wstringop-overflow=2"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wstringop-overflow=2" >&5
+$as_echo_n "checking if $CC supports -Wstringop-overflow=2... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wstringop_overflow_2
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+#ifdef F77_DUMMY_MAIN
+
+#  ifdef __cplusplus
+     extern "C"
+#  endif
+   int F77_DUMMY_MAIN() { return 1; }
+
+#endif
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wstringop-overflow=2"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wstringop-overflow"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wstringop-overflow" >&5
+$as_echo_n "checking if $CC supports -Wstringop-overflow... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wstringop_overflow
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+#ifdef F77_DUMMY_MAIN
+
+#  ifdef __cplusplus
+     extern "C"
+#  endif
+   int F77_DUMMY_MAIN() { return 1; }
+
+#endif
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wstringop-overflow"
+			found="yes"
+		fi
+	fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+xorg_testset_save_CFLAGS="$CFLAGS"
+
+if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
+	CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Werror=unknown-warning-option" >&5
+$as_echo_n "checking if $CC supports -Werror=unknown-warning-option... " >&6; }
+if ${xorg_cv_cc_flag_unknown_warning_option+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  xorg_cv_cc_flag_unknown_warning_option=yes
+else
+  xorg_cv_cc_flag_unknown_warning_option=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unknown_warning_option" >&5
+$as_echo "$xorg_cv_cc_flag_unknown_warning_option" >&6; }
+	xorg_testset_cc_unknown_warning_option=$xorg_cv_cc_flag_unknown_warning_option
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+if test "x$xorg_testset_cc_unused_command_line_argument" = "x"; then
+	if test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+		CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	fi
+	CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Werror=unused-command-line-argument" >&5
+$as_echo_n "checking if $CC supports -Werror=unused-command-line-argument... " >&6; }
+if ${xorg_cv_cc_flag_unused_command_line_argument+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  xorg_cv_cc_flag_unused_command_line_argument=yes
+else
+  xorg_cv_cc_flag_unused_command_line_argument=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unused_command_line_argument" >&5
+$as_echo "$xorg_cv_cc_flag_unused_command_line_argument" >&6; }
+	xorg_testset_cc_unused_command_line_argument=$xorg_cv_cc_flag_unused_command_line_argument
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+found="no"
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wstringop-truncation=2"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wstringop-truncation=2" >&5
+$as_echo_n "checking if $CC supports -Wstringop-truncation=2... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wstringop_truncation_2
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+#ifdef F77_DUMMY_MAIN
+
+#  ifdef __cplusplus
+     extern "C"
+#  endif
+   int F77_DUMMY_MAIN() { return 1; }
+
+#endif
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wstringop-truncation=2"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Wstringop-truncation"
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wstringop-truncation" >&5
+$as_echo_n "checking if $CC supports -Wstringop-truncation... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wstringop_truncation
+		if eval \${$cacheid+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+#ifdef F77_DUMMY_MAIN
+
+#  ifdef __cplusplus
+     extern "C"
+#  endif
+   int F77_DUMMY_MAIN() { return 1; }
+
+#endif
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  eval $cacheid=yes
+else
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+$as_echo "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Wstringop-truncation"
+			found="yes"
+		fi
+	fi
+
+
 # These are currently disabled because they are noisy.  They will be enabled
 # in the future once the codebase is sufficiently modernized to silence
 # them.  For now, I do NOT want them to drown out the other warnings.
@@ -56984,7 +59464,7 @@ $as_echo_n "checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later...
 
 
 cat > conftest.$ac_ext <<EOF
-#line 56987 "configure"
+#line 59467 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TCL_INCLUDE_PATH/$CHK_TCL_INC_NAME"
@@ -57299,7 +59779,7 @@ $as_echo_n "checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later... " 
 
 
 cat > conftest.$ac_ext <<EOF
-#line 57302 "configure"
+#line 59782 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TK_INCLUDE_PATH/$CHK_TK_INC_NAME"
@@ -57917,7 +60397,7 @@ $as_echo_n "checking saxon... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 57920 "configure"
+// #line 60400 "configure"
 import java.util.regex.Pattern;
 
 import com.icl.saxon.Loader;
@@ -58033,7 +60513,7 @@ $as_echo_n "checking jlatexmath-fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 58036 "configure"
+// #line 60516 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.fop.JLaTeXMathObj;

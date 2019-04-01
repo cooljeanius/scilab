@@ -110,7 +110,7 @@ Linux uses PTHREAD_MUTEX_ERRORCHECK_NP other Posix use PTHREAD_MUTEX_ERRORCHECK
 
 #define __StaticInitThreadSignal            PTHREAD_COND_INITIALIZER
 
-#endif //_MSC_VER
+#endif /* _MSC_VER */
 
 #endif /* !__THREAD_WRAPPER_H__ */
 

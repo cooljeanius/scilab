@@ -317,6 +317,7 @@ COBERTURA = @COBERTURA@
 COMMONS_BEANUTILS = @COMMONS_BEANUTILS@
 COMMONS_IO = @COMMONS_IO@
 COMMONS_LOGGING = @COMMONS_LOGGING@
+COMPILER_CXXLDFLAGS = @COMPILER_CXXLDFLAGS@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CPPI = @CPPI@
@@ -545,6 +546,7 @@ USE_NLS = @USE_NLS@
 VERSION = @VERSION@
 WARNING_CFLAGS = @WARNING_CFLAGS@
 WARNING_CXXFLAGS = @WARNING_CXXFLAGS@
+WCXX_COMPAT_CFLAGS = @WCXX_COMPAT_CFLAGS@
 WERROR_CFLAGS = @WERROR_CFLAGS@
 WERROR_CXXFLAGS = @WERROR_CXXFLAGS@
 WITH_OCAML = @WITH_OCAML@
@@ -700,7 +702,7 @@ libjavasci2_la_etc_DATA = etc/javasci.quit etc/javasci.start
 
 # Set AM_* SCI detected settings
 @JAVASCI_TRUE@AM_CPPFLAGS = $(SCI_CPPFLAGS)
-@JAVASCI_TRUE@AM_CFLAGS = $(SCI_CFLAGS)
+@JAVASCI_TRUE@AM_CFLAGS = $(SCI_CFLAGS) `if test -d src/cpp; then echo $(WCXX_COMPAT_CFLAGS); fi`
 @JAVASCI_TRUE@AM_CXXFLAGS = $(SCI_CXXFLAGS)
 # append includes to AM_FFLAGS to manage fortran includes
 @JAVASCI_TRUE@AM_FFLAGS = $(SCI_FFLAGS) \
@@ -719,7 +721,7 @@ libjavasci2_la_etc_DATA = etc/javasci.quit etc/javasci.start
 @JAVASCI_TRUE@am__v_q_1 = 
 
 # splint options
-@JAVASCI_TRUE@SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements
+@JAVASCI_TRUE@SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements +showscan +forcehints
 @JAVASCI_TRUE@SPLINT_INCLUDE_FLAGS = `echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
 
 ########################### JAVA ######################################

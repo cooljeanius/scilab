@@ -146,8 +146,8 @@ L1:
     }
     if (C2F(iop).ddt == 4)
     {
-        sprintf(tmp, " TOP    pt:%d rstk(pt):%d icall: %d niv: %d err:%d",
-                Pt, Rstk[Pt], C2F(recu).icall, C2F(recu).niv, Err);
+        snprintf(tmp, sizeof(tmp), " TOP    pt:%d rstk(pt):%d icall: %d niv: %d err:%d",
+                 Pt, Rstk[Pt], C2F(recu).icall, C2F(recu).niv, Err);
         C2F(basout)(&io, &C2F(iop).wte, tmp, (long)strlen(tmp));
     }
 
@@ -304,8 +304,8 @@ L15:
     }
     if (C2F(iop).ddt == 4)
     {
-        sprintf(tmp, " parse  pt:%d rstk(pt):%d top: %d niv: %d err:%d",
-                Pt, r, Top, C2F(recu).niv, Err);
+        snprintf(tmp, sizeof(tmp), " parse  pt:%d rstk(pt):%d top: %d niv: %d err:%d",
+                 Pt, r, Top, C2F(recu).niv, Err);
         C2F(basout)(&io, &C2F(iop).wte, tmp, (long)strlen(tmp));
     }
 
@@ -957,7 +957,10 @@ L71:
         }
         if (C2F(errgst).err1 > 0)
         {
-            if (C2F(errgst).err1 != 13 || Rstk[Pt] != 502) --Pt;
+            if (C2F(errgst).err1 != 13 || Rstk[Pt] != 502)
+            {
+                --Pt;
+            }
             --Lhs;
             goto L98;
         }
@@ -1092,12 +1095,18 @@ L77:
     Fin = 0;
     p = 0;
     r = 0;
-    if (Pt > 0) p = Pstk[Pt];
-    if (Pt > 0) r = Rstk[Pt];
+    if (Pt > 0)
+    {
+        p = Pstk[Pt];
+    }
+    if (Pt > 0)
+    {
+        r = Rstk[Pt];
+    }
     if (C2F(iop).ddt == 4)
     {
-        sprintf(tmp, " finish  pt:%d rstk(pt):%d  pstk(pt):%d lpt(1): %d niv: %d macr:%d, paus:%d",
-                Pt, r, p, Lpt[1], C2F(recu).niv, C2F(recu).macr, C2F(recu).paus);
+        snprintf(tmp, sizeof(tmp), " finish  pt:%d rstk(pt):%d  pstk(pt):%d lpt(1): %d niv: %d macr:%d, paus:%d",
+                 Pt, r, p, Lpt[1], C2F(recu).niv, C2F(recu).macr, C2F(recu).paus);
         C2F(basout)(&io, &C2F(iop).wte, tmp, (long)strlen(tmp));
     }
 
@@ -1138,7 +1147,10 @@ L77:
         {
             /* running under errcatch(num,....) */
             C2F(errgst).err1 = 0;
-            if (Pt < C2F(errgst).errpt) C2F(errgst).errcatch = 0;
+            if (Pt < C2F(errgst).errpt)
+            {
+                C2F(errgst).errcatch = 0;
+            }
         }
 
         imode = (i__2 = C2F(errgst).errct / 100000, abs(i__2));
@@ -1157,7 +1169,9 @@ L77:
             C2F(parsecomment)();
         }
         else
+        {
             goto L15;
+        }
     }
 
     /*     gestion des points d'arrets dynamiques */
@@ -1184,7 +1198,7 @@ L77:
                     {
                         /* display a message */
                         C2F(cvname)(&C2F(dbg).macnms[kmac * nsiz], tmp, &c__1, nlgh);
-                        sprintf(C2F(cha1).buf, "%s %5d", tmp, curline);
+                        snprintf(C2F(cha1).buf, (size_t)(-1), "%s %5d", tmp, curline);
                         Msgs(32, 0);
                         /* raise the interruption flag */
                         C2F(basbrk).iflag = TRUE;
@@ -1920,8 +1934,14 @@ void handle_onprompt(int *where_)
         /* on prompt implicit execution */
         C2F(com).fun = 0;
         C2F(funs)(onprompt);
-        if (Err > 0) return;
-        if (C2F(com).fun <= 0 && Fin == 0) return;
+        if (Err > 0)
+        {
+            return;
+        }
+        if (C2F(com).fun <= 0 && Fin == 0)
+        {
+            return;
+        }
         /* %onprompt function exists */
         Rhs = 0;
         Lhs = 1;
@@ -1957,10 +1977,16 @@ void C2F(parsecomment)(void)
     static int l, ll, lkp, l0, c1 = 1;
     /* look for eol */
     l0 = Lpt[4] - 1;
-    if ( (Lin[l0] == slash) && (Lin[l0 - 1] == slash) & (Lin[l0 + 1] == eol)) l0 = l0 + 1;
+    if ( (Lin[l0] == slash) && (Lin[l0 - 1] == slash) & (Lin[l0 + 1] == eol))
+    {
+        l0 = l0 + 1;
+    }
 
     l = l0;
-    while (Lin[l] != eol) l++;
+    while (Lin[l] != eol)
+    {
+        l++;
+    }
     ll = l - l0;
     if (Comp[1] == 0)
     {

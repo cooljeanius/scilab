@@ -226,7 +226,7 @@ sci_backtrace_t *sci_backtrace_destroy(sci_backtrace_t * bt)
 void sci_backtrace_demangle(sci_backtrace_t * bt)
 {
 #if defined(HAVE_GLIBC_BACKTRACE) && defined(HAVE_CPLUS_DEMANGLE)
-    int i, j, l;
+    int i, l;
 
     if (bt != NULL)
     {

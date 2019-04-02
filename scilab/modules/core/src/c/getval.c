@@ -353,12 +353,12 @@ int C2F(getval)(double *s, int *dotdet)
         }
         if (expo < 0)
         {
-            d1 = -expo;
+            d1 = (double)(-expo);
             *s /= pow(c10, d1);
         }
         else
         {
-            d1 = expo;
+            d1 = (double)expo;
             *s *= pow(c10, d1);
         }
         return 0;
@@ -399,11 +399,11 @@ int C2F(getval)(double *s, int *dotdet)
     i1 = ndgrec;
     if (expo < 0)
     {
-        sprintf(string + i1, ".e-%d", abs(expo));
+        snprintf(string + i1, (size_t)(-1), ".e-%d", abs(expo));
     }
     else
     {
-        sprintf(string + i1, ".e+%d", abs(expo));
+        snprintf(string + i1, (size_t)(-1), ".e+%d", abs(expo));
     }
     k = ndgrec + 4;
     if (k == 0)

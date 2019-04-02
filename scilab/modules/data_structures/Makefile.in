@@ -791,7 +791,7 @@ libscidata_structures_algo_la_FFLAGS = $(libscidata_structures_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC = $(DATA_STRUCTURES_C_SOURCES) $(GATEWAY_C_SOURCES)
-INCLUDE_FLAGS = $(libscidata_structures_la_CFLAGS)
+INCLUDE_FLAGS = $(libscidata_structures_la_CPPFLAGS)
 libscidata_structures_la_LIBADD = libscidata_structures-algo.la libdummy-data_structures.la
 
 #### Target ######
@@ -831,7 +831,7 @@ am__v_q_0 = -q
 am__v_q_1 = 
 
 # splint options
-SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements +showscan +forcehints
+SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements +showscan +forcehints -fixedformalarray
 SPLINT_INCLUDE_FLAGS = `echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
 
 ########################### JAVA ######################################

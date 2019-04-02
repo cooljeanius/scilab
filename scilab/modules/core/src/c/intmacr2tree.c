@@ -1624,7 +1624,7 @@ static int CreateFuncallTList(char *fromwhat, int *data, int *index2)
     int job1 = 1, job2 = (int)SCI_HFUNCTIONS_BACKSEARCH;
     int id[nsiz];
 
-    double nblhs = 0;
+    double nblhs = 0.0;
     int nbrhs = 0;
 
     char **funname = NULL;
@@ -1635,7 +1635,7 @@ static int CreateFuncallTList(char *fromwhat, int *data, int *index2)
     int orig, dest; /* Used when copy objects */
 
     /* Used for empty matrix creation when rhsnb==0 (function called as a command) */
-    double l_mat = 0;
+    double l_mat = 0.0;
     int m_mat = 0;
     int n_mat = 0;
 
@@ -1661,7 +1661,7 @@ static int CreateFuncallTList(char *fromwhat, int *data, int *index2)
         (*index2)++;
         nbrhs = data[*index2];
         (*index2)++;
-        nblhs = data[*index2];
+        nblhs = (double)data[*index2];
         (*index2)++;
         interf_index2 = data[*index2];
 
@@ -1718,7 +1718,7 @@ static int CreateFuncallTList(char *fromwhat, int *data, int *index2)
         (*index2)++;
         nbrhs = data[*index2];
         (*index2)++;
-        nblhs = data[*index2];
+        nblhs = (double)data[*index2];
     }
     else /* Should never happen */
     {

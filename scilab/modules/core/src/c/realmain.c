@@ -43,7 +43,8 @@ int realmain(int no_startup_flag_l, char *initial_script, InitScriptType initial
     int iExitCode = 0;
     static int initialization = -1;
     int ierr = 0;
-    char *startup = (char*)MALLOC(sizeof(char) * (PATH_MAX + 1));
+    size_t startup_len = (sizeof(char) * (PATH_MAX + 1UL));
+    char *startup = (char *)MALLOC(startup_len);
     Set_no_startup_flag(no_startup_flag_l);
 
     /* Change the buffering mode of standard streams stdout/stderr */
@@ -144,7 +145,7 @@ int realmain(int no_startup_flag_l, char *initial_script, InitScriptType initial
         }
         else
         {
-            sprintf(startup, " ");
+            snprintf(startup, startup_len, " ");
         }
     }
 

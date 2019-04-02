@@ -41,7 +41,7 @@ endif
 libsciapi_scilab_la_SOURCES = $(API_SCILAB_C_SOURCES) $(API_SCILAB_CXX_SOURCES)
 
 # For the code check (splint)
-CHECK_SRC= $(libsciapi_scilab_la_SOURCES)
+CHECK_SRC= $(API_SCILAB_C_SOURCES)
 INCLUDE_FLAGS = $(libsciapi_scilab_la_CPPFLAGS) 
 
 libsciapi_scilab_la_LIBADD =  

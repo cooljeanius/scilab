@@ -69,7 +69,6 @@ extern int C2F(istrue)(int *);
 
 int Istrue(int n)
 {
-
     return C2F(istrue)(&n);
 }
 
@@ -112,7 +111,7 @@ int C2F(run)(void)
     /* set debug trace mode on  */
     if (C2F(iop).ddt == 4)
     {
-        sprintf(tmp, " run pt:%d rstk(pt):%d", Pt, Rstk[Pt]);
+        snprintf(tmp, sizeof(tmp), " run pt:%d rstk(pt):%d", Pt, Rstk[Pt]);
         C2F(basout)(&io, &C2F(iop).wte, tmp, (long)strlen(tmp));
     }
 
@@ -1123,7 +1122,8 @@ L105:
                     {
                         /* display a message */
                         C2F(cvname)(&C2F(dbg).macnms[kmac * nsiz], tmp, &c__1, 24L);
-                        sprintf(C2F(cha1).buf, "%s %5d", tmp, Lct[8]);
+                        snprintf(C2F(cha1).buf, (size_t)(-1), "%s %5d", tmp,
+                                 Lct[8]);
                         Msgs(32, 0);
                         /* raise the interruption flag */
                         C2F(basbrk).iflag = TRUE;

@@ -77,7 +77,7 @@ libscidata_structures_algo_la_FFLAGS = $(libscidata_structures_la_FFLAGS)
 
 # For the code check (splint)
 CHECK_SRC= $(DATA_STRUCTURES_C_SOURCES) $(GATEWAY_C_SOURCES)
-INCLUDE_FLAGS = $(libscidata_structures_la_CFLAGS)
+INCLUDE_FLAGS = $(libscidata_structures_la_CPPFLAGS)
 
 libscidata_structures_la_LIBADD = libscidata_structures-algo.la libdummy-data_structures.la
 

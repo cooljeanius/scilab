@@ -154,9 +154,9 @@ int C2F(isopt) (int *k, char *namex, unsigned long name_len)
 * freeptr : free ip pointer
 *--------------------------------------------------------------*/
 
-void C2F(freeptr) (double *ip[])
+void C2F(freeptr)(double *ip[])
 {
-    if (ip)
+    if (ip != NULL)
     {
         FREE((char *)(*ip));
     }
@@ -3597,12 +3597,13 @@ char *ArgPosition(int i)
     if (i > 0 && i <= 4)
     {
         tmp_buffer = CharPosition(i - 1);
-        sprintf(arg_position, _("%s argument"), tmp_buffer);
+        snprintf(arg_position, sizeof(arg_position), _("%s argument"),
+                 tmp_buffer);
         FREE(tmp_buffer);
     }
     else
     {
-        sprintf(arg_position, _("argument #%d"), i);
+        snprintf(arg_position, sizeof(arg_position), _("argument #%d"), i);
     }
     return arg_position;
 }
@@ -3617,14 +3618,16 @@ char *ArgsPosition(int i, int j)
         {
             tmp_buffer_1 = CharPosition(i - 1);
             tmp_buffer_2 = CharPosition(j - 1);
-            sprintf(arg_position, _("%s and %s arguments"), tmp_buffer_1, tmp_buffer_2);
+            snprintf(arg_position, sizeof(arg_position),
+                     _("%s and %s arguments"), tmp_buffer_1, tmp_buffer_2);
             FREE(tmp_buffer_1);
             FREE(tmp_buffer_2);
         }
         else
         {
             tmp_buffer_1 = CharPosition(i - 1);
-            sprintf(arg_position, _("%s argument and argument #%d"), tmp_buffer_1, j);
+            snprintf(arg_position, sizeof(arg_position),
+                     _("%s argument and argument #%d"), tmp_buffer_1, j);
             FREE(tmp_buffer_1);
         }
     }
@@ -3633,12 +3636,14 @@ char *ArgsPosition(int i, int j)
         if (j > 0 && j <= 4)
         {
             tmp_buffer_1 = CharPosition(j - 1);
-            sprintf(arg_position, _("%s argument and argument #%d"), tmp_buffer_1, i);
+            snprintf(arg_position, sizeof(arg_position),
+                     _("%s argument and argument #%d"), tmp_buffer_1, i);
             FREE(tmp_buffer_1);
         }
         else
         {
-            sprintf(arg_position, _("arguments #%d and #%d"), i, j);
+            snprintf(arg_position, sizeof(arg_position),
+                     _("arguments #%d and #%d"), i, j);
         }
     }
     return arg_position;

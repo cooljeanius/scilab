@@ -109,14 +109,15 @@ void createScilabTMPDIR(void)
 {
     char *tmpdir;
 
-    if ( alreadyCreated == 0 )
+    if (alreadyCreated == 0)
     {
         static char bufenv[PATH_MAX + 16];
         char *tmp_dir_strdup;
         alreadyCreated++;
         /* If the env variable TMPDIR is set, honor this preference */
-        if ((tmpdir = getenv("TMPDIR")) != NULL &&
-                strlen(tmpdir) < (PATH_MAX) && strstr(tmpdir, "SCI_TMP_") == NULL)
+        if (((tmpdir = getenv("TMPDIR")) != NULL)
+                && (strlen(tmpdir) < (PATH_MAX))
+                && (strstr(tmpdir, "SCI_TMP_") == NULL))
         {
             /* TMPDIR does not contains SCI_TMP. Using TMPDIR */
             strcpy(tmp_dir, tmpdir);
@@ -132,7 +133,8 @@ void createScilabTMPDIR(void)
 
         /* the "XXXXXX" will be randomized by mkdtemp */
         tmp_dir_strdup = realpath(tmp_dir, NULL); /* Copy to avoid to have the same buffer as input and output for sprintf */
-        sprintf(tmp_dir, "%s/SCI_TMP_%d_XXXXXX", tmp_dir_strdup, (int) getpid());
+        snprintf(tmp_dir, (size_t)(-1), "%s/SCI_TMP_%d_XXXXXX", tmp_dir_strdup,
+                 (int)getpid());
         free(tmp_dir_strdup);
 
         if (mkdtemp(tmp_dir) == NULL)
@@ -140,7 +142,7 @@ void createScilabTMPDIR(void)
             fprintf(stderr, _("Error: Could not create %s: %s\n"), tmp_dir, strerror(errno));
         }
 
-        sprintf(bufenv, "TMPDIR=%s", tmp_dir);
+        snprintf(bufenv, sizeof(bufenv), "TMPDIR=%s", tmp_dir);
         putenv(bufenv);
     }
 }

@@ -40,7 +40,7 @@ static const char g_SCILAB_CLASS_MLIST[]        =	"mlist";
 static const char g_SCILAB_CLASS_VOID[]         =	"void";
 static const char g_SCILAB_CLASS_UNDEFINED[]    =	"undefined";
 
-//integer precision
+/* integer precision: */
 #define SCI_INT8	1
 #define SCI_INT16	2
 #define SCI_INT32	4

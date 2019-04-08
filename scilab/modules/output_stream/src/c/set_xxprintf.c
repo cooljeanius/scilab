@@ -18,7 +18,7 @@
 #include "scilabmode.h"
 /*--------------------------------------------------------------------------*/
 /* local function used to flush with sprintf */
-static int voidflush(FILE *fp);
+static int voidflush(FILE *fp) ATTRIBUTE_NONNULL(1);
 /* local function used to call scivprint */
 static int local_sciprint(int iv, char *fmt, ...);
 /*--------------------------------------------------------------------------*/
@@ -33,20 +33,32 @@ void set_xxprintf(FILE *fp, XXPRINTF *xxprintf, FLUSH *flush, char **target)
         /* sprintf */
         *target = sprintf_buffer;
         *flush = voidflush;
+#ifdef S_SPLINT_S
+        *xxprintf = (XXPRINTF)snprintf;
+#else
         *xxprintf = (XXPRINTF)sprintf;
+#endif /* S_SPLINT_S */
     }
     else if (fp == stdout)
     {
         /* sciprint2 */
-        *target =  (char *)0;
+        *target = (char *)0;
+#ifdef S_SPLINT_S
+        *flush = voidflush;
+#else
         *flush = fflush;
-        *xxprintf = (XXPRINTF) local_sciprint;
+#endif /* S_SPLINT_S */
+        *xxprintf = (XXPRINTF)local_sciprint;
     }
     else
     {
         /* fprintf */
-        *target = (char *)fp;
+        *target = /*@access FILE@*/(char *)fp;
+#ifdef S_SPLINT_S
+        *flush = voidflush;
+#else
         *flush = fflush;
+#endif /* S_SPLINT_S */
         *xxprintf = (XXPRINTF)fprintf;
     }
 }

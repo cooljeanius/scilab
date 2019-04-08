@@ -15,14 +15,15 @@ endif
 endif
 
 
-HDF5_SOURCES = src/c/h5_fileManagement.c \
+HDF5_C_SOURCES = src/c/h5_fileManagement.c \
 src/c/h5_writeDataToFile.c \
 src/c/h5_readDataFromFile.c \
-src/c/h5_readDataFromFile_v1.c \
-src/cpp/import_from_hdf5_v1.cpp \
+src/c/h5_readDataFromFile_v1.c
+
+HDF5_CXX_SOURCES = src/cpp/import_from_hdf5_v1.cpp \
 src/cpp/listvar_in_hdf5_v1.cpp
 
-
+HDF5_SOURCES = $(HDF5_C_SOURCES) $(HDF5_CXX_SOURCES)
 
 GATEWAY_C_SOURCES = sci_gateway/c/gw_hdf5.c
 
@@ -72,7 +73,7 @@ libscihdf5_la_SOURCES = $(GATEWAY_CXX_SOURCES) $(GATEWAY_C_SOURCES)
 libscihdf5_algo_la_CPPFLAGS = $(libscihdf5_la_CPPFLAGS)
 
 # For the code check (splint)
-CHECK_SRC= $(HDF5_SOURCES) $(GATEWAY_CXX_SOURCES)
+CHECK_SRC= $(HDF5_C_SOURCES) $(GATEWAY_C_SOURCES)
 INCLUDE_FLAGS = $(libscihdf5_la_CPPFLAGS)
 
 libscihdf5_la_LIBADD = libscihdf5-algo.la

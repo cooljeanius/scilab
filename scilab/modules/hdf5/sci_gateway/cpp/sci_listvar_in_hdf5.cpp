@@ -32,7 +32,7 @@ extern "C"
 
 typedef struct __VAR_INFO__
 {
-    char pstInfo[128];
+    char pstInfo[256]; /* 169 for -Wformat-truncation, rounded up to next power of 2 */
     char varName[128];
     int iType;
     int iSize;
@@ -100,16 +100,18 @@ int sci_listvar_in_hdf5(char *fname, unsigned long fname_len)
     {
         if (iVersion > SOD_FILE_VERSION)
         {
-            //can't read file with version newer that me !
+            //cannot read file with version newer than me!
             Scierror(999, _("%s: Wrong SOD file format version. Max Expected: %d Found: %d\n"), fname, SOD_FILE_VERSION, iVersion);
             return 1;
         }
         else
         {
-            //call older import functions and exit or ... EXIT !
+            //call older import functions and exit or... EXIT!
             if (iVersion == 1 || iVersion == -1)
             {
-                //sciprint("old sci_listvar_in_hdf5_v1\n");
+#if 0
+                sciprint("old sci_listvar_in_hdf5_v1\n");
+#endif /* 0 */
                 return sci_listvar_in_hdf5_v1(fname, fname_len);
             }
         }
@@ -328,6 +330,10 @@ static bool read_string(int _iDatasetId, int _iItemPos, int *_piAddress, VarInfo
     pstData = (char **)MALLOC(iSize * sizeof(char *));
     iRet = readStringMatrix(_iDatasetId, pstData);
 
+    if (iRet == 0)
+    {
+        ; /* ??? */
+    }
 
     for (int i = 0 ; i < _pInfo->piDims[0] * _pInfo->piDims[1] ; i++)
     {
@@ -445,7 +451,11 @@ static bool read_poly(int _iDatasetId, int _iItemPos, int *_piAddress, VarInfo* 
         iRet = readPolyMatrix(_iDatasetId, pstVarName, 2, _pInfo->piDims, piNbCoef, pdblReal);
     }
 
-    for (int i = 0 ; i < iSize ; i++)
+    if (iRet == 0)
+    {
+        ; /* ??? */
+    }
+    for (int i = 0; i < iSize; i++)
     {
         _pInfo->iSize += piNbCoef[i] * 8 * (iComplex + 1);
         FREE(pdblReal[i]);
@@ -481,7 +491,7 @@ static bool read_list(int _iDatasetId, int _iVarType, int _iItemPos, int *_piAdd
 
     if (iItems == 0)
     {
-        //special case for empty list
+        ; //special case for empty list
     }
     else
     {
@@ -491,7 +501,9 @@ static bool read_list(int _iDatasetId, int _iVarType, int _iItemPos, int *_piAdd
             return false;
         }
     }
-    //_pInfo = (VarInfo*)MALLOC(sizeof(VarInfo));
+#if 0
+    _pInfo = (VarInfo*)MALLOC(sizeof(VarInfo));
+#endif /* 0 */
     _pInfo->iDims = 1;
     _pInfo->piDims[0] = iItems;
     _pInfo->iSize = (2 + iItems + 1) * 4;
@@ -545,15 +557,17 @@ static bool read_undefined(int _iDatasetId, int _iItemPos, int *_piAddress, VarI
 
 static void generateInfo(VarInfo* _pInfo, const char* _pstType)
 {
-    char pstSize[17];
+    char pstSize[27]; /* big enough for -Wformat-truncation */
 
     if (_pInfo->iDims == 2)
     {
-        sprintf(pstSize, "%d by %d", _pInfo->piDims[0], _pInfo->piDims[1]);
+        snprintf(pstSize, sizeof(pstSize), "%d by %d", _pInfo->piDims[0],
+                 _pInfo->piDims[1]);
     }
     else
     {
-        sprintf(pstSize, "%d", _pInfo->piDims[0]);
+        snprintf(pstSize, sizeof(pstSize), "%d", _pInfo->piDims[0]);
     }
-    sprintf(_pInfo->pstInfo, "%-*s%-*s%-*s%-*d", 25, _pInfo->varName, 15, _pstType, 16, pstSize, 10, _pInfo->iSize);
+    snprintf(_pInfo->pstInfo, sizeof(_pInfo->pstInfo), "%-*s%-*s%-*s%-*d", 25,
+             _pInfo->varName, 15, _pstType, 16, pstSize, 10, _pInfo->iSize);
 }

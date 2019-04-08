@@ -41,19 +41,19 @@ libjavasci2_la_SOURCES = $(JAVASCI_V2_C_SOURCES)
 CHECK_SRC= $(JAVASCI_C_SOURCES)
 INCLUDE_FLAGS = $(libjavasci2_la_CPPFLAGS)
 
-libjavasci2_la_CPPFLAGS = -I$(srcdir)/includes/ \
-			-I$(srcdir)/src/c/ \
+libjavasci2_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
+			-Wp,-I$(srcdir)/src/c/ \
 			$(JAVA_JNI_INCLUDE) \
 			$(TCL_INC_PATH) \
 			$(TK_INC_PATH) \
-			-I$(top_srcdir)/libs/MALLOC/includes/ \
-			-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
-			-I$(top_srcdir)/modules/tclsci/includes/ \
-			-I$(top_srcdir)/modules/call_scilab/includes/ \
-			-I$(top_srcdir)/modules/api_scilab/includes/ \
-			-I$(top_srcdir)/modules/fileio/includes/ \
-			-I$(top_srcdir)/modules/localization/includes/ \
-			-I$(top_srcdir)/modules/output_stream/includes/ \
+			-Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+			-Wp,-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
+			-Wp,-I$(top_srcdir)/modules/tclsci/includes/ \
+			-Wp,-I$(top_srcdir)/modules/call_scilab/includes/ \
+			-Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+			-Wp,-I$(top_srcdir)/modules/fileio/includes/ \
+			-Wp,-I$(top_srcdir)/modules/localization/includes/ \
+			-Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
 			$(AM_CPPFLAGS)
 
 libjavasci2_la_LIBADD = \

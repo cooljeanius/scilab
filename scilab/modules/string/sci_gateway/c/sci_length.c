@@ -321,7 +321,7 @@ static int lengthSparse(int *piAddressVar)
         return 0;
     }
 
-    pdOut[0] = Max(m, n);
+    pdOut[0] = (double)Max(m, n);
 
     sciErr = createMatrixOfDouble(pvApiCtx, Rhs + 1, m_out, n_out, pdOut);
     if (sciErr.iErr)
@@ -461,7 +461,7 @@ static int lengthDefault(int *piAddressVar)
         return 0;
     }
 
-    pdOut[0] = m * n;
+    pdOut[0] = (double)(m * n);
 
     sciErr = createMatrixOfDouble(pvApiCtx, Rhs + 1, m_out, n_out, pdOut);
     if (sciErr.iErr)

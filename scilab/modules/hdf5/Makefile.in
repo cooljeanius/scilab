@@ -188,22 +188,23 @@ am__dirstamp = $(am__leading_dot)dirstamp
 am__objects_1 = src/c/libscihdf5_algo_la-h5_fileManagement.lo \
 	src/c/libscihdf5_algo_la-h5_writeDataToFile.lo \
 	src/c/libscihdf5_algo_la-h5_readDataFromFile.lo \
-	src/c/libscihdf5_algo_la-h5_readDataFromFile_v1.lo \
-	src/cpp/libscihdf5_algo_la-import_from_hdf5_v1.lo \
+	src/c/libscihdf5_algo_la-h5_readDataFromFile_v1.lo
+am__objects_2 = src/cpp/libscihdf5_algo_la-import_from_hdf5_v1.lo \
 	src/cpp/libscihdf5_algo_la-listvar_in_hdf5_v1.lo
-am_libscihdf5_algo_la_OBJECTS = $(am__objects_1)
+am__objects_3 = $(am__objects_1) $(am__objects_2)
+am_libscihdf5_algo_la_OBJECTS = $(am__objects_3)
 libscihdf5_algo_la_OBJECTS = $(am_libscihdf5_algo_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
 libscihdf5_la_DEPENDENCIES = libscihdf5-algo.la
-am__objects_2 = sci_gateway/cpp/libscihdf5_la-sci_export_to_hdf5.lo \
+am__objects_4 = sci_gateway/cpp/libscihdf5_la-sci_export_to_hdf5.lo \
 	sci_gateway/cpp/libscihdf5_la-sci_import_from_hdf5.lo \
 	sci_gateway/cpp/libscihdf5_la-sci_is_hdf5_file.lo \
 	sci_gateway/cpp/libscihdf5_la-sci_listvar_in_hdf5.lo
-am__objects_3 = sci_gateway/c/libscihdf5_la-gw_hdf5.lo
-am_libscihdf5_la_OBJECTS = $(am__objects_2) $(am__objects_3)
+am__objects_5 = sci_gateway/c/libscihdf5_la-gw_hdf5.lo
+am_libscihdf5_la_OBJECTS = $(am__objects_4) $(am__objects_5)
 libscihdf5_la_OBJECTS = $(am_libscihdf5_la_OBJECTS)
 libscihdf5_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CXXLD) \
@@ -682,13 +683,15 @@ top_srcdir = @top_srcdir@
 
 # No GUI. Disable the Java build
 @GUI_TRUE@@XCOS_TRUE@USEANT = 1
-HDF5_SOURCES = src/c/h5_fileManagement.c \
+HDF5_C_SOURCES = src/c/h5_fileManagement.c \
 src/c/h5_writeDataToFile.c \
 src/c/h5_readDataFromFile.c \
-src/c/h5_readDataFromFile_v1.c \
-src/cpp/import_from_hdf5_v1.cpp \
+src/c/h5_readDataFromFile_v1.c
+
+HDF5_CXX_SOURCES = src/cpp/import_from_hdf5_v1.cpp \
 src/cpp/listvar_in_hdf5_v1.cpp
 
+HDF5_SOURCES = $(HDF5_C_SOURCES) $(HDF5_CXX_SOURCES)
 GATEWAY_C_SOURCES = sci_gateway/c/gw_hdf5.c
 GATEWAY_CXX_SOURCES = sci_gateway/cpp/sci_export_to_hdf5.cpp \
 sci_gateway/cpp/sci_import_from_hdf5.cpp \
@@ -727,7 +730,7 @@ libscihdf5_la_SOURCES = $(GATEWAY_CXX_SOURCES) $(GATEWAY_C_SOURCES)
 libscihdf5_algo_la_CPPFLAGS = $(libscihdf5_la_CPPFLAGS)
 
 # For the code check (splint)
-CHECK_SRC = $(HDF5_SOURCES) $(GATEWAY_CXX_SOURCES)
+CHECK_SRC = $(HDF5_C_SOURCES) $(GATEWAY_C_SOURCES)
 INCLUDE_FLAGS = $(libscihdf5_la_CPPFLAGS)
 libscihdf5_la_LIBADD = libscihdf5-algo.la
 

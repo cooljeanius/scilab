@@ -222,7 +222,7 @@ int sci_xls_open(char *fname, unsigned long fname_len)
         CreateVar(Rhs + 4, MATRIX_OF_DOUBLE_DATATYPE, &one, &nsheets, &l2);
         for (i = 0; i < nsheets; i++)
         {
-            *stk(l2 + i) = Abspos[i];
+            *stk(l2 + i) = (double)Abspos[i];
         }
         if (Abspos)
         {

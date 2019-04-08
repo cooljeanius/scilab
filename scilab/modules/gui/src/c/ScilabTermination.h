@@ -16,7 +16,7 @@
 /**
 * Exit Scilab from Java
 **/
-void ScilabExit(void);
+extern void ScilabExit(void);
 
 #endif /* __SCILABTERMINATION_H__ */
 /*--------------------------------------------------------------------------*/

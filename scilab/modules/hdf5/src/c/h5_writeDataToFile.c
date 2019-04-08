@@ -317,10 +317,11 @@ int writeStringMatrix(int _iFile, char *_pstDatasetName, int _iDims, int* _piDim
 char *createGroupName(char *_pstGroupName)
 {
     char *pstSlash = NULL;
-    char *pstGroupName = (char *)MALLOC((strlen(_pstGroupName) + 3) * sizeof(char));
+    const size_t pGN_len = ((strlen(_pstGroupName) + 3UL) * sizeof(char));
+    char *pstGroupName = (char *)MALLOC(pGN_len);
 
     /* Generate groupname #<dataSetName># */
-    sprintf(pstGroupName, "#%s#", _pstGroupName);
+    snprintf(pstGroupName, pGN_len, "#%s#", _pstGroupName);
     pstSlash = strstr(pstGroupName, "/");
     if (pstSlash != NULL)
     {
@@ -334,18 +335,22 @@ char* createPathName(char *_pstGroupName, int _iIndex)
 {
     char *pstName = NULL;
     char *pstPathName = NULL;
+    size_t pstName_len;
+    size_t pstPathName_len;
 
     int iNameLen = (int)log10((double)_iIndex + 1) + 1;
     iNameLen += 2; /* for both '#' */
     iNameLen += 1; /* for null termanation */
 
-    pstName = (char *)MALLOC(iNameLen * sizeof(char));
+    pstName_len = (iNameLen * sizeof(char));
+    pstName = (char *)MALLOC(pstName_len);
     /* 1 for null termination, 2 for '#' characters: */
-    sprintf(pstName, "#%d#", _iIndex);
+    snprintf(pstName, pstName_len, "#%d#", _iIndex);
 
-    pstPathName = (char *)MALLOC((strlen(_pstGroupName) + strlen(pstName) + 2) * sizeof(char));
+    pstPathName_len = ((strlen(_pstGroupName) + strlen(pstName) + 2UL) * sizeof(char));
+    pstPathName = (char *)MALLOC(pstPathName_len);
     /* 1 for null termination, 1 for separator, 2 for '#' characters: */
-    sprintf(pstPathName, "%s/%s", _pstGroupName, pstName);
+    snprintf(pstPathName, pstPathName_len, "%s/%s", _pstGroupName, pstName);
     FREE(pstName);
     return pstPathName;
 }

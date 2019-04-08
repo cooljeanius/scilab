@@ -85,14 +85,35 @@ csvWriteError csvWrite_double(const char *filename,
     char *expandedFilename = NULL;
     int isIsoLatin = 0;
 
-    if (filename == NULL) return CSV_WRITE_ERROR;
-    if (pdValues == NULL) return CSV_WRITE_ERROR;
-    if (m < 0 || n < 0) return CSV_WRITE_ERROR;
-    if (separator == NULL) return CSV_WRITE_ERROR;
-    if (decimal == NULL) return CSV_WRITE_ERROR;
-    if (precisionFormat == NULL) return CSV_WRITE_ERROR;
+    if (filename == NULL)
+    {
+        return CSV_WRITE_ERROR;
+    }
+    if (pdValues == NULL)
+    {
+        return CSV_WRITE_ERROR;
+    }
+    if (m < 0 || n < 0)
+    {
+        return CSV_WRITE_ERROR;
+    }
+    if (separator == NULL)
+    {
+        return CSV_WRITE_ERROR;
+    }
+    if (decimal == NULL)
+    {
+        return CSV_WRITE_ERROR;
+    }
+    if (precisionFormat == NULL)
+    {
+        return CSV_WRITE_ERROR;
+    }
 
-    if (strcmp(separator, decimal) == 0) return CSV_WRITE_SEPARATOR_DECIMAL_EQUAL;
+    if (strcmp(separator, decimal) == 0)
+    {
+        return CSV_WRITE_SEPARATOR_DECIMAL_EQUAL;
+    }
 
     expandedFilename = expandPathVariable((char*)filename);
     wcfopen(fd , filename, MODEWFD);
@@ -101,7 +122,10 @@ csvWriteError csvWrite_double(const char *filename,
         FREE(expandedFilename);
         expandedFilename = NULL;
     }
-    if ( fd == (FILE *)NULL ) return CSV_WRITE_FOPEN_ERROR;
+    if ( fd == (FILE *)NULL )
+    {
+        return CSV_WRITE_FOPEN_ERROR;
+    }
 
     isIsoLatin = doConvertToLatin();
 
@@ -142,7 +166,8 @@ csvWriteError csvWrite_double(const char *filename,
             {
                 char buffer[65535];
                 char *result = NULL;
-                sprintf(buffer, precisionFormat, pdValues[i + m * j]);
+                snprintf(buffer, sizeof(buffer), precisionFormat,
+                         pdValues[i + m * j]);
                 result = csv_strsubst(buffer, getCsvDefaultDecimal(), decimal);
                 if (result)
                 {
@@ -166,7 +191,10 @@ csvWriteError csvWrite_double(const char *filename,
                     fprintf(fd, DEFAULT_CSV_WRITE_STRING_FORMAT, InfString);
                 }
             }
-            if (j + 1 < n) fprintf(fd, "%s", separator);
+            if (j + 1 < n)
+            {
+                fprintf(fd, "%s", separator);
+            }
         }
         fprintf(fd, "%s", getCsvDefaultEOL());
     }
@@ -190,24 +218,51 @@ csvWriteError csvWrite_complex(const char *filename,
     char *expandedFilename = NULL;
     int isIsoLatin = 0;
 
-    if (filename == NULL) return CSV_WRITE_ERROR;
-    if (pdValuesReal == NULL) return CSV_WRITE_ERROR;
-    if (pdValuesImag == NULL) return CSV_WRITE_ERROR;
-    if (m < 0 || n < 0) return CSV_WRITE_ERROR;
-    if (separator == NULL) return CSV_WRITE_ERROR;
-    if (decimal == NULL) return CSV_WRITE_ERROR;
-    if (precisionFormat == NULL) return CSV_WRITE_ERROR;
+    if (filename == NULL)
+    {
+        return CSV_WRITE_ERROR;
+    }
+    if (pdValuesReal == NULL)
+    {
+        return CSV_WRITE_ERROR;
+    }
+    if (pdValuesImag == NULL)
+    {
+        return CSV_WRITE_ERROR;
+    }
+    if (m < 0 || n < 0)
+    {
+        return CSV_WRITE_ERROR;
+    }
+    if (separator == NULL)
+    {
+        return CSV_WRITE_ERROR;
+    }
+    if (decimal == NULL)
+    {
+        return CSV_WRITE_ERROR;
+    }
+    if (precisionFormat == NULL)
+    {
+        return CSV_WRITE_ERROR;
+    }
 
-    if (strcmp(separator, decimal) == 0) return CSV_WRITE_SEPARATOR_DECIMAL_EQUAL;
+    if (strcmp(separator, decimal) == 0)
+    {
+        return CSV_WRITE_SEPARATOR_DECIMAL_EQUAL;
+    }
 
-    expandedFilename = expandPathVariable((char*)filename);
+    expandedFilename = expandPathVariable((char *)filename);
     wcfopen(fd , filename, MODEWFD);
     if (expandedFilename)
     {
         FREE(expandedFilename);
         expandedFilename = NULL;
     }
-    if ( fd == (FILE *)NULL ) return CSV_WRITE_FOPEN_ERROR;
+    if (fd == (FILE *)NULL)
+    {
+        return CSV_WRITE_FOPEN_ERROR;
+    }
 
     isIsoLatin = doConvertToLatin();
 
@@ -217,7 +272,7 @@ csvWriteError csvWrite_complex(const char *filename,
         {
             if (isIsoLatin)
             {
-                const char *converted = utftolatin((char*)headersLines[i]);
+                const char *converted = utftolatin((char *)headersLines[i]);
                 if (converted)
                 {
                     fprintf(fd, DEFAULT_CSV_WRITE_STRING_FORMAT, converted);
@@ -242,15 +297,16 @@ csvWriteError csvWrite_complex(const char *filename,
         for (j = 0; j < n; j++)
         {
             char StringValue[65535];
-            if (ISNAN(pdValuesReal[i + m * j]))
+            if (ISNAN(pdValuesReal[i + (m * j)]))
             {
                 strcpy(StringValue, NanString);
             }
-            else if (finite(pdValuesReal[i + m * j]))
+            else if (finite(pdValuesReal[i + (m * j)]))
             {
                 char buffer[65535];
                 char *result = NULL;
-                sprintf(buffer, precisionFormat, pdValuesReal[i + m * j]);
+                snprintf(buffer, sizeof(buffer), precisionFormat,
+                         pdValuesReal[i + (m * j)]);
                 result = csv_strsubst(buffer, getCsvDefaultDecimal(), decimal);
                 if (result)
                 {
@@ -260,12 +316,14 @@ csvWriteError csvWrite_complex(const char *filename,
                 }
                 else
                 {
-                    sprintf(StringValue, DEFAULT_CSV_WRITE_DOUBLE_FORMAT, pdValuesReal[i + m * j]);
+                    snprintf(StringValue, sizeof(StringValue),
+                             DEFAULT_CSV_WRITE_DOUBLE_FORMAT,
+                             pdValuesReal[i + (m * j)]);
                 }
             }
             else
             {
-                if ( signbit(pdValuesReal[i + m * j]) )
+                if ( signbit(pdValuesReal[i + (m * j)]) )
                 {
                     // NegInfString
                     strcpy(StringValue, NegInfString);
@@ -277,18 +335,18 @@ csvWriteError csvWrite_complex(const char *filename,
                 }
             }
 
-            if (ISNAN(pdValuesImag[i + m * j]))
+            if (ISNAN(pdValuesImag[i + (m * j)]))
             {
                 strcat(StringValue, PlusStr);
                 strcat(StringValue, NanString);
                 strcat(StringValue, ComplexStr);
             }
-            else if (finite(pdValuesImag[i + m * j]))
+            else if (finite(pdValuesImag[i + (m * j)]))
             {
                 char buffer[65535];
                 char *result = NULL;
 
-                if (pdValuesImag[i + m * j] >= 0)
+                if (pdValuesImag[i + (m * j)] >= 0)
                 {
                     strcat(StringValue, PlusStr);
                 }
@@ -297,7 +355,8 @@ csvWriteError csvWrite_complex(const char *filename,
                     strcat(StringValue, LessStr);
                 }
 
-                sprintf(buffer, precisionFormat, fabs(pdValuesImag[i + m * j]));
+                snprintf(buffer, sizeof(buffer), precisionFormat,
+                         fabs(pdValuesImag[i + (m * j)]));
                 result = csv_strsubst(buffer, getCsvDefaultDecimal(), decimal);
 
                 if (result)
@@ -308,14 +367,16 @@ csvWriteError csvWrite_complex(const char *filename,
                 }
                 else
                 {
-                    sprintf(buffer, DEFAULT_CSV_WRITE_DOUBLE_FORMAT, fabs(pdValuesImag[i + m * j]));
+                    snprintf(buffer, sizeof(buffer),
+                             DEFAULT_CSV_WRITE_DOUBLE_FORMAT,
+                             fabs(pdValuesImag[i + (m * j)]));
                     strcat(StringValue, buffer);
                 }
                 strcat(StringValue, ComplexStr);
             }
             else
             {
-                if ( signbit(pdValuesImag[i + m * j]) )
+                if (signbit(pdValuesImag[i + (m * j)]))
                 {
                     // NegInfString
                     strcat(StringValue, LessStr);
@@ -329,7 +390,10 @@ csvWriteError csvWrite_complex(const char *filename,
                 strcat(StringValue, ComplexStr);
             }
             fprintf(fd, DEFAULT_CSV_WRITE_STRING_FORMAT, StringValue);
-            if (j + 1 < n) fprintf(fd, "%s", separator);
+            if (j + 1 < n)
+            {
+                fprintf(fd, "%s", separator);
+            }
         }
         fprintf(fd, "%s", getCsvDefaultEOL());
     }
@@ -350,12 +414,27 @@ csvWriteError csvWrite_string(const char *filename,
     char *expandedFilename = NULL;
     int isIsoLatin = 0;
 
-    if (filename == NULL) return CSV_WRITE_ERROR;
-    if (pStrValues == NULL) return CSV_WRITE_ERROR;
-    if (m < 0 || n < 0) return CSV_WRITE_ERROR;
-    if (separator == NULL) return CSV_WRITE_ERROR;
+    if (filename == NULL)
+    {
+        return CSV_WRITE_ERROR;
+    }
+    if (pStrValues == NULL)
+    {
+        return CSV_WRITE_ERROR;
+    }
+    if (m < 0 || n < 0)
+    {
+        return CSV_WRITE_ERROR;
+    }
+    if (separator == NULL)
+    {
+        return CSV_WRITE_ERROR;
+    }
 
-    if (strcmp(separator, decimal) == 0) return CSV_WRITE_SEPARATOR_DECIMAL_EQUAL;
+    if (strcmp(separator, decimal) == 0)
+    {
+        return CSV_WRITE_SEPARATOR_DECIMAL_EQUAL;
+    }
 
     expandedFilename = expandPathVariable((char*)filename);
     wcfopen(fd , filename, MODEWFD);
@@ -364,7 +443,10 @@ csvWriteError csvWrite_string(const char *filename,
         FREE(expandedFilename);
         expandedFilename = NULL;
     }
-    if ( fd == (FILE *)NULL ) return CSV_WRITE_FOPEN_ERROR;
+    if ( fd == (FILE *)NULL )
+    {
+        return CSV_WRITE_FOPEN_ERROR;
+    }
 
     isIsoLatin = doConvertToLatin();
 
@@ -451,7 +533,10 @@ csvWriteError csvWrite_string(const char *filename,
                     fprintf(fd, DEFAULT_CSV_WRITE_STRING_FORMAT, pStrValues[i + m * j]);
                 }
             }
-            if (j + 1 < n) fprintf(fd, "%s", separator);
+            if (j + 1 < n)
+            {
+                fprintf(fd, "%s", separator);
+            }
         }
         fprintf(fd, "%s", getCsvDefaultEOL());
     }

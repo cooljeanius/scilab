@@ -127,7 +127,7 @@ int sci_x_choice(char *fname, unsigned long fname_len)
         userValueDouble = (double *)MALLOC(nbRowDefaultValues * nbColDefaultValues * sizeof(double));
         for (K = 0; K < nbRowDefaultValues * nbColDefaultValues; K++)
         {
-            userValueDouble[K] = userValue[K];
+            userValueDouble[K] = (double)userValue[K];
         }
 
         CreateVarFromPtr(Rhs + 1, MATRIX_OF_DOUBLE_DATATYPE, &nbRowDefaultValues, &nbColDefaultValues, &userValueDouble);

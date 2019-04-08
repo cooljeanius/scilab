@@ -10,7 +10,6 @@ src/cpp/csv_complex.c \
 src/cpp/csvDefault.c \
 src/cpp/csvIsnum.c \
 src/cpp/csvRead.c \
-src/cpp/csv_strsubst.cpp \
 src/cpp/csvWrite.c \
 src/cpp/getRange.c \
 src/cpp/latintoutf.c \
@@ -18,6 +17,8 @@ src/cpp/splitLine.c \
 src/cpp/stringsToDoubles.c \
 src/cpp/stringToComplex.c \
 src/cpp/utftolatin.c
+
+SPREADSHEET_CXX_SOURCES = src/cpp/csv_strsubst.cpp
 
 RIPOLE_SOURCES = src/c/ripole/olestream-unwrap.c \
 src/c/ripole/pldstr.c \
@@ -58,7 +59,7 @@ pkglib_LTLIBRARIES = libscispreadsheet.la
 noinst_LTLIBRARIES = libscispreadsheet-algo.la
 
 
-libscispreadsheet_algo_la_SOURCES = $(SPREADSHEET_C_SOURCES) $(RIPOLE_SOURCES) $(SPREADSHEET_CPP_SOURCES)
+libscispreadsheet_algo_la_SOURCES = $(SPREADSHEET_C_SOURCES) $(RIPOLE_SOURCES) $(SPREADSHEET_CPP_SOURCES) $(SPREADSHEET_CXX_SOURCES)
 libscispreadsheet_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_CPP_SOURCES)
 libscispreadsheet_algo_la_CPPFLAGS = $(libscispreadsheet_la_CPPFLAGS)
 

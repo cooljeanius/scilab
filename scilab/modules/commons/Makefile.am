@@ -24,9 +24,10 @@ libscicommons_la_etc_DATA = \
 	etc/commons.quit \
 	etc/commons.start
 
-COMMONS_C_SOURCES =  src/jni/ScilabCommons_wrap.c \
-		     src/jni/CommonFileUtils_wrap.c \
-		     src/c/fileutils.c
+COMMONS_JNI_C_SOURCES =  src/jni/ScilabCommons_wrap.c \
+		     src/jni/CommonFileUtils_wrap.c
+COMMONS_C_C_SOURCES = src/c/fileutils.c
+COMMONS_C_SOURCES = $(COMMONS_JNI_C_SOURCES) $(COMMONS_C_C_SOURCES)
 
 COMMONS_CXX_SOURCES = 
 if NEED_JAVA
@@ -56,7 +57,7 @@ endif
 libscicommons_la_SOURCES = $(COMMONS_C_SOURCES) $(COMMONS_FORTRAN_SOURCES) $(COMMONS_JNI_SOURCES) $(COMMONS_CXX_SOURCES)
 
 # For the code check (splint)
-CHECK_SRC= $(COMMONS_C_SOURCES)
+CHECK_SRC= $(COMMONS_C_C_SOURCES)
 INCLUDE_FLAGS = $(libscicommons_la_CPPFLAGS)
 
 

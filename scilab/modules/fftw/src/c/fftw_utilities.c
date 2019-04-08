@@ -542,7 +542,7 @@ int check_ND_symmetry(double *Ar, double *Ai, int ndims, int *dims, int *incr)
     int *dims1 = NULL;
     int *incr1 = NULL;
     int nSub = 0, nSubs2 = 0;
-    int k = 0, step = 0;
+    int step = 0;
 
     if (ndims == 2)
     {
@@ -1010,7 +1010,7 @@ int complete_ND_array(double *Ar, double *Ai, int ndims, int *dims, int *incr)
     int *temp = NULL;
     int *dims1 = NULL;
     int *incr1 = NULL;
-    int nSub = 0, nSubs2 = 0, step = 0, k = 0;
+    int nSub = 0, nSubs2 = 0, step = 0;
 
     if (ndims == 2)
     {
@@ -1351,13 +1351,13 @@ void dct_scale_1D_array(double *Ar, double *Ai, int nA, int iA, int isn, double 
 
     if (isn == -1)
     {
-        s0 = fact * 0.5 / sqrt(nA);
+        s0 = fact * 0.5 / sqrt((double)nA);
     }
     else
     {
-        s0 = fact / sqrt(nA); /* 2.0*sqrt(nA)/(2*nA) */
+        s0 = fact / sqrt((double)nA); /* 2.0*sqrt(nA)/(2*nA) */
     }
-    s = fact / sqrt(2.0 * nA); /* sqrt(2.0*nA)/(2*nA) */
+    s = fact / sqrt((double)(2.0 * nA)); /* sqrt(2.0*nA)/(2*nA) */
     if (Ai == NULL)
     {
         Ar[0] *= s0;
@@ -1385,8 +1385,8 @@ void dct_scale_2D_array(double *Ar, double *Ai, int mA, int iA, int nA, int jA, 
 {
     int j = 0; /* loop variables */
     double s, s0;
-    s = fact / sqrt(2 * nA);
-    s0 = fact / sqrt(nA);
+    s = fact / sqrt((double)(2 * nA));
+    s0 = fact / sqrt((double)nA);
     if (isn == -1)
     {
         s0 *= 0.5;
@@ -1431,8 +1431,8 @@ int dct_scale_ND_array(double *Ar, double *Ai, int ndims, int *dims, int *incr, 
            with
            s1(1) = 1/(2*sqrt(n1) and  s1(i>1) = 1/(sqrt(2*n1)
         */
-        s = fact / sqrt(2.0 * dims[0]);
-        s0 = fact / sqrt(dims[0]);
+        s = fact / sqrt((double)(2.0 * dims[0]));
+        s0 = fact / sqrt((double)dims[0]);
         if (isn == -1)
         {
             s0 *= 0.5;

@@ -31,15 +31,18 @@ char **splitLineCSV(const char *str, const char *sep, int *toks, char meta)
     char tokenreplacement_string[64] = ",,";
     char *substitutedstring = NULL;
 
-    sprintf(tokenstring_to_search, "%s%s", sep, sep);
-    sprintf(tokenreplacement_string, "%s%s%s", sep, EMPTYFIELD, sep);
+    snprintf(tokenstring_to_search, sizeof(tokenstring_to_search), "%s%s", sep, sep);
+    snprintf(tokenreplacement_string, sizeof(tokenreplacement_string), "%s%s%s",
+             sep, EMPTYFIELD, sep);
     substitutedstring = csv_strsubst(str, tokenstring_to_search, tokenreplacement_string);
     if (strncmp(substitutedstring, sep, strlen(sep)) == 0)
     {
         char *tmp = NULL;
-        size_t l = strlen(substitutedstring) + strlen(EMPTYFIELD) + strlen(sep) + 1;
-        tmp = (char*)MALLOC(sizeof(char) * l);
-        sprintf(tmp, "%s%s%s", EMPTYFIELD, sep, &substitutedstring[1]);
+        const size_t l0 = (strlen(substitutedstring) + strlen(EMPTYFIELD)
+                           + strlen(sep) + 1UL);
+        const size_t l1 = (sizeof(char) * l0);
+        tmp = (char *)MALLOC(l1);
+        snprintf(tmp, l1, "%s%s%s", EMPTYFIELD, sep, &substitutedstring[1]);
         FREE(substitutedstring);
         substitutedstring = tmp;
     }
@@ -47,9 +50,11 @@ char **splitLineCSV(const char *str, const char *sep, int *toks, char meta)
     if (substitutedstring[strlen(substitutedstring) - 1] == sep[0])
     {
         char *tmp = NULL;
-        size_t l = strlen(substitutedstring) + strlen(EMPTYFIELD) + 1;
-        tmp = (char*)MALLOC(sizeof(char) * l);
-        sprintf(tmp, "%s%s", substitutedstring, EMPTYFIELD);
+        const size_t l0 = (strlen(substitutedstring) + strlen(EMPTYFIELD)
+                           + 1UL);
+        const size_t l1 = (sizeof(char) * l0);
+        tmp = (char *)MALLOC(l1);
+        snprintf(tmp, l1, "%s%s", substitutedstring, EMPTYFIELD);
         FREE(substitutedstring);
         substitutedstring = tmp;
 

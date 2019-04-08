@@ -1544,7 +1544,8 @@ netinet/in.h nlist.h param.h pwd.h regex.h select.h sgtty.h \
 signal.h socket.h stddef.h stdio.h stdio_ext.h sys/file.h \
 sys/ioctl.h sys/param.h sys/socket.h sys/time.h sys/timeb.h \
 sys/utsname.h syslog.h term.h termcap.h termio.h termios.h \
-time.h types.h utime.h utsname.h wchar.h wctype.h wtloop.c xlocale.h])dnl
+time.h types.h utime.h utsname.h wchar.h wctype.h winbase.h windows.h \
+wtloop.c xlocale.h])dnl
 
 # check header dirent
 AC_HEADER_DIRENT

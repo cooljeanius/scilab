@@ -863,43 +863,43 @@ GRAPHIC_OBJECTS_JNI_SOURCES = src/jni/CallGraphicController.cpp \
                               src/jni/GraphicObjectBuilder.cpp
 
 GRAPHIC_OBJECTS_C_SOURCES = src/jni/DataLoader_wrap.c \
-							src/jni/ScilabNativeView_wrap.c
+			    src/jni/ScilabNativeView_wrap.c
 
 GRAPHIC_OBJECTS_CXX_SOURCES = src/cpp/createGraphicObject.cpp \
-								src/cpp/getGraphicObjectProperty.cpp \
-								src/cpp/getConsoleIdentifier.cpp \
-								src/cpp/setGraphicObjectProperty.cpp \
-								src/cpp/deleteGraphicObject.cpp \
-								src/cpp/dataModel.cpp \
-								src/cpp/Data3D.cpp \
-								src/cpp/DataLoader.cpp \
-								src/cpp/NgonData.cpp \
-								src/cpp/NgonGeneralData.cpp \
-								src/cpp/NgonGridData.cpp \
-								src/cpp/NgonGridMatplotData.cpp \
-								src/cpp/NgonPolylineData.cpp \
-								src/cpp/TriangleMeshData.cpp \
-								src/cpp/TriangleMeshFecData.cpp \
-								src/cpp/ColorComputer.cpp \
-								src/cpp/DecompositionUtils.cpp \
-								src/cpp/Fac3DColorComputer.cpp \
-								src/cpp/Fac3DDecomposer.cpp \
-								src/cpp/NgonGridDataDecomposer.cpp \
-								src/cpp/NgonGridGrayplotDataDecomposer.cpp \
-								src/cpp/MatPlotDecomposer.cpp \
-								src/cpp/NgonGridMatplotDataDecomposer.cpp \
-								src/cpp/Plot3DDecomposer.cpp \
-								src/cpp/PolylineDecomposer.cpp \
-								src/cpp/TriangleMeshFecDataDecomposer.cpp \
-								src/cpp/Triangulator.cpp \
-								src/cpp/ScilabView.cpp \
-								src/cpp/FigureList.cpp \
-								src/cpp/HandleManagement.cpp \
-								src/cpp/AxesModel.cpp \
-								src/cpp/FigureModel.cpp \
-								src/cpp/CurrentFigure.cpp \
-								src/cpp/CurrentObject.cpp \
-								src/cpp/CurrentSubwin.cpp
+				src/cpp/getGraphicObjectProperty.cpp \
+				src/cpp/getConsoleIdentifier.cpp \
+				src/cpp/setGraphicObjectProperty.cpp \
+				src/cpp/deleteGraphicObject.cpp \
+				src/cpp/dataModel.cpp \
+				src/cpp/Data3D.cpp \
+				src/cpp/DataLoader.cpp \
+				src/cpp/NgonData.cpp \
+				src/cpp/NgonGeneralData.cpp \
+				src/cpp/NgonGridData.cpp \
+				src/cpp/NgonGridMatplotData.cpp \
+				src/cpp/NgonPolylineData.cpp \
+				src/cpp/TriangleMeshData.cpp \
+				src/cpp/TriangleMeshFecData.cpp \
+				src/cpp/ColorComputer.cpp \
+				src/cpp/DecompositionUtils.cpp \
+				src/cpp/Fac3DColorComputer.cpp \
+				src/cpp/Fac3DDecomposer.cpp \
+				src/cpp/NgonGridDataDecomposer.cpp \
+				src/cpp/NgonGridGrayplotDataDecomposer.cpp \
+				src/cpp/MatPlotDecomposer.cpp \
+				src/cpp/NgonGridMatplotDataDecomposer.cpp \
+				src/cpp/Plot3DDecomposer.cpp \
+				src/cpp/PolylineDecomposer.cpp \
+				src/cpp/TriangleMeshFecDataDecomposer.cpp \
+				src/cpp/Triangulator.cpp \
+				src/cpp/ScilabView.cpp \
+				src/cpp/FigureList.cpp \
+				src/cpp/HandleManagement.cpp \
+				src/cpp/AxesModel.cpp \
+				src/cpp/FigureModel.cpp \
+				src/cpp/CurrentFigure.cpp \
+				src/cpp/CurrentObject.cpp \
+				src/cpp/CurrentSubwin.cpp
 
 GIWS_WRAPPERS = src/jni/graphic_objects.giws.xml
 GATEWAY_C_SOURCES = sci_gateway/c/gw_graphic_objects.c
@@ -933,12 +933,12 @@ libscigraphic_objects_la_LDFLAGS = $(X_LIBS) $(X_EXTRA_LIBS) $(AM_LDFLAGS)
 libscigraphic_objects_la_SOURCES = $(GRAPHIC_OBJECTS_GEN_SOURCES) $(GRAPHIC_OBJECTS_C_SOURCES) $(GRAPHIC_OBJECTS_JNI_SOURCES) $(GATEWAY_C_SOURCES) $(GATEWAY_CXX_SOURCES) $(GRAPHIC_OBJECTS_CXX_SOURCES)
 
 # For the code check (splint)
-CHECK_SRC = $(GRAPHIC_OBJECTS_C_SOURCES) $(GATEWAY_C_SOURCES)
+CHECK_SRC = $(GATEWAY_C_SOURCES)
 INCLUDE_FLAGS = $(libscigraphic_objects_la_CPPFLAGS)
 
 #### SWIG Declaration ####
 SWIG_WRAPPERS = src/jni/DataLoader.i \
-				src/jni/ScilabNativeView.i
+		src/jni/ScilabNativeView.i
 
 libscigraphic_objects_la_LIBADD = $(top_builddir)/libs/MALLOC/libscimalloc.la \
 $(top_builddir)/modules/output_stream/libscioutput_stream.la

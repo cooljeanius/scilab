@@ -186,7 +186,6 @@ am__objects_1 = src/c/libscispreadsheet_algo_la-xls.lo \
 	src/cpp/libscispreadsheet_algo_la-csvDefault.lo \
 	src/cpp/libscispreadsheet_algo_la-csvIsnum.lo \
 	src/cpp/libscispreadsheet_algo_la-csvRead.lo \
-	src/cpp/libscispreadsheet_algo_la-csv_strsubst.lo \
 	src/cpp/libscispreadsheet_algo_la-csvWrite.lo \
 	src/cpp/libscispreadsheet_algo_la-getRange.lo \
 	src/cpp/libscispreadsheet_algo_la-latintoutf.lo \
@@ -202,8 +201,9 @@ am__objects_2 =  \
 	src/c/ripole/libscispreadsheet_algo_la-logger.lo \
 	src/c/ripole/libscispreadsheet_algo_la-ripole.lo \
 	src/c/ripole/libscispreadsheet_algo_la-bt-int.lo
+am__objects_3 = src/cpp/libscispreadsheet_algo_la-csv_strsubst.lo
 am_libscispreadsheet_algo_la_OBJECTS = $(am__objects_1) \
-	$(am__objects_2)
+	$(am__objects_2) $(am__objects_3)
 libscispreadsheet_algo_la_OBJECTS =  \
 	$(am_libscispreadsheet_algo_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
@@ -211,10 +211,10 @@ am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
 libscispreadsheet_la_DEPENDENCIES = libscispreadsheet-algo.la
-am__objects_3 = sci_gateway/c/libscispreadsheet_la-gw_spreadsheet.lo \
+am__objects_4 = sci_gateway/c/libscispreadsheet_la-gw_spreadsheet.lo \
 	sci_gateway/c/libscispreadsheet_la-sci_xls_read.lo \
 	sci_gateway/c/libscispreadsheet_la-sci_xls_open.lo
-am__objects_4 =  \
+am__objects_5 =  \
 	sci_gateway/cpp/libscispreadsheet_la-gw_csv_helpers.lo \
 	sci_gateway/cpp/libscispreadsheet_la-sci_csvDefault.lo \
 	sci_gateway/cpp/libscispreadsheet_la-sci_csvIsnum.lo \
@@ -222,7 +222,7 @@ am__objects_4 =  \
 	sci_gateway/cpp/libscispreadsheet_la-sci_csvStringToDouble.lo \
 	sci_gateway/cpp/libscispreadsheet_la-sci_csvTextScan.lo \
 	sci_gateway/cpp/libscispreadsheet_la-sci_csvWrite.lo
-am_libscispreadsheet_la_OBJECTS = $(am__objects_3) $(am__objects_4)
+am_libscispreadsheet_la_OBJECTS = $(am__objects_4) $(am__objects_5)
 libscispreadsheet_la_OBJECTS = $(am_libscispreadsheet_la_OBJECTS)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -721,7 +721,6 @@ src/cpp/csv_complex.c \
 src/cpp/csvDefault.c \
 src/cpp/csvIsnum.c \
 src/cpp/csvRead.c \
-src/cpp/csv_strsubst.cpp \
 src/cpp/csvWrite.c \
 src/cpp/getRange.c \
 src/cpp/latintoutf.c \
@@ -730,6 +729,7 @@ src/cpp/stringsToDoubles.c \
 src/cpp/stringToComplex.c \
 src/cpp/utftolatin.c
 
+SPREADSHEET_CXX_SOURCES = src/cpp/csv_strsubst.cpp
 RIPOLE_SOURCES = src/c/ripole/olestream-unwrap.c \
 src/c/ripole/pldstr.c \
 src/c/ripole/ole.c \
@@ -766,7 +766,7 @@ libscispreadsheet_la_CPPFLAGS = -Wp,-I$(srcdir)/includes/ \
 
 pkglib_LTLIBRARIES = libscispreadsheet.la
 noinst_LTLIBRARIES = libscispreadsheet-algo.la
-libscispreadsheet_algo_la_SOURCES = $(SPREADSHEET_C_SOURCES) $(RIPOLE_SOURCES) $(SPREADSHEET_CPP_SOURCES)
+libscispreadsheet_algo_la_SOURCES = $(SPREADSHEET_C_SOURCES) $(RIPOLE_SOURCES) $(SPREADSHEET_CPP_SOURCES) $(SPREADSHEET_CXX_SOURCES)
 libscispreadsheet_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_CPP_SOURCES)
 libscispreadsheet_algo_la_CPPFLAGS = $(libscispreadsheet_la_CPPFLAGS)
 
@@ -979,8 +979,6 @@ src/cpp/libscispreadsheet_algo_la-csvIsnum.lo:  \
 	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
 src/cpp/libscispreadsheet_algo_la-csvRead.lo: src/cpp/$(am__dirstamp) \
 	src/cpp/$(DEPDIR)/$(am__dirstamp)
-src/cpp/libscispreadsheet_algo_la-csv_strsubst.lo:  \
-	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
 src/cpp/libscispreadsheet_algo_la-csvWrite.lo:  \
 	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
 src/cpp/libscispreadsheet_algo_la-getRange.lo:  \
@@ -1022,6 +1020,8 @@ src/c/ripole/libscispreadsheet_algo_la-ripole.lo:  \
 src/c/ripole/libscispreadsheet_algo_la-bt-int.lo:  \
 	src/c/ripole/$(am__dirstamp) \
 	src/c/ripole/$(DEPDIR)/$(am__dirstamp)
+src/cpp/libscispreadsheet_algo_la-csv_strsubst.lo:  \
+	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
 
 libscispreadsheet-algo.la: $(libscispreadsheet_algo_la_OBJECTS) $(libscispreadsheet_algo_la_DEPENDENCIES) $(EXTRA_libscispreadsheet_algo_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK)  $(libscispreadsheet_algo_la_OBJECTS) $(libscispreadsheet_algo_la_LIBADD) $(LIBS)

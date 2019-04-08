@@ -153,9 +153,11 @@ libsciconsole_la_CPPFLAGS= -Wp,-I$(srcdir)/includes/ \
 $(JAVA_JNI_INCLUDE) \
 $(AM_CPPFLAGS)
 
-# FIXME: Plateform specific optimisation flags should be set on configure.ac
+libsciconsole_la_CFLAGS =
+
+# FIXME: Platform specific optimisation flags should be set on configure.ac
 if IS_MACOSX
-libsciconsole_la_CPPFLAGS += -msse2
+libsciconsole_la_CFLAGS += -msse2
 endif
 
 # Name of the library
@@ -171,7 +173,7 @@ libsciconsole_la_LIBADD = libsciconsole-minimal.la
 libsciconsole_la_SOURCES = $(CONSOLE_C_JNI_SOURCES) $(CONSOLE_C_SOURCES) $(CONSOLE_CXX_JNI_SOURCES) $(CONSOLE_CXX_SOURCES) $(CONSOLE_GATEWAY_C_SOURCES)
 
 # For the code check (splint)
-CHECK_SRC= $(CONSOLE_C_JNI_SOURCES) $(CONSOLE_C_SOURCES)
+CHECK_SRC= $(CONSOLE_GATEWAY_C_SOURCES) $(CONSOLE_C_SOURCES)
 INCLUDE_FLAGS = $(libsciconsole_la_CPPFLAGS)
 
 #### console : gateway declaration ####

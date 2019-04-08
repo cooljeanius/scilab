@@ -12,16 +12,16 @@
 #include "api_scilab.h"
 #ifndef __SCI_DATA_UTILITIES__
 #define __SCI_DATA_UTILITIES__
-int getArrayOfDouble(void* pvApiCtx, int *piAddr, int *ndims, int **dims, double **Ar, double **Ai);
+extern int getArrayOfDouble(void* pvApiCtx, int *piAddr, int *ndims, int **dims, double **Ar, double **Ai);
 
-SciErr allocArrayOfDouble(void* _pvCtx, int _iVar, int ndims, int *dims, double **Ar);
+extern SciErr allocArrayOfDouble(void* _pvCtx, int _iVar, int ndims, int *dims, double **Ar);
 
-SciErr allocComplexArrayOfDouble(void* _pvCtx, int _iVar, int ndims, int *dims, double **Ar, double **Ai);
+extern SciErr allocComplexArrayOfDouble(void* _pvCtx, int _iVar, int ndims, int *dims, double **Ar, double **Ai);
 
-SciErr getScalarIntArg(void* _pvCtx, int _iVar, char *fname, int *value);
+extern SciErr getScalarIntArg(void* _pvCtx, int _iVar, char *fname, int *value);
 
-SciErr getVectorIntArg(void* _pvCtx, int _iVar, char *fname, int *pndims, int **pDim);
+extern SciErr getVectorIntArg(void* _pvCtx, int _iVar, char *fname, int *pndims, int **pDim);
 
-BOOL isHyperMatrixMlist(void* _pvCtx, int *piAddressVar);
+extern BOOL isHyperMatrixMlist(void* _pvCtx, int *piAddressVar);
 #endif /* __SCI_DATA_UTILITIES__ */
 /*--------------------------------------------------------------------------*/

@@ -9,7 +9,6 @@ ARNOLDI_C_SOURCES = \
     src/c/eigs_dependencies.c
 
 GATEWAY_C_SOURCES = \
-    sci_gateway/c/sci_zneupd \
     sci_gateway/c/sci_dseupd.c \
     sci_gateway/c/sci_zneupd.c \
     sci_gateway/c/gw_arnoldi.c \

@@ -230,7 +230,7 @@ int initMacOSXEnv(int no_startup_flag_l, char *initial_script, InitScriptType in
 
     /* Create the structure which is going to be giving to the function inside the thread */
     param = NULL;
-    param = malloc(sizeof(thread_parm_t));
+    param = (thread_parm_t *)malloc(sizeof(thread_parm_t));
     param->no_startup_flag_l = no_startup_flag_l;
     param->initial_script = initial_script;
     param->initial_script_type = initial_script_type;

@@ -1,15 +1,15 @@
- /*
-  * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
-  * Copyright (C) 2007-2008 - INRIA - Allan CORNET
-  * Copyright (C) 2010 - DIGITEO - Allan CORNET
-  *
-  * This file must be used under the terms of the CeCILL.
-  * This source file is licensed as described in the file COPYING, which
-  * you should have received as part of this distribution.  The terms
-  * are also available at
-  * http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
-  *
-  */
+/*
+ * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+ * Copyright (C) 2007-2008 - INRIA - Allan CORNET
+ * Copyright (C) 2010 - DIGITEO - Allan CORNET
+ *
+ * This file must be used under the terms of the CeCILL.
+ * This source file is licensed as described in the file COPYING, which
+ * you should have received as part of this distribution.  The terms
+ * are also available at
+ * http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
+ *
+ */
 
 /*------------------------------------------------------------------------*/
 #include <time.h>
@@ -26,6 +26,7 @@
 /*------------------------------------------------------------------------*/
 #define STRING_BEGIN_SESSION _("Begin Session : ")
 #define FORMAT_SESSION "%s%s%s"
+#define LONG_FORMAT_SESSION "%s%s%s%s"
 #define MAX_wday 7              /* number days in a week */
 #define MAX_mon 12              /* number of month in a year */
 /*------------------------------------------------------------------------*/
@@ -52,24 +53,31 @@ char *getCommentDateSession(BOOL longFormat)
 
     if (time_str)
     {
-        size_t historyLineSize = strlen(SESSION_PRAGMA_BEGIN) + strlen(time_str) + strlen(FORMAT_SESSION) + strlen(SESSION_PRAGMA_END) + 1;
+        size_t historyLineSize = (strlen(SESSION_PRAGMA_BEGIN)
+                                  + strlen(time_str) + strlen(FORMAT_SESSION)
+                                  + strlen(SESSION_PRAGMA_END) + 1UL);
 
+        size_t lineSize;
         if (longFormat)
         {
             historyLineSize += strlen(STRING_BEGIN_SESSION);
         }
 
-        line = (char *)MALLOC(sizeof(char) * historyLineSize);
+        lineSize = (sizeof(char) * historyLineSize);
+        line = (char *)MALLOC(lineSize);
 
         if (line)
         {
             if (longFormat)
             {
-                sprintf(line, FORMAT_SESSION, SESSION_PRAGMA_BEGIN, STRING_BEGIN_SESSION, time_str, SESSION_PRAGMA_END);
+                snprintf(line, lineSize, LONG_FORMAT_SESSION,
+                         SESSION_PRAGMA_BEGIN, STRING_BEGIN_SESSION, time_str,
+                         SESSION_PRAGMA_END);
             }
             else
             {
-                sprintf(line, FORMAT_SESSION, SESSION_PRAGMA_BEGIN, time_str, SESSION_PRAGMA_END);
+                snprintf(line, lineSize, FORMAT_SESSION, SESSION_PRAGMA_BEGIN,
+                         time_str, SESSION_PRAGMA_END);
             }
         }
         FREE(time_str);
@@ -89,14 +97,18 @@ static char *ASCIItime(const struct tm *timeptr)
     if ((wday_name) && (mon_name))
     {
 #define FORMAT_TIME "%s %s%3d %.2d:%.2d:%.2d %d"
-        int len_result = (int)strlen(wday_name[timeptr->tm_wday]) + (int)strlen(mon_name[timeptr->tm_mon]) + (int)strlen(FORMAT_TIME);
+        const size_t len_result = (strlen(wday_name[timeptr->tm_wday])
+                                   + strlen(mon_name[timeptr->tm_mon])
+                                   + strlen(FORMAT_TIME));
 
-        result = (char *)MALLOC(sizeof(char) * (len_result + 1));
+        const size_t result_len = (sizeof(char) * (len_result + 1UL));
+        result = (char *)MALLOC(result_len);
         if (result)
         {
-            sprintf(result, FORMAT_TIME,
-                    wday_name[timeptr->tm_wday],
-                    mon_name[timeptr->tm_mon], timeptr->tm_mday, timeptr->tm_hour, timeptr->tm_min, timeptr->tm_sec, 1900 + timeptr->tm_year);
+            snprintf(result, result_len, FORMAT_TIME,
+                     wday_name[timeptr->tm_wday], mon_name[timeptr->tm_mon],
+                     timeptr->tm_mday, timeptr->tm_hour, timeptr->tm_min,
+                     timeptr->tm_sec, (1900 + timeptr->tm_year));
         }
     }
     else
@@ -159,14 +171,16 @@ static char **getMonths(void)
 static char *ASCIItimeShort(const struct tm *timeptr)
 {
 #define FORMAT_TIME_SHORT "%.2d/%.2d/%.4d %.2d:%.2d:%.2d"
-    int len_result = (int)20;   //strlen("21/05/2011 14:11:04")+1
+    const int len_result = 20;   //strlen("21/05/2011 14:11:04")+1
+    const size_t result_len = (sizeof(char) * (len_result + 1UL));
 
-    char *result = (char *)MALLOC(sizeof(char) * (len_result + 1));
+    char *result = (char *)MALLOC(result_len);
 
     if (result)
     {
-        sprintf(result, FORMAT_TIME_SHORT,
-                timeptr->tm_mday, timeptr->tm_mon + 1 , 1900 + timeptr->tm_year, timeptr->tm_hour, timeptr->tm_min, timeptr->tm_sec);
+        snprintf(result, result_len, FORMAT_TIME_SHORT, timeptr->tm_mday,
+                 (timeptr->tm_mon + 1), (1900 + timeptr->tm_year),
+                 timeptr->tm_hour, timeptr->tm_min, timeptr->tm_sec);
     }
 
     return result;

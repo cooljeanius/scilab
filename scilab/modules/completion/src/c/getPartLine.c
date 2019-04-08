@@ -1,11 +1,11 @@
 /*
 * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
 * Copyright (C) 2008-2012 - DIGITEO - Allan CORNET
-* 
+*
 * This file must be used under the terms of the CeCILL.
 * This source file is licensed as described in the file COPYING, which
 * you should have received as part of this distribution.  The terms
-* are also available at    
+* are also available at
 * http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
 *
 */
@@ -24,16 +24,17 @@ static char *removeSpacesAtBeginning(char *line);
 /*--------------------------------------------------------------------------*/
 char *getPartLevel(char *line)
 {
-#define MAX_SYMBS 28
+#ifndef S_SPLINT_S
+# define MAX_SYMBS 28
     const char symbs[MAX_SYMBS] = "+-*/\\([ ^,;={.&|\'])}:\"\'><~@\t";
     int index = -1;
     int i = 0;
 
-    for (i = 0; i < MAX_SYMBS; i++) 
+    for (i = 0; i < MAX_SYMBS; i++)
     {
         int len = 0;
         char *pch = strrchr(line, symbs[i]);
-        if (pch) 
+        if (pch)
         {
             len = (int) (strlen(line) - strlen(pch));
             index = Max(index, len);
@@ -41,11 +42,15 @@ char *getPartLevel(char *line)
     }
 
     return strdup(&line[index + 1]);
+#else
+    return ((line != NULL) ? line : NULL);
+#endif /* S_SPLINT_S */
 }
 /*--------------------------------------------------------------------------*/
 char *getFilePartLevel(char *line)
 {
-#define MAX_SYMBS_F 4
+#ifndef S_SPLINT_S
+# define MAX_SYMBS_F 4
     int index = 0;
     int i = 0;
     int lenLine = 0;
@@ -54,18 +59,24 @@ char *getFilePartLevel(char *line)
     char *lineWithoutSpaceAtBeginning = NULL;
     char *returnedLine = NULL;
 
-    if (line == NULL) return returnedLine;
+    if (line == NULL)
+    {
+        return returnedLine;
+    }
 
     lineWithoutSpaceAtBeginning = removeSpacesAtBeginning(line);
-    if (lineWithoutSpaceAtBeginning == NULL) return returnedLine;
+    if (lineWithoutSpaceAtBeginning == NULL)
+    {
+        return returnedLine;
+    }
 
     lenLine = (int)strlen(lineWithoutSpaceAtBeginning);
 
     /* search last character in ";,'\"" */
-    for (i = 0; i < MAX_SYMBS_F; i++) 
+    for (i = 0; i < MAX_SYMBS_F; i++)
     {
         char *prch = strrchr(lineWithoutSpaceAtBeginning, symbs[i]);
-        if (prch) 
+        if (prch)
         {
             int len = (int) (lenLine - strlen(prch));
             index = Max(index, len);
@@ -117,6 +128,9 @@ char *getFilePartLevel(char *line)
     lineWithoutSpaceAtBeginning = NULL;
 
     return returnedLine;
+#else
+    return removeSpacesAtBeginning(line);
+#endif /* S_SPLINT_S */
 }
 /*--------------------------------------------------------------------------*/
 static char *removeSpacesAtBeginning(char *line)

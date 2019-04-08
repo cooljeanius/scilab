@@ -1523,9 +1523,11 @@ XORG_CHECK_MALLOC_ZERO dnl# from m4/xorg-macros.m4
 AC_FUNC_MMAP
 AC_FUNC_REALLOC
 AC_CHECK_FUNCS([__argz_count __argz_next __argz_stringify dlopen \
-dyld_stub_binding_helper localeconv lt_dlopen mblen mbrlen memchr \
+dyld_stub_binding_helper freopen localeconv lt_dlopen mblen mbrlen memchr \
 mempcpy nl_langinfo realpath stpcpy strcspn strncasecmp strspn strtoul \
-wcwidth])dnl
+vsnprintf wcwidth])dnl
+
+AC_CHECK_DECLS([vsnprintf])dnl
 
 ########################
 ## test for header files

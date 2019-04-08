@@ -166,16 +166,19 @@ int errorTable(int iErr)
             strcpy(msgErr, _("stack size exceeded!\n"));
             strcat(msgErr, _("Use stacksize function to increase it.\n"));
 
-            sprintf(msgTmp, _("Memory used for variables: %d\n"), Memory_used_for_variables);
+            snprintf(msgTmp, sizeof(msgTmp), _("Memory used for variables: %d\n"),
+                     Memory_used_for_variables);
             strcat(msgErr, msgTmp);
 
-            sprintf(msgTmp, _("Intermediate memory needed: %d\n"), Intermediate_Memory);
+            snprintf(msgTmp, sizeof(msgTmp), _("Intermediate memory needed: %d\n"),
+                     Intermediate_Memory);
             strcat(msgErr, msgTmp);
 
-            sprintf(msgTmp, _("Total memory available: %d\n"), Total_Memory_available);
+            snprintf(msgTmp, sizeof(msgTmp), _("Total memory available: %d\n"),
+                     Total_Memory_available);
             strcat(msgErr, msgTmp);
 
-            iValueReturned = Scierror(iErr, msgErr);
+            iValueReturned = Scierror(iErr, "%s", msgErr);
         }
         break;
         case 18:
@@ -319,9 +322,13 @@ int errorTable(int iErr)
         case 37:
         {
             if (Err > 0)
+            {
                 iValueReturned = Scierror(iErr, _("Incorrect function at line %d.\n"), Err);
+            }
             else
+            {
                 iValueReturned = Scierror(iErr, _("Incorrect function.\n"));
+            }
         }
         break;
         case 38:
@@ -511,11 +518,13 @@ int errorTable(int iErr)
         case 68:
         {
             char msgErr[bsiz];
-            sprintf(msgErr, _("Fatal error!!! Your variables have been saved in the file : %s\n"), get_sci_data_strings(SAVE_ID));
+            snprintf(msgErr, sizeof(msgErr),
+                     _("Fatal error!!! Your variables have been saved in the file : %s\n"),
+                     get_sci_data_strings(SAVE_ID));
             strcat(msgErr, _("Bad call to a scilab function ?\n"));
             strcat(msgErr, _("Otherwise, send a bug report to :"));
             strcat(msgErr, "http://bugzilla.scilab.org/\n");
-            iValueReturned = Scierror(iErr, msgErr);
+            iValueReturned = Scierror(iErr, "%s", msgErr);
         }
         break;
         case 69:
@@ -846,7 +855,7 @@ int errorTable(int iErr)
             char msgErr[bsiz];
             strcpy(msgErr, _("Stack problem detected within a loop.\nA primitive function has been called with a wrong number of output arguments.\nNo output argument test has been made for this function.\nPlease report this bug :\n"));
             strcat(msgErr, "http://bugzilla.scilab.org/\n");
-            iValueReturned = Scierror(iErr, msgErr);
+            iValueReturned = Scierror(iErr, "%s", msgErr);
         }
         break;
         case 116:
@@ -1005,7 +1014,9 @@ int errorTable(int iErr)
             if (NameVarOnStack)
             {
                 char msgFormat[bsiz * 2];
-                sprintf(msgFormat, "%s%s", _("Undefined operation for the given operands.\n"), _("check or define function %s for overloading.\n"));
+                snprintf(msgFormat, sizeof(msgFormat), "%s%s",
+                         _("Undefined operation for the given operands.\n"),
+                         _("check or define function %s for overloading.\n"));
                 iValueReturned = Scierror(iErr, msgFormat, NameVarOnStack);
                 FREE(NameVarOnStack);
                 NameVarOnStack = NULL;
@@ -1384,7 +1395,9 @@ int errorTable(int iErr)
             if (NameVarOnStack)
             {
                 char msgFormat[bsiz * 2];
-                sprintf(msgFormat, "%s%s", _("Function not defined for given argument type(s),\n"), _("  check arguments or define function %s for overloading.\n"));
+                snprintf(msgFormat, sizeof(msgFormat), "%s%s",
+                         _("Function not defined for given argument type(s),\n"),
+                         _("  check arguments or define function %s for overloading.\n"));
                 iValueReturned = Scierror(iErr, msgFormat, NameVarOnStack);
                 FREE(NameVarOnStack);
                 NameVarOnStack = NULL;
@@ -1580,7 +1593,7 @@ int errorTable(int iErr)
             char *buffer = defaultStringError();
             if (buffer)
             {
-                iValueReturned = Scierror(iErr, buffer);
+                iValueReturned = Scierror(iErr, "%s", buffer);
                 FREE(buffer);
                 buffer = NULL;
             }
@@ -1595,11 +1608,17 @@ static void strip_blank(char *source)
     char *p;
     p = source;
     /* look for end of string */
-    while (*p != '\0') p++;
+    while (*p != '\0')
+    {
+        p++;
+    }
     while (p != source)
     {
         p--;
-        if (*p != ' ') break;
+        if (*p != ' ')
+        {
+            break;
+        }
         *p = '\0';
     }
 }

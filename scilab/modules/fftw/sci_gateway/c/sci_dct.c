@@ -150,7 +150,7 @@ int sci_dct(char *fname, unsigned long fname_len)
         sciErr = getScalarIntArg(pvApiCtx, 2, fname, &isn);
         if (sciErr.iErr)
         {
-            Scierror(sciErr.iErr, getErrorMessage(sciErr));
+            Scierror(sciErr.iErr, "%s", getErrorMessage(sciErr));
             return 0;
         }
         /* check value of second rhs argument */
@@ -387,7 +387,7 @@ int  sci_dct_3args(void* _pvCtx, char *fname, int ndimsA, int *dimsA, double *Ar
     sciErr = getVectorIntArg(pvApiCtx, 3, fname, &rank, &Sel);
     if (sciErr.iErr)
     {
-        Scierror(sciErr.iErr, getErrorMessage(sciErr));
+        Scierror(sciErr.iErr, "%s", getErrorMessage(sciErr));
         FREE(gdim.dims);
         FREE(gdim.howmany_dims);
         return 0;
@@ -630,7 +630,7 @@ int sci_dct_4args(void* _pvCtx, char *fname, int ndimsA, int *dimsA, double *Ar,
     sciErr = getVectorIntArg(pvApiCtx, 3, fname, &ndims, &Dim1);
     if (sciErr.iErr)
     {
-        Scierror(sciErr.iErr, getErrorMessage(sciErr));
+        Scierror(sciErr.iErr, "%s", getErrorMessage(sciErr));
         FREE(Dim1);
         FREE(Incr);
         FREE(Dim);
@@ -682,7 +682,7 @@ int sci_dct_4args(void* _pvCtx, char *fname, int ndimsA, int *dimsA, double *Ar,
     sciErr = getVectorIntArg(pvApiCtx, 4, fname, &nincr, &Incr);
     if (sciErr.iErr)
     {
-        Scierror(sciErr.iErr, getErrorMessage(sciErr));
+        Scierror(sciErr.iErr, "%s", getErrorMessage(sciErr));
         FREE(Dim1);
         FREE(Incr);
         FREE(Dim);
@@ -1014,7 +1014,8 @@ int sci_dct_gen(void* _pvCtx, char *fname, int ndimsA, int *dimsA, double *Ar,  
 
 
     AssignOutputVariable(_pvCtx, 1) =  1;/* assume inplace transform*/
-    if (isn == 1 & iopt == 0)
+    /* Fixing -Wparentheses by replacing bitwise operators with logical ones: */
+    if (isn == 1 && iopt == 0)
     {
         /* normalization */
         if (dct_scale_array(Ar, Ai, gdim, isn) == -1)
@@ -1033,7 +1034,7 @@ int sci_dct_gen(void* _pvCtx, char *fname, int ndimsA, int *dimsA, double *Ar,  
 
     if (isn == -1)
     {
-        if (iopt == 0 | iopt == 2)
+        if (iopt == 0 || iopt == 2)
             for (i = 0; i < gdim.rank; i++)
             {
                 kind[i] = FFTW_REDFT10;
@@ -1051,7 +1052,7 @@ int sci_dct_gen(void* _pvCtx, char *fname, int ndimsA, int *dimsA, double *Ar,  
     }
     else
     {
-        if (iopt == 0 | iopt == 3)
+        if (iopt == 0 || iopt == 3)
             for (i = 0; i < gdim.rank; i++)
             {
                 kind[i] = FFTW_REDFT01;
@@ -1182,7 +1183,7 @@ int sci_dct_gen(void* _pvCtx, char *fname, int ndimsA, int *dimsA, double *Ar,  
         gdim.howmany_dims = howmany_dims;
 
     }
-    if (isn == -1 & iopt == 0)
+    if (isn == -1 && iopt == 0)
     {
         /* normalization */
 

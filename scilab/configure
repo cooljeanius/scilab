@@ -14645,11 +14645,11 @@ found="no"
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
-		CFLAGS="$CFLAGS -Wc90-c99-compat"
+		CFLAGS="$CFLAGS -Wc90-c99-compat -Wno-long-long"
 
-		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wc90-c99-compat" >&5
-$as_echo_n "checking if $CC supports -Wc90-c99-compat... " >&6; }
-		cacheid=xorg_cv_cc_flag__Wc90_c99_compat
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wc90-c99-compat -Wno-long-long" >&5
+$as_echo_n "checking if $CC supports -Wc90-c99-compat -Wno-long-long... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wc90_c99_compat__Wno_long_long
 		if eval \${$cacheid+:} false; then :
   $as_echo_n "(cached) " >&6
 else
@@ -14679,7 +14679,7 @@ fi
 		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
 $as_echo "$supported" >&6; }
 		if test "$supported" = "yes" ; then
-			BASE_CFLAGS="$BASE_CFLAGS -Wc90-c99-compat"
+			BASE_CFLAGS="$BASE_CFLAGS -Wc90-c99-compat -Wno-long-long"
 			found="yes"
 		fi
 	fi
@@ -14764,11 +14764,11 @@ found="no"
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
-		CFLAGS="$CFLAGS -Wunused"
+		CFLAGS="$CFLAGS -Wunused -Wno-unused-parameter"
 
-		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wunused" >&5
-$as_echo_n "checking if $CC supports -Wunused... " >&6; }
-		cacheid=xorg_cv_cc_flag__Wunused
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wunused -Wno-unused-parameter" >&5
+$as_echo_n "checking if $CC supports -Wunused -Wno-unused-parameter... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wunused__Wno_unused_parameter
 		if eval \${$cacheid+:} false; then :
   $as_echo_n "(cached) " >&6
 else
@@ -14798,7 +14798,7 @@ fi
 		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
 $as_echo "$supported" >&6; }
 		if test "$supported" = "yes" ; then
-			BASE_CFLAGS="$BASE_CFLAGS -Wunused"
+			BASE_CFLAGS="$BASE_CFLAGS -Wunused -Wno-unused-parameter"
 			found="yes"
 		fi
 	fi
@@ -23247,11 +23247,11 @@ found="no"
 			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
 		fi
 
-		CXXFLAGS="$CXXFLAGS -Wunused"
+		CXXFLAGS="$CXXFLAGS -Wunused -Wno-unused-parameter"
 
-		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Wunused" >&5
-$as_echo_n "checking if $CXX supports -Wunused... " >&6; }
-		cacheid=xorg_cv_cxx_flag__Wunused
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CXX supports -Wunused -Wno-unused-parameter" >&5
+$as_echo_n "checking if $CXX supports -Wunused -Wno-unused-parameter... " >&6; }
+		cacheid=xorg_cv_cxx_flag__Wunused__Wno_unused_parameter
 		if eval \${$cacheid+:} false; then :
   $as_echo_n "(cached) " >&6
 else
@@ -23281,7 +23281,7 @@ fi
 		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
 $as_echo "$supported" >&6; }
 		if test "$supported" = "yes" ; then
-			BASE_CXXFLAGS="$BASE_CXXFLAGS -Wunused"
+			BASE_CXXFLAGS="$BASE_CXXFLAGS -Wunused -Wno-unused-parameter"
 			found="yes"
 		fi
 	fi
@@ -41514,9 +41514,9 @@ fi
 
 
 for ac_func in __argz_count __argz_next __argz_stringify dlopen \
-dyld_stub_binding_helper localeconv lt_dlopen mblen mbrlen memchr \
+dyld_stub_binding_helper freopen localeconv lt_dlopen mblen mbrlen memchr \
 mempcpy nl_langinfo realpath stpcpy strcspn strncasecmp strspn strtoul \
-wcwidth
+vsnprintf wcwidth
 do :
   as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
 ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"
@@ -41527,6 +41527,17 @@ _ACEOF
 
 fi
 done
+
+ac_fn_c_check_decl "$LINENO" "vsnprintf" "ac_cv_have_decl_vsnprintf" "$ac_includes_default"
+if test "x$ac_cv_have_decl_vsnprintf" = xyes; then :
+  ac_have_decl=1
+else
+  ac_have_decl=0
+fi
+
+cat >>confdefs.h <<_ACEOF
+#define HAVE_DECL_VSNPRINTF $ac_have_decl
+_ACEOF
 
 ########################
 ## test for header files
@@ -51250,11 +51261,11 @@ found="no"
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
-		CFLAGS="$CFLAGS -Wc90-c99-compat"
+		CFLAGS="$CFLAGS -Wc90-c99-compat -Wno-long-long"
 
-		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wc90-c99-compat" >&5
-$as_echo_n "checking if $CC supports -Wc90-c99-compat... " >&6; }
-		cacheid=xorg_cv_cc_flag__Wc90_c99_compat
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wc90-c99-compat -Wno-long-long" >&5
+$as_echo_n "checking if $CC supports -Wc90-c99-compat -Wno-long-long... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wc90_c99_compat__Wno_long_long
 		if eval \${$cacheid+:} false; then :
   $as_echo_n "(cached) " >&6
 else
@@ -51292,7 +51303,7 @@ fi
 		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
 $as_echo "$supported" >&6; }
 		if test "$supported" = "yes" ; then
-			BASE_CFLAGS="$BASE_CFLAGS -Wc90-c99-compat"
+			BASE_CFLAGS="$BASE_CFLAGS -Wc90-c99-compat -Wno-long-long"
 			found="yes"
 		fi
 	fi
@@ -51377,11 +51388,11 @@ found="no"
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
-		CFLAGS="$CFLAGS -Wunused"
+		CFLAGS="$CFLAGS -Wunused -Wno-unused-parameter"
 
-		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wunused" >&5
-$as_echo_n "checking if $CC supports -Wunused... " >&6; }
-		cacheid=xorg_cv_cc_flag__Wunused
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -Wunused -Wno-unused-parameter" >&5
+$as_echo_n "checking if $CC supports -Wunused -Wno-unused-parameter... " >&6; }
+		cacheid=xorg_cv_cc_flag__Wunused__Wno_unused_parameter
 		if eval \${$cacheid+:} false; then :
   $as_echo_n "(cached) " >&6
 else
@@ -51419,7 +51430,7 @@ fi
 		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
 $as_echo "$supported" >&6; }
 		if test "$supported" = "yes" ; then
-			BASE_CFLAGS="$BASE_CFLAGS -Wunused"
+			BASE_CFLAGS="$BASE_CFLAGS -Wunused -Wno-unused-parameter"
 			found="yes"
 		fi
 	fi
@@ -59464,7 +59475,7 @@ $as_echo_n "checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later...
 
 
 cat > conftest.$ac_ext <<EOF
-#line 59467 "configure"
+#line 59478 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TCL_INCLUDE_PATH/$CHK_TCL_INC_NAME"
@@ -59779,7 +59790,7 @@ $as_echo_n "checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later... " 
 
 
 cat > conftest.$ac_ext <<EOF
-#line 59782 "configure"
+#line 59793 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TK_INCLUDE_PATH/$CHK_TK_INC_NAME"
@@ -60397,7 +60408,7 @@ $as_echo_n "checking saxon... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 60400 "configure"
+// #line 60411 "configure"
 import java.util.regex.Pattern;
 
 import com.icl.saxon.Loader;
@@ -60513,7 +60524,7 @@ $as_echo_n "checking jlatexmath-fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 60516 "configure"
+// #line 60527 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.fop.JLaTeXMathObj;

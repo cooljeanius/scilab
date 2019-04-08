@@ -66,14 +66,15 @@ void sciprint_full(char *fmt, ...)
 
     va_start(ap, fmt);
 
-#if defined(linux) || defined(_MSC_VER)
-    count = vsnprintf (s_buf, MAXCHARSSCIPRINT_FULL - 1, fmt, ap );
+#if defined(linux) || defined(_MSC_VER) || (defined(HAVE_VSNPRINTF) && defined(HAVE_DECL_VSNPRINTF)) || \
+    defined(S_SPLINT_S)
+    count = vsnprintf(s_buf, MAXCHARSSCIPRINT_FULL - 1, fmt, ap );
     if (count == -1)
     {
         s_buf[MAXCHARSSCIPRINT_FULL - 1] = '\0';
     }
 #else
-    (void )vsprintf(s_buf, fmt, ap );
+    (void)vsprintf(s_buf, fmt, ap);
 #endif
 
     va_end(ap);

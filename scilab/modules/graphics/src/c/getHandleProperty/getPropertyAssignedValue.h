@@ -86,24 +86,24 @@ GRAPHICS_IMPEXP BOOL isStringParamEqual( size_t stackPointer, const char * str )
  *         NOT_A_BOOLEAN_VALUE otherwise
  */
 GRAPHICS_IMPEXP int tryGetBooleanValueFromStack(size_t stackPointer, int valueType, int nbRow, int nbCol, char* propertyName);
-// with that we are sure to be nether equal to TRUE nor FALSE
+/* with that we are sure to be nether equal to TRUE nor FALSE */
 #define NOT_A_BOOLEAN_VALUE (2*FALSE) - TRUE
 
 /*------------------------------------------------------------------------------*/
 /* Tlist */
 typedef struct
 {
-    int nbElement ; /**< number of elements in the tlist */
-    int curElement ; /**< currently read element */
-    int paramNumber ; /**< rank of the tlist within the Rhs parameters */
-    size_t stackPointer ; /**< pointer of the tlist in the stack */
-} AssignedList ;
+    int nbElement; /**< number of elements in the tlist */
+    int curElement; /**< currently read element */
+    int paramNumber; /**< rank of the tlist within the Rhs parameters */
+    size_t stackPointer; /**< pointer of the tlist in the stack */
+} AssignedList;
 
 /**
  * get the number of element of a tlist stored in the rhs
  * @param paramNum rank of the list within the Rhs parameters
  */
-GRAPHICS_IMPEXP int getStackListNbElement( int paramNum ) ;
+GRAPHICS_IMPEXP int getStackListNbElement(int paramNum);
 
 /**
  * create a new instance of an object used to retrieve fields of a tlist

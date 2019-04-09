@@ -44,10 +44,10 @@ int get_labels_font_color_property(void* _pvCtx, char* pobjUID)
 
     if (piFontColor == NULL)
     {
-        Scierror(999, _("'%s' property does not exist for this handle.\n"),"labels_font_color");
+        Scierror(999, _("'%s' property does not exist for this handle.\n"), "labels_font_color");
         return -1;
     }
 
-    return sciReturnDouble(_pvCtx, iFontColor);
+    return sciReturnDouble(_pvCtx, (double)iFontColor);
 }
 /*------------------------------------------------------------------------*/

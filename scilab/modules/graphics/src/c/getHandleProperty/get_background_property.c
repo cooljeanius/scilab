@@ -44,6 +44,6 @@ int get_background_property(void* _pvCtx, char* pobjUID)
         return -1;
     }
 
-    return sciReturnDouble(_pvCtx, iBackground);
+    return sciReturnDouble(_pvCtx, (double)iBackground);
 }
 /*------------------------------------------------------------------------*/

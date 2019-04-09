@@ -116,8 +116,8 @@ int sci_xget(char *fname, unsigned long fname_len)
 
         getGraphicObjectProperty(pobjUID, __GO_MARK_STYLE__, jni_int, (void**)&piMarkStyle);
         getGraphicObjectProperty(pobjUID, __GO_MARK_SIZE__, jni_int, (void**)&piMarkSize);
-        pdblResult[0] = iMarkStyle;
-        pdblResult[1] = iMarkSize;
+        pdblResult[0] = (double)iMarkStyle;
+        pdblResult[1] = (double)iMarkSize;
 
         createMatrixOfDouble(pvApiCtx, Rhs + 1, 1, 2, pdblResult);
         LhsVar(1) = Rhs + 1;
@@ -167,7 +167,7 @@ int sci_xget(char *fname, unsigned long fname_len)
         getGraphicObjectProperty(pobjUID, __GO_FONT_SIZE__, jni_double, (void **)&pdblFontSize);
         getGraphicObjectProperty(pobjUID, __GO_FONT_STYLE__, jni_int, (void**)&piFontStyle);
 
-        pdblResult[0] = iFontStyle;
+        pdblResult[0] = (double)iFontStyle;
         pdblResult[1] = dblFontSize;
 
 
@@ -195,7 +195,7 @@ int sci_xget(char *fname, unsigned long fname_len)
 
         getGraphicObjectProperty(getOrCreateDefaultSubwin(), __GO_LINE_STYLE__, jni_int, (void**)&piLineStyle);
 
-        createScalarDouble(pvApiCtx, Rhs + 1, iLineStyle);
+        createScalarDouble(pvApiCtx, Rhs + 1, (double)iLineStyle);
         LhsVar(1) = Rhs + 1;
         PutLhsVar();
 
@@ -217,7 +217,7 @@ int sci_xget(char *fname, unsigned long fname_len)
 
         getOrCreateDefaultSubwin();
         getGraphicObjectProperty(getCurrentFigure(), __GO_ID__, jni_int, (void**)&piFigureId);
-        createScalarDouble(pvApiCtx, Rhs + 1, iFigureId);
+        createScalarDouble(pvApiCtx, Rhs + 1, (double)iFigureId);
         LhsVar(1) = Rhs + 1;
         PutLhsVar();
         return 0;
@@ -254,8 +254,8 @@ int sci_xget(char *fname, unsigned long fname_len)
 
         getOrCreateDefaultSubwin();
         getGraphicObjectProperty(getCurrentFigure(), __GO_POSITION__, jni_int_vector, (void **) &piFigurePosition);
-        pdblFigurePosition[0] = piFigurePosition[0];
-        pdblFigurePosition[1] = piFigurePosition[1];
+        pdblFigurePosition[0] = (double)piFigurePosition[0];
+        pdblFigurePosition[1] = (double)piFigurePosition[1];
 
         createMatrixOfDouble(pvApiCtx, Rhs + 1, 1, 2, pdblFigurePosition);
         LhsVar(1) = Rhs + 1;
@@ -270,8 +270,8 @@ int sci_xget(char *fname, unsigned long fname_len)
 
         getOrCreateDefaultSubwin();
         getGraphicObjectProperty(getCurrentFigure(), __GO_VIEWPORT__, jni_int_vector, (void **)&viewport);
-        pdblViewport[0] = viewport[0];
-        pdblViewport[1] = viewport[1];
+        pdblViewport[0] = (double)viewport[0];
+        pdblViewport[1] = (double)viewport[1];
 
         createMatrixOfDouble(pvApiCtx, Rhs + 1, 1, 2, pdblViewport);
         LhsVar(1) = Rhs + 1;
@@ -307,7 +307,7 @@ int sci_xget(char *fname, unsigned long fname_len)
         getOrCreateDefaultSubwin();
         getGraphicObjectProperty(getCurrentFigure(), __GO_COLORMAP_SIZE__, jni_int, (void**)&piNumColors);
 
-        createScalarDouble(pvApiCtx, Rhs + 1, iNumColors);
+        createScalarDouble(pvApiCtx, Rhs + 1, (double)iNumColors);
 
         LhsVar(1) = Rhs + 1;
         PutLhsVar();
@@ -321,7 +321,7 @@ int sci_xget(char *fname, unsigned long fname_len)
 
         getGraphicObjectProperty(getOrCreateDefaultSubwin(), __GO_LINE_MODE__, jni_bool, (void **)&lineMode);
 
-        createScalarDouble(pvApiCtx, Rhs + 1, iLineMode);
+        createScalarDouble(pvApiCtx, Rhs + 1, (double)iLineMode);
 
         LhsVar(1) = Rhs + 1;
         PutLhsVar();
@@ -336,7 +336,7 @@ int sci_xget(char *fname, unsigned long fname_len)
         getOrCreateDefaultSubwin();
         getGraphicObjectProperty(getCurrentFigure(), __GO_PIXMAP__, jni_bool, (void **)&piPixmap);
 
-        createScalarDouble(pvApiCtx, Rhs + 1, iPixmap);
+        createScalarDouble(pvApiCtx, Rhs + 1, (double)iPixmap);
         LhsVar(1) = Rhs + 1;
         PutLhsVar();
 
@@ -351,7 +351,7 @@ int sci_xget(char *fname, unsigned long fname_len)
         getGraphicObjectProperty(getCurrentFigure(), __GO_COLORMAP_SIZE__, jni_int, (void**)&piNumColors);
 
         /* White is lqst colormap index + 2 */
-        createScalarDouble(pvApiCtx, Rhs + 1, iNumColors + 2);
+        createScalarDouble(pvApiCtx, Rhs + 1, (double)(iNumColors + 2));
 
         LhsVar(1) = Rhs + 1;
         PutLhsVar();
@@ -367,7 +367,7 @@ int sci_xget(char *fname, unsigned long fname_len)
         getOrCreateDefaultSubwin();
         getGraphicObjectProperty(getCurrentFigure(), __GO_AUTORESIZE__, jni_bool, (void **)&piAutoResize);
 
-        createScalarDouble(pvApiCtx, Rhs + 1, iAutoResize);
+        createScalarDouble(pvApiCtx, Rhs + 1, (double)iAutoResize);
 
         LhsVar(1) = Rhs + 1;
         PutLhsVar();
@@ -382,7 +382,7 @@ int sci_xget(char *fname, unsigned long fname_len)
 
         getGraphicObjectProperty(getOrCreateDefaultSubwin(), __GO_CLIP_STATE__, jni_int, (void**)&piClipState);
 
-        createScalarDouble(pvApiCtx, Rhs + 1, iClipState);
+        createScalarDouble(pvApiCtx, Rhs + 1, (double)iClipState);
         LhsVar(1) = Rhs + 1;
         PutLhsVar();
 

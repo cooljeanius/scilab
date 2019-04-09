@@ -122,24 +122,25 @@ void clearScilabPreferences()
     isInit = 0;
 }
 /*--------------------------------------------------------------------------*/
-void getPrefs()
+void getPrefs(void)
 {
     xmlDocPtr doc = NULL;
     xmlXPathContextPtr xpathCtxt = NULL;
-    char * SCIHOME = NULL;
-    char * path = NULL;
+    char *SCIHOME = NULL;
+    char *path = NULL;
     BOOL bConvert = FALSE;
-    char * shortfilename_xml_conf = NULL;
-    char * attr = NULL;
+    char *shortfilename_xml_conf = NULL;
 
     if (!isInit)
     {
+        size_t pathlen;
         initPrefs();
 
         SCIHOME = getSCIHOME();
-        path = (char *)MALLOC(strlen(SCIHOME) + strlen(XCONF));
+        pathlen = (strlen(SCIHOME) + strlen(XCONF));
+        path = (char *)MALLOC(pathlen);
 
-        sprintf(path, XCONF, SCIHOME);
+        snprintf(path, pathlen, XCONF, SCIHOME);
 
         if (FileExist(path))
         {

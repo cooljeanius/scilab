@@ -29,7 +29,7 @@
 #include "getPropertyAssignedValue.h"
 #include "getGraphicObjectProperty.h"
 /*--------------------------------------------------------------------------*/
-int sci_rotate_axes(char *fname,unsigned long fname_len)
+int sci_rotate_axes(char *fname, unsigned long fname_len)
 {
     int nbRow = 0;
     int nbCol = 0;
@@ -40,10 +40,10 @@ int sci_rotate_axes(char *fname,unsigned long fname_len)
     int *piType = &iType;
 
     /* check size of input and output */
-    CheckRhs(0,1);
-    CheckLhs(0,1);
+    CheckRhs(0, 1);
+    CheckLhs(0, 1);
 
-    if(Rhs == 0)
+    if (Rhs == 0)
     {
         pstrUID = (char*)getCurrentFigure();
     }
@@ -56,15 +56,15 @@ int sci_rotate_axes(char *fname,unsigned long fname_len)
             return -1;
         }
 
-        GetRhsVar(1, GRAPHICAL_HANDLE_DATATYPE, &nbRow, &nbCol, &stackPointer);
+        GetRhsVar(1, (char *)GRAPHICAL_HANDLE_DATATYPE, &nbRow, &nbCol, &stackPointer);
 
-        if (nbRow * nbCol != 1)
+        if ((nbRow * nbCol) != 1)
         {
             Scierror(999, _("%s: Wrong type for input argument #%d: Single Figure or Axes handle expected.\n"), fname, 1);
             return -1;
         }
 
-        pstrUID = (char*)getObjectFromHandle(getHandleFromStack(stackPointer));
+        pstrUID = (char *)getObjectFromHandle((long)getHandleFromStack(stackPointer));
 
         getGraphicObjectProperty(pstrUID, __GO_TYPE__, jni_int, (void **)&piType);
         if (iType == __GO_AXES__)
@@ -75,7 +75,7 @@ int sci_rotate_axes(char *fname,unsigned long fname_len)
 
     if (pstrUID == NULL)
     {
-        Scierror(999,_("%s: The handle is not or no more valid.\n"),fname);
+        Scierror(999, _("%s: The handle is not or no more valid.\n"), fname);
         return -1;
     }
 

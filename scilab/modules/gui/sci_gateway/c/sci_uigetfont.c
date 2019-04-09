@@ -45,7 +45,8 @@ int sci_uigetfont(char *fname, unsigned long fname_len)
     {
         if (VarType(1) == sci_strings)
         {
-            GetRhsVar(1, MATRIX_OF_STRING_DATATYPE, &nbRow, &nbCol, &fontNameAdr);
+            GetRhsVar(1, (char *)MATRIX_OF_STRING_DATATYPE, &nbRow, &nbCol,
+                      &fontNameAdr);
             fontNameSize = nbRow * nbCol;
             if (fontNameSize != 1)
             {
@@ -66,7 +67,8 @@ int sci_uigetfont(char *fname, unsigned long fname_len)
     {
         if (VarType(2) == sci_matrix)
         {
-            GetRhsVar(2, MATRIX_OF_DOUBLE_DATATYPE, &nbRow, &nbCol, &fontSizeAdr);
+            GetRhsVar(2, (char *)MATRIX_OF_DOUBLE_DATATYPE, &nbRow, &nbCol,
+                      &fontSizeAdr);
             if (nbRow * nbCol != 1)
             {
                 freeArrayOfString(fontNameAdr, fontNameSize);
@@ -87,7 +89,8 @@ int sci_uigetfont(char *fname, unsigned long fname_len)
     {
         if (VarType(3) == sci_boolean)
         {
-            GetRhsVar(3, MATRIX_OF_BOOLEAN_DATATYPE, &nbRow, &nbCol, &boldAdr);
+            GetRhsVar(3, (char *)MATRIX_OF_BOOLEAN_DATATYPE, &nbRow, &nbCol,
+                      &boldAdr);
             if (nbRow * nbCol != 1)
             {
                 freeArrayOfString(fontNameAdr, fontNameSize);
@@ -109,7 +112,8 @@ int sci_uigetfont(char *fname, unsigned long fname_len)
     {
         if (VarType(4) == sci_boolean)
         {
-            GetRhsVar(4, MATRIX_OF_BOOLEAN_DATATYPE, &nbRow, &nbCol, &italicAdr);
+            GetRhsVar(4, (char *)MATRIX_OF_BOOLEAN_DATATYPE, &nbRow, &nbCol,
+                      &italicAdr);
             if (nbRow * nbCol != 1)
             {
                 freeArrayOfString(fontNameAdr, fontNameSize);
@@ -172,24 +176,28 @@ int sci_uigetfont(char *fname, unsigned long fname_len)
         nbCol = 1;
         if (Lhs >= 1)
         {
-            CreateVarFromPtr(Rhs + 1, MATRIX_OF_STRING_DATATYPE, &nbRow, &nbCol, &selectedFontName);
+            CreateVarFromPtr(Rhs + 1, (char *)MATRIX_OF_STRING_DATATYPE, &nbRow,
+                             &nbCol, &selectedFontName);
         }
 
         if (Lhs >= 2)
         {
-            CreateVar(Rhs + 2, MATRIX_OF_DOUBLE_DATATYPE, &nbRow, &nbCol, &fontSizeAdr);
+            CreateVar(Rhs + 2, (char *)MATRIX_OF_DOUBLE_DATATYPE, &nbRow,
+                      &nbCol, &fontSizeAdr);
             *stk(fontSizeAdr) = (double)selectedFontSize;
         }
 
         if (Lhs >= 3)
         {
-            CreateVar(Rhs + 3, MATRIX_OF_BOOLEAN_DATATYPE, &nbRow, &nbCol, &boldAdr);
+            CreateVar(Rhs + 3, (char *)MATRIX_OF_BOOLEAN_DATATYPE, &nbRow,
+                      &nbCol, &boldAdr);
             *istk(boldAdr) = selectedBold;
         }
 
         if (Lhs >= 4)
         {
-            CreateVar(Rhs + 4, MATRIX_OF_BOOLEAN_DATATYPE, &nbRow, &nbCol, &italicAdr);
+            CreateVar(Rhs + 4, (char *)MATRIX_OF_BOOLEAN_DATATYPE, &nbRow,
+                      &nbCol, &italicAdr);
             *istk(italicAdr) = selectedItalic;
         }
     }
@@ -200,25 +208,29 @@ int sci_uigetfont(char *fname, unsigned long fname_len)
         if (Lhs >= 1)
         {
             /* Return "" as font name */
-            CreateVar(Rhs + 1, STRING_DATATYPE, &nbRow, &nbCol, &fontNameAdr);
+            CreateVar(Rhs + 1, (char *)STRING_DATATYPE, &nbRow, &nbCol,
+                      &fontNameAdr);
         }
 
         if (Lhs >= 2)
         {
             /* Return [] as font size */
-            CreateVar(Rhs + 2, MATRIX_OF_DOUBLE_DATATYPE, &nbRow, &nbCol, &fontSizeAdr);
+            CreateVar(Rhs + 2, (char *)MATRIX_OF_DOUBLE_DATATYPE, &nbRow,
+                      &nbCol, &fontSizeAdr);
         }
 
         if (Lhs >= 3)
         {
             /* Return [] as bold value */
-            CreateVar(Rhs + 3, MATRIX_OF_BOOLEAN_DATATYPE, &nbRow, &nbCol, &boldAdr);
+            CreateVar(Rhs + 3, (char *)MATRIX_OF_BOOLEAN_DATATYPE, &nbRow,
+                      &nbCol, &boldAdr);
         }
 
         if (Lhs >= 4)
         {
             /* Return [] as italic value */
-            CreateVar(Rhs + 4, MATRIX_OF_BOOLEAN_DATATYPE, &nbRow, &nbCol, &italicAdr);
+            CreateVar(Rhs + 4, (char *)MATRIX_OF_BOOLEAN_DATATYPE, &nbRow,
+                      &nbCol, &italicAdr);
         }
     }
 

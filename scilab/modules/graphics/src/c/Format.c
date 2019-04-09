@@ -123,7 +123,7 @@ static void ChoixFormatE(char *fmt, double xmin, double xmax, double xpas)
         strcpy(fmt, "%.*e");
     }
     FormatPrec(fmt, &des, xmin, xmax, xpas);
-    sprintf(fmt, "%%.%d%c", des, c);
+    snprintf(fmt, (size_t)(-1), "%%.%d%c", des, c);
 }
 
 /*
@@ -139,8 +139,8 @@ static void FormatPrec(char *fmt, int *desres, double xmin, double xmax, double 
     {
         double x1, x2, yy1;
         yy1 = xmin + ((double) i) * xpas;
-        sprintf(buf1, fmt, *desres, yy1);
-        sprintf(buf2, fmt, *desres, yy1 + xpas );
+        snprintf(buf1, sizeof(buf1), fmt, *desres, yy1);
+        snprintf(buf2, sizeof(buf2), fmt, *desres, yy1 + xpas);
         sscanf(buf1, "%lf", &x1);
         sscanf(buf2, "%lf", &x2);
         if (  Abs((x2 - x1 - xpas) / xpas) >= 0.1)
@@ -172,12 +172,12 @@ static int Fsepare(char *fmt, int dec, int *l, double xmin, double xmax, double 
     {
         return (0);
     }
-    sprintf(buf1, fmt, dec, xmin);
+    snprintf(buf1, sizeof(buf1), fmt, dec, xmin);
     while ( x < xmax )
     {
         x += xpas;
         strcpy(buf2, buf1);
-        sprintf(buf1, fmt, dec, x);
+        snprintf(buf1, sizeof(buf1), fmt, dec, x);
         *l = (((int)strlen(buf1) >= *l) ? (int) strlen(buf1) : *l) ;
         if ( strcmp(buf1, buf2) == 0)
         {
@@ -217,7 +217,7 @@ void ChoixFormatE1(char *fmt, double *xx, int nx)
         strcpy(fmt, "%.*e");
     }
     FormatPrec1(fmt, &des, xx, nx);
-    sprintf(fmt, "%%.%d%c", des, c);
+    snprintf(fmt, (size_t)(-1), "%%.%d%c", des, c);
 }
 
 
@@ -235,8 +235,8 @@ static void FormatPrec1(char *fmt, int *desres, double *xx, int nx)
     while ( i < nx - 1 && *desres  < 10 )
     {
         double x1 = 0., x2 = 0.;
-        sprintf(buf1, fmt, *desres, xx[i]);
-        sprintf(buf2, fmt, *desres, xx[i + 1]);
+        snprintf(buf1, sizeof(buf1), fmt, *desres, xx[i]);
+        snprintf(buf2, sizeof(buf2), fmt, *desres, xx[i + 1]);
         sscanf(buf1, "%lf", &x1);
         sscanf(buf2, "%lf", &x2);
         xpas = xx[i + 1] - xx[i];
@@ -266,11 +266,11 @@ static int Fsepare1(char *fmt, int dec, int *l, double *xx, int nx)
     {
         return (0);
     }
-    sprintf(buf1, fmt, dec, xx[0]);
+    snprintf(buf1, sizeof(buf1), fmt, dec, xx[0]);
     for ( i = 1 ; i < nx ; i++)
     {
         strcpy(buf2, buf1);
-        sprintf(buf1, fmt, dec, xx[i]);
+        snprintf(buf1, sizeof(buf1), fmt, dec, xx[i]);
         *l = (((int)strlen(buf1) >= *l) ? (int) strlen(buf1) : *l) ;
         if ( strcmp(buf1, buf2) == 0)
         {
@@ -748,7 +748,7 @@ static int GradLog( double   _min   ,
     {
         for (i = 0; i < size; i++)
         {
-            _grads[i] = log_min + i;
+            _grads[i] = (double)(log_min + i);
             *n_grads = (*n_grads) + 1;
         }
     }
@@ -784,15 +784,15 @@ static int GradLog( double   _min   ,
 
         if (pas == size)
         {
-            _grads[0] = log_min;
-            _grads[1] = log_max;
+            _grads[0] = (double)log_min;
+            _grads[1] = (double)log_max;
             *n_grads = 2;
         }
         else
         {
-            for (i = 0; i <= (int )(size / pas); i++)
+            for (i = 0; i <= (int)(size / pas); i++)
             {
-                _grads[i] = log_min + (i * pas);
+                _grads[i] = (double)(log_min + (i * pas));
 
                 *n_grads = (*n_grads) + 1;
             }
@@ -915,7 +915,7 @@ int ComputeC_format(char * pobjUID, char * c_format)
                     {
                         if (x3 % j == 0)
                         {
-                            x[3] = j;
+                            x[3] = (double)j;
                             xpassed = 1;
                         }
                     }
@@ -946,7 +946,7 @@ int ComputeC_format(char * pobjUID, char * c_format)
                     {
                         if (y3 % j == 0)
                         {
-                            y[3] = j;
+                            y[3] = (double)j;
                             ypassed = 1;
                         }
                     }
@@ -1248,7 +1248,8 @@ StringMatrix *computeDefaultTicsLabels(char *pobjUID)
 
     for (i = 0; i < nbTics; i++)
     {
-        sprintf(curLabelBuffer, c_format, vector[i]); /* we cannot know for sure the size of the label */
+        /* we cannot know for sure the size of the label: */
+        snprintf(curLabelBuffer, sizeof(curLabelBuffer), c_format, vector[i]);
         /* That's why it is first stored in a big array */
         copyStrMatElement(ticsLabels, 0, i, curLabelBuffer);
     }
@@ -1268,52 +1269,54 @@ StringMatrix *computeDefaultTicsLabels(char *pobjUID)
  *                   and ideally the same length.
  * @return the newly created strings, or NULL if an error occurred.
  */
-static char * copyFormatedValue( double value, const char format[5], int bufferSize )
+static char *copyFormatedValue(double value, const char format[5], int bufferSize)
 {
-    char * buffer = (char*)MALLOC( bufferSize * sizeof(char) ) ;
-    char * res = NULL ;
-    int resLength = 0 ;
+    const size_t buffer_len = (bufferSize * sizeof(char));
+    char *buffer = (char *)MALLOC(buffer_len);
+    char *res = NULL;
+    int resLength = 0;
 
-    if ( buffer == NULL )
+    if (buffer == NULL)
     {
-        return NULL ;
+        return NULL;
     }
 
-    sprintf( buffer , format, value ) ;
+    snprintf(buffer, buffer_len, format, value);
 
-    resLength =  (int)strlen( buffer ) + 1 ; /* + 1 <=> 0 terminating char */
+    resLength = (int)strlen(buffer) + 1; /* + 1 <=> 0 terminating char */
 
-    res = (char*)MALLOC( resLength * sizeof(char) ) ;
+    res = (char *)MALLOC(resLength * sizeof(char));
 
-    if ( res == NULL )
+    if (res == NULL)
     {
-        FREE( buffer ) ;
-        return NULL ;
+        FREE(buffer);
+        return NULL;
     }
 
-    strncpy( res, buffer, resLength ) ;
+    strncpy(res, buffer, resLength);
 
-    FREE( buffer ) ;
+    FREE(buffer);
 
-    return res ;
+    return res;
 }
 /*--------------------------------------------------------------------------*/
-char ** copyFormatedArray( const double values[], int nbStrings, const char format[5], int bufferSize )
+char **copyFormatedArray(const double values[], int nbStrings,
+                         const char format[5], int bufferSize)
 {
     int i = 0;
-    char ** res = MALLOC( nbStrings * sizeof(char *) ) ;
+    char **res = MALLOC(nbStrings * sizeof(char *));
 
-    if ( res == NULL )
+    if (res == NULL)
     {
-        return NULL ;
+        return NULL;
     }
 
-    for ( i = 0 ; i < nbStrings ; i++ )
+    for (i = 0; i < nbStrings; i++ )
     {
-        res[i] = copyFormatedValue( values[i], format, bufferSize ) ;
+        res[i] = copyFormatedValue(values[i], format, bufferSize);
     }
 
-    return res ;
+    return res;
 
 }
 /*--------------------------------------------------------------------------*/

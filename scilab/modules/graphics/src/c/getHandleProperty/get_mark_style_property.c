@@ -39,10 +39,10 @@ int get_mark_style_property(void* _pvCtx, char* pobjUID)
 
     if (piMarkStyle == NULL)
     {
-        Scierror(999, _("'%s' property does not exist for this handle.\n"),"mark_style");
+        Scierror(999, _("'%s' property does not exist for this handle.\n"), "mark_style");
         return -1;
     }
 
-    return sciReturnDouble(_pvCtx, iMarkStyle);
+    return sciReturnDouble(_pvCtx, (double)iMarkStyle);
 }
 /*------------------------------------------------------------------------*/

@@ -67,7 +67,9 @@ extern "C" {
         }
         else
         {
-            //cleanStackListAddress();
+#if 0
+            cleanStackListAddress();
+#endif /* 0 */
             switch (listType)
             {
                 case 'l' :
@@ -89,7 +91,9 @@ extern "C" {
             return sciErr;
         }
 
-        //pushListAddress(currentList);
+#if 0
+        pushListAddress(currentList);
+#endif /* 0 */
 
         for (; i < listLen - 1; i++)
         {
@@ -99,8 +103,8 @@ extern "C" {
                 {
                     int nbCol = 0;
                     int j = 0, k = 0;
-                    double * real = 0;
-                    double * imag = 0;
+                    double *real = NULL;
+                    double *imag = NULL;
                     int nbRow = 0;
 
                     jobjectArray infos = (jobjectArray)(*jenv)->GetObjectArrayElement(jenv, list, i + 1);
@@ -109,7 +113,7 @@ extern "C" {
 
                     if (!data)
                     {
-                        // empty matrix
+                        /* empty matrix: */
                         sciErr = createMatrixOfDoubleInNamedList(pvApiCtx, varName, currentList, i + 1, 0, 0, 0);
                         (*jenv)->DeleteLocalRef(jenv, infos);
                         break;
@@ -119,7 +123,7 @@ extern "C" {
 
                     if (isReal)
                     {
-                        // Get the matrix rowsw
+                        /* Get the matrix rows: */
                         for (; j < nbRow; j++)
                         {
                             jboolean isCopy1 = JNI_FALSE;
@@ -133,7 +137,7 @@ extern "C" {
 
                             element = (jdouble*)(*jenv)->GetPrimitiveArrayCritical(jenv, oneDim, &isCopy1);
 
-                            // Get the matrix element
+                            /* Get the matrix element: */
                             for (k = 0; k < nbCol; k++)
                             {
                                 real[k * nbRow + j] = element[k];
@@ -149,7 +153,7 @@ extern "C" {
                     else
                     {
                         jobject imagData = (jobject)(*jenv)->GetObjectArrayElement(jenv, infos, 1);
-                        // Get the matrix rows
+                        /* Get the matrix rows: */
                         for (; j < nbRow; j++)
                         {
                             jboolean isCopy1 = JNI_FALSE;
@@ -168,7 +172,7 @@ extern "C" {
                             isCopy1 = JNI_FALSE;
                             elementI = (jdouble*)(*jenv)->GetPrimitiveArrayCritical(jenv, oneDimI, &isCopy1);
 
-                            // Get the matrix element
+                            /* Get the matrix element: */
                             for (k = 0; k < nbCol; k++)
                             {
                                 real[k * nbRow + j] = elementR[k];
@@ -217,10 +221,10 @@ extern "C" {
                     isReal = (*jenv)->GetArrayLength(jenv, infos) == 2;
                     js = (jstring)(*jenv)->GetObjectArrayElement(jenv, infos, 0);
                     polyVarName = (char*)(*jenv)->GetStringUTFChars(jenv, js, 0);
-                 
+
                     if (isReal)
                     {
-                        // Get the matrix rows
+                        /* Get the matrix rows: */
                         for (; j < nbRow; j++)
                         {
                             jobjectArray dblDim = (jobjectArray)(*jenv)->GetObjectArrayElement(jenv, data, j);
@@ -231,7 +235,7 @@ extern "C" {
                                 nbCoef = (int*)MALLOC(sizeof(int) * nbRow * nbCol);
                             }
 
-                            // Get the matrix element
+                            /* Get the matrix element: */
                             for (k = 0; k < nbCol; k++)
                             {
                                 jboolean isCopy1 = JNI_FALSE;
@@ -260,7 +264,7 @@ extern "C" {
                     else
                     {
                         jobject imagData = (*jenv)->GetObjectArrayElement(jenv, infos, 2);
-                        // Get the matrix rows
+                        /* Get the matrix rows: */
                         for (; j < nbRow; j++)
                         {
                             jobjectArray dblDimR = (jobjectArray)(*jenv)->GetObjectArrayElement(jenv, data, j);
@@ -273,7 +277,7 @@ extern "C" {
                                 nbCoef = (int*)MALLOC(sizeof(int) * nbRow * nbCol);
                             }
 
-                            // Get the matrix element
+                            /* Get the matrix element: */
                             for (k = 0; k < nbCol; k++)
                             {
                                 jboolean isCopy1 = JNI_FALSE;
@@ -334,7 +338,7 @@ extern "C" {
                         break;
                     }
 
-                    // Get the matrix rows
+                    /* Get the matrix rows: */
                     for (; j < nbRow; j++)
                     {
                         jboolean isCopy1 = JNI_FALSE;
@@ -348,7 +352,7 @@ extern "C" {
 
                         element = (jboolean*)(*jenv)->GetPrimitiveArrayCritical(jenv, oneDim, &isCopy1);
 
-                        // Get the matrix element
+                        /* Get the matrix element: */
                         for (k = 0; k < nbCol; k++)
                         {
                             b[k * nbRow + j] = element[k];
@@ -488,7 +492,7 @@ extern "C" {
                                 break;
                             }
 
-                            // Get the matrix rows
+                            /* Get the matrix rows: */
                             for (; j < nbRow; j++)
                             {
                                 jboolean isCopy1 = JNI_FALSE;
@@ -502,7 +506,7 @@ extern "C" {
                                 isCopy1 = JNI_FALSE;
                                 element = (jbyte*)(*jenv)->GetPrimitiveArrayCritical(jenv, oneDim, &isCopy1);
 
-                                // Get the matrix element
+                                /* Get the matrix element: */
                                 for (k = 0; k < nbCol; k++)
                                 {
                                     data[k * nbRow + j] = element[k];
@@ -534,7 +538,7 @@ extern "C" {
                                 break;
                             }
 
-                            // Get the matrix rows
+                            /* Get the matrix rows: */
                             for (; j < nbRow; j++)
                             {
                                 jbyte* element = NULL;
@@ -548,7 +552,7 @@ extern "C" {
 
                                 element = (jbyte*)(*jenv)->GetPrimitiveArrayCritical(jenv, oneDim, &isCopy1);
 
-                                // Get the matrix element
+                                /* Get the matrix element: */
                                 for (k = 0; k < nbCol; k++)
                                 {
                                     data[k * nbRow + j] = element[k];
@@ -581,7 +585,7 @@ extern "C" {
                                 break;
                             }
 
-                            // Get the matrix rows
+                            /* Get the matrix rows: */
                             for (; j < nbRow; j++)
                             {
                                 jboolean isCopy1 = JNI_FALSE;
@@ -595,7 +599,7 @@ extern "C" {
 
                                 element = (jshort*)(*jenv)->GetPrimitiveArrayCritical(jenv, oneDim, &isCopy1);
 
-                                // Get the matrix element
+                                /* Get the matrix element: */
                                 for (k = 0; k < nbCol; k++)
                                 {
                                     data[k * nbRow + j] = element[k];
@@ -628,7 +632,7 @@ extern "C" {
                                 break;
                             }
 
-                            // Get the matrix rows
+                            /* Get the matrix rows: */
                             for (; j < nbRow; j++)
                             {
                                 jboolean isCopy1 = JNI_FALSE;
@@ -642,7 +646,7 @@ extern "C" {
                                 isCopy1 = JNI_FALSE;
                                 element = (jshort*)(*jenv)->GetPrimitiveArrayCritical(jenv, oneDim, &isCopy1);
 
-                                // Get the matrix element
+                                /* Get the matrix element: */
                                 for (k = 0; k < nbCol; k++)
                                 {
                                     data[k * nbRow + j] = element[k];
@@ -675,7 +679,7 @@ extern "C" {
                                 break;
                             }
 
-                            // Get the matrix rows
+                            /* Get the matrix rows: */
                             for (; j < nbRow; j++)
                             {
                                 jboolean isCopy1 = JNI_FALSE;
@@ -689,7 +693,7 @@ extern "C" {
                                 isCopy1 = JNI_FALSE;
                                 element = (jint*)(*jenv)->GetPrimitiveArrayCritical(jenv, oneDim, &isCopy1);
 
-                                // Get the matrix element
+                                /* Get the matrix element: */
                                 for (k = 0; k < nbCol; k++)
                                 {
                                     data[k * nbRow + j] = element[k];
@@ -722,7 +726,7 @@ extern "C" {
                                 break;
                             }
 
-                            // Get the matrix rows
+                            /* Get the matrix rows: */
                             for (; j < nbRow; j++)
                             {
                                 jboolean isCopy1 = JNI_FALSE;
@@ -736,7 +740,7 @@ extern "C" {
                                 isCopy1 = JNI_FALSE;
                                 element = (jint*)(*jenv)->GetPrimitiveArrayCritical(jenv, oneDim, &isCopy1);
 
-                                // Get the matrix element
+                                /* Get the matrix element: */
                                 for (k = 0; k < nbCol; k++)
                                 {
                                     data[k * nbRow + j] = element[k];
@@ -770,7 +774,7 @@ extern "C" {
                                 break;
                             }
 
-                            // Get the matrix rows
+                            /* Get the matrix rows: */
                             for (; j < nbRow; j++)
                             {
                                 jlongArray oneDim = (jlongArray)(*jenv)->GetObjectArrayElement(jenv, jdata, j);
@@ -782,7 +786,7 @@ extern "C" {
                                 jboolean isCopy1 = JNI_FALSE;
                                 jlong* element = (jlong*)(*jenv)->GetPrimitiveArrayCritical(jenv, oneDim, &isCopy1);
 
-                                // Get the matrix element
+                                /* Get the matrix element: */
                                 for (k = 0; k < nbCol; k++)
                                 {
                                     data[k * nbRow + j] = element[k];
@@ -815,7 +819,7 @@ extern "C" {
                                 break;
                             }
 
-                            // Get the matrix rows
+                            /* Get the matrix rows: */
                             for (; j < nbRow; j++)
                             {
                                 jlongArray oneDim = (jlongArray)(*jenv)->GetObjectArrayElement(jenv, jdata, j);
@@ -827,7 +831,7 @@ extern "C" {
                                 jboolean isCopy1 = JNI_FALSE;
                                 jlong* element = (jlong*)(*jenv)->GetPrimitiveArrayCritical(jenv, oneDim, &isCopy1);
 
-                                // Get the matrix element
+                                /* Get the matrix element: */
                                 for (k = 0; k < nbCol; k++)
                                 {
                                     data[k * nbRow + j] = element[k];
@@ -864,7 +868,7 @@ extern "C" {
                         break;
                     }
 
-                    // Get the matrix rows
+                    /* Get the matrix rows: */
                     for (; j < nbRow; j++)
                     {
                         jobjectArray oneDim = (jobjectArray)(*jenv)->GetObjectArrayElement(jenv, data, j);
@@ -874,7 +878,7 @@ extern "C" {
                             strings = (char**)MALLOC(sizeof(char*) * nbRow * nbCol);
                         }
 
-                        // Get the matrix element
+                        /* Get the matrix element: */
                         for (k = 0; k < nbCol; k++)
                         {
                             jstring j_string = (jstring)(*jenv)->GetObjectArrayElement(jenv, oneDim, k);
@@ -932,12 +936,16 @@ extern "C" {
         (*jenv)->ReleaseIntArrayElements(jenv, jtypes, types, JNI_ABORT);
         (*jenv)->DeleteLocalRef(jenv, jtypes);
 
-        //popListAddress();
+#if 0
+        popListAddress();
+#endif /* 0 */
 
         if (!parentList)
         {
-            //pushVariable(varName);
-            //cleanStackListAddress();
+#if 0
+            pushVariable(varName);
+            cleanStackListAddress();
+#endif /* 0 */
         }
 
         return sciErr;

@@ -40,14 +40,14 @@ void putScilabVariable(char * name, char ** lines, int rows, int cols)
     }
 }
 
-char * getUnnamedVariable(void)
+char *getUnnamedVariable(void)
 {
     char buffer[128];
     int i = 0;
 
     do
     {
-        sprintf(buffer, "%s%i", "unnamed", i++);
+        snprintf(buffer, sizeof(buffer), "%s%i", "unnamed", i++);
     }
     while (isNamedVarExist(pvApiCtx, buffer));
 

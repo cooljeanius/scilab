@@ -270,7 +270,8 @@ int sci_xset( char *fname, unsigned long fname_len )
 
         if (pdblColorMap == NULL)
         {
-            sprintf(error_message, _("%s: No more memory.\n"), "xset");
+            snprintf(error_message, sizeof(error_message),
+                     _("%s: No more memory.\n"), "xset");
             return 0;
         }
 
@@ -388,7 +389,7 @@ int sci_xset( char *fname, unsigned long fname_len )
     }
     else if ( strcmp(cstk(l1), "thickness") == 0)
     {
-        sciSetLineWidth((char*)getOrCreateDefaultSubwin(), x[0]);
+        sciSetLineWidth((char*)getOrCreateDefaultSubwin(), (double)x[0]);
     }
     else if ( strcmp(cstk(l1), "line style") == 0)
     {

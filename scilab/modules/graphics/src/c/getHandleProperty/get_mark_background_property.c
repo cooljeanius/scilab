@@ -39,10 +39,10 @@ int get_mark_background_property(void* _pvCtx, char* pobjUID)
 
     if (piMarkBackground == NULL)
     {
-        Scierror(999, _("'%s' property does not exist for this handle.\n"),"mark_background");
+        Scierror(999, _("'%s' property does not exist for this handle.\n"), "mark_background");
         return -1;
     }
 
-    return sciReturnDouble(_pvCtx, iMarkBackground);
+    return sciReturnDouble(_pvCtx, (double)iMarkBackground);
 }
 /*------------------------------------------------------------------------*/

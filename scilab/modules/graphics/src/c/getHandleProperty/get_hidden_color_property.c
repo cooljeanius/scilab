@@ -41,10 +41,10 @@ int get_hidden_color_property(void* _pvCtx, char* pobjUID)
 
     if (piHiddenColor == NULL)
     {
-        Scierror(999, _("'%s' property does not exist for this handle.\n"),"hidden_color");
+        Scierror(999, _("'%s' property does not exist for this handle.\n"), "hidden_color");
         return -1;
     }
 
-    return sciReturnDouble(_pvCtx, iHiddenColor);
+    return sciReturnDouble(_pvCtx, (double)iHiddenColor);
 }
 /*------------------------------------------------------------------------*/

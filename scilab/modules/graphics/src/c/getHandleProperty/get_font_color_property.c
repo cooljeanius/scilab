@@ -39,10 +39,10 @@ int get_font_color_property(void* _pvCtx, char* pobjUID)
 
     if (fontColor == NULL)
     {
-        Scierror(999, _("'%s' property does not exist for this handle.\n"),"font_color");
+        Scierror(999, _("'%s' property does not exist for this handle.\n"), "font_color");
         return -1;
     }
 
-    return sciReturnDouble(_pvCtx, *fontColor);
+    return sciReturnDouble(_pvCtx, (double) * fontColor);
 }
 /*------------------------------------------------------------------------*/

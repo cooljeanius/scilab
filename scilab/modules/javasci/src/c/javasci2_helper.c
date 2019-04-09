@@ -183,7 +183,7 @@ int putBoolean(char *variableName, BOOL *variable, int nbRow, int nbCol)
 
 }
 
-///////////////////// byte / int8
+/* byte / int8 */
 byte *getByte(char *variableName, int *nbRow, int *nbCol)
 {
     SciErr sciErr;
@@ -260,8 +260,7 @@ int putUnsignedByte(char *variableName, byte * variable, int nbRow, int nbCol)
     return 0;
 }
 
-//////////////////////////// short / int16
-
+/* short / int16 */
 short *getShort(char *variableName, int *nbRow, int *nbCol)
 {
     SciErr sciErr;
@@ -338,8 +337,7 @@ int putUnsignedShort(char *variableName, unsigned short *variable, int nbRow, in
     return 0;
 }
 
-////////////////////// int / int32
-
+/* int / int32 */
 int *getInt(char *variableName, int *nbRow, int *nbCol)
 {
     SciErr sciErr;
@@ -416,7 +414,7 @@ int putUnsignedInt(char *variableName, unsigned int *variable, int nbRow, int nb
     return 0;
 }
 
-////////////////////// long / int64
+/* long / int64 */
 #ifdef __SCILAB_INT64__
 
 long *getLong(char *variableName, int *nbRow, int *nbCol)
@@ -505,7 +503,7 @@ char **getString(char *variableName, int *nbRow, int *nbCol)
     int *piLen = NULL;
     char **pstData = NULL;
 
-    //first call to retrieve dimensions
+    /* first call to retrieve dimensions: */
     sciErr = readNamedMatrixOfString(pvApiCtx, variableName, nbRow, nbCol, NULL, NULL);
     if (sciErr.iErr)
     {
@@ -514,7 +512,7 @@ char **getString(char *variableName, int *nbRow, int *nbCol)
 
     piLen = (int *)malloc(sizeof(int) * (*nbRow) * (*nbCol));
 
-    //second call to retrieve length of each string
+    /* second call to retrieve length of each string: */
     sciErr = readNamedMatrixOfString(pvApiCtx, variableName, nbRow, nbCol, piLen, NULL);
     if (sciErr.iErr)
     {
@@ -525,9 +523,9 @@ char **getString(char *variableName, int *nbRow, int *nbCol)
 
     for (i = 0; i < (*nbRow) * (*nbCol); i++)
     {
-        pstData[i] = (char *)malloc(sizeof(char) * (piLen[i] + 1)); //+ 1 for null termination
+        pstData[i] = (char *)malloc(sizeof(char) * (piLen[i] + 1)); /* + 1 for null termination */
     }
-    //third call to retrieve data
+    /* third call to retrieve data: */
     sciErr = readNamedMatrixOfString(pvApiCtx, variableName, nbRow, nbCol, piLen, pstData);
     if (sciErr.iErr)
     {

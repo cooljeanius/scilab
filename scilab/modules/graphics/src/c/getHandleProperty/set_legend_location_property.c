@@ -15,7 +15,7 @@
 
 /*------------------------------------------------------------------------*/
 /* file: set_legend_location_property.c                                   */
-/* desc : function to modify in Scilab the legend_location (place) field of            */
+/* desc : function to modify in Scilab the legend_location (place) field of */
 /*        a handle                                                        */
 /*------------------------------------------------------------------------*/
 
@@ -34,20 +34,26 @@
 #include "graphicObjectProperties.h"
 
 /*------------------------------------------------------------------------*/
-int set_legend_location_property(void* _pvCtx, char* pobjUID, size_t stackPointer, int valueType, int nbRow, int nbCol )
+int set_legend_location_property(void *_pvCtx, char *pobjUID,
+                                 size_t stackPointer, int valueType, int nbRow,
+                                 int nbCol)
 {
     BOOL status = FALSE;
-    char* legendLocationsNames[11] = {"in_upper_right", "in_upper_left", "in_lower_right", "in_lower_left",
-                                      "out_upper_right", "out_upper_left", "out_lower_right", "out_lower_left", "upper_caption", "lower_caption",
-                                      "by_coordinates"
-                                     };
+    const char *legendLocationsNames[11] =
+    {
+        "in_upper_right", "in_upper_left", "in_lower_right", "in_lower_left",
+        "out_upper_right", "out_upper_left", "out_lower_right",
+        "out_lower_left", "upper_caption", "lower_caption", "by_coordinates"
+    };
+
     int i = 0;
     int index = -1;
     char* legendLocation = NULL;
 
-    if ( !( valueType == sci_strings ) )
+    if (!(valueType == sci_strings))
     {
-        Scierror(999, _("Wrong type for '%s' property: String expected.\n"), "legend_location");
+        Scierror(999, _("Wrong type for '%s' property: String expected.\n"),
+                 "legend_location");
         return SET_PROPERTY_ERROR;
     }
 
@@ -64,11 +70,13 @@ int set_legend_location_property(void* _pvCtx, char* pobjUID, size_t stackPointe
 
     if (index == -1)
     {
-        Scierror(999, _("Wrong value for '%s' property: Must be in the set {%s}.\n"), "legend_location", "in_upper_right, in_upper_left, in_lower_right, in_lower_left, out_upper_right, out_upper_left, out_lower_right, out_lower_left, upper_caption, lower_caption, by_coordinates");
+        Scierror(999, _("Wrong value for '%s' property: Must be in the set {%s}.\n"),
+                 "legend_location", "in_upper_right, in_upper_left, in_lower_right, in_lower_left, out_upper_right, out_upper_left, out_lower_right, out_lower_left, upper_caption, lower_caption, by_coordinates");
         return SET_PROPERTY_ERROR;
     }
 
-    status = setGraphicObjectProperty(pobjUID, __GO_LEGEND_LOCATION__, &index, jni_int, 1);
+    status = setGraphicObjectProperty(pobjUID, __GO_LEGEND_LOCATION__, &index,
+                                      jni_int, 1);
 
     if (status == TRUE)
     {
@@ -76,7 +84,8 @@ int set_legend_location_property(void* _pvCtx, char* pobjUID, size_t stackPointe
     }
     else
     {
-        Scierror(999, _("'%s' property does not exist for this handle.\n"), "legend_location");
+        Scierror(999, _("'%s' property does not exist for this handle.\n"),
+                 "legend_location");
         return SET_PROPERTY_ERROR;
     }
 

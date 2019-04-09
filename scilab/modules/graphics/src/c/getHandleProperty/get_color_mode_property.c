@@ -39,10 +39,10 @@ int get_color_mode_property(void* _pvCtx, char* pobjUID)
 
     if (piColorMode == NULL)
     {
-        Scierror(999, _("'%s' property does not exist for this handle.\n"),"color_mode");
+        Scierror(999, _("'%s' property does not exist for this handle.\n"), "color_mode");
         return -1;
     }
 
-    return sciReturnDouble(_pvCtx, iColorMode);
+    return sciReturnDouble(_pvCtx, (double)iColorMode);
 }
 /*------------------------------------------------------------------------*/

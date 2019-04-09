@@ -54,11 +54,11 @@ int get_sub_tics_property(void* _pvCtx, char* pobjUID)
 
         if (piSubTicks == NULL)
         {
-            Scierror(999, _("'%s' property does not exist for this handle.\n"),"sub_ticks");
+            Scierror(999, _("'%s' property does not exist for this handle.\n"), "sub_ticks");
             return -1;
         }
 
-        return sciReturnDouble(_pvCtx, iSubTicks);
+        return sciReturnDouble(_pvCtx, (double)iSubTicks);
     }
     else if (iType == __GO_AXES__)
     {
@@ -70,17 +70,17 @@ int get_sub_tics_property(void* _pvCtx, char* pobjUID)
 
         if (piSubTicks == NULL)
         {
-            Scierror(999, _("'%s' property does not exist for this handle.\n"),"sub_ticks");
+            Scierror(999, _("'%s' property does not exist for this handle.\n"), "sub_ticks");
             return -1;
         }
 
-        sub_ticks[0] = iSubTicks;
+        sub_ticks[0] = (double)iSubTicks;
 
         getGraphicObjectProperty(pobjUID, __GO_Y_AXIS_SUBTICKS__, jni_int, (void**)&piSubTicks);
-        sub_ticks[1] = iSubTicks;
+        sub_ticks[1] = (double)iSubTicks;
 
         getGraphicObjectProperty(pobjUID, __GO_Z_AXIS_SUBTICKS__, jni_int, (void**)&piSubTicks);
-        sub_ticks[2] = iSubTicks;
+        sub_ticks[2] = (double)iSubTicks;
 
         getGraphicObjectProperty(pobjUID, __GO_VIEW__, jni_int, (void**)&piView);
 
@@ -95,7 +95,7 @@ int get_sub_tics_property(void* _pvCtx, char* pobjUID)
     }
     else
     {
-        Scierror(999, _("'%s' property does not exist for this handle.\n"),"sub_ticks");
+        Scierror(999, _("'%s' property does not exist for this handle.\n"), "sub_ticks");
         return -1 ;
     }
 }

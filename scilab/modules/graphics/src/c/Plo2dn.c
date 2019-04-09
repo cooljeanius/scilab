@@ -307,7 +307,7 @@ int plot2dn(int ptype, char *logflags, double *x, double *y, int *n1, int *n2,
                 }
 
                 stringVector[i] = (char*) malloc(iSize * sizeof(char));
-                sprintf(stringVector[i], "%.3f", dXGrads[i]);
+                snprintf(stringVector[i], (size_t)(-1), "%.3f", dXGrads[i]);
                 stringVector[i][iSize - 1] = '\0';
             }
 
@@ -336,7 +336,7 @@ int plot2dn(int ptype, char *logflags, double *x, double *y, int *n1, int *n2,
                     iSize = iSize + (int)floor(log10(dblFabs));
                 }
                 stringVector[i] = (char*) malloc(iSize * sizeof(char));
-                sprintf(stringVector[i], "%.3f", dYGrads[i]);
+                snprintf(stringVector[i], (size_t)(-1), "%.3f", dYGrads[i]);
                 stringVector[i][iSize - 1] = '\0';
             }
 

@@ -39,10 +39,10 @@ int get_color_flag_property(void* _pvCtx, char* pobjUID)
 
     if (piColorFlag == NULL)
     {
-        Scierror(999, _("'%s' property does not exist for this handle.\n"),"color_flag");
+        Scierror(999, _("'%s' property does not exist for this handle.\n"), "color_flag");
         return -1;
     }
 
-    return sciReturnDouble(_pvCtx, iColorFlag);
+    return sciReturnDouble(_pvCtx, (double)iColorFlag);
 }
 /*------------------------------------------------------------------------*/

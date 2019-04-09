@@ -38,7 +38,7 @@ int sci_xdel(char *fname, unsigned long fname_len)
     {
         int i = 0;
         double * windowNumbers = NULL;
-        GetRhsVar(1, MATRIX_OF_DOUBLE_DATATYPE, &m1, &n1, &l1);
+        GetRhsVar(1, (char *)MATRIX_OF_DOUBLE_DATATYPE, &m1, &n1, &l1);
 
         /* First check that all the window numbers are valid */
         windowNumbers = stk(l1);

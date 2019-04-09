@@ -142,9 +142,11 @@ void InitFigureModel(char *pfiguremdlUID)
      * NULL has been replaced by the empty string as the third argument in order to
      * avoid a crash due to giws 1.2.4
      */
-    //setGraphicObjectProperty(pfiguremdlUID, __GO_USER_DATA__, "", jni_string, 0);
+#if 0
+    setGraphicObjectProperty(pfiguremdlUID, __GO_USER_DATA__, "", jni_string, 0);
     // Size of user data
-    //setGraphicObjectProperty(pfiguremdlUID, __GO_USER_DATA_SIZE__, &iZero, jni_int, 1);
+    setGraphicObjectProperty(pfiguremdlUID, __GO_USER_DATA_SIZE__, &iZero, jni_int, 1);
+#endif /* 0 */
     // Pixmap Mode
     setGraphicObjectProperty(pfiguremdlUID, __GO_PIXMAP__, &bFalse, jni_bool, 1);
     // Info Message
@@ -158,7 +160,8 @@ void InitFigureModel(char *pfiguremdlUID)
 
     if (pdblColorMap == NULL)
     {
-        sprintf(error_message, _("%s: No more memory.\n"), "InitFigureModel");
+        snprintf(error_message, sizeof(error_message),
+                 _("%s: No more memory.\n"), "InitFigureModel");
         return;
     }
 
@@ -257,8 +260,7 @@ int C2F(graphicsmodels) (void)
  * This function has been adapted to the MVC framework, using the
  * MVC's property set/get calls.
  */
-
-int InitAxesModel()
+int InitAxesModel(void)
 {
     int cubeScaling = 0;
     int logFlag = 0;
@@ -460,7 +462,7 @@ int InitAxesModel()
      */
     for (i = 0; i < defaultNumberTicks; i++)
     {
-        sprintf(labelBuffer, "%.1f", tab[i]);
+        snprintf(labelBuffer, sizeof(labelBuffer), "%.1f", tab[i]);
         stringVector[i] = strdup(labelBuffer);
 
         if (stringVector[i] == NULL)
@@ -485,7 +487,7 @@ int InitAxesModel()
     {
         FREE(stringVector[i]);
 
-        sprintf(labelBuffer, "%.1f", tabZTicksLocations[i]);
+        snprintf(labelBuffer, sizeof(labelBuffer), "%.1f", tabZTicksLocations[i]);
         stringVector[i] = strdup(labelBuffer);
 
         if (stringVector[i] == NULL)

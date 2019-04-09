@@ -43,6 +43,6 @@ int get_polyline_style_property(void* _pvCtx, char* pobjUID)
         return -1;
     }
 
-    return sciReturnDouble(_pvCtx, iPolylineStyle);
+    return sciReturnDouble(_pvCtx, (double)iPolylineStyle);
 }
 /*------------------------------------------------------------------------*/

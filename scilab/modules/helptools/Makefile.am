@@ -38,15 +38,15 @@ endif
 pkglib_LTLIBRARIES = libscihelptools.la
 
 libscihelptools_la_CPPFLAGS=$(JAVA_JNI_INCLUDE) \
-			    -Wp,-I$(srcdir)/src/jni/ \
-			    -Wp,-I$(srcdir)/includes/ \
-			    -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
-			    -Wp,-I$(top_srcdir)/modules/localization/includes/ \
-			    -Wp,-I$(top_srcdir)/modules/jvm/includes/ \
-			    -Wp,-I$(top_srcdir)/modules/commons/src/jni \
-			    -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
-			    -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
-			    $(AM_CPPFLAGS)
+		    -Wp,-I$(srcdir)/src/jni/ \
+		    -Wp,-I$(srcdir)/includes/ \
+		    -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+		    -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+		    -Wp,-I$(top_srcdir)/modules/jvm/includes/ \
+		    -Wp,-I$(top_srcdir)/modules/commons/src/jni \
+		    -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+		    -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+		    $(AM_CPPFLAGS)
 
 
 libscihelptools_la_SOURCES =  $(GATEWAY_C_SOURCES) $(GATEWAY_CXX_SOURCES)
@@ -54,7 +54,7 @@ libscihelptools_la_SOURCES =  $(GATEWAY_C_SOURCES) $(GATEWAY_CXX_SOURCES)
 
 # For the code check (splint)
 CHECK_SRC= $(GATEWAY_C_SOURCES)
-INCLUDE_FLAGS = $(libscihelptools_la_CFLAGS)
+INCLUDE_FLAGS = $(libscihelptools_la_CPPFLAGS)
 
 
 #### Target ######

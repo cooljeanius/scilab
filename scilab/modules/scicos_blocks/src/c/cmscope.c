@@ -38,9 +38,15 @@
 #include "BuildObjects.h"
 #include "AxesModel.h"
 
-// #include <stdio.h>
-// #define LOG(...) printf(__VA_ARGS__)
-#define LOG(...)
+#ifdef HAVE_STDIO_H
+# include <stdio.h>
+#endif /* HAVE_STDIO_H */
+/* FIXME: splint chokes on this: */
+#if defined(DEBUG_CMSCOPE_C)
+# define LOG(...) printf(__VA_ARGS__)
+#else
+# define LOG(...)
+#endif /* DEBUG_CMSCOPE_C */
 
 /*****************************************************************************
  * Internal container structure
@@ -259,14 +265,20 @@ static sco_data *getScoData(scicos_block * block)
 
         sco = (sco_data *) MALLOC(sizeof(sco_data));
         if (sco == NULL)
+        {
             goto error_handler_sco;
+        }
 
         sco->internal.numberOfPoints = (int *) MALLOC(block->nin * sizeof(int));
         if (sco->internal.numberOfPoints == NULL)
+        {
             goto error_handler_numberOfPoints;
+        }
         sco->internal.maxNumberOfPoints = (int *) MALLOC(block->nin * sizeof(int));
         if (sco->internal.maxNumberOfPoints == NULL)
+        {
             goto error_handler_maxNumberOfPoints;
+        }
 
         for (i = 0; i < block->nin; i++)
         {
@@ -276,13 +288,17 @@ static sco_data *getScoData(scicos_block * block)
 
         sco->internal.data = (double ***)CALLOC(block->nin, sizeof(double **));
         if (sco->internal.data == NULL)
+        {
             goto error_handler_data;
+        }
 
         for (i = 0; i < block->nin; i++)
         {
             sco->internal.data[i] = (double **)CALLOC(block->insz[i], sizeof(double *));
             if (sco->internal.data[i] == NULL)
+            {
                 goto error_handler_data_i;
+            }
         }
         for (i = 0; i < block->nin; i++)
         {
@@ -291,7 +307,9 @@ static sco_data *getScoData(scicos_block * block)
                 sco->internal.data[i][j] = (double *)CALLOC(block->ipar[2], sizeof(double));
 
                 if (sco->internal.data[i][j] == NULL)
+                {
                     goto error_handler_data_ij;
+                }
             }
         }
 
@@ -311,7 +329,9 @@ static sco_data *getScoData(scicos_block * block)
 
         sco->scope.periodCounter = (int *) CALLOC(block->nin, sizeof(int));
         if (sco->scope.periodCounter == NULL)
+        {
             goto error_handler_periodCounter;
+        }
 
         sco->scope.cachedFigureUID = NULL;
         sco->scope.cachedAxeUID = (char **)CALLOC(block->nin, sizeof(char *));
@@ -421,7 +441,9 @@ static sco_data *reallocScoData(scicos_block * block, int input, int numberOfPoi
         {
             ptr = (double *)REALLOC(sco->internal.data[i][j], numberOfPoints * sizeof(double));
             if (ptr == NULL)
+            {
                 goto error_handler;
+            }
 
             for (setLen = numberOfPoints - previousNumberOfPoints - 1; setLen >= 0; setLen--)
             {
@@ -433,7 +455,9 @@ static sco_data *reallocScoData(scicos_block * block, int input, int numberOfPoi
 
     ptr = (double *)REALLOC(sco->internal.time[input], numberOfPoints * sizeof(double));
     if (ptr == NULL)
+    {
         goto error_handler;
+    }
 
     for (setLen = numberOfPoints - previousNumberOfPoints - 1; setLen >= 0; setLen--)
     {
@@ -536,7 +560,9 @@ static BOOL pushData(scicos_block * block, int input, int row)
 
     sco = getScoData(block);
     if (sco == NULL)
+    {
         return FALSE;
+    }
 
 
     // select the right input and row

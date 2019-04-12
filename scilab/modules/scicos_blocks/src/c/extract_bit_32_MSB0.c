@@ -36,7 +36,7 @@ SCICOS_BLOCKS_IMPEXP void extract_bit_32_MSB0(scicos_block *block, int flag)
     ref = 0;
     for (i = 0; i < *ipar; i++)
     {
-        n = (long)pow(2, maxim - 1 - i);
+        n = (long)pow(2, (double)(maxim - 1 - i));
         ref = ref + n;
     }
     *y = (*u) & (ref);

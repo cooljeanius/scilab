@@ -34,7 +34,7 @@ SCICOS_BLOCKS_IMPEXP void extract_bit_32_UH0(scicos_block *block, int flag)
     ref = 0;
     for (i = 0; i < maxim / 2; i++)
     {
-        n = (long)pow(2, maxim / 2 + i);
+        n = (long)pow(2, (double)((maxim / 2) + i));
         ref = ref + n;
     }
     *y = (*u) & (ref);

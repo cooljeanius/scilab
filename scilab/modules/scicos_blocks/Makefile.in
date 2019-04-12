@@ -1540,7 +1540,7 @@ am__v_q_0 = -q
 am__v_q_1 = 
 
 # splint options
-SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements $(AM_V_splint) -fixedformalarray -fcnuse
+SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements $(AM_V_splint) -fixedformalarray -fcnuse $(LOCAL_SPLINT_OPTIONS)
 SPLINT_INCLUDE_FLAGS = `echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
 
 ########################### JAVA ######################################
@@ -2022,6 +2022,7 @@ HELP_CHAPTERLANG = en_US fr_FR pt_BR
 # For the code check (splint)
 @XCOS_TRUE@CHECK_SRC = $(SCICOS_BLOCKS_C_SOURCES) $(NON_BLOCK_C_SOURCES)
 @XCOS_TRUE@INCLUDE_FLAGS = $(libsciscicos_blocks_la_CPPFLAGS)
+@XCOS_TRUE@LOCAL_SPLINT_OPTIONS = -redef
 
 #### scicos_blocks : Generation of the  includes/blocks.h Files ####
 @XCOS_TRUE@BUILT_SOURCES = includes/blocks.h $(am__append_2)

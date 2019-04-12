@@ -202,6 +202,9 @@
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
+/* Define to 1 if you have the <io.h> header file. */
+#undef HAVE_IO_H
+
 /* Define to 1 if you have the `isascii' function. */
 #undef HAVE_ISASCII
 
@@ -1028,6 +1031,14 @@
        #undef DIR_SEPARATOR
 #endif
 #define DIR_SEPARATOR "/"
+
+#if (defined(__GNUC__) && defined(__GNUC_MINOR__) && (__GNUC__ >= 3)) && \
+    !defined(FLEX_SCANNER) && !defined(AVOID_POISONING)
+# ifdef sprintf
+#  undef sprintf
+# endif /* sprintf */
+# pragma GCC poison sprintf
+#endif /* __GNUC__ && !AVOID_POISONING */
 
 #endif /* MACHINE_H  */
 

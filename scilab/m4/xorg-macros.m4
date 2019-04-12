@@ -1620,7 +1620,7 @@ AC_LANG_CASE([C],[
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wold-style-definition])
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wdeclaration-after-statement])
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wtraditional-conversion])
-	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wc90-c99-compat -Wno-long-long])
+	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wc90-c99-compat -Wno-long-long -Wno-import])
 ],[C++],[
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wnarrowing])
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wstrict-null-sentinel])
@@ -1694,6 +1694,7 @@ AC_LANG_CASE([Fortran 77],[
 ],[C],[
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=declaration-after-statement])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=missing-field-initializers])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=absolute-value])
 ])
 if test "[x${]WERROR_WRITE_STRINGS_CV[}]" != "xyes"; then
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=incompatible-pointer-types])

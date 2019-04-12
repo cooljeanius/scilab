@@ -34,50 +34,55 @@
 extern "C" {
 #endif
 
-#define EZXML_BUFSIZE 1024 // size of internal memory buffers
-#define EZXML_NAMEM   0x80 // name is malloced
-#define EZXML_TXTM    0x40 // txt is malloced
-#define EZXML_DUP     0x20 // attribute name and value are strduped
+#ifndef ATTRIBUTE_PRINTF
+# define ATTRIBUTE_PRINTF(m, n) __attribute__((__format__(__printf__, m, n)))
+#endif /* ATTRIBUTE_PRINTF */
+
+#define EZXML_BUFSIZE 1024UL /* size of internal memory buffers */
+#define EZXML_NAMEM   0x80 /* name is malloced */
+#define EZXML_TXTM    0x40 /* txt is malloced */
+#define EZXML_DUP     0x20 /* attribute name and value are strduped */
 
 typedef struct ezxml *ezxml_t;
-struct ezxml {
-    char *name;      // tag name
-    char **attr;     // tag attributes { name, value, name, value, ... NULL }
-    char *txt;       // tag character content, empty string if none
-    size_t off;      // tag offset from start of parent tag character content
-    ezxml_t next;    // next tag with same name in this section at this depth
-    ezxml_t sibling; // next tag with different name in same section and depth
-    ezxml_t ordered; // next tag, same section and depth, in original order
-    ezxml_t child;   // head of sub tag list, NULL if none
-    ezxml_t parent;  // parent tag, NULL if current tag is root tag
-    short flags;     // additional information
+struct ezxml
+{
+    char *name;      /* tag name */
+    char **attr;     /* tag attributes { name, value, name, value, ... NULL } */
+    char *txt;       /* tag character content, empty string if none */
+    size_t off;      /* tag offset from start of parent tag character content */
+    ezxml_t next;    /* next tag with same name in this section at this depth */
+    ezxml_t sibling; /* next tag with different name in same section and depth */
+    ezxml_t ordered; /* next tag, same section and depth, in original order */
+    ezxml_t child;   /* head of sub tag list, NULL if none */
+    ezxml_t parent;  /* parent tag, NULL if current tag is root tag */
+    short flags;     /* additional information */
 };
 
-// Given a string of xml data and its length, parses it and creates an ezxml
-// structure. For efficiency, modifies the data by adding null terminators
-// and decoding ampersand sequences. If you don't want this, copy the data and
-// pass in the copy. Returns NULL on failure.
+/* Given a string of xml data and its length, parses it and creates an ezxml
+ * structure. For efficiency, modifies the data by adding null terminators
+ * and decoding ampersand sequences. If you do not want this, copy the data and
+ * pass in the copy. Returns NULL on failure: */
 ezxml_t ezxml_parse_str(char *s, size_t len);
 
-// A wrapper for ezxml_parse_str() that accepts a file descriptor. First
-// attempts to mem map the file. Failing that, reads the file into memory.
-// Returns NULL on failure.
+/* A wrapper for ezxml_parse_str() that accepts a file descriptor. First
+ * attempts to mem map the file. Failing that, reads the file into memory.
+ * Returns NULL on failure: */
 ezxml_t ezxml_parse_fd(int fd);
 
-// a wrapper for ezxml_parse_fd() that accepts a file name
+/* a wrapper for ezxml_parse_fd() that accepts a file name */
 ezxml_t ezxml_parse_file(const char *file);
-    
-// Wrapper for ezxml_parse_str() that accepts a file stream. Reads the entire
-// stream into memory and then parses it. For xml files, use ezxml_parse_file()
-// or ezxml_parse_fd()
+
+/* Wrapper for ezxml_parse_str() that accepts a file stream. Reads the entire
+ * stream into memory and then parses it. For xml files, use ezxml_parse_file()
+ * or ezxml_parse_fd() */
 ezxml_t ezxml_parse_fp(FILE *fp);
 
-// returns the first child tag (one level deeper) with the given name or NULL
-// if not found
+/* returns the first child tag (one level deeper) with the given name or NULL
+ * if not found: */
 ezxml_t ezxml_child(ezxml_t xml, const char *name);
 
-// returns the next tag of the same name in the same section and depth or NULL
-// if not found
+/* returns the next tag of the same name in the same section and depth or NULL
+ * if not found: */
 #define ezxml_next(xml) ((xml) ? xml->next : NULL)
 
 // Returns the Nth tag with the same name in the same section at the same depth
@@ -95,7 +100,7 @@ const char *ezxml_attr(ezxml_t xml, const char *attr);
 
 // Traverses the ezxml sturcture to retrieve a specific subtag. Takes a
 // variable length list of tag names and indexes. The argument list must be
-// terminated by either an index of -1 or an empty string tag name. Example: 
+// terminated by either an index of -1 or an empty string tag name. Example:
 // title = ezxml_get(library, "shelf", 0, "book", 2, "title", -1);
 // This retrieves the title of the 3rd book on the 1st shelf of library.
 // Returns NULL if not found.
@@ -111,7 +116,7 @@ const char **ezxml_pi(ezxml_t xml, const char *target);
 
 // frees the memory allocated for an ezxml structure
 void ezxml_free(ezxml_t xml);
-    
+
 // returns parser error message or empty string if none
 const char *ezxml_error(ezxml_t xml);
 
@@ -164,6 +169,10 @@ int write_in_child(ezxml_t *, char *,  char *);
 
 // removes a tag along with all its subtags
 #define ezxml_remove(xml) ezxml_free(ezxml_cut(xml))
+
+ezxml_t ezxml_vget(ezxml_t xml, va_list ap);
+
+char *ezxml_decode(char *s, char **ent, char t);
 
 #ifdef __cplusplus
 }

@@ -188,8 +188,10 @@ int *block_error = NULL;
 double scicos_time = 0.;
 int phase = 0;
 int Jacobian_Flag = 0;
-// double CI = 0., CJ = 0.;  // doubles returned by Get_Jacobian_ci and Get_Jacobian_cj respectively
-double  CJJ = 0.;            // returned by Get_Jacobian_parameter
+#if 0
+double CI = 0., CJ = 0.; /* doubles returned by Get_Jacobian_ci and Get_Jacobian_cj respectively */
+#endif /* 0 */
+double  CJJ = 0.;            /* returned by Get_Jacobian_parameter */
 double SQuround = 0.;
 /* Jacobian*/
 static int AJacobian_block = 0;
@@ -209,7 +211,7 @@ SCICOS_IMPEXP DBCOS_struct C2F(dbcos);
 SCICOS_IMPEXP COSTOL_struct C2F(costol);
 SCICOS_IMPEXP COSERR_struct coserr;
 /*--------------------------------------------------------------------------*/
-static void FREE_blocks();
+static void FREE_blocks(void);
 static void cosini(double *told);
 static void cosend(double *told);
 static void cossim(double *told);
@@ -241,9 +243,8 @@ static int synchro_nev(ScicosImport *scs_imp, int kf, int *ierr);
 extern int C2F(dset)(int *n, double *dx, double *dy, int *incy);
 extern int C2F(dcopy)(int *, double *, int *, double *, int *);
 extern int C2F(msgs)();
-extern int C2F(getscsmax)();
 extern int C2F(makescicosimport)();
-extern int C2F(clearscicosimport)();
+extern int C2F(clearscicosimport)(void);
 /*--------------------------------------------------------------------------*/
 void putevs(double *t, int *evtnb, int *ierr1);
 void Jdoit(double *told, double *xt, double *xtd, double *residual, int *job);
@@ -277,8 +278,8 @@ int C2F(scicos)(double *x_in, int *xptr_in, double *z__,
     static int nz = 0, noz = 0, nopar = 0;
     double *W = NULL;
 
-    // Set FPU Flag to Extended for scicos simulation
-    // in order to override Java setting it to Double.
+    /* Set FPU Flag to Extended for scicos simulation
+     * in order to override Java setting it to Double: */
 #if defined(linux) && defined(__i386__)
     setFPUToExtended();
 #endif
@@ -1350,7 +1351,7 @@ static void cossim(double *told)
     /* System generated locals */
     int i3 = 0;
 
-    //** used for the [stop] button
+    /** used for the [stop] button */
     static char CommandToUnstack[1024];
     static int CommandLength = 0;
     static int SeqSync = 0;
@@ -1553,12 +1554,12 @@ static void cossim(double *told)
     /*     main loop on time */
     while (*told < *tf)
     {
-        while (ismenu()) //** if the user has done something, do the actions
+        while (ismenu()) /** if the user has done something, do the actions */
         {
             int ierr2 = 0;
-            SeqSync = GetCommand(CommandToUnstack); //** get at the action
+            SeqSync = GetCommand(CommandToUnstack); /** get at the action */
             CommandLength = (int)strlen(CommandToUnstack);
-            syncexec(CommandToUnstack, &CommandLength, &ierr2, &one, CommandLength); //** execute it
+            syncexec(CommandToUnstack, &CommandLength, &ierr2, &one, CommandLength); /** execute it */
         }
         if (C2F(coshlt).halt != 0)
         {
@@ -1946,7 +1947,7 @@ static void cossimdaskr(double *told)
 {
     /* System generated locals */
     int i3;
-    //** used for the [stop] button
+    /** used for the [stop] button */
     static char CommandToUnstack[1024];
     static int CommandLength = 0;
     static int SeqSync = 0;
@@ -1989,7 +1990,9 @@ static void cossimdaskr(double *told)
     /* Set extension of Sundials for scicos */
     set_sundials_with_extension(TRUE);
 
-    // CI=1.0;   /* for function Get_Jacobian_ci */
+#if 0
+    CI = 1.0; /* for function Get_Jacobian_ci */
+#endif /* 0 */
     jroot = NULL;
     if (ng != 0)
     {
@@ -2562,12 +2565,12 @@ static void cossimdaskr(double *told)
     /*     main loop on time */
     while (*told < *tf)
     {
-        while (ismenu()) //** if the user has done something, do the actions
+        while (ismenu()) /** if the user has done something, do the actions */
         {
             int ierr2 = 0;
-            SeqSync = GetCommand(CommandToUnstack); //** get at the action
+            SeqSync = GetCommand(CommandToUnstack); /** get at the action */
             CommandLength = (int)strlen(CommandToUnstack);
-            syncexec(CommandToUnstack, &CommandLength, &ierr2, &one, CommandLength); //** execute it
+            syncexec(CommandToUnstack, &CommandLength, &ierr2, &one, CommandLength); /** execute it */
         }
         if (C2F(coshlt).halt != 0)
         {
@@ -2690,25 +2693,45 @@ L30:
                             scicos_xproperty[jj] = ZERO;
                         }
                     }
-                    /* CI=0.0;CJ=100.0; // for functions Get_Jacobian_ci and Get_Jacobian_cj
+#if 0
+                    CI = 0.0;
+                    CJ = 100.0; // for functions Get_Jacobian_ci and Get_Jacobian_cj
                     Jacobians(*neq, (realtype) (*told), yy, yp,	bidon, (realtype) CJ, data, TJacque, tempv1, tempv2, tempv3);
-                    for (jj=0;jj<*neq;jj++){
-                    Jacque_col=DENSE_COL(TJacque,jj);
-                    CI=ZERO;
-                    for (kk=0;kk<*neq;kk++){
-                    if ((Jacque_col[kk]-Jacque_col[kk]!=0)) {
-                    CI=-ONE;
-                    break;
-                    }else{
-                    if (Jacque_col[kk]!=0){
-                    CI=ONE;
-                    break;
+                    for (jj = 0; jj < *neq; jj++)
+                    {
+                        Jacque_col = DENSE_COL(TJacque, jj);
+                        CI = ZERO;
+                        for (kk = 0; kk < *neq; kk++)
+                        {
+                            if ((Jacque_col[kk] - Jacque_col[kk] != 0))
+                            {
+                                CI = -ONE;
+                                break;
+                            }
+                            else
+                            {
+                                if (Jacque_col[kk] != 0)
+                                {
+                                    CI = ONE;
+                                    break;
+                                }
+                            }
+                        }
+                        if (CI >= ZERO)
+                        {
+                            scicos_xproperty[jj] = CI;
+                        }
+                        else
+                        {
+                            fprintf(stderr, "\nWarinng! Xproperties are not match for i=%d!", jj);
+                        }
                     }
+                    printf("\n");
+                    for (jj = 0; jj < *neq; jj++)
+                    {
+                        printf("x%d=%g ", jj, scicos_xproperty[jj]);
                     }
-                    }
-                    if (CI>=ZERO){  scicos_xproperty[jj]=CI;}else{fprintf(stderr,"\nWarinng! Xproperties are not match for i=%d!",jj);}
-                    } */
-                    /* printf("\n"); for(jj=0;jj<*neq;jj++) { printf("x%d=%g ",jj,scicos_xproperty[jj]); }*/
+#endif /* 0 */
 
                     flag = IDASetId(ida_mem, IDx);
                     if (check_flag(&flag, "IDASetId", 1))
@@ -2717,43 +2740,48 @@ L30:
                         freeallx
                         return;
                     }
-                    // CI=1.0;  // for function Get_Jacobian_ci
+#if 0
+                    CI = 1.0; // for function Get_Jacobian_ci
                     /*--------------------------------------------*/
-                    // maxnj=100; /* setting the maximum number of Jacobian evaluation during a Newton step */
-                    // flag=IDASetMaxNumJacsIC(ida_mem, maxnj);
-                    // if (check_flag(&flag, "IDASetMaxNumItersIC", 1)) {
-                    //   *ierr=200+(-flag);
-                    //   freeallx;
-                    //   return;
-                    // };
-                    // flag=IDASetLineSearchOffIC(ida_mem,FALSE);  /* (def=false)  */
-                    // if (check_flag(&flag, "IDASetLineSearchOffIC", 1)) {
-                    //   *ierr=200+(-flag);
-                    //   freeallx;
-                    //   return;
-                    // };
-                    // flag=IDASetMaxNumItersIC(ida_mem, 10);/* (def=10) setting the maximum number of Newton iterations in any one attemp to solve CIC */
-                    // if (check_flag(&flag, "IDASetMaxNumItersIC", 1)) {
-                    //   *ierr=200+(-flag);
-                    //   freeallx;
-                    //   return;
-                    // };
+                    maxnj = 100; /* setting the maximum number of Jacobian evaluation during a Newton step */
+                    flag = IDASetMaxNumJacsIC(ida_mem, maxnj);
+                    if (check_flag(&flag, "IDASetMaxNumItersIC", 1))
+                    {
+                        *ierr = 200 + (-flag);
+                        freeallx;
+                        return;
+                    };
+                    flag = IDASetLineSearchOffIC(ida_mem, FALSE); /* (def=false)  */
+                    if (check_flag(&flag, "IDASetLineSearchOffIC", 1))
+                    {
+                        *ierr = 200 + (-flag);
+                        freeallx;
+                        return;
+                    };
+                    flag = IDASetMaxNumItersIC(ida_mem, 10); /* (def=10) setting the maximum number of Newton iterations in any one attemp to solve CIC */
+                    if (check_flag(&flag, "IDASetMaxNumItersIC", 1))
+                    {
+                        *ierr = 200 + (-flag);
+                        freeallx;
+                        return;
+                    };
+#endif /* 0 */
 
                     N_iters = 4 + nmod * 4;
                     for (j = 0; j <= N_iters; j++)
                     {
                         /* counter to reevaluate the
-                        						modes in  mode->CIC->mode->CIC-> loop
-                        						do it once in the absence of mode (nmod=0) */
+                        * modes in  mode->CIC->mode->CIC-> loop
+                        		 * do it once in the absence of mode (nmod=0) */
                         /* updating the modes through Flag==9, Phase==1 */
 
                         /* Serge Steer 29/06/2009 */
-                        while (ismenu()) //** if the user has done something, do the actions
+                        while (ismenu()) /** if the user has done something, do the actions */
                         {
                             int ierr2 = 0;
-                            SeqSync = GetCommand(CommandToUnstack); //** get at the action
+                            SeqSync = GetCommand(CommandToUnstack); /** get at the action */
                             CommandLength = (int)strlen(CommandToUnstack);
-                            syncexec(CommandToUnstack, &CommandLength, &ierr2, &one, CommandLength); //** execute it
+                            syncexec(CommandToUnstack, &CommandLength, &ierr2, &one, CommandLength); /** execute it */
                         }
                         if (C2F(coshlt).halt != 0)
                         {
@@ -2778,7 +2806,7 @@ L30:
                         phase = 2; /* IDACalcIC: PHI-> yy0: if (ok) yy0_cic-> PHI*/
                         copy_IDA_mem->ida_kk = 1;
 
-                        // the initial conditons y0 and yp0 do not satisfy the DAE
+                        /* the initial conditons y0 and yp0 do not satisfy the DAE */
                         flagr = IDACalcIC(ida_mem, IDA_YA_YDP_INIT, (realtype)(t));
 
                         phase = 1;
@@ -3095,12 +3123,12 @@ L30:
                     }
                 }
                 /* Serge Steer 29/06/2009 */
-                while (ismenu()) //** if the user has done something, do the actions
+                while (ismenu()) /** if the user has done something, do the actions */
                 {
                     int ierr2 = 0;
-                    SeqSync = GetCommand(CommandToUnstack); //** get at the action
+                    SeqSync = GetCommand(CommandToUnstack); /** get at the action */
                     CommandLength = (int)strlen(CommandToUnstack);
-                    syncexec(CommandToUnstack, &CommandLength, &ierr2, &one, CommandLength); //** execute it
+                    syncexec(CommandToUnstack, &CommandLength, &ierr2, &one, CommandLength); /** execute it */
                 }
 
                 if (C2F(coshlt).halt != 0)
@@ -3294,7 +3322,9 @@ void callf(double *t, scicos_block *block, scicos_flag *flag)
     }
 
     /* switch loop */
-    //sciprint("callf type=%d flag=%d\n",block->type,flagi);
+#if 0
+    sciprint("callf type=%d flag=%d\n", block->type, flagi);
+#endif /* 0 */
     switch (block->type)
     {
         /*******************/
@@ -5462,7 +5492,7 @@ static int synchro_g_nev(ScicosImport *scs_imp, double *g, int kf, int *ierr)
 } /* synchro_g_nev */
 /*--------------------------------------------------------------------------*/
 /* FREE_blocks */
-static void FREE_blocks()
+static void FREE_blocks(void)
 {
     int kf = 0;
     for (kf = 0; kf < nblk; ++kf)
@@ -5648,25 +5678,25 @@ void Coserror(const char *fmt, ...)
 /* get_block_error : get the block error
 * number
 */
-int get_block_error()
+int get_block_error(void)
 {
     return *block_error;
 }
 /*--------------------------------------------------------------------------*/
-void end_scicos_sim()
+void end_scicos_sim(void)
 {
     C2F(coshlt).halt = 2;
     return;
 }
 /*--------------------------------------------------------------------------*/
 /* get_pointer_xproperty */
-int* get_pointer_xproperty()
+int *get_pointer_xproperty(void)
 {
     return &xprop[-1 + xptr[C2F(curblk).kfun]];
 }
 /*--------------------------------------------------------------------------*/
 /* get_Npointer_xproperty */
-int get_npointer_xproperty()
+int get_npointer_xproperty(void)
 {
     return Blocks[C2F(curblk).kfun - 1].nx;
 }
@@ -5758,8 +5788,10 @@ static int Jacobians(long int Neq, realtype tt, N_Vector yy, N_Vector yp,
     xcdot  = (double *) N_VGetArrayPointer(yp);
     /*residual=(double *) NV_DATA_S(resvec);*/
     ttx = (double)tt;
-    // CJ=(double)cj;  // for fonction Get_Jacobian_cj
-    CJJ = (double)cj;  // returned by Get_Jacobian_parameter
+#if 0
+    CJ = (double)cj; /* for fonction Get_Jacobian_cj */
+#endif /* 0 */
+    CJJ = (double)cj;  /* returned by Get_Jacobian_parameter */
 
     srur = (double) RSqrt(UNIT_ROUNDOFF);
 
@@ -5828,18 +5860,26 @@ static int Jacobians(long int Neq, realtype tt, N_Vector yy, N_Vector yp,
         }
         inc = (xi + inc) - xi;
 
-        /* if (CI==0) {
-        inc = MAX( srur * ABS(hh*xpi),ONE );
-        if (hh*xpi < ZERO) inc = -inc;
-        inc = (xpi + inc) - xi;
-        } */
-        // xc[i] += CI*inc;
-        // xcdot[i] += CJ*inc;
+#if 0
+        if (CI == 0)
+        {
+            inc = MAX( srur * ABS(hh * xpi), ONE );
+            if (hh * xpi < ZERO)
+            {
+                inc = -inc;
+            }
+            inc = (xpi + inc) - xi;
+        }
+        xc[i] += CI * inc;
+        xcdot[i] += CJ * inc;
+#endif /* 0 */
         xc[i] += inc;
         xcdot[i] += CJJ * inc;
-        /*a= Max(abs(H[0]*xcdot[i]),abs(1.0/Ewt[i]));
-        b= Max(1.0,abs(xc[i]));
-        del=SQUR[0]*Max(a,b);    */
+#if 0
+        a = Max(abs(H[0] * xcdot[i]), abs(1.0 / Ewt[i]));
+        b = Max(1.0, abs(xc[i]));
+        del = SQUR[0] * Max(a, b);
+#endif /* 0 */
         job = 0; /* read residuals */
         Jdoit(&ttx, xc, xcdot, ERR2, &job);
         if (*ierr < 0)
@@ -6339,7 +6379,7 @@ int simblkKinsol(N_Vector yy, N_Vector resval, void *rdata)
 /*--------------------------------------------------------------------------*/
 static int CallKinsol(double *told)
 {
-    //** used for the [stop] button
+    /*** used for the [stop] button */
     static char CommandToUnstack[1024];
     static int CommandLength = 0;
     static int SeqSync = 0;
@@ -6492,12 +6532,12 @@ static int CallKinsol(double *told)
                 break;
             }
             /* Serge Steer 29/06/2009 */
-            while (ismenu()) //** if the user has done something, do the actions
+            while (ismenu()) /** if the user has done something, do the actions */
             {
                 int ierr2 = 0;
-                SeqSync = GetCommand(CommandToUnstack); //** get at the action
+                SeqSync = GetCommand(CommandToUnstack); /** get at the action */
                 CommandLength = (int)strlen(CommandToUnstack);
-                syncexec(CommandToUnstack, &CommandLength, &ierr2, &one, CommandLength); //** execute it
+                syncexec(CommandToUnstack, &CommandLength, &ierr2, &one, CommandLength); /** execute it */
             }
 
             if (C2F(coshlt).halt != 0)
@@ -6517,7 +6557,7 @@ static int CallKinsol(double *told)
 
             if (ng > 0 && nmod > 0)
             {
-                phase = 1; // updating the modes
+                phase = 1; /* updating the modes */
                 zdoit(told, x, xd, g);
                 if (*ierr != 0)
                 {

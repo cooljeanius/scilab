@@ -44,22 +44,8 @@
 /**
  * Container structure
  */
-typedef struct
-{
-    struct
-    {
-        int numberOfPoints;
-        int maxNumberOfPoints;
-        double ***data;
-    } internal;
 
-    struct
-    {
-        char const* cachedFigureUID;
-        char *cachedAxeUID;
-        char **cachedPolylinesUIDs;
-    } scope;
-} sco_data;
+#include "sco_data.h"
 
 /**
  * Get (and allocate on demand) the internal data used on this scope
@@ -226,20 +212,26 @@ static sco_data *getScoData(scicos_block * block)
 
         sco = (sco_data *) MALLOC(sizeof(sco_data));
         if (sco == NULL)
+        {
             goto error_handler_sco;
+        }
 
         sco->internal.numberOfPoints = 0;
         sco->internal.maxNumberOfPoints = block->ipar[2];
 
         sco->internal.data = (double ***)CALLOC(block->nin, sizeof(double **));
         if (sco->internal.data == NULL)
+        {
             goto error_handler_data;
+        }
 
         for (i = 0; i < block->nin; i++)
         {
             sco->internal.data[i] = (double **)CALLOC(block->insz[i], sizeof(double *));
             if (sco->internal.data[i] == NULL)
+            {
                 goto error_handler_data_i;
+            }
         }
         for (i = 0; i < block->nin; i++)
         {
@@ -248,7 +240,9 @@ static sco_data *getScoData(scicos_block * block)
                 sco->internal.data[i][j] = (double *)CALLOC(block->ipar[2], sizeof(double));
 
                 if (sco->internal.data[i][j] == NULL)
+                {
                     goto error_handler_data_ij;
+                }
             }
         }
 
@@ -333,7 +327,9 @@ static sco_data *reallocScoData(scicos_block * block, int numberOfPoints)
         {
             ptr = (double *)REALLOC(sco->internal.data[i][j], numberOfPoints * sizeof(double));
             if (ptr == NULL)
+            {
                 goto error_handler;
+            }
 
             for (setLen = numberOfPoints - previousNumberOfPoints - 1; setLen >= 0; setLen--)
             {
@@ -419,7 +415,9 @@ static BOOL pushData(scicos_block * block, int row)
 
     sco = getScoData(block);
     if (sco == NULL)
+    {
         return FALSE;
+    }
 
     // select the right input and row
     x = sco->internal.data[0][row];

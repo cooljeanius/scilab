@@ -29,7 +29,7 @@
 #else  /* _MSC_VER */
 /** This should only be provided when finite prototype is missing **/
 /** XXX : to be tested **/
-# if !defined(__cplusplus) && (!defined(HAVE_DECL_FINITE) || !HAVE_DECL_FINITE) && !defined(finite)
+# if !defined(__cplusplus) && (!defined(HAVE_DECL_FINITE) || !HAVE_DECL_FINITE) && !defined(finite) && !defined(__MATH__)
 int finite(double);
 # endif /* !__cplusplus && missing finite */
 #endif /* _MSC_VER */

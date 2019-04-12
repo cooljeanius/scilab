@@ -29,11 +29,14 @@
 #include <math.h>
 #include <stdlib.h>
 
-#ifdef _MSC_VER
-typedef void (*voidg) ();
-#else
-typedef void (*voidg) (void);
-#endif
+#ifndef HAVE_VOIDG_FUNCPTR_TYPE
+# define HAVE_VOIDG_FUNCPTR_TYPE 2
+# ifdef _MSC_VER
+typedef void (*voidg)();
+# else
+typedef void (*voidg)(void);
+# endif /* _MSC_VER */
+#endif /* !HAVE_VOIDG_FUNCPTR_TYPE */
 
 /* scicos_block structure definition
 * WARNING: take care that this sructure is

@@ -41,12 +41,13 @@
 #ifdef HAVE_STDIO_H
 # include <stdio.h>
 #endif /* HAVE_STDIO_H */
-/* FIXME: splint chokes on this: */
-#if defined(DEBUG_CMSCOPE_C)
-# define LOG(...) printf(__VA_ARGS__)
-#else
-# define LOG(...)
-#endif /* DEBUG_CMSCOPE_C */
+#ifndef S_SPLINT_S
+# if defined(DEBUG_CMSCOPE_C)
+#  define LOG(...) printf(__VA_ARGS__)
+# else
+#  define LOG(...)
+# endif /* DEBUG_CMSCOPE_C */
+#endif /* !S_SPLINT_S */
 
 /*****************************************************************************
  * Internal container structure
@@ -433,7 +434,9 @@ static sco_data *reallocScoData(scicos_block * block, int input, int numberOfPoi
     int setLen;
     int previousNumberOfPoints = sco->internal.maxNumberOfPoints[input];
 
+#ifndef S_SPLINT_S
     LOG("%s: %s at %d to %d\n", "cmscope", "reallocScoData", input, numberOfPoints);
+#endif /* !S_SPLINT_S */
 
     for (i = 0; i < block->nin; i++)
     {
@@ -826,7 +829,9 @@ static char *getPolyline(char *pAxeUID, scicos_block * block, int input, int row
         color = block->ipar[7 + block->nin + input + row];
         if (color > 0)
         {
+#ifndef S_SPLINT_S
             LOG("%s: %s at %d at %d to %d\n", "cmscope", "set lines mode", input, row, color);
+#endif /* !S_SPLINT_S */
 
             setGraphicObjectProperty(pPolyline, __GO_LINE_MODE__, &b__true, jni_bool, 1);
             setGraphicObjectProperty(pPolyline, __GO_LINE_COLOR__, &color, jni_int, 1);
@@ -835,7 +840,9 @@ static char *getPolyline(char *pAxeUID, scicos_block * block, int input, int row
         {
             color = -color;
 
+#ifndef S_SPLINT_S
             LOG("%s: %s at %d at %d to %d\n", "cmscope", "set mark mode", input, row, -color);
+#endif /* !S_SPLINT_S */
 
             setGraphicObjectProperty(pPolyline, __GO_MARK_MODE__, &b__true, jni_bool, 1);
             setGraphicObjectProperty(pPolyline, __GO_MARK_STYLE__, &color, jni_int, 1);
@@ -869,7 +876,9 @@ static BOOL setPolylinesBuffers(scicos_block * block, int input, int maxNumberOf
     BOOL result = TRUE;
     int polylineSize[2] = { 1, maxNumberOfPoints };
 
+#ifndef S_SPLINT_S
     LOG("%s: %s at %d to %d\n", "cmscope", "setPolylinesBuffers", input, maxNumberOfPoints);
+#endif /* !S_SPLINT_S */
 
     pFigureUID = getFigure(block);
     pAxeUID = getAxe(pFigureUID, block, input);
@@ -899,7 +908,9 @@ static BOOL setPolylinesBounds(scicos_block * block, int input, int periodCounte
     dataBounds[4] = -1.0;       // zMin
     dataBounds[5] = 1.0;        // zMax
 
+#ifndef S_SPLINT_S
     LOG("%s: %s at %d to %f\n", "cmscope", "setPolylinesBounds", input, dataBounds[1]);
+#endif /* !S_SPLINT_S */
 
     pFigureUID = getFigure(block);
     pAxeUID = getAxe(pFigureUID, block, input);

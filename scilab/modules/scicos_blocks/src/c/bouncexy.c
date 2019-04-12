@@ -45,31 +45,14 @@
  * Internal container structure
  ****************************************************************************/
 
-/**
- * Container structure
- */
-typedef struct
-{
-    struct
-    {
-        double *ballsSize;
-        double **data;
-    } internal;
-
-    struct
-    {
-        char const* cachedFigureUID;
-        char *cachedAxeUID;
-        char **cachedArcsUIDs;
-    } scope;
-} sco_data;
+#include "sco_data.h"
 
 /**
  * Get (and allocate on demand) the internal data used on this scope
  * \param block the block
  * \return the scope data
  */
-static sco_data *getScoData(scicos_block * block);
+static sco_data_bounce *getScoData(scicos_block * block);
 
 /**
  * Release any internal data
@@ -147,7 +130,7 @@ SCICOS_BLOCKS_IMPEXP void bouncexy(scicos_block * block, scicos_flag flag)
 {
     char const* pFigureUID;
 
-    sco_data *sco;
+    sco_data_bounce *sco;
 
     int j;
     BOOL result;
@@ -207,9 +190,9 @@ SCICOS_BLOCKS_IMPEXP void bouncexy(scicos_block * block, scicos_flag flag)
  *
  ****************************************************************************/
 
-static sco_data *getScoData(scicos_block * block)
+static sco_data_bounce *getScoData(scicos_block * block)
 {
-    sco_data *sco = (sco_data *) * (block->work);
+    sco_data_bounce *sco = (sco_data_bounce *) * (block->work);
     int i, j;
 
     if (sco == NULL)
@@ -218,13 +201,17 @@ static sco_data *getScoData(scicos_block * block)
          * Data allocation
          */
 
-        sco = (sco_data *) MALLOC(sizeof(sco_data));
+        sco = (sco_data_bounce *) MALLOC(sizeof(sco_data));
         if (sco == NULL)
+        {
             goto error_handler_sco;
+        }
 
         sco->internal.ballsSize = (double *)CALLOC(block->insz[0], sizeof(double));
         if (sco->internal.ballsSize == NULL)
+        {
             goto error_handler_ballsSize;
+        }
         for (i = 0; i < block->insz[0]; i++)
         {
             sco->internal.ballsSize[i] = block->z[6 * i + 2];
@@ -232,13 +219,17 @@ static sco_data *getScoData(scicos_block * block)
 
         sco->internal.data = (double **)CALLOC(block->insz[0], sizeof(double *));
         if (sco->internal.data == NULL)
+        {
             goto error_handler_data;
+        }
 
         for (i = 0; i < block->insz[0]; i++)
         {
             sco->internal.data[i] = (double *)CALLOC(3, sizeof(double));
             if (sco->internal.data[i] == NULL)
+            {
                 goto error_handler_data_i;
+            }
         }
 
         sco->scope.cachedFigureUID = NULL;
@@ -273,7 +264,7 @@ error_handler_sco:
 
 static void freeScoData(scicos_block * block)
 {
-    sco_data *sco = (sco_data *) * (block->work);
+    sco_data_bounce *sco = (sco_data_bounce *) * (block->work);
     int i;
 
     if (sco != NULL)
@@ -304,7 +295,7 @@ static void appendData(scicos_block * block, double *x, double *y)
     int i;
     double *upperLeftPoint;
     double ballSize;
-    sco_data *sco = (sco_data *) * (block->work);
+    sco_data_bounce *sco = (sco_data_bounce *) * (block->work);
 
     /*
      * Update data
@@ -330,7 +321,7 @@ static BOOL pushData(scicos_block * block, int row)
     char *pArcUID;
 
     double *upperLeftPoint;
-    sco_data *sco;
+    sco_data_bounce *sco;
 
     pFigureUID = getFigure(block);
     pAxeUID = getAxe(pFigureUID, block);
@@ -338,7 +329,9 @@ static BOOL pushData(scicos_block * block, int row)
 
     sco = getScoData(block);
     if (sco == NULL)
+    {
         return FALSE;
+    }
 
     upperLeftPoint = sco->internal.data[row];
     return setGraphicObjectProperty(pArcUID, __GO_UPPER_LEFT_POINT__, upperLeftPoint, jni_double_vector, 3);
@@ -364,7 +357,7 @@ static char const* getFigure(scicos_block * block)
     int i__1 = 1;
     BOOL b_true = TRUE;
 
-    sco_data *sco = (sco_data *) * (block->work);
+    sco_data_bounce *sco = (sco_data_bounce *) * (block->work);
 
     // assert the sco is not NULL
     if (sco == NULL)
@@ -421,7 +414,7 @@ static char *getAxe(char const* pFigureUID, scicos_block * block)
     char *pAxe;
     int i;
 
-    sco_data *sco = (sco_data *) * (block->work);
+    sco_data_bounce *sco = (sco_data_bounce *) * (block->work);
 
     // assert the sco is not NULL
     if (sco == NULL)
@@ -478,7 +471,7 @@ static char *getArc(char *pAxeUID, scicos_block * block, int row)
     char *pArc;
     int color;
 
-    sco_data *sco = (sco_data *) * (block->work);
+    sco_data_bounce *sco = (sco_data_bounce *) * (block->work);
 
     // assert the sco is not NULL
     if (sco == NULL)

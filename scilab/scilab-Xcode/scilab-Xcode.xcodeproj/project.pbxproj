@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		A50158F3225F8C9B00747976 /* sco_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sco_data.h; sourceTree = "<group>"; };
 		A58351D5224B21E30045B983 /* Atlas.spec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Atlas.spec; sourceTree = "<group>"; };
 		A58351D7224B21E30045B983 /* checkmacosx.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = checkmacosx.applescript; sourceTree = "<group>"; };
 		A58351D8224B21E30045B983 /* scilab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = scilab; sourceTree = "<group>"; };
@@ -37174,6 +37175,7 @@
 				A583ADFC224B30530045B983 /* scicos_indexfinder.c */,
 				A583ADFD224B30530045B983 /* scicos_indexfinder.h */,
 				A583ADFE224B30540045B983 /* scicosexit.c */,
+				A50158F3225F8C9B00747976 /* sco_data.h */,
 				A583ADFF224B30540045B983 /* selector.c */,
 				A583AE00224B30540045B983 /* selector_m.c */,
 				A583AE01224B30540045B983 /* shift_16_LA.c */,

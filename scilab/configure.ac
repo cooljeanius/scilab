@@ -1538,7 +1538,7 @@ AC_HEADER_MAJOR
 AC_CHECK_HEADERS([limits.h values.h])dnl
 
 AC_CHECK_HEADERS([argz.h ctype.h dl.h dlfcn.h fcntl.h float.h \
-iconv.h jni.h langinfo.h libintl.h locale.h ltdl.h mach-o/dyld.h \
+iconv.h io.h jni.h langinfo.h libintl.h locale.h ltdl.h mach-o/dyld.h \
 mach-o/getsect.h machine.h malloc.h malloc/malloc.h math.h mman.h netdb.h \
 netinet/in.h nlist.h param.h pwd.h regex.h select.h sgtty.h \
 signal.h socket.h stddef.h stdio.h stdio_ext.h sys/file.h \
@@ -2283,6 +2283,14 @@ AH_BOTTOM([
        #undef DIR_SEPARATOR
 #endif
 #define DIR_SEPARATOR "/"
+
+#if (defined(__GNUC__) && defined(__GNUC_MINOR__) && (__GNUC__ >= 3)) && \
+    !defined(FLEX_SCANNER) && !defined(AVOID_POISONING)
+# ifdef sprintf
+#  undef sprintf
+# endif /* sprintf */
+# pragma GCC poison sprintf
+#endif /* __GNUC__ && !AVOID_POISONING */
 
 #endif /* MACHINE_H  */
 ])dnl

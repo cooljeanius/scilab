@@ -442,7 +442,7 @@ $(SCICOS_BLOCKS_CXX_SOURCES)
 # For the code check (splint)
 CHECK_SRC= $(SCICOS_BLOCKS_C_SOURCES) $(NON_BLOCK_C_SOURCES)
 INCLUDE_FLAGS = $(libsciscicos_blocks_la_CPPFLAGS)
-
+LOCAL_SPLINT_OPTIONS = -redef
 
 #### scicos_blocks : Generation of the  includes/blocks.h Files ####
 BUILT_SOURCES = includes/blocks.h

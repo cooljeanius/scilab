@@ -131,6 +131,14 @@
    */
 #undef HAVE_DECL_FINITE
 
+/* Define to 1 if you have the declaration of `round', and to 0 if you don't.
+   */
+#undef HAVE_DECL_ROUND
+
+/* Define to 1 if you have the declaration of `signbit', and to 0 if you
+   don't. */
+#undef HAVE_DECL_SIGNBIT
+
 /* Define to 1 if you have the declaration of `vsnprintf', and to 0 if you
    don't. */
 #undef HAVE_DECL_VSNPRINTF
@@ -462,6 +470,9 @@
 /* Define to 1 if you have the `rmdir' function. */
 #undef HAVE_RMDIR
 
+/* Define to 1 if you have the `round' function. */
+#undef HAVE_ROUND
+
 /* Define to 1 if you have the `select' function. */
 #undef HAVE_SELECT
 
@@ -479,6 +490,9 @@
 
 /* Define to 1 if you have the <signal.h> header file. */
 #undef HAVE_SIGNAL_H
+
+/* Define to 1 if you have the `signbit' function. */
+#undef HAVE_SIGNBIT
 
 /* Define to 1 if you have the `sleep' function. */
 #undef HAVE_SLEEP

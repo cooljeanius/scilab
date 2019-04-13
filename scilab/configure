@@ -40871,7 +40871,7 @@ esac
 # Provided by math.h
 
 LDFLAGS="${LDFLAGS} ${LIBM}"
-for ac_func in ceil ceilf pow sqrt finite floor exp10 log10
+for ac_func in ceil ceilf pow sqrt finite floor exp10 log10 round signbit
 do :
   as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
 ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"
@@ -40892,6 +40892,26 @@ fi
 
 cat >>confdefs.h <<_ACEOF
 #define HAVE_DECL_FINITE $ac_have_decl
+_ACEOF
+ac_fn_c_check_decl "$LINENO" "round" "ac_cv_have_decl_round" "$ac_includes_default"
+if test "x$ac_cv_have_decl_round" = xyes; then :
+  ac_have_decl=1
+else
+  ac_have_decl=0
+fi
+
+cat >>confdefs.h <<_ACEOF
+#define HAVE_DECL_ROUND $ac_have_decl
+_ACEOF
+ac_fn_c_check_decl "$LINENO" "signbit" "ac_cv_have_decl_signbit" "$ac_includes_default"
+if test "x$ac_cv_have_decl_signbit" = xyes; then :
+  ac_have_decl=1
+else
+  ac_have_decl=0
+fi
+
+cat >>confdefs.h <<_ACEOF
+#define HAVE_DECL_SIGNBIT $ac_have_decl
 _ACEOF
 
 ### If isinf exists or not (used to not be the case under Solaris)
@@ -60507,7 +60527,7 @@ $as_echo_n "checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later...
 
 
 cat > conftest.$ac_ext <<EOF
-#line 60510 "configure"
+#line 60530 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TCL_INCLUDE_PATH/$CHK_TCL_INC_NAME"
@@ -60822,7 +60842,7 @@ $as_echo_n "checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later... " 
 
 
 cat > conftest.$ac_ext <<EOF
-#line 60825 "configure"
+#line 60845 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TK_INCLUDE_PATH/$CHK_TK_INC_NAME"
@@ -61440,7 +61460,7 @@ $as_echo_n "checking saxon... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 61443 "configure"
+// #line 61463 "configure"
 import java.util.regex.Pattern;
 
 import com.icl.saxon.Loader;
@@ -61556,7 +61576,7 @@ $as_echo_n "checking jlatexmath-fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 61559 "configure"
+// #line 61579 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.fop.JLaTeXMathObj;

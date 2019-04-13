@@ -1478,9 +1478,9 @@ LT_LIB_M([])dnl
 # Provided by math.h
 
 LDFLAGS="${LDFLAGS} ${LIBM}"
-AC_CHECK_FUNCS([ceil ceilf pow sqrt finite floor exp10 log10])dnl
+AC_CHECK_FUNCS([ceil ceilf pow sqrt finite floor exp10 log10 round signbit])dnl
 
-AC_CHECK_DECLS([finite])dnl
+AC_CHECK_DECLS([finite, round, signbit])dnl
 
 ### If isinf exists or not (used to not be the case under Solaris)
 ### See bug #4164

@@ -137,6 +137,10 @@ int do_xxscanf(char *fname, FILE * fp, char *format, int *nargs, char *strv, int
             currentchar++;
             h_flag = 1;
         }
+        else
+        {
+            ; /* ??? */
+        }
 
         /* directive points to the scan directive  */
 

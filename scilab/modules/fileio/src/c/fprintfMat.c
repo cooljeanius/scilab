@@ -50,7 +50,8 @@ static BOOL checkFprintfMatFormat(char *format);
 static char *getCleanedFormat(char *format);
 static char *replaceInFormat(char *format);
 /*--------------------------------------------------------------------------*/
-#ifndef signbit
+#if !defined(signbit) && !defined(HAVE_SIGNBIT) && (!defined(HAVE_DECL_SIGNBIT) || !HAVE_DECL_SIGNBIT) && \
+    !defined(S_SPLINT_S)
 static int signbit(double x)
 {
     union

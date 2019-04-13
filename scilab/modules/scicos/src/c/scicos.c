@@ -5658,11 +5658,12 @@ void Coserror(const char *fmt, ...)
 
     va_start(ap, fmt);
 
-#ifdef vsnprintf
+#if defined(vsnprintf) || (defined(HAVE_VSNPRINTF) && defined(HAVE_DECL_VSNPRINTF) && HAVE_DECL_VSNPRINTF) || \
+    defined(S_SPLINT_S)
     retval = vsnprintf(coserr.buf, 4095, fmt, ap);
 #else
     retval = vsprintf(coserr.buf, fmt, ap);
-#endif
+#endif /* have vsnprintf */
 
     if (retval == -1)
     {
@@ -6172,8 +6173,9 @@ int write_xml_states(int nvar, const char * xmlfile, char **ids, double *x)
     xv = MALLOC(nvar * sizeof(char*));
     for (i = 0; i < nvar; i++)
     {
-        xv[i] = MALLOC(nvar * 100 * sizeof(char));
-        sprintf(xv[i], "%g", x[i]);
+        const size_t xv_i_len = (nvar * 100UL * sizeof(char));
+        xv[i] = MALLOC(xv_i_len);
+        snprintf(xv[i], xv_i_len, "%g", x[i]);
     }
 
     model = ezxml_parse_file(xmlfile);

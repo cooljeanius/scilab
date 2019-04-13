@@ -28,10 +28,8 @@
 #include "stack-c.h"
 
 /*--------------------------------------------------------------------------*/
-typedef struct
-{
-    int halt;
-}  COSHLT_struct;
+/* COSHLT_struct is defined in "scicos-def.h" which gets dragged in anyways,
+ * so no need to re-define it here */
 extern COSHLT_struct  C2F(coshlt);
 /*--------------------------------------------------------------------------*/
 int sci_haltscicos(char *fname, unsigned long fname_len)

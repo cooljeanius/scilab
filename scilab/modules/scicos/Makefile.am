@@ -137,6 +137,7 @@ libsciscicos_algo_la_FFLAGS = $(libsciscicos_la_FFLAGS)
 # For the code check (splint)
 CHECK_SRC= $(SCICOS_C_SOURCES) $(GATEWAY_C_SOURCES)
 INCLUDE_FLAGS = $(libsciscicos_la_CPPFLAGS)
+LOCAL_SPLINT_OPTIONS = -redef
 
 libsciscicos_la_LIBADD = libsciscicos-algo.la libscisundials.la \
 	$(top_builddir)/modules/scicos_blocks/libsciscicos_blocks.la 

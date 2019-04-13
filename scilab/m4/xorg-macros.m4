@@ -1643,6 +1643,14 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wformat-truncation=2], [-Wformat-tr
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wstringop-overflow=2], [-Wstringop-overflow])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wstringop-truncation=2], [-Wstringop-truncation])
 
+AC_REQUIRE([AC_C_VARARRAYS])dnl
+
+if test "x${ac_cv_c_vararrays}" = "xno"; then
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wvla], [-Wvla-extension])
+elif test "x${ac_cv_c_vararrays}" = "xyes"; then
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wvla-larger-than=9999])
+fi
+
 # These are currently disabled because they are noisy.  They will be enabled
 # in the future once the codebase is sufficiently modernized to silence
 # them.  For now, I do NOT want them to drown out the other warnings.

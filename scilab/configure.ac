@@ -1522,6 +1522,7 @@ AC_FUNC_MALLOC
 XORG_CHECK_MALLOC_ZERO dnl# from m4/xorg-macros.m4
 AC_FUNC_MMAP
 AC_FUNC_REALLOC
+AC_FUNC_SETVBUF_REVERSED
 AC_CHECK_FUNCS([__argz_count __argz_next __argz_stringify dlopen \
 dyld_stub_binding_helper freopen localeconv lt_dlopen mblen mbrlen memchr \
 mempcpy nl_langinfo realpath stpcpy strcspn strncasecmp strspn strtoul \
@@ -1543,7 +1544,7 @@ mach-o/getsect.h machine.h malloc.h malloc/malloc.h math.h mman.h netdb.h \
 netinet/in.h nlist.h param.h pwd.h regex.h select.h sgtty.h \
 signal.h socket.h stddef.h stdio.h stdio_ext.h sys/file.h \
 sys/ioctl.h sys/param.h sys/socket.h sys/time.h sys/timeb.h \
-sys/utsname.h syslog.h term.h termcap.h termio.h termios.h \
+sys/utsname.h syslog.h term.h termcap.h termio.h termios.h tgmath.h \
 time.h types.h utime.h utsname.h wchar.h wctype.h winbase.h windows.h \
 wtloop.c xlocale.h])dnl
 
@@ -1582,7 +1583,8 @@ AC_CHECK_TYPES([lt_dlsymlist])dnl
 ## Test for structures ##
 #########################
 AC_CHECK_MEMBERS([struct stat.st_blksize])
-AC_CHECK_MEMBERS([struct stat.st_rdev])dnl
+AC_CHECK_MEMBERS([struct stat.st_rdev])
+AC_CHECK_MEMBERS([struct stat.st_size])dnl
 
 #######################
 ## MISC Test
@@ -2229,12 +2231,19 @@ else
 fi
 
 # Other compiler characteristics
+AC_C_CHAR_UNSIGNED
 AC_C_BIGENDIAN dnl# For Apple universal builds
+AC_C__GENERIC
 AC_C_CONST([])
 AC_C_INLINE([])
 AC_C_RESTRICT
+AC_C_VOLATILE
+AC_C_STRINGIZE
+AC_C_FLEXIBLE_ARRAY_MEMBER
 AC_C_PROTOTYPES dnl# Kinda pointless as most current compilers support this,
                 dnl# but there is no harm in adding it, and I like including it
+
+AC_C_TYPEOF
 
 AC_BACKTRACE([]) dnl# from m4/backtrace.m4
 

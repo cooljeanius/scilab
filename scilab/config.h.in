@@ -60,6 +60,15 @@
 /* Define to 1 if your Fortran compiler doesn't accept -c and -o together. */
 #undef FC_NO_MINUS_C_MINUS_O
 
+/* Define to nothing if C supports flexible array members, and to 1 if it does
+   not. That way, with a declaration like `struct s { int n; double
+   d[FLEXIBLE_ARRAY_MEMBER]; };', the struct hack can be used with pre-C99
+   compilers. When computing the size of such an object, don't use 'sizeof
+   (struct s)' as it overestimates the size. Use 'offsetof (struct s, d)'
+   instead. Don't use 'offsetof (struct s, d[0])', as this doesn't work with
+   MSVC and with C++ compilers. */
+#undef FLEXIBLE_ARRAY_MEMBER
+
 /* uses G95 fortran */
 #undef G95_FORTRAN
 
@@ -107,6 +116,12 @@
 
 /* Define to 1 if you have the <curses.h> header file. */
 #undef HAVE_CURSES_H
+
+/* Define to 1 if C supports variable-length arrays. */
+#undef HAVE_C_VARARRAYS
+
+/* Define to 1 if C11-style _Generic works. */
+#undef HAVE_C__GENERIC
 
 /* Define if the GNU dcgettext() function is already present or preinstalled.
    */
@@ -517,6 +532,9 @@
 /* Define to 1 if you have the `strerror' function. */
 #undef HAVE_STRERROR
 
+/* Define to 1 if cpp supports the ANSI # stringizing operator. */
+#undef HAVE_STRINGIZE
+
 /* Define to 1 if you have the <strings.h> header file. */
 #undef HAVE_STRINGS_H
 
@@ -555,6 +573,9 @@
 
 /* Define to 1 if `st_rdev' is a member of `struct stat'. */
 #undef HAVE_STRUCT_STAT_ST_RDEV
+
+/* Define to 1 if `st_size' is a member of `struct stat'. */
+#undef HAVE_STRUCT_STAT_ST_SIZE
 
 /* Define to 1 if `filename' is a member of `struct _mat_t'. */
 #undef HAVE_STRUCT__MAT_T_FILENAME
@@ -622,11 +643,17 @@
 /* Define to 1 if you have the <term.h> header file. */
 #undef HAVE_TERM_H
 
+/* Define to 1 if you have the <tgmath.h> header file. */
+#undef HAVE_TGMATH_H
+
 /* Define to 1 if you have the <time.h> header file. */
 #undef HAVE_TIME_H
 
 /* Define to 1 if you have the <tk.h> header file. */
 #undef HAVE_TK_H
+
+/* Define to 1 if typeof works with your compiler. */
+#undef HAVE_TYPEOF
 
 /* Define to 1 if you have the <types.h> header file. */
 #undef HAVE_TYPES_H
@@ -793,6 +820,11 @@
 /* Define as the return type of signal handlers (`int' or `void'). */
 #undef RETSIGTYPE
 
+/* Define to 1 if the `setvbuf' func takes the buffering type as its second
+   argument and the buffer pointer as the third, as on System V before release
+   3. */
+#undef SETVBUF_REVERSED
+
 /* Extension of a shared library */
 #undef SHARED_LIB_EXT
 
@@ -938,6 +970,11 @@
    #define below would cause a syntax error. */
 #undef _UINT8_T
 
+/* Define to 1 if type `char' is unsigned and you are not using gcc.  */
+#ifndef __CHAR_UNSIGNED__
+# undef __CHAR_UNSIGNED__
+#endif
+
 /* Define like PROTOTYPES; this can be used by system headers. */
 #undef __PROTOTYPES
 
@@ -1002,6 +1039,9 @@
 /* Define to `int' if <sys/types.h> does not define. */
 #undef ssize_t
 
+/* Define to __typeof__ if your compiler spells it that way. */
+#undef typeof
+
 /* Define to the type of an unsigned integer type of width exactly 16 bits if
    such a type exists and the standard includes do not define it. */
 #undef uint16_t
@@ -1024,6 +1064,10 @@
 
 /* Define as `fork' if `vfork' does not work. */
 #undef vfork
+
+/* Define to empty if the keyword `volatile' does not work. Warning: valid
+   code using `volatile' can become incorrect without. Disable with care. */
+#undef volatile
 
 
 

@@ -120,9 +120,10 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/autobuild.m4 \
 	$(top_srcdir)/m4/backtrace.m4 $(top_srcdir)/m4/bakefile.m4 \
 	$(top_srcdir)/m4/cmake.m4 $(top_srcdir)/m4/compiler.m4 \
 	$(top_srcdir)/m4/docbook.m4 $(top_srcdir)/m4/fftw.m4 \
-	$(top_srcdir)/m4/fortran.m4 $(top_srcdir)/m4/gettext.m4 \
-	$(top_srcdir)/m4/giws.m4 $(top_srcdir)/m4/hdf5.m4 \
-	$(top_srcdir)/m4/iconv.m4 $(top_srcdir)/m4/intel_compiler.m4 \
+	$(top_srcdir)/m4/fortran.m4 $(top_srcdir)/m4/generic.m4 \
+	$(top_srcdir)/m4/gettext.m4 $(top_srcdir)/m4/giws.m4 \
+	$(top_srcdir)/m4/hdf5.m4 $(top_srcdir)/m4/iconv.m4 \
+	$(top_srcdir)/m4/intel_compiler.m4 \
 	$(top_srcdir)/m4/intlmacosx.m4 \
 	$(top_srcdir)/m4/java-thirdparty.m4 $(top_srcdir)/m4/java.m4 \
 	$(top_srcdir)/m4/largefile.m4 $(top_srcdir)/m4/lib-ld.m4 \
@@ -134,10 +135,10 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/autobuild.m4 \
 	$(top_srcdir)/m4/nls.m4 $(top_srcdir)/m4/ocaml.m4 \
 	$(top_srcdir)/m4/pcre.m4 $(top_srcdir)/m4/pkg.m4 \
 	$(top_srcdir)/m4/po.m4 $(top_srcdir)/m4/progtest.m4 \
-	$(top_srcdir)/m4/relocatable.m4 $(top_srcdir)/m4/swig.m4 \
-	$(top_srcdir)/m4/symlinks.m4 $(top_srcdir)/m4/tcltk.m4 \
-	$(top_srcdir)/m4/umfpack.m4 $(top_srcdir)/m4/xorg-macros.m4 \
-	$(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/relocatable.m4 $(top_srcdir)/m4/setvbuf.m4 \
+	$(top_srcdir)/m4/swig.m4 $(top_srcdir)/m4/symlinks.m4 \
+	$(top_srcdir)/m4/tcltk.m4 $(top_srcdir)/m4/umfpack.m4 \
+	$(top_srcdir)/m4/xorg-macros.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 DIST_COMMON = $(srcdir)/Makefile.am $(am__DIST_COMMON)
@@ -288,8 +289,8 @@ DIST_SUBDIRS = prebuildjava fileio mexlib functions parameters boolean \
 	compatibility_functions helptools umfpack demo_tools \
 	genetic_algorithms simulated_annealing matio atoms graph xcos \
 	scinotes parallel modules_manager ui_data history_browser \
-	preferences xml types external_objects scicos_blocks scicos . \
-	javasci
+	preferences xml types external_objects scicos_blocks scicos \
+	javasci .
 am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/config/depcomp \
 	$(top_srcdir)/config/mkinstalldirs
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -687,7 +688,7 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-SUBDIRS = prebuildjava fileio mexlib functions parameters boolean \
+MY_SUBDIRS = prebuildjava fileio mexlib functions parameters boolean \
 	cacsd signal_processing core call_scilab api_scilab \
 	data_structures differential_equations double \
 	elementary_functions integer intersci io linear_algebra \
@@ -701,7 +702,8 @@ SUBDIRS = prebuildjava fileio mexlib functions parameters boolean \
 	genetic_algorithms simulated_annealing matio atoms hdf5 graph \
 	xcos scinotes parallel modules_manager ui_data history_browser \
 	preferences xml types external_objects $(am__append_1) scicos \
-	. $(am__append_2)
+	$(am__append_2)
+SUBDIRS = $(MY_SUBDIRS) .
 
 #### Basic files ####
 libscilab_la_rootdir = $(mydatadir)
@@ -810,6 +812,7 @@ libscilab_cli_la_LDFLAGS = $(LAPACK_LIBS) $(BLAS_LIBS) -lstdc++ $(AM_LDFLAGS)
 
 # Core modules
 libscilab_cli_la_LIBADD = $(ENGINE_LIBS) $(NO_GUI_LIBS) $(OTHER_LIBS) $(EXTERNAL_LIBS)
+CLEANFILES = stamp-checkstyle stamp-splint
 all: all-recursive
 
 .SUFFIXES:
@@ -1161,6 +1164,7 @@ install-strip:
 mostlyclean-generic:
 
 clean-generic:
+	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
 
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
@@ -1268,7 +1272,7 @@ uninstall-am: uninstall-pkglibLTLIBRARIES
 
 check-local: check-code
 check-code:
-	set -e; for mydir in $(SUBDIRS); do \
+	set -e; for mydir in $(MY_SUBDIRS); do \
 	  if test -e $${mydir}/Makefile; then \
 	    if test ! -e $${mydir}/stamp-checkstyle -o ! -e $${mydir}/stamp-splint -o $${mydir}/stamp-checkstyle -ot $${mydir}/Makefile -o $${mydir}/stamp-splint -ot $${mydir}/Makefile; then \
 	      $(MAKE) -S -C $${mydir} check-code; \
@@ -1278,7 +1282,9 @@ check-code:
 	  else \
 	    echo "Cannot check code in $${mydir} without a Makefile"; \
 	  fi; \
-	done
+	done; \
+	touch stamp-checkstyle; \
+	touch stamp-splint
 
 .PHONY: check-local check-code
 

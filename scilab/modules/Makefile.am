@@ -16,7 +16,7 @@
 # since it already linked almost the whole world
 
 
-SUBDIRS = \
+MY_SUBDIRS = \
 prebuildjava \
 fileio \
 mexlib \
@@ -92,18 +92,18 @@ types \
 external_objects
 
 if XCOS
-SUBDIRS += scicos_blocks
+MY_SUBDIRS += scicos_blocks
 endif
 
-SUBDIRS += scicos
-
-SUBDIRS += .
+MY_SUBDIRS += scicos
 
 # javasci should be compile at the end because it needs libscilab.la
 # Don't forget that the order in subdirs does matter !!!
 if JAVASCI
-SUBDIRS += javasci
+MY_SUBDIRS += javasci
 endif
+
+SUBDIRS = $(MY_SUBDIRS) .
 
 #### Basic files ####
 libscilab_la_rootdir = $(mydatadir)
@@ -236,7 +236,7 @@ libscilab_cli_la_LIBADD = $(ENGINE_LIBS) $(NO_GUI_LIBS) $(OTHER_LIBS) $(EXTERNAL
 
 check-local: check-code
 check-code:
-	set -e; for mydir in $(SUBDIRS); do \
+	set -e; for mydir in $(MY_SUBDIRS); do \
 	  if test -e $${mydir}/Makefile; then \
 	    if test ! -e $${mydir}/stamp-checkstyle -o ! -e $${mydir}/stamp-splint -o $${mydir}/stamp-checkstyle -ot $${mydir}/Makefile -o $${mydir}/stamp-splint -ot $${mydir}/Makefile; then \
 	      $(MAKE) -S -C $${mydir} check-code; \
@@ -246,6 +246,10 @@ check-code:
 	  else \
 	    echo "Cannot check code in $${mydir} without a Makefile"; \
 	  fi; \
-	done
+	done; \
+	touch stamp-checkstyle; \
+	touch stamp-splint
 
 .PHONY: check-local check-code
+
+CLEANFILES = stamp-checkstyle stamp-splint

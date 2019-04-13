@@ -40,7 +40,7 @@ am__v_v_1 = -v
 AM_V_splint = $(am__v_splint_@AM_V@)
 am__v_splint_ = $(am__v_splint_@AM_DEFAULT_V@)
 am__v_splint_0 =
-am__v_splint_1 = +showscan +forcehints
+am__v_splint_1 = +showscan +forcehints +showsummary +stats +timedist
 
 AM_V_q = $(am__v_q_@AM_V@)
 am__v_q_ = $(am__v_q_@AM_DEFAULT_V@)
@@ -54,7 +54,7 @@ check-local: $(top_builddir)/scilab-bin test
 	fi
 
 # splint options
-SPLINT_OPTIONS=-weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements $(AM_V_splint) -fixedformalarray -fcnuse $(LOCAL_SPLINT_OPTIONS)
+SPLINT_OPTIONS=-weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements $(AM_V_splint) -fixedformalarray -fcnuse +oldstyle +noret +infloops +firstcase +allempty +elseifcomplete +incondefs +matchfields +shadow +incondefslib +overload +nestedextern +imptype $(LOCAL_SPLINT_OPTIONS)
 SPLINT_INCLUDE_FLAGS=`echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
 ## OK to leave "-I" un-prefixed here, since splint is different from the
 ## compiler

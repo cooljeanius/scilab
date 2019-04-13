@@ -719,14 +719,14 @@ libjavasci2_la_etc_DATA = etc/javasci.quit etc/javasci.start
 @JAVASCI_TRUE@AM_V_splint = $(am__v_splint_@AM_V@)
 @JAVASCI_TRUE@am__v_splint_ = $(am__v_splint_@AM_DEFAULT_V@)
 @JAVASCI_TRUE@am__v_splint_0 = 
-@JAVASCI_TRUE@am__v_splint_1 = +showscan +forcehints
+@JAVASCI_TRUE@am__v_splint_1 = +showscan +forcehints +showsummary +stats +timedist
 @JAVASCI_TRUE@AM_V_q = $(am__v_q_@AM_V@)
 @JAVASCI_TRUE@am__v_q_ = $(am__v_q_@AM_DEFAULT_V@)
 @JAVASCI_TRUE@am__v_q_0 = -q
 @JAVASCI_TRUE@am__v_q_1 = 
 
 # splint options
-@JAVASCI_TRUE@SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements $(AM_V_splint) -fixedformalarray -fcnuse $(LOCAL_SPLINT_OPTIONS)
+@JAVASCI_TRUE@SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements $(AM_V_splint) -fixedformalarray -fcnuse +oldstyle +noret +infloops +firstcase +allempty +elseifcomplete +incondefs +matchfields +shadow +incondefslib +overload +nestedextern +imptype $(LOCAL_SPLINT_OPTIONS)
 @JAVASCI_TRUE@SPLINT_INCLUDE_FLAGS = `echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
 
 ########################### JAVA ######################################

@@ -109,6 +109,8 @@ static void sig_fatal(int signum, siginfo_t *info, void *p)
             case SIGILL:
                 switch (info->si_code)
                 {
+                    default:
+                        ;
 #ifdef ILL_ILLOPC
                     case ILL_ILLOPC:
                         si_code_str = "Illegal opcode";
@@ -193,6 +195,8 @@ static void sig_fatal(int signum, siginfo_t *info, void *p)
             case SIGSEGV:
                 switch (info->si_code)
                 {
+                    default:
+                        ;
 #ifdef SEGV_MAPERR
                     case SEGV_MAPERR:
                         si_code_str = "Address not mapped";
@@ -208,6 +212,8 @@ static void sig_fatal(int signum, siginfo_t *info, void *p)
             case SIGBUS:
                 switch (info->si_code)
                 {
+                    default:
+                        ;
 #ifdef BUS_ADRALN
                     case BUS_ADRALN:
                         si_code_str = "Invalid address alignment";
@@ -228,6 +234,8 @@ static void sig_fatal(int signum, siginfo_t *info, void *p)
             case SIGTRAP:
                 switch (info->si_code)
                 {
+                    default:
+                        ;
 #ifdef TRAP_BRKPT
                     case TRAP_BRKPT:
                         si_code_str = "Process breakpoint";
@@ -243,6 +251,8 @@ static void sig_fatal(int signum, siginfo_t *info, void *p)
             case SIGCHLD:
                 switch (info->si_code)
                 {
+                    default:
+                        ;
 #ifdef CLD_EXITED
                     case CLD_EXITED:
                         si_code_str = "Child has exited";
@@ -279,6 +289,8 @@ static void sig_fatal(int signum, siginfo_t *info, void *p)
             case SIGPOLL:
                 switch (info->si_code)
                 {
+                    default:
+                        ;
 #ifdef POLL_IN
                     case POLL_IN:
                         si_code_str = "Data input available";
@@ -315,6 +327,8 @@ static void sig_fatal(int signum, siginfo_t *info, void *p)
             default:
                 switch (info->si_code)
                 {
+                    default:
+                        ;
 #ifdef SI_ASYNCNL
                     case SI_ASYNCNL:
                         si_code_str = "SI_ASYNCNL";

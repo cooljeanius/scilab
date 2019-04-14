@@ -65,30 +65,35 @@
 #include "spFortran.h"
 #include "spBuild.h"
 
-static int FactorComplexMatrix( MatrixPtr Matrix );
-static int CreateInternalVectors( MatrixPtr Matrix );
-static int CountMarkowitz( MatrixPtr Matrix, register RealVector RHS, int Step );
-static int MarkowitzProducts( MatrixPtr Matrix, int Step );
-static ElementPtr SearchForPivot( MatrixPtr Matrix, int Step, int DiagPivoting );
-static ElementPtr SearchForSingleton( MatrixPtr Matrix, int Step );
-static ElementPtr QuicklySearchDiagonal( MatrixPtr Matrix, int Step );
-static ElementPtr SearchDiagonal( MatrixPtr Matrix, register int Step );
-static ElementPtr SearchEntireMatrix( MatrixPtr Matrix, int Step );
-static RealNumber FindLargestInCol( register  ElementPtr pElement );
-static RealNumber FindBiggestInColExclude( MatrixPtr Matrix, register  ElementPtr pElement, register  int Step );
-static int ExchangeRowsAndCols( MatrixPtr Matrix,  ElementPtr pPivot, register int Step );
-static int ExchangeColElements( MatrixPtr Matrix, int Row1, register  ElementPtr Element1, int Row2, register  ElementPtr Element2, int Column );
-static int ExchangeRowElements( MatrixPtr Matrix, int Col1, register ElementPtr Element1, int Col2, register ElementPtr Element2, int Row );
-static int RealRowColElimination( MatrixPtr Matrix, register ElementPtr pPivot );
-static int ComplexRowColElimination( MatrixPtr Matrix, register ElementPtr pPivot );
-static int UpdateMarkowitzNumbers( MatrixPtr Matrix, ElementPtr pPivot );
-static ElementPtr CreateFillin( MatrixPtr Matrix, register int Row, int Col );
-static int MatrixIsSingular( MatrixPtr Matrix, int Step );
-static int ZeroPivot( MatrixPtr Matrix, int Step );
+static int FactorComplexMatrix(MatrixPtr Matrix);
+static int CreateInternalVectors(MatrixPtr Matrix);
+static int CountMarkowitz(MatrixPtr Matrix, register RealVector RHS, int Step);
+static int MarkowitzProducts(MatrixPtr Matrix, int Step);
+static ElementPtr SearchForPivot(MatrixPtr Matrix, int Step, int DiagPivoting);
+static ElementPtr SearchForSingleton(MatrixPtr Matrix, int Step);
+static ElementPtr QuicklySearchDiagonal(MatrixPtr Matrix, int Step);
+static ElementPtr SearchDiagonal(MatrixPtr Matrix, register int Step);
+static ElementPtr SearchEntireMatrix(MatrixPtr Matrix, int Step);
+static RealNumber FindLargestInCol(register  ElementPtr pElement);
+static RealNumber FindBiggestInColExclude(MatrixPtr Matrix, register ElementPtr pElement,
+        register  int Step);
+static int ExchangeRowsAndCols(MatrixPtr Matrix, ElementPtr pPivot, register int Step);
+static int ExchangeColElements(MatrixPtr Matrix, int Row1,
+                               register ElementPtr Element1, int Row2,
+                               register ElementPtr Element2, int Column);
+static int ExchangeRowElements(MatrixPtr Matrix, int Col1,
+                               register ElementPtr Element1, int Col2,
+                               register ElementPtr Element2, int Row);
+static int RealRowColElimination(MatrixPtr Matrix, register ElementPtr pPivot);
+static int ComplexRowColElimination(MatrixPtr Matrix, register ElementPtr pPivot);
+static int UpdateMarkowitzNumbers(MatrixPtr Matrix, ElementPtr pPivot);
+static ElementPtr CreateFillin(MatrixPtr Matrix, register int Row, int Col);
+static int MatrixIsSingular(MatrixPtr Matrix, int Step);
+static int ZeroPivot(MatrixPtr Matrix, int Step);
 
 
-int spcRowExchange( MatrixPtr Matrix, int Row1, int Row2 );
-int spcColExchange( MatrixPtr Matrix, int Col1, int Col2 );
+int spcRowExchange(MatrixPtr Matrix, int Row1, int Row2);
+int spcColExchange(MatrixPtr Matrix, int Col1, int Col2);
 
 /*
  *  ORDER AND FACTOR MATRIX
@@ -184,8 +189,8 @@ int spcColExchange( MatrixPtr Matrix, int Col1, int Col2 );
  *  Error is cleared in this function.
  */
 
-
-int spOrderAndFactor(char *eMatrix, RealNumber  RHS[], RealNumber RelThreshold, RealNumber AbsThreshold, SPBOOLEAN DiagPivoting )
+int spOrderAndFactor(char *eMatrix, RealNumber  RHS[], RealNumber RelThreshold,
+                     RealNumber AbsThreshold, SPBOOLEAN DiagPivoting)
 {
     MatrixPtr  Matrix = (MatrixPtr)eMatrix;
     ElementPtr  pPivot;
@@ -320,7 +325,8 @@ int spOrderAndFactor(char *eMatrix, RealNumber  RHS[], RealNumber RelThreshold, 
             }
             else
             {
-                fprintf(stderr, "//Matrix is Singular at level prec [%f] I return LU\n", ELEMENT_MAG(pPivot));
+                fprintf(stderr, "//Matrix is Singular at level prec [%f] I return LU\n",
+                        ELEMENT_MAG(pPivot));
             }
 #endif
             break;
@@ -336,11 +342,6 @@ Done:
 
     return Matrix->Error;
 }
-
-
-
-
-
 
 
 /*
@@ -496,10 +497,6 @@ int spFactor( char *eMatrix )
 }
 
 
-
-
-
-
 #if spCOMPLEX
 /*
  *  FACTOR COMPLEX MATRIX
@@ -632,9 +629,6 @@ FactorComplexMatrix( MatrixPtr Matrix )
     return (Matrix->Error = spOKAY);
 }
 #endif /* spCOMPLEX */
-
-
-
 
 
 /*
@@ -823,11 +817,6 @@ spPartition( char *eMatrix, int Mode )
 }
 
 
-
-
-
-
-
 /*
  *  CREATE INTERNAL VECTORS
  *
@@ -921,11 +910,6 @@ CreateInternalVectors( MatrixPtr Matrix )
     }
     return 0;
 }
-
-
-
-
-
 
 
 /*
@@ -1050,14 +1034,6 @@ static int CountMarkowitz( MatrixPtr Matrix, register RealVector RHS, int Step )
 }
 
 
-
-
-
-
-
-
-
-
 /*
  *  MARKOWITZ PRODUCTS
  *
@@ -1128,15 +1104,6 @@ MarkowitzProducts( MatrixPtr Matrix, int Step )
     }
     return 0;
 }
-
-
-
-
-
-
-
-
-
 
 
 /*
@@ -1231,13 +1198,6 @@ SearchForPivot( MatrixPtr Matrix, int Step, int DiagPivoting )
 
     return ChosenPivot;
 }
-
-
-
-
-
-
-
 
 
 /*
@@ -1431,16 +1391,6 @@ SearchForSingleton( MatrixPtr Matrix, int Step )
     Matrix->Singletons++;
     return NULL;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 #if DIAGONAL_PIVOTING
@@ -1676,15 +1626,6 @@ QuicklySearchDiagonal( MatrixPtr Matrix, int Step )
     return ChosenPivot;
 }
 
-
-
-
-
-
-
-
-
-
 #else /* Not MODIFIED_MARKOWITZ */
 /*
  *  QUICK SEARCH OF DIAGONAL FOR PIVOT WITH CONVENTIONAL MARKOWITZ
@@ -1744,7 +1685,6 @@ QuicklySearchDiagonal( MatrixPtr Matrix, int Step )
     int  I;
     ElementPtr  ChosenPivot, pOtherInRow, pOtherInCol;
     RealNumber  Magnitude, LargestInCol, LargestOffDiagonal;
-    RealNumber  FindBiggestInColExclude();
 
     /* Begin `QuicklySearchDiagonal'. */
     ChosenPivot = NULL;
@@ -1865,13 +1805,6 @@ QuicklySearchDiagonal( MatrixPtr Matrix, int Step )
 #endif /* Not MODIFIED_MARKOWITZ */
 
 
-
-
-
-
-
-
-
 /*
  *  SEARCH DIAGONAL FOR PIVOT WITH MODIFIED MARKOWITZ CRITERION
  *
@@ -1932,7 +1865,6 @@ SearchDiagonal( MatrixPtr Matrix, register int Step )
     int  NumberOfTies = 0, Size = Matrix->Size;
     ElementPtr  ChosenPivot = NULL;
     RealNumber  Magnitude = 0., Ratio = 0., RatioOfAccepted = 0., LargestInCol = 0.;
-    RealNumber  FindBiggestInColExclude();
 
     /* Begin `SearchDiagonal'. */
     ChosenPivot = NULL;
@@ -1998,14 +1930,6 @@ SearchDiagonal( MatrixPtr Matrix, register int Step )
     return ChosenPivot;
 }
 #endif /* DIAGONAL_PIVOTING */
-
-
-
-
-
-
-
-
 
 
 /*
@@ -2159,16 +2083,6 @@ SearchEntireMatrix( MatrixPtr Matrix, int Step )
 }
 
 
-
-
-
-
-
-
-
-
-
-
 /*
  *  DETERMINE THE MAGNITUDE OF THE LARGEST ELEMENT IN A COLUMN
  *
@@ -2215,14 +2129,6 @@ FindLargestInCol( register  ElementPtr pElement )
 
     return Largest;
 }
-
-
-
-
-
-
-
-
 
 
 /*
@@ -2306,14 +2212,6 @@ FindBiggestInColExclude( MatrixPtr Matrix, register  ElementPtr pElement, regist
 
     return Largest;
 }
-
-
-
-
-
-
-
-
 
 
 /*
@@ -2417,13 +2315,6 @@ int spcRowExchange( MatrixPtr Matrix, int Row1, int Row2 )
 }
 
 
-
-
-
-
-
-
-
 /*
  *  EXCHANGE COLUMNS
  *
@@ -2525,11 +2416,6 @@ int spcColExchange( MatrixPtr Matrix, int Col1, int Col2 )
 }
 
 
-
-
-
-
-
 /*
  *  EXCHANGE ROWS AND COLUMNS
  *
@@ -2589,7 +2475,6 @@ ExchangeRowsAndCols( MatrixPtr Matrix,  ElementPtr pPivot, register int Step )
     }
     else
     {
-
         /* Initialize variables that hold old Markowitz products. */
         OldMarkowitzProd_Step = Matrix->MarkowitzProd[Step];
         OldMarkowitzProd_Row = Matrix->MarkowitzProd[Row];
@@ -2673,13 +2558,6 @@ ExchangeRowsAndCols( MatrixPtr Matrix,  ElementPtr pPivot, register int Step )
 }
 
 
-
-
-
-
-
-
-
 /*
  *  EXCHANGE TWO ELEMENTS IN A COLUMN
  *
@@ -2717,7 +2595,8 @@ ExchangeRowsAndCols( MatrixPtr Matrix,  ElementPtr pPivot, register int Step )
  */
 
 static int
-ExchangeColElements( MatrixPtr Matrix, int Row1, register  ElementPtr Element1, int Row2, register  ElementPtr Element2, int Column )
+ExchangeColElements(MatrixPtr Matrix, int Row1, register  ElementPtr Element1,
+                    int Row2, register ElementPtr Element2, int Column)
 {
     ElementPtr  *ElementAboveRow1, *ElementAboveRow2;
     ElementPtr  ElementBelowRow1, ElementBelowRow2;
@@ -2820,11 +2699,6 @@ ExchangeColElements( MatrixPtr Matrix, int Row1, register  ElementPtr Element1, 
 }
 
 
-
-
-
-
-
 /*
  *  EXCHANGE TWO ELEMENTS IN A ROW
  *
@@ -2864,7 +2738,8 @@ ExchangeColElements( MatrixPtr Matrix, int Row1, register  ElementPtr Element1, 
  */
 
 static int
-ExchangeRowElements( MatrixPtr Matrix, int Col1, register ElementPtr Element1, int Col2, register ElementPtr Element2, int Row )
+ExchangeRowElements(MatrixPtr Matrix, int Col1, register ElementPtr Element1,
+                    int Col2, register ElementPtr Element2, int Row)
 {
     ElementPtr  *ElementLeftOfCol1, *ElementLeftOfCol2;
     ElementPtr  ElementRightOfCol1, ElementRightOfCol2;
@@ -2967,15 +2842,6 @@ ExchangeRowElements( MatrixPtr Matrix, int Col1, register ElementPtr Element1, i
 }
 
 
-
-
-
-
-
-
-
-
-
 /*
  *  PERFORM ROW AND COLUMN ELIMINATION ON REAL MATRIX
  *
@@ -3060,13 +2926,6 @@ RealRowColElimination( MatrixPtr Matrix, register ElementPtr pPivot )
     return 0;
 #endif /* REAL */
 }
-
-
-
-
-
-
-
 
 
 /*
@@ -3154,9 +3013,6 @@ ComplexRowColElimination( MatrixPtr Matrix, register ElementPtr pPivot )
     return 0;
 #endif /* spCOMPLEX */
 }
-
-
-
 
 
 /*
@@ -3254,12 +3110,6 @@ UpdateMarkowitzNumbers( MatrixPtr Matrix, ElementPtr pPivot )
 }
 
 
-
-
-
-
-
-
 /*
  *  CREATE FILL-IN
  *
@@ -3293,7 +3143,6 @@ static ElementPtr
 CreateFillin( MatrixPtr Matrix, register int Row, int Col )
 {
     register  ElementPtr  pElement, *ppElementAbove;
-    ElementPtr  spcCreateElement();
 
     /* Begin `CreateFillin'. */
 
@@ -3334,12 +3183,6 @@ CreateFillin( MatrixPtr Matrix, register int Row, int Col )
 }
 
 
-
-
-
-
-
-
 /*
  *  ZERO PIVOT ENCOUNTERED
  *
@@ -3376,10 +3219,6 @@ ZeroPivot( MatrixPtr Matrix, int Step )
     Matrix->SingularCol = Matrix->IntToExtColMap[ Step ];
     return (Matrix->Error = spZERO_DIAG);
 }
-
-
-
-
 
 
 #if ANNOTATE == FULL

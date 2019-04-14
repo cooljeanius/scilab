@@ -167,8 +167,7 @@ DIST_COMMON = $(srcdir)/Makefile.am $(top_srcdir)/configure \
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
-CONFIG_HEADER = config.h \
-	$(top_builddir)/modules/core/includes/machine.h
+CONFIG_HEADER = $(top_builddir)/modules/core/includes/machine.h
 CONFIG_CLEAN_FILES = scilab.pc etc/modules.xml etc/classpath.xml \
 	etc/Info.plist etc/logging.properties scilab.properties \
 	scilab-lib.properties scilab-lib-doc.properties \
@@ -391,8 +390,7 @@ am__recursive_targets = \
 AM_RECURSIVE_TARGETS = $(am__recursive_targets:-recursive=) TAGS CTAGS \
 	cscope check recheck distdir distdir-am dist dist-all \
 	distcheck
-am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) \
-	$(LISP)config.h.in
+am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 # Read a list of newline-separated strings from the standard input,
 # and print each of them once, without duplicates.  Input order is
 # *not* preserved.
@@ -593,7 +591,7 @@ TEST_LOG_DRIVER = $(SHELL) $(top_srcdir)/config/test-driver
 TEST_LOG_COMPILE = $(TEST_LOG_COMPILER) $(AM_TEST_LOG_FLAGS) \
 	$(TEST_LOG_FLAGS)
 DIST_SUBDIRS = $(SUBDIRS)
-am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in \
+am__DIST_COMMON = $(srcdir)/Makefile.in \
 	$(srcdir)/scilab-lib-doc.properties.in \
 	$(srcdir)/scilab-lib.properties.in $(srcdir)/scilab.pc.in \
 	$(srcdir)/scilab.properties.in \
@@ -1164,8 +1162,7 @@ call_scilab_readwritematrix_LDFLAGS = $(CALL_SCILAB_LDADD_COMMON)
 call_scilab_readwritestring_SOURCES = $(top_srcdir)/modules/call_scilab/examples/basicExamples/readwritestring.c
 call_scilab_readwritestring_CFLAGS = $(CALL_SCILAB_CFLAGS_COMMON)
 call_scilab_readwritestring_LDFLAGS = $(CALL_SCILAB_LDADD_COMMON)
-all: config.h
-	$(MAKE) $(AM_MAKEFLAGS) all-recursive
+all: all-recursive
 
 .SUFFIXES:
 .SUFFIXES: .c .lo .log .o .obj .test .test$(EXEEXT) .trs
@@ -1204,28 +1201,20 @@ $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
 	$(am__cd) $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 $(am__aclocal_m4_deps):
 
-config.h: stamp-h1
-	@test -f $@ || rm -f stamp-h1
-	@test -f $@ || $(MAKE) $(AM_MAKEFLAGS) stamp-h1
+modules/core/includes/machine.h: modules/core/includes/stamp-h1
+	@test -f $@ || rm -f modules/core/includes/stamp-h1
+	@test -f $@ || $(MAKE) $(AM_MAKEFLAGS) modules/core/includes/stamp-h1
 
-stamp-h1: $(srcdir)/config.h.in $(top_builddir)/config.status
-	@rm -f stamp-h1
-	cd $(top_builddir) && $(SHELL) ./config.status config.h
-$(srcdir)/config.h.in: @MAINTAINER_MODE_TRUE@ $(am__configure_deps) 
+modules/core/includes/stamp-h1: $(top_srcdir)/modules/core/includes/machine.h.in $(top_builddir)/config.status
+	@rm -f modules/core/includes/stamp-h1
+	cd $(top_builddir) && $(SHELL) ./config.status modules/core/includes/machine.h
+$(top_srcdir)/modules/core/includes/machine.h.in: @MAINTAINER_MODE_TRUE@ $(am__configure_deps) 
 	($(am__cd) $(top_srcdir) && $(AUTOHEADER))
-	rm -f stamp-h1
+	rm -f modules/core/includes/stamp-h1
 	touch $@
 
-modules/core/includes/machine.h: modules/core/includes/stamp-h2
-	@test -f $@ || rm -f modules/core/includes/stamp-h2
-	@test -f $@ || $(MAKE) $(AM_MAKEFLAGS) modules/core/includes/stamp-h2
-
-modules/core/includes/stamp-h2: $(top_srcdir)/modules/core/includes/machine.h.in $(top_builddir)/config.status
-	@rm -f modules/core/includes/stamp-h2
-	cd $(top_builddir) && $(SHELL) ./config.status modules/core/includes/machine.h
-
 distclean-hdr:
-	-rm -f config.h stamp-h1 modules/core/includes/machine.h modules/core/includes/stamp-h2
+	-rm -f modules/core/includes/machine.h modules/core/includes/stamp-h1
 scilab.pc: $(top_builddir)/config.status $(srcdir)/scilab.pc.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 etc/modules.xml: $(top_builddir)/config.status $(top_srcdir)/etc/modules.xml.in
@@ -2268,7 +2257,7 @@ check-am: all-am
 	$(MAKE) $(AM_MAKEFLAGS) $(check_PROGRAMS)
 	$(MAKE) $(AM_MAKEFLAGS) check-DEJAGNU check-TESTS check-local
 check: check-recursive
-all-am: Makefile $(PROGRAMS) $(SCRIPTS) $(DATA) config.h all-local
+all-am: Makefile $(PROGRAMS) $(SCRIPTS) $(DATA) all-local
 installdirs: installdirs-recursive
 installdirs-am:
 	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(bindir)" "$(DESTDIR)$(infofilesdir)" "$(DESTDIR)$(pkgconfigdir)" "$(DESTDIR)$(rootdir)" "$(DESTDIR)$(valgrinddir)"; do \
@@ -2414,7 +2403,7 @@ uninstall-am: uninstall-binPROGRAMS uninstall-binSCRIPTS \
 	uninstall-infofilesDATA uninstall-pkgconfigDATA \
 	uninstall-rootDATA uninstall-valgrindDATA
 
-.MAKE: $(am__recursive_targets) all check-am install-am install-strip
+.MAKE: $(am__recursive_targets) check-am install-am install-strip
 
 .PHONY: $(am__recursive_targets) CTAGS GTAGS TAGS all all-am all-local \
 	am--depfiles am--refresh check check-DEJAGNU check-TESTS \

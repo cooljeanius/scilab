@@ -181,8 +181,6 @@ spGetElement( char *eMatrix, int Row, int Col )
 {
     MatrixPtr  Matrix = (MatrixPtr)eMatrix;
     RealNumber  *pElement;
-    ElementPtr spcFindElementInCol();
-
 
     /* Begin `spGetElement'. */
     ASSERT( IS_SPARSE( Matrix ) AND Row >= 0 AND Col >= 0 );
@@ -283,10 +281,10 @@ spGetElement( char *eMatrix, int Row, int Col )
  */
 
 ElementPtr
-spcFindElementInCol( MatrixPtr Matrix, register ElementPtr *LastAddr, register int Row, int Col, SPBOOLEAN CreateIfMissing )
+spcFindElementInCol(MatrixPtr Matrix, register ElementPtr *LastAddr,
+                    register int Row, int Col, SPBOOLEAN CreateIfMissing)
 {
     register  ElementPtr  pElement;
-    ElementPtr  spcCreateElement();
 
     /* Begin `spcFindElementInCol'. */
     pElement = *LastAddr;

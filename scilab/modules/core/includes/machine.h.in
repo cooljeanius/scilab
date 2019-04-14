@@ -14,6 +14,9 @@
 /* The normal alignment of `long', in bytes. */
 #undef ALIGNOF_LONG
 
+/* The normal alignment of `void *', in bytes. */
+#undef ALIGNOF_VOID_P
+
 /* Define C2F without Trailing Underscore */
 #undef C2F
 
@@ -57,6 +60,15 @@
 /* Define to 1 if your Fortran compiler doesn't accept -c and -o together. */
 #undef FC_NO_MINUS_C_MINUS_O
 
+/* Define to nothing if C supports flexible array members, and to 1 if it does
+   not. That way, with a declaration like `struct s { int n; double
+   d[FLEXIBLE_ARRAY_MEMBER]; };', the struct hack can be used with pre-C99
+   compilers. When computing the size of such an object, don't use 'sizeof
+   (struct s)' as it overestimates the size. Use 'offsetof (struct s, d)'
+   instead. Don't use 'offsetof (struct s, d[0])', as this doesn't work with
+   MSVC and with C++ compilers. */
+#undef FLEXIBLE_ARRAY_MEMBER
+
 /* uses G95 fortran */
 #undef G95_FORTRAN
 
@@ -79,6 +91,12 @@
 /* Define to 1 if you have the `bzero' function. */
 #undef HAVE_BZERO
 
+/* Define to 1 if you have the `ceil' function. */
+#undef HAVE_CEIL
+
+/* Define to 1 if you have the `ceilf' function. */
+#undef HAVE_CEILF
+
 /* Define to 1 if you have the Mac OS X function CFLocaleCopyCurrent in the
    CoreFoundation framework. */
 #undef HAVE_CFLOCALECOPYCURRENT
@@ -99,9 +117,31 @@
 /* Define to 1 if you have the <curses.h> header file. */
 #undef HAVE_CURSES_H
 
+/* Define to 1 if C supports variable-length arrays. */
+#undef HAVE_C_VARARRAYS
+
+/* Define to 1 if C11-style _Generic works. */
+#undef HAVE_C__GENERIC
+
 /* Define if the GNU dcgettext() function is already present or preinstalled.
    */
 #undef HAVE_DCGETTEXT
+
+/* Define to 1 if you have the declaration of `finite', and to 0 if you don't.
+   */
+#undef HAVE_DECL_FINITE
+
+/* Define to 1 if you have the declaration of `round', and to 0 if you don't.
+   */
+#undef HAVE_DECL_ROUND
+
+/* Define to 1 if you have the declaration of `signbit', and to 0 if you
+   don't. */
+#undef HAVE_DECL_SIGNBIT
+
+/* Define to 1 if you have the declaration of `vsnprintf', and to 0 if you
+   don't. */
+#undef HAVE_DECL_VSNPRINTF
 
 /* Define to 1 if you have the <dirent.h> header file, and it defines `DIR'.
    */
@@ -110,11 +150,17 @@
 /* Define to 1 if you have the <dlfcn.h> header file. */
 #undef HAVE_DLFCN_H
 
+/* Define to 1 if you have the `dlopen' function. */
+#undef HAVE_DLOPEN
+
 /* Define to 1 if you have the <dl.h> header file. */
 #undef HAVE_DL_H
 
 /* Define to 1 if you have the `dup2' function. */
 #undef HAVE_DUP2
+
+/* Define to 1 if you have the `dyld_stub_binding_helper' function. */
+#undef HAVE_DYLD_STUB_BINDING_HELPER
 
 /* Define to 1 if you have the `endpwent' function. */
 #undef HAVE_ENDPWENT
@@ -136,6 +182,9 @@
 
 /* Define to 1 if you have the `fork' function. */
 #undef HAVE_FORK
+
+/* Define to 1 if you have the `freopen' function. */
+#undef HAVE_FREOPEN
 
 /* Define to 1 if you have the `getcwd' function. */
 #undef HAVE_GETCWD
@@ -161,17 +210,23 @@
 /* Define to 1 if you have the `gettimeofday' function. */
 #undef HAVE_GETTIMEOFDAY
 
-/* Define to 1 if you have the `getwd' function. */
-#undef HAVE_GETWD
-
 /* HAVE_GLIBC_BACKTRACE */
 #undef HAVE_GLIBC_BACKTRACE
 
 /* Define if you have the iconv() function and it works. */
 #undef HAVE_ICONV
 
+/* Define to 1 if you have the <iconv.h> header file. */
+#undef HAVE_ICONV_H
+
+/* Define to 1 if the system has the type `intptr_t'. */
+#undef HAVE_INTPTR_T
+
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
+
+/* Define to 1 if you have the <io.h> header file. */
+#undef HAVE_IO_H
 
 /* Define to 1 if you have the `isascii' function. */
 #undef HAVE_ISASCII
@@ -179,8 +234,17 @@
 /* Define to 1 if you have the `iswprint' function. */
 #undef HAVE_ISWPRINT
 
+/* Define to 1 if you have the <jni.h> header file. */
+#undef HAVE_JNI_H
+
+/* Define to 1 if you have the <jni_md.h> header file. */
+#undef HAVE_JNI_MD_H
+
 /* Define to 1 if you have the <langinfo.h> header file. */
 #undef HAVE_LANGINFO_H
+
+/* Define to 1 if you have the `backtrace' library (-lbacktrace). */
+#undef HAVE_LIBBACKTRACE
 
 /* Define to 1 if you have the `c' library (-lc). */
 #undef HAVE_LIBC
@@ -194,9 +258,6 @@
 /* Define to 1 if you have the `hdf5' library (-lhdf5). */
 #undef HAVE_LIBHDF5
 
-/* Define to 1 if you have the `iconv' library (-liconv). */
-#undef HAVE_LIBICONV
-
 /* Define to 1 if you have the `intl' library (-lintl). */
 #undef HAVE_LIBINTL
 
@@ -205,6 +266,12 @@
 
 /* Define to 1 if you have the `lapack' library (-llapack). */
 #undef HAVE_LIBLAPACK
+
+/* Define to 1 if you have the `libiconv' library (-llibiconv). */
+#undef HAVE_LIBLIBICONV
+
+/* Define to 1 if you have the `ltdl' library (-lltdl). */
+#undef HAVE_LIBLTDL
 
 /* Define to 1 if you have the `m' library (-lm). */
 #undef HAVE_LIBM
@@ -227,6 +294,9 @@
 /* Define to 1 if you have the `stdc++' library (-lstdc++). */
 #undef HAVE_LIBSTDC__
 
+/* Define to 1 if you have the `Xlib' library (-lXlib). */
+#undef HAVE_LIBXLIB
+
 /* Define to 1 if you have the `xml2' library (-lxml2). */
 #undef HAVE_LIBXML2
 
@@ -245,6 +315,9 @@
 /* Define to 1 if you have the <libxml/xpath.h> header file. */
 #undef HAVE_LIBXML_XPATH_H
 
+/* Define to 1 if you have the `z' library (-lz). */
+#undef HAVE_LIBZ
+
 /* Define to 1 if you have the <limits.h> header file. */
 #undef HAVE_LIMITS_H
 
@@ -254,8 +327,26 @@
 /* Define to 1 if you have the <locale.h> header file. */
 #undef HAVE_LOCALE_H
 
+/* Define to 1 if you have the `log10' function. */
+#undef HAVE_LOG10
+
+/* Define to 1 if you have the <ltdl.h> header file. */
+#undef HAVE_LTDL_H
+
+/* Define to 1 if you have the `lt_dlopen' function. */
+#undef HAVE_LT_DLOPEN
+
+/* Define to 1 if the system has the type `lt_dlsymlist'. */
+#undef HAVE_LT_DLSYMLIST
+
+/* Define to 1 if you have the <machine.h> header file. */
+#undef HAVE_MACHINE_H
+
 /* Define to 1 if you have the <mach-o/dyld.h> header file. */
 #undef HAVE_MACH_O_DYLD_H
+
+/* Define to 1 if you have the <mach-o/getsect.h> header file. */
+#undef HAVE_MACH_O_GETSECT_H
 
 /* Define to 1 if your system has a GNU libc compatible `malloc' function, and
    to 0 otherwise. */
@@ -263,6 +354,9 @@
 
 /* Define to 1 if you have the <malloc.h> header file. */
 #undef HAVE_MALLOC_H
+
+/* Define to 1 if you have the <malloc/malloc.h> header file. */
+#undef HAVE_MALLOC_MALLOC_H
 
 /* Define to 1 if you have the <math.h> header file. */
 #undef HAVE_MATH_H
@@ -272,6 +366,12 @@
 
 /* Define to 1 if you have the <matio.h> header file. */
 #undef HAVE_MATIO_H
+
+/* Define to 1 if you have the <matio_pubconf.h> header file. */
+#undef HAVE_MATIO_PUBCONF_H
+
+/* Define to 1 if the system has the type `mat_t'. */
+#undef HAVE_MAT_T
 
 /* Define to 1 if you have the `mblen' function. */
 #undef HAVE_MBLEN
@@ -336,6 +436,9 @@
 /* Define to 1 if you have the <pcre.h> header file. */
 #undef HAVE_PCRE_H
 
+/* Define to 1 if you have the <pcre/tree.h> header file. */
+#undef HAVE_PCRE_TREE_H
+
 /* Define to 1 if you have the `pow' function. */
 #undef HAVE_POW
 
@@ -367,6 +470,9 @@
 /* Define to 1 if you have the `rmdir' function. */
 #undef HAVE_RMDIR
 
+/* Define to 1 if you have the `round' function. */
+#undef HAVE_ROUND
+
 /* Define to 1 if you have the `select' function. */
 #undef HAVE_SELECT
 
@@ -385,6 +491,9 @@
 /* Define to 1 if you have the <signal.h> header file. */
 #undef HAVE_SIGNAL_H
 
+/* Define to 1 if you have the `signbit' function. */
+#undef HAVE_SIGNBIT
+
 /* Define to 1 if you have the `sleep' function. */
 #undef HAVE_SLEEP
 
@@ -400,6 +509,9 @@
 /* Define to 1 if `stat' has the bug that it succeeds when given the
    zero-length file name argument. */
 #undef HAVE_STAT_EMPTY_STRING_BUG
+
+/* Define to 1 if stdbool.h conforms to C99. */
+#undef HAVE_STDBOOL_H
 
 /* Define to 1 if you have the <stddef.h> header file. */
 #undef HAVE_STDDEF_H
@@ -434,11 +546,17 @@
 /* Define to 1 if you have the `strerror' function. */
 #undef HAVE_STRERROR
 
+/* Define to 1 if cpp supports the ANSI # stringizing operator. */
+#undef HAVE_STRINGIZE
+
 /* Define to 1 if you have the <strings.h> header file. */
 #undef HAVE_STRINGS_H
 
 /* Define to 1 if you have the <string.h> header file. */
 #undef HAVE_STRING_H
+
+/* Define to 1 if you have the `strncasecmp' function. */
+#undef HAVE_STRNCASECMP
 
 /* Define to 1 if you have the `strpbrk' function. */
 #undef HAVE_STRPBRK
@@ -469,6 +587,12 @@
 
 /* Define to 1 if `st_rdev' is a member of `struct stat'. */
 #undef HAVE_STRUCT_STAT_ST_RDEV
+
+/* Define to 1 if `st_size' is a member of `struct stat'. */
+#undef HAVE_STRUCT_STAT_ST_SIZE
+
+/* Define to 1 if `filename' is a member of `struct _mat_t'. */
+#undef HAVE_STRUCT__MAT_T_FILENAME
 
 /* Define to 1 if your `struct stat' has `st_blocks'. Deprecated, use
    `HAVE_STRUCT_STAT_ST_BLOCKS' instead. */
@@ -515,6 +639,9 @@
 /* Define to 1 if you have <sys/wait.h> that is POSIX.1 compatible. */
 #undef HAVE_SYS_WAIT_H
 
+/* Define to 1 if you have the <tcl.h> header file. */
+#undef HAVE_TCL_H
+
 /* Have Term Cap */
 #undef HAVE_TERMCAP
 
@@ -530,11 +657,23 @@
 /* Define to 1 if you have the <term.h> header file. */
 #undef HAVE_TERM_H
 
+/* Define to 1 if you have the <tgmath.h> header file. */
+#undef HAVE_TGMATH_H
+
 /* Define to 1 if you have the <time.h> header file. */
 #undef HAVE_TIME_H
 
+/* Define to 1 if you have the <tk.h> header file. */
+#undef HAVE_TK_H
+
+/* Define to 1 if typeof works with your compiler. */
+#undef HAVE_TYPEOF
+
 /* Define to 1 if you have the <types.h> header file. */
 #undef HAVE_TYPES_H
+
+/* Define to 1 if the system has the type `uintptr_t'. */
+#undef HAVE_UINTPTR_T
 
 /* Define to 1 if you have the `uname' function. */
 #undef HAVE_UNAME
@@ -560,6 +699,9 @@
 /* Define to 1 if you have the <vfork.h> header file. */
 #undef HAVE_VFORK_H
 
+/* Define to 1 if you have the `vsnprintf' function. */
+#undef HAVE_VSNPRINTF
+
 /* Define to 1 if you have the <wchar.h> header file. */
 #undef HAVE_WCHAR_H
 
@@ -568,6 +710,12 @@
 
 /* Define to 1 if you have the `wcwidth' function. */
 #undef HAVE_WCWIDTH
+
+/* Define to 1 if you have the <winbase.h> header file. */
+#undef HAVE_WINBASE_H
+
+/* Define to 1 if you have the <windows.h> header file. */
+#undef HAVE_WINDOWS_H
 
 /* Define to 1 if `fork' works. */
 #undef HAVE_WORKING_FORK
@@ -580,6 +728,18 @@
 
 /* Define to 1 if you have the <X11/Xlib.h> header file. */
 #undef HAVE_X11_XLIB_H
+
+/* Define to 1 if you have the <X11/X.h> header file. */
+#undef HAVE_X11_X_H
+
+/* Define to 1 if you have the <Xlib.h> header file. */
+#undef HAVE_XLIB_H
+
+/* Define to 1 if you have the <xlocale.h> header file. */
+#undef HAVE_XLOCALE_H
+
+/* Define to 1 if you have the <X.h> header file. */
+#undef HAVE_X_H
 
 /* Define to 1 if the system has the type `_Bool'. */
 #undef HAVE__BOOL
@@ -609,9 +769,19 @@
    slash. */
 #undef LSTAT_FOLLOWS_SLASHED_SYMLINK
 
-/* Define to the sub-directory in which libtool stores uninstalled libraries.
-   */
+/* Define to the sub-directory where libtool stores uninstalled libraries. */
 #undef LT_OBJDIR
+
+/* Define to 1 if `major', `minor', and `makedev' are declared in <mkdev.h>.
+   */
+#undef MAJOR_IN_MKDEV
+
+/* Define to 1 if `major', `minor', and `makedev' are declared in
+   <sysmacros.h>. */
+#undef MAJOR_IN_SYSMACROS
+
+/* Minimum MacOSX version with which binaries will be compatible. */
+#undef MIN_MACOSX_VERSION
 
 /* Define to 0 if your system does not have the O_LARGEFILE flag */
 #undef O_LARGEFILE
@@ -637,6 +807,15 @@
 /* Define to the version of this package. */
 #undef PACKAGE_VERSION
 
+/* Major version of this package */
+#undef PACKAGE_VERSION_MAJOR
+
+/* Minor version of this package */
+#undef PACKAGE_VERSION_MINOR
+
+/* Patch version of this package */
+#undef PACKAGE_VERSION_PATCHLEVEL
+
 /* The default path separator character. */
 #undef PATH_SEPARATOR
 
@@ -655,6 +834,11 @@
 /* Define as the return type of signal handlers (`int' or `void'). */
 #undef RETSIGTYPE
 
+/* Define to 1 if the `setvbuf' func takes the buffering type as its second
+   argument and the buffer pointer as the third, as on System V before release
+   3. */
+#undef SETVBUF_REVERSED
+
 /* Extension of a shared library */
 #undef SHARED_LIB_EXT
 
@@ -663,6 +847,9 @@
 
 /* The size of `long', as computed by sizeof. */
 #undef SIZEOF_LONG
+
+/* The size of `void *', as computed by sizeof. */
+#undef SIZEOF_VOID_P
 
 /* If using the C implementation of alloca, define if you know the
    direction of stack growth for your system; otherwise it will be
@@ -757,6 +944,10 @@
 /* Define to 1 if the X Window System is missing or not being used. */
 #undef X_DISPLAY_MISSING
 
+/* Define to 1 if `lex' declares `yytext' as a `char *' by default, not a
+   `char[]'. */
+#undef YYTEXT_POINTER
+
 /* Enable large inode numbers on Mac OS X 10.5.  */
 #ifndef _DARWIN_USE_64_BIT_INODE
 # define _DARWIN_USE_64_BIT_INODE 1
@@ -793,14 +984,16 @@
    #define below would cause a syntax error. */
 #undef _UINT8_T
 
+/* Define to 1 if type `char' is unsigned and you are not using gcc.  */
+#ifndef __CHAR_UNSIGNED__
+# undef __CHAR_UNSIGNED__
+#endif
+
 /* Define like PROTOTYPES; this can be used by system headers. */
 #undef __PROTOTYPES
 
 /* Define to empty if `const' does not conform to ANSI C. */
 #undef const
-
-/* Do not use getwd. Instead use getcwd. */
-#undef getwd
 
 /* Define to `__inline__' or `__inline' if that's what the C compiler
    calls it, or to nothing if 'inline' is not supported under any name.  */
@@ -824,6 +1017,10 @@
    a type exists and the standard includes do not define it. */
 #undef int8_t
 
+/* Define to the type of a signed integer type wide enough to hold a pointer,
+   if such a type exists, and if the system does not define it. */
+#undef intptr_t
+
 /* Provide a macro to do isinf */
 #undef isinf
 
@@ -836,11 +1033,28 @@
 /* Define to rpl_realloc if the replacement function should be used. */
 #undef realloc
 
+/* Define to the equivalent of the C99 'restrict' keyword, or to
+   nothing if this is not supported.  Do not define if restrict is
+   supported directly.  */
+#undef restrict
+/* Work around a bug in Sun C++: it does not support _Restrict or
+   __restrict__, even though the corresponding Sun C compiler ends up with
+   "#define restrict _Restrict" or "#define restrict __restrict__" in the
+   previous line.  Perhaps some future version of Sun C++ will work with
+   restrict; if so, hopefully it defines __RESTRICT like Sun C does.  */
+#if defined __SUNPRO_CC && !defined __RESTRICT
+# define _Restrict
+# define __restrict__
+#endif
+
 /* Define to `unsigned int' if <sys/types.h> does not define. */
 #undef size_t
 
 /* Define to `int' if <sys/types.h> does not define. */
 #undef ssize_t
+
+/* Define to __typeof__ if your compiler spells it that way. */
+#undef typeof
 
 /* Define to the type of an unsigned integer type of width exactly 16 bits if
    such a type exists and the standard includes do not define it. */
@@ -858,8 +1072,16 @@
    such a type exists and the standard includes do not define it. */
 #undef uint8_t
 
+/* Define to the type of an unsigned integer type wide enough to hold a
+   pointer, if such a type exists, and if the system does not define it. */
+#undef uintptr_t
+
 /* Define as `fork' if `vfork' does not work. */
 #undef vfork
+
+/* Define to empty if the keyword `volatile' does not work. Warning: valid
+   code using `volatile' can become incorrect without. Disable with care. */
+#undef volatile
 
 
 
@@ -867,6 +1089,57 @@
        #undef DIR_SEPARATOR
 #endif
 #define DIR_SEPARATOR "/"
+
+#if (defined(__GNUC__) && defined(__GNUC_MINOR__) && (__GNUC__ >= 3)) && \
+    !defined(FLEX_SCANNER) && !defined(AVOID_POISONING) && 0
+# ifdef sprintf
+#  undef sprintf
+# endif /* sprintf */
+# pragma GCC poison sprintf
+#endif /* __GNUC__ && !AVOID_POISONING && 0 */
+
+#ifndef __cplusplus
+# ifndef min
+#  define min(a, b) ((a) < (b) ? (a) : (b))
+# endif /* !min */
+# ifndef max
+#  define max(a, b) ((a) > (b) ? (a) : (b))
+# endif /* !max */
+#endif /* !__cplusplus */
+
+#ifdef HAVE_LIMITS_H
+# include <limits.h>
+#endif /* HAVE_LIMITS_H */
+
+#ifdef HAVE_STDINT_H
+# include <stdint.h>
+#endif /* HAVE_STDINT_H */
+
+#ifndef SIZE_T_MAX
+# ifdef SIZE_MAX
+#  define SIZE_T_MAX SIZE_MAX
+# else
+#  ifdef ULONG_MAX
+#   define SIZE_T_MAX ULONG_MAX	/* max value for a size_t */
+#  else
+#   ifdef UINT_MAX
+#    define SIZE_T_MAX UINT_MAX
+#   else
+#    define SIZE_T_MAX (size_t)(-1)
+#   endif /* UINT_MAX */
+#  endif /* ULONG_MAX */
+# endif /* SIZE_MAX */
+#endif /* !SIZE_T_MAX */
+
+#ifndef BUF_LEN_MAX_FOR_SNPRINTF
+# ifndef __cplusplus
+#  define BUF_LEN_MAX_FOR_SNPRINTF \
+           (min((((SIZE_T_MAX - 1UL) / 2UL) - 1UL), ((size_t)INT_MAX - 1UL)))
+# else
+#  define BUF_LEN_MAX_FOR_SNPRINTF \
+        (std::min((((SIZE_T_MAX - 1UL) / 2UL) - 1UL), ((size_t)INT_MAX - 1UL)))
+# endif /* !__cplusplus */
+#endif /* BUF_LEN_MAX_FOR_SNPRINTF */
 
 #endif /* MACHINE_H  */
 

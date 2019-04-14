@@ -40,13 +40,14 @@
 * 12/02/07 : update lhs to double output
 *
 */
+
+extern CURBLK_struct C2F(curblk); /* moved out here for -Wnested-externs */
+
 int sci_curblockc(char *fname, unsigned long fname_len)
 {
     /***********************
     * variables declaration
     ***********************/
-
-    extern CURBLK_struct C2F(curblk);
 
     /* address of the data of the output parameter */
     int l1 = 0;

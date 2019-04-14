@@ -32,6 +32,7 @@
 #include "import.h"
 #include "localization.h"
 #include "MALLOC.h"
+#include "machine.h"
 /*--------------------------------------------------------------------------*/
 /* intsicosimc scicosim interface routine.
 *
@@ -2547,7 +2548,7 @@ int sci_scicosim(char *fname, unsigned long fname_len)
                 break;
 
             case 6:
-                snprintf(C2F(cha1).buf, (size_t)(-1),
+                snprintf(C2F(cha1).buf, BUF_LEN_MAX_FOR_SNPRINTF,
                          _("the block %d has been called with input out of its domain"),
                          C2F(curblk).kfun);
                 break;
@@ -2569,7 +2570,7 @@ int sci_scicosim(char *fname, unsigned long fname_len)
                 break;
 
             case 21:
-                snprintf(C2F(cha1).buf, (size_t)(-1),
+                snprintf(C2F(cha1).buf, BUF_LEN_MAX_FOR_SNPRINTF,
                          _("cannot allocate memory in block=%d"),
                          C2F(curblk).kfun);
                 break;
@@ -2964,7 +2965,7 @@ int sci_scicosim(char *fname, unsigned long fname_len)
                 else if (ierr >= 100)
                 {
                     istate = -(ierr - 100);
-                    snprintf(C2F(cha1).buf, (size_t)(-1),
+                    snprintf(C2F(cha1).buf, BUF_LEN_MAX_FOR_SNPRINTF,
                              _("integration problem istate=%d"),
                              istate);
                     C2F(curblk).kfun = 0;

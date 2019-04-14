@@ -1616,7 +1616,6 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wformat=2], [-Wformat])dnl
 AC_LANG_CASE([C],[
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wstrict-prototypes])
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wmissing-prototypes])
-	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wnested-externs])
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wold-style-definition])
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wdeclaration-after-statement])
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wtraditional-conversion])
@@ -1703,6 +1702,7 @@ AC_LANG_CASE([Fortran 77],[
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=declaration-after-statement])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=missing-field-initializers])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=absolute-value])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=nested-externs])
 ])
 if test "[x${]WERROR_WRITE_STRINGS_CV[}]" != "xyes"; then
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=incompatible-pointer-types])
@@ -1734,6 +1734,8 @@ AC_LANG_CASE([Fortran 77],[
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wargument-mismatch])
 ],[C++],[
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wconversion-null])
+],[C],[
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wnested-externs])
 ])
 dnl# -Wdiscarded-qualifiers should already be on by default
 fi

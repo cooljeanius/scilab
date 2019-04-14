@@ -177,7 +177,10 @@ static char **splitErrorMessage(const char *msg, int *nbLines)
             currentSplit[currentSep++] = strdup(pos);
         }
 
-        while ( *pos++ );
+        while (*pos++)
+        {
+            ; /* ??? */
+        }
         pos += sizeSeparator - 1;
     }
 

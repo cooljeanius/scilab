@@ -18,6 +18,10 @@ extern "C" {
 
 #define BUFFER_SIZE 1024
 
+#ifndef ATTRIBUTE_PRINTF
+# define ATTRIBUTE_PRINTF(m, n) __attribute__((__format__(__printf__, m, n)))
+#endif /* ATTRIBUTE_PRINTF */
+
 namespace org_modules_external_objects
 {
 class ScilabAbstractEnvironmentException : public std::exception
@@ -55,6 +59,7 @@ public:
         message = getDescription(std::string(str));
     }
 
+    /* FIXME: trying to apply ATTRIBUTE_PRINTF fails: */
     ScilabAbstractEnvironmentException(const int _line, const char * _file, const char * _message, ...) : message(""), file(_file), line(_line)
     {
         char str[BUFFER_SIZE];

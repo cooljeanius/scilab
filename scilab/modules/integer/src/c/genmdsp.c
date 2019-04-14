@@ -77,12 +77,16 @@ X=(Type *)x;\
     }\
 }
 
-int C2F(genmdsp)(int *typ, int *x, int *nx, int *mm, int *nn, int *ll, int *lunit, char cw[], int *iw, int cw_len)
+/* moved out here for -Wnested-externs: */
+extern int C2F(blktit)();
+extern int C2F(basout)();
+
+int C2F(genmdsp)(int *typ, int *x, int *nx, int *mm, int *nn, int *ll,
+                 int *lunit, char cw[], int *iw, int cw_len)
 {
     static int k, l, m, n, s, lbloc, nbloc, k1, l1, k2, ib;
     static char dl;
     static int fl, io, lp;
-    extern  int C2F(blktit)(), C2F(basout)();
 
     switch (*typ)
     {

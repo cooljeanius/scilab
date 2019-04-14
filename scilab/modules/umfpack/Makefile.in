@@ -149,8 +149,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 DIST_COMMON = $(srcdir)/Makefile.am $(am__DIST_COMMON)
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
-CONFIG_HEADER = $(top_builddir)/config.h \
-	$(top_builddir)/modules/core/includes/machine.h
+CONFIG_HEADER = $(top_builddir)/modules/core/includes/machine.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
@@ -253,7 +252,7 @@ AM_V_at = $(am__v_at_@AM_V@)
 am__v_at_ = $(am__v_at_@AM_DEFAULT_V@)
 am__v_at_0 = @
 am__v_at_1 = 
-DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir) -I$(top_builddir)/modules/core/includes
+DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)/modules/core/includes
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__maybe_remake_depfiles = depfiles
 am__depfiles_remade =  \
@@ -794,9 +793,17 @@ AM_V_q = $(am__v_q_@AM_V@)
 am__v_q_ = $(am__v_q_@AM_DEFAULT_V@)
 am__v_q_0 = -q
 am__v_q_1 = 
+AM_V_ANT = $(am__v_ANT_@AM_V@)
+am__v_ANT_ = $(am__v_ANT_@AM_DEFAULT_V@)
+am__v_ANT_0 = @echo "  ANT     " `pwd`;
+am__v_ANT_1 = 
+AM_V_SWIG = $(am__v_SWIG_@AM_V@)
+am__v_SWIG_ = $(am__v_SWIG_@AM_DEFAULT_V@)
+am__v_SWIG_0 = @echo "  SWIG     " `pwd`;
+am__v_SWIG_1 = 
 
 # splint options
-SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements $(AM_V_splint) -fixedformalarray -fcnuse +oldstyle +noret +firstcase +allempty +elseifcomplete +incondefs +matchfields +incondefslib +overload +nestedextern +imptype $(LOCAL_SPLINT_OPTIONS)
+SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements $(AM_V_splint) -fixedformalarray -fcnuse +oldstyle +noret +firstcase +allempty +matchfields +incondefslib +overload +nestedextern +imptype $(LOCAL_SPLINT_OPTIONS)
 SPLINT_INCLUDE_FLAGS = `echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
 
 ########################### JAVA ######################################
@@ -1640,7 +1647,7 @@ stamp-splint: $(CHECK_SRC)
 	touch $@
 @NEED_JAVA_TRUE@java:
 # Some configurations needs to export JAVA_HOME in the current env
-@NEED_JAVA_TRUE@	$(AM_V_at)if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \
+@NEED_JAVA_TRUE@	$(AM_V_ANT)if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \
 @NEED_JAVA_TRUE@	if test -z "$(USEANT)"; then USEANT=0; else USEANT=1; fi; \
 @NEED_JAVA_TRUE@	if test -f build.xml -a $$USEANT -eq 1; then \
 @NEED_JAVA_TRUE@		$(ANT) $(AM_V_q); \
@@ -1658,7 +1665,7 @@ stamp-splint: $(CHECK_SRC)
 # We call the target swig-build on the variable SWIG_WRAPPERS
 
 @SWIG_TRUE@swig: $(SWIG_WRAPPERS)
-@SWIG_TRUE@	$(AM_V_at)SWIG_PACKAGENAME=org.scilab.modules.$(modulename); \
+@SWIG_TRUE@	$(AM_V_SWIG)SWIG_PACKAGENAME=org.scilab.modules.$(modulename); \
 @SWIG_TRUE@	SWIG_OUTDIR=src/java/org/scilab/modules/$(modulename)/; \
 @SWIG_TRUE@	if test -n "$(SWIG_WRAPPERS)"; then \
 @SWIG_TRUE@		for file in $(SWIG_WRAPPERS) ; do \

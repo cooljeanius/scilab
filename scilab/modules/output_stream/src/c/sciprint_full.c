@@ -41,7 +41,8 @@ void sciprint_full(char *fmt, ...)
     char *s_buf = NULL;
     char *split_s_buf = NULL;
     /* keep condition the same as where it is used: */
-#if defined(linux) || defined(_MSC_VER)
+#if defined(linux) || defined(_MSC_VER) || (defined(HAVE_VSNPRINTF) && defined(HAVE_DECL_VSNPRINTF)) || \
+    defined(S_SPLINT_S)
     int count = 0;
 #endif /* linux || _MSC_VER */
     int p_s = 0;
@@ -66,6 +67,8 @@ void sciprint_full(char *fmt, ...)
 
     va_start(ap, fmt);
 
+    /* when changing this condition, remember to change the one where count is
+     * declared, too: */
 #if defined(linux) || defined(_MSC_VER) || (defined(HAVE_VSNPRINTF) && defined(HAVE_DECL_VSNPRINTF)) || \
     defined(S_SPLINT_S)
     count = vsnprintf(s_buf, MAXCHARSSCIPRINT_FULL - 1, fmt, ap );

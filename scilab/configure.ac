@@ -67,7 +67,6 @@ if test "${SPACE_IN_PATH}" = "0"; then
 fi
 
 AC_CONFIG_AUX_DIR([config])
-AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_HEADERS([modules/core/includes/machine.h])dnl
 
 # Check system
@@ -2294,12 +2293,55 @@ AH_BOTTOM([
 #define DIR_SEPARATOR "/"
 
 #if (defined(__GNUC__) && defined(__GNUC_MINOR__) && (__GNUC__ >= 3)) && \
-    !defined(FLEX_SCANNER) && !defined(AVOID_POISONING)
+    !defined(FLEX_SCANNER) && !defined(AVOID_POISONING) && 0
 # ifdef sprintf
 #  undef sprintf
 # endif /* sprintf */
 # pragma GCC poison sprintf
-#endif /* __GNUC__ && !AVOID_POISONING */
+#endif /* __GNUC__ && !AVOID_POISONING && 0 */
+
+#ifndef __cplusplus
+# ifndef min
+#  define min(a, b) ((a) < (b) ? (a) : (b))
+# endif /* !min */
+# ifndef max
+#  define max(a, b) ((a) > (b) ? (a) : (b))
+# endif /* !max */
+#endif /* !__cplusplus */
+
+#ifdef HAVE_LIMITS_H
+# include <limits.h>
+#endif /* HAVE_LIMITS_H */
+
+#ifdef HAVE_STDINT_H
+# include <stdint.h>
+#endif /* HAVE_STDINT_H */
+
+#ifndef SIZE_T_MAX
+# ifdef SIZE_MAX
+#  define SIZE_T_MAX SIZE_MAX
+# else
+#  ifdef ULONG_MAX
+#   define SIZE_T_MAX ULONG_MAX	/* max value for a size_t */
+#  else
+#   ifdef UINT_MAX
+#    define SIZE_T_MAX UINT_MAX
+#   else
+#    define SIZE_T_MAX (size_t)(-1)
+#   endif /* UINT_MAX */
+#  endif /* ULONG_MAX */
+# endif /* SIZE_MAX */
+#endif /* !SIZE_T_MAX */
+
+#ifndef BUF_LEN_MAX_FOR_SNPRINTF
+# ifndef __cplusplus
+#  define BUF_LEN_MAX_FOR_SNPRINTF \
+           (min((((SIZE_T_MAX - 1UL) / 2UL) - 1UL), ((size_t)INT_MAX - 1UL)))
+# else
+#  define BUF_LEN_MAX_FOR_SNPRINTF \
+        (std::min((((SIZE_T_MAX - 1UL) / 2UL) - 1UL), ((size_t)INT_MAX - 1UL)))
+# endif /* !__cplusplus */
+#endif /* BUF_LEN_MAX_FOR_SNPRINTF */
 
 #endif /* MACHINE_H  */
 ])dnl

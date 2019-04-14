@@ -47,6 +47,16 @@ am__v_q_ = $(am__v_q_@AM_DEFAULT_V@)
 am__v_q_0 = -q
 am__v_q_1 =
 
+AM_V_ANT = $(am__v_ANT_@AM_V@)
+am__v_ANT_ = $(am__v_ANT_@AM_DEFAULT_V@)
+am__v_ANT_0 = @echo "  ANT     " `pwd`;
+am__v_ANT_1 = 
+
+AM_V_SWIG = $(am__v_SWIG_@AM_V@)
+am__v_SWIG_ = $(am__v_SWIG_@AM_DEFAULT_V@)
+am__v_SWIG_0 = @echo "  SWIG     " `pwd`;
+am__v_SWIG_1 = 
+
 # This target enables tests for Scilab
 check-local: $(top_builddir)/scilab-bin test
 	if test -d $(mydatadir)/tests; then \
@@ -54,7 +64,7 @@ check-local: $(top_builddir)/scilab-bin test
 	fi
 
 # splint options
-SPLINT_OPTIONS=-weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements $(AM_V_splint) -fixedformalarray -fcnuse +oldstyle +noret +firstcase +allempty +elseifcomplete +incondefs +matchfields +incondefslib +overload +nestedextern +imptype $(LOCAL_SPLINT_OPTIONS)
+SPLINT_OPTIONS=-weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements $(AM_V_splint) -fixedformalarray -fcnuse +oldstyle +noret +firstcase +allempty +matchfields +incondefslib +overload +nestedextern +imptype $(LOCAL_SPLINT_OPTIONS)
 SPLINT_INCLUDE_FLAGS=`echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
 ## OK to leave "-I" un-prefixed here, since splint is different from the
 ## compiler
@@ -85,7 +95,7 @@ if NEED_JAVA
 TARGETS_ALL+=java
 java:
 # Some configurations needs to export JAVA_HOME in the current env
-	$(AM_V_at)if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \
+	$(AM_V_ANT)if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \
 	if test -z "$(USEANT)"; then USEANT=0; else USEANT=1; fi; \
 	if test -f build.xml -a $$USEANT -eq 1; then \
 		$(ANT) $(AM_V_q); \
@@ -107,7 +117,7 @@ if SWIG
 
 ## build Swig Java => C wrappers
 swig: $(SWIG_WRAPPERS)
-	$(AM_V_at)SWIG_PACKAGENAME=org.scilab.modules.$(modulename); \
+	$(AM_V_SWIG)SWIG_PACKAGENAME=org.scilab.modules.$(modulename); \
 	SWIG_OUTDIR=src/java/org/scilab/modules/$(modulename)/; \
 	if test -n "$(SWIG_WRAPPERS)"; then \
 		for file in $(SWIG_WRAPPERS) ; do \

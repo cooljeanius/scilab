@@ -439,10 +439,13 @@ pcre_error_code pcre_private(char *INPUT_LINE, char *INPUT_PAT, int *Output_Star
                     break;
                 case '<':
                 {
-                    while (*pp++ != '>');
+                    while (*pp++ != '>')
+                    {
+                        ; /* ??? */
+                    }
                 }
                 break;
-                case '\r':                      /* So that it works in Windows */
+                case '\r':                     /* So that it works in Windows */
                 case '\n':
                 case ' ':
                     break;
@@ -757,7 +760,10 @@ SKIP_DATA:
                             continue;
                         case '<':
                         {
-                            while (*p++ != '>');
+                            while (*p++ != '>')
+                            {
+                                ; /* ??? */
+                            }
                         }
                         continue;
                     }

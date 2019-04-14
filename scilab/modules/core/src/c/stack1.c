@@ -2223,7 +2223,8 @@ int C2F(lmatj) (char *fname, int *lw, int *j, unsigned long fname_len)
     {
         return FALSE;
     }
-    C2F(scidcopy) (&n, stk(slj), &cx1, stk(*Lstk(*lw)), &cx1);
+    C2F(scidcopy)(&n, (long long *)stk(slj), &cx1, (long long *)stk(*Lstk(*lw)),
+                  &cx1);
     *Lstk(*lw + 1) = *Lstk(*lw) + n;
     return TRUE;
 }
@@ -3048,11 +3049,12 @@ int C2F(copyobj) (char *fname, int *lw, int *lwd, unsigned long fname_len)
     /* check for overlaping region */
     if (l + ix1 > ld || ld + ix1 > l)
     {
-        C2F(unsfdcopy) (&ix1, stk(l), &cx1, stk(ld), &cx1);
+        C2F(unsfdcopy)(&ix1, stk(l), &cx1, stk(ld), &cx1);
     }
     else
     {
-        C2F(scidcopy) (&ix1, stk(l), &cx1, stk(ld), &cx1);
+        C2F(scidcopy)(&ix1, (long long *)stk(l), &cx1, (long long *)stk(ld),
+                      &cx1);
     }
     *Lstk(*lwd + 1) = ld + ix1;
     return 0;
@@ -3087,11 +3089,12 @@ int C2F(vcopyobj) (char *fname, int *lw, int *lwd, unsigned long fname_len)
     /* check for overlaping region */
     if (l + lv > l1 || l1 + lv > l)
     {
-        C2F(unsfdcopy) (&lv, stk(l), &cx1, stk(l1), &cx1);
+        C2F(unsfdcopy)(&lv, stk(l), &cx1, stk(l1), &cx1);
     }
     else
     {
-        C2F(scidcopy) (&lv, stk(l), &cx1, stk(l1), &cx1);
+        C2F(scidcopy)(&lv, (long long *)stk(l), &cx1, (long long *)stk(l1),
+                      &cx1);
     }
 
     *Lstk(*lwd + 1) = *Lstk(*lwd) + lv;

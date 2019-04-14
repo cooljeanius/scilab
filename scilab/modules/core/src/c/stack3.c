@@ -691,9 +691,12 @@ int C2F(str2name)(const char *namex, int *id, unsigned long name_len)
         id[i] = 0;
     }
 
-    for (ix = 0; namex[ix] != ' ' && namex[ix] != '\0'; ix++);
+    for (ix = 0; namex[ix] != ' ' && namex[ix] != '\0'; ix++)
+    {
+        ; /* ??? */
+    }
 
-    temp = (char*)MALLOC((ix + 1) * sizeof(char) );
+    temp = (char *)MALLOC((ix + 1) * sizeof(char));
     if (temp)
     {
         memcpy(temp, namex, ix);

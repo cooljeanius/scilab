@@ -70,43 +70,45 @@ int sci_length(char *fname, unsigned long fname_len)
         return 0;
     }
 
-    switch ( iScilabType )
+    switch (iScilabType)
     {
-        case sci_strings :
+        case sci_strings:
         {
             return lengthStrings(piAddressVarOne);
         }
-        case sci_sparse :
+        case sci_sparse:
         {
             return lengthSparse(piAddressVarOne);
         }
-        case sci_list :
-        case sci_tlist :
+        case sci_list:
+        case sci_tlist:
         {
             return lengthList(piAddressVarOne);
         }
         break;
-        case sci_mlist :
+        case sci_mlist:
         {
             return lengthMList(fname, piAddressVarOne);
         }
         break;
 
-        case sci_matrix :
-        case sci_poly :
-        case sci_boolean :
-        case sci_boolean_sparse :
-        case sci_matlab_sparse :
-        case sci_ints :
-        case sci_handles :
+        case sci_matrix:
+        case sci_poly:
+        case sci_boolean:
+        case sci_boolean_sparse:
+        case sci_matlab_sparse:
+        case sci_ints:
+        case sci_handles:
         {
             return lengthDefault(piAddressVarOne);
         }
-        default :
+        default:
             return lengthOthers(fname);
             break;
     }
+    return -1; /*NOTREACHED*/
 }
+
 /*--------------------------------------------------------------------------*/
 static int lengthStrings(int *piAddressVar)
 {

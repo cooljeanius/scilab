@@ -43,5 +43,6 @@ int intrankqr(char* fname)
         return 0;
     }
     (void)ret;
+    return -1; /*NOTREACHED*/
 }
 /*--------------------------------------------------------------------------*/

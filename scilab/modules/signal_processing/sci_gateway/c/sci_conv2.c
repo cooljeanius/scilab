@@ -261,7 +261,7 @@ int sci_conv2(char *fname, unsigned long fname_len)
         }
 
         /* Compute result sizes */
-        if (iopt == 1 )
+        if (iopt == 1)
         {
             if (mC == 0 || nR == 0)
             {
@@ -276,7 +276,7 @@ int sci_conv2(char *fname, unsigned long fname_len)
             edgM = mC - 1;
             edgN = nR - 1;
         }
-        else if ( iopt == 2 )
+        else if (iopt == 2)
         {
             mOut = mA;
             nOut = nA;
@@ -296,6 +296,10 @@ int sci_conv2(char *fname, unsigned long fname_len)
                 nOut = Max(0, nA - nR + 1);
             }
             edgM = edgN = 0;
+        }
+        else
+        {
+            ; /* ??? */
         }
 
         if (Ri == NULL && Ci == NULL && Ai == NULL)
@@ -488,6 +492,10 @@ int sci_conv2(char *fname, unsigned long fname_len)
                 nOut = Max(0, nA - nB + 1);
             }
             edgM = edgN = 0;
+        }
+        else
+        {
+            ; /* ??? */
         }
 
         if (Ai == NULL && Bi == NULL)

@@ -186,6 +186,10 @@ int sci_or(char *fname, unsigned long l)
     {
         sciErr = allocMatrixOfBoolean(pvApiCtx, Rhs + 1, m1, 1, &pBoolResult);
     }
+    else
+    {
+        ; /* ??? */
+    }
 
     if (sciErr.iErr)
     {

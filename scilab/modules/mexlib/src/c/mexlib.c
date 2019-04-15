@@ -954,7 +954,7 @@ bool mxIsDouble(const mxArray *ptr)
 bool mxIsSingle(const mxArray *ptr)
 {
     mexPrintf(_("Routine mxIsSingle not implemented.\n"));
-    exit(1);  /* TO BE DONE */
+    exit(EXIT_FAILURE);  /* TO BE DONE */
     return 0;
 }
 
@@ -2725,13 +2725,13 @@ int mexPutVariable(const char *workspace, char *var_name, mxArray *array_ptr)
 ATTRIBUTE_NORETURN void mxSetName(mxArray *array_ptr, const char *name)
 {
     mexErrMsgTxt(_("Routine mxSetName not implemented !\n"));
-    exit(1);  /* TO BE DONE */
+    exit(EXIT_FAILURE);  /* TO BE DONE */
 }
 
 ATTRIBUTE_NORETURN void mxSetData(mxArray *array_ptr, void *data_ptr)
 {
     mexErrMsgTxt(_("Routine mxSetData not implemented.\n"));
-    exit(1);  /* TO BE DONE */
+    exit(EXIT_FAILURE);  /* TO BE DONE */
 }
 
 void mxSetPr(mxArray *array_ptr, double *pr_data)
@@ -2821,14 +2821,14 @@ void mxSetPi(mxArray *array_ptr, double *pi_data)
 const char *mxGetName(const mxArray *array_ptr)
 {
     mexPrintf(_("Routine mxGetName not implemented.\n"));
-    exit(1);
+    exit(EXIT_FAILURE);
     return 0;
 }
 
 int mxSetDimensions(mxArray *array_ptr, const int *dims, int ndim)
 {
     mexPrintf(_("Routine mxSetDimensions not implemented.\n"));
-    exit(1);  /* TO BE DONE */
+    exit(EXIT_FAILURE);  /* TO BE DONE */
     return 0;
 }
 

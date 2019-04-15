@@ -254,6 +254,7 @@ static struct gateway_struct *readGatewayXmlFile(char *filenameXml)
 
     return gateway;
 }
+
 /*--------------------------------------------------------------------------*/
 static char *getModuleXmlFilename(char *modulename)
 {

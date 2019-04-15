@@ -235,7 +235,7 @@ void * hashtable_search(struct hashtable *h, void *k)
     {
         /* Check that the hashtable does exist. */
         printf("Internal error: cannot search into an NULL hashtable !\n");
-        exit(-1);
+        exit(EXIT_FAILURE);
     }
     hashvalue = hash(h, k);
     index_ = indexFor(h->tablelength, hashvalue);

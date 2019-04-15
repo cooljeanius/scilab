@@ -126,7 +126,7 @@ int scimem64(int *ptr, int newsize, BOOL isglobal)
         if (ref == NULL)
         {
             sciprint(_("No space to allocate Scilab stack.\n"));
-            exit(1);
+            exit(EXIT_FAILURE);
         }
         *ptr = 0;
     }

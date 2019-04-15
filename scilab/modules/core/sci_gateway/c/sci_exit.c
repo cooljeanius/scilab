@@ -77,11 +77,20 @@ int C2F(sci_exit)(char *fname, unsigned long fname_len)
             return 0;
         }
 
-        iExit = (int) * pdVarOne;
+        iExit = ((pdVarOne != NULL) ? (int) * pdVarOne : -1);
 
-        if (*pdVarOne != (double)iExit)
+        if (pdVarOne == NULL)
         {
-            Scierror(999, _("%s: Wrong value for input argument #%d: An integer expected.\n"), fname, 1);
+            Scierror(999,
+                     _("%s: Unexpected null pointer encountered.\n"),
+                     fname);
+            return 0;
+        }
+        else if (*pdVarOne != (double)iExit)
+        {
+            Scierror(999,
+                     _("%s: Wrong value (%d) for input argument #%d: An integer expected.\n"),
+                     fname, iExit, 1);
             return 0;
         }
 

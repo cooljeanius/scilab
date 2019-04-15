@@ -71,7 +71,9 @@ int sci_scanf(char *fname, unsigned long fname_len)
     {
         rowcount++;
         if ((maxrow >= 0) && (rowcount >= maxrow))
+        {
             break;
+        }
 
         /* get a line */
         C2F(xscion) (&iflag);
@@ -93,7 +95,8 @@ int sci_scanf(char *fname, unsigned long fname_len)
 
         /** use the scaned line as input **/
         args = Rhs;             /* args set to Rhs on entry */
-        if (do_xxscanf("scanf", (FILE *) 0, cstk(l1), &args, String, &retval, buf, type) < 0)
+        if (do_xxscanf("scanf", (FILE *)0, cstk(l1), &args, String, &retval,
+                       buf, type) < 0)
         {
             if (String)
             {

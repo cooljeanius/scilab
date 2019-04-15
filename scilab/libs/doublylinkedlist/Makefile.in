@@ -681,7 +681,7 @@ am__v_SWIG_0 = @echo "  SWIG     " `pwd`;
 am__v_SWIG_1 = 
 
 # splint options
-SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements $(AM_V_splint) -fixedformalarray -fcnuse +oldstyle +noret +firstcase +allempty +incondefslib +overload +nestedextern +imptype +nullterminated +exitarg +macroparens +sefparams +sefuncon +bufferoverflow +multithreaded +portability +superuser +toctou +its4mostrisky +legacy $(LOCAL_SPLINT_OPTIONS)
+SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements $(AM_V_splint) -fixedformalarray -fcnuse +oldstyle +noret +firstcase +allempty +incondefslib +overload +nestedextern +imptype +nullterminated +exitarg +macroparens +sefparams +sefuncon +bufferoverflow +multithreaded +portability +superuser +toctou +its4mostrisky +its4veryrisky +its4risky +legacy $(LOCAL_SPLINT_OPTIONS)
 SPLINT_INCLUDE_FLAGS = `echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
 
 ########################### JAVA ######################################

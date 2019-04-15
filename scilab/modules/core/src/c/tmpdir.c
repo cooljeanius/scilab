@@ -44,7 +44,7 @@ extern  char  *getenv();
 #include "removedir.h"
 #include "createdirectory.h"
 /*--------------------------------------------------------------------------*/
-static char tmp_dir[PATH_MAX + FILENAME_MAX + 1];
+static char tmp_dir[PATH_MAX + FILENAME_MAX + 1 + sizeof("/SCI_TMP_") + sizeof("_XXXXXX")];
 static int alreadyCreated = 0;
 /*--------------------------------------------------------------------------*/
 #ifdef _MSC_VER
@@ -133,8 +133,8 @@ void createScilabTMPDIR(void)
 
         /* the "XXXXXX" will be randomized by mkdtemp */
         tmp_dir_strdup = realpath(tmp_dir, NULL); /* Copy to avoid to have the same buffer as input and output for sprintf */
-        snprintf(tmp_dir, (size_t)(-1), "%s/SCI_TMP_%d_XXXXXX", tmp_dir_strdup,
-                 (int)getpid());
+        snprintf(tmp_dir, sizeof(tmp_dir), "%s/SCI_TMP_%d_XXXXXX",
+                 tmp_dir_strdup, (int)getpid());
         free(tmp_dir_strdup);
 
         if (mkdtemp(tmp_dir) == NULL)

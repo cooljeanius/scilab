@@ -1193,12 +1193,15 @@ L77:
                 curline = Lct[8] - nlc - 1;
                 for (ibpt = C2F(dbg).lgptrs[kmac]; ibpt <= i__2; ++ibpt)
                 {
-                    //sciprint("la Lct[8]-nlc =%d, bptlg=%d\n",Lct[8] - nlc,C2F(dbg).bptlg[ibpt - 1]);
+#if 0
+                    sciprint("la Lct[8]-nlc =%d, bptlg=%d\n", Lct[8] - nlc, C2F(dbg).bptlg[ibpt - 1]);
+#endif /* 0 */
                     if (curline == C2F(dbg).bptlg[ibpt - 1])   /* yes */
                     {
                         /* display a message */
                         C2F(cvname)(&C2F(dbg).macnms[kmac * nsiz], tmp, &c__1, nlgh);
-                        snprintf(C2F(cha1).buf, (size_t)(-1), "%s %5d", tmp, curline);
+                        snprintf(C2F(cha1).buf, sizeof(C2F(cha1).buf),
+                                 "%80s %5d", tmp, curline);
                         Msgs(32, 0);
                         /* raise the interruption flag */
                         C2F(basbrk).iflag = TRUE;

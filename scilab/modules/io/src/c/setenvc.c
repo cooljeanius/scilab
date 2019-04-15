@@ -91,7 +91,7 @@ BOOL setenvc(const char *stringIn, const char *valueIn)
 
     if (ret)
     {
-        dynamic_setenvtcl(stringIn, valueIn);
+        dynamic_setenvtcl((char *)stringIn, (char *)valueIn);
     }
 
     return ret;

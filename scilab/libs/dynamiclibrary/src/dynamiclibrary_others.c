@@ -30,7 +30,7 @@ BOOL FreeDynLibrary(DynLibHandle hInstance)
         {
             const char *dl_err = dlerror();
             fprintf(stderr, "Could not free library %s\n", dl_err);
-            free(dl_err);
+            free((void *)dl_err);
         }
     }
 #ifndef NDEBUG

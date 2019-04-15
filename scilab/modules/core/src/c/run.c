@@ -1122,8 +1122,8 @@ L105:
                     {
                         /* display a message */
                         C2F(cvname)(&C2F(dbg).macnms[kmac * nsiz], tmp, &c__1, 24L);
-                        snprintf(C2F(cha1).buf, (size_t)(-1), "%s %5d", tmp,
-                                 Lct[8]);
+                        snprintf(C2F(cha1).buf, sizeof(C2F(cha1).buf),
+                                 "%80s %5d", tmp, Lct[8]);
                         Msgs(32, 0);
                         /* raise the interruption flag */
                         C2F(basbrk).iflag = TRUE;

@@ -1477,9 +1477,18 @@ LT_LIB_M([])dnl
 # Provided by math.h
 
 LDFLAGS="${LDFLAGS} ${LIBM}"
+AC_CHECK_HEADERS([math.h])
 AC_CHECK_FUNCS([ceil ceilf pow sqrt finite floor exp10 log10 round signbit])dnl
 
-AC_CHECK_DECLS([finite, round, signbit])dnl
+AC_CHECK_DECLS([finite, round, signbit],[],[],[
+#if defined(HAVE_MATH_H) || defined(STDC_HEADERS)
+# include <math.h>
+#else
+# if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#  warning "conftest for math decls expects <math.h> to be included."
+# endif /* __GNUC__ && !__STRICT_ANSI__ */
+#endif /* HAVE_MATH_H || STDC_HEADERS */
+])dnl
 
 ### If isinf exists or not (used to not be the case under Solaris)
 ### See bug #4164
@@ -1539,7 +1548,7 @@ AC_CHECK_HEADERS([limits.h values.h])dnl
 
 AC_CHECK_HEADERS([argz.h ctype.h dl.h dlfcn.h fcntl.h float.h \
 iconv.h io.h jni.h langinfo.h libintl.h locale.h ltdl.h mach-o/dyld.h \
-mach-o/getsect.h machine.h malloc.h malloc/malloc.h math.h mman.h netdb.h \
+mach-o/getsect.h machine.h malloc.h malloc/malloc.h mman.h netdb.h \
 netinet/in.h nlist.h param.h pwd.h regex.h select.h sgtty.h \
 signal.h socket.h stddef.h stdio.h stdio_ext.h sys/file.h \
 sys/ioctl.h sys/param.h sys/socket.h sys/time.h sys/timeb.h \

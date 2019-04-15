@@ -35,22 +35,22 @@ src/jni/CallRenderer.cpp
 
 # Includes need for the compilation
 libscirenderer_la_CPPFLAGS = $(JAVA_JNI_INCLUDE) \
-				-I$(srcdir)/includes/ \
-				-I$(srcdir)/src/cpp/ \
-				-I$(srcdir)/src/jni/ \
-				-I$(top_srcdir)/libs/MALLOC/includes/ \
-				-I$(top_srcdir)/modules/localization/includes/ \
-				-I$(top_srcdir)/modules/jvm/includes/ \
-				-I$(top_srcdir)/modules/commons/src/jni \
-				-I$(top_srcdir)/modules/graphics/includes/ \
-				-I$(top_srcdir)/modules/graphics/includes/handleDrawing/ \
-				-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
-				-I$(top_srcdir)/modules/output_stream/includes/ \
-				-I$(top_srcdir)/modules/graphic_export/includes/ \
-				-I$(top_srcdir)/modules/elementary_functions/includes/ \
-				-I$(top_srcdir)/modules/api_scilab/includes/ \
-				-I$(top_srcdir)/modules/gui/includes/ \
-				$(AM_CPPFLAGS)
+	     -Wp,-I$(srcdir)/includes/ \
+	     -Wp,-I$(srcdir)/src/cpp/ \
+	     -Wp,-I$(srcdir)/src/jni/ \
+	     -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ \
+	     -Wp,-I$(top_srcdir)/modules/localization/includes/ \
+	     -Wp,-I$(top_srcdir)/modules/jvm/includes/ \
+	     -Wp,-I$(top_srcdir)/modules/commons/src/jni \
+	     -Wp,-I$(top_srcdir)/modules/graphics/includes/ \
+	     -Wp,-I$(top_srcdir)/modules/graphics/includes/handleDrawing/ \
+	     -Wp,-I$(top_srcdir)/libs/doublylinkedlist/includes/ \
+	     -Wp,-I$(top_srcdir)/modules/output_stream/includes/ \
+	     -Wp,-I$(top_srcdir)/modules/graphic_export/includes/ \
+	     -Wp,-I$(top_srcdir)/modules/elementary_functions/includes/ \
+	     -Wp,-I$(top_srcdir)/modules/api_scilab/includes/ \
+	     -Wp,-I$(top_srcdir)/modules/gui/includes/ \
+	     $(AM_CPPFLAGS)
 
 # All the sources needed by libscirenderer.la
 libscirenderer_la_SOURCES = $(RENDERER_CXX_SOURCES)

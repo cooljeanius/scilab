@@ -54,31 +54,24 @@ unsigned short default_colors[] =
 #endif
 
 int WithBackingStore(void)
-
 {
-    return 0 ;
+    return 0;
 }
 
 
 /*
  * Resize the Pixmap according to window size change
- * But only if there's a pixmap
+ * But only if there is a pixmap
  */
-void CPixmapResize1( void )
+void CPixmapResize1(void)
 {
-
+    return;
 }
 
-void clip_line( int   x1  ,
-                int   yy1 ,
-                int   x2  ,
-                int   y2  ,
-                int * x1n ,
-                int * yy1n,
-                int * x2n ,
-                int * y2n ,
-                int * flag )
+void clip_line(int x1, int yy1, int x2, int y2, int *x1n, int *yy1n,  int *x2n,
+               int *y2n, int *flag)
 {
+    return;
 }
 
 /*--------------------------------------------------------------------------*/
@@ -93,53 +86,50 @@ void clip_line( int   x1  ,
 */
 
 
-void set_clip_box( int xxleft ,
-                   int xxright,
-                   int yybot  ,
-                   int yytop  )
+void set_clip_box(int xxleft, int xxright, int yybot, int yytop)
 {
+    return;
 }
 
 
-void SetWinhdc( void )
+void SetWinhdc(void)
 {
+    return;
 }
 /*--------------------------------------------------------------------------*/
-int  MaybeSetWinhdc()
+int MaybeSetWinhdc(void)
 {
     return (0);
 }
 /*--------------------------------------------------------------------------*/
-void  ReleaseWinHdc()
+void ReleaseWinHdc(void)
 {
+    return;
 }
 /*--------------------------------------------------------------------------*/
 void wininfo(char *fmt, ...)
 {
+    return;
 }
 /*--------------------------------------------------------------------------*/
-void C2F(xgetmouse)(str, ibutton, x1, yy1, iflag, v6, v7, dv1, dv2, dv3, dv4)
-char *str;
-int *ibutton, *x1, *yy1, *iflag, *v6, *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(xgetmouse)(char *str, int *ibutton, int *x1, int *yy1, int *iflag,
+                    int *v6, int *v7, double *dv1, double *dv2, double *dv3,
+                    double *dv4)
 {
-
+    return;
 }
 /*--------------------------------------------------------------------------*/
-void SciMouseCapture( void )
+void SciMouseCapture(void)
 {
-
+    return;
 }
 /*--------------------------------------------------------------------------*/
-void SciMouseRelease( void )
+void SciMouseRelease(void)
 {
-
+    return;
 }
 /*--------------------------------------------------------------------------*/
-int C2F(sedeco)( int * flag )
+int C2F(sedeco)(int *flag)
 {
     return (0);
 }
@@ -148,58 +138,45 @@ int C2F(sedeco)( int * flag )
  * loadfamily Loads a font at size  08 10 12 14 18 24
  * for example TimR08 TimR10 TimR12 TimR14 TimR18 TimR24
  * name is a string
- *  ( X11 only : if it's a string containing the char %
- *    it's suposed to be a format for a generic font in X11 string style
+ *  ( X11 only : if it is a string containing the char %
+ *    it is suposed to be a format for a generic font in X11 string style
  *    "-adobe-times-bold-i-normal--%s-*-75-75-p-*-iso8859-1" )
- * it's supposed to be an alias for a font name
+ * it is supposed to be an alias for a font name
  * Ex : TimR and we shall try to load TimR08 TimR10 TimR12 TimR14 TimR18 TimR24
  **************************************************/
 
-void C2F(loadfamily)(name, j, v3, v4, v5, v6, v7, dv1, dv2, dv3, dv4)
-char *name;
-int *j, *v3, *v4, *v5, *v6, *v7;
-double *dv1, *dv2, *dv3, *dv4;
+void C2F(loadfamily)(char *name, int *j, int *v3, int *v4, int *v5, int *v6,
+                     int *v7, double *dv1, double *dv2, double *dv3,
+                     double *dv4)
 {
+    return;
 }
 /*--------------------------------------------------------------------------*/
-void C2F(xclick)(str, ibutton, x1, yy1, iflag, istr, v7, dv1, dv2, dv3, dv4)
-char *str;
-int *ibutton, *x1, *yy1, *iflag, *istr, *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(xclick)(char *str, int *ibutton, int *x1, int *yy1, int *iflag,
+                 int *istr, int *v7, double *v1, double *dv2, double *dv3,
+                 double *dv4)
 {
+    return;
 }
 
-void C2F(getFontMaxSize)( char * str, int * sizeMin, int * sizeMax,
-                          int * v1, int * v2, int * v3, int * v4,
-                          double * dx1, double * dx2, double * dx3, double * dx4 )
+void C2F(getFontMaxSize)(char *str, int *sizeMin, int *sizeMax, int *v1,
+                         int *v2, int *v3, int *v4, double *dx1, double *dx2,
+                         double *dx3, double *dx4)
 {
-
+    return;
 }
 
-void C2F(queryfamily)(name, j, v3, v4, v5, v6, v7, dv1, dv2, dv3, dv4)
-char *name;
-int *j;
-int *v3;
-int *v4;
-int *v5;
-int *v6;
-int *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(queryfamily)(char *name, int *j, int *v3, int *v4, int *v5, int *v6,
+                      int *v7, double *dv1, double *dv2, double *dv3,
+                      double *dv4)
 {
-
+    return;
 }
 
-void C2F(xinfo)(message, v2, v3, v4, v5, v6, v7, dv1, dv2, dv3, dv4)
-char *message;
-int *v2, *v3, *v4, *v5, *v6, *v7;
-double *dv1, *dv2, *dv3, *dv4;
+void C2F(xinfo)(char *message, int *v2, int *v3, int *v4, int *v5, int *v6,
+                int *v7, double *dv1, double *dv2, double *dv3, double *dv4)
 {
+    return;
 }
 
 /** Draw a set of arrows **/
@@ -208,35 +185,17 @@ double *dv1, *dv2, *dv3, *dv4;
 /** n is the size of vx and vy **/
 /** as is 10*arsize (arsize) the size of the arrow head in pixels **/
 
-void C2F(drawarrows)(str, vx, vy, n, as, style, iflag, dv1, dv2, dv3, dv4)
-char *str;
-int *vx;
-int *vy;
-int *n;
-int *as;
-int *style;
-int *iflag;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(drawarrows)(char *str, int *vx, int *vy, int *n, int *as, int *style,
+                     int *iflag, double *dv1, double *dv2, double *dv3,
+                     double *dv4)
 {
+    return;
 }
 
-void C2F(xend)(v1, v2, v3, v4, v5, v6, v7, dv1, dv2, dv3, dv4)
-char *v1;
-int *v2;
-int *v3;
-int *v4;
-int *v5;
-int *v6;
-int *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(xend)(char *v1, int *v2, int *v3, int *v4, int *v5, int *v6, int *v7,
+               double *dv1, double *dv2, double *dv3, double *dv4)
 {
-    /** Nothing in Windows **/
+    return; /** Nothing in Windows **/
 }
 
 /*----------------------
@@ -253,28 +212,19 @@ double *dv4;
 /** if fillvect[i] is > whitepattern  then only draw the ellipsis i **/
 /** The drawing style is the current drawing **/
 
-void C2F(fillarcs)(str, vects, fillvect, n, v5, v6, v7, dv1, dv2, dv3, dv4)
-char *str;
-int *vects;
-int *fillvect;
-int *n;
-int *v5;
-int *v6;
-int *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(fillarcs)(char *str, int *vects, int *fillvect, int *n, int *v5,
+                   int *v6, int *v7, double *dv1, double *dv2, double *dv3,
+                   double *dv4)
 {
-
+    return;
 }
 
 /** Fill a single elipsis or part of it with current pattern **/
-void C2F(fillarc)(str, x, y, width, height, angle1, angle2, dv1, dv2, dv3, dv4)
-char *str;
-int *x, *y, *width, *height, *angle1, *angle2;
-double *dv1, *dv2, *dv3, *dv4;
+void C2F(fillarc)(char *str, int *x, int *y, int *width, int *height,
+                  int *angle1, int *angle2, double *dv1, double *dv2,
+                  double *dv3, double *dv4)
 {
+    return;
 }
 
 /** Draw a set of (*n) polylines (each of which have (*p) points) **/
@@ -282,35 +232,19 @@ double *dv1, *dv2, *dv3, *dv4;
 /** drawvect[i] >= 0 use a mark for polyline i **/
 /** drawvect[i] < 0 use a line style for  i **/
 
-void C2F(drawpolylines)(str, vectsx, vectsy, drawvect, n, p, v7, dv1, dv2, dv3, dv4)
-char *str;
-int *vectsx;
-int *vectsy;
-int *drawvect;
-int *n;
-int *p;
-int *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(drawpolylines)(char *str, int *vectsx, int *vectsy, int *drawvect,
+                        int *n, int *p, int *v7, double *dv1, double *dv2,
+                        double *dv3, double *dv4)
 {
+    return;
 }
 
 
-void C2F(drawpolyline)(str, n, vx, vy, closeflag, v6, v7, dv1, dv2, dv3, dv4)
-char *str;
-int *n;
-int *vx;
-int *vy;
-int *closeflag;
-int *v6;
-int *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(drawpolyline)(char *str, int *n, int *vx, int *vy, int *closeflag,
+                       int *v6, int *v7, double *dv1, double *dv2, double *dv3,
+                       double *dv4)
 {
+    return;
 }
 
 
@@ -325,224 +259,131 @@ double *dv4;
     if fillvect[i] < 0  fill with pattern - fillvect[i]
 **/
 
-void C2F(fillpolylines)(str, vectsx, vectsy, fillvect, n, p, v7, dv1, dv2, dv3, dv4)
-char *str;
-int *vectsx;
-int *vectsy;
-int *fillvect;
-int *n;
-int *p;
-int *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(fillpolylines)(char *str, int *vectsx, int *vectsy, int *fillvect,
+                        int *n, int *p, int *v7, double *dv1, double *dv2,
+                        double *dv3, double *dv4)
 {
+    return;
 }
 
 /** Only draw one polygon  with current line style **/
-/** according to *closeflag : it's a polyline or a polygon **/
+/** according to *closeflag : it is a polyline or a polygon **/
 /** n is the number of points of the polyline */
 /** ths routine also perform clipping to avoid overflow */
-void C2F(drawClippedPolyline)(str, n, vx, vy, closeflag, v6, v7, dv1, dv2, dv3, dv4)
-char *str;
-int *n;
-int *vx;
-int *vy;
-int *closeflag;
-int *v6;
-int *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(drawClippedPolyline)(char *str, int *n, int *vx, int *vy,
+                              int *closeflag, int *v6, int *v7, double *dv1,
+                              double *dv2, double *dv3, double *dv4)
 {
+    return;
 }
 
 void Setpopupname(char *string)
 {
+    return;
 }
 
-void C2F(xclick_any)(char *str, int *ibutton, int* x1, int * yy1, int *iwin, int *iflag, int *istr, double * dv1, double *dv2, double * dv3, double * dv4)
+void C2F(xclick_any)(char *str, int *ibutton, int *x1, int *yy1, int *iwin,
+                     int *iflag, int *istr, double *dv1, double *dv2,
+                     double *dv3, double *dv4)
 {
+    return;
 }
 
-void C2F(xselgraphic)(v1, v2, v3, v4, v5, v6, v7, dv1, dv2, dv3, dv4)
-char *v1;
-int *v2;
-int *v3;
-int *v4;
-int *v5;
-int *v6;
-int *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(xselgraphic)(char *v1, int *v2, int *v3, int *v4, int *v5, int *v6,
+                      int *v7, double *dv1, double *dv2, double *dv3,
+                      double *dv4)
 {
+    return;
 }
 
-void C2F(cleararea)(str, x, y, w, h, v6, v7, dv1, dv2, dv3, dv4)
-char *str;
-int *x;
-int *y;
-int *w;
-int *h;
-int *v6;
-int *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(cleararea)(char *str, int *x, int *y, int *w, int *h, int *v6, int *v7,
+                    double *dv1, double *dv2, double *dv3, double *dv4)
 {
+    return;
 }
 
-void C2F(boundingbox)(string, x, y, rect, v5, v6, v7, dv1, dv2, dv3, dv4)
-char *string;
-int *x, *y, *rect, *v5, *v6, *v7;
-double *dv1, *dv2, *dv3, *dv4;
+void C2F(boundingbox)(char *string, int *x, int *y, int *rect, int *v5, int *v6,
+                      int *v7, double *dv1, double *dv2, double *dv3,
+                      double *dv4)
 {
-
+    return;
 }
 
-void C2F(clearwindow)(v1, v2, v3, v4, v5, v6, v7, dv1, dv2, dv3, dv4)
-char *v1;
-int *v2, *v3, *v4, *v5, *v6, *v7;
-double *dv1, *dv2, *dv3, *dv4;
+void C2F(clearwindow)(char *v1, int *v2, int *v3, int *v4, int *v5, int *v6,
+                      int *v7, double *dv1, double *dv2, double *dv3,
+                      double *dv4)
 {
-
+    return;
 }
 
 
-void C2F(drawaxis)(str, alpha, nsteps, v2, initpoint, v6, v7, size, dx2, dx3, dx4)
-char *str;
-int *alpha;
-int *nsteps;
-int *v2;
-int *initpoint;
-int *v6;
-int *v7;
-double *size;
-double *dx2;
-double *dx3;
-double *dx4;
+void C2F(drawaxis)(char *str, int *alpha, int *nsteps, int *v2, int *initpoint,
+                   int *v6, int *v7, double *size, double *dx2, double *dx3,
+                   double *dx4)
 {
+    return;
 }
 
-void C2F(MissileGCGetorSet)(char *str, int flag, int *verbose, int *x1, int *x2, int *x3, int *x4, int *x5, int *x6, double  *dv1)
+void C2F(MissileGCGetorSet)(char *str, int flag, int *verbose, int *x1,
+                            int *x2, int *x3, int *x4, int *x5, int *x6,
+                            double  *dv1)
 {
+    return;
 }
 
-void C2F(initgraphic)(string, v2, v3, v4, v5, v6, v7, dv1, dv2, dv3, dv4)
-char *string;
-int *v2;
-int *v3;
-int *v4;
-int *v5;
-int *v6;
-int *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(initgraphic)(char *string, int *v2, int *v3, int *v4, int *v5, int *v6,
+                      int *v7, double *dv1, double *dv2, double *dv3,
+                      double *dv4)
 {
+    return;
 }
 
-void C2F(drawpolymark)(str, n, vx, vy, v5, v6, v7, dv1, dv2, dv3, dv4)
-char *str;
-int *n;
-int *vx;
-int *vy;
-int *v5;
-int *v6;
-int *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(drawpolymark)(char *str, int *n, int *vx, int *vy, int *v5, int *v6,
+                       int *v7, double *dv1, double *dv2, double *dv3,
+                       double *dv4)
 {
+    return;
 }
 
-void C2F(drawsegments)(str, vx, vy, n, style, iflag, v7, dv1, dv2, dv3, dv4)
-char *str;
-int *vx;
-int *vy;
-int *n;
-int *style;
-int *iflag;
-int *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(drawsegments)(char *str, int *vx, int *vy, int *n, int *style,
+                       int *iflag, int *v7, double *dv1, double *dv2,
+                       double *dv3, double *dv4)
 {
+    return;
 }
 
-void C2F(MissileGCset)(str, x1, x2, x3, x4, x5, x6, dv1, dv2, dv3, dv4)
-char *str;
-int *x1;
-int *x2;
-int *x3;
-int *x4;
-int *x5;
-int *x6;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(MissileGCset)(char *str, int *x1, int *x2, int *x3, int *x4, int *x5,
+                       int *x6, double *dv1, double *dv2, double *dv3,
+                       double *dv4)
 {
+    return;
 }
 
-void C2F(drawrectangles)(str, vects, fillvect, n, v5, v6, v7, dv1, dv2, dv3, dv4)
-char *str;
-int *vects;
-int *fillvect;
-int *n;
-int *v5;
-int *v6;
-int *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(drawrectangles)(char *str, int *vects, int *fillvect, int *n, int *v5,
+                         int *v6, int *v7, double *dv1, double *dv2,
+                         double *dv3, double *dv4)
 {
+    return;
 }
 
-void C2F(drawrectangle)(str, x, y, width, height, v6, v7, dv1, dv2, dv3, dv4)
-char *str;
-int *x;
-int *y;
-int *width;
-int *height;
-int *v6;
-int *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(drawrectangle)(char *str, int *x, int *y, int *width, int *height,
+                        int *v6, int *v7, double *dv1, double *dv2, double *dv3,
+                        double *dv4)
 {
+    return;
 }
 
-void C2F(drawarcs)(str, vects, style, n, v5, v6, v7, dv1, dv2, dv3, dv4)
-char *str;
-int *vects;
-int *style;
-int *n;
-int *v5;
-int *v6;
-int *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(drawarcs)(char *str, int *vects, int *style, int *n, int *v5, int *v6,
+                   int *v7, double *dv1, double *dv2, double *dv3, double *dv4)
 {
+    return;
 }
 
-void C2F(drawarc)(str, x, y, width, height, angle1, angle2, dv1, dv2, dv3, dv4)
-char *str;
-int *x, *y, *width, *height, *angle1, *angle2;
-double *dv1, *dv2, *dv3, *dv4;
+void C2F(drawarc)(char *str, int *x, int *y, int *width, int *height,
+                  int *angle1, int *angle2, double *dv1, double *dv2,
+                  double *dv3, double *dv4)
 {
+    return;
 }
 
 int SwitchWindow(int *intnum)
@@ -551,96 +392,65 @@ int SwitchWindow(int *intnum)
 }
 
 
-int CheckScilabXgc()
+int CheckScilabXgc(void)
 {
-    return ( 0);
+    return (0);
 }
 
-void C2F(fillrectangle)(str, x, y, width, height, v6, v7, dv1, dv2, dv3, dv4)
-char *str;
-int *x;
-int *y;
-int *width;
-int *height;
-int *v6;
-int *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(fillrectangle)(char *str, int *x, int *y, int *width, int *height,
+                        int *v6, int *v7, double *dv1, double *dv2, double *dv3,
+                        double *dv4)
 {
+    return;
 }
 
 
-void C2F(setpopupname)(x0, v2, v3, v4, v5, v6, v7, dv1, dv2, dv3, dv4)
-char *x0;
-int *v2, *v3, *v4, *v5, *v6, *v7;
-double *dv1, *dv2, *dv3, *dv4;
+void C2F(setpopupname)(char *x0, int *v2, int *v3, int *v4, int *v5, int *v6,
+                       int *v7, double *dv1, double *dv2, double *dv3,
+                       double *dv4)
 {
+    return;
 }
 
-void C2F(MissileGCget)(str, verbose, x1, x2, x3, x4, x5, dv1, dv2, dv3, dv4)
-char *str;
-int *verbose;
-int *x1;
-int *x2;
-int *x3;
-int *x4;
-int *x5;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(MissileGCget)(char *str, int *verbose, int *x1, int *x2, int *x3,
+                       int *x4, int *x5, double *dv1, double *dv2, double *dv3,
+                       double *dv4)
 {
-
+    return;
 }
 
 
-void C2F(displaystring)(string, x, y, v1, flag, v6, v7, angle, dv2, dv3, dv4)
-char *string;
-int *x, *y, *v1, *flag, *v6, *v7;
-double *angle, *dv2, *dv3, *dv4;
+void C2F(displaystring)(char *string, int *x, int *y, int *v1, int *flag,
+                        int *v6, int *v7, double *angle, double *dv2,
+                        double *dv3, double *dv4)
 {
+    return;
 }
 
-void C2F(fillpolyline)(str, n, vx, vy, closeflag, v6, v7, dv1, dv2, dv3, dv4)
-char *str;
-int *n;
-int *vx;
-int *vy;
-int *closeflag;
-int *v6;
-int *v7;
-double *dv1;
-double *dv2;
-double *dv3;
-double *dv4;
+void C2F(fillpolyline)(char *str, int *n, int *vx, int *vy, int *closeflag,
+                       int *v6, int *v7, double *dv1, double *dv2, double *dv3,
+                       double *dv4)
 {
+    return;
 }
 
-void C2F(displaynumbers)(str, x, y, v1, v2, n, flag, z, alpha, dx3, dx4)
-char *str;
-int *x;
-int *y;
-int *v1;
-int *v2;
-int *n;
-int *flag;
-double *z;
-double *alpha;
-double *dx3;
-double *dx4;
+void C2F(displaynumbers)(char *str, int *x, int *y, int *v1, int *v2, int *n,
+                         int *flag, double *z, double *alpha, double *dx3,
+                         double *dx4)
 {
+    return;
 }
 
 struct BCG; /* FIXME: where is this actually supposed to be from? */
 
 void SciViewportMove(struct BCG *ScilabGC, int x, int y)
 {
-
+    return;
 }
 
-int C2F (deletewin) (int * number)
+int C2F(deletewin)(int *number)
 {
     return 0;
 }
+
+/* EOF */

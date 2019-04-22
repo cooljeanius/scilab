@@ -2548,7 +2548,7 @@ int sci_scicosim(char *fname, unsigned long fname_len)
                 break;
 
             case 6:
-                snprintf(C2F(cha1).buf, BUF_LEN_MAX_FOR_SNPRINTF,
+                snprintf(C2F(cha1).buf, sizeof(C2F(cha1).buf),
                          _("the block %d has been called with input out of its domain"),
                          C2F(curblk).kfun);
                 break;
@@ -2570,7 +2570,7 @@ int sci_scicosim(char *fname, unsigned long fname_len)
                 break;
 
             case 21:
-                snprintf(C2F(cha1).buf, BUF_LEN_MAX_FOR_SNPRINTF,
+                snprintf(C2F(cha1).buf, sizeof(C2F(cha1).buf),
                          _("cannot allocate memory in block=%d"),
                          C2F(curblk).kfun);
                 break;
@@ -2965,7 +2965,7 @@ int sci_scicosim(char *fname, unsigned long fname_len)
                 else if (ierr >= 100)
                 {
                     istate = -(ierr - 100);
-                    snprintf(C2F(cha1).buf, BUF_LEN_MAX_FOR_SNPRINTF,
+                    snprintf(C2F(cha1).buf, sizeof(C2F(cha1).buf),
                              _("integration problem istate=%d"),
                              istate);
                     C2F(curblk).kfun = 0;

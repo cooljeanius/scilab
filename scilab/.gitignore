@@ -206,7 +206,13 @@ modules/types/src/jni/sci_types_wrap.c
 
 # clang / scan-build generated temporary files
 
+libs/*/clang_static_analysis/*.plist
+libs/*/clang_static_analysis/*/*.plist
 modules/*/*.plist
+modules/*/clang_static_analysis/*.plist
+modules/*/clang_static_analysis/*/*.plist
+modules/*/clang_static_analysis/*/*/*.plist
+modules/*/clang_static_analysis/*/*/*/*.plist
 
 # optional modules
 
@@ -216,6 +222,7 @@ modules/pvm/
 
 */stamp-checkstyle
 */stamp-splint
+*/stamp-clang
 */*/stamp-checkstyle
 */*/stamp-splint
-
+*/*/stamp-clang

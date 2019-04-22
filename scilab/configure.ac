@@ -777,7 +777,7 @@ case "${CC}" in
         QUIET_UNUSED_COMPILER_ARGS([C++],[CXXFLAGS])dnl
 
         case "${F77}" in
-             gfortran-*|gfortran)
+             gfortran-*|gfortran|*/gfortran)
                  # Extract from gfortran -v the version it has been built for
                  MAC_DETECTED_ARCH="`${F77} -v 2>&1 | grep "Target:" | sed -e "s/Target: \([[a-z0-9A-Z_]]*\).*/\1/g"`"
                  QUIET_UNUSED_COMPILER_ARGS([Fortran 77],[FFLAGS])
@@ -801,7 +801,7 @@ case "${CC}" in
         QUIET_UNUSED_COMPILER_ARGS([C++],[CXXFLAGS])dnl
 
         case "${F77}" in
-             gfortran-*|gfortran)
+             gfortran-*|gfortran|*/gfortran)
                  QUIET_UNUSED_COMPILER_ARGS([Fortran 77],[FFLAGS])
              ;;
              *)
@@ -991,20 +991,21 @@ if test "x${with_javasci}" != "xno" -o "x${with_gui}" != "xno" -o "x${enable_bui
              *Darwin* | *darwin*)
                # Mac OS X does not link against the lib but uses -framework
                JAVA_JNI_LIBS="-Wl,-framework,JavaVM"
+               JAVA_JNI_LIBS_PRELOAD=""
              ;;
              *)
                AC_JAVA_JNI_LIBS
-               JAVA_JNI_LIBS=$ac_java_jvm_jni_lib_flags
-               JAVA_JNI_LIBS_PRELOAD=$ac_java_jvm_ld_preload
+               JAVA_JNI_LIBS=${ac_java_jvm_jni_lib_flags}
+               JAVA_JNI_LIBS_PRELOAD=${ac_java_jvm_ld_preload}
              ;;
         esac
 
         AC_JAVA_CLASSPATH
-        JAVA_CLASSPATH=$ac_java_classpath
+        JAVA_CLASSPATH=${ac_java_classpath}
         AC_JAVA_TOOLS
         AC_JAVA_ANT
 
-        case "$host_os" in
+        case "${host_os}" in
              *Darwin* | *darwin*)
                   JAVA_HOME=""
              ;;
@@ -1774,6 +1775,9 @@ if test "x${enable_build_localization}" != "xno"; then
    # the main gettext macro used farther above already checks for msgfmt and
    # xgettext, so we can remove the checks for them here
 
+   AC_ARG_VAR([MSGFMT_OPTS],[Options to pass to msgfmt])
+   AC_SUBST([MSGFMT_OPTS])dnl
+
    if test "x${MSGFMT}" = "xno"; then
       AC_MSG_ERROR([The msgfmt command is required to build Scilab. If it is installed on your system, ensure that it is in your path. If it is not, install GNU gettext to continue or use the option --disable-build-localization])
    fi
@@ -2263,6 +2267,7 @@ AC_PATH_PROG([ASTYLE],[astyle],[no])
 AC_PATH_PROGS([GNU_INDENT],[indent gindent],[no])
 AC_PATH_PROG([CPPI],[cppi],[no])
 XORG_WITH_LINT([]) dnl# from m4/xorg-macros.m4
+SCILAB_CLANG_STATIC_ANALYSIS dnl# from m4/compiler.m4
 
 ##########
 ##### Detect ccache and use it by default if available
@@ -2895,6 +2900,5 @@ echo "  SCI_CXXFLAGS ... = $SCI_CXXFLAGS"
 echo "  F77 ............ = $F77"
 echo "  FFLAGS ......... = $FFLAGS"
 echo "  SCI_FFLAGS ..... = $SCI_FFLAGS"
-echo "  F77_LDFLAGS .... = $F77_LDFLAGS"
 echo "  TERMCAP_LIB .... = $TERMCAP_LIB"
 echo ""

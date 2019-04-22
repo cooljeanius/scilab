@@ -18,7 +18,7 @@
 #include <string.h>
 #include "stack-c.h"
 #include "gw_spreadsheet.h"
-#include "xls.h"
+#include "../../src/c/xls.h"
 #include "ole.h"
 #include "ripole.h"
 #include "expandPathVariable.h"

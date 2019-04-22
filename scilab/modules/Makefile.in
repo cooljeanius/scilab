@@ -288,8 +288,8 @@ DIST_SUBDIRS = prebuildjava fileio mexlib functions parameters boolean \
 	compatibility_functions helptools umfpack demo_tools \
 	genetic_algorithms simulated_annealing matio atoms graph xcos \
 	scinotes parallel modules_manager ui_data history_browser \
-	preferences xml types external_objects scicos_blocks scicos \
-	javasci .
+	preferences xml types external_objects scicos_blocks scicos . \
+	javasci
 am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/config/depcomp \
 	$(top_srcdir)/config/mkinstalldirs
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -354,6 +354,7 @@ CC_C_O = @CC_C_O@
 CFLAGS = @CFLAGS@
 CHANGELOG_CMD = @CHANGELOG_CMD@
 CHECKSTYLE = @CHECKSTYLE@
+CLANG_ANALYZER = @CLANG_ANALYZER@
 CMAKE_BINARY = @CMAKE_BINARY@
 COBERTURA = @COBERTURA@
 COMMONS_BEANUTILS = @COMMONS_BEANUTILS@
@@ -495,6 +496,7 @@ MKDIR_P = @MKDIR_P@
 MSGCAT = @MSGCAT@
 MSGFMT = @MSGFMT@
 MSGFMT_015 = @MSGFMT_015@
+MSGFMT_OPTS = @MSGFMT_OPTS@
 MSGMERGE = @MSGMERGE@
 NM = @NM@
 NMEDIT = @NMEDIT@
@@ -700,9 +702,8 @@ MY_SUBDIRS = prebuildjava fileio mexlib functions parameters boolean \
 	compatibility_functions helptools umfpack demo_tools \
 	genetic_algorithms simulated_annealing matio atoms hdf5 graph \
 	xcos scinotes parallel modules_manager ui_data history_browser \
-	preferences xml types external_objects $(am__append_1) scicos \
-	$(am__append_2)
-SUBDIRS = $(MY_SUBDIRS) .
+	preferences xml types external_objects $(am__append_1) scicos
+SUBDIRS = $(MY_SUBDIRS) . $(am__append_2)
 
 #### Basic files ####
 libscilab_la_rootdir = $(mydatadir)
@@ -811,7 +812,7 @@ libscilab_cli_la_LDFLAGS = $(LAPACK_LIBS) $(BLAS_LIBS) -lstdc++ $(AM_LDFLAGS)
 
 # Core modules
 libscilab_cli_la_LIBADD = $(ENGINE_LIBS) $(NO_GUI_LIBS) $(OTHER_LIBS) $(EXTERNAL_LIBS)
-CLEANFILES = stamp-checkstyle stamp-splint
+CLEANFILES = stamp-checkstyle stamp-splint stamp-clang
 all: all-recursive
 
 .SUFFIXES:
@@ -1273,7 +1274,7 @@ check-local: check-code
 check-code:
 	set -e; for mydir in $(MY_SUBDIRS); do \
 	  if test -e $${mydir}/Makefile; then \
-	    if test ! -e $${mydir}/stamp-checkstyle -o ! -e $${mydir}/stamp-splint -o $${mydir}/stamp-checkstyle -ot $${mydir}/Makefile -o $${mydir}/stamp-splint -ot $${mydir}/Makefile; then \
+	    if test ! -e $${mydir}/stamp-checkstyle -o ! -e $${mydir}/stamp-splint -o ! -e $${mydir}/stamp-clang -o $${mydir}/stamp-checkstyle -ot $${mydir}/Makefile -o $${mydir}/stamp-splint -ot $${mydir}/Makefile -o $${mydir}/stamp-clang -ot $${mydir}/Makefile; then \
 	      $(MAKE) -S -C $${mydir} check-code; \
 	    else \
 	      echo "Already checked code in $${mydir}"; \
@@ -1283,7 +1284,8 @@ check-code:
 	  fi; \
 	done; \
 	touch stamp-checkstyle; \
-	touch stamp-splint
+	touch stamp-splint; \
+	touch stamp-clang
 
 .PHONY: check-local check-code
 

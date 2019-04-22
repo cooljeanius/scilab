@@ -1583,13 +1583,13 @@ dnl Some hackery here since AC_CACHE_VAL cannot handle a non-literal varname
 # future versions of util-macros as options are added to new compilers.
 #
 AC_DEFUN([XORG_COMPILER_FLAGS], [
-AC_REQUIRE([XORG_COMPILER_BRAND])
+AC_REQUIRE([XORG_COMPILER_BRAND])dnl
 
 AC_ARG_ENABLE([selective-werror],
               [AS_HELP_STRING([--disable-selective-werror],
                               [Turn off selective compiler errors. (default: enabled)])],
               [SELECTIVE_WERROR=$enableval],
-              [SELECTIVE_WERROR=yes])
+              [SELECTIVE_WERROR=yes])dnl
 
 AC_LANG_CASE([C],[
     define([PREFIX],[C])
@@ -1659,7 +1659,6 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wconstant-logical-operand])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wunused-comparison])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wtautological-constant-out-of-range-compare])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wunevaluated-expression])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wextra-semi])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wunsequenced])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wself-assign])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wshift-sign-overflow])
@@ -1738,7 +1737,6 @@ if test "[x${]WERROR_WRITE_STRINGS_CV[}]" != "xyes"; then
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=incompatible-pointer-types])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=discarded-qualifiers])
 else
-    XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=incompatible-pointer-types-discards-qualifiers])
   AC_MSG_NOTICE([skipping adding -Werror=incompatible-pointer-types and -Werror=discarded-qualifiers when -Werror=write-strings is already on])
 fi
 else

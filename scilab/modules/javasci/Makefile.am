@@ -32,10 +32,13 @@ src/jni/call_scilab_wrap.c \
 src/jni/putLists.c \
 src/c/javasci2_helper.c
 
+JAVASCI_V2_C_CFLAGS = -Wno-missing-prototypes -Wno-unused
+
 pkglib_LTLIBRARIES = libjavasci2.la
 
 
 libjavasci2_la_SOURCES = $(JAVASCI_V2_C_SOURCES)
+libjavasci2_la_CFLAGS = $(JAVASCI_V2_C_CFLAGS)
 
 # For the code check (splint)
 CHECK_SRC= $(JAVASCI_C_SOURCES)
@@ -60,6 +63,12 @@ libjavasci2_la_LIBADD = \
 	$(top_builddir)/libs/MALLOC/libscimalloc.la \
 	$(top_builddir)/modules/api_scilab/libsciapi_scilab.la \
 	$(top_builddir)/modules/libscilab.la
+
+$(top_builddir)/modules/libscilab.la: $(top_builddir)/modules/Makefile
+	$(MAKE) -C $(top_builddir)/modules libscilab.la
+
+$(top_builddir)/modules/libscilab-cli.la: $(top_builddir)/modules/Makefile
+	$(MAKE) -C $(top_builddir)/modules libscilab-cli.la
 
 BUILT_SOURCES=
 if SWIG

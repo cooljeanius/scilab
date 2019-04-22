@@ -315,6 +315,7 @@ CC_C_O = @CC_C_O@
 CFLAGS = @CFLAGS@
 CHANGELOG_CMD = @CHANGELOG_CMD@
 CHECKSTYLE = @CHECKSTYLE@
+CLANG_ANALYZER = @CLANG_ANALYZER@
 CMAKE_BINARY = @CMAKE_BINARY@
 COBERTURA = @COBERTURA@
 COMMONS_BEANUTILS = @COMMONS_BEANUTILS@
@@ -456,6 +457,7 @@ MKDIR_P = @MKDIR_P@
 MSGCAT = @MSGCAT@
 MSGFMT = @MSGFMT@
 MSGFMT_015 = @MSGFMT_015@
+MSGFMT_OPTS = @MSGFMT_OPTS@
 MSGMERGE = @MSGMERGE@
 NM = @NM@
 NMEDIT = @NMEDIT@
@@ -717,6 +719,10 @@ AM_FFLAGS = $(SCI_FFLAGS) -Wp,-I$(top_srcdir)/modules/core/includes/
 
 # Tag shared libraries with the Scilab version
 AM_LDFLAGS = $(SCI_LDFLAGS) -version-number $(SCILAB_LIBRARY_VERSION)
+RUN_CLANG_ANALYZER = $(CLANG_ANALYZER) $(DEFS) $(CPPFLAGS) $(CFLAGS) \
+	$(AM_CPPFLAGS) $(AM_CFLAGS) $(INCINTL) --analyze
+
+analysisdir = $(builddir)/clang_static_analysis
 AM_V_v = $(am__v_v_@AM_V@)
 am__v_v_ = $(am__v_v_@AM_DEFAULT_V@)
 am__v_v_0 = 
@@ -741,6 +747,7 @@ am__v_SWIG_1 =
 # splint options
 SPLINT_OPTIONS = -weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +matchanyintegral +ignorequals -retvalother -unrecog -namechecks -castfcnptr -initallelements $(AM_V_splint) -fixedformalarray -fcnuse +oldstyle +noret +firstcase +allempty +incondefslib +overload +nestedextern +imptype +nullterminated +exitarg +macroparens +sefparams +sefuncon +bufferoverflow +multithreaded +portability +superuser +toctou +its4mostrisky +its4veryrisky +its4risky +legacy $(LOCAL_SPLINT_OPTIONS)
 SPLINT_INCLUDE_FLAGS = `echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
+CHECK_PLISTS = `echo $(CHECK_SRC) | $(SED) -e 's/\.c/\.plist/g'`
 
 ########################### JAVA ######################################
 #### We are delegating java compilation to ant... Thanks to that
@@ -1324,7 +1331,7 @@ check-local: $(top_builddir)/scilab-bin test
 	if test -d $(mydatadir)/tests; then \
 	  @COMMAND="try test_run('$(modulename)');catch exit(-1);end;exit(0)"; export LANG=C; $(top_builddir)/bin/scilab -nwni -nb -e "$$COMMAND"; \
 	fi
-check-code: stamp-checkstyle stamp-splint
+check-code: stamp-checkstyle stamp-splint stamp-clang
 .PHONY: check-code
 stamp-checkstyle:
 # Some configurations needs to export JAVA_HOME in the current env
@@ -1335,8 +1342,22 @@ stamp-checkstyle:
 	fi; \
 	touch $@
 stamp-splint: $(CHECK_SRC)
-	set -e; if test -x "$(SPLINT)"; then \
+	set -e; if test -x "$(SPLINT)" -a -n "$(CHECK_SRC)"; then \
 		$(SPLINT) $(SPLINT_OPTIONS) -I$(top_srcdir)/modules/core/includes/ -I$(top_srcdir)/libs/MALLOC/includes/ -I$(top_srcdir)/modules/localization/includes/ $(SPLINT_INCLUDE_FLAGS) $(CHECK_SRC); \
+	fi; \
+	touch $@
+stamp-clang: $(CHECK_SRC)
+	if test ! -d $(analysisdir); then \
+	    $(MKDIR_P) $(AM_V_v) $(analysisdir); fi
+	set -e; if test -x "$(CLANG_ANALYZER)"; then \
+	    echo "using $(CLANG_ANALYZER) to do static analysis in `pwd`"; \
+	    for filetoanalyze in $(CHECK_SRC); do \
+		echo "using $(CLANG_ANALYZER) to do static analysis on $${filetoanalyze}"; \
+		if test ! -d $(analysisdir)/`dirname $${filetoanalyze}`; then \
+		    $(MKDIR_P) $(AM_V_v) $(analysisdir)/`dirname $${filetoanalyze}`; \
+		fi; \
+		$(RUN_CLANG_ANALYZER) -Wp,-I$(top_srcdir)/modules/core/includes/ -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ -Wp,-I$(top_srcdir)/modules/localization/includes/ $(INCLUDE_FLAGS) $${filetoanalyze} -o $(analysisdir)/`echo $${filetoanalyze} | $(SED) -e 's/\.c/\.plist/g'`; \
+	    done; \
 	fi; \
 	touch $@
 @NEED_JAVA_TRUE@java:
@@ -1349,7 +1370,7 @@ stamp-splint: $(CHECK_SRC)
 
 @NEED_JAVA_TRUE@clean-java:
 # Some configurations needs to export JAVA_HOME in the current env
-@NEED_JAVA_TRUE@	$(AM_V_at)if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \
+@NEED_JAVA_TRUE@	$(AM_V_ANT)if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \
 @NEED_JAVA_TRUE@	if test -z "$(USEANT)"; then USEANT=0; else USEANT=1; fi; \
 @NEED_JAVA_TRUE@	if test -f build.xml -a $$USEANT -eq 1; then \
 @NEED_JAVA_TRUE@		$(ANT) clean; \
@@ -1402,7 +1423,7 @@ clean-macros:
 
 test:
 # More tests could be added here
-	$(AM_V_at)if test -z "$(USEANT)"; then USEANT=0; else USEANT=1; fi; \
+	$(AM_V_ANT)if test -z "$(USEANT)"; then USEANT=0; else USEANT=1; fi; \
 	if test -f build.xml -a $$USEANT -eq 1; then \
 		$(ANT) test; \
 	fi
@@ -1531,6 +1552,7 @@ distclean-local:
 	rm -f $(builddir)/help/*/.last_successful_build_javaHelp $(builddir)/help/*/.list_*
 	if test -e stamp-checkstyle; then rm -f stamp-checkstyle; fi
 	if test -e stamp-splint; then rm -f stamp-splint; fi
+	if test -e stamp-clang; then rm -f stamp-clang; fi
 	-rm -rfv .deps/* || rmdir .deps
 	-rm -rfv src/.deps/* || rmdir src/.deps
 	-rm -rfv src/*/.deps/* || rmdir src/*/.deps

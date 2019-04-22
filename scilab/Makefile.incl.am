@@ -31,6 +31,12 @@ AM_LDFLAGS += -version-number $(SCILAB_LIBRARY_VERSION)
 # append includes to AM_FFLAGS to manage fortran includes
 AM_FFLAGS  += -Wp,-I$(top_srcdir)/modules/core/includes/
 
+RUN_CLANG_ANALYZER = $(CLANG_ANALYZER) $(DEFS) $(CPPFLAGS) $(CFLAGS) \
+	$(AM_CPPFLAGS) $(AM_CFLAGS) $(INCINTL) --analyze
+
+## where to put clang static analysis plists:
+analysisdir = $(builddir)/clang_static_analysis
+
 ## hacks to extend the verbosity control:
 AM_V_v = $(am__v_v_@AM_V@)
 am__v_v_ = $(am__v_v_@AM_DEFAULT_V@)
@@ -68,7 +74,7 @@ SPLINT_OPTIONS=-weak -booltype BOOL -boolfalse FALSE -booltrue TRUE +posixlib +m
 SPLINT_INCLUDE_FLAGS=`echo $(INCLUDE_FLAGS) | $(SED) "s/-Wp,//g"`
 ## OK to leave "-I" un-prefixed here, since splint is different from the
 ## compiler
-check-code: stamp-checkstyle stamp-splint
+check-code: stamp-checkstyle stamp-splint stamp-clang
 .PHONY: check-code
 stamp-checkstyle:
 # Some configurations needs to export JAVA_HOME in the current env
@@ -79,8 +85,23 @@ stamp-checkstyle:
 	fi; \
 	touch $@
 stamp-splint: $(CHECK_SRC)
-	set -e; if test -x "$(SPLINT)"; then \
+	set -e; if test -x "$(SPLINT)" -a -n "$(CHECK_SRC)"; then \
 		$(SPLINT) $(SPLINT_OPTIONS) -I$(top_srcdir)/modules/core/includes/ -I$(top_srcdir)/libs/MALLOC/includes/ -I$(top_srcdir)/modules/localization/includes/ $(SPLINT_INCLUDE_FLAGS) $(CHECK_SRC); \
+	fi; \
+	touch $@
+CHECK_PLISTS = `echo $(CHECK_SRC) | $(SED) -e 's/\.c/\.plist/g'`
+stamp-clang: $(CHECK_SRC)
+	if test ! -d $(analysisdir); then \
+	    $(MKDIR_P) $(AM_V_v) $(analysisdir); fi
+	set -e; if test -x "$(CLANG_ANALYZER)"; then \
+	    echo "using $(CLANG_ANALYZER) to do static analysis in `pwd`"; \
+	    for filetoanalyze in $(CHECK_SRC); do \
+		echo "using $(CLANG_ANALYZER) to do static analysis on $${filetoanalyze}"; \
+		if test ! -d $(analysisdir)/`dirname $${filetoanalyze}`; then \
+		    $(MKDIR_P) $(AM_V_v) $(analysisdir)/`dirname $${filetoanalyze}`; \
+		fi; \
+		$(RUN_CLANG_ANALYZER) -Wp,-I$(top_srcdir)/modules/core/includes/ -Wp,-I$(top_srcdir)/libs/MALLOC/includes/ -Wp,-I$(top_srcdir)/modules/localization/includes/ $(INCLUDE_FLAGS) $${filetoanalyze} -o $(analysisdir)/`echo $${filetoanalyze} | $(SED) -e 's/\.c/\.plist/g'`; \
+	    done; \
 	fi; \
 	touch $@
 
@@ -103,7 +124,7 @@ java:
 
 clean-java:
 # Some configurations needs to export JAVA_HOME in the current env
-	$(AM_V_at)if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \
+	$(AM_V_ANT)if test "$(JAVA_HOME)"; then export JAVA_HOME=$(JAVA_HOME); fi; \
 	if test -z "$(USEANT)"; then USEANT=0; else USEANT=1; fi; \
 	if test -f build.xml -a $$USEANT -eq 1; then \
 		$(ANT) clean; \
@@ -170,7 +191,7 @@ clean-macros:
 
 test:
 # More tests could be added here
-	$(AM_V_at)if test -z "$(USEANT)"; then USEANT=0; else USEANT=1; fi; \
+	$(AM_V_ANT)if test -z "$(USEANT)"; then USEANT=0; else USEANT=1; fi; \
 	if test -f build.xml -a $$USEANT -eq 1; then \
 		$(ANT) test; \
 	fi
@@ -356,6 +377,7 @@ distclean-local:
 	rm -f $(builddir)/help/*/.last_successful_build_javaHelp $(builddir)/help/*/.list_*
 	if test -e stamp-checkstyle; then rm -f stamp-checkstyle; fi
 	if test -e stamp-splint; then rm -f stamp-splint; fi
+	if test -e stamp-clang; then rm -f stamp-clang; fi
 	-rm -rfv .deps/* || rmdir .deps
 	-rm -rfv src/.deps/* || rmdir src/.deps
 	-rm -rfv src/*/.deps/* || rmdir src/*/.deps

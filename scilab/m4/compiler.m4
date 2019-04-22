@@ -52,4 +52,18 @@ AC_DEFUN([CHECK_COMPILER_RDYNAMIC],[
   $2="${RDYNAMIC_saved_$2}"
 ])dnl
 
-
+dnl# SCILAB_CLANG_STATIC_ANALYSIS
+AC_DEFUN([SCILAB_CLANG_STATIC_ANALYSIS],[
+AC_ARG_VAR([CLANG_ANALYZER],[Path to the clang static analyzer])dnl
+AC_CACHE_CHECK([for the clang static analyzer],[ac_cv_path_CLANG_ANALYZER],
+  [AC_PATH_PROGS_FEATURE_CHECK([CLANG_ANALYZER],
+    [clang clang++ clang-mp-6.0 clang-mp-5.0 clang-mp-4.0 clang-mp-3.9],
+    [[${ac_path_CLANG_ANALYZER} --analyze /dev/null > /dev/null 2>&1 && \
+      ac_cv_path_CLANG_ANALYZER=${ac_path_CLANG_ANALYZER}
+      ac_path_CLANG_ANALYZER_found=:]],
+    [AC_MSG_WARN([we will not be able to do static analysis with clang])],
+    [${PATH}])dnl# end program check
+  ])dnl# end cache check
+  ## (need this extra line here)
+AC_SUBST([CLANG_ANALYZER],[${ac_cv_path_CLANG_ANALYZER}])dnl
+])dnl

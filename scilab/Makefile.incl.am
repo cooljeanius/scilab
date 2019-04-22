@@ -21,7 +21,7 @@ mydatadir=$(pkgdatadir)/modules/$(modulename)
 
 # Set AM_* SCI detected settings
 AM_CPPFLAGS = $(SCI_CPPFLAGS)
-AM_CFLAGS   = $(SCI_CFLAGS) `if test -d src/cpp; then echo $(WCXX_COMPAT_CFLAGS); fi`
+AM_CFLAGS   = $(SCI_CFLAGS) `if test -d src/cpp; then echo "$(WCXX_COMPAT_CFLAGS)"; fi`
 AM_CXXFLAGS = $(SCI_CXXFLAGS)
 AM_FFLAGS   = $(SCI_FFLAGS)
 AM_LDFLAGS  = $(SCI_LDFLAGS)

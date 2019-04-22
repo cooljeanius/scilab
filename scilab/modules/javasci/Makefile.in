@@ -710,7 +710,7 @@ libjavasci2_la_etc_DATA = etc/javasci.quit etc/javasci.start
 
 # Set AM_* SCI detected settings
 @JAVASCI_TRUE@AM_CPPFLAGS = $(SCI_CPPFLAGS)
-@JAVASCI_TRUE@AM_CFLAGS = $(SCI_CFLAGS) `if test -d src/cpp; then echo $(WCXX_COMPAT_CFLAGS); fi`
+@JAVASCI_TRUE@AM_CFLAGS = $(SCI_CFLAGS) `if test -d src/cpp; then echo "$(WCXX_COMPAT_CFLAGS)"; fi`
 @JAVASCI_TRUE@AM_CXXFLAGS = $(SCI_CXXFLAGS)
 # append includes to AM_FFLAGS to manage fortran includes
 @JAVASCI_TRUE@AM_FFLAGS = $(SCI_FFLAGS) \

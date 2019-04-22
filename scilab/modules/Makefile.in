@@ -111,8 +111,9 @@ target_triplet = @target@
 # javasci should be compile at the end because it needs libscilab.la
 # Don't forget that the order in subdirs does matter !!!
 @JAVASCI_TRUE@am__append_2 = javasci
-@GUI_TRUE@am__append_3 = $(GUI_LIBS) $(top_builddir)/modules/types/libscitypes.la
-@GUI_FALSE@am__append_4 = $(NO_GUI_LIBS)
+@JAVASCI_TRUE@am__append_3 = javasci
+@GUI_TRUE@am__append_4 = $(GUI_LIBS) $(top_builddir)/modules/types/libscitypes.la
+@GUI_FALSE@am__append_5 = $(NO_GUI_LIBS)
 subdir = modules
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/autobuild.m4 \
@@ -187,7 +188,7 @@ libscilab_cli_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
 	$(AM_CFLAGS) $(CFLAGS) $(libscilab_cli_la_LDFLAGS) $(LDFLAGS) \
 	-o $@
-libscilab_la_DEPENDENCIES = $(am__append_3) $(am__append_4) \
+libscilab_la_DEPENDENCIES = $(am__append_4) $(am__append_5) \
 	$(EXTERNAL_LIBS) $(top_builddir)/modules/libscilab-cli.la
 am_libscilab_la_OBJECTS = dummy.lo
 libscilab_la_OBJECTS = $(am_libscilab_la_OBJECTS)
@@ -288,8 +289,8 @@ DIST_SUBDIRS = prebuildjava fileio mexlib functions parameters boolean \
 	compatibility_functions helptools umfpack demo_tools \
 	genetic_algorithms simulated_annealing matio atoms graph xcos \
 	scinotes parallel modules_manager ui_data history_browser \
-	preferences xml types external_objects scicos_blocks scicos . \
-	javasci
+	preferences xml types external_objects scicos_blocks scicos \
+	javasci .
 am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/config/depcomp \
 	$(top_srcdir)/config/mkinstalldirs
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -702,7 +703,8 @@ MY_SUBDIRS = prebuildjava fileio mexlib functions parameters boolean \
 	compatibility_functions helptools umfpack demo_tools \
 	genetic_algorithms simulated_annealing matio atoms hdf5 graph \
 	xcos scinotes parallel modules_manager ui_data history_browser \
-	preferences xml types external_objects $(am__append_1) scicos
+	preferences xml types external_objects $(am__append_1) scicos \
+	$(am__append_3)
 SUBDIRS = $(MY_SUBDIRS) . $(am__append_2)
 
 #### Basic files ####
@@ -803,7 +805,7 @@ ENGINE_LIBS_DYNAMIC_LOAD = \
 
 
 # Core modules
-libscilab_la_LIBADD = $(am__append_3) $(am__append_4) $(OTHER_LIBS) \
+libscilab_la_LIBADD = $(am__append_4) $(am__append_5) $(OTHER_LIBS) \
 	$(EXTERNAL_LIBS) $(top_builddir)/modules/libscilab-cli.la
 
 ################## libscilab-cli  ##################

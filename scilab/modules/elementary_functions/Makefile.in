@@ -1509,7 +1509,7 @@ mydatadir = $(pkgdatadir)/modules/$(modulename)
 
 # Set AM_* SCI detected settings
 AM_CPPFLAGS = $(SCI_CPPFLAGS)
-AM_CFLAGS = $(SCI_CFLAGS) `if test -d src/cpp; then echo $(WCXX_COMPAT_CFLAGS); fi`
+AM_CFLAGS = $(SCI_CFLAGS) `if test -d src/cpp; then echo "$(WCXX_COMPAT_CFLAGS)"; fi`
 AM_CXXFLAGS = $(SCI_CXXFLAGS)
 # append includes to AM_FFLAGS to manage fortran includes
 AM_FFLAGS = $(SCI_FFLAGS) -Wp,-I$(top_srcdir)/modules/core/includes/

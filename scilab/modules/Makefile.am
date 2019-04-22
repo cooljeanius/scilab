@@ -103,6 +103,7 @@ SUBDIRS = $(MY_SUBDIRS) .
 # Don't forget that the order in subdirs does matter !!!
 if JAVASCI
 SUBDIRS += javasci
+MY_SUBDIRS += javasci
 endif
 
 #### Basic files ####

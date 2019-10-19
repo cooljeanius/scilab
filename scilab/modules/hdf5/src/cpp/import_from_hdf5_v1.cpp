@@ -28,8 +28,12 @@ extern "C"
 #include "expandPathVariable.h"
 }
 
-//#define PRINT_DEBUG
-//#define TIME_DEBUG
+#include "import_from_hdf5_v1.hxx"
+
+#if 0
+# define PRINT_DEBUG
+# define TIME_DEBUG
+#endif /* 0 */
 
 static int iTab = 0;
 static int iCloseList = 0;

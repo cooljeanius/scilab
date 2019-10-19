@@ -3096,7 +3096,7 @@ int C2F(maxvol) (int *lw, char *lw_type, unsigned long type_len)
 * to Scilab value.
 *---------------------------------------------*/
 
-static int Check_references()
+static int Check_references(void)
 {
     int ivar;
 
@@ -3160,7 +3160,7 @@ static int Check_references()
 *     variable on the stack is at position top-rhs+nbvars
 *---------------------------------------------------------------------*/
 
-int C2F(putlhsvar) ()
+int C2F(putlhsvar)()
 {
     int ix2, ivar, ibufprec, ix, k, lcres, nbvars1;
     int plhsk;
@@ -3538,12 +3538,12 @@ int C2F(in2str) (int *n, int *line, char *str, unsigned long str_len)
 
 /*---------------------------------------------------------------------
 * Get_Iname:
-* Get the name (interfcae name) which was stored in ids while in checkrhs
+* Get the name (interface name) which was stored in ids while in checkrhs
 *---------------------------------------------------------------------*/
 
 static char Fname[nlgh + 1];
 
-static char *Get_Iname()
+static char *Get_Iname(void)
 {
     int i;
 

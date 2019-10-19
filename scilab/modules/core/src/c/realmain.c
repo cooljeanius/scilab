@@ -48,8 +48,8 @@ int realmain(int no_startup_flag_l, char *initial_script, InitScriptType initial
     Set_no_startup_flag(no_startup_flag_l);
 
     /* Change the buffering mode of standard streams stdout/stderr */
-    setvbuf(stdout, (char *)NULL, _IONBF, 0);
-    setvbuf(stderr, (char *)NULL, _IONBF, 0);
+    setvbuf(stdout, (char *)NULL, _IONBF, 0UL);
+    setvbuf(stderr, (char *)NULL, _IONBF, 0UL);
 
     /* create temp directory */
     C2F(settmpdir)();
@@ -90,22 +90,26 @@ int realmain(int no_startup_flag_l, char *initial_script, InitScriptType initial
     if ( no_startup_flag_l == 0)
     {
         /* execute a startup */
-        if ( initial_script != NULL )
+        if (initial_script != NULL)
         {
-            switch ( initial_script_type )
+            switch (initial_script_type)
             {
-                case SCILAB_SCRIPT :
+                case SCILAB_SCRIPT:
                 {
                     char *ext = FindFileExtension(initial_script);
                     if (ext)
                     {
                         if ((strcmp(ext, ".xcos") == 0) || (strcmp(ext, ".zcos") == 0))
                         {
-                            snprintf(startup, PATH_MAX, "%s;xcos('%s')", get_sci_data_strings(STARTUP_ID), initial_script);
+                            snprintf(startup, (size_t)PATH_MAX, "%s;xcos('%s')",
+                                     get_sci_data_strings(STARTUP_ID),
+                                     initial_script);
                         }
                         else
                         {
-                            snprintf(startup, PATH_MAX, "%s;exec('%s',-1)", get_sci_data_strings(STARTUP_ID), initial_script);
+                            snprintf(startup, (size_t)PATH_MAX, "%s;exec('%s',-1)",
+                                     get_sci_data_strings(STARTUP_ID),
+                                     initial_script);
                         }
 
                         FREE(ext);
@@ -113,33 +117,39 @@ int realmain(int no_startup_flag_l, char *initial_script, InitScriptType initial
                     }
                     else
                     {
-                        snprintf(startup, PATH_MAX, "%s;exec('%s',-1)", get_sci_data_strings(STARTUP_ID), initial_script);
+                        snprintf(startup, (size_t)PATH_MAX, "%s;exec('%s',-1)",
+                                 get_sci_data_strings(STARTUP_ID),
+                                 initial_script);
                     }
                 }
 
                 break;
-                case SCILAB_CODE :
-                    snprintf(startup, PATH_MAX, "%s;%s;", get_sci_data_strings(STARTUP_ID), initial_script);
+                case SCILAB_CODE:
+                    snprintf(startup, (size_t)PATH_MAX, "%s;%s;",
+                             get_sci_data_strings(STARTUP_ID), initial_script);
                     break;
             }
         }
         else
         {
-            snprintf(startup, PATH_MAX, "%s;", get_sci_data_strings(STARTUP_ID));
+            snprintf(startup, (size_t)PATH_MAX, "%s;",
+                     get_sci_data_strings(STARTUP_ID));
         }
     }
     else
     {
         /* No startup but maybe an initial script  */
-        if ( initial_script != NULL )
+        if (initial_script != NULL)
         {
-            switch ( initial_script_type )
+            switch (initial_script_type)
             {
-                case SCILAB_SCRIPT :
-                    snprintf(startup, PATH_MAX, "exec('%s',-1)", initial_script);
+                case SCILAB_SCRIPT:
+                    snprintf(startup, (size_t)PATH_MAX, "exec('%s',-1)",
+                             initial_script);
                     break;
-                case SCILAB_CODE :
-                    snprintf(startup, PATH_MAX, "%s;", initial_script);
+                case SCILAB_CODE:
+                    snprintf(startup, (size_t)PATH_MAX, "%s;",
+                             initial_script);
                     break;
             }
         }

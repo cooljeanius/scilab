@@ -26,11 +26,13 @@ extern "C"
 #include "expandPathVariable.h"
 }
 
+#include "listvar_in_hdf5_v1.hxx"
+
 #include <vector>
 
 typedef struct __VAR_INFO_V1__
 {
-    char pstInfo[128];
+    char pstInfo[192]; /* 128 + 64 (for -Wformat-overflow) */
     char varName[128];
     int iType;
     int iSize;

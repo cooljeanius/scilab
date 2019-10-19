@@ -60,7 +60,7 @@ AC_SUBST([SCILAB_BINARY_VERSION])dnl
 SPACE_IN_PATH=`echo "${SCI_SRCDIR_FULL}"|grep " " > /dev/null; echo $?`
 if test "${SPACE_IN_PATH}" = "0"; then
    AC_MSG_WARN([=====================================])
-   AC_MSG_WARN([Configure thinks that there is a space in the path to the source.])
+   AC_MSG_WARN([Configure thinks there is a space in the path to the source.])
    AC_MSG_WARN([This may cause problem with libtool and some other things...])
    AC_MSG_WARN([=====================================])
    sleep 180
@@ -70,6 +70,8 @@ AC_CONFIG_AUX_DIR([config])
 AC_CONFIG_HEADERS([modules/core/includes/machine.h])dnl
 
 # Check system
+AC_MSG_CHECKING([system])
+AC_MSG_RESULT([ ])
 AC_CANONICAL_TARGET
 AC_OBJEXT
 AC_EXEEXT
@@ -169,6 +171,9 @@ AC_ARG_ENABLE([build-giws],
 ################################################
 ########## compilator & misc programs detection
 ################################################
+
+AC_MSG_CHECKING([programs, especially compilers])
+AC_MSG_RESULT([ ])
 
 AM_PROG_AR dnl# automake1.14 warns if this macro is missing
 AM_PROG_AS
@@ -521,6 +526,8 @@ if test -n "${F77}"; then
         if test "x${enable_code_coverage}" = "xyes"; then
             CODE_COVERAGE_FFLAGS="-fprofile-arcs -ftest-coverage"
         fi
+        ## see Fortran section under https://gcc.gnu.org/gcc-10/changes.html
+        FFLAGS="${FFLAGS} -std=legacy"
      ;;
      g77*)
         AC_MSG_ERROR([g77 is no longer supported. Please consider switching to gfortran.])
@@ -639,7 +646,7 @@ case "${CXX}" in
         fi
 
         if test "x${enable_debug_CXX}" = "xyes"; then
-            DEBUG_CXXFLAGS="-pipe -Wshadow -Wpointer-arith -Wcast-align -Wreturn-type -Wswitch -Wtrigraphs -Wcomment -Wchar-subscripts -Wformat -Wparentheses -Wsign-compare -Wwrite-strings -Wunused -fno-strict-aliasing -Wextra -Wall -g3 -Wunsafe-loop-optimizations"
+            DEBUG_CXXFLAGS="-pipe -Wshadow -Wpointer-arith -Wcast-align -Wreturn-type -Wswitch -Wtrigraphs -Wcomment -Wchar-subscripts -Wformat -Wparentheses -Wsign-compare -Wwrite-strings -Wunused -fno-strict-aliasing -Wextra -Wall -g3"
             case "$host" in
                 *-linux-gnu )
                     # Only doing that under Linux
@@ -693,7 +700,7 @@ case "${CC}" in
    fi
 
    if test "x${enable_debug_C}" = "xyes"; then
-      DEBUG_CFLAGS="-pipe -Wformat -Wshadow -Wfloat-equal -Wpointer-arith -Wcast-align -Wmissing-prototypes -Wmissing-declarations  -Wstrict-prototypes  -Wmissing-noreturn -Wendif-labels -Wpointer-arith -Wwrite-strings -Winline -Wredundant-decls -Wall -Wchar-subscripts -Wextra -Wuninitialized -Wno-format-y2k -Wmissing-format-attribute -Wno-missing-field-initializers -fno-strict-aliasing -Wold-style-definition -g3 -Wunsafe-loop-optimizations"
+      DEBUG_CFLAGS="-pipe -Wformat -Wshadow -Wpointer-arith -Wcast-align -Wmissing-prototypes -Wmissing-declarations -Wstrict-prototypes -Wmissing-noreturn -Wendif-labels -Wpointer-arith -Wwrite-strings -Winline -Wredundant-decls -Wall -Wchar-subscripts -Wextra -Wuninitialized -Wno-format-y2k -Wmissing-format-attribute -Wno-missing-field-initializers -fno-strict-aliasing -Wold-style-definition -g3"
       # used to be -O
       # -D_FORTIFY_SOURCE=2
       case "${host}" in
@@ -1369,10 +1376,11 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
         AC_GIWS([1.3.0]) dnl# from m4/giws.m4
     else
         dnl# make sure it is turned off if not specifically requested
+        AC_MSG_NOTICE([skipping checks for giws])
         enable_build_giws=no
     fi
 else
-    AC_MSG_NOTICE([skipping checks for java stuff, including fop and swig])
+    AC_MSG_NOTICE([skipping checks for java stuff, including fop, swig, and giws])
     dnl# none of these can be turned on if Java is not turned on
     enable_build_swig=no
     enable_build_giws=no
@@ -1425,6 +1433,9 @@ AC_SUBST([GUI_ENABLE])dnl
 ##############################################################
 ## test for functions in standard C library and C math library
 ##############################################################
+
+AC_MSG_CHECKING([functions])
+AC_MSG_RESULT([ ])
 
 # Provided by unistd.h
 AC_CHECK_FUNCS([sleep usleep dup2 getcwd getpagesize getpass])
@@ -1543,19 +1554,36 @@ AC_CHECK_DECLS([vsnprintf])dnl
 ## test for header files
 ########################
 
+AC_MSG_CHECKING([headers])
+AC_MSG_RESULT([ ])
+
 AC_HEADER_MAJOR
 
 AC_CHECK_HEADERS([limits.h values.h])dnl
 
-AC_CHECK_HEADERS([argz.h ctype.h dl.h dlfcn.h fcntl.h float.h \
-iconv.h io.h jni.h langinfo.h libintl.h locale.h ltdl.h mach-o/dyld.h \
-mach-o/getsect.h machine.h malloc.h malloc/malloc.h mman.h netdb.h \
-netinet/in.h nlist.h param.h pwd.h regex.h select.h sgtty.h \
-signal.h socket.h stddef.h stdio.h stdio_ext.h sys/file.h \
-sys/ioctl.h sys/param.h sys/socket.h sys/time.h sys/timeb.h \
+AC_CHECK_HEADERS([argz.h ctype.h dl.h dlfcn.h fcntl.h float.h iconv.h io.h \
+langinfo.h libintl.h locale.h ltdl.h mach-o/dyld.h mach-o/getsect.h \
+machine.h malloc.h malloc/malloc.h mman.h netdb.h netinet/in.h nlist.h \
+param.h pwd.h regex.h select.h sgtty.h signal.h socket.h stddef.h \
+stdio_ext.h sys/file.h sys/ioctl.h sys/socket.h sys/time.h sys/timeb.h \
 sys/utsname.h syslog.h term.h termcap.h termio.h termios.h tgmath.h \
 time.h types.h utime.h utsname.h wchar.h wctype.h winbase.h windows.h \
 wtloop.c xlocale.h])dnl
+
+if test "x${ac_cv_header_jni_h}" = "x"; then
+  test -z "${ac_cv_header_jni_h}"
+  AC_CHECK_HEADERS([jni.h])
+fi
+
+if test "x${ac_cv_header_stdio_h}" = "x"; then
+  test -z "${ac_cv_header_stdio_h}"
+  AC_CHECK_HEADERS([stdio.h])
+fi
+
+if test "x${ac_cv_header_sys_param_h}" = "x"; then
+  test -z "${ac_cv_header_sys_param_h}"
+  AC_CHECK_HEADERS([sys/param.h])
+fi
 
 # check header dirent
 AC_HEADER_DIRENT
@@ -1568,6 +1596,8 @@ AC_HEADER_SYS_WAIT
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_HEADER_STDBOOL dnl# also "_CHECK"s it
+AC_MSG_CHECKING([typedefs])
+AC_MSG_RESULT([ ])
 AC_TYPE_INT8_T
 AC_TYPE_INT16_T
 AC_TYPE_INT32_T
@@ -1591,6 +1621,8 @@ AC_CHECK_TYPES([lt_dlsymlist])dnl
 #########################
 ## Test for structures ##
 #########################
+AC_MSG_CHECKING([structs])
+AC_MSG_RESULT([ ])
 AC_CHECK_MEMBERS([struct stat.st_blksize])
 AC_CHECK_MEMBERS([struct stat.st_rdev])
 AC_CHECK_MEMBERS([struct stat.st_size])dnl
@@ -1599,6 +1631,8 @@ AC_CHECK_MEMBERS([struct stat.st_size])dnl
 ## MISC Test
 #######################
 
+AC_MSG_CHECKING([gettext stuff])
+AC_MSG_RESULT([ ])
 # gettext.  See http://www.gnu.org/software/hello/manual/gettext/AM_005fGNU_005fGETTEXT.html
 AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_VERSION([0.18.3]) dnl# 0.18.3 fixes bugs in the po subdir that were in 0.18.2
@@ -1630,6 +1664,9 @@ AC_STRUCT_ST_BLOCKS
 ##################
 ## termcap library
 ##################
+
+AC_MSG_CHECKING([libraries])
+AC_MSG_RESULT([ ])
 
 # some systems may have a system curses implementation as well as ncurses
 # installed.  We need to be consistent in making sure we get the correct
@@ -1801,6 +1838,8 @@ case "$host_os" in
 	*Darwin* | *darwin*)
 	  if test ! -z "${BLAS_LIBS}"; then
 	  	BLAS_LIBS="${BLAS_LIBS} -Wl,-framework,Accelerate"
+	  elif test -d /System/Library/Frameworks/Accelerate.framework/Versions/NOT_REALLY_A_VERSION; then
+	  	test -z "${BLAS_LIBS}" && BLAS_LIBS="-Wl,-framework,Accelerate"
 	  fi
 	  if test ! -z "${CPPFLAGS}"; then
 	  	CPPFLAGS="${CPPFLAGS} -Wp,-I/System/Library/Frameworks/Accelerate.framework/Headers"
@@ -2199,6 +2238,9 @@ AC_SUBST([GRAPHICS_ENABLE])dnl
 ## libtool
 #########################
 
+AC_MSG_CHECKING([libtool stuff])
+AC_MSG_RESULT([ ])
+
 AC_DISABLE_STATIC([])
 LT_PREREQ([2.2.7])
 LT_INIT([shared dlopen win32-dll])
@@ -2243,6 +2285,8 @@ else
 fi
 
 # Other compiler characteristics
+AC_MSG_CHECKING([other compiler characteristics])
+AC_MSG_RESULT([ ])
 AC_C_CHAR_UNSIGNED
 AC_C_BIGENDIAN dnl# For Apple universal builds
 AC_C__GENERIC
@@ -2262,6 +2306,8 @@ AC_BACKTRACE([]) dnl# from m4/backtrace.m4
 ##########
 ##### Code quality
 ##########
+AC_MSG_CHECKING([code quality tools])
+AC_MSG_RESULT([ ])
 AC_PATH_PROG([SPLINT],[splint],[no])
 AC_PATH_PROG([ASTYLE],[astyle],[no])
 AC_PATH_PROGS([GNU_INDENT],[indent gindent],[no])
@@ -2386,12 +2432,12 @@ if test "x${enable_stop_on_warning}" = "xyes"; then
         CHECK_COMPILER_ARG([C++],[-Werror=format-security],[CXXFLAGS],
                            [WERROR_CXXFLAGS])
         CXXFLAGS="${sowsaved_CXXFLAGS}"
-        WARNING_CXXFLAGS="-Werror=implicit-function-declaration -O0 ${WERROR_CXXFLAGS}"
+        WARNING_CXXFLAGS="-O0 ${WERROR_CXXFLAGS}"
     else
         WERROR_CFLAGS=""
         WARNING_CFLAGS="-Werror=implicit-function-declaration -O0"
         WERROR_CXXFLAGS=""
-        WARNING_CXXFLAGS="-Werror=implicit-function-declaration -O0"
+        WARNING_CXXFLAGS="-O0"
     fi
 fi
 
@@ -2657,7 +2703,8 @@ if test "x${OPENMP_ENABLE}" = "xyes"; then
    echo "OpenMP CFLAGS ...... = $OPENMP_CFLAGS"
    echo "OpenMP CXXFLAGS .... = $OPENMP_CXXFLAGS"
    echo "OpenMP LIBS ........ = $OPENMP_LIBS"
-   echo "OpenMP FFLAGS ...... = $OPENMP_LDFLAGS"
+   echo "OpenMP FFLAGS ...... = $OPENMP_FFLAGS"
+   echo "OpenMP LDFLAGS ..... = $OPENMP_LDFLAGS"
 else
    echo "Not using OpenMP"
 fi

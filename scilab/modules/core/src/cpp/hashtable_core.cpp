@@ -52,7 +52,7 @@ struct entry
         int const zero(0);
         if (name)
         {
-            strncpy(namefunction, name, MAXLENGHTFUNCTIONNAME);
+            strncpy(namefunction, name, (MAXLENGHTFUNCTIONNAME - 1));
         }
         else
         {

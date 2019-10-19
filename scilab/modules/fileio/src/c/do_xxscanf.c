@@ -206,7 +206,7 @@ int do_xxscanf(char *fname, FILE * fp, char *format, int *nargs, char *strv, int
                         return RET_BUG;
                     }
 
-                    if ((buf[num_conversion].c = MALLOC(MAX_STR)) == NULL)
+                    if ((buf[num_conversion].c = (char *)MALLOC(MAX_STR)) == NULL)
                     {
                         return MEM_LACK;
                     }
@@ -231,7 +231,7 @@ int do_xxscanf(char *fname, FILE * fp, char *format, int *nargs, char *strv, int
                         return RET_BUG;
                     }
 
-                    if ((buf[num_conversion].c = MALLOC(MAX_STR)) == NULL)
+                    if ((buf[num_conversion].c = (char *)MALLOC(MAX_STR)) == NULL)
                     {
                         return MEM_LACK;
                     }
@@ -262,7 +262,7 @@ int do_xxscanf(char *fname, FILE * fp, char *format, int *nargs, char *strv, int
                         return RET_BUG;
                     }
 
-                    if ((buf[num_conversion].c = MALLOC(MAX_STR)) == NULL)
+                    if ((buf[num_conversion].c = (char *)MALLOC(MAX_STR)) == NULL)
                     {
                         return MEM_LACK;
                     }
@@ -299,7 +299,8 @@ int do_xxscanf(char *fname, FILE * fp, char *format, int *nargs, char *strv, int
 
                 case 'n':
                     n_directive_count++;
-
+                /*FIXME: really fallthru?*/
+                /*FALLTHRU*/
                 case 'i':
                 case 'd':
                     if (l_flag)

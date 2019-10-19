@@ -18,21 +18,22 @@
 #include <libxml/xmlversion.h>
 
 #ifdef WITH_TK
-#include <tcl.h>
-#include <tk.h>
-#endif
+# include <tcl.h>
+# include <tk.h>
+#endif /* WITH_TK */
 
-/*
-Commented for now
 
-#ifdef WITH_UMFPACK
-#ifdef UMFPACK_SUITESPARSE
-#include <suitesparse/umfpack.h>
-#else
-#include <umfpack.h>
-#endif
-#endif
-*/
+/* ifdef-ed for now: */
+#ifdef YES_I_REALLY_WANT_TO_USE_UMFPACK
+# ifdef WITH_UMFPACK
+#  ifdef UMFPACK_SUITESPARSE
+#   include <suitesparse/umfpack.h>
+#  else
+#   include <umfpack.h>
+#  endif /* UMFPACK_SUITESPARSE */
+# endif /* WITH_UMFPACK */
+#endif /* YES_I_REALLY_WANT_TO_USE_UMFPACK */
+
 #include "MALLOC.h"
 #include "getstaticdebuginfo.h"
 #include "version.h"
@@ -126,18 +127,19 @@ char **getStaticDebugInfo(int *sizeArray)
         if (outputStaticList)
         {
             /* Alloc the big list */
-            osl_len = (sizeof(char *) * (i + 1UL));
+            osl_len = (sizeof(char *) * ((size_t)i + 1UL));
             outputStaticList = (char **)REALLOC(outputStaticList, osl_len);
         }
         else
         {
-            osl_len = (sizeof(char *) * (i + 1UL));
+            osl_len = (sizeof(char *) * ((size_t)i + 1UL));
             outputStaticList = (char **)MALLOC(osl_len);
         }
 
         /* Create the element in the array */
         /* 3 for :, space and \0 */
-        osl_i_len = ((strlen(msg.description) + strlen(msg.value) + 3UL)
+        /* 2 for -Wformat-truncation */
+        osl_i_len = ((strlen(msg.description) + strlen(msg.value) + 3UL + 2UL)
                      * sizeof(char));
         outputStaticList[i] = (char *)MALLOC(osl_i_len);
         snprintf(outputStaticList[i], osl_i_len, "%s: %s", msg.description,

@@ -427,7 +427,7 @@ static int CreateEOLList(void)
         return 0;
     }
     (eol[0])[3] = '\0';
-    strncpy(eol[0], "EOL", 3);
+    strncpy(eol[0], "EOL", 4UL);
 
     /* Add eol to stack */
     str2sci(eol, one, one);
@@ -1672,45 +1672,45 @@ static int CreateFuncallTList(char *fromwhat, int *data, int *index2)
         CvNameL(id, funname[0], &job1, &funnamelgth);
         (funname[0])[funnamelgth] = '\0';
     }
-    else if (!strncmp(fromwhat, "datacode", 8))
+    else if (!strncmp(fromwhat, "datacode", 8UL))
     {
         if (data[*index2] == 12)
         {
-            strncpy(funname[0], "pause", 5);
+            strncpy(funname[0], "pause", 6UL);
             funnamelgth = 5;
         }
         else if (data[*index2] == 13)
         {
-            strncpy(funname[0], "break", 5);
+            strncpy(funname[0], "break", 6UL);
             funnamelgth = 5;
         }
         else if (data[*index2] == 14)
         {
-            strncpy(funname[0], "abort", 5);
+            strncpy(funname[0], "abort", 7UL);
             funnamelgth = 5;
         }
         else if (data[*index2] == 17)
         {
-            strncpy(funname[0], "quit", 4);
+            strncpy(funname[0], "quit", 8UL);
             funnamelgth = 4;
         }
         else if (data[*index2] == 20)
         {
-            strncpy(funname[0], "exit", 4);
+            strncpy(funname[0], "exit", 5UL);
             funnamelgth = 4;
         }
         else if (data[*index2] == 28)
         {
-            strncpy(funname[0], "continue", 8);
+            strncpy(funname[0], "continue", 9UL);
             funnamelgth = 8;
         }
         else if (data[*index2] == 99)
         {
-            strncpy(funname[0], "return", 6);
+            strncpy(funname[0], "return", 7UL);
             funnamelgth = 6;
         }
     }
-    else if (!strncmp(fromwhat, "macro", 5))
+    else if (!strncmp(fromwhat, "macro", 5UL))
     {
         CvNameL(&data[*index2 - nsiz + 1], funname[0], &job1, &funnamelgth);
         (funname[0])[funnamelgth] = '\0';

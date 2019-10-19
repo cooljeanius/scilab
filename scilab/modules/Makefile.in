@@ -113,7 +113,9 @@ target_triplet = @target@
 @JAVASCI_TRUE@am__append_2 = javasci
 @JAVASCI_TRUE@am__append_3 = javasci
 @GUI_TRUE@am__append_4 = $(GUI_LIBS) $(top_builddir)/modules/types/libscitypes.la
-@GUI_FALSE@am__append_5 = $(NO_GUI_LIBS)
+@GUI_TRUE@am__append_5 = $(GUI_LIBS) $(top_builddir)/modules/types/libscitypes.la
+@GUI_FALSE@am__append_6 = $(NO_GUI_LIBS)
+@GUI_FALSE@am__append_7 = $(NO_GUI_LIBS)
 subdir = modules
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/autobuild.m4 \
@@ -178,7 +180,7 @@ am__installdirs = "$(DESTDIR)$(pkglibdir)"
 LTLIBRARIES = $(pkglib_LTLIBRARIES)
 libscilab_cli_la_DEPENDENCIES = $(ENGINE_LIBS) $(NO_GUI_LIBS) \
 	$(EXTERNAL_LIBS)
-am_libscilab_cli_la_OBJECTS =
+am_libscilab_cli_la_OBJECTS = dummy_cli.lo
 libscilab_cli_la_OBJECTS = $(am_libscilab_cli_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -188,7 +190,7 @@ libscilab_cli_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
 	$(AM_CFLAGS) $(CFLAGS) $(libscilab_cli_la_LDFLAGS) $(LDFLAGS) \
 	-o $@
-libscilab_la_DEPENDENCIES = $(am__append_4) $(am__append_5) \
+libscilab_la_DEPENDENCIES = $(am__append_4) $(am__append_6) \
 	$(EXTERNAL_LIBS) $(top_builddir)/modules/libscilab-cli.la
 am_libscilab_la_OBJECTS = dummy.lo
 libscilab_la_OBJECTS = $(am_libscilab_la_OBJECTS)
@@ -210,7 +212,7 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)/modules/core/includes
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/dummy.Plo
+am__depfiles_remade = ./$(DEPDIR)/dummy.Plo ./$(DEPDIR)/dummy_cli.Plo
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -805,11 +807,13 @@ ENGINE_LIBS_DYNAMIC_LOAD = \
 
 
 # Core modules
-libscilab_la_LIBADD = $(am__append_4) $(am__append_5) $(OTHER_LIBS) \
+libscilab_la_LIBADD = $(am__append_4) $(am__append_6) $(OTHER_LIBS) \
 	$(EXTERNAL_LIBS) $(top_builddir)/modules/libscilab-cli.la
+libscilab_la_DEPS = $(am__append_5) $(am__append_7) $(OTHER_LIBS) \
+	$(EXTERNAL_LIBS)
 
 ################## libscilab-cli  ##################
-libscilab_cli_la_SOURCES = 
+libscilab_cli_la_SOURCES = dummy_cli.c
 libscilab_cli_la_LDFLAGS = $(LAPACK_LIBS) $(BLAS_LIBS) -lstdc++ $(AM_LDFLAGS)
 
 # Core modules
@@ -897,6 +901,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dummy.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dummy_cli.Plo@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -1182,6 +1187,7 @@ clean-am: clean-generic clean-libtool clean-pkglibLTLIBRARIES \
 
 distclean: distclean-recursive
 		-rm -f ./$(DEPDIR)/dummy.Plo
+	-rm -f ./$(DEPDIR)/dummy_cli.Plo
 	-rm -f Makefile
 distclean-am: clean-am distclean-DEJAGNU distclean-compile \
 	distclean-generic distclean-tags
@@ -1228,6 +1234,7 @@ installcheck-am:
 
 maintainer-clean: maintainer-clean-recursive
 		-rm -f ./$(DEPDIR)/dummy.Plo
+	-rm -f ./$(DEPDIR)/dummy_cli.Plo
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
@@ -1267,6 +1274,9 @@ uninstall-am: uninstall-pkglibLTLIBRARIES
 
 .PRECIOUS: Makefile
 
+
+$(top_builddir)/modules/libscilab-cli.la: $(top_builddir)/modules/Makefile
+	$(MAKE) -C $(top_builddir)/modules libscilab-cli.la
 
 .NOTPARALLEL: libscilab-cli.la libscilab.la
 

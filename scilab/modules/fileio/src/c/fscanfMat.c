@@ -43,7 +43,7 @@
 #endif
 /*--------------------------------------------------------------------------*/
 #define NB_FORMAT_SUPPORTED 7
-static char *supportedFormat[NB_FORMAT_SUPPORTED] =
+static const char *supportedFormat[NB_FORMAT_SUPPORTED] =
 {"lf", "lg", "d", "i", "e", "f", "g"};
 /*--------------------------------------------------------------------------*/
 static BOOL itCanBeMatrixLine(char *line, char *format, char *separator);
@@ -254,9 +254,9 @@ static BOOL itCanBeMatrixLine(char *line, char *format, char *separator)
 
                 if ((ierr != 0) && (ierr != EOF))
                 {
-                    if ((strncmp(str, NanString, (int)strlen(NanString)) == 0) ||
-                            (strncmp(str, NegInfString, (int)strlen(NegInfString)) == 0) ||
-                            (strncmp(str, InfString, (int)strlen(InfString)) == 0))
+                    if ((strncmp(str, NanString, strlen(NanString)) == 0)
+                            || (strncmp(str, NegInfString, strlen(NegInfString)) == 0)
+                            || (strncmp(str, InfString, strlen(InfString)) == 0))
                     {
                         FREE(str);
                         str = NULL;
@@ -336,7 +336,7 @@ static int getNbColumnsInLine(char *line, char *format, char *separator)
     {
         int i = 0;
         int nbTokens = 0;
-        char **splittedStr = splitLine(line, separator, &nbTokens, 0);
+        char **splittedStr = splitLine(line, separator, &nbTokens, '\0');
         if (nbTokens == 0)
         {
             freeArrayOfString(splittedStr, nbTokens);
@@ -371,7 +371,10 @@ static int getNbColumnsInLine(char *line, char *format, char *separator)
                         {
                             freeArrayOfString(splittedStr, nbTokens);
                             /* bug 6889 */
-                            if (nbColums) nbColums--;
+                            if (nbColums)
+                            {
+                                nbColums--;
+                            }
                             FREE(str);
                             str = NULL;
                             return nbColums;
@@ -402,7 +405,7 @@ static char **splitLine(char *str, char *sep, int *toks, char meta)
     char *end = NULL;
     char *sep_end = NULL;
     char *sep_idx = NULL;
-    int len = 0;
+    size_t len = 0;
     int curr_str = 0;
     char last_char = 0xFF;
 
@@ -436,7 +439,7 @@ static char **splitLine(char *str, char *sep, int *toks, char meta)
         return retstr;
     }
 
-    retstr = (char **) MALLOC((sizeof(char *) * (int)strlen(str)));
+    retstr = (char **) MALLOC((sizeof(char *) * strlen(str)));
     if (retstr == NULL)
     {
         *toks = 0;
@@ -520,7 +523,10 @@ static double *getDoubleValuesFromLines(char **lines, int sizelines,
 {
     double *dValues = NULL;
 
-    if (m == 0 || n == 0) return NULL;
+    if (m == 0 || n == 0)
+    {
+        return NULL;
+    }
 
     dValues = (double*) MALLOC(sizeof(double) * (m * n));
     if (dValues)
@@ -554,7 +560,7 @@ static double *getDoubleValuesInLine(char *line,
     if (line && format && separator)
     {
         int nbTokens = 0;
-        char **splittedStr = splitLine(line, separator, &nbTokens, 0);
+        char **splittedStr = splitLine(line, separator, &nbTokens, '\0');
         if (splittedStr)
         {
             int i = 0;
@@ -627,7 +633,10 @@ static double returnINF(BOOL bPositive)
 {
     double v = 0;
     double p = 10;
-    if (!bPositive) p = -10;
+    if (!bPositive)
+    {
+        p = -10;
+    }
     return (double) p / (double)v;
 }
 /*--------------------------------------------------------------------------*/
@@ -681,9 +690,10 @@ static char *getCleanedFormat(char *format)
                     int nbcharacters = (int)(strlen(percent) - strlen(token));
                     cleanedFormat = strdup(percent);
                     cleanedFormat[nbcharacters] = 0;
-                    if ( (nbcharacters - 1 > 0) && (isdigit(cleanedFormat[nbcharacters - 1]) ||
-                                                    (cleanedFormat[nbcharacters - 1]) == '.') ||
-                            (cleanedFormat[nbcharacters - 1]) == '%')
+                    /*FIXME: check parentheses: */
+                    if (((nbcharacters - 1 > 0) && (isdigit(cleanedFormat[nbcharacters - 1])))
+                            || ((cleanedFormat[nbcharacters - 1]) == '.')
+                            || ((cleanedFormat[nbcharacters - 1]) == '%'))
                     {
                         strcat(cleanedFormat, supportedFormat[i]);
                         return cleanedFormat;
@@ -748,9 +758,9 @@ static BOOL isValidLineWithOnlyOneNumber(char *line)
         }
         else
         {
-            if ((strncmp(line, NanString, (int)strlen(NanString)) == 0) ||
-                    (strncmp(line, NegInfString, (int)strlen(NegInfString)) == 0) ||
-                    (strncmp(line, InfString, (int)strlen(InfString)) == 0))
+            if ((strncmp(line, NanString, strlen(NanString)) == 0)
+                    || (strncmp(line, NegInfString, strlen(NegInfString)) == 0)
+                    || (strncmp(line, InfString, strlen(InfString)) == 0))
             {
                 return TRUE;
             }
@@ -766,7 +776,10 @@ static BOOL isOnlyBlankLine(const char *line)
         int i = 0;
         for (i = 0; i < (int) strlen(line); i++)
         {
-            if (line[i] != ' ') return FALSE;
+            if (line[i] != ' ')
+            {
+                return FALSE;
+            }
         }
     }
     return TRUE;

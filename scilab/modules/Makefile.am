@@ -210,26 +210,33 @@ ENGINE_LIBS_DYNAMIC_LOAD = \
 ## libscilab_cli_la_LIBADD moved further below
 
 libscilab_la_LIBADD =
+libscilab_la_DEPS =
 
 if GUI
 libscilab_la_LIBADD += $(GUI_LIBS) $(top_builddir)/modules/types/libscitypes.la
+libscilab_la_DEPS += $(GUI_LIBS) $(top_builddir)/modules/types/libscitypes.la
 else
 libscilab_la_LIBADD += $(NO_GUI_LIBS)
+libscilab_la_DEPS += $(NO_GUI_LIBS)
 endif
 
 # Core modules
 libscilab_la_LIBADD += $(OTHER_LIBS) $(EXTERNAL_LIBS) \
 	$(top_builddir)/modules/libscilab-cli.la
+libscilab_la_DEPS += $(OTHER_LIBS) $(EXTERNAL_LIBS)
 
 
 ################## libscilab-cli  ##################
 
-libscilab_cli_la_SOURCES =
+libscilab_cli_la_SOURCES = dummy_cli.c
 
 libscilab_cli_la_LDFLAGS = $(LAPACK_LIBS) $(BLAS_LIBS) -lstdc++ $(AM_LDFLAGS)
 
 # Core modules
 libscilab_cli_la_LIBADD = $(ENGINE_LIBS) $(NO_GUI_LIBS) $(OTHER_LIBS) $(EXTERNAL_LIBS)
+
+$(top_builddir)/modules/libscilab-cli.la: $(top_builddir)/modules/Makefile
+	$(MAKE) -C $(top_builddir)/modules libscilab-cli.la
 
 .NOTPARALLEL: libscilab-cli.la libscilab.la
 

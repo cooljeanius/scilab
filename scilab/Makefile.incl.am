@@ -32,7 +32,8 @@ AM_LDFLAGS += -version-number $(SCILAB_LIBRARY_VERSION)
 AM_FFLAGS  += -Wp,-I$(top_srcdir)/modules/core/includes/
 
 RUN_CLANG_ANALYZER = $(CLANG_ANALYZER) $(DEFS) $(CPPFLAGS) $(CFLAGS) \
-	$(AM_CPPFLAGS) $(AM_CFLAGS) $(INCINTL) --analyze
+	$(AM_CPPFLAGS) $(AM_CFLAGS) $(INCINTL) --analyze \
+	-Wno-unused-command-line-argument
 
 ## where to put clang static analysis plists:
 analysisdir = $(builddir)/clang_static_analysis

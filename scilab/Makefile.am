@@ -47,7 +47,7 @@ scilab_bin_LDFLAGS 	= $(AM_LDFLAGS)
 scilab_cli_bin_LDFLAGS  = $(AM_LDFLAGS)
 
 if IS_MACOSX
-scilab_bin_LDFLAGS 	+= "-Wl,-framework,Cocoa"
+scilab_bin_LDFLAGS += "-Wl,-framework,Cocoa" "-Wl,-multiply_defined,warning"
 endif
 
 scilab_bin_CPPFLAGS = -Wp,-I$(top_srcdir)/modules/io/includes/ \
@@ -80,6 +80,11 @@ endif
 if IS_SOLARIS
 # The binary itself needs this dep
 	scilab_bin_LDADD += $(BLAS_LIBS)
+endif
+
+if IS_MACOSX
+# The binary itself needs these deps:
+	scilab_bin_LDADD += $(BLAS_LIBS) $(LAPACK_LIBS)
 endif
 
 if ENABLE_STATIC
@@ -497,11 +502,17 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = scilab.pc
 
 check-local: check-code
-check-code:
+check-code: libs/Makefile modules/Makefile
 	$(MAKE) -S -C libs check-code
 	$(MAKE) -S -C modules check-code
 
-.PHONY: macros localization doc check-local check-code
+just_libs: libs/Makefile modules/Makefile
+	$(MAKE) -C libs all
+	$(MAKE) -C modules libscilab-cli.la
+	$(MAKE) -C modules libscilab.la
+	$(MAKE) -C modules libjavasci2.la
+
+.PHONY: macros localization doc check-local check-code just_libs
 
 .NOTPARALLEL: macros doc
 

@@ -148,7 +148,7 @@ void wblong(ft_t ft, long unsigned int ul)
 unsigned short rshort(ft_t ft)
 {
     unsigned short us;
-    (void)fread(&us, 2, 1, ft->fp);
+    (void)fread(&us, 2UL, 1UL, ft->fp);
     if (ft->swap)
     {
         us = swapw(us);
@@ -157,13 +157,13 @@ unsigned short rshort(ft_t ft)
 }
 /*-----------------------------------------------------------------------------------*/
 /* Write short. */
-void wshort(ft_t ft, short unsigned int us)
+void wshort(ft_t ft, unsigned short us)
 {
     if (ft->swap)
     {
         us = swapw(us);
     }
-    if (fwrite(&us, 2, 1, ft->fp) != 1)
+    if (fwrite(&us, 2UL, 1UL, ft->fp) != 1)
     {
         printf("%s\n", writerr);
         ft->ierr = 1;
@@ -174,7 +174,7 @@ void wshort(ft_t ft, short unsigned int us)
 unsigned long rlong(ft_t ft)
 {
     unsigned long ul;
-    (void)fread(&ul, sizeof(long), 1, ft->fp);
+    (void)fread(&ul, sizeof(long), 1UL, ft->fp);
     if (ft->swap)
     {
         ul = swapl(ul);
@@ -189,7 +189,7 @@ void wlong(ft_t ft, long unsigned int ul)
     {
         ul = swapl(ul);
     }
-    if (fwrite(&ul, sizeof(long), 1, ft->fp) != 1)
+    if (fwrite(&ul, sizeof(long), 1UL, ft->fp) != 1)
     {
         printf("%s\n", writerr);
         ft->ierr = 1;
@@ -200,7 +200,7 @@ void wlong(ft_t ft, long unsigned int ul)
 float rfloat(ft_t ft)
 {
     float f;
-    (void)fread(&f, sizeof(float), 1, ft->fp);
+    (void)fread(&f, sizeof(float), 1UL, ft->fp);
     if (ft->swap)
     {
         f = swapf(f);
@@ -215,7 +215,7 @@ void wfloat(ft_t ft, float f)
     {
         t = swapf(t);
     }
-    if (fwrite(&t, sizeof(float), 1, ft->fp) != 1)
+    if (fwrite(&t, sizeof(float), 1UL, ft->fp) != 1)
     {
         printf("%s\n", writerr);
         ft->ierr = 1;
@@ -226,7 +226,7 @@ void wfloat(ft_t ft, float f)
 double rdouble(ft_t ft)
 {
     double d;
-    (void)fread(&d, sizeof(double), 1, ft->fp);
+    (void)fread(&d, sizeof(double), 1UL, ft->fp);
     if (ft->swap)
     {
         d = swapd(d);
@@ -241,7 +241,7 @@ void wdouble(ft_t ft, double d)
     {
         d = swapd(d);
     }
-    if (fwrite(&d, sizeof(double), 1, ft->fp) != 1)
+    if (fwrite(&d, sizeof(double), 1UL, ft->fp) != 1)
     {
         printf("%s\n", writerr);
         ft->ierr = 1;
@@ -268,7 +268,7 @@ unsigned short swapw(unsigned short us)
 unsigned long swapl(long unsigned int ul)
 {
     unsigned long  sdf;
-    swapb((char *) &ul, (char *) &sdf, sizeof(unsigned long));
+    swapb((char *) &ul, (char *) &sdf, (int)sizeof(unsigned long));
     return (sdf);
 }
 /*-----------------------------------------------------------------------------------*/
@@ -312,7 +312,7 @@ float swapf(float uf)
 double swapd(double df)
 {
     double sdf;
-    swapb((char *) &df, (char *) &sdf, sizeof(double));
+    swapb((char *) &df, (char *) &sdf, (int)sizeof(double));
     return (sdf);
 }
 /*-----------------------------------------------------------------------------------*/

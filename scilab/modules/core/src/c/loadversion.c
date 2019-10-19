@@ -143,7 +143,7 @@ BOOL getversionmodule(char *modulename,
                     *sci_version_minor = version_minor;
                     *sci_version_maintenance = version_maintenance;
                     *sci_version_revision = version_revision;
-                    strncpy(sci_version_string, version_string, 1024);
+                    strncpy(sci_version_string, version_string, 1024UL);
                     if (version_string)
                     {
                         FREE(version_string);
@@ -179,7 +179,8 @@ BOOL getversionmodule(char *modulename,
         }
         else
         {
-            // version.xml does not exist but module exists then we returns scilab version
+            /* version.xml does not exist but module exists then we return
+             * scilab version: */
             *sci_version_major =  SCI_VERSION_MAJOR;
             *sci_version_minor = SCI_VERSION_MINOR;
             *sci_version_maintenance = SCI_VERSION_MAINTENANCE;

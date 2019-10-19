@@ -41,7 +41,8 @@ acx_blas_ok=no
 acx_blas_save_LIBS="$LIBS"
 
 AC_ARG_WITH([blas-library],
-            [AS_HELP_STRING([--with-blas-library=DIR],[set the path to the BLAS (refblas, Atlas, MKL...) library])])
+            [AS_HELP_STRING([--with-blas-library=DIR],
+                            [set the path to the BLAS (refblas, Atlas, MKL...) library])])
 saved_ldflags="$LDFLAGS"
 
 if test "$with_blas_library" != no -a "$with_blas_library" != ""; then
@@ -51,6 +52,8 @@ fi
 # Get fortran linker names of BLAS functions to check for.
 AC_F77_FUNC([sgemm])
 AC_F77_FUNC([dgemm])
+AC_F77_FUNC([dgeqpf])
+AC_F77_FUNC([zgeqpf])
 
 LIBS="$LIBS $FLIBS"
 
@@ -59,7 +62,9 @@ if test $acx_blas_ok = no; then
 if test "x$BLAS_LIBS" != x; then
 	save_LIBS="$LIBS"; LIBS="$BLAS_LIBS $LIBS"
 	AC_MSG_CHECKING([for $sgemm in $BLAS_LIBS])
-	AC_TRY_LINK_FUNC([$sgemm],[acx_blas_ok=yes; BLAS_TYPE="Using BLAS_LIBS environment variable"],[BLAS_LIBS=""])
+	AC_TRY_LINK_FUNC([$sgemm],
+	 [acx_blas_ok=yes; BLAS_TYPE="Using BLAS_LIBS environment variable"],
+	 [BLAS_LIBS=""])
 	AC_MSG_RESULT([$acx_blas_ok])
 	LIBS="$save_LIBS"
 fi
@@ -86,7 +91,8 @@ fi
 
 # BLAS in Intel MKL libraries?
 if test $acx_blas_ok = no; then
-	AC_CHECK_LIB([mkl],[$sgemm],[acx_blas_ok=yes; BLAS_TYPE="MKL"; BLAS_LIBS="-lmkl -lguide -lpthread"])
+	AC_CHECK_LIB([mkl],[$sgemm],
+	             [acx_blas_ok=yes; BLAS_TYPE="MKL"; BLAS_LIBS="-lmkl -lguide -lpthread"])
 fi
 
 # BLAS in PhiPACK libraries? (requires generic BLAS lib, too)
@@ -101,12 +107,14 @@ fi
 
 # BLAS in Alpha CXML library?
 if test $acx_blas_ok = no; then
-	AC_CHECK_LIB([cxml],[$sgemm],[acx_blas_ok=yes;BLAS_TYPE="Alpha CXML"; BLAS_LIBS="-lcxml"])
+	AC_CHECK_LIB([cxml],[$sgemm],
+	             [acx_blas_ok=yes; BLAS_TYPE="Alpha CXML"; BLAS_LIBS="-lcxml"])
 fi
 
 # BLAS in Alpha DXML library? (now called CXML, see above)
 if test $acx_blas_ok = no; then
-	AC_CHECK_LIB([dxml],[$sgemm],[acx_blas_ok=yes;BLAS_TYPE="Alpha DXML"; BLAS_LIBS="-ldxml"])
+	AC_CHECK_LIB([dxml],[$sgemm],
+	             [acx_blas_ok=yes; BLAS_TYPE="Alpha DXML"; BLAS_LIBS="-ldxml"])
 fi
 
 # BLAS in Sun Performance library?
@@ -115,14 +123,15 @@ if test $acx_blas_ok = no; then
 		AC_CHECK_LIB(sunmath, acosp,
 			[AC_CHECK_LIB(sunperf, $sgemm,
         			[BLAS_LIBS="-xlic_lib=sunperf -lsunmath";
-								BLAS_TYPE="Sun Performance library";
+        			 BLAS_TYPE="Sun Performance library";
                                  acx_blas_ok=yes],[],[-lsunmath])])
 	fi
 fi
 
 # BLAS in SCSL library?  (SGI/Cray Scientific Library)
 if test $acx_blas_ok = no; then
-	AC_CHECK_LIB([scs],[$sgemm],[acx_blas_ok=yes; BLAS_TYPE="SCSL"; BLAS_LIBS="-lscs"])
+	AC_CHECK_LIB([scs],[$sgemm],
+	             [acx_blas_ok=yes; BLAS_TYPE="SCSL"; BLAS_LIBS="-lscs"])
 fi
 
 # BLAS in SGIMATH library?
@@ -141,12 +150,19 @@ fi
 
 # Generic BLAS library?
 if test $acx_blas_ok = no; then
-	AC_CHECK_LIB([blas],[$sgemm],[acx_blas_ok=yes; BLAS_TYPE="Generic Blas"; BLAS_LIBS="-lblas"])
+	AC_CHECK_LIB([blas],[$sgemm],
+	             [acx_blas_ok=yes; BLAS_TYPE="Generic Blas"; BLAS_LIBS="-lblas"])
 fi
 
 if test "$with_blas_library" != no -a "$with_blas_library" != ""; then
 	BLAS_LIBS="$BLAS_LIBS -L$with_blas_library"
 fi
+
+temp_LIBS="${LIBS}"
+AC_SEARCH_LIBS([$dgeqpf],[atlas f77blas cblas mkl blas dgeqpf cxml dxml sunmath sunperf scs complib.sgimath essl Accelerate openblas openblas-r1 graphblas])
+AC_SEARCH_LIBS([$zgeqpf],[atlas f77blas cblas mkl blas zgeqpf cxml dxml sunmath sunperf scs complib.sgimath essl Accelerate openblas openblas-r1 graphblas])
+BLAS_LIBS="${BLAS_LIBS} ${LIBS}"
+LIBS="${temp_LIBS}"
 
 AC_SUBST([BLAS_LIBS])
 
@@ -201,7 +217,8 @@ AC_REQUIRE([ACX_BLAS])
 acx_lapack_ok=no
 
 AC_ARG_WITH([lapack-library],
-            [AS_HELP_STRING([--with-lapack-library=DIR],[set the path to the LAPACK library])])
+            [AS_HELP_STRING([--with-lapack-library=DIR],
+                            [set the path to the LAPACK library])])
 saved_ldflags="$LDFLAGS"
 
 if test "$with_lapack_library" != no -a "$with_lapack_library" != ""; then
@@ -209,8 +226,10 @@ if test "$with_lapack_library" != no -a "$with_lapack_library" != ""; then
 fi
 
 
-# Get fortran linker name of LAPACK function to check for.
+# Get fortran linker name of LAPACK functions to check for.
 AC_F77_FUNC([cheev])
+AC_F77_FUNC([dgeqpf])
+AC_F77_FUNC([zgeqpf])
 
 # We cannot use LAPACK if BLAS is not found
 if test "x$acx_blas_ok" != xyes; then
@@ -221,7 +240,9 @@ fi
 if test "x$LAPACK_LIBS" != x; then
         save_LIBS="$LIBS"; LIBS="$LAPACK_LIBS $BLAS_LIBS $LIBS $FLIBS"
         AC_MSG_CHECKING([for $cheev in $LAPACK_LIBS])
-        AC_TRY_LINK_FUNC([$cheev],[acx_lapack_ok=yes; LAPACK_TYPE="LAPACK_LIBS env variable"],[LAPACK_LIBS=""])
+        AC_TRY_LINK_FUNC([$cheev],
+                         [acx_lapack_ok=yes; LAPACK_TYPE="LAPACK_LIBS env variable"],
+                         [LAPACK_LIBS=""])
         AC_MSG_RESULT([$acx_lapack_ok])
         LIBS="$save_LIBS"
         if test acx_lapack_ok = no; then
@@ -241,7 +262,8 @@ for lapack in lapack lapack_rs6k; do
         if test $acx_lapack_ok = no; then
                 save_LIBS="$LIBS"; LIBS="$BLAS_LIBS $LIBS"
                 AC_CHECK_LIB([$lapack],[$cheev],
-                    [acx_lapack_ok=yes; LAPACK_TYPE="Library -l$lapack"; LAPACK_LIBS="-l$lapack"], [], [$FLIBS])
+                    [acx_lapack_ok=yes; LAPACK_TYPE="Library -l$lapack"; LAPACK_LIBS="-l$lapack"],
+                    [],[$FLIBS])
                 LIBS="$save_LIBS"
         fi
 done
@@ -251,6 +273,14 @@ LDFLAGS="$saved_ldflags"
 if test "$with_lapack_library" != no -a "$with_lapack_library" != ""; then
 	LAPACK_LIBS="$LAPACK_LIBS -L$with_lapack_library"
 fi
+
+temp_LIBS="${LIBS}"
+unset ac_cv_search_dgeqpf_
+unset ac_cv_search_zgeqpf_
+AC_SEARCH_LIBS([$dgeqpf],[lapack lapack_rs6k lapacke vecLibFort vecLibFort1])
+AC_SEARCH_LIBS([$zgeqpf],[lapack lapack_rs6k lapacke vecLibFort vecLibFort1])
+LAPACK_LIBS="${LAPACK_LIBS} ${LIBS}"
+LIBS="${temp_LIBS}"
 
 AC_SUBST([LAPACK_LIBS])
 
@@ -305,7 +335,8 @@ AC_REQUIRE([ACX_BLAS])
 acx_arpack_ok=no
 
 AC_ARG_WITH([arpack-library],
-            [AS_HELP_STRING([--with-arpack-library=DIR], [set the path to the ARPACK library])])
+            [AS_HELP_STRING([--with-arpack-library=DIR],
+                            [set the path to the ARPACK library])])
 saved_ldflags="$LDFLAGS"
 
 if test "$with_arpack_library" != no -a "$with_arpack_library" != ""; then
@@ -313,8 +344,10 @@ if test "$with_arpack_library" != no -a "$with_arpack_library" != ""; then
 fi
 
 ARPACK_LIBS="-larpack"
-# Get fortran linker name of ARPACK function to check for.
+# Get fortran linker name of ARPACK functions to check for.
 AC_F77_FUNC([znaupd])
+AC_F77_FUNC([dgeqpf])
+AC_F77_FUNC([zgeqpf])
 
 # We cannot use ARPACK if BLAS is not found
 if test "x$acx_blas_ok" != xyes; then
@@ -325,7 +358,8 @@ fi
 if test "x$ARPACK_LIBS" != x; then
         save_LIBS="$LIBS"; LIBS="$ARPACK_LIBS $BLAS_LIBS $LIBS $FLIBS"
         AC_MSG_CHECKING([for $znaupd in $ARPACK_LIBS])
-        AC_TRY_LINK_FUNC([$znaupd],[acx_arpack_ok=yes], [ARPACK_LIBS="-larpack"])
+        AC_TRY_LINK_FUNC([$znaupd],[acx_arpack_ok=yes],
+                         [ARPACK_LIBS="-larpack"])
         AC_MSG_RESULT([$acx_arpack_ok])
         LIBS="$save_LIBS"
         if test acx_arpack_ok = no; then
@@ -339,6 +373,14 @@ LDFLAGS="$saved_ldflags"
 if test "$with_arpack_library" != no -a "$with_arpack_library" != ""; then
 	ARPACK_LIBS="$ARPACK_LIBS -L$with_arpack_library"
 fi
+
+temp_LIBS="${LIBS}"
+unset ac_cv_search_dgeqpf_
+unset ac_cv_search_zgeqpf_
+AC_SEARCH_LIBS([$dgeqpf],[arpack arpack-ng c m])
+AC_SEARCH_LIBS([$zgeqpf],[arpack arpack-ng c m])
+ARPACK_LIBS="${ARPACK_LIBS} ${LIBS}"
+LIBS="${temp_LIBS}"
 
 AC_SUBST([ARPACK_LIBS])
 
@@ -373,26 +415,26 @@ AC_DEFUN([CHECK_ARPACK_OK],[
       AC_RUN_IFELSE([AC_LANG_PROGRAM([[
 // External functions from ARPACK library
 extern "C" int
-C2F(dnaupd) (int&, const char *, const int&, const char *,
-                           int&, const double&, double*, const int&,
-                           double*, const int&, int*, int*, double*,
-                           double*, const int&, int&, long int, long int);
+C2F(dnaupd)(int&, const char *, const int&, const char *,
+            int&, const double&, double*, const int&,
+            double*, const int&, int*, int*, double*,
+            double*, const int&, int&, long int, long int);
 
 extern "C" int
-C2F(dneupd) (const int&, const char *, int*, double*,
-                           double*, double*, const int&,
-                           const double&, const double&, double*,
-                           const char*, const int&, const char *,
-                           int&, const double&, double*, const int&,
-                           double*, const int&, int*, int*, double*,
-                           double*, const int&, int&, long int,
-                           long int, long int);
+C2F(dneupd)(const int&, const char *, int*, double*,
+            double*, double*, const int&,
+            const double&, const double&, double*,
+            const char*, const int&, const char *,
+            int&, const double&, double*, const int&,
+            double*, const int&, int*, int*, double*,
+            double*, const int&, int&, long int,
+            long int, long int);
 
 extern "C" int
-C2F(dgemv) (const char *, const int&, const int&,
-                         const double&, const double*, const int&,
-                         const double*, const int&, const double&,
-                         double*, const int&, long int);
+C2F(dgemv)(const char *, const int&, const int&,
+           const double&, const double*, const int&,
+           const double*, const int&, const double&,
+           double*, const int&, long int);
 
 #include <cfloat>
 
@@ -447,17 +489,17 @@ doit (void)
 
   do 
     {
-      C2F(dnaupd) (ido, "I", n, "LM", k, tol, resid, p,
-                                 v, n, ip, ipntr, workd, workl, lwork,
-                                 info, 1L, 2L);
+      C2F(dnaupd)(ido, "I", n, "LM", k, tol, resid, p,
+                  v, n, ip, ipntr, workd, workl, lwork,
+                  info, 1L, 2L);
 
       if (ido == -1 || ido == 1 || ido == 2)
         {
           double *x = workd + ipntr[0] - 1;
           double *y = workd + ipntr[1] - 1;
 
-          C2F(dgemv) ("N", n, n, 1.0, m, n, x, 1, 0.0,
-                                   y, 1, 1L);
+          C2F(dgemv)("N", n, n, 1.0, m, n, x, 1, 0.0,
+                     y, 1, 1L);
         }
       else
         {
@@ -489,10 +531,10 @@ doit (void)
   // This is n*(k+1), but k+2 avoids segfault
   double *z = new double [n * (k + 1)];
 
-  C2F(dneupd) (rvec, "A", sel, dr, di, z, n, sigmar,
-                             sigmai, workev, "I", n, "LM", k, tol,
-                             resid, p, v, n, ip, ipntr, workd,
-                             workl, lwork, info, 1L, 1L, 2L);
+  C2F(dneupd)(rvec, "A", sel, dr, di, z, n, sigmar,
+              sigmai, workev, "I", n, "LM", k, tol,
+              resid, p, v, n, ip, ipntr, workd,
+              workl, lwork, info, 1L, 1L, 2L);
 }
 ]],[[
   for (int i = 0; i < 10; i++)

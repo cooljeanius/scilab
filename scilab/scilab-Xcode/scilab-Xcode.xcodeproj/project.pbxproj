@@ -15402,6 +15402,7 @@
 		A583D43B225030E90045B983 /* notypes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = notypes.c; sourceTree = "<group>"; };
 		A583D46E225067EB0045B983 /* dummy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dummy.h; sourceTree = "<group>"; };
 		A583D46F225067EB0045B983 /* dummy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dummy.c; sourceTree = "<group>"; };
+		A5D59FD62357BD6A00A6BA40 /* dummy_cli.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dummy_cli.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -16640,6 +16641,7 @@
 				A583CC2D224B307A0045B983 /* xml */,
 				A583D46E225067EB0045B983 /* dummy.h */,
 				A583D46F225067EB0045B983 /* dummy.c */,
+				A5D59FD62357BD6A00A6BA40 /* dummy_cli.c */,
 			);
 			indentWidth = 4;
 			name = modules;
@@ -19586,9 +19588,9 @@
 			isa = PBXGroup;
 			children = (
 				A5835FF9224B30150045B983 /* build.xml */,
+				A5836238224B30150045B983 /* includes */,
 				A5836002224B30150045B983 /* examples */,
 				A5836019224B30150045B983 /* help */,
-				A5836238224B30150045B983 /* includes */,
 				A58362B3224B30150045B983 /* sci_gateway */,
 				A5836305224B30160045B983 /* src */,
 				A58365DB224B30170045B983 /* xml */,

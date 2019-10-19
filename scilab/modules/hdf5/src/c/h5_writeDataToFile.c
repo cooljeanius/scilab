@@ -317,7 +317,7 @@ int writeStringMatrix(int _iFile, char *_pstDatasetName, int _iDims, int* _piDim
 char *createGroupName(char *_pstGroupName)
 {
     char *pstSlash = NULL;
-    const size_t pGN_len = ((strlen(_pstGroupName) + 3UL) * sizeof(char));
+    const size_t pGN_len = ((strlen(_pstGroupName) + 1UL + 3UL) * sizeof(char));
     char *pstGroupName = (char *)MALLOC(pGN_len);
 
     /* Generate groupname #<dataSetName># */
@@ -347,9 +347,10 @@ char* createPathName(char *_pstGroupName, int _iIndex)
     /* 1 for null termination, 2 for '#' characters: */
     snprintf(pstName, pstName_len, "#%d#", _iIndex);
 
-    pstPathName_len = ((strlen(_pstGroupName) + strlen(pstName) + 2UL) * sizeof(char));
-    pstPathName = (char *)MALLOC(pstPathName_len);
     /* 1 for null termination, 1 for separator, 2 for '#' characters: */
+    pstPathName_len = ((strlen(_pstGroupName) + strlen(pstName) + 1UL + 1UL + 2UL)
+                       * sizeof(char));
+    pstPathName = (char *)MALLOC(pstPathName_len);
     snprintf(pstPathName, pstPathName_len, "%s/%s", _pstGroupName, pstName);
     FREE(pstName);
     return pstPathName;

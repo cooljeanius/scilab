@@ -1217,7 +1217,7 @@ void mxSetFieldByNumber(mxArray *array_ptr, int lindex, int field_number, mxArra
     }
     else
     {
-        headerobj = listentry( listentry(header, field_number + 3)  , lindex + 1);
+        headerobj = listentry( listentry(header, field_number + 3), lindex + 1);
     }
     if (IsReference(value))
     {
@@ -1402,7 +1402,7 @@ mxArray *mxCreateCellArray(int ndim, const int *dims)
     Nbvars++;
     lw = Nbvars;
     lw1 = lw + Top - Rhs;
-    C2F(stcreate)(&lw1, &ndim, (int *) dims, (nfields = 1, &nfields), field_names , &retval);
+    C2F(stcreate)(&lw1, &ndim, (int *) dims, (nfields = 1, &nfields), field_names, &retval);
     if ( !retval)
     {
         return (mxArray *) 0;
@@ -1780,7 +1780,7 @@ void mxFree_m(void *ptr)
  *        except if space is protected
  */
 
-static void mxFree_m_all()
+static void mxFree_m_all(void)
 {
     int i;
     for ( i = 0 ; i < rec_size ; i++)
@@ -2096,7 +2096,7 @@ mxArray *mxDuplicateArray(const mxArray *ptr)
 {
     int start_in;
     int lw, number, size, k;
-    double *old , *data;
+    double *old, *data;
     start_in = (int)(intptr_t)ptr;
     if ( istk( iadr(start_in) )[0] < 0 )
     {
@@ -2423,7 +2423,9 @@ void mexWarnMsgTxt(const char *error_msg)
     mexPrintf(_("Warning: "));
     mexPrintf(error_msg);
     mexPrintf("\n\n");
-    /*  mexPrintf(strcat(_("Warning: "),error_msg)); */
+#if 0
+    mexPrintf(strcat(_("Warning: "), error_msg));
+#endif /* 0 */
 }
 
 /* 1 is returned in case of failure */
@@ -2718,7 +2720,7 @@ int mexPutArray(mxArray *array_ptr, char *workspace)
 int mexPutVariable(const char *workspace, char *var_name, mxArray *array_ptr)
 {
     /*  workspace ignored: to be done .... */
-    PutVar( arr2num( array_ptr) , var_name);
+    PutVar( arr2num( array_ptr), var_name);
     return 0;  /* CHECK THIS !!!!!! */
 }
 
@@ -2910,7 +2912,7 @@ const char *mxGetClassName(const mxArray *ptr)
 
 void mxSetCell(mxArray *array_ptr, int lindex, mxArray *value)
 {
-    mxSetFieldByNumber(array_ptr, lindex, 0 , value);
+    mxSetFieldByNumber(array_ptr, lindex, 0, value);
     return;
 }
 

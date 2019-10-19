@@ -289,7 +289,7 @@ char **getDynamicDebugInfo(int *sizeArray)
     /* Stuff for the function meminfo() */
     int shift = 10;
     unsigned KLONG buffers_plus_cached = 0;
-#endif
+#endif /* !_MSC_VER */
 
 #ifdef _MSC_VER
     *sizeArray = 0;
@@ -299,8 +299,9 @@ char **getDynamicDebugInfo(int *sizeArray)
 #ifdef HAVE_UNAME
     /* Host info */
     struct utsname name;
-#endif
-    const size_t value_len = (255UL * sizeof(char));
+#endif /* HAVE_UNAME */
+    /* triple size for -Wformat-truncation: */
+    const size_t value_len = (((255UL * sizeof(char)) * 3UL) + 3UL);
     value = (char *)MALLOC(value_len);
 
 
@@ -368,16 +369,14 @@ char **getDynamicDebugInfo(int *sizeArray)
         snprintf(value, value_len, "%10Lu", S(kb_swap_free));
         SetDebugMsg(&dynamicDebug[position], "Free swap", value);
         position++;
-
-
     }
-
-#endif
+#endif /* !_MSC_VER */
 
 #ifdef HAVE_UNAME
     if (uname(&name) < 0)
     {
-        snprintf(value, value_len,  "Unknown OS version (uname failed - %s)", strerror(errno));
+        snprintf(value, value_len,  "Unknown OS version (uname failed - %s)",
+                 strerror(errno));
     }
 
     if (strcmp(name.sysname, "AIX") == 0)
@@ -385,7 +384,8 @@ char **getDynamicDebugInfo(int *sizeArray)
         /*
         * Because IBM is doing something different
         */
-        snprintf(value, value_len,  "%s %s.%s", name.sysname, name.version, name.release);
+        snprintf(value, value_len,  "%s %s.%s", name.sysname, name.version,
+                 name.release);
     }
     else
     {
@@ -397,7 +397,7 @@ char **getDynamicDebugInfo(int *sizeArray)
     SetDebugMsg(&dynamicDebug[position], "OS version", value);
     position++;
 
-#endif
+#endif /* HAVE_UNAME */
 
 
     sciErr = getNamedVarType(pvApiCtx, "SCI", &iType);
@@ -489,7 +489,8 @@ char **getDynamicDebugInfo(int *sizeArray)
 
         /* Create the element in the array */
         /* 3 for :, space and \0 */
-        odl_len = ((strlen(msg.description) + strlen(msg.value) + 3UL)
+        /* 2 for -Wformat-truncation */
+        odl_len = ((strlen(msg.description) + strlen(msg.value) + 3UL + 2UL)
                    * sizeof(char));
         outputDynamicList[i] = (char *)MALLOC(odl_len);
         snprintf(outputDynamicList[i], odl_len, "%s: %s",

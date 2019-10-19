@@ -239,7 +239,7 @@ int do_xxprintf (char *fname, FILE *fp, char *format, int nargs, int argcount, i
                     {
                         int  charBytes = 0;
                         char *UTFChar = NULL;
-                        char* outStr = NULL; /** locale char at most 2 bytes*/
+                        char *outStr = NULL; /** locale char at most 2 bytes*/
 
                         UTFChar = readNextUTFChar(currentchar, &charBytes);
                         currentchar += charBytes;
@@ -284,13 +284,13 @@ int do_xxprintf (char *fname, FILE *fp, char *format, int nargs, int argcount, i
                         else if (*currentchar == 't')
                         {
                             *target++ = (char)TAB_CHAR;
-                            *currentchar++;
+                            *currentchar++; /* FIXME: -Wunused-value */
                             retval++;
                         }
                         else if (*currentchar == 'r')
                         {
                             *target++ = (char)CR_CHAR;
-                            *currentchar++;
+                            *currentchar++; /* FIXME: -Wunused-value */
                             retval++;
                         }
                     }

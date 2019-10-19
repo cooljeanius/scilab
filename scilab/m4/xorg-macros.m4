@@ -1,4 +1,4 @@
-dnl# xorg-macros.m4 serial 110
+dnl# xorg-macros.m4 serial 111
 dnl# Originally generated from xorg-macros.m4.in xorgversion.m4 by configure.
 dnl#
 dnl# Copyright (c) 2005-2006, Oracle and/or its affiliates. All rights reserved.
@@ -1608,22 +1608,18 @@ else
 fi
 
 # This chunk of warnings were those that existed in the legacy CWARNFLAGS
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wall])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wpointer-arith])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wall -Wno-cast-function-type])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wmissing-declarations])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wformat=2 -Wno-format-nonliteral], [-Wformat])dnl
 
 AC_LANG_CASE([C],[
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wstrict-prototypes])
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wmissing-prototypes])
-	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wold-style-declaration])
-	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wdeclaration-after-statement])
-	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wtraditional-conversion])
-	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wc90-c99-compat -Wno-long-long -Wno-import])
+	if test "x${BE_REALLY_ANNOYING}" = "xyes"; then 
+	  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]],[-Wtraditional-conversion])
+	fi
+	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wc99-c11-compat -Wno-long-long -Wno-import -Wno-deprecated])
 ],[C++],[
-	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wnarrowing])
-	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wstrict-null-sentinel])
-	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wsign-promo])
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wuseless-cast])
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wmismatched-tags])
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wmissing-exception-spec])
@@ -1637,7 +1633,7 @@ AC_LANG_CASE([C],[
 
 # This chunk adds additional warnings that could catch undesired effects.
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wunused -Wno-unused-parameter])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wuninitialized])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wuninitialized -Wno-maybe-uninitialized])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wshadow])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wparentheses])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wmissing-noreturn])
@@ -1688,7 +1684,7 @@ dnl# XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wcast-qual])
 # when there are problems that should be fixed.
 
 if test "x${SELECTIVE_WERROR}" = "xyes"; then
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=implicit], [-errwarn=E_NO_EXPLICIT_TYPE_GIVEN -errwarn=E_NO_IMPLICIT_DECL_ALLOWED])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=pointer-arith])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=nonnull])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=init-self])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=main])
@@ -1704,8 +1700,12 @@ AC_REQUIRE([AC_TYPE_UINTPTR_T])
 if test "x${ac_cv_type_intptr_t}" = "xyes" -a "x${ac_cv_type_uintptr_t}" = "xyes"; then
   if test -n "${ac_cv_sizeof_int}" -a -n "${ac_cv_sizeof_void_p}"; then
     if test "x${ac_cv_sizeof_int}" != "x${ac_cv_sizeof_void_p}"; then
-      XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=int-to-pointer-cast], [-errwarn=E_BAD_PTR_INT_COMBINATION])
-      XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=pointer-to-int-cast]) # Also -errwarn=E_BAD_PTR_INT_COMBINATION
+      test -n "${SELECTIVE_WERROR}"
+      AC_LANG_CASE([C],[
+        XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=int-to-pointer-cast], [-errwarn=E_BAD_PTR_INT_COMBINATION])
+        XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=pointer-to-int-cast]) # Also -errwarn=E_BAD_PTR_INT_COMBINATION
+      ],[C++],[echo "skipping a few C-only flags for C++"])
+      ## FIXME: did this cause a syntax error?
     else
       AC_MSG_NOTICE([pointers and ints are the same size so it is safe to cast between them; skipping check to see if we can error on warnings about them])
     fi
@@ -1717,21 +1717,38 @@ else
 fi
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=pointer-compare])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=endif-labels], [-Werror=extra-tokens])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=int-conversion])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=comment])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=newline-eof])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=float-conversion])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=builtin-memcpy-chk-size])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=stringop-overflow])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=unused-but-set-parameter])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=unused-label])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=unused-local-typedefs])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=unused-result])
 AC_LANG_CASE([Fortran 77],[
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=argument-mismatch])
 ],[C++],[
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=conversion-null])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=narrowing])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=strict-null-sentinel])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=sign-promo])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=shadow-local])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=parentheses])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=redundant-decls])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=format-overflow])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=format-truncation])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=stringop-truncation])
 ],[C],[
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=old-style-declaration])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=implicit], [-errwarn=E_NO_EXPLICIT_TYPE_GIVEN -errwarn=E_NO_IMPLICIT_DECL_ALLOWED])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=int-conversion])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=declaration-after-statement])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=missing-field-initializers])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=absolute-value])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=nested-externs])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=old-style-definition], [-Wold-style-definition])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=enum-conversion])
 ])
 if test "[x${]WERROR_WRITE_STRINGS_CV[}]" != "xyes"; then
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=incompatible-pointer-types])
@@ -1741,7 +1758,7 @@ else
 fi
 else
 AC_MSG_WARN([You have chosen not to turn some select compiler warnings into errors.  This should not be necessary.  Please report why you needed to do so in a bug report at $PACKAGE_BUGREPORT])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wimplicit])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wpointer-arith])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wnonnull])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Winit-self])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wmain])
@@ -1752,21 +1769,28 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wtrigraphs])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Warray-bounds])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wwrite-strings])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Waddress])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wint-to-pointer-cast])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wpointer-to-int-cast])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wincompatible-pointer-types])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wpointer-compare])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wendif-labels], [-Wextra-tokens])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wint-conversion])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wfloat-conversion])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wbuiltin-memcpy-chk-size])
 AC_LANG_CASE([Fortran 77],[
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wargument-mismatch])
 ],[C++],[
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wconversion-null])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wnarrowing])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wstrict-null-sentinel])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wsign-promo])
 ],[C],[
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wold-style-declaration])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wimplicit])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wint-to-pointer-cast])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wpointer-to-int-cast])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wint-conversion])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wdeclaration-after-statement])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wnested-externs])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wold-style-definition])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wenum-conversion])
 ])
 dnl# -Wdiscarded-qualifiers should already be on by default
 fi

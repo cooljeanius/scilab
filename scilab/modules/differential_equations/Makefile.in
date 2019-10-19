@@ -981,7 +981,8 @@ AM_FFLAGS = $(SCI_FFLAGS) -Wp,-I$(top_srcdir)/modules/core/includes/
 # Tag shared libraries with the Scilab version
 AM_LDFLAGS = $(SCI_LDFLAGS) -version-number $(SCILAB_LIBRARY_VERSION)
 RUN_CLANG_ANALYZER = $(CLANG_ANALYZER) $(DEFS) $(CPPFLAGS) $(CFLAGS) \
-	$(AM_CPPFLAGS) $(AM_CFLAGS) $(INCINTL) --analyze
+	$(AM_CPPFLAGS) $(AM_CFLAGS) $(INCINTL) --analyze \
+	-Wno-unused-command-line-argument
 
 analysisdir = $(builddir)/clang_static_analysis
 AM_V_v = $(am__v_v_@AM_V@)

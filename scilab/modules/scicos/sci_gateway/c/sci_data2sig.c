@@ -89,8 +89,8 @@ int sci_data2sig(char *fname, unsigned long fname_len)
 
     int i = 0, j = 0, TopSave = 0;
 
-    char *str_stlst[] = {"st", "dims", "values", "time"};
-    char *str_hmlst[] = {"hm", "dims", "entries"};
+    const char *str_stlst[] = {"st", "dims", "values", "time"};
+    const char *str_hmlst[] = {"hm", "dims", "entries"};
 
     double step_time = 1;
 

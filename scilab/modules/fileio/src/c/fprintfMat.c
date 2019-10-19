@@ -108,7 +108,7 @@ fprintfMatError fprintfMat(char *filename, char *format, char *separator,
         return FPRINTMAT_FORMAT_ERROR;
     }
 
-    wcfopen(fd , filename, MODEFD);
+    wcfopen(fd, filename, MODEFD);
 
     if ( fd == (FILE *)NULL )
     {
@@ -247,9 +247,10 @@ static char *getCleanedFormat(char *format)
                     int nbcharacters = (int)(strlen(percent) - strlen(token));
                     cleanedFormat = strdup(percent);
                     cleanedFormat[nbcharacters] = 0;
-                    if ( ((nbcharacters - 1 > 0) && (isdigit(cleanedFormat[nbcharacters - 1])) ||
-                            (cleanedFormat[nbcharacters - 1]) == '.') ||
-                            (cleanedFormat[nbcharacters - 1]) == '%')
+                    /*FIXME: check parentheses: */
+                    if ((((nbcharacters - 1) > 0) && (isdigit(cleanedFormat[nbcharacters - 1])))
+                            || ((cleanedFormat[nbcharacters - 1]) == '.')
+                            || ((cleanedFormat[nbcharacters - 1]) == '%'))
                     {
                         strcat(cleanedFormat, supportedFormat[i]);
                         return cleanedFormat;

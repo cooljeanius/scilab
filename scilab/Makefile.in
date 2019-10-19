@@ -117,7 +117,7 @@ target_triplet = @target@
 bin_PROGRAMS = scilab-bin$(EXEEXT) scilab-cli-bin$(EXEEXT) \
 	$(am__EXEEXT_1)
 @IS_MACOSX_TRUE@am__append_1 = bin/checkmacosx.applescript
-@IS_MACOSX_TRUE@am__append_2 = "-Wl,-framework,Cocoa"
+@IS_MACOSX_TRUE@am__append_2 = "-Wl,-framework,Cocoa" "-Wl,-multiply_defined,warning"
 
 #-static
 @ENABLE_STATIC_TRUE@am__append_3 = scilab-static-bin
@@ -2443,6 +2443,9 @@ uninstall-am: uninstall-binPROGRAMS uninstall-binSCRIPTS \
 # The binary itself needs this dep
 @IS_SOLARIS_TRUE@	scilab_bin_LDADD += $(BLAS_LIBS)
 
+# The binary itself needs these deps:
+@IS_MACOSX_TRUE@	scilab_bin_LDADD += $(BLAS_LIBS) $(LAPACK_LIBS)
+
 all-local: $(TARGETS_ALL)
 
 macros: $(top_builddir)/scilab-cli-bin $(top_builddir)/bin/scilab-cli check-jvm-dep
@@ -2737,11 +2740,17 @@ codecoverage-java: clean-reports
 @BUILD_HELP_TRUE@	fi
 
 check-local: check-code
-check-code:
+check-code: libs/Makefile modules/Makefile
 	$(MAKE) -S -C libs check-code
 	$(MAKE) -S -C modules check-code
 
-.PHONY: macros localization doc check-local check-code
+just_libs: libs/Makefile modules/Makefile
+	$(MAKE) -C libs all
+	$(MAKE) -C modules libscilab-cli.la
+	$(MAKE) -C modules libscilab.la
+	$(MAKE) -C modules libjavasci2.la
+
+.PHONY: macros localization doc check-local check-code just_libs
 
 .NOTPARALLEL: macros doc
 

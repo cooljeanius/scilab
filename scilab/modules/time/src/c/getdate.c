@@ -182,7 +182,7 @@ double *getConvertedDateAsMatrixOfDouble(double *dDates, int nbElements, int *iE
         int j = 0;
 
         int m = 0;
-        int n = 0;
+        int n0 = 0;
 
         double *dResTmp = NULL;
 
@@ -198,10 +198,10 @@ double *getConvertedDateAsMatrixOfDouble(double *dDates, int nbElements, int *iE
             double *dConverted = getConvertedDateAsDoubleVector(dDates[k], &iErr2);
             if (iErr2 == 0)
             {
-                int n = 0;
-                for (n = 0; n < NB_ELEMNT_ARRAY_GETDATE; n++)
+                int n1 = 0;
+                for (n1 = 0; n1 < NB_ELEMNT_ARRAY_GETDATE; n1++)
                 {
-                    dResults[j] = dConverted[n];
+                    dResults[j] = dConverted[n1];
                     j++;
                 }
                 FREE(dConverted);
@@ -218,8 +218,8 @@ double *getConvertedDateAsMatrixOfDouble(double *dDates, int nbElements, int *iE
         }
 
         m = nbElements;
-        n = NB_ELEMNT_ARRAY_GETDATE;
-        dResTmp = transposeMatrixDouble(n, m, dResults);
+        n0 = NB_ELEMNT_ARRAY_GETDATE;
+        dResTmp = transposeMatrixDouble(n0, m, dResults);
         if (dResTmp)
         {
             FREE(dResults);

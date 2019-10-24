@@ -2,7 +2,7 @@
 *  Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
 *  Copyright (C) 2010 - DIGITEO - Allan CORNET
 *  Copyright (C) 2012 - Scilab Enterprises - Antoine ELIAS
-*  
+*
 *  This file must be used under the terms of the CeCILL.
 *  This source file is licensed as described in the file COPYING, which
 *  you should have received as part of this distribution.  The terms
@@ -76,7 +76,7 @@ int createHDF5File(char *name)
     FREE(currentpath);
     FREE(filename);
 
-    return file;
+    return (int)file;
 }
 /*--------------------------------------------------------------------------*/
 int openHDF5File(char *name, int _iAppendMode)
@@ -110,12 +110,14 @@ int openHDF5File(char *name, int _iAppendMode)
     /* Turn off error handling */
     H5Eset_auto2(H5E_DEFAULT, NULL, NULL);
 
-    if(_iAppendMode == 0)
-    {//read only
+    if (_iAppendMode == 0)
+    {
+        //read only
         file = H5Fopen(filename, H5F_ACC_RDONLY, H5P_DEFAULT);
     }
     else
-    {//read write to append
+    {
+        //read write to append
         file = H5Fopen(filename, H5F_ACC_RDWR, H5P_DEFAULT);
     }
     /* The following test will display the backtrace in case of error */
@@ -145,7 +147,7 @@ int openHDF5File(char *name, int _iAppendMode)
         pathdest = NULL;
     }
 
-    return file;
+    return (int)file;
 }
 /*--------------------------------------------------------------------------*/
 int isHDF5File(char* _pstFilename)

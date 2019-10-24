@@ -23,6 +23,9 @@
 #include "strsubst.h"
 #include "charEncoding.h"
 /*--------------------------------------------------------------------------*/
+#ifdef LINE_MAX
+# undef LINE_MAX
+#endif /* LINE_MAX */
 #define LINE_MAX 4096
 #define CR '\r'
 #define LF '\n'

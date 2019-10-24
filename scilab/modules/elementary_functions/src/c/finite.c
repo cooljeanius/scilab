@@ -10,6 +10,11 @@
  *
  */
 
+/* hack to make sure we have a declaration: */
+#ifdef __STRICT_ANSI__
+# undef __STRICT_ANSI__
+#endif /* __STRICT_ANSI__ */
+
 #include "machine.h"
 #include "core_math.h"
 #include "finite.h"

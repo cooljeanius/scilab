@@ -21,7 +21,7 @@ int getNbrLine(wchar_t * string)
 {
     int promptSize = 0;
 
-    int sizeString = 0;
+    size_t sizeString = 0UL;
 
     int nbrLine = 0;
 
@@ -33,6 +33,6 @@ int getNbrLine(wchar_t * string)
      * divided by the number of column in the window
      * Plus one.
      */
-    nbrLine = 1 + (sizeString + promptSize + 1) / tgetnum("co");
+    nbrLine = (1 + ((int)sizeString + promptSize + 1) / tgetnum("co"));
     return nbrLine;
 }

@@ -75,7 +75,7 @@ int sci_plot2d1_G( char * fname, int ptype, unsigned long fname_len )
     if (Rhs <= 0)
     {
         /* lauch the default routines depending on the name of the calling funtion */
-        sci_demo(fname, fname_len);
+        sci_demo(fname, (int)fname_len);
         return 0;
     }
     CheckRhs(1, 9); /* to allow plot2dxx(y) */

@@ -20,10 +20,10 @@
 #include "Scierror.h"
 #include "dynamic_parallel.h"
 /*--------------------------------------------------------------------------*/
-extern int C2F(adjustgstacksize) (unsigned long *, unsigned long *, int *);
+extern int C2F(adjustgstacksize)(unsigned long *, unsigned long *, int *);
 
 /*--------------------------------------------------------------------------*/
-#define MIN_GSTACKSIZE 11000
+#define MIN_GSTACKSIZE 11000UL
 #define PARAM_MAX_STR "max"
 #define PARAM_MIN_STR "min"
 /*--------------------------------------------------------------------------*/
@@ -118,7 +118,7 @@ static int sci_gstacksizeOneRhs(char *fname)
             unsigned long NEWMEMSTACKSIZE = (unsigned long) * stk(l1);
 
             /* add 1 for alignment problems */
-            if (is_a_valid_size_for_scilab_stack(NEWMEMSTACKSIZE + 1))
+            if (is_a_valid_size_for_scilab_stack((int)NEWMEMSTACKSIZE + 1))
             {
                 if ((NEWMEMSTACKSIZE >= MIN_GSTACKSIZE) && (NEWMEMSTACKSIZE <= get_max_memory_for_scilab_stack()))
                 {

@@ -49,5 +49,5 @@ int printPrompt(int token)
         setCharDisplay(DISP_LAST_SET);
         fflush(stdout);
     }
-    return strlen(prompt);
+    return (int)strlen(prompt);
 }

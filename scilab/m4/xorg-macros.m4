@@ -1608,7 +1608,7 @@ else
 fi
 
 # This chunk of warnings were those that existed in the legacy CWARNFLAGS
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wall -Wno-cast-function-type])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wall -Wno-cast-function-type], [-Wmost])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wmissing-declarations])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wformat=2 -Wno-format-nonliteral], [-Wformat])dnl
 
@@ -1618,7 +1618,7 @@ AC_LANG_CASE([C],[
 	if test "x${BE_REALLY_ANNOYING}" = "xyes"; then 
 	  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]],[-Wtraditional-conversion])
 	fi
-	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wc99-c11-compat -Wno-long-long -Wno-import -Wno-deprecated])
+	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wc99-c11-compat -Wno-long-long -Wno-import -Wno-deprecated], [-Wc90-c99-compat -Wno-long-long -Wno-import -Wno-deprecated], [-Wpedantic -Wno-long-long -Wno-import -Wno-deprecated], [-Wc11-extensions -Wc99-compat -Wc99-designator -Wc99-extensions])
 ],[C++],[
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wuseless-cast])
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wmismatched-tags])
@@ -1633,13 +1633,12 @@ AC_LANG_CASE([C],[
 
 # This chunk adds additional warnings that could catch undesired effects.
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wunused -Wno-unused-parameter])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wuninitialized -Wno-maybe-uninitialized])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wuninitialized -Wno-maybe-uninitialized], [-Wsometimes-uninitialized])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wshadow])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wparentheses])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wmissing-noreturn])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wmissing-format-attribute])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wredundant-decls])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wshorten-64-to-32])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wdouble-promotion])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wformat-overflow=2], [-Wformat-overflow], [-Wformat-length=2], [-Wformat-length])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wformat-truncation=2], [-Wformat-truncation])
@@ -1719,6 +1718,7 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=pointer-compare])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=endif-labels], [-Werror=extra-tokens])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=comment])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=newline-eof])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=shorten-64-to-32])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=float-conversion])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=builtin-memcpy-chk-size])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=stringop-overflow])
@@ -1772,6 +1772,7 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Waddress])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wincompatible-pointer-types])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wpointer-compare])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wendif-labels], [-Wextra-tokens])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wshorten-64-to-32])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wfloat-conversion])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wbuiltin-memcpy-chk-size])
 AC_LANG_CASE([Fortran 77],[

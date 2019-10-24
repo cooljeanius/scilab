@@ -294,7 +294,11 @@ int C2F(sci_exec)(char *fname, unsigned long fname_len)
 
                 if (!bCombo)
                 {
-                    Scierror(999, _("%s: Wrong value(s) for input argument(s).\n"), fname, 3);
+                    Scierror(999,
+                             _("%s: Wrong value(s) for input argument(s). \n"\
+                               "(one of the values and/or arguments might have been %d;"\
+                               " I dunno how this code was originally intended...)\n"),
+                             fname, 3);
                     return 0;
                 }
             }

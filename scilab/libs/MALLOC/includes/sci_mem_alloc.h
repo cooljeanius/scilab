@@ -2,11 +2,11 @@
  * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) INRIA - 2005 - Allan CORNET
  * Copyright (C) DIGITEO - 2012 - Allan CORNET
- * 
+ *
  * This file must be used under the terms of the CeCILL.
  * This source file is licensed as described in the file COPYING, which
  * you should have received as part of this distribution.  The terms
- * are also available at    
+ * are also available at
  * http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
  *
  */
@@ -48,6 +48,15 @@
 
 #define SCISTACKMALLOC malloc
 #define SCISTACKFREE free
+
+#ifdef SCI_MEM_ALLOC_C
+
+extern void *MyReAlloc(void *, size_t, const char *, int);
+extern void *MyAlloc(size_t, const char *, int);
+extern void *MyCalloc(size_t, size_t, const char *, int);
+extern void MyFree(void *);
+
+#endif /* SCI_MEM_ALLOC_C */
 
 #endif /* __SCI_MEM_ALLOC__ */
 

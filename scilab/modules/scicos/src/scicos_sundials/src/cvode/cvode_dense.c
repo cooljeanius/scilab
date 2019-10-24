@@ -468,7 +468,7 @@ static int CVDenseSetup(CVodeMem cv_mem, int convfail, N_Vector ypred,
   ier = DenseGETRF(M, pivots); 
 
   /* Return 0 if the LU was complete; otherwise return 1 */
-  last_flag = ier;
+  last_flag = (int)ier;
   if (ier > 0) return(1);
   return(0);
 }

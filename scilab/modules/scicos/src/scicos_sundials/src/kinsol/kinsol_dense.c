@@ -422,7 +422,7 @@ static int KINDenseSetup(KINMem kin_mem)
   ier = DenseGETRF(J, pivots); 
 
   /* Return 0 if the LU was complete; otherwise return -1 */
-  last_flag = ier;
+  last_flag = (int)ier;
   if (ier > 0) return(-1);
 
   return(0);

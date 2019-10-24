@@ -179,13 +179,18 @@ am__installdirs = "$(DESTDIR)$(pkglibdir)" \
 LTLIBRARIES = $(pkglib_LTLIBRARIES)
 libscimalloc_la_DEPENDENCIES =
 am__dirstamp = $(am__leading_dot)dirstamp
-am__objects_1 = src/getmaxMALLOC.lo src/sci_mem_alloc.lo
+am__objects_1 = src/libscimalloc_la-getmaxMALLOC.lo \
+	src/libscimalloc_la-sci_mem_alloc.lo
 am_libscimalloc_la_OBJECTS = $(am__objects_1)
 libscimalloc_la_OBJECTS = $(am_libscimalloc_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+libscimalloc_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
+	$(libscimalloc_la_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
+	-o $@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -201,8 +206,8 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)/modules/core/includes
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = src/$(DEPDIR)/getmaxMALLOC.Plo \
-	src/$(DEPDIR)/sci_mem_alloc.Plo
+am__depfiles_remade = src/$(DEPDIR)/libscimalloc_la-getmaxMALLOC.Plo \
+	src/$(DEPDIR)/libscimalloc_la-sci_mem_alloc.Plo
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -640,6 +645,7 @@ src/sci_mem_alloc.c
 #MALLOC_C_SOURCES += src/malloc.c
 #endif
 libscimalloc_la_includedir = $(pkgincludedir)
+libscimalloc_la_CFLAGS = -Iincludes
 libscimalloc_la_include_HEADERS = includes/sci_mem_alloc.h \
 includes/MALLOC.h \
 includes/getmaxMALLOC.h \
@@ -830,12 +836,13 @@ src/$(am__dirstamp):
 src/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/$(DEPDIR)
 	@: > src/$(DEPDIR)/$(am__dirstamp)
-src/getmaxMALLOC.lo: src/$(am__dirstamp) src/$(DEPDIR)/$(am__dirstamp)
-src/sci_mem_alloc.lo: src/$(am__dirstamp) \
+src/libscimalloc_la-getmaxMALLOC.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libscimalloc_la-sci_mem_alloc.lo: src/$(am__dirstamp) \
 	src/$(DEPDIR)/$(am__dirstamp)
 
 libscimalloc.la: $(libscimalloc_la_OBJECTS) $(libscimalloc_la_DEPENDENCIES) $(EXTRA_libscimalloc_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(LINK) -rpath $(pkglibdir) $(libscimalloc_la_OBJECTS) $(libscimalloc_la_LIBADD) $(LIBS)
+	$(AM_V_CCLD)$(libscimalloc_la_LINK) -rpath $(pkglibdir) $(libscimalloc_la_OBJECTS) $(libscimalloc_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -845,8 +852,8 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/getmaxMALLOC.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/sci_mem_alloc.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libscimalloc_la-getmaxMALLOC.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libscimalloc_la-sci_mem_alloc.Plo@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -877,6 +884,20 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
+
+src/libscimalloc_la-getmaxMALLOC.lo: src/getmaxMALLOC.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libscimalloc_la_CFLAGS) $(CFLAGS) -MT src/libscimalloc_la-getmaxMALLOC.lo -MD -MP -MF src/$(DEPDIR)/libscimalloc_la-getmaxMALLOC.Tpo -c -o src/libscimalloc_la-getmaxMALLOC.lo `test -f 'src/getmaxMALLOC.c' || echo '$(srcdir)/'`src/getmaxMALLOC.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libscimalloc_la-getmaxMALLOC.Tpo src/$(DEPDIR)/libscimalloc_la-getmaxMALLOC.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/getmaxMALLOC.c' object='src/libscimalloc_la-getmaxMALLOC.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libscimalloc_la_CFLAGS) $(CFLAGS) -c -o src/libscimalloc_la-getmaxMALLOC.lo `test -f 'src/getmaxMALLOC.c' || echo '$(srcdir)/'`src/getmaxMALLOC.c
+
+src/libscimalloc_la-sci_mem_alloc.lo: src/sci_mem_alloc.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libscimalloc_la_CFLAGS) $(CFLAGS) -MT src/libscimalloc_la-sci_mem_alloc.lo -MD -MP -MF src/$(DEPDIR)/libscimalloc_la-sci_mem_alloc.Tpo -c -o src/libscimalloc_la-sci_mem_alloc.lo `test -f 'src/sci_mem_alloc.c' || echo '$(srcdir)/'`src/sci_mem_alloc.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libscimalloc_la-sci_mem_alloc.Tpo src/$(DEPDIR)/libscimalloc_la-sci_mem_alloc.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/sci_mem_alloc.c' object='src/libscimalloc_la-sci_mem_alloc.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libscimalloc_la_CFLAGS) $(CFLAGS) -c -o src/libscimalloc_la-sci_mem_alloc.lo `test -f 'src/sci_mem_alloc.c' || echo '$(srcdir)/'`src/sci_mem_alloc.c
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -1081,8 +1102,8 @@ clean-am: clean-generic clean-libtool clean-local \
 	clean-pkglibLTLIBRARIES mostlyclean-am
 
 distclean: distclean-am
-		-rm -f src/$(DEPDIR)/getmaxMALLOC.Plo
-	-rm -f src/$(DEPDIR)/sci_mem_alloc.Plo
+		-rm -f src/$(DEPDIR)/libscimalloc_la-getmaxMALLOC.Plo
+	-rm -f src/$(DEPDIR)/libscimalloc_la-sci_mem_alloc.Plo
 	-rm -f Makefile
 distclean-am: clean-am distclean-DEJAGNU distclean-compile \
 	distclean-generic distclean-local distclean-tags
@@ -1129,8 +1150,8 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-		-rm -f src/$(DEPDIR)/getmaxMALLOC.Plo
-	-rm -f src/$(DEPDIR)/sci_mem_alloc.Plo
+		-rm -f src/$(DEPDIR)/libscimalloc_la-getmaxMALLOC.Plo
+	-rm -f src/$(DEPDIR)/libscimalloc_la-sci_mem_alloc.Plo
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

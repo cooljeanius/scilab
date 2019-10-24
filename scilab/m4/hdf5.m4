@@ -1,4 +1,4 @@
-dnl#
+dnl# serial 1
 dnl# Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
 dnl# Copyright (C) DIGITEO - 2009 - Bruno JOFRET
 dnl# 
@@ -41,6 +41,19 @@ else
         [HDF5_CFLAGS=""],
         [AC_MSG_ERROR([Cannot find headers (hdf5.h) of the library HDF5. Please install the dev package])])
 fi
+
+AC_CHECK_TYPES([hid_t],[
+  AC_CHECK_SIZEOF([hid_t])dnl
+  AC_CHECK_ALIGNOF([hid_t])dnl
+],[],[
+#ifdef HAVE_HDF5_H
+# include <hdf5.h>
+#else
+# if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#  warning "conftest for hid_t expects <hdf5.h> to be included"
+# endif /* __GNUC__ && !__STRICT_ANSI__ */
+#endif /* HAVE_HDF5_H */
+])dnl
 
 save_LIBS="${LIBS}"
 

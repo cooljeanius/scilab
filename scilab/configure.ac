@@ -291,7 +291,7 @@ case "${host}" in
        ARCH_LDFLAGS="-mmacosx-version-min=${MIN_MACOSX_VERSION}"
        # We need this to be passed to all linker commands:
        LDFLAGS="${LDFLAGS} -mmacosx-version-min=${MIN_MACOSX_VERSION}"
-       AC_DEFINE([MIN_MACOSX_VERSION],[${MIN_MACOSX_VERSION}],
+       AC_DEFINE_UNQUOTED([MIN_MACOSX_VERSION],[${MIN_MACOSX_VERSION}],
              [Minimum MacOSX version with which binaries will be compatible.])
     fi
 ;;
@@ -1543,7 +1543,7 @@ XORG_CHECK_MALLOC_ZERO dnl# from m4/xorg-macros.m4
 AC_FUNC_MMAP
 AC_FUNC_REALLOC
 AC_FUNC_SETVBUF_REVERSED
-AC_CHECK_FUNCS([__argz_count __argz_next __argz_stringify dlopen \
+AC_CHECK_FUNCS([__argz_count __argz_next __argz_stringify clock dlopen \
 dyld_stub_binding_helper freopen localeconv lt_dlopen mblen mbrlen memchr \
 mempcpy nl_langinfo realpath stpcpy strcspn strncasecmp strspn strtoul \
 vsnprintf wcwidth])dnl
@@ -1615,6 +1615,10 @@ if test "x${ac_cv_type_uintptr_t}" = "x"; then
   test -z "${ac_cv_type_uintptr_t}"
   AC_TYPE_UINTPTR_T
 fi
+AC_CHECK_TYPES([clock_t],[
+  AC_CHECK_SIZEOF([clock_t])dnl
+  AC_CHECK_ALIGNOF([clock_t])dnl
+])dnl
 AC_CHECK_TYPES([ptrdiff_t])
 AC_CHECK_TYPES([lt_dlsymlist])dnl
 
@@ -2676,7 +2680,7 @@ elif test "x${XCOS_ENABLE}" = "xyes"; then
    echo "Xcos enable"
    echo "Build modelica compiler (--without-modelica) ....... = $with_modelica"
    echo ""
-   if test "x${with_ocaml}" != "xno" -a "x${OCAMLC}" != "xno" -a "x${OCAMLOPT}" != "xno"; then
+   if test "x${with_ocaml}" != "xno" -a "x${OCAMLC}" != "xno" -a "x${OCAMLOPT}" != "xno" -a "x${with_modelica}" != "xno"; then
      echo "Ocaml Configuration (for Modelica compiler):"
      echo "  OCAMLC ............. = $OCAMLC"
      echo "  OCAMLOPT ........... = $OCAMLOPT"
@@ -2761,13 +2765,13 @@ else
 fi
 
 echo ""
-if test "x${with_openmpi}" != "xno"; then
+if test -n "${with_openmpi}" -a "x${with_openmpi}" != "xno"; then
    echo "OpenMPI Configuration:"
    echo "  OpenMPI LIBS ........... = $OPENMPI_LIBS"
    echo "  OpenMPI C Compiler ..... = $OPENMPI_CC"
    echo "  OpenMPI F77 Compiler ... = $MPIF77"
 else
-   echo "Not using MPI"
+   echo "Not using OpenMPI"
 fi
 
 echo ""
@@ -2855,11 +2859,15 @@ echo "  splint .............. = $SPLINT"
 
 echo ""
 echo "TCL/TK configuration:"
-echo "  TK_INC_PATH ........ = $TK_INC_PATH"
-echo "  TCL_INC_PATH ....... = $TCL_INC_PATH"
-echo "  TCLTK_LIBS ......... = $TCLTK_LIBS"
-echo "  TCL_SERIAL_VERSION . = $TCL_SERIAL_VERSION"
-echo "  TK_SERIAL_VERSION .. = $TK_SERIAL_VERSION"
+if test -n "${TCLTK_LIBS}"; then
+	echo "  TK_INC_PATH ........ = $TK_INC_PATH"
+	echo "  TCL_INC_PATH ....... = $TCL_INC_PATH"
+	echo "  TCLTK_LIBS ......... = $TCLTK_LIBS"
+	echo "  TCL_SERIAL_VERSION . = $TCL_SERIAL_VERSION"
+	echo "  TK_SERIAL_VERSION .. = $TK_SERIAL_VERSION"
+else
+	echo "  TCL/TK disabled"
+fi
 
 echo ""
 echo "XML configuration:"
@@ -2919,7 +2927,7 @@ echo "Platform informations:"
 echo "  host ........... = $host"
 echo "  host_cpu ....... = $host_cpu"
 echo "  host_vendor .... = $host_vendor"
-echo "  host_os ... .... = $host_os"
+echo "  host_os ........ = $host_os"
 echo "  hostname ....... = $ac_hostname"
 echo "  CPU 64 bits .... = $IS_64_BITS_CPU"
 if test -n "${MAC_DETECTED_ARCH}"; then

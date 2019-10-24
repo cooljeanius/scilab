@@ -131,7 +131,7 @@ int createblklist(scicos_block *Blocks, int *ierr, int flag_imp, int funtyp)
     * create scilab tlist Blocks
     ****************************/
     /* 1 - scicos_block */
-    str2sci(str_blklst, 1, nblklst);
+    str2sci((char **)str_blklst, 1, nblklst);
 
     /* 2 - nevprt */
     C2F(itosci)(&Blocks[0].nevprt, (j = 1, &j), (k = 1, &k));

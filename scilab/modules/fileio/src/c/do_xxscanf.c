@@ -202,7 +202,8 @@ int do_xxscanf(char *fname, FILE * fp, char *format, int *nargs, char *strv, int
 
                     if (width_flag == 1 && width_val > MAX_STR - 1)
                     {
-                        Scierror(998, _("%s: An error occurred: field %d is too long (> %d) for %%[ directive.\n"), fname, width_val, MAX_STR - 1);
+                        Scierror(998, _("%s: An error occurred: field %d is too long (> %d) for %%[ directive.\n"),
+                                 fname, width_val, ((int)MAX_STR - 1));
                         return RET_BUG;
                     }
 
@@ -227,7 +228,8 @@ int do_xxscanf(char *fname, FILE * fp, char *format, int *nargs, char *strv, int
                     }
                     if (width_flag == 1 && width_val > MAX_STR - 1)
                     {
-                        Scierror(998, _("%s: An error occurred: field %d is too long (< %d) for %%s directive.\n"), fname, width_val, MAX_STR - 1);
+                        Scierror(998, _("%s: An error occurred: field %d is too long (< %d) for %%s directive.\n"),
+                                 fname, width_val, ((int)MAX_STR - 1));
                         return RET_BUG;
                     }
 
@@ -258,7 +260,8 @@ int do_xxscanf(char *fname, FILE * fp, char *format, int *nargs, char *strv, int
 
                     if (width_flag == 1 && width_val > MAX_STR - 1)
                     {
-                        Scierror(998, _("%s: An error occurred: field %d is too long (< %d) for %%c directive.\n"), fname, width_val, MAX_STR - 1);
+                        Scierror(998, _("%s: An error occurred: field %d is too long (< %d) for %%c directive.\n"),
+                                 fname, width_val, ((int)MAX_STR - 1));
                         return RET_BUG;
                     }
 
@@ -365,14 +368,15 @@ int do_xxscanf(char *fname, FILE * fp, char *format, int *nargs, char *strv, int
             if (*(f1 - 1) == '%' && (*(f1) == 's' || *(f1) == '['))
             {
                 /* FIXME: dunno about the size argument here: */
-                n = snprintf(f2, MAX_STR, "%d", MAX_STR - 1);
+                n = snprintf(f2, MAX_STR, "%d", ((int)MAX_STR - 1));
                 f2 += n;
                 *f2++ = *f1++;
             }
 
             if (f2 == slast)
             {
-                Scierror(998, _("%s: An error occurred: format is too long (> %d).\n"), fname, MAX_STR - 1);
+                Scierror(998, _("%s: An error occurred: format is too long (> %d).\n"),
+                         fname, ((int)MAX_STR - 1));
                 return RET_BUG;
             }
         }
@@ -381,18 +385,18 @@ int do_xxscanf(char *fname, FILE * fp, char *format, int *nargs, char *strv, int
         format = sformat;
     }
 
-    *retval = (*xxscanf) ((VPTR) target, format,
-                          ptrtab[0], ptrtab[1], ptrtab[2], ptrtab[3], ptrtab[4], ptrtab[5], ptrtab[6], ptrtab[7], ptrtab[8], ptrtab[9],
-                          ptrtab[10], ptrtab[11], ptrtab[12], ptrtab[13], ptrtab[14], ptrtab[15], ptrtab[16], ptrtab[17], ptrtab[18], ptrtab[19],
-                          ptrtab[20], ptrtab[21], ptrtab[22], ptrtab[23], ptrtab[24], ptrtab[25], ptrtab[26], ptrtab[27], ptrtab[28], ptrtab[29],
-                          ptrtab[30], ptrtab[31], ptrtab[32], ptrtab[33], ptrtab[34], ptrtab[35], ptrtab[36], ptrtab[37], ptrtab[38], ptrtab[39],
-                          ptrtab[40], ptrtab[41], ptrtab[42], ptrtab[43], ptrtab[44], ptrtab[45], ptrtab[46], ptrtab[47], ptrtab[48], ptrtab[49],
-                          ptrtab[50], ptrtab[51], ptrtab[52], ptrtab[53], ptrtab[54], ptrtab[55], ptrtab[56], ptrtab[57], ptrtab[58], ptrtab[59],
-                          ptrtab[60], ptrtab[61], ptrtab[62], ptrtab[63], ptrtab[64], ptrtab[65], ptrtab[66], ptrtab[67], ptrtab[68], ptrtab[69],
-                          ptrtab[70], ptrtab[71], ptrtab[72], ptrtab[73], ptrtab[74], ptrtab[75], ptrtab[76], ptrtab[77], ptrtab[78], ptrtab[79],
-                          ptrtab[80], ptrtab[81], ptrtab[82], ptrtab[83], ptrtab[84], ptrtab[85], ptrtab[86], ptrtab[87], ptrtab[88], ptrtab[89],
-                          ptrtab[90], ptrtab[91], ptrtab[92], ptrtab[93], ptrtab[94], ptrtab[95], ptrtab[96], ptrtab[97], ptrtab[98],
-                          ptrtab[MAXSCAN - 1]);
+    *retval = (*xxscanf)((VPTR)target, format,
+                         ptrtab[0], ptrtab[1], ptrtab[2], ptrtab[3], ptrtab[4], ptrtab[5], ptrtab[6], ptrtab[7], ptrtab[8], ptrtab[9],
+                         ptrtab[10], ptrtab[11], ptrtab[12], ptrtab[13], ptrtab[14], ptrtab[15], ptrtab[16], ptrtab[17], ptrtab[18], ptrtab[19],
+                         ptrtab[20], ptrtab[21], ptrtab[22], ptrtab[23], ptrtab[24], ptrtab[25], ptrtab[26], ptrtab[27], ptrtab[28], ptrtab[29],
+                         ptrtab[30], ptrtab[31], ptrtab[32], ptrtab[33], ptrtab[34], ptrtab[35], ptrtab[36], ptrtab[37], ptrtab[38], ptrtab[39],
+                         ptrtab[40], ptrtab[41], ptrtab[42], ptrtab[43], ptrtab[44], ptrtab[45], ptrtab[46], ptrtab[47], ptrtab[48], ptrtab[49],
+                         ptrtab[50], ptrtab[51], ptrtab[52], ptrtab[53], ptrtab[54], ptrtab[55], ptrtab[56], ptrtab[57], ptrtab[58], ptrtab[59],
+                         ptrtab[60], ptrtab[61], ptrtab[62], ptrtab[63], ptrtab[64], ptrtab[65], ptrtab[66], ptrtab[67], ptrtab[68], ptrtab[69],
+                         ptrtab[70], ptrtab[71], ptrtab[72], ptrtab[73], ptrtab[74], ptrtab[75], ptrtab[76], ptrtab[77], ptrtab[78], ptrtab[79],
+                         ptrtab[80], ptrtab[81], ptrtab[82], ptrtab[83], ptrtab[84], ptrtab[85], ptrtab[86], ptrtab[87], ptrtab[88], ptrtab[89],
+                         ptrtab[90], ptrtab[91], ptrtab[92], ptrtab[93], ptrtab[94], ptrtab[95], ptrtab[96], ptrtab[97], ptrtab[98],
+                         ptrtab[MAXSCAN - 1]);
 
     *nargs = Min(num_conversion + 1, Max(*retval + n_directive_count, 0));
 

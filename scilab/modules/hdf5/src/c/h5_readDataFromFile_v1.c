@@ -65,7 +65,7 @@ static herr_t op_func_v1(hid_t loc_id, const char *name, void *operator_data)
         case H5G_GROUP:
             break;
         case H5G_DATASET:
-            *pDataSetId = H5Dopen(loc_id, name);
+            *pDataSetId = (int)H5Dopen(loc_id, name);
             break;
         case H5G_TYPE:
             break;
@@ -353,7 +353,7 @@ int getVariableNames_v1(int _iFile, char **pstNameList)
 
 int getDataSetIdFromName_v1(int _iFile, char *_pstName)
 {
-    return H5Dopen(_iFile, _pstName);
+    return (int)H5Dopen(_iFile, _pstName);
 }
 
 int getDataSetId_v1(int _iFile)
@@ -449,7 +449,7 @@ int readDoubleMatrix_v1(int _iDatasetId, int _iRows, int _iCols, double *_pdblDa
 
         /* Open the referenced object, get its name and type: */
         obj = H5Rdereference(_iDatasetId, H5R_OBJECT, &Ref);
-        readDouble_v1(obj, _iRows, _iCols, _pdblData);
+        readDouble_v1((int)obj, _iRows, _iCols, _pdblData);
     }
 
     status = H5Dclose(_iDatasetId);
@@ -476,14 +476,14 @@ int readDoubleComplexMatrix_v1(int _iDatasetId, int _iRows, int _iCols, double *
 
     /* Open the referenced object, get its name and type: */
     obj = H5Rdereference(_iDatasetId, H5R_OBJECT, &pRef[0]);
-    status = readDouble_v1(obj, _iRows, _iCols, _pdblReal);
+    status = readDouble_v1((int)obj, _iRows, _iCols, _pdblReal);
     if (status < 0)
     {
         return -1;
     }
 
     obj = H5Rdereference(_iDatasetId, H5R_OBJECT, &pRef[1]);
-    status = readDouble_v1(obj, _iRows, _iCols, _pdblImg);
+    status = readDouble_v1((int)obj, _iRows, _iCols, _pdblImg);
     if (status < 0)
     {
         return -1;
@@ -811,11 +811,12 @@ int readCommonPolyMatrix_v1(int _iDatasetId, char *_pstVarname, int _iComplex, i
         obj = H5Rdereference(_iDatasetId, H5R_OBJECT, &pData[i]);
         if (_iComplex)
         {
-            status = readComplexPoly_v1(obj, &_piNbCoef[i], &_pdblReal[i], &_pdblImg[i]);
+            status = readComplexPoly_v1((int)obj, &_piNbCoef[i], &_pdblReal[i],
+                                        &_pdblImg[i]);
         }
         else
         {
-            status = readPoly_v1(obj, &_piNbCoef[i], &_pdblReal[i]);
+            status = readPoly_v1((int)obj, &_piNbCoef[i], &_pdblReal[i]);
         }
 
         if (status < 0)
@@ -1026,7 +1027,9 @@ int readUnsignedInteger64Matrix_v1(int _iDatasetId, int _iRows, int _iCols, unsi
     return 0;
 }
 
-int readCommonSparseComplexMatrix_v1(int _iDatasetId, int _iComplex, int _iRows, int _iCols, int _iNbItem, int *_piNbItemRow, int *_piColPos,
+int readCommonSparseComplexMatrix_v1(int _iDatasetId, int _iComplex,
+                                     int _iRows, int _iCols, int _iNbItem,
+                                     int *_piNbItemRow, int *_piColPos,
                                      double *_pdblReal, double *_pdblImg)
 {
     hid_t obj = 0;
@@ -1044,7 +1047,7 @@ int readCommonSparseComplexMatrix_v1(int _iDatasetId, int _iComplex, int _iRows,
 
     /* read Row data: */
     obj = H5Rdereference(_iDatasetId, H5R_OBJECT, &pRef[0]);
-    status = readInteger32Matrix_v1(obj, 1, _iRows, _piNbItemRow);
+    status = readInteger32Matrix_v1((int)obj, 1, _iRows, _piNbItemRow);
     if (status < 0)
     {
         return -1;
@@ -1052,7 +1055,7 @@ int readCommonSparseComplexMatrix_v1(int _iDatasetId, int _iComplex, int _iRows,
 
     /* read cols data: */
     obj = H5Rdereference(_iDatasetId, H5R_OBJECT, &pRef[1]);
-    status = readInteger32Matrix_v1(obj, 1, _iNbItem, _piColPos);
+    status = readInteger32Matrix_v1((int)obj, 1, _iNbItem, _piColPos);
     if (status < 0)
     {
         return -1;
@@ -1063,11 +1066,11 @@ int readCommonSparseComplexMatrix_v1(int _iDatasetId, int _iComplex, int _iRows,
 
     if (_iComplex)
     {
-        status = readDoubleComplexMatrix_v1(obj, 1, _iNbItem, _pdblReal, _pdblImg);
+        status = readDoubleComplexMatrix_v1((int)obj, 1, _iNbItem, _pdblReal, _pdblImg);
     }
     else
     {
-        status = readDoubleMatrix_v1(obj, 1, _iNbItem, _pdblReal);
+        status = readDoubleMatrix_v1((int)obj, 1, _iNbItem, _pdblReal);
     }
 
     if (status < 0)
@@ -1106,7 +1109,7 @@ int readBooleanSparseMatrix_v1(int _iDatasetId, int _iRows, int _iCols, int _iNb
 
     /* read Row data: */
     obj = H5Rdereference(_iDatasetId, H5R_OBJECT, &pRef[0]);
-    status = readInteger32Matrix_v1(obj, 1, _iRows, _piNbItemRow);
+    status = readInteger32Matrix_v1((int)obj, 1, _iRows, _piNbItemRow);
     if (status < 0)
     {
         return -1;
@@ -1114,7 +1117,7 @@ int readBooleanSparseMatrix_v1(int _iDatasetId, int _iRows, int _iCols, int _iNb
 
     /* read cols data: */
     obj = H5Rdereference(_iDatasetId, H5R_OBJECT, &pRef[1]);
-    status = readInteger32Matrix_v1(obj, 1, _iNbItem, _piColPos);
+    status = readInteger32Matrix_v1((int)obj, 1, _iNbItem, _piColPos);
     if (status < 0)
     {
         return -1;
@@ -1212,7 +1215,7 @@ int getListItemDataset_v1(int _iDatasetId, void *_piItemRef, int _iItemPos, int 
 {
     hobj_ref_t poRef = ((hobj_ref_t *) _piItemRef)[_iItemPos];
 
-    *_piItemDataset = H5Rdereference(_iDatasetId, H5R_OBJECT, &poRef);
+    *_piItemDataset = (int)H5Rdereference(_iDatasetId, H5R_OBJECT, &poRef);
 
     if (*_piItemDataset == 0)
     {

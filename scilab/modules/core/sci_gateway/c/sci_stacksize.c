@@ -20,10 +20,10 @@
 #include "Scierror.h"
 #include "dynamic_parallel.h"
 /*--------------------------------------------------------------------------*/
-extern int C2F(adjuststacksize) ();
+extern int C2F(adjuststacksize)();
 
 /*--------------------------------------------------------------------------*/
-#define MIN_STACKSIZE 180000
+#define MIN_STACKSIZE 180000UL
 #define PARAM_MAX_STR "max"
 #define PARAM_MIN_STR "min"
 /*--------------------------------------------------------------------------*/
@@ -55,7 +55,6 @@ static char *getStackCreationErrorMessage(int errCode);
 /*--------------------------------------------------------------------------*/
 int C2F(sci_stacksize) (char *fname, unsigned long fname_len)
 {
-
     Rhs = Max(0, Rhs);
     CheckRhs(0, 1);
     CheckLhs(0, 1);
@@ -111,7 +110,7 @@ static int sci_stacksizeOneRhs(char *fname)
             unsigned long NEWMEMSTACKSIZE = (unsigned long) * stk(l1);
 
             /* add 1 for alignment problems */
-            if (is_a_valid_size_for_scilab_stack(NEWMEMSTACKSIZE + 1))
+            if (is_a_valid_size_for_scilab_stack((int)NEWMEMSTACKSIZE + 1))
             {
                 if ((NEWMEMSTACKSIZE >= MIN_STACKSIZE) && (NEWMEMSTACKSIZE <= get_max_memory_for_scilab_stack()))
                 {
@@ -300,12 +299,12 @@ static int setStacksize(unsigned long newsize)
                 if (ptr)
                 {
                     LhsVar(1) = 0;
-                    C2F(putlhsvar) ();
+                    C2F(putlhsvar)();
 
-                    C2F(adjuststacksize) (&newsize, &ptr);
+                    C2F(adjuststacksize)(&newsize, &ptr);
                     return 0;
                 }
-                return -3;      /* We haven't been able to create (or resize) the stack (probably a malloc error */
+                return -3; /* We haven't been able to create (or resize) the stack (probably a malloc error) */
             }
             /* Not possible to assign that amount of memory */
             return -1;

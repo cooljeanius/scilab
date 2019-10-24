@@ -2993,7 +2993,7 @@ static char Fname[nlgh + 1];
 char *get_fname(char *fname, unsigned long fname_len)
 {
     int i = 0;
-    int minlength = Min(fname_len, nlgh);
+    int minlength = Min((int)fname_len, nlgh);
 
     strncpy(Fname, fname, minlength);
     Fname[minlength] = '\0';
@@ -3432,14 +3432,16 @@ int C2F(optvarget) (char *fname, int *topk, int *iel, char *namex, unsigned long
 *
 *------------------------------------------------------------- */
 
-int C2F(bufstore) (char *fname, int *lbuf, int *lbufi, int *lbuff, int *lr, int *nlr, unsigned long fname_len)
+int C2F(bufstore)(char *fname, int *lbuf, int *lbufi, int *lbuff, int *lr,
+                  int *nlr, unsigned long fname_len)
 {
     *lbufi = *lbuf;
     *lbuff = *lbufi + *nlr - 1;
     *lbuf = *lbuff + 2;
     if (*lbuff > bsiz)
     {
-        Scierror(999, _("%f: No more space to store string arguments.\n"), get_fname(fname, fname_len));
+        Scierror(999, _("%s: No more space to store string arguments.\n"),
+                 get_fname(fname, fname_len));
         return FALSE;
     }
     /* lbufi is a Fortran indice ==> offset -1 at C level */

@@ -43,7 +43,7 @@ int sci_or(char *fname, unsigned long l)
 
     if (!isBooleanType(pvApiCtx, piAddressVarOne))
     {
-        callOverloadFunction(pvApiCtx, 1, fname, l);
+        callOverloadFunction(pvApiCtx, 1, fname, (unsigned int)l);
         return 0;
     }
 

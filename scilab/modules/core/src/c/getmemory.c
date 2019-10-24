@@ -66,7 +66,7 @@ int getfreememory(void)
         count = HOST_VM_INFO_COUNT;
 
         kret = host_statistics (mach_host_self(), HOST_VM_INFO, (host_info_t)&page_info, &count);
-        return page_info.free_count * pagesize / 1024;
+        return ((int)(page_info.free_count * pagesize) / 1024);
     }
 #elif HAVE_TABLE && defined TBL_VMSTATS
     {

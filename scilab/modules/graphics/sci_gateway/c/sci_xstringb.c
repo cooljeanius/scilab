@@ -38,7 +38,7 @@ int sci_xstringb(char *fname, unsigned long fname_len)
     if ( Rhs <= 0 )
     {
         /* demo */
-        sci_demo(fname, fname_len);
+        sci_demo(fname, (int)fname_len);
         return 0 ;
     }
 
@@ -51,7 +51,7 @@ int sci_xstringb(char *fname, unsigned long fname_len)
     CheckScalar(2, m2, n2);
     y = *stk(l2);
     GetRhsVar(3, MATRIX_OF_STRING_DATATYPE, &m3, &n3, &Str);
-    if ( m3*n3 == 0 )
+    if ( m3 * n3 == 0 )
     {
         LhsVar(1) = 0;
         PutLhsVar();
@@ -68,7 +68,7 @@ int sci_xstringb(char *fname, unsigned long fname_len)
     if (Rhs == 6)
     {
         GetRhsVar(6, STRING_DATATYPE, &m6, &n6, &l6);
-        if ( m6*n6 != 0 && strcmp(cstk(l6), "fill") == 0 )
+        if ( m6 * n6 != 0 && strcmp(cstk(l6), "fill") == 0 )
         {
             autoSize = FALSE ;
             textBoxMode = 2;

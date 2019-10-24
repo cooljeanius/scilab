@@ -309,7 +309,9 @@ BOOL exportLocaleToSystem(char *locale)
 #ifdef _MSC_VER
         fprintf(stderr, "Localization: Have not been able to find a suitable locale. Remains to default %s.\n", "LC_CTYPE");
 #else
-        fprintf(stderr, "Localization: Have not been able to find a suitable locale. Remains to default %s.\n", EXPORTENVLOCALE);
+        /* FIXME: check type of EXPORTENVLOCALE; LC_MESSAGES might be an int instead of a string: */
+        fprintf(stderr, "Localization: Have not been able to find a suitable locale. Remains to default %s.\n",
+                EXPORTENVLOCALE);
 #endif
         return FALSE;
     }

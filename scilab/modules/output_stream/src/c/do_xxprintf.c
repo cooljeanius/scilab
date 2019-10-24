@@ -13,6 +13,10 @@
 /*--------------------------------------------------------------------------*/
 #include <stdio.h>
 #include <ctype.h>
+/* hack to ensure finite() is declared: */
+#ifdef __STRICT_ANSI__
+# undef __STRICT_ANSI__
+#endif /* __STRICT_ANSI__ */
 #include <math.h>
 #include "machine.h"
 #include "MALLOC.h"

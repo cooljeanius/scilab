@@ -5810,7 +5810,7 @@ static int Jacobians(long int Neq, realtype tt, N_Vector yy, N_Vector yp,
         no = 0;
         ni = 0;
     }
-    n = Neq;
+    n = (int)Neq;
     nb = nblk;
     m = n - nx;
 
@@ -6201,8 +6201,10 @@ int write_xml_states(int nvar, const char * xmlfile, char **ids, double *x)
         result = write_in_child(&elements, ids[i], xv[i]);
         if (result == 0 )
         {
-            /* sciprint(_("cannot find %s in '%s' \n"),ids[i],xmlfile);      */
-            /* err= -1;*/ /* Variable does not exist*/
+#if 0
+            sciprint(_("cannot find %s in '%s' \n"), ids[i], xmlfile);
+            err = -1; /* Variable does not exist*/
+#endif /* 0 */
         }
     }
 
@@ -6211,7 +6213,8 @@ int write_xml_states(int nvar, const char * xmlfile, char **ids, double *x)
 
 
     wcfopen(fd, (char*)xmlfile, "wb");
-    if (fd < 0)
+    /* avoid ordered comparison between pointer and zero: */
+    if (fd == NULL)
     {
         sciprint(_("Error: cannot write to  '%s'  \n"), xmlfile);
         return -3;/* cannot write to file*/
@@ -6338,7 +6341,7 @@ int C2F(hfjac)(double *x, double *jac, int *col)
 /*--------------------------------------------------------------------------*/
 int simblkKinsol(N_Vector yy, N_Vector resval, void *rdata)
 {
-    double t = 0., *xc = NULL , *xcdot = NULL, *residual = NULL;
+    double t = 0., *xc = NULL, *xcdot = NULL, *residual = NULL;
     UserData data;
     int jj = 0, nantest = 0, N = 0;
     N = *neq;

@@ -47,7 +47,7 @@ int sci_matplot(char *fname, unsigned long fname_len)
 
     if ( Rhs <= 0 )
     {
-        sci_demo(fname, fname_len);
+        sci_demo(fname, (int)fname_len);
         return 0;
     }
     CheckRhs(1, 5);

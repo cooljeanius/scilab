@@ -1461,14 +1461,21 @@ int checkNamedVarFormat(void* _pvCtx, const char *_pstName)
         iRet = 0;
     }
 
-    // check that we have only ascii characters
-    for (int i = 0; i < static_cast<int>(strlen(_pstName)); i++)
+    if (strlen(_pstName) > 0)
     {
-        if (!isascii(_pstName[i]))
+        // check that we have only ascii characters
+        for (int i = 0; i < static_cast<int>(strlen(_pstName)); i++)
         {
-            iRet = 0;
+            if (!isascii(_pstName[i]))
+            {
+                iRet = 0;
+                break;
+            }
         }
-        break;
+    }
+    else
+    {
+        iRet = 0;
     }
 
     // add here some others rules

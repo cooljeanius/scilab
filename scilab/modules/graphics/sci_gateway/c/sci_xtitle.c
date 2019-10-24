@@ -43,22 +43,23 @@ int sci_xtitle( char * fname, unsigned long fname_len )
     int  box = 0;
     BOOL isBoxSpecified = FALSE;
     char * psubwinUID = NULL;
-    static rhs_opts opts[] = { {-1,"boxed","i" ,0,0,0},
-    {-1,NULL   ,NULL,0,0,0} };
+    static rhs_opts opts[] = { {-1, "boxed", "i", 0, 0, 0},
+        {-1, NULL, NULL, 0, 0, 0}
+    };
 
     if (Rhs <= 0)
     {
-        sci_demo(fname, fname_len);
+        sci_demo(fname, (int)fname_len);
         return 0;
     }
 
-    CheckRhs(1,5);
+    CheckRhs(1, 5);
 
 
     nbLabels = Rhs;
 
     /* get the given options from the name in opts */
-    if ( !get_optionals(fname,opts) )
+    if ( !get_optionals(fname, opts) )
     {
         /* error */
         return 0;
@@ -72,10 +73,10 @@ int sci_xtitle( char * fname, unsigned long fname_len )
         int type = GetType(4);
         if ( type == 1 || type == 8 )/* double or int */
         {
-            int n = 0,m = 0;
+            int n = 0, m = 0;
             int boxPtr   = -1 ; /* pointer of box on the stack */
-            GetRhsVar(4,MATRIX_OF_INTEGER_DATATYPE,&m,&n,&boxPtr);
-            CheckScalar(4,m,n);
+            GetRhsVar(4, MATRIX_OF_INTEGER_DATATYPE, &m, &n, &boxPtr);
+            CheckScalar(4, m, n);
             box = *istk( boxPtr );
             nbLabels--; /* it is not a label text */
             isBoxSpecified = TRUE;
@@ -99,24 +100,24 @@ int sci_xtitle( char * fname, unsigned long fname_len )
 
     for ( narg = 1 ; narg <= nbLabels ; narg++)
     {
-        int m = 0,n = 0;
+        int m = 0, n = 0;
         char **Str = NULL;
         char * modifiedLabel = NULL;
 
-        GetRhsVar(narg,MATRIX_OF_STRING_DATATYPE,&m,&n,&Str);
-        if ( m*n == 0 )
+        GetRhsVar(narg, MATRIX_OF_STRING_DATATYPE, &m, &n, &Str);
+        if ( m * n == 0 )
         {
             continue;
         }
 
-        switch(narg)
+        switch (narg)
         {
             case 1:
                 getGraphicObjectProperty(psubwinUID, __GO_TITLE__, jni_string, (void **)&modifiedLabel);
                 break;
             case 2:
                 getGraphicObjectProperty(psubwinUID, __GO_X_AXIS_LABEL__, jni_string, (void **)&modifiedLabel);
-            break;
+                break;
             case 3:
                 getGraphicObjectProperty(psubwinUID, __GO_Y_AXIS_LABEL__, jni_string, (void **)&modifiedLabel);
                 break;
@@ -139,7 +140,7 @@ int sci_xtitle( char * fname, unsigned long fname_len )
         endFigureDataWriting(pFigure);
 #endif
 
-        freeArrayOfString(Str,m*n);
+        freeArrayOfString(Str, m * n);
     }
 
     setCurrentObject(psubwinUID);
@@ -147,7 +148,7 @@ int sci_xtitle( char * fname, unsigned long fname_len )
     sciDrawObj(pFigure);
 #endif
 
-    LhsVar(1)=0;
+    LhsVar(1) = 0;
     C2F(putlhsvar)();
     return 0;
 }

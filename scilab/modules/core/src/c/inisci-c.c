@@ -135,7 +135,7 @@ int C2F(getscihome)(char *buf, int *nbuf, long int lbuf)
 /*--------------------------------------------------------------------------*/
 int C2F(gettmpdir)(char *buf, int *nbuf, long int lbuf)
 {
-    int ierr, iflag = 0, l1buf = lbuf;
+    int ierr, iflag = 0, l1buf = (int)lbuf;
     C2F(getenvc)(&ierr, "TMPDIR", buf, &l1buf, &iflag);
     if ( ierr == 1)
     {

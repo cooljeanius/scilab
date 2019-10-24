@@ -15,6 +15,21 @@
 // =============================================================================
 #include <stdio.h>
 #include <string.h>
+#ifdef __cplusplus
+# include <cmath>
+#else
+# if defined(HAVE_MATH_H) || (defined(__has_include) && __has_include(<math.h>))
+/* hack to ensure finite() is declared: */
+#  ifdef __STRICT_ANSI__
+#   undef __STRICT_ANSI__
+#  endif /* __STRICT_ANSI__ */
+#  include <math.h>
+# else
+#  if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#   warning "csvWrite.c expects a math-related header to be included."
+#  endif /* __GNUC__ && !__STRICT_ANSI__ */
+# endif /* have <math.h> */
+#endif /* __cplusplus */
 #include "stringToDouble.h"
 #include "csvWrite.h"
 #include "mopen.h"
@@ -116,7 +131,7 @@ csvWriteError csvWrite_double(const char *filename,
     }
 
     expandedFilename = expandPathVariable((char*)filename);
-    wcfopen(fd , filename, MODEWFD);
+    wcfopen(fd, filename, MODEWFD);
     if (expandedFilename)
     {
         FREE(expandedFilename);
@@ -253,7 +268,7 @@ csvWriteError csvWrite_complex(const char *filename,
     }
 
     expandedFilename = expandPathVariable((char *)filename);
-    wcfopen(fd , filename, MODEWFD);
+    wcfopen(fd, filename, MODEWFD);
     if (expandedFilename)
     {
         FREE(expandedFilename);
@@ -437,7 +452,7 @@ csvWriteError csvWrite_string(const char *filename,
     }
 
     expandedFilename = expandPathVariable((char*)filename);
-    wcfopen(fd , filename, MODEWFD);
+    wcfopen(fd, filename, MODEWFD);
     if (expandedFilename)
     {
         FREE(expandedFilename);

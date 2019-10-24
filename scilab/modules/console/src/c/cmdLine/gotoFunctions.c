@@ -214,9 +214,7 @@ int begLine(wchar_t * CommandLine, unsigned int *cursorLocation)
 /* Move cursor to the end of a line */
 int endLine(wchar_t * CommandLine, unsigned int *cursorLocation)
 {
-    int sizeOfCmd = 0;
-
-    sizeOfCmd = wcslen(CommandLine);
+    size_t sizeOfCmd = wcslen(CommandLine);
     /* While the index is different of the size of the line */
     while (sizeOfCmd - (*cursorLocation))
     {

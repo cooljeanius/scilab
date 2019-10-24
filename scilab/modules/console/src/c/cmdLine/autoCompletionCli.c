@@ -70,11 +70,11 @@ void autoCompletionInConsoleMode(wchar_t ** commandLine, unsigned int *cursorLoc
     unsigned int nbrCharInString;
 
     multiByteString = wide_string_to_UTF8(*commandLine);
-    nbrCharInString = wcslen(*commandLine);
+    nbrCharInString = (unsigned int)wcslen(*commandLine);
     doCompletion(multiByteString, cursorLocation, &nbrCharInString);
     wideString = to_wide_string(multiByteString);
     /* Copy the new string in a buffer wich size is a multiple of 1024 */
-    sizeToAlloc = 1024 * (wcslen(wideString) / 1024 + 1);
+    sizeToAlloc = (1024 * (((int)wcslen(wideString) / 1024) + 1));
     FREE(*commandLine);
     *commandLine = MALLOC(sizeof(**commandLine) * sizeToAlloc);
     wcscpy(*commandLine, wideString);
@@ -162,7 +162,9 @@ static char *getLineAfterCaret(char *wk_buf, unsigned int *cursor, unsigned int 
 static void backspace(int n)
 {
     if (n < 1)
+    {
         return;
+    }
     while (n--)
 #ifdef TERMCAP
         if (BC)
@@ -297,7 +299,7 @@ static int CopyLineAtPrompt(char *wk_buf, char *line, unsigned int *cursor, unsi
         backspace(*cursor);     /* backspace to beginning of line */
         printf("%s", wk_buf);   /* copy to screen */
 
-        *cursor = strlen(wk_buf);   /* cursor set at end of line */
+        *cursor = (unsigned int)strlen(wk_buf); /* cursor set at end of line */
 
         /* erase extra characters left over if any */
         erase_nchar(GET_MAX(0, (*cursor_max - *cursor)));
@@ -316,15 +318,25 @@ static char **concatenateStrings(int *sizearrayofstring, char *string1, char *st
     *sizearrayofstring = 0;
 
     if (string1)
+    {
         newsize++;
+    }
     if (string2)
+    {
         newsize++;
+    }
     if (string3)
+    {
         newsize++;
+    }
     if (string4)
+    {
         newsize++;
+    }
     if (string5)
+    {
         newsize++;
+    }
 
     if (newsize > 0)
     {
@@ -424,17 +436,29 @@ static void TermCompletionOnAll(char *lineBeforeCaret, char *lineAfterCaret, cha
                 char *new_line = NULL;
 
                 if (completionDictionaryFields)
+                {
                     completionDictionary = completionDictionaryFields;
+                }
                 if (completionDictionaryFunctions)
+                {
                     completionDictionary = completionDictionaryFunctions;
+                }
                 if (completionDictionaryCommandWords)
+                {
                     completionDictionary = completionDictionaryCommandWords;
+                }
                 if (completionDictionaryMacros)
+                {
                     completionDictionary = completionDictionaryMacros;
+                }
                 if (completionDictionaryVariables)
+                {
                     completionDictionary = completionDictionaryVariables;
+                }
                 if (completionDictionaryHandleGraphicsProperties)
+                {
                     completionDictionary = completionDictionaryHandleGraphicsProperties;
+                }
 
                 new_line = completeLine(lineBeforeCaret, completionDictionary[0], NULL, defaultPattern, FALSE, lineAfterCaret);
                 if (new_line)

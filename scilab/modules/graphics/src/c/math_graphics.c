@@ -11,6 +11,11 @@
  *
  */
 
+/* hack to ensure we have a declaration for finite(): */
+#ifdef __STRICT_ANSI__
+# undef __STRICT_ANSI__
+#endif /* __STRICT_ANSI__ */
+
 /*------------------------------------------------------------------------
  *    Graphic library
  --------------------------------------------------------------------------*/
@@ -63,10 +68,10 @@ void rotate2D( double from[2], double center[2], double angle, double dest[2] )
 /*----------------------------------------------------------------------------*/
 /* perform the rotation of point from to point to. */
 /* the angle is directly given with its sine and cosine for speed */
-void rotate2Dim( double from[2]   ,
-                 double center[2] ,
-                 double cosAngle  ,
-                 double sinAngle  ,
+void rotate2Dim( double from[2],
+                 double center[2],
+                 double cosAngle,
+                 double sinAngle,
                  double dest[2]    )
 {
     double diff[2] ;
@@ -174,7 +179,7 @@ void crossProduct( const double v1[3], const double v2[3], double res[3] )
     res[2] = v10 * v21 - v11 * v20 ;
 }
 /*----------------------------------------------------------------------------*/
-void vectSubstract3D(const double v1[3] , const double v2[3], double res[3])
+void vectSubstract3D(const double v1[3], const double v2[3], double res[3])
 {
     res[0] = v1[0] - v2[0];
     res[1] = v1[1] - v2[1];

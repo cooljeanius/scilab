@@ -108,12 +108,12 @@ static int CopyFileFunction_others(wchar_t *DestinationFilename, wchar_t *Source
         goto err;
     }
 
-    while ((nread = read (sfd, buf, sizeof (buf))) > 0)
+    while ((nread = (int)read(sfd, buf, sizeof(buf))) > 0)
     {
         ptr = buf;
         while (nread > 0)
         {
-            nwritten = write (dfd, ptr, nread);
+            nwritten = (int)write(dfd, ptr, nread);
             if (nwritten <= 0)
             {
                 status = errno;

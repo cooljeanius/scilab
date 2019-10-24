@@ -408,7 +408,7 @@ static int IDADenseSetup(IDAMem IDA_mem, N_Vector yyp, N_Vector ypp,
   retfac = DenseGETRF(JJ, pivots);
 
   if (retfac != 0) {
-    last_flag = retfac;
+    last_flag = (int)retfac;
     return(+1);
   }
   last_flag = IDADENSE_SUCCESS;

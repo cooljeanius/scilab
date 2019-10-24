@@ -102,7 +102,7 @@ int C2F(sci_who)(char *fname, unsigned long fname_len)
                 FreeVariableStructArray(GlobalVariables, NbrVarsGlobal);
                 FreeVariableStructArray(LocalVariables, NbrVarsLocal);
 
-                Scierror(999, _("%s: Wrong value for input argument #%d: '%s', '%s', '%s' or '%s' expected.\n"), fname, 1, "local" , "get" , "global", "sorted");
+                Scierror(999, _("%s: Wrong value for input argument #%d: '%s', '%s', '%s' or '%s' expected.\n"), fname, 1, "local", "get", "global", "sorted");
                 return 0;
             }
         }
@@ -180,7 +180,9 @@ int C2F(sci_who)(char *fname, unsigned long fname_len)
             FreeVariableStructArray(GlobalVariables, NbrVarsGlobal);
             FreeVariableStructArray(LocalVariables, NbrVarsLocal);
 
-            Scierror(999, _("%s: Wrong value for input argument #%d: '%s', '%s', '%s' expected. Input argument #%d must be '%s'.\n"), fname, 1, "local", "get", "global", "sorted");
+            Scierror(999,
+                     _("%s: Wrong value for input argument #%d: '%s', '%s', '%s' expected. Input argument "/*#%d */"must be '%s'.\n"),
+                     fname, 1, "local", "get", "global", "sorted");
             return 0;
         }
     }

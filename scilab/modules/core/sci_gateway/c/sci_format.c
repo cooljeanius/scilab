@@ -329,6 +329,7 @@ static int sci_format_tworhs(char *fname)
         PutLhsVar();
     }
     /* format('e',10) & format(10,'e') syntax */
+    /* FIXME: check parentheses: */
     else if ((isStringType(pvApiCtx, piAddressVarOne) &&
               (isDoubleType(pvApiCtx, piAddressVarTwo)) || (isDoubleType(pvApiCtx, piAddressVarOne) && isStringType(pvApiCtx, piAddressVarTwo))))
     {

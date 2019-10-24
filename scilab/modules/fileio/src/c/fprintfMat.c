@@ -17,8 +17,17 @@
 #include <stdio.h>
 #include <ctype.h> /* isdigit */
 #include <string.h>
-#ifdef HAVE_MATH_H
+#include "machine.h"
+#if defined(HAVE_MATH_H) || (defined(__has_include) && __has_include(<math.h>))
+/* hack to get finite() declared: */
+# ifdef __STRICT_ANSI__
+#  undef __STRICT_ANSI__
+# endif /* __STRICT_ANSI__ */
 # include <math.h>
+#else
+# if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#  warning "fprintfMat.c expects <math.h> to be included."
+# endif /* __GNUC__ && !__STRICT_ANSI__ */
 #endif /* HAVE_MATH_H */
 #include "fprintfMat.h"
 #include "charEncoding.h"
@@ -33,9 +42,10 @@
 #ifdef _MSC_VER
 # define finite(x) _finite(x)
 #else
-# if (!defined(finite) || !defined(HAVE_FINITE) || !defined(HAVE_DECL_FINITE)) || defined(S_SPLINT_S)
+# if (!defined(finite) || !defined(HAVE_FINITE) || !defined(HAVE_DECL_FINITE)) \
+     || defined(S_SPLINT_S) || (defined(__clang__) && defined(__STRICT_ANSI__))
 #  include "finite.h"
-# endif /* missing finite, or using splint */
+# endif /* missing finite, or using splint, or clang is being strict */
 #endif /* _MSC_VER */
 #define EOL "\n"
 #define NanString "Nan"

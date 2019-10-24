@@ -16,6 +16,7 @@ src/sci_mem_alloc.c
 #endif
 
 libscimalloc_la_includedir=$(pkgincludedir)
+libscimalloc_la_CFLAGS = -Iincludes
 
 libscimalloc_la_include_HEADERS = includes/sci_mem_alloc.h \
 includes/MALLOC.h \

@@ -8,6 +8,12 @@
 /* Define if building universal (internal helper macro) */
 #undef AC_APPLE_UNIVERSAL_BUILD
 
+/* The normal alignment of `clock_t', in bytes. */
+#undef ALIGNOF_CLOCK_T
+
+/* The normal alignment of `hid_t', in bytes. */
+#undef ALIGNOF_HID_T
+
 /* The normal alignment of `int', in bytes. */
 #undef ALIGNOF_INT
 
@@ -105,8 +111,14 @@
    the CoreFoundation framework. */
 #undef HAVE_CFPREFERENCESCOPYAPPVALUE
 
+/* Define to 1 if you have the `clock' function. */
+#undef HAVE_CLOCK
+
 /* Whether clock_gettime is available */
 #undef HAVE_CLOCK_GETTIME
+
+/* Define to 1 if the system has the type `clock_t'. */
+#undef HAVE_CLOCK_T
 
 /* HAVE_CPLUS_DEMANGLE */
 #undef HAVE_CPLUS_DEMANGLE
@@ -212,6 +224,9 @@
 
 /* HAVE_GLIBC_BACKTRACE */
 #undef HAVE_GLIBC_BACKTRACE
+
+/* Define to 1 if the system has the type `hid_t'. */
+#undef HAVE_HID_T
 
 /* Define if you have the iconv() function and it works. */
 #undef HAVE_ICONV
@@ -841,6 +856,12 @@
 
 /* Extension of a shared library */
 #undef SHARED_LIB_EXT
+
+/* The size of `clock_t', as computed by sizeof. */
+#undef SIZEOF_CLOCK_T
+
+/* The size of `hid_t', as computed by sizeof. */
+#undef SIZEOF_HID_T
 
 /* The size of `int', as computed by sizeof. */
 #undef SIZEOF_INT

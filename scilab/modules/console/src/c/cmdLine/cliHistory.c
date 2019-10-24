@@ -27,7 +27,7 @@ int previousCmd(wchar_t ** commandLine, unsigned int *cursorLocation)
 {
     int promptSize;
 
-    int newSizeToAlloc = 0;
+    size_t newSizeToAlloc = 0UL;
 
     char *multiByteHistory = NULL;
 
@@ -61,7 +61,7 @@ int previousCmd(wchar_t ** commandLine, unsigned int *cursorLocation)
         FREE(multiByteHistory);
         FREE(wideHistory);
     }
-    *cursorLocation = wcslen(*commandLine);
+    *cursorLocation = (int)wcslen(*commandLine);
     printf("%ls", *commandLine);
     /*
      * if the last character is on the last column of the window,
@@ -81,7 +81,7 @@ int nextCmd(wchar_t ** commandLine, unsigned int *cursorLocation)
 {
     int promptSize;
 
-    int newSizeToAlloc = 0;
+    size_t newSizeToAlloc = 0UL;
 
     char *multiByteHistory = NULL;
 
@@ -115,7 +115,7 @@ int nextCmd(wchar_t ** commandLine, unsigned int *cursorLocation)
         FREE(multiByteHistory);
         FREE(wideHistory);
     }
-    *cursorLocation = wcslen(*commandLine);
+    *cursorLocation = (int)wcslen(*commandLine);
     printf("%ls", *commandLine);
     /*
      * if the last character is on the last column of the window,

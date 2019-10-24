@@ -3366,7 +3366,7 @@ mxArray * C2F(mxcreatestring)(char *string, long int l)
 {
     static int i, lr1, lw, iprov, ilocal;
     /** i = strlen(string); **/
-    i = l;
+    i = (int)l;
     Nbvars++;
     lw = Nbvars;
     iprov = lw + Top - Rhs;

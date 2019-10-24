@@ -27,14 +27,12 @@ int addChar(wchar_t ** CommandLine, int key, unsigned int *cursorLocation)
 {
     unsigned int indexToMoveChar = 0;
 
-    unsigned int sizeOfCmd = 0;
-
-    sizeOfCmd = wcslen(*CommandLine);
+    size_t sizeOfCmd = wcslen(*CommandLine);
     if (L' ' <= key || key == L'\n')
     {
         if (key == L'\n')
         {
-            *cursorLocation = sizeOfCmd;
+            *cursorLocation = (unsigned int)sizeOfCmd;
         }
         setStringCapacities("im");
         /*
@@ -45,7 +43,7 @@ int addChar(wchar_t ** CommandLine, int key, unsigned int *cursorLocation)
         {
             *CommandLine = realloc(*CommandLine, sizeof(wchar_t) * (sizeOfCmd + 1 + 1024));
         }
-        indexToMoveChar = sizeOfCmd;
+        indexToMoveChar = (unsigned int)sizeOfCmd;
         /* move each character to the next place */
         while (indexToMoveChar > *cursorLocation)
         {
@@ -83,9 +81,7 @@ int rmChar(wchar_t * CommandLine, int key, unsigned int *cursorLocation)
 {
     unsigned int indexToMoveChar;
 
-    unsigned int sizeOfCmd = 0;
-
-    sizeOfCmd = wcslen(CommandLine);
+    size_t sizeOfCmd = wcslen(CommandLine);
     /*
      * Case Backspace is pressed -> cursor must not be at the beginning of the command line
      * Case Delete is pressed -> cursor must not be at the end of line

@@ -21,7 +21,7 @@ std::stack<_MapIds> ScilabAutoCleaner::stack;
 void ScilabAutoCleaner::registerVariable(const int envId, const int varId)
 {
     const int level = C2F(recu).macr;
-    const int ssize = stack.size() - 1;
+    const size_t ssize = (stack.size() - 1UL);
 
     if (level == ssize)
     {
@@ -55,7 +55,7 @@ void ScilabAutoCleaner::registerVariable(const int envId, const int varId)
 void ScilabAutoCleaner::unregisterVariable(const int envId, const int varId)
 {
     const int level = C2F(recu).macr;
-    const int ssize = stack.size() - 1;
+    const size_t ssize = (stack.size() - 1UL);
 
     if (level == ssize)
     {
@@ -73,7 +73,7 @@ void ScilabAutoCleaner::goDown()
     if (stack.size() >= 2)
     {
         const int level = C2F(recu).macr;
-        const int ssize = stack.size() - 1;
+        const size_t ssize = (stack.size() - 1UL);
 
         if (level < ssize)
         {
@@ -149,7 +149,9 @@ void ScilabAutoCleaner::removeUnusedObjects(const _MapIds & current, const _MapI
             std::set<int> current_ids = it->second;
             std::set<int> previous_ids = itm->second;
             std::set<int> unused_ids;
-            std::set_difference(previous_ids.begin(), previous_ids.end(), current_ids.begin(), current_ids.end(), std::inserter(unused_ids, unused_ids.end()));
+            std::set_difference(previous_ids.begin(), previous_ids.end(),
+                                current_ids.begin(), current_ids.end(),
+                                std::inserter(unused_ids, unused_ids.end()));
 
             if (!unused_ids.empty())
             {

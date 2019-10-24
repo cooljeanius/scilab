@@ -11,6 +11,11 @@
  *
  */
 
+/* hack to ensure we have a declaration for finite(): */
+#ifdef __STRICT_ANSI__
+# undef __STRICT_ANSI__
+#endif /* __STRICT_ANSI__ */
+
 /*------------------------------------------------------------------------*/
 /* file: axesScale.c                                                      */
 /* desc : Contains functions to compute scale changes in a specific       */

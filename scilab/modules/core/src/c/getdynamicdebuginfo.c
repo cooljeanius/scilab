@@ -44,10 +44,10 @@
 */
 static void SetDebugMsg(debug_message *msg, char* desc, char* value)
 {
-    (*msg).value = (char*)MALLOC((strlen(value) + 1) * sizeof(char));
-    (*msg).description = (char*)MALLOC((strlen(desc) + 1) * sizeof(char));
-    strcpy((*msg).description, desc);
-    strcpy((*msg).value, value);
+    (*msg).value = (const char *)MALLOC((strlen(value) + 1UL) * sizeof(const char));
+    (*msg).description = (const char *)MALLOC((strlen(desc) + 1UL) * sizeof(const char));
+    strcpy((char *)(*msg).description, desc);
+    strcpy((char *)(*msg).value, value);
 }
 
 
@@ -89,7 +89,7 @@ static int meminfo_fd = -1;
 	_exit(102);						\
 	}								\
 	lseek(fd, 0L, SEEK_SET);					\
-	if ((local_n = read(fd, buf, sizeof buf - 1)) < 0) {	\
+	if ((local_n = (int)read(fd, buf, sizeof buf - 1)) < 0) {	\
 	perror(filename);					\
 	fflush(NULL);						\
 	_exit(103);						\
@@ -321,52 +321,53 @@ char **getDynamicDebugInfo(int *sizeArray)
     {
         meminfo();
 
-        snprintf(value, value_len, "%10Lu", S(kb_main_total));
+        /* throughout this section: trusting -Wformat fixit hints (from clang)
+         * that "ll" is what was meant in the format strings instead of "L" */
+
+        snprintf(value, value_len, "%10llu", S(kb_main_total));
         SetDebugMsg(&dynamicDebug[position], "Total memory", value);
         position++;
 
-
-        snprintf(value, value_len, "%10Lu", S(kb_main_used));
+        snprintf(value, value_len, "%10llu", S(kb_main_used));
         SetDebugMsg(&dynamicDebug[position], "Used memory", value);
         position++;
 
-        snprintf(value, value_len, "%10Lu", S(kb_main_free));
+        snprintf(value, value_len, "%10llu", S(kb_main_free));
         SetDebugMsg(&dynamicDebug[position], "Free memory", value);
         position++;
 
-        snprintf(value, value_len, "%10Lu", S(kb_main_shared));
+        snprintf(value, value_len, "%10llu", S(kb_main_shared));
         SetDebugMsg(&dynamicDebug[position], "Shared memory", value);
         position++;
 
-        snprintf(value, value_len, "%10Lu", S(kb_main_buffers));
+        snprintf(value, value_len, "%10llu", S(kb_main_buffers));
         SetDebugMsg(&dynamicDebug[position], "Buffers memory", value);
         position++;
 
-        snprintf(value, value_len, "%10Lu", S(kb_main_cached));
+        snprintf(value, value_len, "%10llu", S(kb_main_cached));
         SetDebugMsg(&dynamicDebug[position], "Cached memory", value);
         position++;
 
-        buffers_plus_cached = kb_main_buffers + kb_main_cached;
+        buffers_plus_cached = (kb_main_buffers + kb_main_cached);
 
 
-        snprintf(value, value_len, "%10Lu", S(kb_main_used - buffers_plus_cached));
+        snprintf(value, value_len, "%10llu", S(kb_main_used - buffers_plus_cached));
         SetDebugMsg(&dynamicDebug[position], "Used -/+ buffers/cache", value);
         position++;
 
-
-        snprintf(value, value_len, "%10Lu", S(kb_main_free + buffers_plus_cached));
+        snprintf(value, value_len, "%10llu", S(kb_main_free + buffers_plus_cached));
         SetDebugMsg(&dynamicDebug[position], "Free -/+ buffers/cache", value);
         position++;
 
-        snprintf(value, value_len, "%10Lu", S(kb_swap_total));
+        snprintf(value, value_len, "%10llu", S(kb_swap_total));
         SetDebugMsg(&dynamicDebug[position], "Total swap", value);
         position++;
 
-        snprintf(value, value_len, "%10Lu", S(kb_swap_used));
+        snprintf(value, value_len, "%10llu", S(kb_swap_used));
         SetDebugMsg(&dynamicDebug[position], "Used swap", value);
         position++;
 
-        snprintf(value, value_len, "%10Lu", S(kb_swap_free));
+        snprintf(value, value_len, "%10llu", S(kb_swap_free));
         SetDebugMsg(&dynamicDebug[position], "Free swap", value);
         position++;
     }

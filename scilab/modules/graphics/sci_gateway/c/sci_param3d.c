@@ -31,7 +31,7 @@ int sci_param3d( char * fname, unsigned long fname_len )
     double *ebox = ebox_def ;
     static int iflag_def[3] = {1, 2, 4};
     int iflag[3], *ifl = NULL, ix1 = 0, one = 1;
-    double  alpha_def = 35.0 , theta_def = 45.0 ;
+    double  alpha_def = 35.0, theta_def = 45.0 ;
     double *alpha = &alpha_def, *theta = &theta_def;
     int m1 = 0, n1 = 0, l1 = 0, m2 = 0, n2 = 0, l2 = 0, m3 = 0, n3 = 0, l3 = 0;
     int m3n = 0, n3n = 0; /* F.Leray 19.03.04*/
@@ -48,7 +48,7 @@ int sci_param3d( char * fname, unsigned long fname_len )
 
     if (Rhs <= 0)
     {
-        sci_demo(fname, fname_len);
+        sci_demo(fname, (int)fname_len);
         return 0;
     }
 

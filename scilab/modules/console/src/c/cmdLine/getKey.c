@@ -161,9 +161,7 @@ static void setCBreak(bool cbk)
 
 static void endCopyPast(wchar_t * commandLine)
 {
-    int sizeOfCmd = 0;
-
-    sizeOfCmd = wcslen(commandLine);
+    size_t sizeOfCmd = wcslen(commandLine);
 
     if (sizeOfCmd == 0)
     {

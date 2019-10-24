@@ -154,7 +154,7 @@ int C2F(run)(void)
 
 
 L1: /*  Start execution of a "compiled" function  */
-    tref = clock();
+    tref = (int)clock();
     C2F(errgst).toperr = Top;
     k = Lpt[1] - (13 + nsiz);
     lc = Lin[k + 7];
@@ -1299,7 +1299,7 @@ L190:
 L200:
     /*     profile */
     ++*istk(1 + lc);
-    t = clock();
+    t = (int)clock();
     *istk(2 + lc) = *istk(2 + lc) + t - tref;
     tref = t;
     lc += 3;

@@ -1,4 +1,4 @@
-/*
+/* sci_mem_alloc.c
  * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) INRIA - 2005 - Allan CORNET
  *
@@ -13,26 +13,33 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
+#ifndef SCI_MEM_ALLOC_C
+# define SCI_MEM_ALLOC_C 1
+#endif /* !SCI_MEM_ALLOC_C */
+
+#include "sci_mem_alloc.h"
+
 /* This file is kept for compability: because MALLOC & others are "#define"
  * The dependency contains the directly call to MyAlloc, etc */
 
-void * MyReAlloc(void * lpAddress, size_t dwSize, const char *file, int line)
+void *MyReAlloc(void *lpAddress, size_t dwSize, const char *file, int line)
 {
-    void * NewPointer = realloc(lpAddress, dwSize);
+    void *NewPointer = realloc(lpAddress, dwSize);
 
     if (NewPointer == NULL)
     {
 #ifndef NDEBUG
         printf("REALLOC returns NULL Error File %s Line %d \n", file, line);
         fflush(NULL);
-#endif
+#endif /* !NDEBUG */
     }
     return NewPointer;
 }
-/*-----------------------------------------------------------------------------------*/
-void * MyAlloc(size_t dwSize, const char *file, int line)
+/*----------------------------------------------------------------------------*/
+void *MyAlloc(size_t dwSize, const char *file, int line)
 {
-    void * NewPointer = malloc(dwSize);
+    void *NewPointer = malloc(dwSize);
 
     if (dwSize > 0)
     {
@@ -41,7 +48,7 @@ void * MyAlloc(size_t dwSize, const char *file, int line)
 #ifndef NDEBUG
             printf("MALLOC returns NULL Error File %s Line %d \n", file, line);
             fflush(NULL);
-#endif
+#endif /* !NDEBUG */
         }
     }
     else
@@ -49,25 +56,25 @@ void * MyAlloc(size_t dwSize, const char *file, int line)
 #ifndef NDEBUG
         printf("MALLOC incorrect Size Error File %s Line %d \n", file, line);
         fflush(NULL);
-#endif
+#endif /* !NDEBUG */
     }
     return NewPointer;
 
 }
 
-/*-----------------------------------------------------------------------------------*/
-void * MyCalloc(size_t x, size_t y, const char *file, int line)
+/*----------------------------------------------------------------------------*/
+void *MyCalloc(size_t x, size_t y, const char *file, int line)
 {
-    void * NewPointer = calloc(x, y);
+    void *NewPointer = calloc(x, y);
 
-    if ((x) * (y) > 0)
+    if (((x) * (y)) > 0)
     {
         if (NewPointer == NULL)
         {
 #ifndef NDEBUG
             printf("CALLOC returns NULL Error File %s Line %d \n", file, line);
             fflush(NULL);
-#endif
+#endif /* !NDEBUG */
         }
     }
     else
@@ -75,15 +82,17 @@ void * MyCalloc(size_t x, size_t y, const char *file, int line)
 #ifndef NDEBUG
         printf("CALLOC incorrect size Error File %s Line %d \n", file, line);
         fflush(NULL);
-#endif
+#endif /* !NDEBUG */
     }
     return NewPointer;
 
 }
-/*-----------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
 void MyFree(void *x)
 {
     if (x != NULL)
+    {
         free(x);
+    }
 }
-/*-----------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/

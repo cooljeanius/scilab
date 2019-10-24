@@ -10,6 +10,11 @@
 *
 */
 
+/* hack to ensure we get finite() declared: */
+#ifdef __STRICT_ANSI__
+# undef __STRICT_ANSI__
+#endif /* __STRICT_ANSI__ */
+
 #include <math.h>
 #include <string.h>
 #include "stack-c.h"

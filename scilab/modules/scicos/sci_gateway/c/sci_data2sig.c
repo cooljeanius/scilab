@@ -162,7 +162,7 @@ int sci_data2sig(char *fname, unsigned long fname_len)
 
     TopSave = Top;
 
-    str2sci(str_stlst, 1, 4);
+    str2sci((char **)str_stlst, 1, 4);
 
     Top           = Top + 1;
     il            = iadr(*Lstk(Top));
@@ -288,7 +288,7 @@ int sci_data2sig(char *fname, unsigned long fname_len)
 
         case 17 :
         {
-            str2sci(str_hmlst, 1, 3);
+            str2sci((char **)str_hmlst, 1, 3);
 
             Top           = Top + 1;
             il            = iadr(*Lstk(Top));

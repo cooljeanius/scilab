@@ -323,51 +323,71 @@ char **getDynamicDebugInfo(int *sizeArray)
 
         /* throughout this section: trusting -Wformat fixit hints (from clang)
          * that "ll" is what was meant in the format strings instead of "L" */
-
-        snprintf(value, value_len, "%10llu", S(kb_main_total));
+        /* except, blah, splint disagrees... */
+#if defined(__GNUC__) || defined(__clang__)
+# define GDDI_FMT_CODE_W_LEN "%10llu"
+#else
+# if defined(S_SPLINT_S)
+#  define GDDI_FMT_CODE_W_LEN "%10Lu"
+#else
+#  define GDDI_FMT_CODE_W_LEN "%10u"
+# endif /* S_SPLINT_S */
+#endif /* __GNUC__ || __clang__ */
+        snprintf(value, value_len, GDDI_FMT_CODE_W_LEN,
+                 S(kb_main_total));
         SetDebugMsg(&dynamicDebug[position], "Total memory", value);
         position++;
 
-        snprintf(value, value_len, "%10llu", S(kb_main_used));
+        snprintf(value, value_len, GDDI_FMT_CODE_W_LEN,
+                 S(kb_main_used));
         SetDebugMsg(&dynamicDebug[position], "Used memory", value);
         position++;
 
-        snprintf(value, value_len, "%10llu", S(kb_main_free));
+        snprintf(value, value_len, GDDI_FMT_CODE_W_LEN,
+                 S(kb_main_free));
         SetDebugMsg(&dynamicDebug[position], "Free memory", value);
         position++;
 
-        snprintf(value, value_len, "%10llu", S(kb_main_shared));
+        snprintf(value, value_len, GDDI_FMT_CODE_W_LEN,
+                 S(kb_main_shared));
         SetDebugMsg(&dynamicDebug[position], "Shared memory", value);
         position++;
 
-        snprintf(value, value_len, "%10llu", S(kb_main_buffers));
+        snprintf(value, value_len, GDDI_FMT_CODE_W_LEN,
+                 S(kb_main_buffers));
         SetDebugMsg(&dynamicDebug[position], "Buffers memory", value);
         position++;
 
-        snprintf(value, value_len, "%10llu", S(kb_main_cached));
+        snprintf(value, value_len, GDDI_FMT_CODE_W_LEN,
+                 S(kb_main_cached));
         SetDebugMsg(&dynamicDebug[position], "Cached memory", value);
         position++;
 
         buffers_plus_cached = (kb_main_buffers + kb_main_cached);
 
 
-        snprintf(value, value_len, "%10llu", S(kb_main_used - buffers_plus_cached));
+        snprintf(value, value_len, GDDI_FMT_CODE_W_LEN,
+                 S(kb_main_used - buffers_plus_cached));
         SetDebugMsg(&dynamicDebug[position], "Used -/+ buffers/cache", value);
         position++;
 
-        snprintf(value, value_len, "%10llu", S(kb_main_free + buffers_plus_cached));
+        snprintf(value, value_len, GDDI_FMT_CODE_W_LEN,
+                 S(kb_main_free + buffers_plus_cached));
         SetDebugMsg(&dynamicDebug[position], "Free -/+ buffers/cache", value);
         position++;
 
-        snprintf(value, value_len, "%10llu", S(kb_swap_total));
+        snprintf(value, value_len, GDDI_FMT_CODE_W_LEN,
+                 S(kb_swap_total));
         SetDebugMsg(&dynamicDebug[position], "Total swap", value);
         position++;
 
-        snprintf(value, value_len, "%10llu", S(kb_swap_used));
+        snprintf(value, value_len, GDDI_FMT_CODE_W_LEN,
+                 S(kb_swap_used));
         SetDebugMsg(&dynamicDebug[position], "Used swap", value);
         position++;
 
-        snprintf(value, value_len, "%10llu", S(kb_swap_free));
+        snprintf(value, value_len, GDDI_FMT_CODE_W_LEN,
+                 S(kb_swap_free));
         SetDebugMsg(&dynamicDebug[position], "Free swap", value);
         position++;
     }

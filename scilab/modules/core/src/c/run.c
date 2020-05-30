@@ -78,7 +78,12 @@ int C2F(run)(void)
 {
     /* Initialized data */
     /* Fortran common data equivalence */
+#if defined(__GNUC__) && (__GNUC__ >= 10)
+    /* FIXME: unsure if I am doing this right: */
+    static int    *Ids  = &C2F(recu).ids[(nsiz * psiz) - nsiz - 1];
+#else
     static int    *Ids  = C2F(recu).ids - nsiz - 1;
+#endif /* gcc 10+ */
     static int    *Rstk = C2F(recu).rstk - 1;
     static int    *Pstk = C2F(recu).pstk - 1;
     static int    *Lstk = C2F(vstk).lstk - 1;
@@ -525,10 +530,10 @@ L40:
     if (C2F(errgst).err1 <= 0)
     {
         ++Top;
-        if (C2F(cresmat)("run", &Top, &c__1, &c__1, &n, 3L))
+        if (C2F(cresmat)((char *)"run", &Top, &c__1, &c__1, &n, 3L))
         {
-            C2F(getsimat)("run", &Top, &Top, &mm1, &nn1, &c__1, &
-                          c__1, &lr, &nlr, 3L);
+            C2F(getsimat)((char *)"run", &Top, &Top, &mm1, &nn1, &c__1,
+                          &c__1, &lr, &nlr, 3L);
             C2F(icopy)(&n, istk(2 + lc), &c__1, istk(lr), &c__1);
         }
     }
@@ -1630,7 +1635,12 @@ int C2F(adjustrhs)(void)
     * Copyright INRIA
     * Author S. Steer
     */
+#if defined(__GNUC__) && (__GNUC__ >= 10)
+    /* FIXME: unsure if I am doing this right: */
+    static int    *Ids  = &C2F(recu).ids[(nsiz * psiz) - nsiz - 1];
+#else
     static int    *Ids  = C2F(recu).ids - nsiz - 1;
+#endif /* gcc 10+ */
     static int    *Rstk = C2F(recu).rstk - 1;
     static int    *Pstk = C2F(recu).pstk - 1;
 

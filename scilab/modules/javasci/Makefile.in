@@ -719,9 +719,12 @@ libjavasci2_la_etc_DATA = etc/javasci.quit etc/javasci.start
 # Tag shared libraries with the Scilab version
 @JAVASCI_TRUE@AM_LDFLAGS = $(SCI_LDFLAGS) -version-number \
 @JAVASCI_TRUE@	$(SCILAB_LIBRARY_VERSION)
+
+# set C_S_A_FLAGS in your environment to pass your own flags to the clang
+# static analyzer:
 @JAVASCI_TRUE@RUN_CLANG_ANALYZER = $(CLANG_ANALYZER) $(DEFS) $(CPPFLAGS) $(CFLAGS) \
 @JAVASCI_TRUE@	$(AM_CPPFLAGS) $(AM_CFLAGS) $(INCINTL) --analyze \
-@JAVASCI_TRUE@	-Wno-unused-command-line-argument
+@JAVASCI_TRUE@	-Wno-unused-command-line-argument $(C_S_A_FLAGS)
 
 @JAVASCI_TRUE@analysisdir = $(builddir)/clang_static_analysis
 @JAVASCI_TRUE@AM_V_v = $(am__v_v_@AM_V@)

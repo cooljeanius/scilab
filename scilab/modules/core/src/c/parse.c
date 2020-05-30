@@ -99,9 +99,20 @@ int C2F(parse)(void)
     static int varargout[6] = { 169544223, 504893467, 673720349, 673720360,
                                 673720360, 673720360
                               };
-    /* static int catch[6] = {203229708,673720337,673720360,673720360, 673720360,673720360 };*/
+#if 0
+    static int catch[6] =
+            {
+                203229708, 673720337, 673720360, 673720360,
+                673720360, 673720360
+            };
+#endif /* 0 */
 
-    static int *Ids     = C2F(recu).ids - nsiz - 1;
+#if defined(__GNUC__) && (__GNUC__ >= 10)
+    /* FIXME: unsure if I am doing this right: */
+    static int    *Ids  = &C2F(recu).ids[(nsiz * psiz) - nsiz - 1];
+#else
+    static int    *Ids  = C2F(recu).ids - nsiz - 1;
+#endif /* gcc 10+ */
     static int *Rstk    = C2F(recu).rstk - 1;
     static int *Pstk    = C2F(recu).pstk - 1;
     static int *Lstk    = C2F(vstk).lstk - 1;
@@ -129,13 +140,15 @@ int C2F(parse)(void)
     static int icount;
     static int nentry, lastindpos;
     static int job, nlc, pts;
-    static char tmp[80];
+    static char tmp[140]; /* bigger for -Wformat-truncation */
 
     /* Used to manage space between prompts */
     static int returnFromCallbackExec = FALSE;
 
     /* Retrieve the current Scilab Mode */
-    /*  scilabMode sciMode=getScilabMode();*/
+#if 0
+    scilabMode sciMode = getScilabMode();
+#endif /* 0 */
 
     itime = 10000;
 L1:
@@ -248,12 +261,16 @@ L12:
         }
     }
 L13:
-    //C2F(tksynchro)(&C2F(recu).paus);
+#if 0
+    C2F(tksynchro)(&C2F(recu).paus);
+#endif /* 0 */
 
     C2F(getlin)(&job, &c__1);
 
     ClearTemporaryPrompt();
-    //C2F(tksynchro)(&c_n1);
+#if 0
+    C2F(tksynchro)(&c_n1);
+#endif /* 0 */
 
 
     if (Fin == -3)
@@ -1105,8 +1122,10 @@ L77:
     }
     if (C2F(iop).ddt == 4)
     {
-        snprintf(tmp, sizeof(tmp), " finish  pt:%d rstk(pt):%d  pstk(pt):%d lpt(1): %d niv: %d macr:%d, paus:%d",
-                 Pt, r, p, Lpt[1], C2F(recu).niv, C2F(recu).macr, C2F(recu).paus);
+        snprintf(tmp, sizeof(tmp),
+                 " finish  pt:%d rstk(pt):%d  pstk(pt):%d lpt(1): %d niv: %d macr:%d, paus:%d",
+                 Pt, r, p, Lpt[1], C2F(recu).niv, C2F(recu).macr,
+                 C2F(recu).paus);
         C2F(basout)(&io, &C2F(iop).wte, tmp, (long)strlen(tmp));
     }
 

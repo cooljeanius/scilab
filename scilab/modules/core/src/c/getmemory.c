@@ -50,8 +50,10 @@ int getfreememory(void)
 #elif defined(hpux)
     {
         struct pst_static pst;
-        /*        pstat_getstatic(&pst, sizeof(pst), (size_t) 1, 0);
-              memorysizeKO=(pst.psd_free)/kooctet;*/
+# if 0
+        pstat_getstatic(&pst, sizeof(pst), (size_t)1UL, 0);
+        memorysizeKO = ((pst.psd_free) / kooctet);
+# endif /* 0 */
         return 0;
     }
 #elif defined(__APPLE__)
@@ -63,6 +65,10 @@ int getfreememory(void)
 
         pagesize = 0;
         kret = host_page_size (mach_host_self(), &pagesize);
+        if (kret == KERN_FAILURE)
+        {
+            ; /* ??? */
+        }
         count = HOST_VM_INFO_COUNT;
 
         kret = host_statistics (mach_host_self(), HOST_VM_INFO, (host_info_t)&page_info, &count);

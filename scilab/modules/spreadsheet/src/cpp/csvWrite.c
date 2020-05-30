@@ -15,10 +15,15 @@
 // =============================================================================
 #include <stdio.h>
 #include <string.h>
+#if !defined(HAVE_MATH_H) && !defined(S_SPLINT_S)
+# if (defined(__has_include) && __has_include(<math.h>))
+#  define HAVE_MATH_H 1
+# endif /* have <math.h> */
+#endif /* !HAVE_MATH_H && !S_SPLINT_S */
 #ifdef __cplusplus
 # include <cmath>
 #else
-# if defined(HAVE_MATH_H) || (defined(__has_include) && __has_include(<math.h>))
+# if defined(HAVE_MATH_H)
 /* hack to ensure finite() is declared: */
 #  ifdef __STRICT_ANSI__
 #   undef __STRICT_ANSI__

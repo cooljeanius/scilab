@@ -31,7 +31,12 @@ int syncexec(char *str, int *ns, int *ierr, int *seq, long int str_len)
     int Pts, Tops;
     static int k;
 
-    static int *Ids  = C2F(recu).ids - nsiz - 1;
+#if defined(__GNUC__) && (__GNUC__ >= 10)
+    /* FIXME: unsure if I am doing this right: */
+    static int    *Ids  = &C2F(recu).ids[(nsiz * psiz) - nsiz - 1];
+#else
+    static int    *Ids  = C2F(recu).ids - nsiz - 1;
+#endif /* gcc 10+ */
     static int *Rstk = C2F(recu).rstk - 1;
     static int *Lstk = C2F(vstk).lstk - 1;
     static int *Infstk  = C2F(vstk).infstk - 1;

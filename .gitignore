@@ -9,3 +9,4 @@ workspace/
 *(Autosaved)*
 *.jnilib
 *.jar
+modules/*/clang_static_analysis/*

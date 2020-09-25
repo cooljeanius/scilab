@@ -213,6 +213,7 @@ modules/*/clang_static_analysis/*.plist
 modules/*/clang_static_analysis/*/*.plist
 modules/*/clang_static_analysis/*/*/*.plist
 modules/*/clang_static_analysis/*/*/*/*.plist
+modules/*/clang_static_analysis/.gitignore
 
 # optional modules
 

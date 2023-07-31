@@ -10,3 +10,7 @@ workspace/
 *.jnilib
 *.jar
 modules/*/clang_static_analysis/*
+*.xcworkspacedata
+*.xcuserstate
+*/xcuserdata/*
+*.xcuserdatad

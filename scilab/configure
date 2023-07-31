@@ -59000,6 +59000,8 @@ done
 fi
 
 done
+printf "%s\n" "#define OPENMP_HEADER \"${OPENMP_HEADER}\"" >>confdefs.h
+
     OPENMP_ENABLE=yes
 else
     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: skipping checks for openmp" >&5
@@ -79202,7 +79204,7 @@ printf %s "checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later... 
 
 
 cat > conftest.$ac_ext <<EOF
-#line 79205 "configure"
+#line 79207 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TCL_INCLUDE_PATH/$CHK_TCL_INC_NAME"
@@ -79517,7 +79519,7 @@ printf %s "checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later... " >
 
 
 cat > conftest.$ac_ext <<EOF
-#line 79520 "configure"
+#line 79522 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TK_INCLUDE_PATH/$CHK_TK_INC_NAME"
@@ -80202,7 +80204,7 @@ printf %s "checking saxon... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 80205 "configure"
+// #line 80207 "configure"
 import java.util.regex.Pattern;
 
 import com.icl.saxon.Loader;
@@ -80318,7 +80320,7 @@ printf %s "checking jlatexmath-fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 80321 "configure"
+// #line 80323 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.fop.JLaTeXMathObj;

@@ -1789,6 +1789,8 @@ if test "x${with_openmp}" != "xno"; then
      [AC_CHECK_HEADERS([libomp/omp.h],[OPENMP_HEADER="libomp/omp.h"],
        [AC_MSG_ERROR([Could not find omp.h; try disabling OpenMP with --without-openmp])])])dnl
     AC_SUBST([OPENMP_HEADER])dnl
+    AC_DEFINE_UNQUOTED([OPENMP_HEADER],["${OPENMP_HEADER}"],
+                       [Header to include for OpenMP])dnl
 
     OPENMP_ENABLE=yes
 else

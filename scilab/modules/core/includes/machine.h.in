@@ -795,6 +795,9 @@
 /* Minimum MacOSX version with which binaries will be compatible. */
 #undef MIN_MACOSX_VERSION
 
+/* Header to include for OpenMP */
+#undef OPENMP_HEADER
+
 /* Define to 0 if your system does not have the O_LARGEFILE flag */
 #undef O_LARGEFILE
 

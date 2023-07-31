@@ -13,8 +13,8 @@
 #include "Scierror.h"
 #include "localization.h"
 
-int gw_action_binding()
+int gw_action_binding(void)
 {
-	Scierror(999,_("Scilab '%s' module not installed.\n"), "action_binding");
-	return 0;
+    Scierror(999, _("Scilab '%s' module not installed.\n"), "action_binding");
+    return 0;
 }

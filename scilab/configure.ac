@@ -1575,6 +1575,13 @@ sys/utsname.h syslog.h term.h termcap.h termio.h termios.h tgmath.h \
 time.h types.h utime.h utsname.h wchar.h wctype.h winbase.h windows.h \
 wtloop.c xlocale.h])dnl
 
+case "${host_os}" in
+	*Darwin* | *darwin*)
+	    AC_CHECK_HEADERS([ApplicationServices/ApplicationServices.h \
+	                      HIServices/Processes.h]) ## (might need newline)
+        ;;
+esac
+
 if test "x${ac_cv_header_jni_h}" = "x"; then
   test -z "${ac_cv_header_jni_h}"
   AC_CHECK_HEADERS([jni.h])

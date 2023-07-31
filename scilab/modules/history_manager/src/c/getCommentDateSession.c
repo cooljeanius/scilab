@@ -32,8 +32,8 @@
 /*------------------------------------------------------------------------*/
 static char *ASCIItime(const struct tm *timeptr);
 static char *ASCIItimeShort(const struct tm *timeptr);
-static char **getDays(void);
-static char **getMonths(void);
+static const char **getDays(void);
+static const char **getMonths(void);
 
 /*------------------------------------------------------------------------*/
 char *getCommentDateSession(BOOL longFormat)
@@ -63,7 +63,7 @@ char *getCommentDateSession(BOOL longFormat)
             historyLineSize += strlen(STRING_BEGIN_SESSION);
         }
 
-        lineSize = (sizeof(char) * historyLineSize);
+        lineSize = ((sizeof(char) * historyLineSize) * 2UL);
         line = (char *)MALLOC(lineSize);
 
         if (line)
@@ -90,8 +90,8 @@ char *getCommentDateSession(BOOL longFormat)
 /*------------------------------------------------------------------------*/
 static char *ASCIItime(const struct tm *timeptr)
 {
-    char **wday_name = getDays();
-    char **mon_name = getMonths();
+    const char **wday_name = getDays();
+    const char **mon_name = getMonths();
     char *result = NULL;
 
     if ((wday_name) && (mon_name))
@@ -101,7 +101,7 @@ static char *ASCIItime(const struct tm *timeptr)
                                    + strlen(mon_name[timeptr->tm_mon])
                                    + strlen(FORMAT_TIME));
 
-        const size_t result_len = (sizeof(char) * (len_result + 1UL));
+        const size_t result_len = (sizeof(char) * (len_result + 2UL));
         result = (char *)MALLOC(result_len);
         if (result)
         {
@@ -113,22 +113,23 @@ static char *ASCIItime(const struct tm *timeptr)
     }
     else
     {
+        result = (char *)MALLOC(1UL);
         strcpy(result, "");
     }
 
     /* free pointers */
-    freeArrayOfString(wday_name, MAX_wday);
-    freeArrayOfString(mon_name, MAX_mon);
+    freeArrayOfString((char **)wday_name, MAX_wday);
+    freeArrayOfString((char **)mon_name, MAX_mon);
 
     return result;
 }
 
 /*------------------------------------------------------------------------*/
-static char **getDays(void)
+static const char **getDays(void)
 {
-    char **days = NULL;
+    const char **days = NULL;
 
-    days = (char **)MALLOC(sizeof(char *) * MAX_wday);
+    days = (const char **)MALLOC(sizeof(const char *) * MAX_wday);
     if (days)
     {
         days[0] = strdup(_("Sun"));
@@ -143,11 +144,11 @@ static char **getDays(void)
 }
 
 /*------------------------------------------------------------------------*/
-static char **getMonths(void)
+static const char **getMonths(void)
 {
-    char **months = NULL;
+    const char **months = NULL;
 
-    months = (char **)MALLOC(sizeof(char *) * MAX_mon);
+    months = (const char **)MALLOC(sizeof(const char *) * MAX_mon);
     if (months)
     {
         /* initialize month */
@@ -171,8 +172,8 @@ static char **getMonths(void)
 static char *ASCIItimeShort(const struct tm *timeptr)
 {
 #define FORMAT_TIME_SHORT "%.2d/%.2d/%.4d %.2d:%.2d:%.2d"
-    const int len_result = 20;   //strlen("21/05/2011 14:11:04")+1
-    const size_t result_len = (sizeof(char) * (len_result + 1UL));
+    const int len_result = max(21, (strlen("21/05/2011 14:11:04") + 1UL));
+    const size_t result_len = (sizeof(char) * (len_result + 4UL));
 
     char *result = (char *)MALLOC(result_len);
 

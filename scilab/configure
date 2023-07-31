@@ -54842,6 +54842,24 @@ then :
 
 fi
 
+case "${host_os}" in
+	*Darwin* | *darwin*)
+	    ac_fn_c_check_header_compile "$LINENO" "ApplicationServices/ApplicationServices.h" "ac_cv_header_ApplicationServices_ApplicationServices_h" "$ac_includes_default"
+if test "x$ac_cv_header_ApplicationServices_ApplicationServices_h" = xyes
+then :
+  printf "%s\n" "#define HAVE_APPLICATIONSERVICES_APPLICATIONSERVICES_H 1" >>confdefs.h
+
+fi
+ac_fn_c_check_header_compile "$LINENO" "HIServices/Processes.h" "ac_cv_header_HIServices_Processes_h" "$ac_includes_default"
+if test "x$ac_cv_header_HIServices_Processes_h" = xyes
+then :
+  printf "%s\n" "#define HAVE_HISERVICES_PROCESSES_H 1" >>confdefs.h
+
+fi
+ ## (might need newline)
+        ;;
+esac
+
 if test "x${ac_cv_header_jni_h}" = "x"; then
   test -z "${ac_cv_header_jni_h}"
   ac_fn_c_check_header_compile "$LINENO" "jni.h" "ac_cv_header_jni_h" "$ac_includes_default"
@@ -79208,7 +79226,7 @@ printf %s "checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later... 
 
 
 cat > conftest.$ac_ext <<EOF
-#line 79211 "configure"
+#line 79229 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TCL_INCLUDE_PATH/$CHK_TCL_INC_NAME"
@@ -79523,7 +79541,7 @@ printf %s "checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later... " >
 
 
 cat > conftest.$ac_ext <<EOF
-#line 79526 "configure"
+#line 79544 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TK_INCLUDE_PATH/$CHK_TK_INC_NAME"
@@ -80208,7 +80226,7 @@ printf %s "checking saxon... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 80211 "configure"
+// #line 80229 "configure"
 import java.util.regex.Pattern;
 
 import com.icl.saxon.Loader;
@@ -80324,7 +80342,7 @@ printf %s "checking jlatexmath-fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 80327 "configure"
+// #line 80345 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.fop.JLaTeXMathObj;

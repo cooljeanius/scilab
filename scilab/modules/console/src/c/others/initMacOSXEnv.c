@@ -15,11 +15,30 @@
 #include "initMacOSXEnv.h"
 
 #if defined(__APPLE__) && !defined(WITHOUT_GUI)
-#include <pthread.h>
-#include <CoreFoundation/CoreFoundation.h>
-#include <sys/stat.h>
-#include <ApplicationServices/ApplicationServices.h>
-#endif
+# include <pthread.h>
+# include <CoreFoundation/CoreFoundation.h>
+# include <sys/stat.h>
+# if defined(__BLOCKS__)
+#  include <ApplicationServices/ApplicationServices.h>
+# else
+#  if defined(HAVE_HISERVICES_PROCESSES_H)
+#   include <HIServices/Processes.h>
+#  else
+#   if !defined(__PROCESSES__)
+extern OSErr GetCurrentProcess(ProcessSerialNumber *PSN);
+typedef UInt32 ProcessApplicationTransformState;
+extern OSStatus TransformProcessType(const ProcessSerialNumber *psn,
+                                     ProcessApplicationTransformState tState);
+enum
+{
+    kProcessTransformToForegroundApplication = 1,
+    kProcessTransformToBackgroundApplication = 2, /* functional in Lion & up */
+    kProcessTransformToUIElementApplication = 4 /* functional in Lion & up */
+};
+#   endif /* !__PROCESSES__ */
+#  endif /* HAVE_HISERVICES_PROCESSES_H */
+# endif /* __BLOCKS__ */
+#endif /* __APPLE__ && !WITHOUT_GUI */
 
 
 #if defined(__APPLE__) && !defined(WITHOUT_GUI)
@@ -99,14 +118,15 @@ static int launchMacOSXEnv(thread_parm_t *param)
     {
         CFStringRef targetJVM = CFSTR("1.5");
         CFBundleRef JavaVMBundle;
-        CFURLRef    JavaVMBundleURL;
-        CFURLRef    JavaVMBundlerVersionsDirURL;
-        CFURLRef    TargetJavaVM;
+        CFURLRef JavaVMBundleURL;
+        CFURLRef JavaVMBundlerVersionsDirURL;
+        CFURLRef TargetJavaVM;
         UInt8 pathToTargetJVM [PATH_MAX] = "\0";
         struct stat sbuf;
 
         /*
-         * This piece of code is mandatory because Mac OS X implementation of Java has a bug here.
+         * This piece of code is mandatory because Mac OS X implementation of
+         * Java has a bug here.
          * Cocoa does not know how to handle the new window created this way.
          * See: http://lists.apple.com/archives/Java-dev/2009/Jan/msg00062.html
          * Or Mac Os X bug #6484319
@@ -118,7 +138,7 @@ static int launchMacOSXEnv(thread_parm_t *param)
         /* End of the workaround */
 
         /* Look for the JavaVM bundle using its identifier */
-        JavaVMBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.apple.JavaVM") );
+        JavaVMBundle = CFBundleGetBundleWithIdentifier(CFSTR("com.apple.JavaVM"));
 
         if (JavaVMBundle != NULL)
         {
@@ -139,50 +159,59 @@ static int launchMacOSXEnv(thread_parm_t *param)
                     CFRelease(JavaVMBundlerVersionsDirURL);
                     if (TargetJavaVM != NULL)
                     {
-                        if (CFURLGetFileSystemRepresentation(TargetJavaVM, true, pathToTargetJVM,
+                        if (CFURLGetFileSystemRepresentation(TargetJavaVM, true,
+                                                             pathToTargetJVM,
                                                              (CFIndex)PATH_MAX))
                         {
                             /* Check to see if the directory, or a symlink for
-                            * the target JVM directory exists, and if so set
-                            	     * the environment variable JAVA_JVM_VERSION to the
-                            	     * target JVM: */
-                            if (stat((char*)pathToTargetJVM, &sbuf) == 0)
+                             * the target JVM directory exists, and if so set
+                             * the environment variable JAVA_JVM_VERSION to the
+                             * target JVM: */
+                            if (stat((char *)pathToTargetJVM, &sbuf) == 0)
                             {
                                 /* Ok, the directory exists, so now we need
-                                * to set the environment var JAVA_JVM_VERSION
-                                		 * to the CFSTR targetJVM.
-                                                            * We can reuse the pathToTargetJVM buffer
-                                		 * to set the environement var: */
-                                if (CFStringGetCString(targetJVM, (char*)pathToTargetJVM,
-                                                       (CFIndex)PATH_MAX, kCFStringEncodingUTF8))
+                                 * to set the environment var JAVA_JVM_VERSION
+                                 * to the CFSTR targetJVM.
+                                 * We can reuse the pathToTargetJVM buffer
+                                 * to set the environement var: */
+                                if (CFStringGetCString(targetJVM,
+                                                       (char *)pathToTargetJVM,
+                                                       (CFIndex)PATH_MAX,
+                                                       kCFStringEncodingUTF8))
                                 {
-                                    setenv("JAVA_JVM_VERSION", (char*)pathToTargetJVM, 1);
+                                    setenv("JAVA_JVM_VERSION",
+                                           (char *)pathToTargetJVM, 1);
                                     ret = 0;
                                 }
                                 else
                                 {
-                                    fprintf(stderr, "Could not get the path to the target JVM.\n");
+                                    fprintf(stderr,
+                                            "Could not get the path to the target JVM.\n");
                                 }
                             }
                             else
                             {
-                                fprintf(stderr, "Error checking symlink for the target jvm.\n");
+                                fprintf(stderr,
+                                        "Error checking symlink for the target jvm.\n");
                             }
                         }
                         else
                         {
-                            fprintf(stderr, "Error getting file system representation for bundle url.\n");
+                            fprintf(stderr,
+                                    "Error getting file system representation for bundle url.\n");
                             CFRelease(TargetJavaVM);
                         }
                     }
                     else
                     {
-                        fprintf(stderr, "Error appending version component to bundle url.\n");
+                        fprintf(stderr,
+                                "Error appending version component to bundle url.\n");
                     }
                 }
                 else
                 {
-                    fprintf(stderr, "Error appending path component to bundle url.\n");
+                    fprintf(stderr,
+                            "Error appending path component to bundle url.\n");
                 }
             }
             else
@@ -199,18 +228,21 @@ static int launchMacOSXEnv(thread_parm_t *param)
     if (ret == 0)
     {
         /* Call the actual startup script of Scilab */
-        ret = realmain(p->no_startup_flag_l, p->initial_script, p->initial_script_type, p->memory);
+        ret = realmain(p->no_startup_flag_l, p->initial_script,
+                       p->initial_script_type, p->memory);
         free(p);
         exit(ret);
     }
     free(p);
     return ret;
-
 }
 
 /* call back for dummy source used to make sure the CFRunLoop doesn't exit right away */
 /* This callback is called when the source has fired. */
-static void sourceCallBack (  void *info  ) {}
+static void sourceCallBack(void *info)
+{
+    (void)info;
+}
 
 /* Specific wrapper for mac os X which is going to call realmin in a specific thread.
  * Takes the same args as realmain

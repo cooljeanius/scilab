@@ -49,7 +49,7 @@ BOOL ClearConsole(void)
     return FALSE;
 }
 /*--------------------------------------------------------------------------*/
-int GetCharWithoutOutput()
+int GetCharWithoutOutput(void)
 {
     return 0;
 }

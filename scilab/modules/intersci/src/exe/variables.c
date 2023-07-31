@@ -18,7 +18,7 @@
  * Dealing with the set of variables
  *********************************************************************/
 
-int ShowVariables()
+int ShowVariables(void)
 {
     int i;
     VARPTR var;
@@ -85,7 +85,7 @@ int ShowVariables()
 #define ISNONSTACK(var) ( (var)->for_type == EXTERNAL \
    || ( (var)->for_type == CSTRINGV && (var)->is_sciarg == 0  && (var)->list_el == 0 ))
 
-int FixStackPositions()
+int FixStackPositions(void)
 {
     int i;
     VARPTR var, var1;
@@ -119,9 +119,7 @@ int FixStackPositions()
  *********************************************************/
 
 
-IVAR GetVar(name, p)
-char *name;
-int p;
+IVAR GetVar(char *name, int p)
 {
     int i;
     VARPTR var;
@@ -175,8 +173,7 @@ int p;
  * return the variable number of variable name which must already  exist
  ***********************************************************************/
 
-IVAR GetExistVar(name)
-char *name;
+IVAR GetExistVar(char *name)
 {
     int i;
     VARPTR var;
@@ -211,8 +208,7 @@ char *name;
  * it's done without aby checks
  ******************************************************************/
 
-int CreatePredefVar(name)
-char *name;
+int CreatePredefVar(char *name)
 {
     VARPTR var;
     if (strcmp(name, "err")  == 0
@@ -234,8 +230,7 @@ char *name;
  * which is created and "nVariable" is incremented
  ********************************************************/
 
-IVAR GetOutVar(name)
-char *name;
+IVAR GetOutVar(char *name)
 {
     VARPTR var;
     if (strcmp(name, "out") != 0)
@@ -276,7 +271,7 @@ char *name;
 /* return the variable number of variable "out"
    which must exist */
 
-IVAR GetExistOutVar()
+IVAR GetExistOutVar(void)
 {
     int i;
     char str[4];
@@ -294,7 +289,7 @@ IVAR GetExistOutVar()
 
 /* return the variable number of variable "out" or 0 */
 
-IVAR CheckOutVar()
+IVAR CheckOutVar(void)
 {
     int i;
     char str[4];
@@ -324,11 +319,7 @@ IVAR CheckOutVar()
  * the same value for m1,n2,m3
  *************************************************/
 
-void AddForName(ivar, name, cname, ivar1)
-IVAR ivar;
-IVAR ivar1;
-char* name;
-char* cname;
+void AddForName(IVAR ivar, char *name, char *cname, IVAR ivar1)
 {
     VARPTR var;
     int l;
@@ -362,11 +353,7 @@ char* cname;
  * the two passes
  ***************************/
 
-void AddForName1(ivar, name, cname, ivar1)
-IVAR ivar;
-IVAR ivar1;
-char* name;
-char* cname;
+void AddForName1(IVAR ivar, char *name, char *cname, IVAR ivar1)
 {
     VARPTR var;
     int l;
@@ -404,7 +391,7 @@ char* cname;
  *(in fact just forgotten the free call should be added
  ********************************************************/
 
-void ForNameClean()
+void ForNameClean(void)
 {
     VARPTR var;
     int i;
@@ -430,7 +417,7 @@ void ForNameClean()
 
 #include <stdarg.h>
 
-void ChangeForName2(VARPTR varptr, char * format , ...)
+void ChangeForName2(VARPTR varptr, char *format, ...)
 {
     char forbuf[FORNAME];
     va_list ap;
@@ -441,9 +428,7 @@ void ChangeForName2(VARPTR varptr, char * format , ...)
     va_end(ap);
 }
 
-void ChangeForName1(var, name)
-VARPTR var;
-char* name;
+void ChangeForName1(VARPTR var, char *name)
 {
     int l, pos = 0;
     l = var->nfor_name;
@@ -488,8 +473,8 @@ char* name;
 
 static struct btype
 {
-    char *sname ;
-    int  code ;
+    const char *sname;
+    int code;
 }
 SType[] =
 {
@@ -516,13 +501,12 @@ SType[] =
     {"mlist", 	MLIST},
     {"vector",	VECTOR},
     {"work",	WORK},
-    {(char *) 0 ,  -1}
+    {(const char *)0,  -1}
 };
 
 /* Type Scilab:  renvoit un codage du type en nombre entier etant donne une chaine */
 
-int GetBasType(sname)
-char *sname;
+int GetBasType(char *sname)
 {
     int i = 0;
     while ( SType[i].sname != (char *) NULL)
@@ -554,8 +538,7 @@ char *sname;
  * a Scilab type given its code number
  **********************************************/
 
-char *SGetSciType(type)
-int type;
+char *SGetSciType(int type)
 {
     int i = 0;
     while ( SType[i].code  != -1 )
@@ -576,13 +559,13 @@ int type;
 
 static struct ftype
 {
-    char *fname ; /* full fortran type name */
+    const char *fname ; /* full fortran type name */
     int  code ; /* associated code */
-    char *abrev; /* abbrev code : just for c d i r */
-    char *st_name; /* stack to use :just for c d i r*/
-    char *b_convert; /* converter for building lhs (for lists)*/
+    const char *abrev; /* abbrev code : just for c d i r */
+    const char *st_name; /* stack to use :just for c d i r*/
+    const char *b_convert; /* converter for building lhs (for lists)*/
     int dec; /* declaration for the Fortran name */
-    char *ctype; /* type in C */
+    const char *ctype; /* type in C */
 }
 FType[] =
 {
@@ -599,7 +582,7 @@ FType[] =
     {"predef", PREDEF, "XX", "XX", "XX", -1, "XX"},
     {"real", REAL, MATRIX_OF_RATIONAL_DATATYPE, "sstk", "rea2db", DEC_REAL, "float"},
     {"smpointer", SMPOINTER, "XX", "XX", "XX", -1, "XX"},
-    {(char *)0, -1, (char *)0, (char *)0, (char *)0, -1, (char *)0}
+    {(const char *)0, -1, (const char *)0, (const char *)0, (const char *)0, -1, (const char *)0}
 };
 
 /**********************************************
@@ -607,8 +590,7 @@ FType[] =
  * given its full name
  **********************************************/
 
-int GetForType(type)
-char *type;
+int GetForType(char *type)
 {
     int i = 0;
     while ( FType[i].fname != (char *) NULL)
@@ -639,8 +621,7 @@ char *type;
  * a C or Fortran type given its code number
  **********************************************/
 
-char *SGetForType(type)
-int type;
+char *SGetForType(int type)
 {
     int i = 0;
     while ( FType[i].code  != -1 )
@@ -663,8 +644,7 @@ int type;
  * of a C or Fortran type given its code number
  **********************************************/
 
-char *SGetForTypeAbrev(var)
-VARPTR var;
+char *SGetForTypeAbrev(VARPTR var)
 {
     int i = 0;
     while ( FType[i].code  != -1 )
@@ -686,8 +666,7 @@ VARPTR var;
  * of a C or Fortran type given its code number
  **********************************************/
 
-int SGetForDec(type)
-int type;
+int SGetForDec(int type)
 {
     int i = 0;
     while ( FType[i].code  != -1 )
@@ -709,8 +688,7 @@ int type;
  * of a C or Fortran type given its code number
  **********************************************/
 
-char* SGetCDec(type)
-int type;
+const char *SGetCDec(int type)
 {
     int i = 0;
     while ( FType[i].code  != -1 )
@@ -733,8 +711,7 @@ int type;
  * this function returns the stack name to use
  **********************************************/
 
-char *SGetForTypeStack(var)
-VARPTR var;
+char *SGetForTypeStack(VARPTR var)
 {
     int i = 0;
     while ( FType[i].code  != -1 )
@@ -767,8 +744,7 @@ VARPTR var;
  * for back conversion
  **********************************************/
 
-char *SGetForTypeBConvert(var)
-VARPTR var;
+char *SGetForTypeBConvert(VARPTR var)
 {
     int i = 0;
     while ( FType[i].code  != -1 )
@@ -801,8 +777,7 @@ VARPTR var;
  * XXXXX : only for MATRIX et BMATRIX
  **********************************************/
 
-char *SGetExtForTypeAbrev(var)
-VARPTR var;
+char *SGetExtForTypeAbrev(VARPTR var)
 {
     if ( var->type == BMATRIX )
     {
@@ -829,8 +804,7 @@ VARPTR var;
  * XXXXX : idem
  **********************************************/
 
-char *SGetExtForTypeStack(var)
-VARPTR var;
+char *SGetExtForTypeStack(VARPTR var)
 {
     if ( var->type == BMATRIX )
     {

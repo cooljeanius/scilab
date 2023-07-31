@@ -69,7 +69,7 @@ void setBackgroundColor(int color)
     setCharDisplay(charColor);
 }
 
-BOOL getCLIColor()
+BOOL getCLIColor(void)
 {
     return cliColor;
 }

@@ -60,7 +60,10 @@ int sci_legendre(char *fname, unsigned long fname_len)
         return 0;
     };
 
-    if ( mN == 1 && nN == 1) N_is_scalar = 1;
+    if ( mN == 1 && nN == 1)
+    {
+        N_is_scalar = 1;
+    }
 
     GetRhsVar(2, MATRIX_OF_DOUBLE_DATATYPE, &mM, &nM, &lM);
     if ( ! verify_cstr(stk(lM), mM * nM, &m1, &m2) )
@@ -69,7 +72,10 @@ int sci_legendre(char *fname, unsigned long fname_len)
         return 0;
     }
 
-    if ( mM == 1 && nM == 1) M_is_scalar = 1;
+    if ( mM == 1 && nM == 1)
+    {
+        M_is_scalar = 1;
+    }
 
     if ( ! M_is_scalar  &&  ! N_is_scalar )
     {
@@ -191,7 +197,7 @@ int sci_legendre(char *fname, unsigned long fname_len)
     return 0;
 }
 /*--------------------------------------------------------------------------*/
-static double return_an_inf()
+static double return_an_inf(void)
 {
     /*    AUTHOR
     *       Bruno Pincon <Bruno.Pincon@iecn.u-nancy.fr>

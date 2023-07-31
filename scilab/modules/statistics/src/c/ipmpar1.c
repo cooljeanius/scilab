@@ -20,7 +20,7 @@
 #include "../../sparse/includes/spConfig.h"
 #include "ipmpar1.h"
 /*--------------------------------------------------------------------------*/
-int C2F(largestint)()
+int C2F(largestint)(void)
 {
     static int first = 0, large = 0;
     if (first == 0)

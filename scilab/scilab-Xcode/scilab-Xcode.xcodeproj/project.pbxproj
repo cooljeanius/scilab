@@ -39791,7 +39791,6 @@
 		A583B7A0224B30600045B983 /* c */ = {
 			isa = PBXGroup;
 			children = (
-				A583B7A1224B30600045B983 /* .deps */,
 				A583B7A2224B30600045B983 /* gw_statistics.c */,
 				A583B7A3224B30600045B983 /* sci_cdfbet.c */,
 				A583B7A4224B30600045B983 /* sci_cdfbin.c */,
@@ -39808,13 +39807,6 @@
 			path = c;
 			sourceTree = "<group>";
 		};
-		A583B7A1224B30600045B983 /* .deps */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = .deps;
-			sourceTree = "<group>";
-		};
 		A583B7AF224B30600045B983 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -39827,7 +39819,6 @@
 		A583B7B0224B30600045B983 /* c */ = {
 			isa = PBXGroup;
 			children = (
-				A583B7B1224B30600045B983 /* .deps */,
 				A583B7B2224B30600045B983 /* CdfBase.c */,
 				A583B7B3224B30600045B983 /* CdfBase.h */,
 				A583B7B4224B30600045B983 /* core_Import.def */,
@@ -39841,17 +39832,9 @@
 			path = c;
 			sourceTree = "<group>";
 		};
-		A583B7B1224B30600045B983 /* .deps */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = .deps;
-			sourceTree = "<group>";
-		};
 		A583B7BB224B30600045B983 /* dcdflib */ = {
 			isa = PBXGroup;
 			children = (
-				A583B7BC224B30600045B983 /* .deps */,
 				A583B7BD224B30600045B983 /* algdiv.f */,
 				A583B7BE224B30600045B983 /* alngam.f */,
 				A583B7BF224B30600045B983 /* alnrel.f */,
@@ -39921,13 +39904,6 @@
 				A583B805224B30600045B983 /* stvaln.f */,
 			);
 			path = dcdflib;
-			sourceTree = "<group>";
-		};
-		A583B7BC224B30600045B983 /* .deps */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = .deps;
 			sourceTree = "<group>";
 		};
 		A583B7E1224B30600045B983 /* dcd_f */ = {

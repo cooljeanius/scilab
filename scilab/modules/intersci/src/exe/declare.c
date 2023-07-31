@@ -27,14 +27,14 @@ extern char target ; /* langage for generation */
 static struct Declare
 {
     int type;
-    char *nameF; /* Name fortran */
-    char *nameC; /* Name C */
+    const char *nameF; /* Name fortran */
+    const char *nameC; /* Name C */
     char **decls ; /* declaration of logical */
     int  ndecls;
 } Init[] =
 {
     { DEC_CHAR, "character", "char", (char **) 0, 0},
-    { DEC_INT , "integer", "int", (char **) 0, 0},
+    { DEC_INT, "integer", "int", (char **) 0, 0},
     { DEC_DOUBLE, "double precision", "double", (char **) 0, 0},
     { DEC_REAL, "real", "float", (char **) 0, 0},
     { DEC_LOGICAL, "logical", "int", (char **) 0, 0},
@@ -48,10 +48,10 @@ static struct Declare
     { DEC_SPARSEPTR, "double precision", "SciSparse", (char **) 0, 0},
     { DEC_INIT, "", "", (char **) 0, 0},
     { DEC_SMAT, "Unimplemented", "char ", (char **) 0, 0},
-    { -1 , "void", "void", (char **) 0, 0}
+    { -1, "void", "void", (char **) 0, 0}
 };
 
-void InitDeclare()
+void InitDeclare(void)
 {
     int i = 0;
     while ( Init[i].type != -1)
@@ -62,7 +62,7 @@ void InitDeclare()
     }
 }
 
-void ResetDeclare()
+void ResetDeclare(void)
 {
     int j = 0;
     while ( Init[j].type != -1)
@@ -71,7 +71,9 @@ void ResetDeclare()
         {
             int i;
             for ( i = 0 ; i < Init[j].ndecls ; i++ )
+            {
                 free((char *) Init[j].decls[i]);
+            }
             free (( char *) Init[j].decls );
         }
         Init[j].decls = (char **) 0;
@@ -91,13 +93,15 @@ int CheckDeclare(int type, char *declaration)
             for ( i = 0 ; i < Init[j].ndecls ; i++ )
             {
                 if ( strcmp(declaration, Init[j].decls[i]) == 0)
-                    return(1);
+                {
+                    return (1);
+                }
             }
-            return(0);
+            return (0);
         }
         j++;
     }
-    return(0);
+    return (0);
 }
 
 /***************************
@@ -122,8 +126,14 @@ void AddDeclare1(int type, char *format, ...)
 void AddDeclare(int type, char *declaration)
 {
     int j = 0;
-    if ( declaration[0] == '&' ) return ;
-    if ( CheckDeclare(type, declaration) == 1) return ;
+    if ( declaration[0] == '&' )
+    {
+        return ;
+    }
+    if ( CheckDeclare(type, declaration) == 1)
+    {
+        return ;
+    }
     while ( Init[j].type != -1)
     {
         if ( Init[j].type == type )
@@ -182,7 +192,7 @@ void WriteDeclaration(FILE *f)
     while ( Init[j].type != -1)
     {
         if ( Init[j].type == DEC_INIT)
-            {}
+        {}
         else if ( Init[j].type == DEC_DATA )
         {
             for (i = 0 ; i < Init[j].ndecls ; i++)
@@ -195,7 +205,9 @@ void WriteDeclaration(FILE *f)
         else
         {
             if ( Init[j].ndecls != 0)
+            {
                 Fprintf(f, indent, "%s ", Init[j].nameC);
+            }
             for (i = 0 ; i < Init[j].ndecls ; i++)
             {
                 if ( Init[j].type >= DEC_IPTR && target == 'C')
@@ -208,7 +220,10 @@ void WriteDeclaration(FILE *f)
                     Fprintf(f, indent, "**");
                 }
                 Fprintf(f, indent, "%s", Init[j].decls[i]);
-                if ( i != Init[j].ndecls - 1 ) Fprintf(f, indent, ",");
+                if ( i != Init[j].ndecls - 1 )
+                {
+                    Fprintf(f, indent, ",");
+                }
                 else
                 {
                     Fprintf(f, indent, ";\n");

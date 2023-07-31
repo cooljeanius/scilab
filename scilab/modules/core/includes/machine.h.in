@@ -79,6 +79,10 @@
 /* Define to 1 if <alloca.h> works. */
 #undef HAVE_ALLOCA_H
 
+/* Define to 1 if you have the <ApplicationServices/ApplicationServices.h>
+   header file. */
+#undef HAVE_APPLICATIONSERVICES_APPLICATIONSERVICES_H
+
 /* Define to 1 if you have the <argz.h> header file. */
 #undef HAVE_ARGZ_H
 
@@ -221,6 +225,9 @@
 
 /* Define to 1 if the system has the type `hid_t'. */
 #undef HAVE_HID_T
+
+/* Define to 1 if you have the <HIServices/Processes.h> header file. */
+#undef HAVE_HISERVICES_PROCESSES_H
 
 /* Define if you have the iconv() function and it works. */
 #undef HAVE_ICONV

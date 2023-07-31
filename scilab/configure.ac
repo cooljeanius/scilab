@@ -980,8 +980,11 @@ if test "x${with_javasci}" != "xno" -o "x${with_gui}" != "xno" -o "x${enable_bui
      AC_JAVA_WITH_JDK
      AC_JAVA_DETECT_JVM
      case "${ac_java_jvm_version}" in
-        1.6 | 1.7 | 1.8 | 1.9 | 1.10 | 1.11)
+        1.6 | 1.7)
             AC_MSG_NOTICE([Found Java version ${ac_java_jvm_version}])
+        ;;
+        1.8 | 1.9 | 1.10 | 1.11)
+            AC_MSG_WARN([Found Java version ${ac_java_jvm_version}; this might fail])
         ;;
         *)
             AC_MSG_ERROR([Wrong version of Java. Expected at least 1.6. Found ${ac_java_jvm_version}])

@@ -2760,7 +2760,7 @@ just_libs: libs/Makefile modules/Makefile
 	$(MAKE) -C libs all
 	$(MAKE) -C modules libscilab-cli.la
 	$(MAKE) -C modules libscilab.la
-	$(MAKE) -C modules libjavasci2.la
+@JAVASCI_TRUE@	$(MAKE) -C modules libjavasci2.la
 
 .PHONY: macros localization doc check-local check-code just_libs
 

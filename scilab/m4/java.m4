@@ -742,37 +742,43 @@ AC_DEFUN([AC_JAVA_WITH_JDK],[AC_ARG_WITH([jdk],
 
 AC_DEFUN([AC_JAVA_TOOLS],[
 
-    case "$host_os" in
+    case "${host_os}" in
           *darwin*)
-          ac_java_jvm_bin_dir=$(/usr/libexec/java_home --arch x86_64 --failfast --version 1.6+)/bin/
+          ac_java_jvm_bin_dir=$(/usr/libexec/java_home --arch x86_64 --failfast --version 1.6+ 2>&AS_MESSAGE_LOG_FD)/bin/
+          if test "x${ac_java_jvm_bin_dir}" = "x/bin/"; then
+            # try again:
+            ac_java_jvm_bin_dir=$(/usr/libexec/java_home --arch x86_64 --version 1.6+)/bin/
+          fi
     ;;
           *)
-              ac_java_jvm_bin_dir=$ac_java_jvm_dir/bin;;
+              ac_java_jvm_bin_dir=${ac_java_jvm_dir}/bin;;
     esac
 
-    AC_JAVA_TOOLS_CHECK([JAVA],[java],[$ac_java_jvm_bin_dir])
+    AC_MSG_NOTICE([looking in ${ac_java_jvm_bin_dir} for Java tools])
+
+    AC_JAVA_TOOLS_CHECK([JAVA],[java],[${ac_java_jvm_bin_dir}])
 
     # Do not error if java_g can not be found
-    AC_JAVA_TOOLS_CHECK([JAVA_G],[java_g],[$ac_java_jvm_bin_dir],[1])
+    AC_JAVA_TOOLS_CHECK([JAVA_G],[java_g],[${ac_java_jvm_bin_dir}],[1])
 
-    if test "x$JAVA_G" = "x" ; then
-        JAVA_G=$JAVA
+    if test "x${JAVA_G}" = "x"; then
+        test -z "${JAVA_G}" && test -n "${JAVA}" && export JAVA_G=${JAVA}
     fi
 
     TOOL=javah
-    AC_JAVA_TOOLS_CHECK([JAVAH],[$TOOL],[$ac_java_jvm_bin_dir])
+    AC_JAVA_TOOLS_CHECK([JAVAH],[${TOOL}],[${ac_java_jvm_bin_dir}:/usr/bin])
 
-    AC_JAVA_TOOLS_CHECK([JAR],[jar],[$ac_java_jvm_bin_dir])
+    AC_JAVA_TOOLS_CHECK([JAR],[jar],[${ac_java_jvm_bin_dir}])
 
-    AC_JAVA_TOOLS_CHECK([JAVADOC],[javadoc],[$ac_java_jvm_bin_dir])
+    AC_JAVA_TOOLS_CHECK([JAVADOC],[javadoc],[${ac_java_jvm_bin_dir}])
 
     # Do not error if jdb can not be found
-    AC_JAVA_TOOLS_CHECK([JDB],[jdb],[$ac_java_jvm_bin_dir],[1])
+    AC_JAVA_TOOLS_CHECK([JDB],[jdb],[${ac_java_jvm_bin_dir}],[1])
 
-    case "$ac_java_jvm_version" in
+    case "${ac_java_jvm_version}" in
         *)
             # JDK on Win32 does not allow connection with suspend=n
-            if test "$ac_cv_tcl_win32" = "yes"; then
+            if test "x${ac_cv_tcl_win32}" = "xyes"; then
                 suspend="y"
             else
                 suspend="n"
@@ -889,7 +895,7 @@ AC_DEFUN([AC_JAVA_TOOLS_CHECK],[
     # Check to see if $1 could not be found
     m4_ifval([$4],[],[
     if test "x[$]$1" = "x" ; then
-        AC_MSG_ERROR([Cannot find $2])
+        AC_MSG_ERROR([Cannot find Java tool $2])
     fi
     ])
 ])

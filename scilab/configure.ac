@@ -979,8 +979,9 @@ if test "x${with_javasci}" != "xno" -o "x${with_gui}" != "xno" -o "x${enable_bui
      # by the above --with options
      AC_JAVA_WITH_JDK
      AC_JAVA_DETECT_JVM
-     case "$ac_java_jvm_version" in
-        1.6 | 1.7)
+     case "${ac_java_jvm_version}" in
+        1.6 | 1.7 | 1.8 | 1.9 | 1.10 | 1.11)
+            AC_MSG_NOTICE([Found Java version ${ac_java_jvm_version}])
         ;;
         *)
             AC_MSG_ERROR([Wrong version of Java. Expected at least 1.6. Found ${ac_java_jvm_version}])
@@ -988,10 +989,11 @@ if test "x${with_javasci}" != "xno" -o "x${with_gui}" != "xno" -o "x${enable_bui
      esac
 
    if test "x${ac_java_jvm_name}" = "xjdk"; then
+        AC_MSG_NOTICE([doing jdk checks])
         JAVA_HOME=${ac_java_jvm_dir}
         JAVA_VERSION=${ac_java_jvm_version}
-        AC_JAVA_TOOLS
-        AC_JAVA_JNI_INCLUDE
+        AC_JAVA_TOOLS dnl# from m4/java.m4
+        AC_JAVA_JNI_INCLUDE dnl# from m4/java.m4
         JAVA_JNI_INCLUDE=${ac_java_jvm_jni_include_flags}
 
         case "$host_os" in
@@ -1580,6 +1582,16 @@ if test "x${ac_cv_header_stdio_h}" = "x"; then
   AC_CHECK_HEADERS([stdio.h])
 fi
 
+if test "x${ac_cv_header_stdint_h}" = "x"; then
+  test -z "${ac_cv_header_stdint_h}"
+  AC_CHECK_HEADERS([stdint.h])
+fi
+
+if test "x${ac_cv_header_strings_h}" = "x"; then
+  test -z "${ac_cv_header_strings_h}"
+  AC_CHECK_HEADERS([strings.h])
+fi
+
 if test "x${ac_cv_header_sys_param_h}" = "x"; then
   test -z "${ac_cv_header_sys_param_h}"
   AC_CHECK_HEADERS([sys/param.h])
@@ -1765,12 +1777,18 @@ AC_ARG_WITH([openmp],
 OPENMP_ENABLE=no
 if test "x${with_openmp}" != "xno"; then
     AC_OPENMP
+    export PRE_OPENMP_LIBS="${LIBS}"
+    AC_SUBST([PRE_OPENMP_LIBS])
     OPENMP_CFLAGS="-fopenmp"
     OPENMP_CXXFLAGS="-fopenmp"
-    OPENMP_LIBS="-lgomp"
+    AC_SEARCH_LIBS([omp_set_num_threads],[gomp omp iomp],
+                   [OPENMP_LIBS="${LIBS}"],[OPENMP_LIBS="-lgomp"])
+    LIBS="${PRE_OPENMP_LIBS}"
 
-    AC_CHECK_HEADERS([omp.h],[],
-     [AC_MSG_ERROR([Could not find omp.h; try disabling OpenMP with --without-openmp])])dnl
+    AC_CHECK_HEADERS([omp.h],[OPENMP_HEADER="omp.h"],
+     [AC_CHECK_HEADERS([libomp/omp.h],[OPENMP_HEADER="libomp/omp.h"],
+       [AC_MSG_ERROR([Could not find omp.h; try disabling OpenMP with --without-openmp])])])dnl
+    AC_SUBST([OPENMP_HEADER])dnl
 
     OPENMP_ENABLE=yes
 else
@@ -2147,7 +2165,7 @@ AC_ARG_ENABLE([build-doxygen],
                     [Generate doxygen C/C++ documentation])])dnl
 
 DOXYGEN_ENABLE=yes
-if test "x${enable_build_doxygen}" != "xno" -a "x${enable_build_doxygen}" != "x"; then
+AS_IF([test "x${enable_build_doxygen}" != "xno" -a "x${enable_build_doxygen}" != "x"],[
     XORG_WITH_DOXYGEN dnl# from m4/xorg-macros.m4
     AM_MISSING_PROG([DOXYGEN_PROG],[doxygen])
     dnl# ${have_doxygen} comes from the xorg macro for it:
@@ -2156,9 +2174,13 @@ if test "x${enable_build_doxygen}" != "xno" -a "x${enable_build_doxygen}" != "x"
     else
         DOXYGEN_ENABLE="FIXME"
     fi
-else
+],[
     DOXYGEN_ENABLE=no
-fi
+    # hack to work around an automake conditional only being called conditionally:
+    HAVE_DOXYGEN_TRUE='#'
+    HAVE_DOXYGEN_FALSE=""
+])dnl
+  ## second conditional, in case the inner one is screwed up:
 AM_CONDITIONAL([DOXYGEN],[test "x${DOXYGEN_ENABLE}" = "xyes"])dnl
 
 ##############################################################
@@ -2187,9 +2209,12 @@ AC_DEFUN([XORG_REQUIRE_TESTS],[
    AC_REQUIRE([XORG_ENABLE_INTEGRATION_TESTS])dnl# from m4/xorg-macros.m4
 ])dnl
 
-if test "x${COMPILATION_TESTS}" = "xyes"; then
+AS_IF([test "x${COMPILATION_TESTS}" = "xyes"],[
     XORG_REQUIRE_TESTS dnl# from above
-fi
+],[
+    test -n "${COMPILATION_TESTS}" && echo "COMPILATION_TESTS = ${COMPILATION_TESTS}"
+    ## TODO
+])dnl
 
 if test "x${COMPILATION_TESTS}" = "xyes" -a "x${JUNIT4}" = "x"; then
    test -z "${JUNIT4}"
@@ -2280,13 +2305,13 @@ dnl# libtool should have already found ranlib, but autoscan will still
 dnl# complain about it, and I am more okay with libtoolize warnings than
 dnl# I am with autoscan warnings
 dnl# see: https://savannah.gnu.org/support/?108503
-if test "x${RANLIB}" = "x"; then
+AS_IF([test "x${RANLIB}" = "x"],[
 	test -z "${RANLIB}"
 	AC_PROG_RANLIB
-else
+],[
 	test ! -z "${RANLIB}" && export RANLIB
-	AC_SUBST([RANLIB])
-fi
+	AC_SUBST([RANLIB])dnl
+])dnl
 
 # Other compiler characteristics
 AC_MSG_CHECKING([other compiler characteristics])

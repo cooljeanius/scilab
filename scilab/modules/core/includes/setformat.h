@@ -13,8 +13,8 @@
 #ifndef __SETFORMAT_H__
 #define __SETFORMAT_H__
 
-void setformat(const char * format, int width);
-char * getformat();
-int getformatwidth();
+void setformat(const char *format, int width);
+const char *getformat(void);
+int getformatwidth(void);
 
 #endif // __SETFORMAT_H__

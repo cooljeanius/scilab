@@ -19,7 +19,7 @@ void setieee(int ieee)
     C2F(errgst).ieee = ieee;
 }
 /*--------------------------------------------------------------------------*/
-int getieee()
+int getieee(void)
 {
     return C2F(errgst).ieee;
 }

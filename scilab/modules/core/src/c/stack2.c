@@ -71,6 +71,8 @@ static int C2F(getopcode) (char *string, unsigned long string_len);
 
 static void ConvertData(unsigned char *type, int size, int l);
 
+extern char *CharPosition(int i);
+
 /*------------------------------------------------
 * checkrhs: checks right hand side arguments
 *-----------------------------------------------*/
@@ -2600,6 +2602,7 @@ int C2F(scistring) (int *ifirst, char *thestring, int *mlhs, int *mrhs, unsigned
     {
         ret = C2F(sciops) (ifirst, &op, mlhs, mrhs);
     }
+    (void)moutputs;
     return ret;
 }
 
@@ -3160,7 +3163,7 @@ static int Check_references(void)
 *     variable on the stack is at position top-rhs+nbvars
 *---------------------------------------------------------------------*/
 
-int C2F(putlhsvar)()
+int C2F(putlhsvar)(void)
 {
     int ix2, ivar, ibufprec, ix, k, lcres, nbvars1;
     int plhsk;
@@ -3191,7 +3194,7 @@ int C2F(putlhsvar)()
     {
         return TRUE;
     }            /* execution continue with an
-                                 * overloaded function */
+                  * overloaded function */
     if (LhsVar(1) == 0)
     {
         Top = Top - Rhs + Lhs;
@@ -4093,18 +4096,17 @@ static void intersci_pop(void)
     FREE(loc);
 }
 
-/*
-static void intersci_show()
+#if 0
+static void intersci_show(void)
 {
-int i;
-fprintf(stderr,"======================\n");
-for ( i = 0 ; i < C2F(intersci).nbvars ; i++ )
-{
-fprintf(stderr,"%d %d %d\n",i,
-C2F(intersci).iwhere[i],
-C2F(intersci).ntypes[i]);
+    int i;
+    fprintf(stderr, "======================\n");
+    for (i = 0 ; i < C2F(intersci).nbvars; i++)
+    {
+        fprintf(stderr, "%d %d %d\n", i,
+                C2F(intersci).iwhere[i],
+                C2F(intersci).ntypes[i]);
+    }
+    fprintf(stderr, "======================\n");
 }
-fprintf(stderr,"======================\n");
-}
-
-*/
+#endif

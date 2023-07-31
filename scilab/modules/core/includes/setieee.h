@@ -14,6 +14,6 @@
 #define __SETIEEE_H__
 
 void setieee(int ieee);
-int getieee();
+int getieee(void);
 
 #endif // __SETIEEE_H__

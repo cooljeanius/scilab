@@ -22,7 +22,7 @@
 #include "InitializeHistoryManager.h"
 #include "HistoryManager.h"
 
-void InitializePreferences()
+void InitializePreferences(void)
 {
     const ScilabPreferences * prefs = getScilabPreferences();
     int ieee = 0;

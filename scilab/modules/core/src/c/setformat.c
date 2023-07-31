@@ -20,12 +20,12 @@ void setformat(const char * format, int width)
     C2F(iop).lct[6] = width;
 }
 /*--------------------------------------------------------------------------*/
-char * getformat()
+const char *getformat(void)
 {
     return C2F(iop).lct[5] ? "v" : "e";
 }
 /*--------------------------------------------------------------------------*/
-int getformatwidth()
+int getformatwidth(void)
 {
     return C2F(iop).lct[6];
 }

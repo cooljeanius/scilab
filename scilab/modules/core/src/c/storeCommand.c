@@ -58,7 +58,7 @@ static CommandRec *commandQueue = NULL;
 
 static void release(void);
 
-static __threadLock* getCommandQueueSingleAccess()
+static __threadLock* getCommandQueueSingleAccess(void)
 {
     static __threadLock* ptr = NULL;
     if (!ptr)

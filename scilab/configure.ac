@@ -179,38 +179,38 @@ AM_PROG_AR dnl# automake1.14 warns if this macro is missing
 AM_PROG_AS
 dnl# All of the `test`s here are a hack to emulate the use
 dnl# of AC_REQUIRE([]) outside of an AC_DEFUN([])
-if test "x${AWK}" = "x"; then
+AS_IF([test "x${AWK}" = "x"],[
 	test -z "${AWK}"
 	AC_PROG_AWK
-else
+],[
 	# Autoconf likes to remove AC_SUBSTs from conditions
 	# so this test and the others like it are dummies
 	# to make sure that the "else" condition does not
 	# become empty
 	test ! -z "${AWK}" && export AWK
-	AC_SUBST([AWK])
-fi
-if test "x${CPP}" = "x"; then
+	AC_SUBST([AWK])dnl
+]) ## (need newline)
+AS_IF([test "x${CPP}" = "x"],[
 	test -z "${CPP}"
 	AC_PROG_CPP
-else
+],[
 	XORG_PROG_RAWCPP([]) dnl# from m4/xorg-macros.m4
-fi
-if test "x${GREP}" = "x"; then
+]) ## (need newline)
+AS_IF([test "x${GREP}" = "x"],[
 	test -z "${GREP}"
 	AC_PROG_GREP
-else
+],[
 	test ! -z "${GREP}" && export GREP
-	AC_SUBST([GREP])
-fi
-if test "x${INSTALL}" = "x"; then
+	AC_SUBST([GREP])dnl
+]) ## (need newline)
+AS_IF([test "x${INSTALL}" = "x"],[
 	test -z "${INSTALL}"
 	AC_PROG_INSTALL
-else
+],[
 	test ! -z "${INSTALL}" && export INSTALL
-	AC_SUBST([INSTALL])
-fi
-if test "x${MAKE}" = "x"; then
+	AC_SUBST([INSTALL])dnl
+]) ## (need newline)
+AS_IF([test "x${MAKE}" = "x"],[
 	test -z "${MAKE}"
 	AC_PATH_PROGS([MAKE],[make gmake gnumake remake])
 	AC_PROG_MAKE_SET
@@ -218,10 +218,10 @@ if test "x${MAKE}" = "x"; then
 		test -z "${SILENT_RULES}"
 		AM_SILENT_RULES
 	fi
-else
+],[
 	test ! -z "${MAKE}" && export MAKE
-	AC_SUBST([MAKE])
-fi
+	AC_SUBST([MAKE])dnl
+]) ## (need newline)
 AC_BAKEFILE_GNUMAKE dnl# from m4/bakefile.m4
 AX_CHECK_GNU_MAKE([]) dnl# from m4/ax_check_gnu_make.m4
 AC_PROG_MKDIR_P
@@ -316,14 +316,14 @@ if test "x${with_gfortran}" = "xyes"; then
    AC_PROG_F77([gfortran])
    if test -z "${F77}"; then
      AC_MSG_ERROR([You asked me to use gfortran, but I have not been able to find it])
-    fi
+   fi
 fi
 
 if test "x${with_intelcompilers}" = "xyes"; then
    AC_PROG_F77([ifc ifort])
    if test -z "${F77}"; then
      AC_MSG_ERROR([You asked me to use ifc (intel fortran compiler), but I have not been able to find it])
-    fi
+   fi
 fi
 
 if test -z "${F77}"; then
@@ -332,7 +332,7 @@ if test -z "${F77}"; then
    if test -z "${F77}"; then
         # Best effort to find a compiler (might be g77)
         AC_MSG_NOTICE([Still no Fortran compiler found; getting desperate now...])
-	AC_PROG_F77
+        AC_PROG_F77
    fi
 fi
 
@@ -401,13 +401,13 @@ AC_CHECK_ALIGNOF([long])dnl
 
 ### C++ ###
 AC_PROG_CXX
-if test "x${CXXCPP}" = "x"; then
+AS_IF([test "x${CXXCPP}" = "x"],[
 	test -z "${CXXCPP}"
 	AC_PROG_CXXCPP
-else
+],[
 	test ! -z "${CXXCPP}" && export CXXCPP
-	AC_SUBST([CXXCPP])
-fi
+	AC_SUBST([CXXCPP])dnl
+]) ## (need newline)
 AC_PROG_OBJCXX
 AC_PROG_OBJCXXCPP
 dnl# we cannot just do something like
@@ -428,26 +428,26 @@ esac
 # testing for support for both "-c" and "-o" is for the "subdir-objects"
 # automake option
 
-if test "x${CC_C_O}" = "x"; then
+AS_IF([test "x${CC_C_O}" = "x"],[
 	test -z "${CC_C_O}"
 	AM_PROG_CC_C_O
-else
+],[
 	test ! -z "${CC_C_O}" && export CC_C_O
-	AC_SUBST([CC_C_O])
-fi
+	AC_SUBST([CC_C_O])dnl
+]) ## (need newline)
 AC_PROG_CXX_C_O
 AC_PROG_F77_C_O
 AC_PROG_FC_C_O
 
 # If this option is provided, enable the debug on C & C++
-if test "x${enable_stop_on_warning}" = "xyes"; then
+AS_IF([test "x${enable_stop_on_warning}" = "xyes"],[
    AC_MSG_NOTICE([--enable-stop-on-warning implies --enable-debug-C and enable-debug-CXX])
    XORG_STRICT_OPTION dnl# from m4/xorg-macros.m4
    enable_debug_C=yes
    enable_debug_CXX=yes
-fi
+])dnl
 
-if test "x${enable_debug}" = "xyes"; then
+AS_IF([test "x${enable_debug}" = "xyes"],[
    AC_MSG_NOTICE([--enable-debug implies the rest of the --enable-debug flags])
    XORG_MEMORY_CHECK_FLAGS dnl# from m4/xorg-macros.m4
    enable_debug_fortran=yes
@@ -455,9 +455,9 @@ if test "x${enable_debug}" = "xyes"; then
    enable_debug_CXX=yes
    enable_debug_java=yes
    enable_debug_linker=yes
-else
+],[
    enable_debug=no
-fi
+])dnl
 
 if test "x${enable_debug_fortran}" = "xyes"; then
    FFLAGS="`echo "${FFLAGS}"| sed -e 's|-O[0-9+]|-O0|'`"
@@ -466,23 +466,23 @@ else
    enable_debug_fortran=no
 fi
 
-if test "x${enable_debug_C}" = "xyes"; then
+AS_IF([test "x${enable_debug_C}" = "xyes"],[
    AC_MSG_NOTICE([hacking CFLAGS for --enable-debug-C])
    CFLAGS="`echo "${CFLAGS}"| sed -e 's|-O[0-9+]|-O0|'`"
    XORG_CWARNFLAGS dnl# from m4/xorg-macros.m4
-else
+],[
    CFLAGS="-O2"
    enable_debug_C=no
-fi
+])dnl
 
-if test "x${enable_debug_CXX}" = "xyes"; then
+AS_IF([test "x${enable_debug_CXX}" = "xyes"],[
    AC_MSG_NOTICE([hacking CXXFLAGS for --enable-debug-CXX])
    CXXFLAGS="`echo "${CXXFLAGS}"| sed -e 's|-O[0-9+]|-O0|'`"
    XORG_CXXWARNFLAGS dnl# from m4/xorg-macros.m4
-else
+],[
    CXXFLAGS="-O2"
    enable_debug_CXX=no
-fi
+])dnl
 
 if test "x${enable_debug_java}" = "xyes"; then
    LOGGING_LEVEL="INFO"
@@ -509,9 +509,9 @@ SCIVERSION=`cat ${SCI_SRCDIR}/Version.incl | sed -e "s/SCIVERSION=//" `
 ######## Set compilation options for intel C/Fortran compilers
 ######################
 
-if test "x${with_intelcompilers}" = "xyes"; then
+AS_IF([test "x${with_intelcompilers}" = "xyes"],[
    SCI_INTEL_COMPILER([]) dnl# from m4/intel_compiler.m4
-fi
+])dnl
 
 ########### FORTRAN ######################
 
@@ -2049,7 +2049,7 @@ AC_ARG_WITH([matio_library],
 
 MATIO_ENABLE=no
 
-if test "x${with_matio}" != "xno"; then
+AS_IF([test "x${with_matio}" != "xno"],[
    if test -n "${with_matio_include}" -o -n "${with_matio_library}"; then
       MATIO_CFLAGS="${with_matio_include}"
       MATIO_LIBS="${with_matio_library} -lm -lz -lmatio"
@@ -2066,8 +2066,9 @@ if test "x${with_matio}" != "xno"; then
    AC_CHECK_HEADERS([matio.h matioConfig.h],[],
      [AC_CHECK_HEADERS([matio_pubconf.h],[],
         [AC_MSG_ERROR([Invalid MATIO_CFLAGS returned by pkg-config. Try to define MATIO_CFLAGS, or use --without-matio to disable Matio interface.])
-     ])
-   ])
+     ])dnl
+   ])dnl
+
    AC_CHECK_LIB([matio],[Mat_Open],[],
      [AC_MSG_ERROR([Invalid MATIO_LIBS returned by pkg-config. Try to define MATIO_LIBS, or use --without-matio to disable Matio interface.])])dnl
 
@@ -2096,11 +2097,11 @@ if test "x${with_matio}" != "xno"; then
 
    AC_DEFINE([WITH_MATIO],[],[With the MATIO library])
    MATIO_ENABLE=yes
-else
+],[
    AC_MSG_NOTICE([skipping checks for matio])
-fi
+])dnl
 
-AC_SUBST([MATIO_ENABLE])
+AC_SUBST([MATIO_ENABLE])dnl
 AM_CONDITIONAL([MATIO],[test "x${with_matio}" != "xno"])dnl
 
 #############################
@@ -2113,10 +2114,10 @@ AC_ARG_ENABLE([build-help],
         [AS_HELP_STRING([--disable-build-help],[Disable the help build])
         ])dnl
 
-if test "x${enable_build_help}" != "xno"; then
+AS_IF([test "x${enable_build_help}" != "xno"],[
     AC_DOCBOOK([])     dnl# from m4/docbook.m4
     XORG_CHECK_DOCBOOK dnl# from m4/xorg-macros.m4
-else
+],[
     dnl# make sure that the conditionals from XORG_CHECK_DOCBOOK still get
     dnl# defined:
     unset XSL_STYLESHEET
@@ -2125,7 +2126,7 @@ else
     BUILD_PDFDOC=no
     BUILD_PSDOC=no
     BUILD_HTMLDOC=no
-fi
+])dnl
 
 if test "x${JAVA_ENABLE}" = "xno"; then
     dnl# Java is needed to build help
@@ -2149,13 +2150,14 @@ AC_ARG_WITH([install-help-xml],
                         [make install will install XML files])
         ])
 HELP_INSTALL_ENABLE=no
-if test "x${with_install_help_xml}" != "xno" -a "x${with_install_help_xml}" != "x"; then
+AS_IF([test "x${with_install_help_xml}" != "xno" -a "x${with_install_help_xml}" != "x"],[
    AC_PATH_PROG([XMLINDENT],[xmlindent],[no])
    HELP_INSTALL_ENABLE=yes
-else
+],[
    test -z "${XMLINDENT}"
-   AM_MISSING_PROG([XMLINDENT],[xmlindent])
-fi
+   AM_MISSING_PROG([XMLINDENT],[xmlindent])dnl
+])dnl
+  ## also conditionalize this way:
 AM_CONDITIONAL([INSTALL_HELP_XML],
                [test "x${HELP_INSTALL_ENABLE}" != "x"])dnl
 

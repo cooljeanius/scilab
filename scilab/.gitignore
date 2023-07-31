@@ -22,6 +22,7 @@ tmpwrk*/*
 confdefs.h
 conftest*
 config.h
+lex.yy.c
 modules/core/includes/machine.h
 modules/core/includes/stack.h
 modules/scicos_blocks/includes/blocks.h

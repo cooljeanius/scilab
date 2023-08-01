@@ -2450,8 +2450,12 @@ AH_BOTTOM([
 ])dnl
 
 # Define the standard extension of a dynamic library
-AC_DEFINE_UNQUOTED([SHARED_LIB_EXT],["$shrext_cmds"],
+export shrext_cmds=$(echo "${shrext_cmds}")
+AC_DEFINE_UNQUOTED([SHARED_LIB_EXT],["${shrext_cmds}"],
                    [Extension of a shared library])dnl
+AC_DEFINE_UNQUOTED([SHARED_LIB_EXTW],[L"${shrext_cmds}"],
+                   [Extension of a shared library (wide string)])dnl
+AC_SUBST([shrext_cmds])dnl
 
 #################
 ## stop on warning

@@ -36,7 +36,7 @@ int C2F(getshortpathname)(char *pathname, int *len)
         result = getshortpathname(pathname, &bConvert);
         if (result)
         {
-            strncpy(pathname, result, sizeof(pathname));
+            strncpy(pathname, result, (sizeof(pathname) - 1));
             *len = (int)strlen(result);
             FREE(result);
             result = NULL;

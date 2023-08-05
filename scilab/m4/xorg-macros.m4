@@ -1,4 +1,4 @@
-dnl# xorg-macros.m4 serial 111
+dnl# xorg-macros.m4 serial 112
 dnl# Originally generated from xorg-macros.m4.in xorgversion.m4 by configure.
 dnl#
 dnl# Copyright (c) 2005-2006, Oracle and/or its affiliates. All rights reserved.
@@ -1506,6 +1506,10 @@ AC_LANG_CASE([C],[
 	define([PREFIX], [CXX])
 	define([CACHE_PREFIX], [cxx])
 	define([COMPILER], [$CXX])
+],[Fortran 77],[
+	define([PREFIX], [F77])
+	define([CACHE_PREFIX], [f77])
+	define([COMPILER], [$F77])
 ])dnl
 
 [xorg_testset_save_]PREFIX[FLAGS]="$PREFIX[FLAGS]"
@@ -1514,7 +1518,12 @@ if test "x$[xorg_testset_]CACHE_PREFIX[_unknown_warning_option]" = "x"; then
 	PREFIX[FLAGS]="$PREFIX[FLAGS] -Werror=unknown-warning-option"
 	AC_CACHE_CHECK([if ]COMPILER[ supports -Werror=unknown-warning-option],
 			[xorg_cv_]CACHE_PREFIX[_flag_unknown_warning_option],
-			AC_COMPILE_IFELSE([AC_LANG_SOURCE([int i;])],
+			AC_COMPILE_IFELSE([AC_LANG_CASE([C],
+			                  [AC_LANG_SOURCE([int i;])],
+			                  [C++],
+			                  [AC_LANG_SOURCE([int i;])],
+			                  [Fortran 77],
+			                  [AC_LANG_SOURCE([])])],
 					  [xorg_cv_]CACHE_PREFIX[_flag_unknown_warning_option=yes],
 					  [xorg_cv_]CACHE_PREFIX[_flag_unknown_warning_option=no]))
 	[xorg_testset_]CACHE_PREFIX[_unknown_warning_option]=$[xorg_cv_]CACHE_PREFIX[_flag_unknown_warning_option]
@@ -1528,7 +1537,12 @@ if test "x$[xorg_testset_]CACHE_PREFIX[_unused_command_line_argument]" = "x"; th
 	PREFIX[FLAGS]="$PREFIX[FLAGS] -Werror=unused-command-line-argument"
 	AC_CACHE_CHECK([if ]COMPILER[ supports -Werror=unused-command-line-argument],
 			[xorg_cv_]CACHE_PREFIX[_flag_unused_command_line_argument],
-			AC_COMPILE_IFELSE([AC_LANG_SOURCE([int i;])],
+			AC_COMPILE_IFELSE([AC_LANG_CASE([C],
+			                  [AC_LANG_SOURCE([int i;])],
+			                  [C++],
+			                  [AC_LANG_SOURCE([int i;])],
+			                  [Fortran 77],
+			                  [AC_LANG_SOURCE([])])],
 					  [xorg_cv_]CACHE_PREFIX[_flag_unused_command_line_argument=yes],
 					  [xorg_cv_]CACHE_PREFIX[_flag_unused_command_line_argument=no]))
 	[xorg_testset_]CACHE_PREFIX[_unused_command_line_argument]=$[xorg_cv_]CACHE_PREFIX[_flag_unused_command_line_argument]
@@ -1554,7 +1568,12 @@ dnl Some hackery here since AC_CACHE_VAL cannot handle a non-literal varname
 		AC_MSG_CHECKING([if ]COMPILER[ supports ]flag[])
 		cacheid=AS_TR_SH([xorg_cv_]CACHE_PREFIX[_flag_]flag[])
 		AC_CACHE_VAL($cacheid,
-			     [AC_LINK_IFELSE([AC_LANG_PROGRAM([int i;])],
+			     [AC_LINK_IFELSE([AC_LANG_CASE([C],
+			                  [AC_LANG_PROGRAM([int i;])],
+			                  [C++],
+			                  [AC_LANG_PROGRAM([int i;])],
+			                  [Fortran 77],
+			                  [AC_LANG_PROGRAM([])])],
 					     [eval $cacheid=yes],
 					     [eval $cacheid=no])])dnl
 
@@ -1599,6 +1618,7 @@ AC_LANG_CASE([C],[
     define([WERROR_WRITE_STRINGS_CV],[xorg_cv_cxx_flag__Werror_write_strings])
 ],[Fortran 77],[
     define([PREFIX],[F])
+    define([WERROR_WRITE_STRINGS_CV],[xorg_cv_f77_flag__Werror_write_strings])
 ])
 # -v is too short to test reliably with XORG_TESTSET_CFLAG
 if test "x$SUNCC" = "xyes"; then
@@ -1629,6 +1649,17 @@ AC_LANG_CASE([C],[
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wreturn-stack-address])
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wshadow-field-in-constructor])
 	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wunused-private-field])
+],[Fortran 77],[
+	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Waliasing])
+	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wc-binding-type])
+	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wimplicit-interface])
+	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wimplicit-procedure])
+	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Winteger-division])
+	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wintrinsics-std])
+	XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wreal-q-constant])
+	# warning flags already tested in configure.ac: -Wall -Wextra -Wsurprising
+	# -Warray-temporaries -Wcharacter-truncation -Wconversion-extra
+	# -Wfrontend-loop-interchange -Wuse-without-only -Wrealloc-lhs -Wrealloc-lhs-all
 ])dnl
 
 # This chunk adds additional warnings that could catch undesired effects.
@@ -1846,6 +1877,18 @@ AC_SUBST([CXXWARNFLAGS])dnl
 ])dnl
 AC_LANG_POP([C++])
 ])dnl# XORG_CXXWARNFLAGS
+
+# XORG_F77WARNFLAGS
+AC_DEFUN([XORG_F77WARNFLAGS],[
+AC_REQUIRE([XORG_COMPILER_BRAND])
+AC_LANG_PUSH([Fortran 77])
+XORG_COMPILER_FLAGS
+AC_LANG_CASE([Fortran 77],[
+F77WARNFLAGS="${BASE_F77FLAGS}"
+AC_SUBST([F77WARNFLAGS])dnl
+])dnl
+AC_LANG_POP([Fortran 77])
+])dnl# XORG_F77WARNFLAGS
 
 # XORG_STRICT_OPTION
 # -----------------------

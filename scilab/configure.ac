@@ -382,11 +382,11 @@ if test "x${with_intelcompilers}" = "xyes"; then
     fi
 fi
 
-if test -z "${CC}"; then
+AS_IF([test -z "${CC}"],[
    AC_MSG_NOTICE([No C compiler specified... relying on Autoconf to find the best])
    AC_PROG_CC
    XORG_COMPILER_BRAND dnl# from m4/xorg-macros.m4
-fi
+])dnl
 
 if test -z "${CC}"; then
   AC_MSG_ERROR([No C Compiler found. Cannot compile Scilab without a C compiler])
@@ -459,12 +459,14 @@ AS_IF([test "x${enable_debug}" = "xyes"],[
    enable_debug=no
 ])dnl
 
-if test "x${enable_debug_fortran}" = "xyes"; then
+AS_IF([test "x${enable_debug_fortran}" = "xyes"],[
+   AC_MSG_NOTICE([hacking FFLAGS for --enable-debug-fortran])
    FFLAGS="`echo "${FFLAGS}"| sed -e 's|-O[0-9+]|-O0|'`"
-else
+   XORG_F77WARNFLAGS dnl# from m4/xorg-macros.m4
+],[
    FFLAGS="-O3"
    enable_debug_fortran=no
-fi
+])dnl
 
 AS_IF([test "x${enable_debug_C}" = "xyes"],[
    AC_MSG_NOTICE([hacking CFLAGS for --enable-debug-C])
@@ -535,9 +537,9 @@ if test -n "${F77}"; then
    esac
 
    if test "x${enable_debug_fortran}" = "xyes"; then
+    AC_MSG_NOTICE([debugging of fortran enabled; checking extra flags for it])
     AC_LANG_PUSH([Fortran 77])
-    dnl# FIXME: also add -Wimplicit-interface and -Wimplicit-procedure, but
-    dnl# they are rather noisy:
+    dnl# a few other similar flags are now also checked in m4/xorg-macros.m4
     for flag in -g -Wall -Wextra -Wsurprising -Warray-temporaries -Wcharacter-truncation -Wconversion-extra -Wfrontend-loop-interchange -Wuse-without-only -Wrealloc-lhs -Wrealloc-lhs-all; do
         case " ${FFLAGS} " in
             *\ ${flag}\ *)
@@ -665,12 +667,12 @@ case "${CXX}" in
         # clang linker expect an explict declaration
         # until the http://libcxx.llvm.org/ release, we select the GNU one.
         COMPILER_LDFLAGS="-lstdc++"
-        if test -n "${MACPORTS_PREFIX}" -a -d "${MACPORTS_PREFIX}"; then
+        AS_IF([test -n "${MACPORTS_PREFIX}" -a -d "${MACPORTS_PREFIX}"],[
           CHECK_COMPILER_ARG([C++],[-stdlib=macports-libstdc++],[CXXFLAGS],
                              [COMPILER_CXXLDFLAGS])
           AC_SUBST([COMPILER_CXXLDFLAGS])dnl
           ##TODO: use ${COMPILER_CXXLDFLAGS} somewhere
-        fi
+        ])dnl
     ;;
 esac
 
@@ -699,7 +701,7 @@ case "${CC}" in
     CODE_COVERAGE_CFLAGS="-fprofile-arcs -ftest-coverage"
    fi
 
-   if test "x${enable_debug_C}" = "xyes"; then
+   AS_IF([test "x${enable_debug_C}" = "xyes"],[
       DEBUG_CFLAGS="-pipe -Wformat -Wshadow -Wpointer-arith -Wcast-align -Wmissing-prototypes -Wmissing-declarations -Wstrict-prototypes -Wmissing-noreturn -Wendif-labels -Wpointer-arith -Wwrite-strings -Winline -Wredundant-decls -Wall -Wchar-subscripts -Wextra -Wuninitialized -Wno-format-y2k -Wmissing-format-attribute -Wno-missing-field-initializers -fno-strict-aliasing -Wold-style-definition -g3"
       # used to be -O
       # -D_FORTIFY_SOURCE=2
@@ -716,9 +718,9 @@ case "${CC}" in
       CHECK_COMPILER_ARG([C],[-Wc++-compat],[CFLAGS],[WCXX_COMPAT_CFLAGS])
       AC_SUBST([WCXX_COMPAT_CFLAGS])dnl
       ## only used conditionally
-   else
+   ],[
       DEBUG_CFLAGS="-DNDEBUG"
-   fi
+   ])dnl
 
    COMPILER_CFLAGS="-fno-stack-protector " # bug 3131
    # Explictly disable the as needed. It was disable by default but Ubuntu
@@ -860,7 +862,7 @@ case "${CC}" in
 esac
 
 # enable the code coverage
-if test "x${enable_code_coverage}" = "xyes"; then
+AS_IF([test "x${enable_code_coverage}" = "xyes"],[
    AC_PATH_PROG([LCOV],[lcov])
    if test -z "${LCOV}"; then
         AC_MSG_ERROR([Cannot find lcov. Please install it (package lcov under Debian) or remove the option --enable-code-coverage])
@@ -870,7 +872,7 @@ if test "x${enable_code_coverage}" = "xyes"; then
         AC_MSG_ERROR([Cannot find genhtml. Please install it (package lcov under Debian) or remove the option --enable-code-coverage])
    fi
    CODE_COVERAGE_LDFLAGS="-coverage"
-fi
+]) ## (need newline)
 AM_CONDITIONAL([CODE_COVERAGE],[test "x${enable_code_coverage}" = "xyes"])dnl
 
 # flag for possible compilations in configure
@@ -934,7 +936,7 @@ fi
 
 XCOS_ENABLE=no
 
-if test "x${with_xcos}" != "xno" -a "x${with_gui}" != "xno"; then
+AS_IF([test "x${with_xcos}" != "xno" -a "x${with_gui}" != "xno"],[
    AC_DEFINE([WITH_XCOS],[],[With XCOS])dnl
 
    save_LIBS="${LIBS}"
@@ -951,21 +953,21 @@ if test "x${with_xcos}" != "xno" -a "x${with_gui}" != "xno"; then
    #################
    ## ocaml which is only called when using Xcos
    #################
-   if test "x${with_modelica}" != "xno"; then
+   AS_IF([test "x${with_modelica}" != "xno"],[
       AC_CHECK_PROG_OCAML([]) dnl# from m4/ocaml.m4
-   else
+   ],[
       AC_MSG_NOTICE([modelica is disabled; skipping checks for ocaml])
-   fi
+   ]) ## (need newline)
    XCOS_ENABLE=yes
-else
-   AC_MSG_NOTICE([skipping xcos checks])
-fi
+],[
+   AC_MSG_NOTICE([skipping xcos checks])dnl
+])dnl
 
 AC_SUBST([XCOS_ENABLE])dnl
 
 AM_CONDITIONAL([OCAML],
                [test "x${with_modelica}" != "xno" -a "x${OCAMLC}" != "xno" -a "x${OCAMLOPT}" != "xno"])
-AM_CONDITIONAL([XCOS],[test "$XCOS_ENABLE" != no])dnl
+AM_CONDITIONAL([XCOS],[test "x${XCOS_ENABLE}" != "xno"])dnl
 
 ###########################
 ## test for JAVA compiler
@@ -973,7 +975,7 @@ AM_CONDITIONAL([XCOS],[test "$XCOS_ENABLE" != no])dnl
 dnl# most of these macros come from either m4/java.m4
 dnl# or m4/java-thirdparty.m4
 
-if test "x${with_javasci}" != "xno" -o "x${with_gui}" != "xno" -o "x${enable_build_help}" != "xno"; then
+AS_IF([test "x${with_javasci}" != "xno" -o "x${with_gui}" != "xno" -o "x${enable_build_help}" != "xno"],[
      # See if --with-jdk command line argument is given
      # Try to detect the installed JVM, this could be controlled
      # by the above --with options
@@ -991,7 +993,7 @@ if test "x${with_javasci}" != "xno" -o "x${with_gui}" != "xno" -o "x${enable_bui
         ;;
      esac
 
-   if test "x${ac_java_jvm_name}" = "xjdk"; then
+   AS_IF([test "x${ac_java_jvm_name}" = "xjdk"],[
         AC_MSG_NOTICE([doing jdk checks])
         JAVA_HOME=${ac_java_jvm_dir}
         JAVA_VERSION=${ac_java_jvm_version}
@@ -1190,14 +1192,14 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 AC_JAVA_CHECK_PACKAGE([fop],[org.apache.fop.pdf.PDFInfo],
                                       [XML to PDF Translator (fop)])
                 FOP=${PACKAGE_JAR_FILE}
-                if test "x${FOP}" = "x"; then
-                	test -z "$FOP"
+                AS_IF([test "x${FOP}" = "x"],[
+                	test -z "${FOP}"
                 	XORG_WITH_FOP dnl# from m4/xorg-macros.m4 (supplies the HAVE_FOP conditional)
-                else
-                	test ! -z "$FOP" && export FOP
+                ],[
+                	test -n "${FOP}" && test -x "${FOP}" && export FOP
                 	HAVE_FOP=1
                 	AC_SUBST([HAVE_FOP])
-                fi
+                ])dnl
                 AC_SUBST([FOP])dnl
 
                 # xml.apache.org SVG Library (under mandriva for example)
@@ -1206,7 +1208,7 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                                       [Apache SVG Library],["yes"])
                 BATIK=${PACKAGE_JAR_FILE}
 
-                if test -z "$BATIK"; then
+                if test -z "${BATIK}"; then
                    # Other other distribs
                    AC_JAVA_CHECK_PACKAGE([batik],
                                          [org.apache.batik.parser.Parser],
@@ -1324,20 +1326,19 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                               ["yes"])
         ASM3=${PACKAGE_JAR_FILE}
         AC_SUBST([ASM3])
-        if test -z "$ASM3"; then
+        if test -z "${ASM3}"; then
                 AC_JAVA_CHECK_PACKAGE([asm],
                               [org.objectweb.asm.Type],
                               [Java bytecode manipulation (dep of cobertura)],
                               ["yes"])
                 ASM3=${PACKAGE_JAR_FILE}
         fi
-
-    else
+    ],[
         AC_MSG_WARN([Sun javac not found: I will not build the java interface])
         if test "x${ac_java_jvm_name}" != "x"; then
             AC_MSG_WARN([We do not support $ac_java_jvm_name yet])
         fi
-    fi
+    ])dnl
     AC_SUBST([JAVA_JNI_INCLUDE])dnl
     AC_SUBST([JAVA_JNI_LIBS])dnl
     AC_SUBST([JAVA_HOME])dnl
@@ -1349,7 +1350,7 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
     fi
     AC_SUBST([JAVAC_DEBUG])dnl
 
-    if test "x${enable_build_swig}" != "xno" -a "x${enable_build_swig}" != "x"; then
+    AS_IF([test "x${enable_build_swig}" != "xno" -a "x${enable_build_swig}" != "x"],[
         dnl# these are from m4/swig.m4
         dnl# TODO: migrate to the AX_* versions of these macros
         SWIG_PROG([])
@@ -1365,7 +1366,7 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
         AC_SUBST([SWIG_CXX])dnl
         AC_SUBST([SWIG_JAVA])dnl
         ## that should be enough
-    else
+    ],[
         AC_MSG_NOTICE([skipping checks for swig])
         if test -z "${SWIG_BIN}"; then
           ## need a dummy to keep the variable from being empty, just in case:
@@ -1373,18 +1374,18 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
         fi
         dnl# make sure it is turned off if not specifically requested
         enable_build_swig=no
-    fi
+    ])dnl
 
     # Giws is the equivalent of Swig developed by the Scilab team
     # in order to provide a wrapper to Java from C/C++
-    if test "x${enable_build_giws}" != "xno" -a "x${enable_build_giws}" != "x"; then
+    AS_IF([test "x${enable_build_giws}" != "xno" -a "x${enable_build_giws}" != "x"],[
         AC_GIWS([1.3.0]) dnl# from m4/giws.m4
-    else
+    ],[
         dnl# make sure it is turned off if not specifically requested
         AC_MSG_NOTICE([skipping checks for giws])
         enable_build_giws=no
-    fi
-else
+    ])dnl
+],[
     AC_MSG_NOTICE([skipping checks for java stuff, including fop, swig, and giws])
     dnl# none of these can be turned on if Java is not turned on
     enable_build_swig=no
@@ -1398,7 +1399,7 @@ else
       ## need a dummy to keep the variable from being empty, just in case:
       SWIG_BIN=true
     fi
-fi
+])dnl
 
 JAVA_ENABLE=yes
 
@@ -2014,9 +2015,9 @@ if test "x${with_tk}" != "xno"; then
     AC_CHECK_HEADERS_ONCE([X.h Xlib.h X11/X.h])dnl
     ##
 
-    if test -z "${SELECTIVE_WERROR}"; then
+    AS_IF([test -z "${SELECTIVE_WERROR}"],[
       XORG_REQUIRE_DEFAULT_OPTIONS dnl# from above
-    fi
+    ])dnl
 
     saved_cflags="${CFLAGS}"
     saved_ldflags="${LDFLAGS}"

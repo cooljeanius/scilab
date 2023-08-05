@@ -1347,10 +1347,10 @@ else
 	XTMALLOC_ZERO_CFLAGS=""
 fi
 
-AC_SUBST([MALLOC_ZERO_CFLAGS])
-AC_SUBST([XMALLOC_ZERO_CFLAGS])
-AC_SUBST([XTMALLOC_ZERO_CFLAGS])
-]) # XORG_CHECK_MALLOC_ZERO
+AC_SUBST([MALLOC_ZERO_CFLAGS])dnl
+AC_SUBST([XMALLOC_ZERO_CFLAGS])dnl
+AC_SUBST([XTMALLOC_ZERO_CFLAGS])dnl
+])dnl# XORG_CHECK_MALLOC_ZERO
 
 # XORG_WITH_LINT()
 # ----------------
@@ -1375,11 +1375,11 @@ AC_SUBST([XTMALLOC_ZERO_CFLAGS])
 #
 AC_DEFUN([XORG_WITH_LINT],[
 
-AC_ARG_VAR([LINT], [Path to a lint-style command])
-AC_ARG_VAR([LINT_FLAGS], [Flags for the lint-style command])
-AC_ARG_WITH(lint, [AS_HELP_STRING([--with-lint],
+AC_ARG_VAR([LINT],[Path to a lint-style command])dnl
+AC_ARG_VAR([LINT_FLAGS],[Flags for the lint-style command])dnl
+AC_ARG_WITH([lint],[AS_HELP_STRING([--with-lint],
 		[Use a lint-style source code checker (default: disabled)])],
-		[use_lint=$withval], [use_lint=no])
+		[use_lint=${withval}],[use_lint=no])dnl
 
 # Obtain platform specific info like program name and options
 # The lint program on FreeBSD and NetBSD is different from the one on Solaris
@@ -1399,13 +1399,13 @@ case $host_os in
 esac
 
 # Test for the presence of the program (either guessed by the code or spelled out by the user)
-if test "x$use_lint" = x"yes" ; then
-   AC_PATH_PROG([LINT], [$lint_name])
-   if test "x$LINT" = "x"; then
+if test "x${use_lint}" = x"yes"; then
+   AC_PATH_PROG([LINT],[${lint_name}])
+   if test "x${LINT}" = "x"; then
         AC_MSG_ERROR([--with-lint=yes specified but lint-style tool not found in PATH])
    fi
-elif test "x$use_lint" = x"no" ; then
-   if test "x$LINT" != "x"; then
+elif test "x${use_lint}" = x"no" ; then
+   if test "x${LINT}" != "x"; then
       AC_MSG_WARN([ignoring LINT environment variable since --with-lint=no was specified])
    fi
 else
@@ -1413,14 +1413,14 @@ else
 fi
 
 # User supplied flags override default flags
-if test "x$LINT_FLAGS" != "x"; then
-   lint_options=$LINT_FLAGS
+if test "x${LINT_FLAGS}" != "x"; then
+   lint_options=${LINT_FLAGS}
 fi
 
-AC_SUBST([LINT_FLAGS],[$lint_options])
-AM_CONDITIONAL(LINT, [test "x$LINT" != x])
+AC_SUBST([LINT_FLAGS],[${lint_options}])dnl
+AM_CONDITIONAL([LINT],[test "x${LINT}" != "x"])dnl
 
-]) # XORG_WITH_LINT
+])dnl# XORG_WITH_LINT
 
 # XORG_LINT_LIBRARY(LIBNAME)
 # --------------------------
@@ -1437,24 +1437,24 @@ AM_CONDITIONAL(LINT, [test "x$LINT" != x])
 #			  - 'no' user instructs the module not to create a lint library (default)
 
 AC_DEFUN([XORG_LINT_LIBRARY],[
-AC_REQUIRE([XORG_WITH_LINT])
-AC_ARG_ENABLE(lint-library, [AS_HELP_STRING([--enable-lint-library],
+AC_REQUIRE([XORG_WITH_LINT])dnl
+AC_ARG_ENABLE([lint-library],[AS_HELP_STRING([--enable-lint-library],
 	[Create lint library (default: disabled)])],
-	[make_lint_lib=$enableval], [make_lint_lib=no])
+	[make_lint_lib=${enableval}],[make_lint_lib=no])dnl
 
-if test "x$make_lint_lib" = x"yes" ; then
+if test "x${make_lint_lib}" = x"yes"; then
    LINTLIB=llib-l$1.ln
-   if test "x$LINT" = "x"; then
+   if test "x${LINT}" = "x"; then
         AC_MSG_ERROR([Cannot make lint library without --with-lint])
    fi
-elif test "x$make_lint_lib" != x"no" ; then
+elif test "x${make_lint_lib}" != x"no"; then
    AC_MSG_ERROR([--enable-lint-library expects 'yes' or 'no'.])
 fi
 
-AC_SUBST(LINTLIB)
-AM_CONDITIONAL(MAKE_LINT_LIB, [test x$make_lint_lib != xno])
+AC_SUBST([LINTLIB])dnl
+AM_CONDITIONAL([MAKE_LINT_LIB],[test "x${make_lint_lib}" != "xno"])dnl
 
-]) # XORG_LINT_LIBRARY
+])dnl# XORG_LINT_LIBRARY
 
 # XORG_COMPILER_BRAND
 # -------------------
@@ -1467,16 +1467,16 @@ AM_CONDITIONAL(MAKE_LINT_LIB, [test x$make_lint_lib != xno])
 #   Intel compiler - sets INTELCC to "yes"
 #   Sun/Oracle Solaris Studio cc - sets SUNCC to "yes"
 #
-AC_DEFUN([XORG_COMPILER_BRAND], [
+AC_DEFUN([XORG_COMPILER_BRAND],[
 AC_LANG_CASE([C],[
-	AC_REQUIRE([AC_PROG_CC_C99])
+	AC_REQUIRE([AC_PROG_CC_C99])dnl
 ],[C++],[
-	AC_REQUIRE([AC_PROG_CXX])
-])
-AC_CHECK_DECL([__clang__], [CLANGCC="yes"], [CLANGCC="no"])
-AC_CHECK_DECL([__INTEL_COMPILER], [INTELCC="yes"], [INTELCC="no"])
-AC_CHECK_DECL([__SUNPRO_C], [SUNCC="yes"], [SUNCC="no"])
-]) # XORG_COMPILER_BRAND
+	AC_REQUIRE([AC_PROG_CXX])dnl
+])dnl
+AC_CHECK_DECL([__clang__],[CLANGCC="yes"],[CLANGCC="no"])dnl
+AC_CHECK_DECL([__INTEL_COMPILER],[INTELCC="yes"],[INTELCC="no"])dnl
+AC_CHECK_DECL([__SUNPRO_C],[SUNCC="yes"],[SUNCC="no"])dnl
+])dnl# XORG_COMPILER_BRAND
 
 # XORG_TESTSET_CFLAG(<variable>, <flag>, [<alternative flag>, ...])
 # ---------------
@@ -1498,18 +1498,18 @@ m4_if([$#], 1, [m4_fatal([XORG_TESTSET_CFLAG was given with an unsupported numbe
 AC_LANG_COMPILER_REQUIRE
 
 AC_LANG_CASE([C],[
-	AC_REQUIRE([AC_PROG_CC_C99])
-	define([PREFIX], [C])
-	define([CACHE_PREFIX], [cc])
-	define([COMPILER], [$CC])
+	AC_REQUIRE([AC_PROG_CC_C99])dnl
+	define([PREFIX],[C])dnl
+	define([CACHE_PREFIX],[cc])dnl
+	define([COMPILER],[${CC}])dnl
 ],[C++],[
-	define([PREFIX], [CXX])
-	define([CACHE_PREFIX], [cxx])
-	define([COMPILER], [$CXX])
+	define([PREFIX],[CXX])dnl
+	define([CACHE_PREFIX],[cxx])dnl
+	define([COMPILER],[${CXX}])dnl
 ],[Fortran 77],[
-	define([PREFIX], [F77])
-	define([CACHE_PREFIX], [f77])
-	define([COMPILER], [$F77])
+	define([PREFIX],[F77])dnl
+	define([CACHE_PREFIX],[f77])dnl
+	define([COMPILER],[${F77}])dnl
 ])dnl
 
 [xorg_testset_save_]PREFIX[FLAGS]="$PREFIX[FLAGS]"
@@ -1611,17 +1611,17 @@ AC_ARG_ENABLE([selective-werror],
               [SELECTIVE_WERROR=yes])dnl
 
 AC_LANG_CASE([C],[
-    define([PREFIX],[C])
-    define([WERROR_WRITE_STRINGS_CV],[xorg_cv_cc_flag__Werror_write_strings])
+    define([PREFIX],[C])dnl
+    define([WERROR_WRITE_STRINGS_CV],[xorg_cv_cc_flag__Werror_write_strings])dnl
 ],[C++],[
-    define([PREFIX],[CXX])
-    define([WERROR_WRITE_STRINGS_CV],[xorg_cv_cxx_flag__Werror_write_strings])
+    define([PREFIX],[CXX])dnl
+    define([WERROR_WRITE_STRINGS_CV],[xorg_cv_cxx_flag__Werror_write_strings])dnl
 ],[Fortran 77],[
-    define([PREFIX],[F])
-    define([WERROR_WRITE_STRINGS_CV],[xorg_cv_f77_flag__Werror_write_strings])
-])
-# -v is too short to test reliably with XORG_TESTSET_CFLAG
-if test "x$SUNCC" = "xyes"; then
+    define([PREFIX],[F])dnl
+    define([WERROR_WRITE_STRINGS_CV],[xorg_cv_f77_flag__Werror_write_strings])dnl
+])dnl
+# -v is too short to test reliably with XORG_TESTSET_CFLAG:
+if test "x${SUNCC}" = "xyes"; then
     [BASE_]PREFIX[FLAGS]="-v"
 else
     [BASE_]PREFIX[FLAGS]=""
@@ -1693,7 +1693,7 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wparentheses-equality])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Winvalid-noreturn])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wloop-analysis], [-Wfor-loop-analysis])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wunreachable-code-loop-increment])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wtautological-pointer-compare], [-Wtautological-compare])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wtautological-pointer-compare], [-Wtautological-compare])dnl
 
 AC_REQUIRE([AC_C_VARARRAYS])dnl
 
@@ -1724,9 +1724,10 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=return-type], [-errwarn=E_FU
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=trigraphs])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=array-bounds], [-Werror=array-compare])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=write-strings], [-Werror=incompatible-pointer-types-discards-qualifier])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=address])
-AC_REQUIRE([AC_TYPE_INTPTR_T])
-AC_REQUIRE([AC_TYPE_UINTPTR_T])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=address])dnl
+AC_REQUIRE([AC_TYPE_INTPTR_T])dnl
+AC_REQUIRE([AC_TYPE_UINTPTR_T])dnl
+# conditionalize on whether silencing is easily possible:
 if test "x${ac_cv_type_intptr_t}" = "xyes" -a "x${ac_cv_type_uintptr_t}" = "xyes"; then
   if test -n "${ac_cv_sizeof_int}" -a -n "${ac_cv_sizeof_void_p}"; then
     if test "x${ac_cv_sizeof_int}" != "x${ac_cv_sizeof_void_p}"; then
@@ -1845,28 +1846,26 @@ AC_SUBST([BASE_]PREFIX[FLAGS])
 # is needed, then it should be added explicitly in the module when
 # it is updated to use BASE_CFLAGS.
 #
-AC_DEFUN([XORG_CWARNFLAGS], [
-AC_REQUIRE([AC_TYPE_INTPTR_T])
-AC_REQUIRE([AC_TYPE_UINTPTR_T])
-AC_REQUIRE([XORG_COMPILER_FLAGS])
-AC_REQUIRE([XORG_COMPILER_BRAND])
-AC_LANG_CASE(
-	[C], [
-		CWARNFLAGS="$BASE_CFLAGS"
-		if  test "x$GCC" = xyes ; then
-		    CWARNFLAGS="$CWARNFLAGS -fno-strict-aliasing"
+AC_DEFUN([XORG_CWARNFLAGS],[
+AC_REQUIRE([AC_TYPE_INTPTR_T])dnl
+AC_REQUIRE([AC_TYPE_UINTPTR_T])dnl
+AC_REQUIRE([XORG_COMPILER_FLAGS])dnl
+AC_REQUIRE([XORG_COMPILER_BRAND])dnl
+AC_LANG_CASE([C],[
+		CWARNFLAGS="${BASE_CFLAGS}"
+		if  test "x${GCC}" = "xyes"; then
+		    CWARNFLAGS="${CWARNFLAGS} -fno-strict-aliasing"
 		fi
-		AC_SUBST(CWARNFLAGS)
-	]
-)
-]) # XORG_CWARNFLAGS
+		AC_SUBST([CWARNFLAGS])dnl
+	])dnl
+])dnl# XORG_CWARNFLAGS
 
 # XORG_CXXWARNFLAGS
 AC_DEFUN([XORG_CXXWARNFLAGS],[
-AC_REQUIRE([AC_TYPE_INTPTR_T])
-AC_REQUIRE([AC_TYPE_UINTPTR_T])
-AC_REQUIRE([XORG_COMPILER_BRAND])
-AC_LANG_PUSH([C++])
+AC_REQUIRE([AC_TYPE_INTPTR_T])dnl
+AC_REQUIRE([AC_TYPE_UINTPTR_T])dnl
+AC_REQUIRE([XORG_COMPILER_BRAND])dnl
+AC_LANG_PUSH([C++])dnl
 XORG_COMPILER_FLAGS
 AC_LANG_CASE([C++],[
 CXXWARNFLAGS="${BASE_CXXFLAGS}"
@@ -1875,19 +1874,19 @@ if  test "x${GCC}" = "xyes"; then
 fi
 AC_SUBST([CXXWARNFLAGS])dnl
 ])dnl
-AC_LANG_POP([C++])
+AC_LANG_POP([C++])dnl
 ])dnl# XORG_CXXWARNFLAGS
 
 # XORG_F77WARNFLAGS
 AC_DEFUN([XORG_F77WARNFLAGS],[
-AC_REQUIRE([XORG_COMPILER_BRAND])
-AC_LANG_PUSH([Fortran 77])
+AC_REQUIRE([XORG_COMPILER_BRAND])dnl
+AC_LANG_PUSH([Fortran 77])dnl
 XORG_COMPILER_FLAGS
 AC_LANG_CASE([Fortran 77],[
 F77WARNFLAGS="${BASE_F77FLAGS}"
 AC_SUBST([F77WARNFLAGS])dnl
 ])dnl
-AC_LANG_POP([Fortran 77])
+AC_LANG_POP([Fortran 77])dnl
 ])dnl# XORG_F77WARNFLAGS
 
 # XORG_STRICT_OPTION
@@ -1901,40 +1900,37 @@ AC_LANG_POP([Fortran 77])
 #
 # Starting in 1.14.0 also exports $STRICT_CFLAGS for use in other tests or
 # when strict compilation is unconditionally desired.
-AC_DEFUN([XORG_STRICT_OPTION], [
-AC_REQUIRE([XORG_CWARNFLAGS])
-AC_REQUIRE([XORG_COMPILER_FLAGS])
+AC_DEFUN([XORG_STRICT_OPTION],[
+AC_REQUIRE([XORG_CWARNFLAGS])dnl
+AC_REQUIRE([XORG_COMPILER_FLAGS])dnl
 
-AC_ARG_ENABLE(strict-compilation,
-			  AS_HELP_STRING([--enable-strict-compilation],
-			  [Enable all warnings from compiler and make them errors (default: disabled)]),
-			  [STRICT_COMPILE=$enableval], [STRICT_COMPILE=no])
+AC_ARG_ENABLE([strict-compilation],
+			  [AS_HELP_STRING([--enable-strict-compilation],
+			  [Enable all warnings from compiler and make them errors (default: disabled)])],
+			  [STRICT_COMPILE=${enableval}],[STRICT_COMPILE=no])dnl
 
-AC_LANG_CASE(
-        [C], [
-                define([PREFIX], [C])
-        ],
-        [C++], [
-                define([PREFIX], [CXX])
-        ]
-)
+AC_LANG_CASE([C],[
+        define([PREFIX],[C])dnl
+],[C++],[
+        define([PREFIX],[CXX])dnl
+])dnl
 
 [STRICT_]PREFIX[FLAGS]=""
 XORG_TESTSET_CFLAG([[STRICT_]PREFIX[FLAGS]], [-pedantic])
-XORG_TESTSET_CFLAG([[STRICT_]PREFIX[FLAGS]], [-Werror], [-errwarn])
+XORG_TESTSET_CFLAG([[STRICT_]PREFIX[FLAGS]], [-Werror], [-errwarn])dnl
 
 # Earlier versions of gcc (eg: 4.2) support -Werror=attributes, but do not
 # activate it with -Werror, so we add it here explicitly.
-XORG_TESTSET_CFLAG([[STRICT_]PREFIX[FLAGS]], [-Werror=attributes])
+XORG_TESTSET_CFLAG([[STRICT_]PREFIX[FLAGS]], [-Werror=attributes])dnl
 
-if test "x$STRICT_COMPILE" = "xyes"; then
+if test "x${STRICT_COMPILE}" = "xyes"; then
     [BASE_]PREFIX[FLAGS]="$[BASE_]PREFIX[FLAGS] $[STRICT_]PREFIX[FLAGS]"
-    AC_LANG_CASE([C], [CWARNFLAGS="$CWARNFLAGS $STRICT_CFLAGS"])
+    AC_LANG_CASE([C],[CWARNFLAGS="${CWARNFLAGS} ${STRICT_CFLAGS}"])
 fi
-AC_SUBST([STRICT_]PREFIX[FLAGS])
-AC_SUBST([BASE_]PREFIX[FLAGS])
-AC_LANG_CASE([C], AC_SUBST([CWARNFLAGS]))
-]) # XORG_STRICT_OPTION
+AC_SUBST([STRICT_]PREFIX[FLAGS])dnl
+AC_SUBST([BASE_]PREFIX[FLAGS])dnl
+AC_LANG_CASE([C],[AC_SUBST([CWARNFLAGS])])dnl
+])dnl# XORG_STRICT_OPTION
 
 # XORG_DEFAULT_OPTIONS
 # --------------------
@@ -1942,8 +1938,8 @@ AC_LANG_CASE([C], AC_SUBST([CWARNFLAGS]))
 #
 # Defines default options for X.Org modules.
 #
-AC_DEFUN([XORG_DEFAULT_OPTIONS], [
-AC_REQUIRE([AC_PROG_INSTALL])
+AC_DEFUN([XORG_DEFAULT_OPTIONS],[
+AC_REQUIRE([AC_PROG_INSTALL])dnl
 XORG_COMPILER_FLAGS
 XORG_CWARNFLAGS
 XORG_STRICT_OPTION
@@ -1951,9 +1947,9 @@ XORG_RELEASE_VERSION
 XORG_CHANGELOG
 XORG_INSTALL
 XORG_MANPAGE_SECTIONS
-m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])],
-    [AC_SUBST([AM_DEFAULT_VERBOSITY], [1])])
-]) # XORG_DEFAULT_OPTIONS
+m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])],
+    [AC_SUBST([AM_DEFAULT_VERBOSITY],[1])])dnl
+])dnl # XORG_DEFAULT_OPTIONS
 
 # XORG_INSTALL()
 # ----------------
@@ -1962,15 +1958,15 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])],
 # Defines the variable INSTALL_CMD as the command to copy
 # INSTALL from $prefix/share/util-macros.
 #
-AC_DEFUN([XORG_INSTALL], [
+AC_DEFUN([XORG_INSTALL],[
 AC_REQUIRE([PKG_PROG_PKG_CONFIG])
-macros_datadir=`$PKG_CONFIG --print-errors --variable=pkgdatadir xorg-macros`
-INSTALL_CMD="(cp -f "$macros_datadir/INSTALL" \$(top_srcdir)/.INSTALL.tmp && \
+macros_datadir=`${PKG_CONFIG} --print-errors --variable=pkgdatadir xorg-macros`
+INSTALL_CMD="(cp -f "${macros_datadir}/INSTALL" \$(top_srcdir)/.INSTALL.tmp && \
 mv \$(top_srcdir)/.INSTALL.tmp \$(top_srcdir)/INSTALL) \
 || (rm -f \$(top_srcdir)/.INSTALL.tmp; touch \$(top_srcdir)/INSTALL; \
 echo 'util-macros \"pkgdatadir\" from xorg-macros.pc not found: installing possibly empty INSTALL.' >&2)"
-AC_SUBST([INSTALL_CMD])
-]) # XORG_INSTALL
+AC_SUBST([INSTALL_CMD])dnl
+])dnl# XORG_INSTALL
 dnl Copyright 2005 Red Hat, Inc
 dnl
 dnl Permission to use, copy, modify, distribute, and sell this software and its
@@ -2002,23 +1998,23 @@ dnl
  
 AC_DEFUN([XORG_RELEASE_VERSION],[
 	AC_DEFINE_UNQUOTED([PACKAGE_VERSION_MAJOR],
-		[`echo $PACKAGE_VERSION | cut -d . -f 1`],
+		[`echo ${PACKAGE_VERSION} | cut -d . -f 1`],
 		[Major version of this package])
-	PVM=`echo $PACKAGE_VERSION | cut -d . -f 2 | cut -d - -f 1`
-	if test "x$PVM" = "x"; then
+	PVM=`echo ${PACKAGE_VERSION} | cut -d . -f 2 | cut -d - -f 1`
+	if test "x${PVM}" = "x"; then
 		PVM="0"
 	fi
 	AC_DEFINE_UNQUOTED([PACKAGE_VERSION_MINOR],
-		[$PVM],
+		[${PVM}],
 		[Minor version of this package])
-	PVP=`echo $PACKAGE_VERSION | cut -d . -f 3 | cut -d - -f 1`
-	if test "x$PVP" = "x"; then
+	PVP=`echo ${PACKAGE_VERSION} | cut -d . -f 3 | cut -d - -f 1`
+	if test "x${PVP}" = "x"; then
 		PVP="0"
 	fi
 	AC_DEFINE_UNQUOTED([PACKAGE_VERSION_PATCHLEVEL],
-		[$PVP],
-		[Patch version of this package])
-])
+		[${PVP}],
+		[Patch version of this package])dnl
+])dnl# XORG_RELEASE_VERSION
 
 # XORG_CHANGELOG()
 # ----------------
@@ -2033,5 +2029,5 @@ CHANGELOG_CMD="(GIT_DIR=\$(top_srcdir)/.git git log > \$(top_srcdir)/.changelog.
 mv \$(top_srcdir)/.changelog.tmp \$(top_srcdir)/ChangeLog) \
 || (rm -f \$(top_srcdir)/.changelog.tmp; touch \$(top_srcdir)/ChangeLog; \
 echo 'git directory not found: installing possibly empty changelog.' >&2)"
-AC_SUBST([CHANGELOG_CMD])
-]) # XORG_CHANGELOG
+AC_SUBST([CHANGELOG_CMD])dnl
+])dnl # XORG_CHANGELOG

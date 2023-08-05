@@ -173,7 +173,7 @@ AC_ARG_ENABLE([build-giws],
 ################################################
 
 AC_MSG_CHECKING([programs, especially compilers])
-AC_MSG_RESULT([ ])
+AC_MSG_RESULT([ ])dnl
 
 AM_PROG_AR dnl# automake1.14 warns if this macro is missing
 AM_PROG_AS
@@ -1625,19 +1625,19 @@ AC_TYPE_INT8_T
 AC_TYPE_INT16_T
 AC_TYPE_INT32_T
 AC_TYPE_INT64_T
-if test "x${ac_cv_type_intptr_t}" = "x"; then
+AS_IF([test "x${ac_cv_type_intptr_t}" = "x"],[
   test -z "${ac_cv_type_intptr_t}"
   AC_TYPE_INTPTR_T
-fi
+]) ## (need newline)
 AC_TYPE_SSIZE_T
 AC_TYPE_UINT8_T
 AC_TYPE_UINT16_T
 AC_TYPE_UINT32_T
 AC_TYPE_UINT64_T
-if test "x${ac_cv_type_uintptr_t}" = "x"; then
+AS_IF([test "x${ac_cv_type_uintptr_t}" = "x"],[
   test -z "${ac_cv_type_uintptr_t}"
   AC_TYPE_UINTPTR_T
-fi
+]) ## (need newline)
 AC_CHECK_TYPES([clock_t],[
   AC_CHECK_SIZEOF([clock_t])dnl
   AC_CHECK_ALIGNOF([clock_t])dnl
@@ -1767,14 +1767,14 @@ AC_ARG_WITH([fftw],
                     [Disable the interface to the FFTW 3 library])])dnl
 
 FFTW_ENABLE=no
-if test "x${with_fftw}" != "xno"; then
+AS_IF([test "x${with_fftw}" != "xno"],[
    AC_FFTW([]) dnl# from m4/fftw.m4
    FFTW_ENABLE=yes
-else
+],[
    AC_MSG_NOTICE([skipping checks for fftw])
-fi
+])dnl
 
-AC_SUBST([FFTW_ENABLE])
+AC_SUBST([FFTW_ENABLE])dnl
 AM_CONDITIONAL([FFTW],[test "x${with_fftw}" != "xno"])dnl
 
 #################
@@ -1786,7 +1786,7 @@ AC_ARG_WITH([openmp],
                     [Disable the usage of OpenMP (parallelization of some algoritms)])])dnl
 
 OPENMP_ENABLE=no
-if test "x${with_openmp}" != "xno"; then
+AS_IF([test "x${with_openmp}" != "xno"],[
     AC_OPENMP
     export PRE_OPENMP_LIBS="${LIBS}"
     AC_SUBST([PRE_OPENMP_LIBS])
@@ -1804,9 +1804,9 @@ if test "x${with_openmp}" != "xno"; then
                        [Header to include for OpenMP])dnl
 
     OPENMP_ENABLE=yes
-else
+],[
     AC_MSG_NOTICE([skipping checks for openmp])
-fi
+])dnl
 AC_SUBST([OPENMP_ENABLE])dnl
 AC_SUBST([OPENMP_CFLAGS])dnl
 AC_SUBST([OPENMP_CXXFLAGS])dnl
@@ -1904,7 +1904,7 @@ AC_ARG_WITH([arpack-ng],
                     [Disable the interface to ARPACK-NG])])dnl
 
 ARPACK_NG=no
-if test "x${with_arpack_ng}" != "xno"; then
+AS_IF([test "x${with_arpack_ng}" != "xno"],[
    ARPACK_NG=yes
    AC_MSG_CHECKING([if ARPACK-NG is available])
 echo ""
@@ -1915,10 +1915,10 @@ ACX_ARPACK([AC_MSG_RESULT([ARPACK-NG library found])],
 CHECK_ARPACK_OK([AC_MSG_RESULT([Working ARPACK-NG library found (probably ARPACK-NG or a patched version of ARPACK)])],
 [AC_MSG_ERROR([ARPACK library found, but seems not to work properly. Please make sure you are using arpack-ng, or use the --without-arpack-ng flag to disable this error.])
 ])
-else
+],[
    AC_MSG_CHECKING([... actually nope, not checking this (skip ARPACK-NG detection)])
    AC_MSG_RESULT([ ])
-fi
+])dnl
 
 AM_CONDITIONAL([ARPACK_NG],[test "x${ARPACK_NG}" != "xno"])dnl
 
@@ -1931,12 +1931,12 @@ AC_ARG_WITH([umfpack],
                     [Disable the interface to the UMFPACK library])])dnl
 
 UMFPACK_ENABLE=no
-if test "x${with_umfpack}" != "xno"; then
+AS_IF([test "x${with_umfpack}" != "xno"],[
    AC_UMFPACK([${BLAS_LIBS}]) dnl# from m4/umfpack.m4
    UMFPACK_ENABLE=yes
-else
+],[
    AC_MSG_NOTICE([skipping checks for umfpack])
-fi
+])dnl
 
 AC_SUBST([UMFPACK_ENABLE])dnl
 AM_CONDITIONAL([UMFPACK],[test "x${with_umfpack}" != "xno"])dnl
@@ -1956,7 +1956,7 @@ AC_DEFUN([XORG_REQUIRE_DEFAULT_OPTIONS],[
 ])dnl
 
 WITH_TKSCI=no
-if test "x${with_tk}" != "xno"; then
+AS_IF([test "x${with_tk}" != "xno"],[
    if test "$MACOSX" = "1"; then
       AC_MSG_WARN([Due to technical constraints, Tcl/Tk ought to be disabled under Mac OS X (--without-tk)])
       AC_MSG_NOTICE([(this ought to be an error, but continuing anyways just for fun)])
@@ -2036,10 +2036,11 @@ if test "x${with_tk}" != "xno"; then
     AC_SUBST([TCL_INC_PATH])dnl
     AC_SUBST([TK_INC_PATH])dnl
     ## TK = OK
-else
+],[
     AC_MSG_NOTICE([skipping checks for tk])
-fi
-AC_SUBST([WITH_TKSCI])
+])dnl
+  ## relevant variable:
+AC_SUBST([WITH_TKSCI])dnl
 AM_CONDITIONAL([TCLTK],[test "x${WITH_TKSCI}" = "xyes"])dnl
 
 #################
@@ -2451,12 +2452,13 @@ AH_BOTTOM([
 ])dnl
 
 # Define the standard extension of a dynamic library
-export shrext_cmds=$(echo "${shrext_cmds}")
-AC_DEFINE_UNQUOTED([SHARED_LIB_EXT],["${shrext_cmds}"],
+eval shrext_cmds_for_def=${shrext_cmds}
+AC_DEFINE_UNQUOTED([SHARED_LIB_EXT],["${shrext_cmds_for_def}"],
                    [Extension of a shared library])dnl
-AC_DEFINE_UNQUOTED([SHARED_LIB_EXTW],[L"${shrext_cmds}"],
+AC_DEFINE_UNQUOTED([SHARED_LIB_EXTW],[L"${shrext_cmds_for_def}"],
                    [Extension of a shared library (wide string)])dnl
 AC_SUBST([shrext_cmds])dnl
+AC_SUBST([shrext_cmds_for_def])dnl
 
 #################
 ## stop on warning
@@ -2953,7 +2955,11 @@ echo ""
 echo "Libtool config:"
 echo "  objext .............. = $objext"
 echo "  libext (static) ..... = $libext"
-echo "  shrext_cmds ......... = $shrext_cmds"
+if test "x${shrext_cmds}" != "x${shrext_cmds_for_def}"; then
+	echo "  shrext_cmds ......... = $shrext_cmds ($shrext_cmds_for_def for the preprocessor)"
+else
+	echo "  shrext_cmds ......... = $shrext_cmds"
+fi
 echo "  exeext .............. = $exeext"
 
 echo ""

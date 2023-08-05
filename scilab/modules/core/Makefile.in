@@ -1166,6 +1166,7 @@ runstatedir = @runstatedir@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 shrext_cmds = @shrext_cmds@
+shrext_cmds_for_def = @shrext_cmds_for_def@
 srcdir = @srcdir@
 sysconfdir = @sysconfdir@
 target = @target@

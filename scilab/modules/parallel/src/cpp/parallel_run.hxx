@@ -210,7 +210,7 @@ template< typename ParallelWrapper> struct scheduler
         {
             p = 0;
         }
-        w.prologue(p);
+        w.prologue((int)p);
         for (workshare_t ws(init_ws[p]); ws.first != ws.second; ws = getWork())
         {
             for (std::size_t i(ws.first); i != ws.second; ++i)
@@ -219,7 +219,7 @@ template< typename ParallelWrapper> struct scheduler
             }
         }
         out_of_work.post();
-        w.epilogue(p);
+        w.epilogue((int)p);
         if (p)
         {
             exit(EXIT_SUCCESS); // does not call destructor which is good :)

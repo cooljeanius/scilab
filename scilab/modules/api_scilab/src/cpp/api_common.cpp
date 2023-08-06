@@ -112,6 +112,11 @@ int checkInputArgument(void* _pvCtx, int _iMin, int _iMax)
                  (static_cast<StrCtx *>(_pvCtx))->pstName, _iMin, _iMax);
     }
 
+    if (sciErr.iErr != sciErr.iMsgCount)
+    {
+        (void)sciErr; /* FIXME: TODO: something here */
+    }
+
     return 0;
 }
 

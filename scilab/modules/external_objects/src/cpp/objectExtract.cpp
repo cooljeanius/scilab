@@ -19,7 +19,7 @@ int ScilabGateway::objectExtract(char * fname, const int envId, void * pvApiCtx)
 {
     SciErr err;
     char * fieldName = 0;
-    int tmpvar[2] = {0, 0};
+    int tmpvar_arr[2] = {0, 0};
     int * addr = 0;
     int * tab = 0;
     int idObj = 0;
@@ -43,7 +43,7 @@ int ScilabGateway::objectExtract(char * fname, const int envId, void * pvApiCtx)
     options.setIsNew(false);
     const int inc = helper.getUseScilabIndex() ? -1 : 0;
 
-    idObj = ScilabObjects::getArgumentId(addr, tmpvar, false, false, eId, pvApiCtx);
+    idObj = ScilabObjects::getArgumentId(addr, tmpvar_arr, false, false, eId, pvApiCtx);
 
     /*
      * If all the parameters are integer, we can guess that a matrix extraction is expected
@@ -55,7 +55,7 @@ int ScilabGateway::objectExtract(char * fname, const int envId, void * pvApiCtx)
         err = getVarAddressFromPosition(pvApiCtx, i, &addr);
         if (err.iErr)
         {
-            ScilabObjects::removeTemporaryVars(eId, tmpvar);
+            ScilabObjects::removeTemporaryVars(eId, tmpvar_arr);
             throw ScilabAbstractEnvironmentException(__LINE__, __FILE__, gettext("Invalid variable: cannot retrieve the data"));
         }
         tab[i - 1] = ScilabObjects::isPositiveIntegerAtAddress(addr, pvApiCtx);
@@ -68,7 +68,7 @@ int ScilabGateway::objectExtract(char * fname, const int envId, void * pvApiCtx)
         tab[i - 1] += inc;
     }
 
-    ScilabObjects::removeTemporaryVars(eId, tmpvar);
+    ScilabObjects::removeTemporaryVars(eId, tmpvar_arr);
 
     if (tab)
     {
@@ -114,9 +114,9 @@ int ScilabGateway::objectExtract(char * fname, const int envId, void * pvApiCtx)
 
         if (type == -1)
         {
-            int * args = new int[Rhs - 1];
-            int * tmpvar = new int[Rhs];
-            *tmpvar = 0;
+            int *args = new int[Rhs - 1];
+            int *tmpvar_ptr = new int[Rhs];
+            *tmpvar_ptr = 0;
 
             for (int i = 0; i < Rhs - 1; i++)
             {
@@ -125,19 +125,19 @@ int ScilabGateway::objectExtract(char * fname, const int envId, void * pvApiCtx)
                 err = getVarAddressFromPosition(pvApiCtx, i + 1, &laddr);
                 if (err.iErr)
                 {
-                    ScilabObjects::removeTemporaryVars(eId, tmpvar);
-                    delete[] tmpvar;
+                    ScilabObjects::removeTemporaryVars(eId, tmpvar_ptr);
+                    delete[] tmpvar_ptr;
                     delete[] args;
                     throw ScilabAbstractEnvironmentException(__LINE__, __FILE__, gettext("Invalid variable: cannot retrieve the data"));
                 }
 
                 try
                 {
-                    args[i] = ScilabObjects::getArgumentId(laddr, tmpvar, false, false, eId, pvApiCtx);
+                    args[i] = ScilabObjects::getArgumentId(laddr, tmpvar_ptr, false, false, eId, pvApiCtx);
                 }
                 catch (ScilabAbstractEnvironmentException & e)
                 {
-                    delete[] tmpvar;
+                    delete[] tmpvar_ptr;
                     delete[] args;
                     throw;
                 }
@@ -149,14 +149,14 @@ int ScilabGateway::objectExtract(char * fname, const int envId, void * pvApiCtx)
             }
             catch (std::exception & e)
             {
-                ScilabObjects::removeTemporaryVars(eId, tmpvar);
-                delete[] tmpvar;
+                ScilabObjects::removeTemporaryVars(eId, tmpvar_ptr);
+                delete[] tmpvar_ptr;
                 delete[] args;
                 throw;
             }
 
-            ScilabObjects::removeTemporaryVars(eId, tmpvar);
-            delete[] tmpvar;
+            ScilabObjects::removeTemporaryVars(eId, tmpvar_ptr);
+            delete[] tmpvar_ptr;
             delete[] args;
         }
         else

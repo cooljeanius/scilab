@@ -61,10 +61,18 @@ typedef int (*Myinterfun) (char *, GatefuncH F);
 
 /* GT needs to be allowed to match function pointers with different numbers of
  * parameters: */
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wstrict-prototypes"
+#if defined(__GNUC__) && defined(__GNUC_MINOR__) && !defined(__cplusplus)
+# if (__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ >= 6))
+#  pragma GCC diagnostic push
+#  pragma GCC diagnostic ignored "-Wstrict-prototypes"
+# endif /* gcc 4.6+ */
+#endif /* GCC (non-c++) */
 typedef int (*GT)();
-#pragma GCC diagnostic pop
+#if defined(__GNUC__) && defined(__GNUC_MINOR__) && !defined(__cplusplus)
+# if (__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ >= 6))
+#  pragma GCC diagnostic pop
+# endif /* gcc 4.6+ */
+#endif /* GCC (non-c++) */
 
 #ifndef __DEF_TABLE_STRUCT__
 #define __DEF_TABLE_STRUCT__

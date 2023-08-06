@@ -14756,10 +14756,6 @@ fi
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -14927,10 +14923,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -15041,10 +15033,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -15218,10 +15206,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -15332,10 +15316,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -15457,10 +15437,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -15573,10 +15549,6 @@ printf "%s\n" "$supported" >&6; }
 	fi
 
 	fi
-
-
-
-
 
 
 
@@ -15854,10 +15826,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -15968,10 +15936,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -16144,10 +16108,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -16258,10 +16218,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -16382,10 +16338,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -16496,10 +16448,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -16620,10 +16568,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -16739,10 +16683,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -16853,10 +16793,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -17134,10 +17070,6 @@ if test "x${STRICT_COMPILE}" != "xyes"; then
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -17302,10 +17234,6 @@ printf "%s\n" "$supported" >&6; }
 	fi
 
 else
-
-
-
-
 
 
 
@@ -17478,10 +17406,6 @@ fi
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -17644,10 +17568,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -17820,10 +17740,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -17934,10 +17850,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -18058,10 +17970,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -18172,10 +18080,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -18296,10 +18200,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -18410,10 +18310,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -18534,10 +18430,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -18648,10 +18540,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -18772,10 +18660,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -18886,10 +18770,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -19010,10 +18890,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -19124,10 +19000,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -19248,10 +19120,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -19362,10 +19230,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -19486,10 +19350,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -19605,10 +19465,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -19719,10 +19575,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -19895,10 +19747,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -20009,10 +19857,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -20187,10 +20031,6 @@ if test "x${ac_cv_c_vararrays}" = "xno"; then
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -20359,10 +20199,6 @@ elif test "x${ac_cv_c_vararrays}" = "xyes"; then
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -20488,10 +20324,6 @@ if test "x${SELECTIVE_WERROR}" = "xyes"; then
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -20602,10 +20434,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -20778,10 +20606,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -20892,10 +20716,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -21016,10 +20836,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -21130,10 +20946,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -21306,10 +21118,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -21477,10 +21285,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -21591,10 +21395,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -21767,10 +21567,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -21881,62 +21677,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-	if test $found = "no" ; then
-		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			## for clang
-			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
-		fi
-
-		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			## for clang
-			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
-		fi
-
-		CFLAGS="$CFLAGS -Werror=incompatible-pointer-types-discards-qualifier"
-
-		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports -Werror=incompatible-pointer-types-discards-qualifier" >&5
-printf %s "checking if ${CC} supports -Werror=incompatible-pointer-types-discards-qualifier... " >&6; }
-		cacheid=xorg_cv_cc_flag__Werror_incompatible_pointer_types_discards_qualifier
-		if eval test \${$cacheid+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-int i;
-int
-main (void)
-{
-
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  eval $cacheid=yes
-else $as_nop
-  eval $cacheid=no
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-fi
-
-		CFLAGS="$xorg_testset_save_CFLAGS"
-
-		eval supported=\$$cacheid
-		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
-printf "%s\n" "$supported" >&6; }
-		if test "$supported" = "yes" ; then
-			BASE_CFLAGS="$BASE_CFLAGS -Werror=incompatible-pointer-types-discards-qualifier"
-			found="yes"
-		fi
-	fi
-
-
-
-
 
 
 
@@ -22057,10 +21797,6 @@ if test "x${ac_cv_type_intptr_t}" = "xyes" -a "x${ac_cv_type_uintptr_t}" = "xyes
   if test -n "${ac_cv_sizeof_int}" -a -n "${ac_cv_sizeof_void_p}"; then
     if test "x${ac_cv_sizeof_int}" != "x${ac_cv_sizeof_void_p}"; then
       test -n "${SELECTIVE_WERROR}"
-
-
-
-
 
 
 
@@ -22233,10 +21969,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -22362,10 +22094,6 @@ else
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: handling casts between pointers and integers and vice versa is easier when we have intptr_t and uintptr_t, so skipping erroring on such warnings due to missing types" >&5
 printf "%s\n" "$as_me: handling casts between pointers and integers and vice versa is easier when we have intptr_t and uintptr_t, so skipping erroring on such warnings due to missing types" >&6;}
 fi
-
-
-
-
 
 
 
@@ -22532,10 +22260,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -22708,10 +22432,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -22822,10 +22542,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -22946,10 +22662,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -23065,10 +22777,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -23179,10 +22887,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -23355,10 +23059,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -23526,10 +23226,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -23640,10 +23336,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -23764,10 +23456,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -23878,10 +23566,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -24003,10 +23687,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -24077,11 +23757,11 @@ found="no"
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
-		CFLAGS="$CFLAGS -Werror=strict-prototypes"
+		CFLAGS="$CFLAGS -Werror=deprecated-non-prototype"
 
-		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports -Werror=strict-prototypes" >&5
-printf %s "checking if ${CC} supports -Werror=strict-prototypes... " >&6; }
-		cacheid=xorg_cv_cc_flag__Werror_strict_prototypes
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports -Werror=deprecated-non-prototype" >&5
+printf %s "checking if ${CC} supports -Werror=deprecated-non-prototype... " >&6; }
+		cacheid=xorg_cv_cc_flag__Werror_deprecated_non_prototype
 		if eval test \${$cacheid+y}
 then :
   printf %s "(cached) " >&6
@@ -24113,14 +23793,114 @@ fi
 		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
 printf "%s\n" "$supported" >&6; }
 		if test "$supported" = "yes" ; then
-			BASE_CFLAGS="$BASE_CFLAGS -Werror=strict-prototypes"
+			BASE_CFLAGS="$BASE_CFLAGS -Werror=deprecated-non-prototype"
 			found="yes"
 		fi
 	fi
 
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
 
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
 
+		CFLAGS="$CFLAGS -Werror=knr-promoted-parameter"
 
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports -Werror=knr-promoted-parameter" >&5
+printf %s "checking if ${CC} supports -Werror=knr-promoted-parameter... " >&6; }
+		cacheid=xorg_cv_cc_flag__Werror_knr_promoted_parameter
+		if eval test \${$cacheid+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"
+then :
+  eval $cacheid=yes
+else $as_nop
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+printf "%s\n" "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Werror=knr-promoted-parameter"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Werror=missing-prototype-for-cc"
+
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports -Werror=missing-prototype-for-cc" >&5
+printf %s "checking if ${CC} supports -Werror=missing-prototype-for-cc... " >&6; }
+		cacheid=xorg_cv_cc_flag__Werror_missing_prototype_for_cc
+		if eval test \${$cacheid+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"
+then :
+  eval $cacheid=yes
+else $as_nop
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+printf "%s\n" "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Werror=missing-prototype-for-cc"
+			found="yes"
+		fi
+	fi
 
 
 
@@ -24236,10 +24016,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -24412,10 +24188,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -24583,10 +24355,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -24697,10 +24465,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -24821,10 +24585,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -24940,10 +24700,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -25054,10 +24810,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -25230,10 +24982,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -25396,10 +25144,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -25574,10 +25318,6 @@ if test "x${xorg_cv_cc_flag__Werror_write_strings}" != "xyes"; then
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -25688,10 +25428,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -25809,16 +25545,130 @@ printf "%s\n" "$supported" >&6; }
 	fi
 
 else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: skipping adding -Werror=incompatible-pointer-types and -Werror=discarded-qualifiers when -Werror=write-strings is already on" >&5
+  if test "x${CLANGCC}" = "xyes" && test "x${STRICT_COMPILE}" != "xyes"; then
+
+
+
+
+xorg_testset_save_CFLAGS="$CFLAGS"
+
+if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
+	CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports -Werror=unknown-warning-option" >&5
+printf %s "checking if ${CC} supports -Werror=unknown-warning-option... " >&6; }
+if test ${xorg_cv_cc_flag_unknown_warning_option+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+  xorg_cv_cc_flag_unknown_warning_option=yes
+else $as_nop
+  xorg_cv_cc_flag_unknown_warning_option=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unknown_warning_option" >&5
+printf "%s\n" "$xorg_cv_cc_flag_unknown_warning_option" >&6; }
+	xorg_testset_cc_unknown_warning_option=$xorg_cv_cc_flag_unknown_warning_option
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+if test "x$xorg_testset_cc_unused_command_line_argument" = "x"; then
+	if test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+		CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	fi
+	CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports -Werror=unused-command-line-argument" >&5
+printf %s "checking if ${CC} supports -Werror=unused-command-line-argument... " >&6; }
+if test ${xorg_cv_cc_flag_unused_command_line_argument+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+  xorg_cv_cc_flag_unused_command_line_argument=yes
+else $as_nop
+  xorg_cv_cc_flag_unused_command_line_argument=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unused_command_line_argument" >&5
+printf "%s\n" "$xorg_cv_cc_flag_unused_command_line_argument" >&6; }
+	xorg_testset_cc_unused_command_line_argument=$xorg_cv_cc_flag_unused_command_line_argument
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+found="no"
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Werror=incompatible-pointer-types-discards-qualifier"
+
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports -Werror=incompatible-pointer-types-discards-qualifier" >&5
+printf %s "checking if ${CC} supports -Werror=incompatible-pointer-types-discards-qualifier... " >&6; }
+		cacheid=xorg_cv_cc_flag__Werror_incompatible_pointer_types_discards_qualifier
+		if eval test \${$cacheid+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"
+then :
+  eval $cacheid=yes
+else $as_nop
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+printf "%s\n" "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Werror=incompatible-pointer-types-discards-qualifier"
+			found="yes"
+		fi
+	fi
+
+  else
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: skipping adding -Werror=incompatible-pointer-types and -Werror=discarded-qualifiers when -Werror=write-strings is already on" >&5
 printf "%s\n" "$as_me: skipping adding -Werror=incompatible-pointer-types and -Werror=discarded-qualifiers when -Werror=write-strings is already on" >&6;}
+  fi
 fi
 else
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: You have chosen not to turn some select compiler warnings into errors.  This should not be necessary.  Please report why you needed to do so in a bug report at $PACKAGE_BUGREPORT" >&5
 printf "%s\n" "$as_me: WARNING: You have chosen not to turn some select compiler warnings into errors.  This should not be necessary.  Please report why you needed to do so in a bug report at $PACKAGE_BUGREPORT" >&2;}
-
-
-
-
 
 
 
@@ -25933,10 +25783,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -26109,10 +25955,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -26223,10 +26065,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -26347,10 +26185,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -26461,10 +26295,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -26585,10 +26415,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -26704,10 +26530,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -26818,10 +26640,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -26994,10 +26812,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -27165,10 +26979,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -27279,10 +27089,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -27403,10 +27209,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -27518,10 +27320,6 @@ printf "%s\n" "$supported" >&6; }
 		fi
 	fi
  # (tautological one already handled above)
-
-
-
-
 
 
 
@@ -27693,10 +27491,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -27812,10 +27606,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -27926,10 +27716,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -28104,10 +27890,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -28218,10 +28000,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -28342,10 +28120,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -28461,10 +28235,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -28575,10 +28345,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -28751,10 +28517,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -28865,10 +28627,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -28989,10 +28747,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -29103,10 +28857,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -29274,10 +29024,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -29480,10 +29226,6 @@ STRICT_CFLAGS=""
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -29594,10 +29336,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -29768,10 +29506,6 @@ printf "%s\n" "$supported" >&6; }
 
 # Earlier versions of gcc (eg: 4.2) support -Werror=attributes, but do not
 # activate it with -Werror, so we add it here explicitly.
-
-
-
-
 
 
 
@@ -30013,10 +29747,6 @@ fi
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -30170,10 +29900,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -30276,10 +30002,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -30439,10 +30161,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -30545,10 +30263,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -30661,10 +30375,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -30767,10 +30477,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -30883,10 +30589,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -30994,10 +30696,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -31100,10 +30798,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -31221,10 +30915,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -31327,10 +31017,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -31489,10 +31175,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -31595,10 +31277,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -31711,10 +31389,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -31817,10 +31491,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -31933,10 +31603,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -32044,10 +31710,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -32150,10 +31812,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -32405,10 +32063,6 @@ if test "x${STRICT_COMPILE}" != "xyes"; then
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -32559,10 +32213,6 @@ printf "%s\n" "$supported" >&6; }
 	fi
 
 else
-
-
-
-
 
 
 
@@ -32721,10 +32371,6 @@ fi
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -32873,10 +32519,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -33035,10 +32677,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -33141,10 +32779,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -33257,10 +32891,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -33363,10 +32993,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -33479,10 +33105,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -33585,10 +33207,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -33701,10 +33319,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -33807,10 +33421,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -33923,10 +33533,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -34029,10 +33635,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -34145,10 +33747,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -34251,10 +33849,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -34367,10 +33961,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -34473,10 +34063,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -34589,10 +34175,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -34700,10 +34282,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -34806,10 +34384,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -34968,10 +34542,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -35074,10 +34644,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -35238,10 +34804,6 @@ if test "x${ac_cv_c_vararrays}" = "xno"; then
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -35396,10 +34958,6 @@ elif test "x${ac_cv_c_vararrays}" = "xyes"; then
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -35517,10 +35075,6 @@ if test "x${SELECTIVE_WERROR}" = "xyes"; then
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -35623,10 +35177,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -35785,10 +35335,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -35891,10 +35437,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -36007,10 +35549,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -36113,10 +35651,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -36275,10 +35809,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -36432,10 +35962,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -36538,10 +36064,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -36700,10 +36222,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -36806,56 +36324,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-	if test $found = "no" ; then
-		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_f77_unknown_warning_option" = "xyes"; then
-			## for clang
-			F77FLAGS="$F77FLAGS -Werror=unknown-warning-option"
-		fi
-
-		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_f77_unused_command_line_argument" = "xyes"; then
-			## for clang
-			F77FLAGS="$F77FLAGS -Werror=unused-command-line-argument"
-		fi
-
-		F77FLAGS="$F77FLAGS -Werror=incompatible-pointer-types-discards-qualifier"
-
-		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${F77} supports -Werror=incompatible-pointer-types-discards-qualifier" >&5
-printf %s "checking if ${F77} supports -Werror=incompatible-pointer-types-discards-qualifier... " >&6; }
-		cacheid=xorg_cv_f77_flag__Werror_incompatible_pointer_types_discards_qualifier
-		if eval test \${$cacheid+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  cat > conftest.$ac_ext <<_ACEOF
-      program main
-
-      end
-_ACEOF
-if ac_fn_f77_try_link "$LINENO"
-then :
-  eval $cacheid=yes
-else $as_nop
-  eval $cacheid=no
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-fi
-
-		F77FLAGS="$xorg_testset_save_F77FLAGS"
-
-		eval supported=\$$cacheid
-		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
-printf "%s\n" "$supported" >&6; }
-		if test "$supported" = "yes" ; then
-			BASE_F77FLAGS="$BASE_F77FLAGS -Werror=incompatible-pointer-types-discards-qualifier"
-			found="yes"
-		fi
-	fi
-
-
-
-
 
 
 
@@ -36982,10 +36450,6 @@ else
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: handling casts between pointers and integers and vice versa is easier when we have intptr_t and uintptr_t, so skipping erroring on such warnings due to missing types" >&5
 printf "%s\n" "$as_me: handling casts between pointers and integers and vice versa is easier when we have intptr_t and uintptr_t, so skipping erroring on such warnings due to missing types" >&6;}
 fi
-
-
-
-
 
 
 
@@ -37138,10 +36602,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -37300,10 +36760,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -37406,10 +36862,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -37522,10 +36974,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -37633,10 +37081,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -37739,10 +37183,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -37901,10 +37341,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -38058,10 +37494,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -38164,10 +37596,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -38280,10 +37708,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -38391,10 +37815,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -38497,10 +37917,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -38616,10 +38032,6 @@ if test "x${xorg_cv_f77_flag__Werror_write_strings}" != "xyes"; then
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -38722,10 +38134,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -38835,16 +38243,122 @@ printf "%s\n" "$supported" >&6; }
 	fi
 
 else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: skipping adding -Werror=incompatible-pointer-types and -Werror=discarded-qualifiers when -Werror=write-strings is already on" >&5
+  if test "x${CLANGCC}" = "xyes" && test "x${STRICT_COMPILE}" != "xyes"; then
+
+
+
+
+xorg_testset_save_F77FLAGS="$F77FLAGS"
+
+if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
+	F77FLAGS="$F77FLAGS -Werror=unknown-warning-option"
+	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${F77} supports -Werror=unknown-warning-option" >&5
+printf %s "checking if ${F77} supports -Werror=unknown-warning-option... " >&6; }
+if test ${xorg_cv_f77_flag_unknown_warning_option+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  cat > conftest.$ac_ext <<_ACEOF
+
+_ACEOF
+if ac_fn_f77_try_compile "$LINENO"
+then :
+  xorg_cv_f77_flag_unknown_warning_option=yes
+else $as_nop
+  xorg_cv_f77_flag_unknown_warning_option=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_f77_flag_unknown_warning_option" >&5
+printf "%s\n" "$xorg_cv_f77_flag_unknown_warning_option" >&6; }
+	xorg_testset_f77_unknown_warning_option=$xorg_cv_f77_flag_unknown_warning_option
+	F77FLAGS="$xorg_testset_save_F77FLAGS"
+fi
+
+if test "x$xorg_testset_f77_unused_command_line_argument" = "x"; then
+	if test "x$xorg_testset_f77_unknown_warning_option" = "xyes"; then
+		F77FLAGS="$F77FLAGS -Werror=unknown-warning-option"
+	fi
+	F77FLAGS="$F77FLAGS -Werror=unused-command-line-argument"
+	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${F77} supports -Werror=unused-command-line-argument" >&5
+printf %s "checking if ${F77} supports -Werror=unused-command-line-argument... " >&6; }
+if test ${xorg_cv_f77_flag_unused_command_line_argument+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  cat > conftest.$ac_ext <<_ACEOF
+
+_ACEOF
+if ac_fn_f77_try_compile "$LINENO"
+then :
+  xorg_cv_f77_flag_unused_command_line_argument=yes
+else $as_nop
+  xorg_cv_f77_flag_unused_command_line_argument=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_f77_flag_unused_command_line_argument" >&5
+printf "%s\n" "$xorg_cv_f77_flag_unused_command_line_argument" >&6; }
+	xorg_testset_f77_unused_command_line_argument=$xorg_cv_f77_flag_unused_command_line_argument
+	F77FLAGS="$xorg_testset_save_F77FLAGS"
+fi
+
+found="no"
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_f77_unknown_warning_option" = "xyes"; then
+			## for clang
+			F77FLAGS="$F77FLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_f77_unused_command_line_argument" = "xyes"; then
+			## for clang
+			F77FLAGS="$F77FLAGS -Werror=unused-command-line-argument"
+		fi
+
+		F77FLAGS="$F77FLAGS -Werror=incompatible-pointer-types-discards-qualifier"
+
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${F77} supports -Werror=incompatible-pointer-types-discards-qualifier" >&5
+printf %s "checking if ${F77} supports -Werror=incompatible-pointer-types-discards-qualifier... " >&6; }
+		cacheid=xorg_cv_f77_flag__Werror_incompatible_pointer_types_discards_qualifier
+		if eval test \${$cacheid+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  cat > conftest.$ac_ext <<_ACEOF
+      program main
+
+      end
+_ACEOF
+if ac_fn_f77_try_link "$LINENO"
+then :
+  eval $cacheid=yes
+else $as_nop
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		F77FLAGS="$xorg_testset_save_F77FLAGS"
+
+		eval supported=\$$cacheid
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+printf "%s\n" "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_F77FLAGS="$BASE_F77FLAGS -Werror=incompatible-pointer-types-discards-qualifier"
+			found="yes"
+		fi
+	fi
+
+  else
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: skipping adding -Werror=incompatible-pointer-types and -Werror=discarded-qualifiers when -Werror=write-strings is already on" >&5
 printf "%s\n" "$as_me: skipping adding -Werror=incompatible-pointer-types and -Werror=discarded-qualifiers when -Werror=write-strings is already on" >&6;}
+  fi
 fi
 else
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: You have chosen not to turn some select compiler warnings into errors.  This should not be necessary.  Please report why you needed to do so in a bug report at $PACKAGE_BUGREPORT" >&5
 printf "%s\n" "$as_me: WARNING: You have chosen not to turn some select compiler warnings into errors.  This should not be necessary.  Please report why you needed to do so in a bug report at $PACKAGE_BUGREPORT" >&2;}
-
-
-
-
 
 
 
@@ -38951,10 +38465,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -39113,10 +38623,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -39219,10 +38725,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -39335,10 +38837,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -39441,10 +38939,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -39557,10 +39051,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -39668,10 +39158,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -39774,10 +39260,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -39936,10 +39418,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -40093,10 +39571,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -40199,10 +39673,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -40315,10 +39785,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -40422,10 +39888,6 @@ printf "%s\n" "$supported" >&6; }
 		fi
 	fi
  # (tautological one already handled above)
-
-
-
-
 
 
 
@@ -40583,10 +40045,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -40694,10 +40152,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_F77FLAGS="$F77FLAGS"
 
 if test "x$xorg_testset_f77_unknown_warning_option" = "x"; then
@@ -40800,10 +40254,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -40959,10 +40409,6 @@ printf "%s\n" "$supported" >&6; }
 	fi
 
 # (stringops already handled above)
-
-
-
-
 
 
 
@@ -41145,10 +40591,6 @@ fi
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -41316,10 +40758,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -41430,10 +40868,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -41607,10 +41041,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -41721,10 +41151,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -41845,10 +41271,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -41959,10 +41381,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -42083,10 +41501,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -42197,10 +41611,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -42321,10 +41731,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -42440,10 +41846,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -42554,10 +41956,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -42680,10 +42078,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -42794,10 +42188,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -42970,10 +42360,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -43084,10 +42470,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -43208,10 +42590,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -43322,10 +42700,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -43446,10 +42820,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -43565,10 +42935,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -43679,10 +43045,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -43960,10 +43322,6 @@ if test "x${STRICT_COMPILE}" != "xyes"; then
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -44128,10 +43486,6 @@ printf "%s\n" "$supported" >&6; }
 	fi
 
 else
-
-
-
-
 
 
 
@@ -44304,10 +43658,6 @@ fi
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -44470,10 +43820,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -44646,10 +43992,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -44760,10 +44102,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -44884,10 +44222,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -44998,10 +44332,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -45122,10 +44452,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -45236,10 +44562,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -45360,10 +44682,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -45474,10 +44792,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -45598,10 +44912,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -45712,10 +45022,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -45836,10 +45142,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -45950,10 +45252,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -46074,10 +45372,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -46188,10 +45482,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -46312,10 +45602,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -46431,10 +45717,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -46545,10 +45827,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -46721,10 +45999,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -46835,10 +46109,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -47013,10 +46283,6 @@ if test "x${ac_cv_c_vararrays}" = "xno"; then
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -47185,10 +46451,6 @@ elif test "x${ac_cv_c_vararrays}" = "xyes"; then
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -47314,10 +46576,6 @@ if test "x${SELECTIVE_WERROR}" = "xyes"; then
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -47428,10 +46686,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -47604,10 +46858,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -47718,10 +46968,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -47842,10 +47088,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -47956,10 +47198,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -48132,10 +47370,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -48303,10 +47537,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -48417,10 +47647,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -48593,10 +47819,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -48707,62 +47929,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-	if test $found = "no" ; then
-		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
-			## for clang
-			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
-		fi
-
-		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
-			## for clang
-			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
-		fi
-
-		CXXFLAGS="$CXXFLAGS -Werror=incompatible-pointer-types-discards-qualifier"
-
-		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CXX} supports -Werror=incompatible-pointer-types-discards-qualifier" >&5
-printf %s "checking if ${CXX} supports -Werror=incompatible-pointer-types-discards-qualifier... " >&6; }
-		cacheid=xorg_cv_cxx_flag__Werror_incompatible_pointer_types_discards_qualifier
-		if eval test \${$cacheid+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-int i;
-int
-main (void)
-{
-
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_cxx_try_link "$LINENO"
-then :
-  eval $cacheid=yes
-else $as_nop
-  eval $cacheid=no
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-fi
-
-		CXXFLAGS="$xorg_testset_save_CXXFLAGS"
-
-		eval supported=\$$cacheid
-		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
-printf "%s\n" "$supported" >&6; }
-		if test "$supported" = "yes" ; then
-			BASE_CXXFLAGS="$BASE_CXXFLAGS -Werror=incompatible-pointer-types-discards-qualifier"
-			found="yes"
-		fi
-	fi
-
-
-
-
 
 
 
@@ -48897,10 +48063,6 @@ else
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: handling casts between pointers and integers and vice versa is easier when we have intptr_t and uintptr_t, so skipping erroring on such warnings due to missing types" >&5
 printf "%s\n" "$as_me: handling casts between pointers and integers and vice versa is easier when we have intptr_t and uintptr_t, so skipping erroring on such warnings due to missing types" >&6;}
 fi
-
-
-
-
 
 
 
@@ -49067,10 +48229,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -49243,10 +48401,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -49357,10 +48511,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -49481,10 +48631,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -49600,10 +48746,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -49714,10 +48856,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -49890,10 +49028,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -50061,10 +49195,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -50175,10 +49305,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -50299,10 +49425,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -50413,10 +49535,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -50538,10 +49656,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -50652,10 +49766,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -50776,10 +49886,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -50890,10 +49996,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -51014,10 +50116,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -51128,10 +50226,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -51252,10 +50346,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -51366,10 +50456,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -51490,10 +50576,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -51604,10 +50686,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -51730,10 +50808,6 @@ if test "x${xorg_cv_cxx_flag__Werror_write_strings}" != "xyes"; then
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -51844,10 +50918,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -51965,16 +51035,130 @@ printf "%s\n" "$supported" >&6; }
 	fi
 
 else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: skipping adding -Werror=incompatible-pointer-types and -Werror=discarded-qualifiers when -Werror=write-strings is already on" >&5
+  if test "x${CLANGCC}" = "xyes" && test "x${STRICT_COMPILE}" != "xyes"; then
+
+
+
+
+xorg_testset_save_CXXFLAGS="$CXXFLAGS"
+
+if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
+	CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CXX} supports -Werror=unknown-warning-option" >&5
+printf %s "checking if ${CXX} supports -Werror=unknown-warning-option... " >&6; }
+if test ${xorg_cv_cxx_flag_unknown_warning_option+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_cxx_try_compile "$LINENO"
+then :
+  xorg_cv_cxx_flag_unknown_warning_option=yes
+else $as_nop
+  xorg_cv_cxx_flag_unknown_warning_option=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cxx_flag_unknown_warning_option" >&5
+printf "%s\n" "$xorg_cv_cxx_flag_unknown_warning_option" >&6; }
+	xorg_testset_cxx_unknown_warning_option=$xorg_cv_cxx_flag_unknown_warning_option
+	CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+fi
+
+if test "x$xorg_testset_cxx_unused_command_line_argument" = "x"; then
+	if test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
+		CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+	fi
+	CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
+	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CXX} supports -Werror=unused-command-line-argument" >&5
+printf %s "checking if ${CXX} supports -Werror=unused-command-line-argument... " >&6; }
+if test ${xorg_cv_cxx_flag_unused_command_line_argument+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_cxx_try_compile "$LINENO"
+then :
+  xorg_cv_cxx_flag_unused_command_line_argument=yes
+else $as_nop
+  xorg_cv_cxx_flag_unused_command_line_argument=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cxx_flag_unused_command_line_argument" >&5
+printf "%s\n" "$xorg_cv_cxx_flag_unused_command_line_argument" >&6; }
+	xorg_testset_cxx_unused_command_line_argument=$xorg_cv_cxx_flag_unused_command_line_argument
+	CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+fi
+
+found="no"
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cxx_unknown_warning_option" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cxx_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CXXFLAGS="$CXXFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CXXFLAGS="$CXXFLAGS -Werror=incompatible-pointer-types-discards-qualifier"
+
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CXX} supports -Werror=incompatible-pointer-types-discards-qualifier" >&5
+printf %s "checking if ${CXX} supports -Werror=incompatible-pointer-types-discards-qualifier... " >&6; }
+		cacheid=xorg_cv_cxx_flag__Werror_incompatible_pointer_types_discards_qualifier
+		if eval test \${$cacheid+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_link "$LINENO"
+then :
+  eval $cacheid=yes
+else $as_nop
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CXXFLAGS="$xorg_testset_save_CXXFLAGS"
+
+		eval supported=\$$cacheid
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+printf "%s\n" "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CXXFLAGS="$BASE_CXXFLAGS -Werror=incompatible-pointer-types-discards-qualifier"
+			found="yes"
+		fi
+	fi
+
+  else
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: skipping adding -Werror=incompatible-pointer-types and -Werror=discarded-qualifiers when -Werror=write-strings is already on" >&5
 printf "%s\n" "$as_me: skipping adding -Werror=incompatible-pointer-types and -Werror=discarded-qualifiers when -Werror=write-strings is already on" >&6;}
+  fi
 fi
 else
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: You have chosen not to turn some select compiler warnings into errors.  This should not be necessary.  Please report why you needed to do so in a bug report at $PACKAGE_BUGREPORT" >&5
 printf "%s\n" "$as_me: WARNING: You have chosen not to turn some select compiler warnings into errors.  This should not be necessary.  Please report why you needed to do so in a bug report at $PACKAGE_BUGREPORT" >&2;}
-
-
-
-
 
 
 
@@ -52089,10 +51273,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -52265,10 +51445,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -52379,10 +51555,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -52503,10 +51675,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -52617,10 +51785,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -52741,10 +51905,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -52860,10 +52020,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -52974,10 +52130,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -53150,10 +52302,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -53321,10 +52469,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -53435,10 +52579,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -53559,10 +52699,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -53674,10 +52810,6 @@ printf "%s\n" "$supported" >&6; }
 		fi
 	fi
  # (tautological one already handled above)
-
-
-
-
 
 
 
@@ -53849,10 +52981,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -53968,10 +53096,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -54082,10 +53206,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -54260,10 +53380,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -54374,10 +53490,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -54498,10 +53610,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CXXFLAGS="$CXXFLAGS"
 
 if test "x$xorg_testset_cxx_unknown_warning_option" = "x"; then
@@ -54612,10 +53720,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -57110,7 +56214,7 @@ printf "%s\n" "$ac_java_classpath" >&6; }
 printf %s "checking to see if the java compiler works... " >&6; }
 
     cat << \EOF > conftest.java
-// #line 57113 "configure"
+// #line 56217 "configure"
 import java.util.regex.Pattern;
 
 
@@ -57197,7 +56301,7 @@ printf %s "checking type of jvm... " >&6; }
     if test "x$ac_java_jvm_name" = "x" ; then
 
     cat << \EOF > conftest.java
-// #line 57200 "configure"
+// #line 56304 "configure"
 import java.util.regex.Pattern;
 
 import gnu.java.io.EncodingManager;
@@ -57281,7 +56385,7 @@ printf %s "checking java API version... " >&6; }
     # The class java.nio.charset.Charset is new to 1.4
 
     cat << \EOF > conftest.java
-// #line 57284 "configure"
+// #line 56388 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.charset.Charset;
@@ -57346,7 +56450,7 @@ EOF
     # The class java.lang.StringBuilder is new to 1.5
 
     cat << \EOF > conftest.java
-// #line 57349 "configure"
+// #line 56453 "configure"
 import java.util.regex.Pattern;
 
 import java.lang.StringBuilder;
@@ -57411,7 +56515,7 @@ EOF
     # The class java.util.ArrayDeque is new to 1.6
 
     cat << \EOF > conftest.java
-// #line 57414 "configure"
+// #line 56518 "configure"
 import java.util.regex.Pattern;
 
 import java.util.ArrayDeque;
@@ -57476,7 +56580,7 @@ EOF
     # The class java.nio.file.Path is new to 1.7
 
     cat << \EOF > conftest.java
-// #line 57479 "configure"
+// #line 56583 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.file.Path;
@@ -59564,7 +58668,7 @@ printf %s "checking jgraphx... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 59567 "configure"
+// #line 58671 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.model.mxCell;
@@ -59670,7 +58774,7 @@ printf %s "checking minimal version (1.8.0.0) of jgraphx... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 59673 "configure"
+// #line 58777 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.view.mxGraph;
@@ -59741,7 +58845,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 59744 "configure"
+// #line 58848 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.view.mxGraph;
@@ -59832,7 +58936,7 @@ printf %s "checking scirenderer... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 59835 "configure"
+// #line 58939 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -59938,7 +59042,7 @@ printf %s "checking minimal version (1.0.2) of scirenderer... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 59941 "configure"
+// #line 59045 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -60009,7 +59113,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 60012 "configure"
+// #line 59116 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -60098,7 +59202,7 @@ printf %s "checking flexdock... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 60101 "configure"
+// #line 59205 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.docking.DockingManager;
@@ -60204,7 +59308,7 @@ printf %s "checking minimal version (1.2.0) of flexdock... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 60207 "configure"
+// #line 59311 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.util.Utilities;
@@ -60275,7 +59379,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 60278 "configure"
+// #line 59382 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.util.Utilities;
@@ -60364,7 +59468,7 @@ printf %s "checking looks... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 60367 "configure"
+// #line 59471 "configure"
 import java.util.regex.Pattern;
 
 import com.jgoodies.looks.common.MenuItemRenderer;
@@ -60481,7 +59585,7 @@ printf %s "checking jgoodies-looks... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 60484 "configure"
+// #line 59588 "configure"
 import java.util.regex.Pattern;
 
 import com.jgoodies.looks.common.MenuItemRenderer;
@@ -60598,7 +59702,7 @@ printf %s "checking skinlf... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 60601 "configure"
+// #line 59705 "configure"
 import java.util.regex.Pattern;
 
 import com.l2fprod.util.AccessUtils;
@@ -60714,7 +59818,7 @@ printf %s "checking jogl2... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 60717 "configure"
+// #line 59821 "configure"
 import java.util.regex.Pattern;
 
 import javax.media.opengl.glu.GLUnurbs;
@@ -60936,7 +60040,7 @@ printf %s "checking gluegen2-rt... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 60939 "configure"
+// #line 60043 "configure"
 import java.util.regex.Pattern;
 
 import jogamp.common.os.MachineDescriptionRuntime;
@@ -61109,7 +60213,7 @@ printf %s "checking jhall... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 61112 "configure"
+// #line 60216 "configure"
 import java.util.regex.Pattern;
 
 import javax.help.JHelp;
@@ -61226,7 +60330,7 @@ printf %s "checking javahelp2... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 61229 "configure"
+// #line 60333 "configure"
 import java.util.regex.Pattern;
 
 import javax.help.JHelp;
@@ -61343,7 +60447,7 @@ printf %s "checking jrosetta-API... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 61346 "configure"
+// #line 60450 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.interfaces.core.ConsoleConfiguration;
@@ -61458,7 +60562,7 @@ printf %s "checking jrosetta-api... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 61461 "configure"
+// #line 60565 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.interfaces.core.ConsoleConfiguration;
@@ -61575,7 +60679,7 @@ printf %s "checking jrosetta-engine... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 61578 "configure"
+// #line 60682 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.core.action.AbstractConsoleAction;
@@ -61681,7 +60785,7 @@ printf %s "checking minimal version (1.0.4) of jrosetta-engine... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 61684 "configure"
+// #line 60788 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.util.ConfigurationBuilder;
@@ -61752,7 +60856,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 61755 "configure"
+// #line 60859 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.util.ConfigurationBuilder;
@@ -61842,7 +60946,7 @@ printf %s "checking jeuclid-core... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 61845 "configure"
+// #line 60949 "configure"
 import java.util.regex.Pattern;
 
 import net.sourceforge.jeuclid.LayoutContext;
@@ -61959,7 +61063,7 @@ printf %s "checking fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 61962 "configure"
+// #line 61066 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.fop.pdf.PDFInfo;
@@ -62223,7 +61327,7 @@ printf %s "checking batik-all... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62226 "configure"
+// #line 61330 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.parser.Parser;
@@ -62340,7 +61444,7 @@ printf %s "checking batik... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62343 "configure"
+// #line 61447 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.parser.Parser;
@@ -62447,7 +61551,7 @@ printf %s "checking minimal version (1.7) of batik... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 62450 "configure"
+// #line 61554 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.Version;
@@ -62518,7 +61622,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 62521 "configure"
+// #line 61625 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.Version;
@@ -62607,7 +61711,7 @@ printf %s "checking commons-io... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62610 "configure"
+// #line 61714 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.output.CountingOutputStream;
@@ -62723,7 +61827,7 @@ printf %s "checking xmlgraphics-commons... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62726 "configure"
+// #line 61830 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.xmlgraphics.util.Service;
@@ -62839,7 +61943,7 @@ printf %s "checking avalon-framework... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62842 "configure"
+// #line 61946 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.avalon.framework.configuration.ConfigurationException;
@@ -62955,7 +62059,7 @@ printf %s "checking xml-apis-ext... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62958 "configure"
+// #line 62062 "configure"
 import java.util.regex.Pattern;
 
 import org.w3c.dom.svg.SVGDocument;
@@ -63072,7 +62176,7 @@ printf %s "checking xml-commons-apis-ext... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63075 "configure"
+// #line 62179 "configure"
 import java.util.regex.Pattern;
 
 import org.w3c.dom.svg.SVGDocument;
@@ -63191,7 +62295,7 @@ printf %s "checking commons-logging... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63194 "configure"
+// #line 62298 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.logging.LogFactory;
@@ -63307,7 +62411,7 @@ printf %s "checking jlatexmath... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63310 "configure"
+// #line 62414 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -63413,7 +62517,7 @@ printf %s "checking minimal version (1.0.0) of jlatexmath... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 63416 "configure"
+// #line 62520 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -63484,7 +62588,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 63487 "configure"
+// #line 62591 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -63578,7 +62682,7 @@ printf %s "checking checkstyle... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63581 "configure"
+// #line 62685 "configure"
 import java.util.regex.Pattern;
 
 import com.puppycrawl.tools.checkstyle.CheckStyleTask;
@@ -63694,7 +62798,7 @@ printf %s "checking commons-beanutils... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63697 "configure"
+// #line 62801 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.beanutils.Converter;
@@ -63810,7 +62914,7 @@ printf %s "checking antlr... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63813 "configure"
+// #line 62917 "configure"
 import java.util.regex.Pattern;
 
 import antlr.TokenStreamException;
@@ -63926,7 +63030,7 @@ printf %s "checking junit4... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63929 "configure"
+// #line 63033 "configure"
 import java.util.regex.Pattern;
 
 import org.junit.Assert;
@@ -64042,7 +63146,7 @@ printf %s "checking cobertura... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64045 "configure"
+// #line 63149 "configure"
 import java.util.regex.Pattern;
 
 import net.sourceforge.cobertura.merge.Main;
@@ -64158,7 +63262,7 @@ printf %s "checking asm3... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64161 "configure"
+// #line 63265 "configure"
 import java.util.regex.Pattern;
 
 import org.objectweb.asm.Type;
@@ -64274,7 +63378,7 @@ printf %s "checking asm... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64277 "configure"
+// #line 63381 "configure"
 import java.util.regex.Pattern;
 
 import org.objectweb.asm.Type;
@@ -66602,10 +65706,9 @@ else $as_nop
   MALLOC_ZERO_RETURNS_NULL=auto
 fi
 
-
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether malloc(0) returns NULL" >&5
 printf %s "checking whether malloc(0) returns NULL... " >&6; }
-if test "x$MALLOC_ZERO_RETURNS_NULL" = xauto; then
+if test "x${MALLOC_ZERO_RETURNS_NULL}" = "xauto"; then
 	if test "$cross_compiling" = yes
 then :
   MALLOC_ZERO_RETURNS_NULL=yes
@@ -66641,13 +65744,12 @@ rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
 fi
 
 fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $MALLOC_ZERO_RETURNS_NULL" >&5
-printf "%s\n" "$MALLOC_ZERO_RETURNS_NULL" >&6; }
-
-if test "x$MALLOC_ZERO_RETURNS_NULL" = xyes; then
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: ${MALLOC_ZERO_RETURNS_NULL}" >&5
+printf "%s\n" "${MALLOC_ZERO_RETURNS_NULL}" >&6; }
+if test "x${MALLOC_ZERO_RETURNS_NULL}" = "xyes"; then
 	MALLOC_ZERO_CFLAGS="-DMALLOC_0_RETURNS_NULL"
-	XMALLOC_ZERO_CFLAGS=$MALLOC_ZERO_CFLAGS
-	XTMALLOC_ZERO_CFLAGS="$MALLOC_ZERO_CFLAGS -DXTMALLOC_BC"
+	XMALLOC_ZERO_CFLAGS="${MALLOC_ZERO_CFLAGS}"
+	XTMALLOC_ZERO_CFLAGS="${MALLOC_ZERO_CFLAGS} -DXTMALLOC_BC"
 else
 	MALLOC_ZERO_CFLAGS=""
 	XMALLOC_ZERO_CFLAGS=""
@@ -75824,10 +74926,6 @@ fi
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -76011,10 +75109,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -76133,10 +75227,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -76326,10 +75416,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -76448,10 +75534,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -76581,10 +75663,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -76705,10 +75783,6 @@ printf "%s\n" "$supported" >&6; }
 	fi
 
 	fi
-
-
-
-
 
 
 
@@ -77018,10 +76092,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -77140,10 +76210,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -77332,10 +76398,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -77454,10 +76516,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -77586,10 +76644,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -77708,10 +76762,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -77840,10 +76890,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -77967,10 +77013,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -78089,10 +77131,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -78402,10 +77440,6 @@ if test "x${STRICT_COMPILE}" != "xyes"; then
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -78586,10 +77620,6 @@ printf "%s\n" "$supported" >&6; }
 	fi
 
 else
-
-
-
-
 
 
 
@@ -78778,10 +77808,6 @@ fi
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -78960,10 +77986,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -79152,10 +78174,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -79274,10 +78292,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -79406,10 +78420,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -79528,10 +78538,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -79660,10 +78666,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -79782,10 +78784,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -79914,10 +78912,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -80036,10 +79030,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -80168,10 +79158,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -80290,10 +79276,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -80422,10 +79404,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -80544,10 +79522,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -80676,10 +79650,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -80798,10 +79768,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -80930,10 +79896,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -81057,10 +80019,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -81179,10 +80137,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -81371,10 +80325,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -81493,10 +80443,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -81687,10 +80633,6 @@ if test "x${ac_cv_c_vararrays}" = "xno"; then
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -81875,10 +80817,6 @@ elif test "x${ac_cv_c_vararrays}" = "xyes"; then
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -82012,10 +80950,6 @@ if test "x${SELECTIVE_WERROR}" = "xyes"; then
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -82134,10 +81068,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -82326,10 +81256,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -82448,10 +81374,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -82580,10 +81502,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -82702,10 +81620,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -82894,10 +81808,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -83081,10 +81991,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -83203,10 +82109,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -83395,10 +82297,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -83517,70 +82415,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-	if test $found = "no" ; then
-		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
-			## for clang
-			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
-		fi
-
-		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
-			## for clang
-			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
-		fi
-
-		CFLAGS="$CFLAGS -Werror=incompatible-pointer-types-discards-qualifier"
-
-		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports -Werror=incompatible-pointer-types-discards-qualifier" >&5
-printf %s "checking if ${CC} supports -Werror=incompatible-pointer-types-discards-qualifier... " >&6; }
-		cacheid=xorg_cv_cc_flag__Werror_incompatible_pointer_types_discards_qualifier
-		if eval test \${$cacheid+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-int i;
-#ifdef F77_DUMMY_MAIN
-
-#  ifdef __cplusplus
-     extern "C"
-#  endif
-   int F77_DUMMY_MAIN() { return 1; }
-
-#endif
-int
-main (void)
-{
-
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  eval $cacheid=yes
-else $as_nop
-  eval $cacheid=no
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-fi
-
-		CFLAGS="$xorg_testset_save_CFLAGS"
-
-		eval supported=\$$cacheid
-		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
-printf "%s\n" "$supported" >&6; }
-		if test "$supported" = "yes" ; then
-			BASE_CFLAGS="$BASE_CFLAGS -Werror=incompatible-pointer-types-discards-qualifier"
-			found="yes"
-		fi
-	fi
-
-
-
-
 
 
 
@@ -83709,10 +82543,6 @@ if test "x${ac_cv_type_intptr_t}" = "xyes" -a "x${ac_cv_type_uintptr_t}" = "xyes
   if test -n "${ac_cv_sizeof_int}" -a -n "${ac_cv_sizeof_void_p}"; then
     if test "x${ac_cv_sizeof_int}" != "x${ac_cv_sizeof_void_p}"; then
       test -n "${SELECTIVE_WERROR}"
-
-
-
-
 
 
 
@@ -83901,10 +82731,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -84038,10 +82864,6 @@ else
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: handling casts between pointers and integers and vice versa is easier when we have intptr_t and uintptr_t, so skipping erroring on such warnings due to missing types" >&5
 printf "%s\n" "$as_me: handling casts between pointers and integers and vice versa is easier when we have intptr_t and uintptr_t, so skipping erroring on such warnings due to missing types" >&6;}
 fi
-
-
-
-
 
 
 
@@ -84224,10 +83046,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -84416,10 +83234,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -84538,10 +83352,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -84670,10 +83480,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -84797,10 +83603,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -84919,10 +83721,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -85111,10 +83909,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -85298,10 +84092,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -85420,10 +84210,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -85552,10 +84338,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -85674,10 +84456,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -85807,10 +84585,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -85881,11 +84655,11 @@ found="no"
 			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
 		fi
 
-		CFLAGS="$CFLAGS -Werror=strict-prototypes"
+		CFLAGS="$CFLAGS -Werror=deprecated-non-prototype"
 
-		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports -Werror=strict-prototypes" >&5
-printf %s "checking if ${CC} supports -Werror=strict-prototypes... " >&6; }
-		cacheid=xorg_cv_cc_flag__Werror_strict_prototypes
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports -Werror=deprecated-non-prototype" >&5
+printf %s "checking if ${CC} supports -Werror=deprecated-non-prototype... " >&6; }
+		cacheid=xorg_cv_cc_flag__Werror_deprecated_non_prototype
 		if eval test \${$cacheid+y}
 then :
   printf %s "(cached) " >&6
@@ -85925,14 +84699,130 @@ fi
 		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
 printf "%s\n" "$supported" >&6; }
 		if test "$supported" = "yes" ; then
-			BASE_CFLAGS="$BASE_CFLAGS -Werror=strict-prototypes"
+			BASE_CFLAGS="$BASE_CFLAGS -Werror=deprecated-non-prototype"
 			found="yes"
 		fi
 	fi
 
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
 
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
 
+		CFLAGS="$CFLAGS -Werror=knr-promoted-parameter"
 
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports -Werror=knr-promoted-parameter" >&5
+printf %s "checking if ${CC} supports -Werror=knr-promoted-parameter... " >&6; }
+		cacheid=xorg_cv_cc_flag__Werror_knr_promoted_parameter
+		if eval test \${$cacheid+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+#ifdef F77_DUMMY_MAIN
+
+#  ifdef __cplusplus
+     extern "C"
+#  endif
+   int F77_DUMMY_MAIN() { return 1; }
+
+#endif
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"
+then :
+  eval $cacheid=yes
+else $as_nop
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+printf "%s\n" "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Werror=knr-promoted-parameter"
+			found="yes"
+		fi
+	fi
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Werror=missing-prototype-for-cc"
+
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports -Werror=missing-prototype-for-cc" >&5
+printf %s "checking if ${CC} supports -Werror=missing-prototype-for-cc... " >&6; }
+		cacheid=xorg_cv_cc_flag__Werror_missing_prototype_for_cc
+		if eval test \${$cacheid+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+#ifdef F77_DUMMY_MAIN
+
+#  ifdef __cplusplus
+     extern "C"
+#  endif
+   int F77_DUMMY_MAIN() { return 1; }
+
+#endif
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"
+then :
+  eval $cacheid=yes
+else $as_nop
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+printf "%s\n" "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Werror=missing-prototype-for-cc"
+			found="yes"
+		fi
+	fi
 
 
 
@@ -86056,10 +84946,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -86248,10 +85134,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -86435,10 +85317,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -86557,10 +85435,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -86689,10 +85563,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -86816,10 +85686,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -86938,10 +85804,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -87130,10 +85992,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -87312,10 +86170,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -87506,10 +86360,6 @@ if test "x${xorg_cv_cc_flag__Werror_write_strings}" != "xyes"; then
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -87628,10 +86478,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -87757,16 +86603,138 @@ printf "%s\n" "$supported" >&6; }
 	fi
 
 else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: skipping adding -Werror=incompatible-pointer-types and -Werror=discarded-qualifiers when -Werror=write-strings is already on" >&5
+  if test "x${CLANGCC}" = "xyes" && test "x${STRICT_COMPILE}" != "xyes"; then
+
+
+
+
+xorg_testset_save_CFLAGS="$CFLAGS"
+
+if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
+	CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports -Werror=unknown-warning-option" >&5
+printf %s "checking if ${CC} supports -Werror=unknown-warning-option... " >&6; }
+if test ${xorg_cv_cc_flag_unknown_warning_option+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+  xorg_cv_cc_flag_unknown_warning_option=yes
+else $as_nop
+  xorg_cv_cc_flag_unknown_warning_option=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unknown_warning_option" >&5
+printf "%s\n" "$xorg_cv_cc_flag_unknown_warning_option" >&6; }
+	xorg_testset_cc_unknown_warning_option=$xorg_cv_cc_flag_unknown_warning_option
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+if test "x$xorg_testset_cc_unused_command_line_argument" = "x"; then
+	if test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+		CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+	fi
+	CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports -Werror=unused-command-line-argument" >&5
+printf %s "checking if ${CC} supports -Werror=unused-command-line-argument... " >&6; }
+if test ${xorg_cv_cc_flag_unused_command_line_argument+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+  xorg_cv_cc_flag_unused_command_line_argument=yes
+else $as_nop
+  xorg_cv_cc_flag_unused_command_line_argument=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $xorg_cv_cc_flag_unused_command_line_argument" >&5
+printf "%s\n" "$xorg_cv_cc_flag_unused_command_line_argument" >&6; }
+	xorg_testset_cc_unused_command_line_argument=$xorg_cv_cc_flag_unused_command_line_argument
+	CFLAGS="$xorg_testset_save_CFLAGS"
+fi
+
+found="no"
+
+	if test $found = "no" ; then
+		if test "x${xorg_testset_unknown_warning_option}" = "xyes" || test "x$xorg_testset_cc_unknown_warning_option" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unknown-warning-option"
+		fi
+
+		if test "x${xorg_testset_unused_command_line_argument}" = "xyes" || test "x$xorg_testset_cc_unused_command_line_argument" = "xyes"; then
+			## for clang
+			CFLAGS="$CFLAGS -Werror=unused-command-line-argument"
+		fi
+
+		CFLAGS="$CFLAGS -Werror=incompatible-pointer-types-discards-qualifier"
+
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports -Werror=incompatible-pointer-types-discards-qualifier" >&5
+printf %s "checking if ${CC} supports -Werror=incompatible-pointer-types-discards-qualifier... " >&6; }
+		cacheid=xorg_cv_cc_flag__Werror_incompatible_pointer_types_discards_qualifier
+		if eval test \${$cacheid+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int i;
+#ifdef F77_DUMMY_MAIN
+
+#  ifdef __cplusplus
+     extern "C"
+#  endif
+   int F77_DUMMY_MAIN() { return 1; }
+
+#endif
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"
+then :
+  eval $cacheid=yes
+else $as_nop
+  eval $cacheid=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam \
+    conftest$ac_exeext conftest.$ac_ext
+fi
+
+		CFLAGS="$xorg_testset_save_CFLAGS"
+
+		eval supported=\$$cacheid
+		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $supported" >&5
+printf "%s\n" "$supported" >&6; }
+		if test "$supported" = "yes" ; then
+			BASE_CFLAGS="$BASE_CFLAGS -Werror=incompatible-pointer-types-discards-qualifier"
+			found="yes"
+		fi
+	fi
+
+  else
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: skipping adding -Werror=incompatible-pointer-types and -Werror=discarded-qualifiers when -Werror=write-strings is already on" >&5
 printf "%s\n" "$as_me: skipping adding -Werror=incompatible-pointer-types and -Werror=discarded-qualifiers when -Werror=write-strings is already on" >&6;}
+  fi
 fi
 else
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: You have chosen not to turn some select compiler warnings into errors.  This should not be necessary.  Please report why you needed to do so in a bug report at $PACKAGE_BUGREPORT" >&5
 printf "%s\n" "$as_me: WARNING: You have chosen not to turn some select compiler warnings into errors.  This should not be necessary.  Please report why you needed to do so in a bug report at $PACKAGE_BUGREPORT" >&2;}
-
-
-
-
 
 
 
@@ -87889,10 +86857,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -88081,10 +87045,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -88203,10 +87163,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -88335,10 +87291,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -88457,10 +87409,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -88589,10 +87537,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -88716,10 +87660,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -88838,10 +87778,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -89030,10 +87966,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -89217,10 +88149,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -89339,10 +88267,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -89471,10 +88395,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -89594,10 +88514,6 @@ printf "%s\n" "$supported" >&6; }
 		fi
 	fi
  # (tautological one already handled above)
-
-
-
-
 
 
 
@@ -89785,10 +88701,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -89912,10 +88824,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -90034,10 +88942,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -90228,10 +89132,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -90350,10 +89250,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -90482,10 +89378,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -90609,10 +89501,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -90731,10 +89619,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -90923,10 +89807,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -91045,10 +89925,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -91177,10 +90053,6 @@ printf "%s\n" "$supported" >&6; }
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -91299,10 +90171,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -91486,10 +90354,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -91703,10 +90567,6 @@ STRICT_CFLAGS=""
 
 
 
-
-
-
-
 xorg_testset_save_CFLAGS="$CFLAGS"
 
 if test "x$xorg_testset_cc_unknown_warning_option" = "x"; then
@@ -91825,10 +90685,6 @@ printf "%s\n" "$supported" >&6; }
 			found="yes"
 		fi
 	fi
-
-
-
-
 
 
 
@@ -92015,10 +90871,6 @@ printf "%s\n" "$supported" >&6; }
 
 # Earlier versions of gcc (eg: 4.2) support -Werror=attributes, but do not
 # activate it with -Werror, so we add it here explicitly.
-
-
-
-
 
 
 
@@ -93105,7 +91957,7 @@ printf %s "checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later... 
 
 
 cat > conftest.$ac_ext <<EOF
-#line 93108 "configure"
+#line 91960 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TCL_INCLUDE_PATH/$CHK_TCL_INC_NAME"
@@ -93420,7 +92272,7 @@ printf %s "checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later... " >
 
 
 cat > conftest.$ac_ext <<EOF
-#line 93423 "configure"
+#line 92275 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TK_INCLUDE_PATH/$CHK_TK_INC_NAME"
@@ -94107,7 +92959,7 @@ printf %s "checking saxon... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 94110 "configure"
+// #line 92962 "configure"
 import java.util.regex.Pattern;
 
 import com.icl.saxon.Loader;
@@ -94223,7 +93075,7 @@ printf %s "checking jlatexmath-fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 94226 "configure"
+// #line 93078 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.fop.JLaTeXMathObj;
@@ -117193,7 +116045,7 @@ fi
    if test "x${LINT}" = "x"; then
         as_fn_error $? "--with-lint=yes specified but lint-style tool not found in PATH" "$LINENO" 5
    fi
-elif test "x${use_lint}" = x"no" ; then
+elif test "x${use_lint}" = x"no"; then
    if test "x${LINT}" != "x"; then
       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: ignoring LINT environment variable since --with-lint=no was specified" >&5
 printf "%s\n" "$as_me: WARNING: ignoring LINT environment variable since --with-lint=no was specified" >&2;}

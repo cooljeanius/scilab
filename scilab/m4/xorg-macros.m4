@@ -1313,14 +1313,14 @@ AC_SUBST([XORG_MALLOC_DEBUG_ENV],[$malloc_debug_env])
 # malloc(0) returns NULL.  Packages should add one of these cflags to
 # their AM_CFLAGS (or other appropriate *_CFLAGS) to use them.
 AC_DEFUN([XORG_CHECK_MALLOC_ZERO],[
-AC_ARG_ENABLE(malloc0returnsnull,
-	AS_HELP_STRING([--enable-malloc0returnsnull],
-		       [malloc(0) returns NULL (default: auto)]),
+AC_ARG_ENABLE([malloc0returnsnull],
+	[AS_HELP_STRING([--enable-malloc0returnsnull],
+		       [malloc(0) returns NULL (default: auto)])],
 	[MALLOC_ZERO_RETURNS_NULL=$enableval],
-	[MALLOC_ZERO_RETURNS_NULL=auto])
+	[MALLOC_ZERO_RETURNS_NULL=auto])dnl
 
 AC_MSG_CHECKING([whether malloc(0) returns NULL])
-if test "x$MALLOC_ZERO_RETURNS_NULL" = xauto; then
+if test "x${MALLOC_ZERO_RETURNS_NULL}" = "xauto"; then
 	AC_RUN_IFELSE([AC_LANG_PROGRAM([
 #include <stdlib.h>
 ],[
@@ -1335,12 +1335,12 @@ if test "x$MALLOC_ZERO_RETURNS_NULL" = xauto; then
 		[MALLOC_ZERO_RETURNS_NULL=no],
 		[MALLOC_ZERO_RETURNS_NULL=yes])
 fi
-AC_MSG_RESULT([$MALLOC_ZERO_RETURNS_NULL])
+AC_MSG_RESULT([${MALLOC_ZERO_RETURNS_NULL}])dnl
 
-if test "x$MALLOC_ZERO_RETURNS_NULL" = xyes; then
+if test "x${MALLOC_ZERO_RETURNS_NULL}" = "xyes"; then
 	MALLOC_ZERO_CFLAGS="-DMALLOC_0_RETURNS_NULL"
-	XMALLOC_ZERO_CFLAGS=$MALLOC_ZERO_CFLAGS
-	XTMALLOC_ZERO_CFLAGS="$MALLOC_ZERO_CFLAGS -DXTMALLOC_BC"
+	XMALLOC_ZERO_CFLAGS="${MALLOC_ZERO_CFLAGS}"
+	XTMALLOC_ZERO_CFLAGS="${MALLOC_ZERO_CFLAGS} -DXTMALLOC_BC"
 else
 	MALLOC_ZERO_CFLAGS=""
 	XMALLOC_ZERO_CFLAGS=""
@@ -1404,7 +1404,7 @@ if test "x${use_lint}" = x"yes"; then
    if test "x${LINT}" = "x"; then
         AC_MSG_ERROR([--with-lint=yes specified but lint-style tool not found in PATH])
    fi
-elif test "x${use_lint}" = x"no" ; then
+elif test "x${use_lint}" = x"no"; then
    if test "x${LINT}" != "x"; then
       AC_MSG_WARN([ignoring LINT environment variable since --with-lint=no was specified])
    fi
@@ -1492,21 +1492,21 @@ AC_CHECK_DECL([__SUNPRO_C],[SUNCC="yes"],[SUNCC="no"])dnl
 # -Werror=unused-command-line-argument
 #
 AC_DEFUN([XORG_TESTSET_CFLAG], [
-m4_if([$#], 0, [m4_fatal([XORG_TESTSET_CFLAG was given with an unsupported number of arguments])])
-m4_if([$#], 1, [m4_fatal([XORG_TESTSET_CFLAG was given with an unsupported number of arguments])])
+m4_if([$#], 0, [m4_fatal([XORG_TESTSET_CFLAG was given with an unsupported number of arguments])])dnl
+m4_if([$#], 1, [m4_fatal([XORG_TESTSET_CFLAG was given with an unsupported number of arguments])])dnl
 
-AC_LANG_COMPILER_REQUIRE
+AC_LANG_COMPILER_REQUIRE dnl# from... somewhere...
 
-AC_LANG_CASE([C],[
+AC_LANG_CASE([C],[ dnl
 	AC_REQUIRE([AC_PROG_CC_C99])dnl
 	define([PREFIX],[C])dnl
 	define([CACHE_PREFIX],[cc])dnl
 	define([COMPILER],[${CC}])dnl
-],[C++],[
+],[C++],[ dnl
 	define([PREFIX],[CXX])dnl
 	define([CACHE_PREFIX],[cxx])dnl
 	define([COMPILER],[${CXX}])dnl
-],[Fortran 77],[
+],[Fortran 77],[ dnl
 	define([PREFIX],[F77])dnl
 	define([CACHE_PREFIX],[f77])dnl
 	define([COMPILER],[${F77}])dnl
@@ -1727,7 +1727,7 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=sequence-point], [-Werror=un
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=return-type], [-errwarn=E_FUNC_HAS_NO_RETURN_STMT])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=trigraphs])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=array-bounds], [-Werror=array-compare])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=write-strings], [-Werror=incompatible-pointer-types-discards-qualifier])
+XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=write-strings])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=address])dnl
 AC_REQUIRE([AC_TYPE_INTPTR_T])dnl
 AC_REQUIRE([AC_TYPE_UINTPTR_T])dnl
@@ -1776,7 +1776,7 @@ AC_LANG_CASE([Fortran 77],[
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=format-truncation])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=stringop-truncation])
 ],[C],[
-  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=strict-prototypes])
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=deprecated-non-prototype], [-Werror=knr-promoted-parameter], [-Werror=missing-prototype-for-cc])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=old-style-declaration])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=implicit], [-errwarn=E_NO_EXPLICIT_TYPE_GIVEN -errwarn=E_NO_IMPLICIT_DECL_ALLOWED])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=int-conversion], [-Werror=implicit-int-conversion])
@@ -1792,7 +1792,11 @@ if test "[x${]WERROR_WRITE_STRINGS_CV[}]" != "xyes"; then
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=incompatible-pointer-types])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=discarded-qualifiers])
 else
-  AC_MSG_NOTICE([skipping adding -Werror=incompatible-pointer-types and -Werror=discarded-qualifiers when -Werror=write-strings is already on])
+  if test "x${CLANGCC}" = "xyes" && test "x${STRICT_COMPILE}" != "xyes"; then 
+    XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=incompatible-pointer-types-discards-qualifier])
+  else
+    AC_MSG_NOTICE([skipping adding -Werror=incompatible-pointer-types and -Werror=discarded-qualifiers when -Werror=write-strings is already on])
+  fi
 fi
 else
 AC_MSG_WARN([You have chosen not to turn some select compiler warnings into errors.  This should not be necessary.  Please report why you needed to do so in a bug report at $PACKAGE_BUGREPORT])

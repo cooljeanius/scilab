@@ -11,8 +11,7 @@ c http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
       subroutine whereismacro
       include 'stack.h'
       integer id(nsiz)
-      logical checkrhs,checklhs,cremat,getsmat,checkval
-      integer topk
+      logical cremat
       integer iadr,sadr
 c
       iadr(l)=l+l-1
@@ -25,6 +24,7 @@ c
          call putid(id,idstk(1,top))
       endif
       fin=-3
+c
       call funs(id)
       if(err.gt.0) return
       if(fun.eq.0) then

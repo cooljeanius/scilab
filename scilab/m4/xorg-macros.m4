@@ -1672,7 +1672,11 @@ XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wmissing-format-attribute])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wredundant-decls])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wdouble-promotion])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wformat-overflow=2], [-Wformat-overflow], [-Wformat-length=2], [-Wformat-length])
-XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wformat-truncation=2], [-Wformat-truncation])
+if test "x${STRICT_COMPILE}" != "xyes"; then
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wformat-truncation=2], [-Wformat-truncation])
+else
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wformat-truncation=1], [-Wformat-truncation=0])
+fi
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wstringop-overflow=2], [-Wstringop-overflow])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wstringop-truncation=2], [-Wstringop-truncation])
 XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Wgcc-compat])
@@ -1772,6 +1776,7 @@ AC_LANG_CASE([Fortran 77],[
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=format-truncation])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=stringop-truncation])
 ],[C],[
+  XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=strict-prototypes])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=old-style-declaration])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=implicit], [-errwarn=E_NO_EXPLICIT_TYPE_GIVEN -errwarn=E_NO_IMPLICIT_DECL_ALLOWED])
   XORG_TESTSET_CFLAG([[BASE_]PREFIX[FLAGS]], [-Werror=int-conversion], [-Werror=implicit-int-conversion])

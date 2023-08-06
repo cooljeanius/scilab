@@ -18,7 +18,7 @@
 #include "do_error_number.h"
 #include "parserConstant.h"
 /*--------------------------------------------------------------------------*/
-extern int C2F(getsym)();
+extern int C2F(getsym)(void);
 /*--------------------------------------------------------------------------*/
 int C2F(terme)(void)
 {

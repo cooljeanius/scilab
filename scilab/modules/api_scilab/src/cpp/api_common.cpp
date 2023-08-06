@@ -36,16 +36,16 @@ extern "C"
 /* Defined in SCI/modules/core/src/fortran/cvname.f */
 extern "C"
 {
-    extern int C2F(cvnamel) (int *id, char *str, int *jobptr, int *str_len);
+    extern int C2F(cvnamel)(int *id, char *str, int *jobptr, int *str_len);
 #ifndef STACK1_H
     extern  int C2F(cvname)(int *, char *, int *, unsigned long int);
 #endif /* !STACK1_H */
     /* *jobptr==0: Get Scilab codes from C-string */
     /* *jobptr==1: Get C-string from Scilab codes */
 
-    extern int C2F(stackp) (int *, int *);
+    extern int C2F(stackp)(int *, int *);
 #ifndef STACK2_H
-    extern int C2F(funs) (int *);
+    extern int C2F(funs)(int *);
 #endif /* !STACK2_H */
 };
 

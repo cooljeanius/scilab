@@ -54,7 +54,8 @@ typedef struct sci_bool_sparse
 
 
 
-extern int C2F(ddmpev)(); /* (originally defined in Fortran) */
+extern int C2F(ddmpev)(double *mp1, int *d1, int *nl1, double *x, double *v,
+                       int *iv, int *m, int *n);
 #ifdef _MSC_VER
 int C2F(createlistcvarfrom)();
 #endif

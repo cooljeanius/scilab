@@ -20,7 +20,7 @@
 #include "Scierror.h"
 #include "dynamic_parallel.h"
 /*--------------------------------------------------------------------------*/
-extern int C2F(adjuststacksize)();
+extern int C2F(adjuststacksize)(int *mem, int *offset);
 
 /*--------------------------------------------------------------------------*/
 #define MIN_STACKSIZE 180000UL

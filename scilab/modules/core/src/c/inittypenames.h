@@ -20,6 +20,6 @@
 * see stack-c.h for defined types
 * called only by initsci.f
 */
-int C2F(inittypenames)();
+int C2F(inittypenames)(void);
 
 #endif /* __INITTYPENAMES_H__ */

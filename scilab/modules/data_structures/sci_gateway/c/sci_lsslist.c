@@ -12,13 +12,14 @@
 
 /*--------------------------------------------------------------------------*/
 #include "gw_data_structures1.h"
+#include <stddef.h>
 /*--------------------------------------------------------------------------*/
-extern int C2F(lsstyp)(); /* fortran */
+extern int C2F(lsstyp)(int *ivt, char *job, size_t job_len);
 extern int C2F(mtlist)(); /* fortran */
 /*--------------------------------------------------------------------------*/
-int sci_lsslist(char *fname,unsigned long fname_len)
+int sci_lsslist(char *fname, unsigned long fname_len)
 {
-   C2F(mtlist)(C2F(lsstyp));
-   return 0;
+    C2F(mtlist)(C2F(lsstyp));
+    return 0;
 }
 /*--------------------------------------------------------------------------*/

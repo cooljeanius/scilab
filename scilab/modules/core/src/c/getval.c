@@ -154,7 +154,7 @@
 #define D 13
 #define E 14
 
-extern int C2F(fortrangetch)();
+extern int C2F(fortrangetch)(void);
 
 
 int C2F(getval)(double *s, int *dotdet)

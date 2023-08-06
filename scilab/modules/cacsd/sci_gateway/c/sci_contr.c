@@ -21,7 +21,12 @@
 #include "stack3.h"
 /*--------------------------------------------------------------------------*/
 extern double C2F(dlamch)(char *CMACH, unsigned long int);
-extern int C2F(ab01od)(); /* 21 args, I am too lazy for them all */
+extern int C2F(ab01od)(char *stages, char *jobu, char *jobv, int *n, int *m,
+                       double *a, int *lda, double *b, int *ldb, double *u,
+                       int *ldu, double *v, int *ldv, int *ncont, int *indcon,
+                       int *kstair, double *tol, int *iwork, double *dwork,
+                       int *ldwork, int *info, size_t stages_len,
+                       size_t jobu_len, size_t jobv_len);
 /*--------------------------------------------------------------------------*/
 int intab01od(char* fname)
 {
@@ -145,10 +150,10 @@ int intab01od(char* fname)
     V = Rhs + 4;
     CreateVar(Rhs + 5, MATRIX_OF_INTEGER_DATATYPE, &un, &M, &ptrIWORK);
     CreateVar(Rhs + 6, MATRIX_OF_DOUBLE_DATATYPE, &un, &LDWORK, &ptrDWORK);
-    C2F(ab01od)( "A", JOBU, JOBV, &N, &M, stk(ptrA), &LDA,
-                 stk(ptrB), &LDB, stk(ptrU), &LDU, stk(ptrV), &LDV,
-                 istk(ptrNCONT), &INDCON, istk(ptrKSTAIR), &theTOL,
-                 istk(ptrIWORK), stk(ptrDWORK), &LDWORK, &INFO );
+    C2F(ab01od)("A", JOBU, JOBV, &N, &M, stk(ptrA), &LDA,
+                stk(ptrB), &LDB, stk(ptrU), &LDU, stk(ptrV), &LDV,
+                istk(ptrNCONT), &INDCON, istk(ptrKSTAIR), &theTOL,
+                istk(ptrIWORK), stk(ptrDWORK), &LDWORK, &INFO, 0UL, 0UL, 0UL);
     if (INFO != 0)
     {
         C2F(errorinfo)("ab01od", &INFO, 6L);

@@ -540,7 +540,7 @@ if test -n "${F77}"; then
     AC_MSG_NOTICE([debugging of fortran enabled; checking extra flags for it])
     AC_LANG_PUSH([Fortran 77])
     dnl# a few other similar flags are now also checked in m4/xorg-macros.m4
-    for flag in -g -Wall -Wextra -Wsurprising -Warray-temporaries -Wcharacter-truncation -Wconversion-extra -Wfrontend-loop-interchange -Wuse-without-only -Wrealloc-lhs -Wrealloc-lhs-all; do
+    for flag in -g -Wall -Wextra -Wno-unused-parameter -Wsurprising -Warray-temporaries -Wcharacter-truncation -Wconversion-extra -Wfrontend-loop-interchange -Wuse-without-only -Wrealloc-lhs -Wrealloc-lhs-all; do
         case " ${FFLAGS} " in
             *\ ${flag}\ *)
                 # flag is already present
@@ -648,7 +648,12 @@ case "${CXX}" in
         fi
 
         if test "x${enable_debug_CXX}" = "xyes"; then
-            DEBUG_CXXFLAGS="-pipe -Wshadow -Wpointer-arith -Wcast-align -Wreturn-type -Wswitch -Wtrigraphs -Wcomment -Wchar-subscripts -Wformat -Wparentheses -Wsign-compare -Wwrite-strings -Wunused -fno-strict-aliasing -Wextra -Wall -g3"
+            DEBUG_CXXFLAGS="-pipe -Wshadow -Wpointer-arith -Wcast-align -Wreturn-type -Wswitch -Wtrigraphs -Wcomment -Wchar-subscripts -Wformat -Wparentheses -Wwrite-strings -Wunused -fno-strict-aliasing -Wextra -Wall -g3"
+            if test "x${STRICT_COMPILE}" != "xyes"; then
+                DEBUG_CXXFLAGS="${DEBUG_CXXFLAGS} -Wsign-compare"
+            else
+                DEBUG_CXXFLAGS="${DEBUG_CXXFLAGS} -Wno-sign-compare"
+            fi
             case "$host" in
                 *-linux-gnu )
                     # Only doing that under Linux
@@ -703,6 +708,9 @@ case "${CC}" in
 
    AS_IF([test "x${enable_debug_C}" = "xyes"],[
       DEBUG_CFLAGS="-pipe -Wformat -Wshadow -Wpointer-arith -Wcast-align -Wmissing-prototypes -Wmissing-declarations -Wstrict-prototypes -Wmissing-noreturn -Wendif-labels -Wpointer-arith -Wwrite-strings -Winline -Wredundant-decls -Wall -Wchar-subscripts -Wextra -Wuninitialized -Wno-format-y2k -Wmissing-format-attribute -Wno-missing-field-initializers -fno-strict-aliasing -Wold-style-definition -g3"
+      if test "x${STRICT_COMPILE}" = "xyes"; then
+        DEBUG_CFLAGS="${DEBUG_CFLAGS} -Wno-sign-compare"
+      fi
       # used to be -O
       # -D_FORTIFY_SOURCE=2
       case "${host}" in

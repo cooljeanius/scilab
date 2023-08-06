@@ -41,7 +41,9 @@ extern "C" {
 
 #include <cstdlib>
 #include <cstring>
-/*#include <sstream> for debug purposes only */
+#ifdef DEBUG
+# include <sstream> /* for debug purposes only */
+#endif /* DEBUG */
 #include "parallel_run.hxx"
 
 
@@ -71,10 +73,12 @@ Rows : matrix of doubles 1 x <=m or 2 x <=m giving the nb of rows (or rows and c
 , a matrix [a11,a12,a13;a21,a22,a23] contains 3 (ncols) arguments of 2 (nrows) elements;
 */
 
+#ifndef __GW_PARALLEL_H__
 extern "C"
 {
     int sci_parallel_run(char *fname, unsigned long fname_len);
 }
+#endif /* !__GW_PARALLEL_H__ */
 
 namespace
 {

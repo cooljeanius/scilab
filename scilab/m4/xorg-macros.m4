@@ -1,4 +1,4 @@
-dnl# xorg-macros.m4 serial 112
+dnl# xorg-macros.m4 serial 114
 dnl# Originally generated from xorg-macros.m4.in xorgversion.m4 by configure.
 dnl#
 dnl# Copyright (c) 2005-2006, Oracle and/or its affiliates. All rights reserved.
@@ -1468,14 +1468,17 @@ AM_CONDITIONAL([MAKE_LINT_LIB],[test "x${make_lint_lib}" != "xno"])dnl
 #   Sun/Oracle Solaris Studio cc - sets SUNCC to "yes"
 #
 AC_DEFUN([XORG_COMPILER_BRAND],[
+    dnl# probably already done, but just in case:
 AC_LANG_CASE([C],[
 	AC_REQUIRE([AC_PROG_CC_C99])dnl
 ],[C++],[
 	AC_REQUIRE([AC_PROG_CXX])dnl
 ])dnl
-AC_CHECK_DECL([__clang__],[CLANGCC="yes"],[CLANGCC="no"])dnl
-AC_CHECK_DECL([__INTEL_COMPILER],[INTELCC="yes"],[INTELCC="no"])dnl
-AC_CHECK_DECL([__SUNPRO_C],[SUNCC="yes"],[SUNCC="no"])dnl
+  ## just some basic decl checks:
+AC_CHECK_DECL([__clang__],[CLANGCC="yes"],[CLANGCC="no"]) ## (need newline)
+AC_CHECK_DECL([__INTEL_COMPILER],[INTELCC="yes"],[INTELCC="no"]) ## (need newline)
+AC_CHECK_DECL([__SUNPRO_C],[SUNCC="yes"],[SUNCC="no"]) ## (need newline)
+  ## ...ok, that should be it, right?
 ])dnl# XORG_COMPILER_BRAND
 
 # XORG_TESTSET_CFLAG(<variable>, <flag>, [<alternative flag>, ...])

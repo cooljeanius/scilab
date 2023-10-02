@@ -312,35 +312,37 @@ fi
 
 ######## fortran ########
 
-if test "x${with_gfortran}" = "xyes"; then
+AS_IF([test "x${with_gfortran}" = "xyes"],[
    AC_PROG_F77([gfortran])
-   if test -z "${F77}"; then
+   AS_IF([test -z "${F77}"],[
      AC_MSG_ERROR([You asked me to use gfortran, but I have not been able to find it])
-   fi
-fi
+   ])dnl
+])dnl
 
-if test "x${with_intelcompilers}" = "xyes"; then
+AS_IF([test "x${with_intelcompilers}" = "xyes"],[
    AC_PROG_F77([ifc ifort])
-   if test -z "${F77}"; then
+   AS_IF([test -z "${F77}"],[
      AC_MSG_ERROR([You asked me to use ifc (intel fortran compiler), but I have not been able to find it])
-   fi
-fi
+   ])dnl
+])dnl
 
-if test -z "${F77}"; then
+AS_IF([test -z "${F77}"],[
    AC_MSG_NOTICE([No Fortran compiler specified; trying to find one (preferring gfortran and intel compilers)])
-   AC_PROG_F77([gfortran ifc ifort])
-   if test -z "${F77}"; then
+   AC_PROG_F77([gfortran ifc ifort flang])
+   AS_IF([test -z "${F77}"],[
         # Best effort to find a compiler (might be g77)
         AC_MSG_NOTICE([Still no Fortran compiler found; getting desperate now...])
         AC_PROG_F77
-   fi
-fi
+   ])dnl
+])dnl
 
 # case statements were introduced in fortran 90 so we can use that
 # as a test to see if our compiler is fortran 90 compatible.
 f90compatible=false
 if test -z "${F77}"; then
   AC_MSG_ERROR([No fortran compiler found. Cannot compile scilab without a fortran compiler])
+else
+  AC_MSG_NOTICE([at this point, F77 is ${F77}])
 fi
 
 AC_MSG_CHECKING([if ${F77} is a fortran 90 compatible compiler])
@@ -372,24 +374,36 @@ if test "x${with_gcc}" = "xyes"; then
    AC_PROG_CC([gcc])
    if test -z "${CC}"; then
      AC_MSG_ERROR([You asked me to use gcc, but I have not been able to find it])
-    fi
+   else
+     AC_MSG_NOTICE([GNU compiler found: ${CC}])
+   fi
 fi
 
 if test "x${with_intelcompilers}" = "xyes"; then
    AC_PROG_CC([icc ecc])
    if test -z "${CC}"; then
      AC_MSG_ERROR([You asked me to use icc (intel C compiler), but I have not been able to find it])
-    fi
+   else
+     AC_MSG_NOTICE([intel compiler found: ${CC}])
+   fi
+else
+   AC_MSG_NOTICE([skipping checks for intel compiler])
 fi
 
+   ## FIXME: did I screw something up in here?
 AS_IF([test -z "${CC}"],[
    AC_MSG_NOTICE([No C compiler specified... relying on Autoconf to find the best])
    AC_PROG_CC
    XORG_COMPILER_BRAND dnl# from m4/xorg-macros.m4
+   ## OK, so, found, right?
+],[
+   AC_MSG_NOTICE([almost out of the C compiler section...])
 ])dnl
 
 if test -z "${CC}"; then
   AC_MSG_ERROR([No C Compiler found. Cannot compile Scilab without a C compiler])
+else
+  AC_MSG_NOTICE([At this point, CC is ${CC}])
 fi
 
 AC_CHECK_SIZEOF([int])

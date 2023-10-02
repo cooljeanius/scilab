@@ -282,7 +282,7 @@ AC_ARG_WITH([min_macosx_version],
 case "${host}" in
     *darwin*)
     dnl# FIXME: verify that we actually have a valid version number here:
-    if test -n "${with_min_macosx_version}"; then
+    AS_IF([test -n "${with_min_macosx_version}"],[
        MIN_MACOSX_VERSION=${with_min_macosx_version}
        # Append to the default flags on Apple machines
        ARCH_CFLAGS="-mmacosx-version-min=${MIN_MACOSX_VERSION}"
@@ -292,8 +292,8 @@ case "${host}" in
        # We need this to be passed to all linker commands:
        LDFLAGS="${LDFLAGS} -mmacosx-version-min=${MIN_MACOSX_VERSION}"
        AC_DEFINE_UNQUOTED([MIN_MACOSX_VERSION],[${MIN_MACOSX_VERSION}],
-             [Minimum MacOSX version with which binaries will be compatible.])
-    fi
+             [Minimum MacOSX version with which binaries will be compatible.])dnl
+    ])
 ;;
 esac
 
@@ -306,23 +306,23 @@ PKG_PROG_PKG_CONFIG dnl# from m4/pkg.m4
 ## check if options are correct (or not)
 #####################################################
 
-if test "x${with_intelcompilers}" = "xyes" -a "x${with_gcc}" = "xyes"; then
-    AC_MSG_ERROR([Conflicting options: you specified two different compiler series (i.e. both Intel and gcc)])
-fi
+AS_IF([test "x${with_intelcompilers}" = "xyes" -a "x${with_gcc}" = "xyes"],[
+    AC_MSG_ERROR([Conflicting options: you specified two different compiler series (i.e. both Intel and gcc)])dnl
+])dnl
 
 ######## fortran ########
 
 AS_IF([test "x${with_gfortran}" = "xyes"],[
    AC_PROG_F77([gfortran])
    AS_IF([test -z "${F77}"],[
-     AC_MSG_ERROR([You asked me to use gfortran, but I have not been able to find it])
+     AC_MSG_ERROR([You asked me to use gfortran, but I have not been able to find it])dnl
    ])dnl
 ])dnl
 
 AS_IF([test "x${with_intelcompilers}" = "xyes"],[
    AC_PROG_F77([ifc ifort])
    AS_IF([test -z "${F77}"],[
-     AC_MSG_ERROR([You asked me to use ifc (intel fortran compiler), but I have not been able to find it])
+     AC_MSG_ERROR([You asked me to use ifc (intel fortran compiler), but I have not been able to find it])dnl
    ])dnl
 ])dnl
 
@@ -339,11 +339,11 @@ AS_IF([test -z "${F77}"],[
 # case statements were introduced in fortran 90 so we can use that
 # as a test to see if our compiler is fortran 90 compatible.
 f90compatible=false
-if test -z "${F77}"; then
-  AC_MSG_ERROR([No fortran compiler found. Cannot compile scilab without a fortran compiler])
-else
-  AC_MSG_NOTICE([at this point, F77 is ${F77}])
-fi
+AS_IF([test -z "${F77}"],[
+  AC_MSG_ERROR([No fortran compiler found. Cannot compile scilab without a fortran compiler])dnl
+],[
+  AC_MSG_NOTICE([at this point, F77 is ${F77}])dnl
+])dnl
 
 AC_MSG_CHECKING([if ${F77} is a fortran 90 compatible compiler])
  f90compatible=false
@@ -370,41 +370,41 @@ AC_COMPILE_IFELSE([AC_LANG_SOURCE([[
 AC_LANG_POP([Fortran 77])dnl
 
 ############ C ###############
-if test "x${with_gcc}" = "xyes"; then
+AS_IF([test "x${with_gcc}" = "xyes"],[
    AC_PROG_CC([gcc])
-   if test -z "${CC}"; then
-     AC_MSG_ERROR([You asked me to use gcc, but I have not been able to find it])
-   else
-     AC_MSG_NOTICE([GNU compiler found: ${CC}])
-   fi
-fi
+   AS_IF([test -z "${CC}"],[
+     AC_MSG_ERROR([You asked me to use gcc (or a compiler calling itself that), but I have not been able to find it])dnl
+   ],[
+     AC_MSG_NOTICE([GNU compiler found: ${CC}])dnl
+   ])dnl
+])dnl
 
-if test "x${with_intelcompilers}" = "xyes"; then
+AS_IF([test "x${with_intelcompilers}" = "xyes"],[
    AC_PROG_CC([icc ecc])
-   if test -z "${CC}"; then
-     AC_MSG_ERROR([You asked me to use icc (intel C compiler), but I have not been able to find it])
-   else
-     AC_MSG_NOTICE([intel compiler found: ${CC}])
-   fi
-else
-   AC_MSG_NOTICE([skipping checks for intel compiler])
-fi
+   AS_IF([test -z "${CC}"],[
+     AC_MSG_ERROR([You asked me to use icc (intel C compiler), but I have not been able to find it])dnl
+   ],[
+     AC_MSG_NOTICE([intel compiler found: ${CC}])dnl
+   ])dnl
+],[
+   AC_MSG_NOTICE([skipping checks for intel compiler])dnl
+])dnl
 
-   ## FIXME: did I screw something up in here?
+   ## Remember that the switch to this macro does this dependency-hoisting thing:
 AS_IF([test -z "${CC}"],[
    AC_MSG_NOTICE([No C compiler specified... relying on Autoconf to find the best])
    AC_PROG_CC
    XORG_COMPILER_BRAND dnl# from m4/xorg-macros.m4
    ## OK, so, found, right?
 ],[
-   AC_MSG_NOTICE([almost out of the C compiler section...])
+   AC_MSG_NOTICE([almost out of the C compiler section...])dnl
 ])dnl
 
-if test -z "${CC}"; then
+AS_IF([test -z "${CC}"],[
   AC_MSG_ERROR([No C Compiler found. Cannot compile Scilab without a C compiler])
-else
-  AC_MSG_NOTICE([At this point, CC is ${CC}])
-fi
+],[
+  AC_MSG_NOTICE([At this point, CC is ${CC}])dnl
+])dnl
 
 AC_CHECK_SIZEOF([int])
 AC_CHECK_ALIGNOF([int])
@@ -500,16 +500,16 @@ AS_IF([test "x${enable_debug_CXX}" = "xyes"],[
    enable_debug_CXX=no
 ])dnl
 
-if test "x${enable_debug_java}" = "xyes"; then
+AS_IF([test "x${enable_debug_java}" = "xyes"],[
    LOGGING_LEVEL="INFO"
-else
+],[
    LOGGING_LEVEL="SEVERE"
-fi
+])dnl
 AC_SUBST([LOGGING_LEVEL])dnl
 
-if test "x${prefix}" = "xNONE"; then
+AS_IF([test "x${prefix}" = "xNONE"],[
   prefix="${ac_default_prefix}"
-fi
+])dnl
 
 ###############################
 ## get the version

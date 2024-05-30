@@ -16682,33 +16682,17 @@
 		A58354A3224B300F0045B983 /* c */ = {
 			isa = PBXGroup;
 			children = (
-				A58354A4224B300F0045B983 /* .deps */,
 				A58354A5224B300F0045B983 /* gw_action_binding.c */,
 			);
 			path = c;
 			sourceTree = "<group>";
 		};
-		A58354A4224B300F0045B983 /* .deps */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = .deps;
-			sourceTree = "<group>";
-		};
 		A58354A6224B300F0045B983 /* cpp */ = {
 			isa = PBXGroup;
 			children = (
-				A58354A7224B300F0045B983 /* .deps */,
 				A58354A8224B300F0045B983 /* sci_notify.cpp */,
 			);
 			path = cpp;
-			sourceTree = "<group>";
-		};
-		A58354A7224B300F0045B983 /* .deps */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = .deps;
 			sourceTree = "<group>";
 		};
 		A58354A9224B300F0045B983 /* src */ = {

@@ -1,11 +1,11 @@
 <?xml version = "1.0" encoding = "UTF-8" standalone = "no"?>
-<!-- =================================== -->
+<!-- -*- XML -*- ======================= -->
 <!--
  ====================
  @author Allan CORNET
  @date DIGITEO 2009
  ====================
- Don't touch if you do not know what you are doing
+ Please avoid touching if you do not know what you are doing
 -->
 <!-- =================================== -->
 <blas_specification>

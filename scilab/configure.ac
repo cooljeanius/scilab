@@ -176,6 +176,21 @@ AC_MSG_CHECKING([programs, especially compilers])
 AC_MSG_RESULT([ ])dnl
 
 AM_PROG_AR dnl# automake1.14 warns if this macro is missing
+AS_IF([test "x${AR}" = "x"],[
+	test -z "${AR}" || unset AR
+	AC_CHECK_TOOLS([AR],[ar gar])dnl
+	## might want to switch around these checks...
+	if test "x${ac_cv_prog_AR}" = "x"; then
+		test -z "${ac_cv_prog_AR}" || unset ac_cv_prog_AR
+		m4_ifdef([AC_PROG_AR],[
+			AC_PROG_AR
+		],[
+			test -x "`which ar`"
+		]) ## (just in case)
+	fi
+],[
+	test -n "${AR}" && export AR
+]) ## (need newline)
 AM_PROG_AS
 dnl# All of the `test`s here are a hack to emulate the use
 dnl# of AC_REQUIRE([]) outside of an AC_DEFUN([])

@@ -195,38 +195,38 @@ AM_PROG_AS
 dnl# All of the `test`s here are a hack to emulate the use
 dnl# of AC_REQUIRE([]) outside of an AC_DEFUN([])
 AS_IF([test "x${AWK}" = "x"],[
-	test -z "${AWK}"
+	test -z "${AWK}" || unset AWK
 	AC_PROG_AWK
 ],[
 	# Autoconf likes to remove AC_SUBSTs from conditions
 	# so this test and the others like it are dummies
 	# to make sure that the "else" condition does not
 	# become empty
-	test ! -z "${AWK}" && export AWK
+	test -n "${AWK}" && export AWK
 	AC_SUBST([AWK])dnl
 ]) ## (need newline)
 AS_IF([test "x${CPP}" = "x"],[
-	test -z "${CPP}"
+	test -z "${CPP}" || unset CPP
 	AC_PROG_CPP
 ],[
 	XORG_PROG_RAWCPP([]) dnl# from m4/xorg-macros.m4
 ]) ## (need newline)
 AS_IF([test "x${GREP}" = "x"],[
-	test -z "${GREP}"
+	test -z "${GREP}" || unset GREP
 	AC_PROG_GREP
 ],[
-	test ! -z "${GREP}" && export GREP
+	test -n "${GREP}" && export GREP
 	AC_SUBST([GREP])dnl
 ]) ## (need newline)
 AS_IF([test "x${INSTALL}" = "x"],[
-	test -z "${INSTALL}"
+	test -z "${INSTALL}" || unset INSTALL
 	AC_PROG_INSTALL
 ],[
-	test ! -z "${INSTALL}" && export INSTALL
+	test -n "${INSTALL}" && export INSTALL
 	AC_SUBST([INSTALL])dnl
 ]) ## (need newline)
 AS_IF([test "x${MAKE}" = "x"],[
-	test -z "${MAKE}"
+	test -z "${MAKE}" || unset MAKE
 	AC_PATH_PROGS([MAKE],[make gmake gnumake remake])
 	AC_PROG_MAKE_SET
 	if test "x${SILENT_RULES}" = "x"; then
@@ -234,7 +234,7 @@ AS_IF([test "x${MAKE}" = "x"],[
 		AM_SILENT_RULES
 	fi
 ],[
-	test ! -z "${MAKE}" && export MAKE
+	test -n "${MAKE}" && export MAKE
 	AC_SUBST([MAKE])dnl
 ]) ## (need newline)
 AC_BAKEFILE_GNUMAKE dnl# from m4/bakefile.m4
@@ -431,10 +431,10 @@ AC_CHECK_ALIGNOF([long])dnl
 ### C++ ###
 AC_PROG_CXX
 AS_IF([test "x${CXXCPP}" = "x"],[
-	test -z "${CXXCPP}"
+	test -z "${CXXCPP}" || unset CXXCPP
 	AC_PROG_CXXCPP
 ],[
-	test ! -z "${CXXCPP}" && export CXXCPP
+	test -n "${CXXCPP}" && export CXXCPP
 	AC_SUBST([CXXCPP])dnl
 ]) ## (need newline)
 AC_PROG_OBJCXX
@@ -458,10 +458,10 @@ esac
 # automake option
 
 AS_IF([test "x${CC_C_O}" = "x"],[
-	test -z "${CC_C_O}"
+	test -z "${CC_C_O}" || unset CC_C_O
 	AM_PROG_CC_C_O
 ],[
-	test ! -z "${CC_C_O}" && export CC_C_O
+	test -n "${CC_C_O}" && export CC_C_O
 	AC_SUBST([CC_C_O])dnl
 ]) ## (need newline)
 AC_PROG_CXX_C_O
@@ -1621,27 +1621,27 @@ case "${host_os}" in
 esac
 
 if test "x${ac_cv_header_jni_h}" = "x"; then
-  test -z "${ac_cv_header_jni_h}"
+  test -z "${ac_cv_header_jni_h}" || unset ac_cv_header_jni_h
   AC_CHECK_HEADERS([jni.h])
 fi
 
 if test "x${ac_cv_header_stdio_h}" = "x"; then
-  test -z "${ac_cv_header_stdio_h}"
+  test -z "${ac_cv_header_stdio_h}" || unset ac_cv_header_stdio_h
   AC_CHECK_HEADERS([stdio.h])
 fi
 
 if test "x${ac_cv_header_stdint_h}" = "x"; then
-  test -z "${ac_cv_header_stdint_h}"
+  test -z "${ac_cv_header_stdint_h}" || unset ac_cv_header_stdint_h
   AC_CHECK_HEADERS([stdint.h])
 fi
 
 if test "x${ac_cv_header_strings_h}" = "x"; then
-  test -z "${ac_cv_header_strings_h}"
+  test -z "${ac_cv_header_strings_h}" || unset ac_cv_header_strings_h
   AC_CHECK_HEADERS([strings.h])
 fi
 
 if test "x${ac_cv_header_sys_param_h}" = "x"; then
-  test -z "${ac_cv_header_sys_param_h}"
+  test -z "${ac_cv_header_sys_param_h}" || unset ac_cv_header_sys_param_h
   AC_CHECK_HEADERS([sys/param.h])
 fi
 
@@ -1872,7 +1872,7 @@ AC_ARG_ENABLE([build-localization],
 BUILD_LOCALIZATION_ENABLE=no
 
 if test "x${enable_build_localization}" != "xno"; then
-   test ! -z "${LANG}" && test ! -z "${LC_ALL}"
+   test -n "${LANG}" && test -n "${LC_ALL}" && echo "LANG and LC_ALL both set: ${LANG} and ${LC_ALL}"
    AC_SUBST([ALL_LINGUAS])dnl
    AC_SUBST([ALL_LINGUAS_DOC])dnl
    AC_CHECK_FUNCS([bind_textdomain_codeset])dnl
@@ -1908,15 +1908,15 @@ AM_CONDITIONAL([BUILD_MACROS],
 
 case "$host_os" in
 	*Darwin* | *darwin*)
-	  if test ! -z "${BLAS_LIBS}"; then
+	  if test -n "${BLAS_LIBS}"; then
 	  	BLAS_LIBS="${BLAS_LIBS} -Wl,-framework,Accelerate"
 	  elif test -d /System/Library/Frameworks/Accelerate.framework/Versions/NOT_REALLY_A_VERSION; then
 	  	test -z "${BLAS_LIBS}" && BLAS_LIBS="-Wl,-framework,Accelerate"
 	  fi
-	  if test ! -z "${CPPFLAGS}"; then
+	  if test -n "${CPPFLAGS}"; then
 	  	CPPFLAGS="${CPPFLAGS} -Wp,-I/System/Library/Frameworks/Accelerate.framework/Headers"
 	  fi
-	  if test ! -z "${CXXFLAGS}"; then
+	  if test -n "${CXXFLAGS}"; then
 	  	CXXFLAGS="${CXXFLAGS} -Wp,-I/System/Library/Frameworks/Accelerate.framework/Headers"
 	  fi
 	;;
@@ -2324,7 +2324,7 @@ AC_MSG_CHECKING([libtool stuff])
 AC_MSG_RESULT([ ])
 
 AC_DISABLE_STATIC([])
-LT_PREREQ([2.2.7])
+LT_PREREQ([2.4.7])
 LT_INIT([shared dlopen win32-dll])
 LT_LANG([C])   dnl# default
 LT_LANG([C++]) dnl# also a default
@@ -2359,10 +2359,10 @@ dnl# complain about it, and I am more okay with libtoolize warnings than
 dnl# I am with autoscan warnings
 dnl# see: https://savannah.gnu.org/support/?108503
 AS_IF([test "x${RANLIB}" = "x"],[
-	test -z "${RANLIB}"
+	test -z "${RANLIB}" || unset RANLIB
 	AC_PROG_RANLIB
 ],[
-	test ! -z "${RANLIB}" && export RANLIB
+	test -n "${RANLIB}" && export RANLIB
 	AC_SUBST([RANLIB])dnl
 ])dnl
 
@@ -2554,10 +2554,10 @@ if test -z "${HAVE_FOP}"; then
 	HAVE_FOP=no
 	AC_SUBST([HAVE_FOP])
 else
-	test ! -z "${HAVE_FOP}" && export HAVE_FOP
+	test -n "${HAVE_FOP}" && export HAVE_FOP
 fi
 AM_CONDITIONAL([HAVE_FOP],
-               [test ! -z "${HAVE_FOP}" -a "x${HAVE_FOP}" != "xno"])dnl
+               [test -n "${HAVE_FOP}" -a "x${HAVE_FOP}" != "xno"])dnl
 
 AC_CONFIG_FILES([
 contrib/Makefile
@@ -2880,7 +2880,7 @@ fi
 
 echo ""
 echo "Java Configuration:"
-if test ! -z "$JAVAC"; then
+if test -n "${JAVAC}"; then
 	echo "  JAVA_HOME ........... = $JAVA_HOME"
 	echo "  JAVAC ............... = $JAVAC"
 	echo "  JAVA_CLASSPATH ...... = $JAVA_CLASSPATH"
@@ -2899,7 +2899,7 @@ fi
 
 echo ""
 echo "Java dependencies:"
-if test ! -z "$JAVAC"; then
+if test -n "${JAVAC}"; then
 	echo "  Flexdock ............ = $FLEXDOCK"
 	echo "  JOGL 2............... = $JOGL2"
 	echo "  JOGL 2 LIBS (JNI) ... = $JOGL2_LIBS"
@@ -2919,7 +2919,7 @@ fi
 
 echo ""
 echo "Java documentation, graphic export:"
-if test ! -z "$JAVAC"; then
+if test -n "${JAVAC}"; then
 	echo "  FOP (XML => PDF) .... = $FOP"
 	echo "  JLaTeXMath Fop ...... = $JLATEXMATH_FOP"
 	echo "  Batik (SVG) ......... = $BATIK"
@@ -2972,7 +2972,7 @@ echo "  PCRE_VERSION ....... = $PCRE_VERSION"
 
 echo ""
 echo "SWIG Configuration:"
-if test ! -z "$SWIG_BIN"; then
+if test -n "${SWIG_BIN}"; then
 	echo "  SWIG_BIN ........... = $SWIG_BIN"
 	echo "  SWIG_JAVA .......... = $SWIG_JAVA"
 	echo "  SWIG_CXX ........... = $SWIG_CXX"
@@ -2982,7 +2982,7 @@ fi
 
 echo ""
 echo "GIWS Configuration:"
-if test ! -z "$GIWS_BIN"; then
+if test -n "${GIWS_BIN}"; then
 	echo "  GIWS_BIN ........... = $GIWS_BIN"
 else
 	echo "  GIWS generation disabled"

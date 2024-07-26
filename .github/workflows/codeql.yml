@@ -72,7 +72,7 @@ jobs:
       if: matrix.language == 'c-cpp'
       run: |
         sudo apt-get -qq update
-        sudo apt-get install libc6-dev-amd64-cross libgcc-s1-amd64-cross gobjc
+        sudo apt-get install libc6-dev-amd64-cross libgcc-s1-amd64-cross gobjc gobjc-multilib libfl-dev libtbb-dev autopoint libhdf5-dev
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL

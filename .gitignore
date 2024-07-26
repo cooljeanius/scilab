@@ -9,6 +9,8 @@ workspace/
 *(Autosaved)*
 *.jnilib
 *.jar
+confdefs.h
+Makefile
 modules/*/clang_static_analysis/*
 *.xcworkspacedata
 *.xcuserstate

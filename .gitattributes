@@ -1,0 +1,4 @@
+aclocal.m4 linguist-generated
+configure linguist-generated
+configure.scan linguist-generated
+Makefile.in linguist-generated

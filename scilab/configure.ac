@@ -254,14 +254,15 @@ AC_ARG_WITH([macports_prefix],
 [AS_HELP_STRING([--with-macports-prefix],
                 [Provide a macports prefix. Default: /opt/local ])])
 # Need MacosX Version to specify some path.                                  
-case "${host_os}" in
-     *Darwin* | *darwin*)
+AS_CASE(["${host_os}"],
+     [*Darwin* | *darwin*],
+     [
      	      AC_GET_MACOSX_VERSION dnl# from m4/macosx.m4
-     ;;
-esac
+     ])dnl
 
-case "${host}" in
-    *darwin*)
+AS_CASE(["${host}"],
+    [*darwin*],
+    [
         if test -n "${with_macports_prefix}"; then
             # If with-macports-prefix is provided, use the provided path to
             # make sure that we will use it to detect dependencies
@@ -288,14 +289,14 @@ case "${host}" in
         # Append to the default flags on Apple machines
         CPPFLAGS="`echo \"${CPPFLAGS} -Wp,-I${MACPORTS_PREFIX}/include\" | uniq`"
         LDFLAGS="`echo \"${LDFLAGS} -L${MACPORTS_PREFIX}/lib\" | uniq`"
-        ;;
-esac
+    ])dnl
 
 AC_ARG_WITH([min_macosx_version],
 [AS_HELP_STRING([--with-min-macosx-version],
                 [Force compilers to generate binaries compatible with MacOSX minimal version.])])
-case "${host}" in
-    *darwin*)
+AS_CASE(["${host}"],
+    [*darwin*],
+    [
     dnl# FIXME: verify that we actually have a valid version number here:
     AS_IF([test -n "${with_min_macosx_version}"],[
        MIN_MACOSX_VERSION=${with_min_macosx_version}
@@ -309,8 +310,7 @@ case "${host}" in
        AC_DEFINE_UNQUOTED([MIN_MACOSX_VERSION],[${MIN_MACOSX_VERSION}],
              [Minimum MacOSX version with which binaries will be compatible.])dnl
     ])
-;;
-esac
+])dnl
 
 #####################################################
 ## Look for pkg-config
@@ -445,14 +445,14 @@ dnl# because if the user has specified the full path of the desired C++
 dnl# compiler, then AC_CHECK_PROG will fail. If AC_PROG_CXX fails to find a
 dnl# c++ compiler, then it will set "CXX=g++", so instead just run
 dnl# AC_CHECK_PROG in this special case.
-case ${CXX} in
-    g++)
+AS_CASE([${CXX}],
+    [g++],
+    [
         AC_CHECK_PROG([cxx_present],[${CXX}],[yes],[no])
-        if test "x${cxx_present}" != "xyes"; then
+        AS_IF([test "x${cxx_present}" != "xyes"],[
             AC_MSG_ERROR([No C++ compiler found. Cannot compile scilab without a C++ compiler])
-        fi
-        ;;
-esac
+        ])dnl
+    ])dnl
 
 # testing for support for both "-c" and "-o" is for the "subdir-objects"
 # automake option
@@ -549,9 +549,10 @@ AS_IF([test "x${with_intelcompilers}" = "xyes"],[
 ######################
 ######## With gfortran ...
 ######################
-if test -n "${F77}"; then
-   case "${F77}" in
-     gfortran* | */gfortran )
+AS_IF([test -n "${F77}"],[
+   AS_CASE(["${F77}"],
+     [gfortran* | */gfortran],
+     [
         AC_MSG_NOTICE([enabling gfortran-specific flags])
         ## With GNU Compiler enable the code coverage
         if test "x${enable_code_coverage}" = "xyes"; then
@@ -559,23 +560,24 @@ if test -n "${F77}"; then
         fi
         ## see Fortran section under https://gcc.gnu.org/gcc-10/changes.html
         FFLAGS="${FFLAGS} -std=legacy"
-     ;;
-     g77*)
+     ],
+     [g77*],
+     [
         AC_MSG_ERROR([g77 is no longer supported. Please consider switching to gfortran.])
-     ;;
-   esac
+     ])dnl
 
-   if test "x${enable_debug_fortran}" = "xyes"; then
+   AS_IF([test "x${enable_debug_fortran}" = "xyes"],[
     AC_MSG_NOTICE([debugging of fortran enabled; checking extra flags for it])
     AC_LANG_PUSH([Fortran 77])
     dnl# a few other similar flags are now also checked in m4/xorg-macros.m4
     for flag in -g -Wall -Wextra -Wno-unused-parameter -Wsurprising -Warray-temporaries -Wcharacter-truncation -Wconversion-extra -Wfrontend-loop-interchange -Wuse-without-only -Wrealloc-lhs -Wrealloc-lhs-all; do
-        case " ${FFLAGS} " in
-            *\ ${flag}\ *)
+        AS_CASE([" ${FFLAGS} "],
+            [*\ ${flag}\ *],
+            [
                 # flag is already present
-                ;;
-
-            *)
+            ],
+            [*],
+            [
                 AC_MSG_CHECKING([if the Fortran compiler accepts ${flag}])
                 ac_save_FFLAGS="${FFLAGS}"
                 FFLAGS="${FFLAGS} ${flag}"
@@ -584,72 +586,84 @@ if test -n "${F77}"; then
                      DEBUG_FFLAGS="${flag}"
                     ],
                     [AC_MSG_RESULT([no])])
-                ;;
-        esac
+            ])
     done
     AC_LANG_POP([Fortran 77])
-   else
-      DEBUG_FFLAGS="-DNDEBUG"
-   fi
-      case "${host}" in
-         x86_64-*-linux*)
+   ],[
+    DEBUG_FFLAGS="-DNDEBUG"
+   ])
+      AS_CASE(["${host}"],
+        [x86_64-*-linux*],
+        [
             ARCH_FFLAGS="-m64 -fPIC"
-                    ;;
-        # Dec Alpha OSF 4
-        alpha*-dec-osf4.*)
+        ],
+        [alpha*-dec-osf4.*],
+        [
+          # Dec Alpha OSF 4
           ARCH_FFLAGS="-fpe3"
-        ;;
-        alpha*-dec-osf*)
+        ],
+        [alpha*-dec-osf*],
+        [
             ARCH_FFLAGS="-fpe3 -switch nosqrt_recip"
-        ;;
-        rs6000-*-*)
+        ],
+        [rs6000-*-*],
+        [
             ARCH_FFLAGS="-qcharlen=4096"
-            ;;
-        mips-*-ultrix*)
+        ],
+        [mips-*-ultrix*],
+        [
             ARCH_FFLAGS="-O0 -fpe1"
-        ;;
-          *-*-hpux9.*)
+        ],
+        [*-*-hpux9.*],
+        [
             ARCH_FFLAGS="+Obb1200 +E4 -Dhpux"
-        ;;
-          *-*-hpux10.*)
+        ],
+        [*-*-hpux10.*],
+        [
             if test "x${enable_debug_fortran}" = "xyes"; then
                 ARCH_FFLAGS="+E4 +Z +DAportable -Dhpux"
             else
                 ARCH_FFLAGS="+O2 +E4 +Z +DAportable -Dhpux"
             fi
-            ;;
-          *-*-hpux11.*)
+        ],
+        [*-*-hpux11.*],
+        [
            if test "x${enable_debug_fortran}" = "xyes"; then
               ARCH_FFLAGS=" +Z +DAportable -Dhpux"
              else
               ARCH_FFLAGS="+O2 +Z +DAportable -Dhpux"
            fi
            ARCH_LDFLAGS="-ldld -lnsl -lU77 -lm"
-     ;;
-      esac
-fi
+        ])
+],[
+  AC_MSG_NOTICE([F77 is empty])
+])dnl
 
 #########################
 # setting parameters according to system types
 #########################
 
-case "${host}" in
-    *-*-hpux9.*|*-*-hpux10.*|*-*-hpux11.*)
+AS_CASE(["${host}"],
+    [*-*-hpux9.*|*-*-hpux10.*|*-*-hpux11.*],
+    [
         HPUX=1
-    ;;
-    sparc-*)
+    ],
+    [sparc-*],
+    [
         SPARC=1
-    ;;
-    mips-sgi-irix*)
+    ],
+    [mips-sgi-irix*],
+    [
       MIPS_SGI_IRIX=1
-    ;;
-     *-*-solaris*)
-     SOLARIS=1
-     ;;
-    *darwin*)
+    ],
+    [*-*-solaris*],
+    [
+      SOLARIS=1
+    ],
+    [*darwin*],
+    [
       MACOSX=1
-    ;;
-esac
+    ])dnl
 
 AM_CONDITIONAL([IS_MACOSX],[test -n "${MACOSX}"])
 AM_CONDITIONAL([IS_HPUX],[test -n "${HPUX}"])
@@ -666,7 +680,7 @@ if test -z "${CXX}"; then
 fi
 
 case "${CXX}" in
-    g++-* | g++ | ccache*g++ | ccache*g++-* | */g++ )
+    g++-* | g++ | *ccache*g++ | *ccache*g++-* | */g++ )
         ## With GNU C++ Compiler
 
         AC_MSG_NOTICE([enabling g++-specific flags])dnl
@@ -683,12 +697,12 @@ case "${CXX}" in
             else
                 DEBUG_CXXFLAGS="${DEBUG_CXXFLAGS} -Wno-sign-compare"
             fi
-            case "$host" in
-                *-linux-gnu )
+            AS_CASE(["${host}"],
+                [*-linux-gnu],
+                [
                     # Only doing that under Linux
                     DEBUG_CXXFLAGS="${DEBUG_CXXFLAGS} -fdiagnostics-show-option -Werror=format-security"
-                ;;
-            esac
+                ])
         else
             DEBUG_CXXFLAGS="-DNDEBUG"
         fi
@@ -712,20 +726,20 @@ esac
 
 #### 64 bits detection
 IS_64_BITS_CPU=false
-case "${host}" in
-         x86_64-*-linux-gnu | x86_64-linux-gnu | ia64-*-linux-gnu | alpha-*-linux-gnu | alpha-*-netbsd* | x86_64-*-netbsd* | sparc64-*-netbsd*)
-                IS_64_BITS_CPU=true
-    ;;
-esac
+AS_CASE(["${host}"],
+    [x86_64-*-linux-gnu | x86_64-linux-gnu | ia64-*-linux-gnu | alpha-*-linux-gnu | alpha-*-netbsd* | x86_64-*-netbsd* | sparc64-*-netbsd*],
+    [
+        IS_64_BITS_CPU=true
+    ])dnl
 
-##########"
+########## ...for some reason there was a stray quotation mark here?
 
 AC_DEFUN([XORG_REQUIRE_COMPILER_FLAGS],[
   AC_REQUIRE([XORG_COMPILER_FLAGS])dnl# from m4/xorg-macros.m4
 ])dnl
 
 case "${CC}" in
-   gcc-* | gcc | ccache*gcc | ccache*gcc-* | */gcc )
+   gcc-* | gcc | *ccache*gcc | *ccache*gcc-* | */gcc )
    ## With GNU Compiler
 
    AC_MSG_NOTICE([enabling gcc-specific flags])dnl
@@ -838,7 +852,7 @@ case "${CC}" in
         ;;
    esac
    ;; # end of the gcc case on the ${CC}
-   clang-* | clang | ccache*clang | ccache*clang-* | */clang )
+   clang-* | clang | *ccache*clang | *ccache*clang-* | */clang )
         AC_MSG_NOTICE([enabling clang-specific flags])
         if test "x${enable_debug_C}" != "xyes"; then
              ARCH_CFLAGS="-DNDEBUG"
@@ -935,13 +949,13 @@ AM_CONDITIONAL([USE_DYNAMIC_STACK],
 ## (these extensions are enabled by default by gcc)
 ################
 
-case "$host" in
-     i*86-linux-gnu|i*86-*-linux-gnu)
+AS_CASE(["${host}"],
+     [i*86-linux-gnu|i*86-*-linux-gnu],
+     [
         SSE_CFLAGS="-msse"
         SSE_FFLAGS="-msse"
         SSE_CXXFLAGS="-msse"
-     ;;
-esac
+     ])dnl
 
 #######################
 ## test for underscores (name mangling issues between C and fortran)
@@ -1230,7 +1244,7 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                                       [XML to PDF Translator (fop)])
                 FOP=${PACKAGE_JAR_FILE}
                 AS_IF([test "x${FOP}" = "x"],[
-                	test -z "${FOP}"
+                	test -z "${FOP}" || unset FOP
                 	XORG_WITH_FOP dnl# from m4/xorg-macros.m4 (supplies the HAVE_FOP conditional)
                 ],[
                 	test -n "${FOP}" && test -x "${FOP}" && export FOP
@@ -2205,7 +2219,7 @@ AS_IF([test "x${with_install_help_xml}" != "xno" -a "x${with_install_help_xml}" 
    AC_PATH_PROG([XMLINDENT],[xmlindent],[no])
    HELP_INSTALL_ENABLE=yes
 ],[
-   test -z "${XMLINDENT}"
+   test -z "${XMLINDENT}" || echo "XMLINDENT is already set to ${XMLINDENT}"
    AM_MISSING_PROG([XMLINDENT],[xmlindent])dnl
 ])dnl
   ## also conditionalize this way:
@@ -2270,7 +2284,7 @@ AS_IF([test "x${COMPILATION_TESTS}" = "xyes"],[
 ])dnl
 
 if test "x${COMPILATION_TESTS}" = "xyes" -a "x${JUNIT4}" = "x"; then
-   test -z "${JUNIT4}"
+   test -z "${JUNIT4}" || echo "JUNIT4 is ${JUNIT4}"
    AC_MSG_WARN([--enable-compilation-tests deactivated: Could not find Junit4.])
    COMPILATION_TESTS=no
 fi
@@ -2404,7 +2418,7 @@ SCILAB_CLANG_STATIC_ANALYSIS dnl# from m4/compiler.m4
 AC_ARG_ENABLE([ccache],
         [AS_HELP_STRING([--disable-ccache],[Disable the use of ccache])
         ])
-AC_PATH_PROG([CCACHE],[ccache])
+AC_PATH_PROGS([CCACHE],[ccache sccache])
 dnl# FIXME: ensure that CC and CXX do not already contain CCACHE before
 dnl# prepending it to them again:
 if test x"${CCACHE}" != x"" -a "x${enable_ccache}" != "xno"; then

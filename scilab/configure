@@ -9743,8 +9743,9 @@ then :
 fi
 
 # Need MacosX Version to specify some path.
-case "${host_os}" in
-     *Darwin* | *darwin*)
+case "${host_os}" in #(
+  *Darwin* | *darwin*) :
+
 
     # Extract the first word of "defaults", so it can be a program name with args.
 set dummy defaults; ac_word=$2
@@ -9935,11 +9936,13 @@ printf "%s\n" "Mac OS X 10.5 - Leopard." >&6; }
               as_fn_error $? "MacOSX 10.5, 10.6, 10.7, 10.8, or 10.9 are needed. Found $macosx_version" "$LINENO" 5
          ;;
 	 esac
-      ;;
+       ;; #(
+  *) :
+     ;;
 esac
+case "${host}" in #(
+  *darwin*) :
 
-case "${host}" in
-    *darwin*)
         if test -n "${with_macports_prefix}"; then
             # If with-macports-prefix is provided, use the provided path to
             # make sure that we will use it to detect dependencies
@@ -9968,9 +9971,10 @@ printf "%s\n" "$as_me: Assuming MACPORTS_PREFIX is actually ${MACPORTS_PREFIX}."
         # Append to the default flags on Apple machines
         CPPFLAGS="`echo \"${CPPFLAGS} -Wp,-I${MACPORTS_PREFIX}/include\" | uniq`"
         LDFLAGS="`echo \"${LDFLAGS} -L${MACPORTS_PREFIX}/lib\" | uniq`"
-        ;;
+     ;; #(
+  *) :
+     ;;
 esac
-
 
 # Check whether --with-min_macosx_version was given.
 if test ${with_min_macosx_version+y}
@@ -9978,8 +9982,9 @@ then :
   withval=$with_min_macosx_version;
 fi
 
-case "${host}" in
-    *darwin*)
+case "${host}" in #(
+  *darwin*) :
+
         if test -n "${with_min_macosx_version}"
 then :
 
@@ -9995,9 +10000,10 @@ then :
 printf "%s\n" "#define MIN_MACOSX_VERSION ${MIN_MACOSX_VERSION}" >>confdefs.h
 
 fi
-;;
+ ;; #(
+  *) :
+     ;;
 esac
-
 #####################################################
 ## Look for pkg-config
 #####################################################
@@ -14548,8 +14554,9 @@ ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
 ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
-case ${CXX} in
-    g++)
+case ${CXX} in #(
+  g++) :
+
         # Extract the first word of "${CXX}", so it can be a program name with args.
 set dummy ${CXX}; ac_word=$2
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -14594,12 +14601,15 @@ printf "%s\n" "no" >&6; }
 fi
 
 
-        if test "x${cxx_present}" != "xyes"; then
-            as_fn_error $? "No C++ compiler found. Cannot compile scilab without a C++ compiler" "$LINENO" 5
-        fi
-        ;;
-esac
+        if test "x${cxx_present}" != "xyes"
+then :
 
+            as_fn_error $? "No C++ compiler found. Cannot compile scilab without a C++ compiler" "$LINENO" 5
+
+fi     ;; #(
+  *) :
+     ;;
+esac
 # testing for support for both "-c" and "-o" is for the "subdir-objects"
 # automake option
 
@@ -56403,9 +56413,12 @@ fi
 ######################
 ######## With gfortran ...
 ######################
-if test -n "${F77}"; then
-   case "${F77}" in
-     gfortran* | */gfortran )
+if test -n "${F77}"
+then :
+
+   case "${F77}" in #(
+  gfortran* | */gfortran) :
+
         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: enabling gfortran-specific flags" >&5
 printf "%s\n" "$as_me: enabling gfortran-specific flags" >&6;}
         ## With GNU Compiler enable the code coverage
@@ -56414,13 +56427,17 @@ printf "%s\n" "$as_me: enabling gfortran-specific flags" >&6;}
         fi
         ## see Fortran section under https://gcc.gnu.org/gcc-10/changes.html
         FFLAGS="${FFLAGS} -std=legacy"
-     ;;
-     g77*)
-        as_fn_error $? "g77 is no longer supported. Please consider switching to gfortran." "$LINENO" 5
-     ;;
-   esac
+      ;; #(
+  g77*) :
 
-   if test "x${enable_debug_fortran}" = "xyes"; then
+        as_fn_error $? "g77 is no longer supported. Please consider switching to gfortran." "$LINENO" 5
+      ;; #(
+  *) :
+     ;;
+esac
+   if test "x${enable_debug_fortran}" = "xyes"
+then :
+
     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: debugging of fortran enabled; checking extra flags for it" >&5
 printf "%s\n" "$as_me: debugging of fortran enabled; checking extra flags for it" >&6;}
     ac_ext=f
@@ -56429,12 +56446,13 @@ ac_link='$F77 -o conftest$ac_exeext $FFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
 ac_compiler_gnu=$ac_cv_f77_compiler_gnu
 
         for flag in -g -Wall -Wextra -Wno-unused-parameter -Wsurprising -Warray-temporaries -Wcharacter-truncation -Wconversion-extra -Wfrontend-loop-interchange -Wuse-without-only -Wrealloc-lhs -Wrealloc-lhs-all; do
-        case " ${FFLAGS} " in
-            *\ ${flag}\ *)
-                # flag is already present
-                ;;
+        case " ${FFLAGS} " in #(
+  *\ ${flag}\ *) :
 
-            *)
+                # flag is already present
+             ;; #(
+  *) :
+
                 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if the Fortran compiler accepts ${flag}" >&5
 printf %s "checking if the Fortran compiler accepts ${flag}... " >&6; }
                 ac_save_FFLAGS="${FFLAGS}"
@@ -56456,8 +56474,10 @@ printf "%s\n" "no" >&6; } ;;
 esac
 fi
 rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
-                ;;
-        esac
+             ;; #(
+  *) :
+     ;;
+esac
     done
     ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
@@ -56465,69 +56485,95 @@ ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
 ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
-   else
-      DEBUG_FFLAGS="-DNDEBUG"
-   fi
-      case "${host}" in
-         x86_64-*-linux*)
+
+else case e in #(
+  e)
+    DEBUG_FFLAGS="-DNDEBUG"
+    ;;
+esac
+fi
+      case "${host}" in #(
+  x86_64-*-linux*) :
+
             ARCH_FFLAGS="-m64 -fPIC"
-                    ;;
-        # Dec Alpha OSF 4
-        alpha*-dec-osf4.*)
+         ;; #(
+  alpha*-dec-osf4.*) :
+
+          # Dec Alpha OSF 4
           ARCH_FFLAGS="-fpe3"
-        ;;
-        alpha*-dec-osf*)
+         ;; #(
+  alpha*-dec-osf*) :
+
             ARCH_FFLAGS="-fpe3 -switch nosqrt_recip"
-        ;;
-        rs6000-*-*)
+         ;; #(
+  rs6000-*-*) :
+
             ARCH_FFLAGS="-qcharlen=4096"
-            ;;
-        mips-*-ultrix*)
+         ;; #(
+  mips-*-ultrix*) :
+
             ARCH_FFLAGS="-O0 -fpe1"
-        ;;
-          *-*-hpux9.*)
+         ;; #(
+  *-*-hpux9.*) :
+
             ARCH_FFLAGS="+Obb1200 +E4 -Dhpux"
-        ;;
-          *-*-hpux10.*)
+         ;; #(
+  *-*-hpux10.*) :
+
             if test "x${enable_debug_fortran}" = "xyes"; then
                 ARCH_FFLAGS="+E4 +Z +DAportable -Dhpux"
             else
                 ARCH_FFLAGS="+O2 +E4 +Z +DAportable -Dhpux"
             fi
-            ;;
-          *-*-hpux11.*)
+         ;; #(
+  *-*-hpux11.*) :
+
            if test "x${enable_debug_fortran}" = "xyes"; then
               ARCH_FFLAGS=" +Z +DAportable -Dhpux"
              else
               ARCH_FFLAGS="+O2 +Z +DAportable -Dhpux"
            fi
            ARCH_LDFLAGS="-ldld -lnsl -lU77 -lm"
+         ;; #(
+  *) :
      ;;
-      esac
-fi
+esac
 
+else case e in #(
+  e)
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: F77 is empty" >&5
+printf "%s\n" "$as_me: F77 is empty" >&6;}
+ ;;
+esac
+fi
 #########################
 # setting parameters according to system types
 #########################
 
-case "${host}" in
-    *-*-hpux9.*|*-*-hpux10.*|*-*-hpux11.*)
-        HPUX=1
-    ;;
-    sparc-*)
-        SPARC=1
-    ;;
-    mips-sgi-irix*)
-      MIPS_SGI_IRIX=1
-    ;;
-     *-*-solaris*)
-     SOLARIS=1
-     ;;
-    *darwin*)
-      MACOSX=1
-    ;;
-esac
+case "${host}" in #(
+  *-*-hpux9.*|*-*-hpux10.*|*-*-hpux11.*) :
 
+        HPUX=1
+     ;; #(
+  sparc-*) :
+
+        SPARC=1
+     ;; #(
+  mips-sgi-irix*) :
+
+      MIPS_SGI_IRIX=1
+     ;; #(
+  *-*-solaris*) :
+
+      SOLARIS=1
+     ;; #(
+  *darwin*) :
+
+      MACOSX=1
+     ;; #(
+  *) :
+     ;;
+esac
  if test -n "${MACOSX}"; then
   IS_MACOSX_TRUE=
   IS_MACOSX_FALSE='#'
@@ -56577,7 +56623,7 @@ if test -z "${CXX}"; then
 fi
 
 case "${CXX}" in
-    g++-* | g++ | ccache*g++ | ccache*g++-* | */g++ )
+    g++-* | g++ | *ccache*g++ | *ccache*g++-* | */g++ )
         ## With GNU C++ Compiler
 
         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: enabling g++-specific flags" >&5
@@ -56594,12 +56640,15 @@ printf "%s\n" "$as_me: enabling g++-specific flags" >&6;}
             else
                 DEBUG_CXXFLAGS="${DEBUG_CXXFLAGS} -Wno-sign-compare"
             fi
-            case "$host" in
-                *-linux-gnu )
+            case "${host}" in #(
+  *-linux-gnu) :
+
                     # Only doing that under Linux
                     DEBUG_CXXFLAGS="${DEBUG_CXXFLAGS} -fdiagnostics-show-option -Werror=format-security"
-                ;;
-            esac
+                 ;; #(
+  *) :
+     ;;
+esac
         else
             DEBUG_CXXFLAGS="-DNDEBUG"
         fi
@@ -56666,17 +56715,19 @@ esac
 
 #### 64 bits detection
 IS_64_BITS_CPU=false
-case "${host}" in
-         x86_64-*-linux-gnu | x86_64-linux-gnu | ia64-*-linux-gnu | alpha-*-linux-gnu | alpha-*-netbsd* | x86_64-*-netbsd* | sparc64-*-netbsd*)
-                IS_64_BITS_CPU=true
-    ;;
-esac
+case "${host}" in #(
+  x86_64-*-linux-gnu | x86_64-linux-gnu | ia64-*-linux-gnu | alpha-*-linux-gnu | alpha-*-netbsd* | x86_64-*-netbsd* | sparc64-*-netbsd*) :
 
-##########"
+        IS_64_BITS_CPU=true
+     ;; #(
+  *) :
+     ;;
+esac
+########## ...for some reason there was a stray quotation mark here?
 
 
 case "${CC}" in
-   gcc-* | gcc | ccache*gcc | ccache*gcc-* | */gcc )
+   gcc-* | gcc | *ccache*gcc | *ccache*gcc-* | */gcc )
    ## With GNU Compiler
 
    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: enabling gcc-specific flags" >&5
@@ -57124,7 +57175,7 @@ printf "%s\n" "$as_me: WARNING: gfortran not used. Could not detect the architec
         ;;
    esac
    ;; # end of the gcc case on the ${CC}
-   clang-* | clang | ccache*clang | ccache*clang-* | */clang )
+   clang-* | clang | *ccache*clang | *ccache*clang-* | */clang )
         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: enabling clang-specific flags" >&5
 printf "%s\n" "$as_me: enabling clang-specific flags" >&6;}
         if test "x${enable_debug_C}" != "xyes"; then
@@ -57627,14 +57678,16 @@ fi
 ## (these extensions are enabled by default by gcc)
 ################
 
-case "$host" in
-     i*86-linux-gnu|i*86-*-linux-gnu)
+case "${host}" in #(
+  i*86-linux-gnu|i*86-*-linux-gnu) :
+
         SSE_CFLAGS="-msse"
         SSE_FFLAGS="-msse"
         SSE_CXXFLAGS="-msse"
+      ;; #(
+  *) :
      ;;
 esac
-
 #######################
 ## test for underscores (name mangling issues between C and fortran)
 #######################
@@ -58772,7 +58825,7 @@ printf "%s\n" "$ac_java_classpath" >&6; }
 printf %s "checking to see if the java compiler works... " >&6; }
 
     cat << \EOF > conftest.java
-// #line 58775 "configure"
+// #line 58828 "configure"
 import java.util.regex.Pattern;
 
 
@@ -58859,7 +58912,7 @@ printf %s "checking type of jvm... " >&6; }
     if test "x$ac_java_jvm_name" = "x" ; then
 
     cat << \EOF > conftest.java
-// #line 58862 "configure"
+// #line 58915 "configure"
 import java.util.regex.Pattern;
 
 import gnu.java.io.EncodingManager;
@@ -58943,7 +58996,7 @@ printf %s "checking java API version... " >&6; }
     # The class java.nio.charset.Charset is new to 1.4
 
     cat << \EOF > conftest.java
-// #line 58946 "configure"
+// #line 58999 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.charset.Charset;
@@ -59008,7 +59061,7 @@ EOF
     # The class java.lang.StringBuilder is new to 1.5
 
     cat << \EOF > conftest.java
-// #line 59011 "configure"
+// #line 59064 "configure"
 import java.util.regex.Pattern;
 
 import java.lang.StringBuilder;
@@ -59073,7 +59126,7 @@ EOF
     # The class java.util.ArrayDeque is new to 1.6
 
     cat << \EOF > conftest.java
-// #line 59076 "configure"
+// #line 59129 "configure"
 import java.util.regex.Pattern;
 
 import java.util.ArrayDeque;
@@ -59138,7 +59191,7 @@ EOF
     # The class java.nio.file.Path is new to 1.7
 
     cat << \EOF > conftest.java
-// #line 59141 "configure"
+// #line 59194 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.file.Path;
@@ -61260,7 +61313,7 @@ printf %s "checking jgraphx... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 61263 "configure"
+// #line 61316 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.model.mxCell;
@@ -61366,7 +61419,7 @@ printf %s "checking minimal version (1.8.0.0) of jgraphx... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 61369 "configure"
+// #line 61422 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.view.mxGraph;
@@ -61437,7 +61490,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 61440 "configure"
+// #line 61493 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.view.mxGraph;
@@ -61528,7 +61581,7 @@ printf %s "checking scirenderer... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 61531 "configure"
+// #line 61584 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -61634,7 +61687,7 @@ printf %s "checking minimal version (1.0.2) of scirenderer... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 61637 "configure"
+// #line 61690 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -61705,7 +61758,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 61708 "configure"
+// #line 61761 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -61794,7 +61847,7 @@ printf %s "checking flexdock... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 61797 "configure"
+// #line 61850 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.docking.DockingManager;
@@ -61900,7 +61953,7 @@ printf %s "checking minimal version (1.2.0) of flexdock... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 61903 "configure"
+// #line 61956 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.util.Utilities;
@@ -61971,7 +62024,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 61974 "configure"
+// #line 62027 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.util.Utilities;
@@ -62060,7 +62113,7 @@ printf %s "checking looks... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62063 "configure"
+// #line 62116 "configure"
 import java.util.regex.Pattern;
 
 import com.jgoodies.looks.common.MenuItemRenderer;
@@ -62177,7 +62230,7 @@ printf %s "checking jgoodies-looks... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62180 "configure"
+// #line 62233 "configure"
 import java.util.regex.Pattern;
 
 import com.jgoodies.looks.common.MenuItemRenderer;
@@ -62294,7 +62347,7 @@ printf %s "checking skinlf... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62297 "configure"
+// #line 62350 "configure"
 import java.util.regex.Pattern;
 
 import com.l2fprod.util.AccessUtils;
@@ -62410,7 +62463,7 @@ printf %s "checking jogl2... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62413 "configure"
+// #line 62466 "configure"
 import java.util.regex.Pattern;
 
 import javax.media.opengl.glu.GLUnurbs;
@@ -62650,7 +62703,7 @@ printf %s "checking gluegen2-rt... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62653 "configure"
+// #line 62706 "configure"
 import java.util.regex.Pattern;
 
 import jogamp.common.os.MachineDescriptionRuntime;
@@ -62832,7 +62885,7 @@ printf %s "checking jhall... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62835 "configure"
+// #line 62888 "configure"
 import java.util.regex.Pattern;
 
 import javax.help.JHelp;
@@ -62949,7 +63002,7 @@ printf %s "checking javahelp2... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62952 "configure"
+// #line 63005 "configure"
 import java.util.regex.Pattern;
 
 import javax.help.JHelp;
@@ -63066,7 +63119,7 @@ printf %s "checking jrosetta-API... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63069 "configure"
+// #line 63122 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.interfaces.core.ConsoleConfiguration;
@@ -63181,7 +63234,7 @@ printf %s "checking jrosetta-api... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63184 "configure"
+// #line 63237 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.interfaces.core.ConsoleConfiguration;
@@ -63298,7 +63351,7 @@ printf %s "checking jrosetta-engine... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63301 "configure"
+// #line 63354 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.core.action.AbstractConsoleAction;
@@ -63404,7 +63457,7 @@ printf %s "checking minimal version (1.0.4) of jrosetta-engine... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 63407 "configure"
+// #line 63460 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.util.ConfigurationBuilder;
@@ -63475,7 +63528,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 63478 "configure"
+// #line 63531 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.util.ConfigurationBuilder;
@@ -63565,7 +63618,7 @@ printf %s "checking jeuclid-core... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63568 "configure"
+// #line 63621 "configure"
 import java.util.regex.Pattern;
 
 import net.sourceforge.jeuclid.LayoutContext;
@@ -63682,7 +63735,7 @@ printf %s "checking fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63685 "configure"
+// #line 63738 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.fop.pdf.PDFInfo;
@@ -63782,7 +63835,7 @@ printf "%s\n" "$as_me: WARNING: Could not find or use the Java package/jar fop u
                 if test "x${FOP}" = "x"
 then :
 
-                	test -z "${FOP}"
+                	test -z "${FOP}" || unset FOP
 
 
 
@@ -63950,7 +64003,7 @@ printf %s "checking batik-all... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63953 "configure"
+// #line 64006 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.parser.Parser;
@@ -64067,7 +64120,7 @@ printf %s "checking batik... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64070 "configure"
+// #line 64123 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.parser.Parser;
@@ -64174,7 +64227,7 @@ printf %s "checking minimal version (1.7) of batik... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 64177 "configure"
+// #line 64230 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.Version;
@@ -64245,7 +64298,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 64248 "configure"
+// #line 64301 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.Version;
@@ -64334,7 +64387,7 @@ printf %s "checking commons-io... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64337 "configure"
+// #line 64390 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.output.CountingOutputStream;
@@ -64450,7 +64503,7 @@ printf %s "checking xmlgraphics-commons... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64453 "configure"
+// #line 64506 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.xmlgraphics.util.Service;
@@ -64566,7 +64619,7 @@ printf %s "checking avalon-framework... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64569 "configure"
+// #line 64622 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.avalon.framework.configuration.ConfigurationException;
@@ -64682,7 +64735,7 @@ printf %s "checking xml-apis-ext... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64685 "configure"
+// #line 64738 "configure"
 import java.util.regex.Pattern;
 
 import org.w3c.dom.svg.SVGDocument;
@@ -64799,7 +64852,7 @@ printf %s "checking xml-commons-apis-ext... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64802 "configure"
+// #line 64855 "configure"
 import java.util.regex.Pattern;
 
 import org.w3c.dom.svg.SVGDocument;
@@ -64918,7 +64971,7 @@ printf %s "checking commons-logging... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64921 "configure"
+// #line 64974 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.logging.LogFactory;
@@ -65034,7 +65087,7 @@ printf %s "checking jlatexmath... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 65037 "configure"
+// #line 65090 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -65140,7 +65193,7 @@ printf %s "checking minimal version (1.0.0) of jlatexmath... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 65143 "configure"
+// #line 65196 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -65211,7 +65264,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 65214 "configure"
+// #line 65267 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -65305,7 +65358,7 @@ printf %s "checking checkstyle... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 65308 "configure"
+// #line 65361 "configure"
 import java.util.regex.Pattern;
 
 import com.puppycrawl.tools.checkstyle.CheckStyleTask;
@@ -65421,7 +65474,7 @@ printf %s "checking commons-beanutils... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 65424 "configure"
+// #line 65477 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.beanutils.Converter;
@@ -65537,7 +65590,7 @@ printf %s "checking antlr... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 65540 "configure"
+// #line 65593 "configure"
 import java.util.regex.Pattern;
 
 import antlr.TokenStreamException;
@@ -65653,7 +65706,7 @@ printf %s "checking junit4... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 65656 "configure"
+// #line 65709 "configure"
 import java.util.regex.Pattern;
 
 import org.junit.Assert;
@@ -65769,7 +65822,7 @@ printf %s "checking cobertura... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 65772 "configure"
+// #line 65825 "configure"
 import java.util.regex.Pattern;
 
 import net.sourceforge.cobertura.merge.Main;
@@ -65885,7 +65938,7 @@ printf %s "checking asm3... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 65888 "configure"
+// #line 65941 "configure"
 import java.util.regex.Pattern;
 
 import org.objectweb.asm.Type;
@@ -66001,7 +66054,7 @@ printf %s "checking asm... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 66004 "configure"
+// #line 66057 "configure"
 import java.util.regex.Pattern;
 
 import org.objectweb.asm.Type;
@@ -96250,7 +96303,7 @@ printf %s "checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later... 
 
 
 cat > conftest.$ac_ext <<EOF
-#line 96253 "configure"
+#line 96306 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TCL_INCLUDE_PATH/$CHK_TCL_INC_NAME"
@@ -96586,7 +96639,7 @@ printf %s "checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later... " >
 
 
 cat > conftest.$ac_ext <<EOF
-#line 96589 "configure"
+#line 96642 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TK_INCLUDE_PATH/$CHK_TK_INC_NAME"
@@ -97306,7 +97359,7 @@ printf %s "checking saxon... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 97309 "configure"
+// #line 97362 "configure"
 import java.util.regex.Pattern;
 
 import com.icl.saxon.Loader;
@@ -97422,7 +97475,7 @@ printf %s "checking jlatexmath-fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 97425 "configure"
+// #line 97478 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.fop.JLaTeXMathObj;
@@ -97919,7 +97972,7 @@ fi
 
 else case e in #(
   e)
-   test -z "${XMLINDENT}"
+   test -z "${XMLINDENT}" || echo "XMLINDENT is already set to ${XMLINDENT}"
 
 XMLINDENT=${XMLINDENT-"${am_missing_run}xmlindent"}
  ;;
@@ -98196,7 +98249,7 @@ else case e in #(
 esac
 fi
 if test "x${COMPILATION_TESTS}" = "xyes" -a "x${JUNIT4}" = "x"; then
-   test -z "${JUNIT4}"
+   test -z "${JUNIT4}" || echo "JUNIT4 is ${JUNIT4}"
    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: --enable-compilation-tests deactivated: Could not find Junit4." >&5
 printf "%s\n" "$as_me: WARNING: --enable-compilation-tests deactivated: Could not find Junit4." >&2;}
    COMPILATION_TESTS=no
@@ -120708,8 +120761,10 @@ then :
   enableval=$enable_ccache;
 fi
 
-# Extract the first word of "ccache", so it can be a program name with args.
-set dummy ccache; ac_word=$2
+for ac_prog in ccache sccache
+do
+  # Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog; ac_word=$2
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 printf %s "checking for $ac_word... " >&6; }
 if test ${ac_cv_path_CCACHE+y}
@@ -120753,6 +120808,9 @@ else
 printf "%s\n" "no" >&6; }
 fi
 
+
+  test -n "$CCACHE" && break
+done
 
 if test x"${CCACHE}" != x"" -a "x${enable_ccache}" != "xno"; then
   if test -x "${CCACHE}"; then

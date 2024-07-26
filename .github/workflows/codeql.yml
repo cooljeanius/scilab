@@ -115,3 +115,19 @@ jobs:
       if: matrix.language == 'c-cpp' && failure()
       run: |
         find . -name config.log -print0 | xargs -0 cat
+        sync && sleep 1
+        if test -x "$(which locate)"; then \
+          locate hdf5.h; \
+        elif test -x "$(which glocate)"; then \
+          glocate hdf5.h; \
+        elif test -x "$(which mlocate)"; then \
+          mlocate hdf5.h; \
+        elif test -x "$(which plocate)"; then \
+          plocate hdf5.h; \
+        elif test -x "$(which find)"; then \
+          find / -name hdf5.h -print; \
+        elif test -x "$(which gfind)"; then \
+          gfind / -name hdf5.h -print; \
+        else \
+          ls -R; \
+        fi

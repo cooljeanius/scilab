@@ -27,6 +27,8 @@ lex.yy.c
 modules/core/includes/machine.h
 modules/core/includes/stack.h
 modules/scicos_blocks/includes/blocks.h
+po/Makefile.in
+po/POTFILES
 po/remove-potcdate.sed
 *.sum
 *.tst.trs

@@ -4,6 +4,6 @@ config/config.guess linguist-vendored
 config/config.sub linguist-vendored
 config/install-sh linguist-vendored
 configure linguist-generated
+Makefile.in linguist-generated
 m4/libtool.m4 linguist-vendored
 modules/core/includes/machine.h.in linguist-generated
-po/Makefile.in linguist-generated

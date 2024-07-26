@@ -1,7 +1,7 @@
 dnl#                                            -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.72])
+AC_PREREQ([2.69])
 AC_INIT([Scilab],[5.4.0],[http://bugzilla.scilab.org/])
 AC_CONFIG_AUX_DIR([scilab/config])
 

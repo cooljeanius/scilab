@@ -1,4 +1,4 @@
-(*
+(* -*- Ocaml -*-
  *  Translator from Modelica 2.x to flat Modelica
  *
  *  Copyright (C) 2005 - 2007 Imagine S.A.

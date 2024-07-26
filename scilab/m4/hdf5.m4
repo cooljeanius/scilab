@@ -27,8 +27,10 @@ AC_ARG_WITH([hdf5_library],
                         [Set the path to the HDF5 libraries])],
         [with_hdf5_library=${withval}],
         [with_hdf5_library='yes'])dnl
-        
-if test "x${with_hdf5_include}" != "xyes"; then
+
+if test -x "`which sync`"; then sync; fi
+if test "x${with_hdf5_include}" != "xyes" && test "x${with_hdf5_include}" != "x"; then
+    test -n "${with_hdf5_include}" && test -d "${with_hdf5_include}" && stat "${with_hdf5_include}"
     save_CFLAGS="${CFLAGS}"
     CFLAGS="-Wp,-I${with_hdf5_include}"
     AC_CHECK_HEADER([hdf5.h],

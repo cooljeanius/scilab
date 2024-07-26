@@ -125,7 +125,7 @@ jobs:
         elif test -x "$(which plocate)"; then \
           plocate hdf5.h; \
         elif test -x "$(which find)"; then \
-          find / -name hdf5.h -print; \
+          find / -name hdf5.h -print -perm +r -user "$(whoami)" 2>/dev/null; \
         elif test -x "$(which gfind)"; then \
           gfind / -name hdf5.h -print; \
         else \

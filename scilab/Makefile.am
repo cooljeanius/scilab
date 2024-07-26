@@ -20,7 +20,7 @@ SUBDIRS = libs \
 	desktop \
         po
 
-DISTCLEANFILES = *~ autoscan.log config.h stamp-h1 config/*~
+DISTCLEANFILES = *~ autoscan.log config.h stamp-h1 config/*~ m4/*~
 MAINTAINERCLEANFILES = aclocal.m4 configure config.h.in configure.scan Makefile.in 
 
 ACLOCAL_AMFLAGS = -I m4 --install

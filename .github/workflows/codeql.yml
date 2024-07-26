@@ -72,7 +72,7 @@ jobs:
       if: matrix.language == 'c-cpp'
       run: |
         sudo apt-get -qq update
-        sudo apt-get install libc6-dev-amd64-cross libgcc-s1-amd64-cross gobjc gobjc-multilib libfl-dev libtbb-dev autopoint libhdf5-dev h5utils hdf5-tools libjhdf5-java libjhdf5-jni libhe5-hdfeos-dev libpdl-io-hdf5-perl hdf5-helpers python3-h5py ruby-hdfeos5 libsis-jhdf5-jni libsis-jhdf5-java libpbihdf-dev python3-hdf5storage hdf-compass libhdf5-jni libhdf5-java libhdf4-dev hdf4-tools libhdf4-alt-dev libextutils-f77-perl scilab
+        sudo apt-get install libc6-dev-amd64-cross libgcc-s1-amd64-cross gobjc gobjc-multilib libfl-dev libtbb-dev autopoint libhdf5-dev h5utils hdf5-tools libjhdf5-java libjhdf5-jni libhe5-hdfeos-dev libpdl-io-hdf5-perl hdf5-helpers python3-h5py ruby-hdfeos5 libsis-jhdf5-jni libsis-jhdf5-java libpbihdf-dev python3-hdf5storage hdf-compass libhdf5-jni libhdf5-java libhdf4-dev hdf4-tools libextutils-f77-perl scilab scilab-include
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL

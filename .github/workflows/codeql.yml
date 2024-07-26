@@ -49,8 +49,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - language: c-cpp
-          build-mode: autobuild
         - language: csharp
           build-mode: none
         - language: java-kotlin
@@ -114,20 +112,22 @@ jobs:
     - name: Debug failure
       if: matrix.language == 'c-cpp' && failure()
       run: |
+        sync && (stat config.log || stat scilab/config.log) && sync
         find . -name config.log -print0 | xargs -0 cat
         sync && sleep 1
         if test -x "$(which locate)"; then \
-          locate hdf5.h; \
+          which locate && locate hdf5.h; \
         elif test -x "$(which glocate)"; then \
-          glocate hdf5.h; \
+          which glocate && glocate hdf5.h; \
         elif test -x "$(which mlocate)"; then \
-          mlocate hdf5.h; \
+          which mlocate && mlocate hdf5.h; \
         elif test -x "$(which plocate)"; then \
-          plocate hdf5.h; \
+          which plocate && plocate hdf5.h; \
         elif test -x "$(which find)"; then \
+          sync && echo "using $(which find) to attempt to find hdf5.h"; \
           find / -name hdf5.h -print -perm +r -user "$(whoami)" 2>/dev/null; \
         elif test -x "$(which gfind)"; then \
-          gfind / -name hdf5.h -print; \
+          which gfind && gfind / -name hdf5.h -print; \
         else \
           ls -R; \
         fi

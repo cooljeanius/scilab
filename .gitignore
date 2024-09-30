@@ -10,6 +10,7 @@ workspace/
 *.jnilib
 *.jar
 confdefs.h
+conftest*
 Makefile
 modules/*/clang_static_analysis/*
 *.xcworkspacedata

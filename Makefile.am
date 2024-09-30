@@ -1,6 +1,6 @@
 SUBDIRS = scilab
 
-DISTCLEANFILES = *~ autoscan.log confdefs.h scilab/config/*~
+DISTCLEANFILES = *~ autoscan.log confdefs.h conftest.mk scilab/config/*~
 MAINTAINERCLEANFILES = aclocal.m4 configure configure.scan Makefile.in 
 
 distclean-local:

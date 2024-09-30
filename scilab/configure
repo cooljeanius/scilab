@@ -1020,6 +1020,8 @@ CCASFLAGS
 CCAS
 ac_ct_AR
 AR
+am__xargs_n
+am__rm_f_notfound
 AM_BACKSLASH
 AM_DEFAULT_VERBOSITY
 AM_DEFAULT_V
@@ -6911,8 +6913,167 @@ else
   CMAKE_BINARY="$ac_cv_path_CMAKE_BINARY"
 fi
 fi
- am__api_version='1.16'
+ am__api_version='1.17'
 
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether sleep supports fractional seconds" >&5
+printf %s "checking whether sleep supports fractional seconds... " >&6; }
+if test ${am_cv_sleep_fractional_seconds+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) if sleep 0.001 2>/dev/null
+then :
+  am_cv_sleep_fractional_seconds=yes
+else case e in #(
+  e) am_cv_sleep_fractional_seconds=no ;;
+esac
+fi
+ ;;
+esac
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $am_cv_sleep_fractional_seconds" >&5
+printf "%s\n" "$am_cv_sleep_fractional_seconds" >&6; }
+
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking filesystem timestamp resolution" >&5
+printf %s "checking filesystem timestamp resolution... " >&6; }
+if test ${am_cv_filesystem_timestamp_resolution+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) # Default to the worst case.
+am_cv_filesystem_timestamp_resolution=2
+
+# Only try to go finer than 1 sec if sleep can do it.
+# Don't try 1 sec, because if 0.01 sec and 0.1 sec don't work,
+# - 1 sec is not much of a win compared to 2 sec, and
+# - it takes 2 seconds to perform the test whether 1 sec works.
+#
+# Instead, just use the default 2s on platforms that have 1s resolution,
+# accept the extra 1s delay when using $sleep in the Automake tests, in
+# exchange for not incurring the 2s delay for running the test for all
+# packages.
+#
+am_try_resolutions=
+if test "$am_cv_sleep_fractional_seconds" = yes; then
+  # Even a millisecond often causes a bunch of false positives,
+  # so just try a hundredth of a second. The time saved between .001 and
+  # .01 is not terribly consequential.
+  am_try_resolutions="0.01 0.1 $am_try_resolutions"
+fi
+
+# In order to catch current-generation FAT out, we must *modify* files
+# that already exist; the *creation* timestamp is finer.  Use names
+# that make ls -t sort them differently when they have equal
+# timestamps than when they have distinct timestamps, keeping
+# in mind that ls -t prints the *newest* file first.
+rm -f conftest.ts?
+: > conftest.ts1
+: > conftest.ts2
+: > conftest.ts3
+
+# Make sure ls -t actually works.  Do 'set' in a subshell so we don't
+# clobber the current shell's arguments. (Outer-level square brackets
+# are removed by m4; they're present so that m4 does not expand
+# <dollar><star>; be careful, easy to get confused.)
+if (
+     set X `ls -t conftest.ts[12]` &&
+     {
+       test "$*" != "X conftest.ts1 conftest.ts2" ||
+       test "$*" != "X conftest.ts2 conftest.ts1";
+     }
+); then :; else
+  # If neither matched, then we have a broken ls.  This can happen
+  # if, for instance, CONFIG_SHELL is bash and it inherits a
+  # broken ls alias from the environment.  This has actually
+  # happened.  Such a system could not be considered "sane".
+  printf "%s\n" ""Bad output from ls -t: \"`ls -t conftest.ts[12]`\""" >&5
+  { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: error: in '$ac_pwd':" >&5
+printf "%s\n" "$as_me: error: in '$ac_pwd':" >&2;}
+as_fn_error $? "ls -t produces unexpected output.
+Make sure there is not a broken ls alias in your environment.
+See 'config.log' for more details" "$LINENO" 5; }
+fi
+
+for am_try_res in $am_try_resolutions; do
+  # Any one fine-grained sleep might happen to cross the boundary
+  # between two values of a coarser actual resolution, but if we do
+  # two fine-grained sleeps in a row, at least one of them will fall
+  # entirely within a coarse interval.
+  echo alpha > conftest.ts1
+  sleep $am_try_res
+  echo beta > conftest.ts2
+  sleep $am_try_res
+  echo gamma > conftest.ts3
+
+  # We assume that 'ls -t' will make use of high-resolution
+  # timestamps if the operating system supports them at all.
+  if (set X `ls -t conftest.ts?` &&
+      test "$2" = conftest.ts3 &&
+      test "$3" = conftest.ts2 &&
+      test "$4" = conftest.ts1); then
+    #
+    # Ok, ls -t worked. If we're at a resolution of 1 second, we're done,
+    # because we don't need to test make.
+    make_ok=true
+    if test $am_try_res != 1; then
+      # But if we've succeeded so far with a subsecond resolution, we
+      # have one more thing to check: make. It can happen that
+      # everything else supports the subsecond mtimes, but make doesn't;
+      # notably on macOS, which ships make 3.81 from 2006 (the last one
+      # released under GPLv2). https://bugs.gnu.org/68808
+      #
+      # We test $MAKE if it is defined in the environment, else "make".
+      # It might get overridden later, but our hope is that in practice
+      # it does not matter: it is the system "make" which is (by far)
+      # the most likely to be broken, whereas if the user overrides it,
+      # probably they did so with a better, or at least not worse, make.
+      # https://lists.gnu.org/archive/html/automake/2024-06/msg00051.html
+      #
+      # Create a Makefile (real tab character here):
+      rm -f conftest.mk
+      echo 'conftest.ts1: conftest.ts2' >conftest.mk
+      echo '	touch conftest.ts2' >>conftest.mk
+      #
+      # Now, running
+      #   touch conftest.ts1; touch conftest.ts2; make
+      # should touch ts1 because ts2 is newer. This could happen by luck,
+      # but most often, it will fail if make's support is insufficient. So
+      # test for several consecutive successes.
+      #
+      # (We reuse conftest.ts[12] because we still want to modify existing
+      # files, not create new ones, per above.)
+      n=0
+      make=${MAKE-make}
+      until test $n -eq 3; do
+        echo one > conftest.ts1
+        sleep $am_try_res
+        echo two > conftest.ts2 # ts2 should now be newer than ts1
+        if $make -f conftest.mk | grep 'up to date' >/dev/null; then
+          make_ok=false
+          break # out of $n loop
+        fi
+        n=`expr $n + 1`
+      done
+    fi
+    #
+    if $make_ok; then
+      # Everything we know to check worked out, so call this resolution good.
+      am_cv_filesystem_timestamp_resolution=$am_try_res
+      break # out of $am_try_res loop
+    fi
+    # Otherwise, we'll go on to check the next resolution.
+  fi
+done
+rm -f conftest.ts?
+# (end _am_filesystem_timestamp_resolution)
+ ;;
+esac
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $am_cv_filesystem_timestamp_resolution" >&5
+printf "%s\n" "$am_cv_filesystem_timestamp_resolution" >&6; }
+
+# This check should not be cached, as it may vary across builds of
+# different projects.
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether build environment is sane" >&5
 printf %s "checking whether build environment is sane... " >&6; }
 # Reject unsafe characters in $srcdir or the absolute working directory
@@ -6933,49 +7094,45 @@ esac
 # symlink; some systems play weird games with the mod time of symlinks
 # (eg FreeBSD returns the mod time of the symlink's containing
 # directory).
-if (
-   am_has_slept=no
-   for am_try in 1 2; do
-     echo "timestamp, slept: $am_has_slept" > conftest.file
-     set X `ls -Lt "$srcdir/configure" conftest.file 2> /dev/null`
-     if test "$*" = "X"; then
-	# -L didn't work.
-	set X `ls -t "$srcdir/configure" conftest.file`
-     fi
-     if test "$*" != "X $srcdir/configure conftest.file" \
-	&& test "$*" != "X conftest.file $srcdir/configure"; then
+am_build_env_is_sane=no
+am_has_slept=no
+rm -f conftest.file
+for am_try in 1 2; do
+  echo "timestamp, slept: $am_has_slept" > conftest.file
+  if (
+    set X `ls -Lt "$srcdir/configure" conftest.file 2> /dev/null`
+    if test "$*" = "X"; then
+      # -L didn't work.
+      set X `ls -t "$srcdir/configure" conftest.file`
+    fi
+    test "$2" = conftest.file
+  ); then
+    am_build_env_is_sane=yes
+    break
+  fi
+  # Just in case.
+  sleep "$am_cv_filesystem_timestamp_resolution"
+  am_has_slept=yes
+done
 
-	# If neither matched, then we have a broken ls.  This can happen
-	# if, for instance, CONFIG_SHELL is bash and it inherits a
-	# broken ls alias from the environment.  This has actually
-	# happened.  Such a system could not be considered "sane".
-	as_fn_error $? "ls -t appears to fail.  Make sure there is not a broken
-  alias in your environment" "$LINENO" 5
-     fi
-     if test "$2" = conftest.file || test $am_try -eq 2; then
-       break
-     fi
-     # Just in case.
-     sleep 1
-     am_has_slept=yes
-   done
-   test "$2" = conftest.file
-   )
-then
-   # Ok.
-   :
-else
-   as_fn_error $? "newly created file is older than distributed files!
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $am_build_env_is_sane" >&5
+printf "%s\n" "$am_build_env_is_sane" >&6; }
+if test "$am_build_env_is_sane" = no; then
+  as_fn_error $? "newly created file is older than distributed files!
 Check your system clock" "$LINENO" 5
 fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
-printf "%s\n" "yes" >&6; }
+
 # If we didn't sleep, we still need to ensure time stamps of config.status and
 # generated files are strictly newer.
 am_sleep_pid=
-if grep 'slept: no' conftest.file >/dev/null 2>&1; then
-  ( sleep 1 ) &
+if test -e conftest.file || grep 'slept: no' conftest.file >/dev/null 2>&1
+then :
+
+else case e in #(
+  e)   ( sleep "$am_cv_filesystem_timestamp_resolution" ) &
   am_sleep_pid=$!
+ ;;
+esac
 fi
 
 rm -f conftest.file
@@ -7204,17 +7361,13 @@ else
 fi
 
 
+AM_DEFAULT_VERBOSITY=1
 # Check whether --enable-silent-rules was given.
 if test ${enable_silent_rules+y}
 then :
   enableval=$enable_silent_rules;
 fi
 
-case $enable_silent_rules in # (((
-  yes) AM_DEFAULT_VERBOSITY=0;;
-   no) AM_DEFAULT_VERBOSITY=1;;
-    *) AM_DEFAULT_VERBOSITY=1;;
-esac
 am_make=${MAKE-make}
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether $am_make supports nested variables" >&5
 printf %s "checking whether $am_make supports nested variables... " >&6; }
@@ -7237,14 +7390,44 @@ esac
 fi
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $am_cv_make_support_nested_variables" >&5
 printf "%s\n" "$am_cv_make_support_nested_variables" >&6; }
-if test $am_cv_make_support_nested_variables = yes; then
-    AM_V='$(V)'
-  AM_DEFAULT_V='$(AM_DEFAULT_VERBOSITY)'
-else
-  AM_V=$AM_DEFAULT_VERBOSITY
-  AM_DEFAULT_V=$AM_DEFAULT_VERBOSITY
-fi
 AM_BACKSLASH='\'
+
+am__rm_f_notfound=
+if (rm -f && rm -fr && rm -rf) 2>/dev/null
+then :
+
+else case e in #(
+  e) am__rm_f_notfound='""' ;;
+esac
+fi
+
+
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking xargs -n works" >&5
+printf %s "checking xargs -n works... " >&6; }
+if test ${am_cv_xargs_n_works+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) if test "`echo 1 2 3 | xargs -n2 echo`" = "1 2
+3"
+then :
+  am_cv_xargs_n_works=yes
+else case e in #(
+  e) am_cv_xargs_n_works=no ;;
+esac
+fi ;;
+esac
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $am_cv_xargs_n_works" >&5
+printf "%s\n" "$am_cv_xargs_n_works" >&6; }
+if test "$am_cv_xargs_n_works" = yes
+then :
+  am__xargs_n='xargs -n'
+else case e in #(
+  e)   am__xargs_n='am__xargs_n () { shift; sed "s/ /\\n/g" | while read am__xargs_n_arg; do "" "$am__xargs_n_arg"; done; }'
+ ;;
+esac
+fi
 
 if test "`cd $srcdir && pwd`" != "`pwd`"; then
   # Use -I$(srcdir) only when $(srcdir) != ., so that make's output
@@ -7409,7 +7592,7 @@ else case e in #(
       # icc doesn't choke on unknown options, it will just issue warnings
       # or remarks (even with -Werror).  So we grep stderr for any message
       # that says an option was ignored or not supported.
-      # When given -MP, icc 7.0 and 7.1 complain thusly:
+      # When given -MP, icc 7.0 and 7.1 complain thus:
       #   icc: Command line warning: ignoring option '-M'; no argument required
       # The diagnosis changed in icc 8.0:
       #   icc: Command line remark: option '-MP' not supported
@@ -7459,47 +7642,9 @@ fi
 
 
 
-# POSIX will say in a future version that running "rm -f" with no argument
-# is OK; and we want to be able to make that assumption in our Makefile
-# recipes.  So use an aggressive probe to check that the usage we want is
-# actually supported "in the wild" to an acceptable degree.
-# See automake bug#10828.
-# To make any issue more visible, cause the running configure to be aborted
-# by default if the 'rm' program in use doesn't match our expectations; the
-# user can still override this though.
-if rm -f && rm -fr && rm -rf; then : OK; else
-  cat >&2 <<'END'
-Oops!
 
-Your 'rm' program seems unable to run without file operands specified
-on the command line, even when the '-f' option is present.  This is contrary
-to the behaviour of most rm programs out there, and not conforming with
-the upcoming POSIX standard: <http://austingroupbugs.net/view.php?id=542>
 
-Please tell bug-automake@gnu.org about your system, including the value
-of your $PATH and any error possibly output before this message.  This
-can help us improve future automake versions.
 
-END
-  if test x"$ACCEPT_INFERIOR_RM_PROGRAM" = x"yes"; then
-    echo 'Configuration will proceed anyway, since you have set the' >&2
-    echo 'ACCEPT_INFERIOR_RM_PROGRAM variable to "yes"' >&2
-    echo >&2
-  else
-    cat >&2 <<'END'
-Aborting the configuration process, to ensure you take notice of the issue.
-
-You can download and install GNU coreutils to get an 'rm' implementation
-that behaves properly: <https://www.gnu.org/software/coreutils/>.
-
-If you want to complete the configuration process using your problematic
-'rm' anyway, export the environment variable ACCEPT_INFERIOR_RM_PROGRAM
-to "yes", and re-run configure.
-
-END
-    as_fn_error $? "Your 'rm' program is bad, sorry." "$LINENO" 5
-  fi
-fi
  # Not using -Werror because we override {C,F}FLAGS in order to disable optimization
 
 #################################
@@ -7736,6 +7881,7 @@ esac
 fi
 
 : ${AR=ar}
+: ${ARFLAGS=cr}
 
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking the archiver ($AR) interface" >&5
 printf %s "checking the archiver ($AR) interface... " >&6; }
@@ -7756,7 +7902,7 @@ int some_variable = 0;
 _ACEOF
 if ac_fn_c_try_compile "$LINENO"
 then :
-  am_ar_try='$AR cru libconftest.a conftest.$ac_objext >&5'
+  am_ar_try='$AR $ARFLAGS libconftest.a conftest.$ac_objext >&5'
       { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$am_ar_try\""; } >&5
   (eval $am_ar_try) 2>&5
   ac_status=$?
@@ -8140,7 +8286,7 @@ else case e in #(
       # icc doesn't choke on unknown options, it will just issue warnings
       # or remarks (even with -Werror).  So we grep stderr for any message
       # that says an option was ignored or not supported.
-      # When given -MP, icc 7.0 and 7.1 complain thusly:
+      # When given -MP, icc 7.0 and 7.1 complain thus:
       #   icc: Command line warning: ignoring option '-M'; no argument required
       # The diagnosis changed in icc 8.0:
       #   icc: Command line remark: option '-MP' not supported
@@ -8462,7 +8608,7 @@ printf "%s\n" "yes" >&6; }
 		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes, with -ansi" >&5
 printf "%s\n" "yes, with -ansi" >&6; }
 	else
-		as_fn_error $? "${RAWCPP} defines unix with or without -undef.  I don't know what to do." "$LINENO" 5
+		as_fn_error $? "${RAWCPP} defines unix with or without -undef; dunno what to do." "$LINENO" 5
 	fi
 fi
 rm -f conftest.$ac_ext
@@ -8482,7 +8628,7 @@ else
 		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
 printf "%s\n" "yes" >&6; }
 	else
-		as_fn_error $? "${RAWCPP} does not preserve whitespace with or without -traditional.  I don't know what to do." "$LINENO" 5
+		as_fn_error $? "${RAWCPP} does not preserve whitespace with or without -traditional; dunno what to do." "$LINENO" 5
 	fi
 fi
 rm -f conftest.$ac_ext
@@ -8674,48 +8820,8 @@ fi
 
 	if test "x${SILENT_RULES}" = "x"; then
 		test -z "${SILENT_RULES}"
-		# Check whether --enable-silent-rules was given.
-if test ${enable_silent_rules+y}
-then :
-  enableval=$enable_silent_rules;
-fi
 
-case $enable_silent_rules in # (((
-  yes) AM_DEFAULT_VERBOSITY=0;;
-   no) AM_DEFAULT_VERBOSITY=1;;
-    *) AM_DEFAULT_VERBOSITY=1;;
-esac
-am_make=${MAKE-make}
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether $am_make supports nested variables" >&5
-printf %s "checking whether $am_make supports nested variables... " >&6; }
-if test ${am_cv_make_support_nested_variables+y}
-then :
-  printf %s "(cached) " >&6
-else case e in #(
-  e) if printf "%s\n" 'TRUE=$(BAR$(V))
-BAR0=false
-BAR1=true
-V=1
-am__doit:
-	@$(TRUE)
-.PHONY: am__doit' | $am_make -f - >/dev/null 2>&1; then
-  am_cv_make_support_nested_variables=yes
-else
-  am_cv_make_support_nested_variables=no
-fi ;;
-esac
-fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $am_cv_make_support_nested_variables" >&5
-printf "%s\n" "$am_cv_make_support_nested_variables" >&6; }
-if test $am_cv_make_support_nested_variables = yes; then
-    AM_V='$(V)'
-  AM_DEFAULT_V='$(AM_DEFAULT_VERBOSITY)'
-else
-  AM_V=$AM_DEFAULT_VERBOSITY
-  AM_DEFAULT_V=$AM_DEFAULT_VERBOSITY
-fi
-AM_BACKSLASH='\'
-
+AM_DEFAULT_VERBOSITY=1
 	fi
 
 else case e in #(
@@ -9215,7 +9321,7 @@ else case e in #(
       # icc doesn't choke on unknown options, it will just issue warnings
       # or remarks (even with -Werror).  So we grep stderr for any message
       # that says an option was ignored or not supported.
-      # When given -MP, icc 7.0 and 7.1 complain thusly:
+      # When given -MP, icc 7.0 and 7.1 complain thus:
       #   icc: Command line warning: ignoring option '-M'; no argument required
       # The diagnosis changed in icc 8.0:
       #   icc: Command line remark: option '-MP' not supported
@@ -13836,7 +13942,7 @@ else case e in #(
       # icc doesn't choke on unknown options, it will just issue warnings
       # or remarks (even with -Werror).  So we grep stderr for any message
       # that says an option was ignored or not supported.
-      # When given -MP, icc 7.0 and 7.1 complain thusly:
+      # When given -MP, icc 7.0 and 7.1 complain thus:
       #   icc: Command line warning: ignoring option '-M'; no argument required
       # The diagnosis changed in icc 8.0:
       #   icc: Command line remark: option '-MP' not supported
@@ -14385,7 +14491,7 @@ else case e in #(
       # icc doesn't choke on unknown options, it will just issue warnings
       # or remarks (even with -Werror).  So we grep stderr for any message
       # that says an option was ignored or not supported.
-      # When given -MP, icc 7.0 and 7.1 complain thusly:
+      # When given -MP, icc 7.0 and 7.1 complain thus:
       #   icc: Command line warning: ignoring option '-M'; no argument required
       # The diagnosis changed in icc 8.0:
       #   icc: Command line remark: option '-MP' not supported
@@ -58827,7 +58933,7 @@ printf "%s\n" "$ac_java_classpath" >&6; }
 printf %s "checking to see if the java compiler works... " >&6; }
 
     cat << \EOF > conftest.java
-// #line 58830 "configure"
+// #line 58936 "configure"
 import java.util.regex.Pattern;
 
 
@@ -58914,7 +59020,7 @@ printf %s "checking type of jvm... " >&6; }
     if test "x$ac_java_jvm_name" = "x" ; then
 
     cat << \EOF > conftest.java
-// #line 58917 "configure"
+// #line 59023 "configure"
 import java.util.regex.Pattern;
 
 import gnu.java.io.EncodingManager;
@@ -58998,7 +59104,7 @@ printf %s "checking java API version... " >&6; }
     # The class java.nio.charset.Charset is new to 1.4
 
     cat << \EOF > conftest.java
-// #line 59001 "configure"
+// #line 59107 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.charset.Charset;
@@ -59063,7 +59169,7 @@ EOF
     # The class java.lang.StringBuilder is new to 1.5
 
     cat << \EOF > conftest.java
-// #line 59066 "configure"
+// #line 59172 "configure"
 import java.util.regex.Pattern;
 
 import java.lang.StringBuilder;
@@ -59128,7 +59234,7 @@ EOF
     # The class java.util.ArrayDeque is new to 1.6
 
     cat << \EOF > conftest.java
-// #line 59131 "configure"
+// #line 59237 "configure"
 import java.util.regex.Pattern;
 
 import java.util.ArrayDeque;
@@ -59193,7 +59299,7 @@ EOF
     # The class java.nio.file.Path is new to 1.7
 
     cat << \EOF > conftest.java
-// #line 59196 "configure"
+// #line 59302 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.file.Path;
@@ -61315,7 +61421,7 @@ printf %s "checking jgraphx... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 61318 "configure"
+// #line 61424 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.model.mxCell;
@@ -61421,7 +61527,7 @@ printf %s "checking minimal version (1.8.0.0) of jgraphx... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 61424 "configure"
+// #line 61530 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.view.mxGraph;
@@ -61492,7 +61598,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 61495 "configure"
+// #line 61601 "configure"
 import java.util.regex.Pattern;
 
 import com.mxgraph.view.mxGraph;
@@ -61583,7 +61689,7 @@ printf %s "checking scirenderer... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 61586 "configure"
+// #line 61692 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -61689,7 +61795,7 @@ printf %s "checking minimal version (1.0.2) of scirenderer... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 61692 "configure"
+// #line 61798 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -61760,7 +61866,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 61763 "configure"
+// #line 61869 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.scirenderer.PackageInfo;
@@ -61849,7 +61955,7 @@ printf %s "checking flexdock... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 61852 "configure"
+// #line 61958 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.docking.DockingManager;
@@ -61955,7 +62061,7 @@ printf %s "checking minimal version (1.2.0) of flexdock... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 61958 "configure"
+// #line 62064 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.util.Utilities;
@@ -62026,7 +62132,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 62029 "configure"
+// #line 62135 "configure"
 import java.util.regex.Pattern;
 
 import org.flexdock.util.Utilities;
@@ -62115,7 +62221,7 @@ printf %s "checking looks... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62118 "configure"
+// #line 62224 "configure"
 import java.util.regex.Pattern;
 
 import com.jgoodies.looks.common.MenuItemRenderer;
@@ -62232,7 +62338,7 @@ printf %s "checking jgoodies-looks... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62235 "configure"
+// #line 62341 "configure"
 import java.util.regex.Pattern;
 
 import com.jgoodies.looks.common.MenuItemRenderer;
@@ -62349,7 +62455,7 @@ printf %s "checking skinlf... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62352 "configure"
+// #line 62458 "configure"
 import java.util.regex.Pattern;
 
 import com.l2fprod.util.AccessUtils;
@@ -62465,7 +62571,7 @@ printf %s "checking jogl2... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62468 "configure"
+// #line 62574 "configure"
 import java.util.regex.Pattern;
 
 import javax.media.opengl.glu.GLUnurbs;
@@ -62705,7 +62811,7 @@ printf %s "checking gluegen2-rt... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62708 "configure"
+// #line 62814 "configure"
 import java.util.regex.Pattern;
 
 import jogamp.common.os.MachineDescriptionRuntime;
@@ -62887,7 +62993,7 @@ printf %s "checking jhall... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 62890 "configure"
+// #line 62996 "configure"
 import java.util.regex.Pattern;
 
 import javax.help.JHelp;
@@ -63004,7 +63110,7 @@ printf %s "checking javahelp2... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63007 "configure"
+// #line 63113 "configure"
 import java.util.regex.Pattern;
 
 import javax.help.JHelp;
@@ -63121,7 +63227,7 @@ printf %s "checking jrosetta-API... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63124 "configure"
+// #line 63230 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.interfaces.core.ConsoleConfiguration;
@@ -63236,7 +63342,7 @@ printf %s "checking jrosetta-api... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63239 "configure"
+// #line 63345 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.interfaces.core.ConsoleConfiguration;
@@ -63353,7 +63459,7 @@ printf %s "checking jrosetta-engine... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63356 "configure"
+// #line 63462 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.core.action.AbstractConsoleAction;
@@ -63459,7 +63565,7 @@ printf %s "checking minimal version (1.0.4) of jrosetta-engine... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 63462 "configure"
+// #line 63568 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.util.ConfigurationBuilder;
@@ -63530,7 +63636,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 63533 "configure"
+// #line 63639 "configure"
 import java.util.regex.Pattern;
 
 import com.artenum.rosetta.util.ConfigurationBuilder;
@@ -63620,7 +63726,7 @@ printf %s "checking jeuclid-core... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63623 "configure"
+// #line 63729 "configure"
 import java.util.regex.Pattern;
 
 import net.sourceforge.jeuclid.LayoutContext;
@@ -63737,7 +63843,7 @@ printf %s "checking fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 63740 "configure"
+// #line 63846 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.fop.pdf.PDFInfo;
@@ -64005,7 +64111,7 @@ printf %s "checking batik-all... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64008 "configure"
+// #line 64114 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.parser.Parser;
@@ -64122,7 +64228,7 @@ printf %s "checking batik... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64125 "configure"
+// #line 64231 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.parser.Parser;
@@ -64229,7 +64335,7 @@ printf %s "checking minimal version (1.7) of batik... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 64232 "configure"
+// #line 64338 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.Version;
@@ -64300,7 +64406,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 64303 "configure"
+// #line 64409 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.batik.Version;
@@ -64389,7 +64495,7 @@ printf %s "checking commons-io... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64392 "configure"
+// #line 64498 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.output.CountingOutputStream;
@@ -64505,7 +64611,7 @@ printf %s "checking xmlgraphics-commons... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64508 "configure"
+// #line 64614 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.xmlgraphics.util.Service;
@@ -64621,7 +64727,7 @@ printf %s "checking avalon-framework... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64624 "configure"
+// #line 64730 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.avalon.framework.configuration.ConfigurationException;
@@ -64737,7 +64843,7 @@ printf %s "checking xml-apis-ext... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64740 "configure"
+// #line 64846 "configure"
 import java.util.regex.Pattern;
 
 import org.w3c.dom.svg.SVGDocument;
@@ -64854,7 +64960,7 @@ printf %s "checking xml-commons-apis-ext... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64857 "configure"
+// #line 64963 "configure"
 import java.util.regex.Pattern;
 
 import org.w3c.dom.svg.SVGDocument;
@@ -64973,7 +65079,7 @@ printf %s "checking commons-logging... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 64976 "configure"
+// #line 65082 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.logging.LogFactory;
@@ -65089,7 +65195,7 @@ printf %s "checking jlatexmath... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 65092 "configure"
+// #line 65198 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -65195,7 +65301,7 @@ printf %s "checking minimal version (1.0.0) of jlatexmath... " >&6; }
    if test "x" == "x"; then
 
     cat << \EOF > conftest.java
-// #line 65198 "configure"
+// #line 65304 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -65266,7 +65372,7 @@ EOF
    else
 
     cat << \EOF > conftest.java
-// #line 65269 "configure"
+// #line 65375 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -65360,7 +65466,7 @@ printf %s "checking checkstyle... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 65363 "configure"
+// #line 65469 "configure"
 import java.util.regex.Pattern;
 
 import com.puppycrawl.tools.checkstyle.CheckStyleTask;
@@ -65476,7 +65582,7 @@ printf %s "checking commons-beanutils... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 65479 "configure"
+// #line 65585 "configure"
 import java.util.regex.Pattern;
 
 import org.apache.commons.beanutils.Converter;
@@ -65592,7 +65698,7 @@ printf %s "checking antlr... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 65595 "configure"
+// #line 65701 "configure"
 import java.util.regex.Pattern;
 
 import antlr.TokenStreamException;
@@ -65708,7 +65814,7 @@ printf %s "checking junit4... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 65711 "configure"
+// #line 65817 "configure"
 import java.util.regex.Pattern;
 
 import org.junit.Assert;
@@ -65824,7 +65930,7 @@ printf %s "checking cobertura... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 65827 "configure"
+// #line 65933 "configure"
 import java.util.regex.Pattern;
 
 import net.sourceforge.cobertura.merge.Main;
@@ -65940,7 +66046,7 @@ printf %s "checking asm3... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 65943 "configure"
+// #line 66049 "configure"
 import java.util.regex.Pattern;
 
 import org.objectweb.asm.Type;
@@ -66056,7 +66162,7 @@ printf %s "checking asm... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 66059 "configure"
+// #line 66165 "configure"
 import java.util.regex.Pattern;
 
 import org.objectweb.asm.Type;
@@ -66431,7 +66537,7 @@ then :
   printf %s "(cached) " >&6
 else case e in #(
   e)
-	for am_cv_pathless_PYTHON in python python2 python3  python3.9 python3.8 python3.7 python3.6 python3.5 python3.4 python3.3  python3.2 python3.1 python3.0  python2.7 python2.6 python2.5 python2.4 python2.3 python2.2 python2.1  python2.0 none; do
+	for am_cv_pathless_PYTHON in python python3  python3.20 python3.19 python3.18 python3.17 python3.16  python3.15 python3.14 python3.13 python3.12 python3.11 python3.10  python3.9 python3.8 python3.7 python3.6 python3.5 python3.4 python3.3  python3.2 python3.1 python3.0  python2  python2.7 python2.6 python2.5 python2.4 python2.3 python2.2 python2.1  python2.0 none; do
 	  test "$am_cv_pathless_PYTHON" = none && break
 	  prog="import sys
 # split strings by '.' and convert to numeric.  Append some zeros
@@ -66702,7 +66808,21 @@ try:
     if python_implementation() == 'CPython' and sys.version[:3] == '2.7':
         can_use_sysconfig = 0
 except ImportError:
-    pass"
+    pass" # end of am_python_setup_sysconfig
+
+  # More repeated code, for figuring out the installation scheme to use.
+  am_python_setup_scheme="if hasattr(sysconfig, 'get_default_scheme'):
+      scheme = sysconfig.get_default_scheme()
+    else:
+      scheme = sysconfig._get_default_scheme()
+    if scheme == 'posix_local':
+      if '$am_py_prefix' == '/usr':
+        scheme = 'deb_system' # should only happen during Debian package builds
+      else:
+        # Debian's default scheme installs to /usr/local/ but we want to
+        # follow the prefix, as we always have.
+        # See bugs#54412, #64837, et al.
+        scheme = 'posix_prefix'" # end of am_python_setup_scheme
 
 
               { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $am_display_PYTHON script directory (pythondir)" >&5
@@ -66719,7 +66839,11 @@ else case e in #(
    am_cv_python_pythondir=`$PYTHON -c "
 $am_python_setup_sysconfig
 if can_use_sysconfig:
-  sitedir = sysconfig.get_path('purelib', vars={'base':'$am_py_prefix'})
+  try:
+    $am_python_setup_scheme
+    sitedir = sysconfig.get_path('purelib', scheme, vars={'base':'$am_py_prefix'})
+  except:
+    sitedir = sysconfig.get_path('purelib', vars={'base':'$am_py_prefix'})
 else:
   from distutils import sysconfig
   sitedir = sysconfig.get_python_lib(0, 0, prefix='$am_py_prefix')
@@ -66749,7 +66873,7 @@ printf "%s\n" "$am_cv_python_pythondir" >&6; }
           pkgpythondir=\${pythondir}/$PACKAGE
 
 
-          { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $am_display_PYTHON extension module directory (pyexecdir)" >&5
+            { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $am_display_PYTHON extension module directory (pyexecdir)" >&5
 printf %s "checking for $am_display_PYTHON extension module directory (pyexecdir)... " >&6; }
 if test ${am_cv_python_pyexecdir+y}
 then :
@@ -66763,7 +66887,11 @@ else case e in #(
    am_cv_python_pyexecdir=`$PYTHON -c "
 $am_python_setup_sysconfig
 if can_use_sysconfig:
-  sitedir = sysconfig.get_path('platlib', vars={'platbase':'$am_py_exec_prefix'})
+  try:
+    $am_python_setup_scheme
+    sitedir = sysconfig.get_path('platlib', scheme, vars={'platbase':'$am_py_exec_prefix'})
+  except:
+    sitedir = sysconfig.get_path('platlib', vars={'platbase':'$am_py_exec_prefix'})
 else:
   from distutils import sysconfig
   sitedir = sysconfig.get_python_lib(1, 0, prefix='$am_py_exec_prefix')
@@ -95310,48 +95438,8 @@ MAN_SUBSTS="\
 
 
 
-# Check whether --enable-silent-rules was given.
-if test ${enable_silent_rules+y}
-then :
-  enableval=$enable_silent_rules;
-fi
 
-case $enable_silent_rules in # (((
-  yes) AM_DEFAULT_VERBOSITY=0;;
-   no) AM_DEFAULT_VERBOSITY=1;;
-    *) AM_DEFAULT_VERBOSITY=0;;
-esac
-am_make=${MAKE-make}
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether $am_make supports nested variables" >&5
-printf %s "checking whether $am_make supports nested variables... " >&6; }
-if test ${am_cv_make_support_nested_variables+y}
-then :
-  printf %s "(cached) " >&6
-else case e in #(
-  e) if printf "%s\n" 'TRUE=$(BAR$(V))
-BAR0=false
-BAR1=true
-V=1
-am__doit:
-	@$(TRUE)
-.PHONY: am__doit' | $am_make -f - >/dev/null 2>&1; then
-  am_cv_make_support_nested_variables=yes
-else
-  am_cv_make_support_nested_variables=no
-fi ;;
-esac
-fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $am_cv_make_support_nested_variables" >&5
-printf "%s\n" "$am_cv_make_support_nested_variables" >&6; }
-if test $am_cv_make_support_nested_variables = yes; then
-    AM_V='$(V)'
-  AM_DEFAULT_V='$(AM_DEFAULT_VERBOSITY)'
-else
-  AM_V=$AM_DEFAULT_VERBOSITY
-  AM_DEFAULT_V=$AM_DEFAULT_VERBOSITY
-fi
-AM_BACKSLASH='\'
-
+AM_DEFAULT_VERBOSITY=0
 
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for egrep" >&5
 printf %s "checking for egrep... " >&6; }
@@ -96305,7 +96393,7 @@ printf %s "checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later... 
 
 
 cat > conftest.$ac_ext <<EOF
-#line 96308 "configure"
+#line 96396 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TCL_INCLUDE_PATH/$CHK_TCL_INC_NAME"
@@ -96641,7 +96729,7 @@ printf %s "checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later... " >
 
 
 cat > conftest.$ac_ext <<EOF
-#line 96644 "configure"
+#line 96732 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TK_INCLUDE_PATH/$CHK_TK_INC_NAME"
@@ -97361,7 +97449,7 @@ printf %s "checking saxon... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 97364 "configure"
+// #line 97452 "configure"
 import java.util.regex.Pattern;
 
 import com.icl.saxon.Loader;
@@ -97477,7 +97565,7 @@ printf %s "checking jlatexmath-fop... " >&6; }
             export ac_java_classpath="$jar_resolved:$ac_java_classpath"
 
     cat << \EOF > conftest.java
-// #line 97480 "configure"
+// #line 97568 "configure"
 import java.util.regex.Pattern;
 
 import org.scilab.forge.jlatexmath.fop.JLaTeXMathObj;
@@ -121159,6 +121247,18 @@ if test -z "${am__fastdepCC_TRUE}" && test -z "${am__fastdepCC_FALSE}"; then
   as_fn_error $? "conditional \"am__fastdepCC\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
+case $enable_silent_rules in # (((
+  yes) AM_DEFAULT_VERBOSITY=0;;
+   no) AM_DEFAULT_VERBOSITY=1;;
+esac
+if test $am_cv_make_support_nested_variables = yes; then
+    AM_V='$(V)'
+  AM_DEFAULT_V='$(AM_DEFAULT_VERBOSITY)'
+else
+  AM_V=$AM_DEFAULT_VERBOSITY
+  AM_DEFAULT_V=$AM_DEFAULT_VERBOSITY
+fi
+
  if test -n "$EXEEXT"; then
   am__EXEEXT_TRUE=
   am__EXEEXT_FALSE='#'

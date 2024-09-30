@@ -3,7 +3,7 @@ dnl#                                            -*- Autoconf -*-
 
 AC_PREREQ([2.69])
 AC_INIT([Scilab],[5.4.0],[http://bugzilla.scilab.org/])
-AC_CONFIG_AUX_DIR([scilab/config])
+AC_CONFIG_AUX_DIR([scilab/config])dnl
 
 # (just a simple wrapper to run the one in the true source directory)
 AM_INIT_AUTOMAKE([foreign])

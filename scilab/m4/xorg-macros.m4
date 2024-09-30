@@ -1,4 +1,4 @@
-dnl# xorg-macros.m4 serial 114
+dnl# xorg-macros.m4 serial 115
 dnl# Originally generated from xorg-macros.m4.in xorgversion.m4 by configure.
 dnl#
 dnl# Copyright (c) 2005-2006, Oracle and/or its affiliates. All rights reserved.
@@ -48,7 +48,7 @@ m4_if(m4_version_compare(vers_have, [$1]), -1,
 m4_undefine([vers_have])
 m4_undefine([maj_have])
 m4_undefine([maj_needed])
-]) # XORG_MACROS_VERSION
+])dnl# XORG_MACROS_VERSION
 
 # XORG_PROG_RAWCPP()
 # ------------------
@@ -58,7 +58,7 @@ m4_undefine([maj_needed])
 # such as man pages and config files
 AC_DEFUN([XORG_PROG_RAWCPP],[
 AC_REQUIRE([AC_PROG_CPP])
-AC_PATH_PROGS(RAWCPP, [cpp], [${CPP}], 
+AC_PATH_PROGS([RAWCPP],[cpp],[${CPP}], 
    [$PATH:/bin:/usr/bin:/usr/lib:/usr/libexec:/usr/ccs/lib:/usr/ccs/lbin:/lib])
 
 # Check for flag to avoid builtin definitions - assumes unix is predefined,
@@ -77,7 +77,7 @@ else
 		RAWCPPFLAGS="-undef -ansi"
 		AC_MSG_RESULT([yes, with -ansi])
 	else
-		AC_MSG_ERROR([${RAWCPP} defines unix with or without -undef.  I don't know what to do.])
+		AC_MSG_ERROR([${RAWCPP} defines unix with or without -undef; dunno what to do.])
 	fi
 fi
 rm -f conftest.$ac_ext
@@ -91,12 +91,12 @@ else
 		RAWCPPFLAGS="${RAWCPPFLAGS} -traditional"
 		AC_MSG_RESULT([yes])
 	else
-		AC_MSG_ERROR([${RAWCPP} does not preserve whitespace with or without -traditional.  I don't know what to do.])
+		AC_MSG_ERROR([${RAWCPP} does not preserve whitespace with or without -traditional; dunno what to do.])
 	fi
 fi
 rm -f conftest.$ac_ext
-AC_SUBST(RAWCPPFLAGS)
-]) # XORG_PROG_RAWCPP
+AC_SUBST([RAWCPPFLAGS])
+])dnl# XORG_PROG_RAWCPP
 
 # XORG_MANPAGE_SECTIONS()
 # -----------------------
@@ -198,7 +198,7 @@ MAN_SUBSTS="\
 	-e 's|__filemansuffix__|\$(FILE_MAN_SUFFIX)|g'"
 AC_SUBST([MAN_SUBSTS])
 
-]) # XORG_MANPAGE_SECTIONS
+])dnl# XORG_MANPAGE_SECTIONS
 
 # XORG_CHECK_SGML_DOCTOOLS([MIN-VERSION])
 # ------------------------
@@ -232,7 +232,7 @@ AC_SUBST(XORG_SGML_PATH)
 AC_SUBST(STYLESHEET_SRCDIR)
 AC_SUBST(XSL_STYLESHEET)
 AM_CONDITIONAL([HAVE_STYLESHEETS], [test "x$XSL_STYLESHEET" != "x"])
-]) # XORG_CHECK_SGML_DOCTOOLS
+])dnl# XORG_CHECK_SGML_DOCTOOLS
 
 # XORG_CHECK_LINUXDOC
 # -------------------
@@ -281,7 +281,7 @@ AC_SUBST(MAKE_TEXT)
 AC_SUBST(MAKE_PS)
 AC_SUBST(MAKE_PDF)
 AC_SUBST(MAKE_HTML)
-]) # XORG_CHECK_LINUXDOC
+])dnl# XORG_CHECK_LINUXDOC
 
 # XORG_CHECK_DOCBOOK
 # -------------------
@@ -345,7 +345,7 @@ AC_SUBST(MAKE_TEXT)
 AC_SUBST(MAKE_PS)
 AC_SUBST(MAKE_PDF)
 AC_SUBST(MAKE_HTML)
-]) # XORG_CHECK_DOCBOOK
+])dnl# XORG_CHECK_DOCBOOK
 
 # XORG_WITH_XMLTO([MIN-VERSION], [DEFAULT])
 # ----------------
@@ -431,7 +431,7 @@ AS_IF([test "$have_xmlto" = yes],
 rm -f conftest.xml
 AM_CONDITIONAL([HAVE_XMLTO_TEXT], [test $have_xmlto_text = yes])
 AM_CONDITIONAL([HAVE_XMLTO], [test "$have_xmlto" = yes])
-]) # XORG_WITH_XMLTO
+])dnl# XORG_WITH_XMLTO
 
 # XORG_WITH_XSLTPROC([MIN-VERSION], [DEFAULT])
 # --------------------------------------------
@@ -491,7 +491,7 @@ else
 fi
 
 AM_CONDITIONAL([HAVE_XSLTPROC], [test "$have_xsltproc" = yes])
-]) # XORG_WITH_XSLTPROC
+])dnl# XORG_WITH_XSLTPROC
 
 # XORG_WITH_PERL([MIN-VERSION], [DEFAULT])
 # ----------------------------------------
@@ -548,7 +548,7 @@ else
 fi
 
 AM_CONDITIONAL([HAVE_PERL], [test "$have_perl" = yes])
-]) # XORG_WITH_PERL
+])dnl# XORG_WITH_PERL
 
 # XORG_WITH_ASCIIDOC([MIN-VERSION], [DEFAULT])
 # ----------------
@@ -617,7 +617,7 @@ m4_ifval([$1],
         fi])
 fi])
 AM_CONDITIONAL([HAVE_ASCIIDOC], [test "$have_asciidoc" = yes])
-]) # XORG_WITH_ASCIIDOC
+])dnl# XORG_WITH_ASCIIDOC
 
 # XORG_WITH_DOXYGEN([MIN-VERSION], [DEFAULT])
 # --------------------------------
@@ -686,7 +686,7 @@ m4_ifval([$1],
         fi])
 fi])
 AM_CONDITIONAL([HAVE_DOXYGEN], [test "$have_doxygen" = yes])
-]) # XORG_WITH_DOXYGEN
+])dnl# XORG_WITH_DOXYGEN
 
 # XORG_WITH_GROFF([DEFAULT])
 # ----------------
@@ -793,7 +793,7 @@ AM_CONDITIONAL([HAVE_GROFF], [test "$have_groff" = yes])
 AM_CONDITIONAL([HAVE_GROFF_MS], [test "$groff_ms_works" = yes])
 AM_CONDITIONAL([HAVE_GROFF_MM], [test "$groff_mm_works" = yes])
 AM_CONDITIONAL([HAVE_GROFF_HTML], [test "$have_groff_html" = yes])
-]) # XORG_WITH_GROFF
+])dnl# XORG_WITH_GROFF
 
 # XORG_WITH_FOP([MIN-VERSION], [DEFAULT])
 # ---------------------------------------
@@ -865,7 +865,7 @@ m4_ifval([$1],
         fi])
 fi])
 AM_CONDITIONAL([HAVE_FOP], [test "$have_fop" = yes])
-]) # XORG_WITH_FOP
+])dnl# XORG_WITH_FOP
 
 # XORG_WITH_PS2PDF([DEFAULT])
 # ----------------
@@ -920,7 +920,7 @@ else
    AC_MSG_ERROR([--with-ps2pdf expects 'yes' or 'no'])
 fi
 AM_CONDITIONAL([HAVE_PS2PDF], [test "$have_ps2pdf" = yes])
-]) # XORG_WITH_PS2PDF
+])dnl# XORG_WITH_PS2PDF
 
 # XORG_ENABLE_DOCS (enable_docs=yes)
 # ----------------
@@ -955,7 +955,7 @@ m4_undefine([docs_default])
 AM_CONDITIONAL(ENABLE_DOCS, [test x$build_docs = xyes])
 AC_MSG_CHECKING([whether to build documentation])
 AC_MSG_RESULT([$build_docs])
-]) # XORG_ENABLE_DOCS
+])dnl# XORG_ENABLE_DOCS
 
 # XORG_ENABLE_DEVEL_DOCS (enable_devel_docs=yes)
 # ----------------
@@ -988,7 +988,7 @@ m4_undefine([devel_default])
 AM_CONDITIONAL(ENABLE_DEVEL_DOCS, [test x$build_devel_docs = xyes])
 AC_MSG_CHECKING([whether to build developer documentation])
 AC_MSG_RESULT([$build_devel_docs])
-]) # XORG_ENABLE_DEVEL_DOCS
+])dnl# XORG_ENABLE_DEVEL_DOCS
 
 # XORG_ENABLE_SPECS (enable_specs=yes)
 # ----------------
@@ -1021,7 +1021,7 @@ m4_undefine([spec_default])
 AM_CONDITIONAL(ENABLE_SPECS, [test x$build_specs = xyes])
 AC_MSG_CHECKING([whether to build functional specifications])
 AC_MSG_RESULT([$build_specs])
-]) # XORG_ENABLE_SPECS
+])dnl# XORG_ENABLE_SPECS
 
 # XORG_ENABLE_UNIT_TESTS (enable_unit_tests=auto)
 # ----------------------------------------------
@@ -1055,7 +1055,7 @@ m4_undefine([_defopt])
 AM_CONDITIONAL(ENABLE_UNIT_TESTS, [test "x$enable_unit_tests" != xno])
 AC_MSG_CHECKING([whether to build unit test cases])
 AC_MSG_RESULT([$enable_unit_tests])
-]) # XORG_ENABLE_UNIT_TESTS
+])dnl# XORG_ENABLE_UNIT_TESTS
 
 # XORG_ENABLE_INTEGRATION_TESTS (enable_unit_tests=auto)
 # ------------------------------------------------------
@@ -1088,7 +1088,7 @@ AM_CONDITIONAL([ENABLE_INTEGRATION_TESTS],
 	[test "x$enable_integration_tests" != xno])
 AC_MSG_CHECKING([whether to build unit test cases])
 AC_MSG_RESULT([$enable_integration_tests])
-]) # XORG_ENABLE_INTEGRATION_TESTS
+])dnl# XORG_ENABLE_INTEGRATION_TESTS
 
 # XORG_WITH_GLIB([MIN-VERSION], [DEFAULT])
 # ----------------------------------------
@@ -1153,7 +1153,7 @@ if test "x$with_glib" = x"yes"; then
 fi
 
 AM_CONDITIONAL([HAVE_GLIB], [test "$have_glib" = yes])
-]) # XORG_WITH_GLIB
+])dnl# XORG_WITH_GLIB
 
 # XORG_LD_WRAP([required|optional])
 # ---------------------------------
@@ -1182,7 +1182,7 @@ if test "x$enable_unit_tests" = x"yes" -a "x$1" != "xoptional"; then
 fi
 AM_CONDITIONAL([HAVE_LD_WRAP], [test "$have_ld_wrap" = yes])
 #
-]) # XORG_LD_WRAP
+])dnl# XORG_LD_WRAP
 
 # XORG_CHECK_LINKER_FLAGS
 # -----------------------
@@ -1257,7 +1257,7 @@ if test "x$xorg_check_linker_flags" = xyes; then
 else
 	m4_default([$3], :)
 fi
-]) # XORG_CHECK_LINKER_FLAGS
+])dnl# XORG_CHECK_LINKER_FLAGS
 
 # XORG_MEMORY_CHECK_FLAGS
 # -----------------------
@@ -1303,7 +1303,7 @@ if test "x$XORG_MALLOC_DEBUG_ENV" != "x"; then
 fi
 
 AC_SUBST([XORG_MALLOC_DEBUG_ENV],[$malloc_debug_env])
-]) # XORG_WITH_LINT
+])dnl# XORG_MEMORY_CHECK_FLAGS
 
 # XORG_CHECK_MALLOC_ZERO
 # ----------------------
@@ -1844,7 +1844,7 @@ dnl# -Wdiscarded-qualifiers should already be on by default
 fi
 
 AC_SUBST([BASE_]PREFIX[FLAGS])
-]) # XORG_COMPILER_FLAGS
+])dnl# XORG_COMPILER_FLAGS
 
 # XORG_CWARNFLAGS
 # ---------------

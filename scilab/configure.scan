@@ -34,7 +34,6 @@ AC_CHECK_HEADER_STDBOOL
 AC_C_INLINE
 AC_TYPE_INT32_T
 AC_TYPE_PID_T
-AC_C_RESTRICT
 AC_TYPE_SIZE_T
 AC_CHECK_MEMBERS([struct stat.st_blksize])
 AC_STRUCT_ST_BLOCKS
@@ -49,7 +48,6 @@ AM_GNU_GETTEXT
 AC_FUNC_ERROR_AT_LINE
 AC_FUNC_FORK
 AC_FUNC_MALLOC
-AC_HEADER_MAJOR
 AC_FUNC_MMAP
 AC_FUNC_REALLOC
 AC_FUNC_STRTOD
@@ -147,6 +145,7 @@ AC_CONFIG_FILES([Makefile
                  modules/windows_tools/Makefile
                  modules/xcos/Makefile
                  modules/xml/Makefile
-                 mountpoint/thirdparty/docbook/Makefile])
+                 mountpoint/thirdparty/docbook/Makefile
+                 po/Makefile])
 AC_CONFIG_SUBDIRS([modules/dynamic_link/src/scripts])
 AC_OUTPUT
